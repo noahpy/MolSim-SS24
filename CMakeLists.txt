@@ -19,6 +19,9 @@ file(GLOB_RECURSE MY_SRC
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
 )
 
+# export compile_commands.json for clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # create make target
 add_executable(MolSim ${MY_SRC})
 
