@@ -69,6 +69,8 @@ public:
 
   int getType() const;
 
+  void setV(std::array<double, 3> v_new);
+
   bool operator==(Particle &other);
 
   std::string toString() const;

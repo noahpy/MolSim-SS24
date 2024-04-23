@@ -35,70 +35,73 @@ constexpr double delta_t = 0.014;
 // TODO: what data structure to pick?
 std::list<Particle> particles;
 
-int main(int argc, char *argsv[]) {
-
-  std::cout << "Hello from MolSim for PSE!" << std::endl;
-  if (argc != 2) {
-    std::cout << "Erroneous programme call! " << std::endl;
-    std::cout << "./molsym filename" << std::endl;
-  }
-
-  FileReader fileReader;
-  fileReader.readFile(particles, argsv[1]);
-
-  double current_time = start_time;
-
-  int iteration = 0;
-
-  // for this loop, we assume: current x, current f and current v are known
-  while (current_time < end_time) {
-    // calculate new x
-    calculateX();
-    // calculate new f
-    calculateF();
-    // calculate new v
-    calculateV();
-
-    iteration++;
-    if (iteration % 10 == 0) {
-      plotParticles(iteration);
+int main(int argc, char* argsv[])
+{
+    std::cout << "Hello from MolSim for PSE!" << std::endl;
+    if (argc != 2) {
+        std::cout << "Erroneous programme call! " << std::endl;
+        std::cout << "./molsym filename" << std::endl;
     }
-    std::cout << "Iteration " << iteration << " finished." << std::endl;
 
-    current_time += delta_t;
-  }
+    FileReader fileReader;
+    fileReader.readFile(particles, argsv[1]);
 
-  std::cout << "output written. Terminating..." << std::endl;
-  return 0;
-}
+    double current_time = start_time;
 
-void calculateF() {
-  std::list<Particle>::iterator iterator;
-  iterator = particles.begin();
+    int iteration = 0;
 
-  for (auto &p1 : particles) {
-    for (auto &p2 : particles) {
-      // @TODO: insert calculation of forces here!
+    // for this loop, we assume: current x, current f and current v are known
+    while (current_time < end_time) {
+        // calculate new x
+        calculateX();
+        // calculate new f
+        calculateF();
+        // calculate new v
+        calculateV();
+
+        iteration++;
+        if (iteration % 10 == 0) {
+            plotParticles(iteration);
+        }
+        std::cout << "Iteration " << iteration << " finished." << std::endl;
+
+        current_time += delta_t;
     }
-  }
+
+    std::cout << "output written. Terminating..." << std::endl;
+    return 0;
 }
 
-void calculateX() {
-  for (auto &p : particles) {
-    // @TODO: insert calculation of position updates here!
-  }
+void calculateF()
+{
+    std::list<Particle>::iterator iterator;
+    iterator = particles.begin();
+
+    for (auto& p1 : particles) {
+        for (auto& p2 : particles) {
+            // @TODO: insert calculation of forces here!
+        }
+    }
 }
 
-void calculateV() {
-  for (auto &p : particles) {
-    // @TODO: insert calculation of veclocity updates here!
-  }
+void calculateX()
+{
+    for (auto& p : particles) {
+        // @TODO: insert calculation of position updates here!
+    }
 }
 
-void plotParticles(int iteration) {
+void calculateV()
+{
+    for (auto& p : particles) {
+        p.setV(p.getV() + (delta_t / (2 * p.getM())) * (p.getOldF() + p.getF()));
+    }
+}
 
-  std::string out_name("MD_vtk");
+void plotParticles(int iteration)
+{
+    std::string out_name("MD_vtk");
 
-  outputWriter::XYZWriter writer;
-  writer.plotParticles(particles, out_name, iteration);
+    outputWriter::XYZWriter writer;
+    writer.plotParticles(particles, out_name, iteration);
 }
