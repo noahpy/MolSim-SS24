@@ -87,7 +87,7 @@ void calculateF()
 void calculateX()
 {
     for (auto& p : particles) {
-        // @TODO: insert calculation of position updates here!
+        p.setX(p.getX() + delta_t * p.getV() + (delta_t * delta_t / (2 * p.getM())) * p.getF());
     }
 }
 

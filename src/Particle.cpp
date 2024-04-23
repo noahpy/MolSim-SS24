@@ -57,6 +57,10 @@ void Particle::setV(std::array<double, 3> v_new){
     v = v_new;
 }
 
+void Particle::setX(std::array<double, 3> x_new){
+    x = x_new;
+}
+
 std::string Particle::toString() const {
   std::stringstream stream;
   stream << "Particle: X:" << x << " v: " << v << " f: " << f
