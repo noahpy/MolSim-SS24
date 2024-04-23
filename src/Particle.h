@@ -72,6 +72,10 @@ public:
   void setX(std::array<double, 3> x_new);
 
   void setV(std::array<double, 3> v_new);
+  
+  void setF(std::array<double, 3> f_new);
+
+  void setOldF(std::array<double, 3> f);
 
   bool operator==(Particle &other);
 
