@@ -87,6 +87,7 @@ void calculateF()
 void calculateX()
 {
     for (auto& p : particles) {
+        // x = x + Δt * v + (Δt)^2 * F / (2 * m)
         p.setX(p.getX() + delta_t * p.getV() + (delta_t * delta_t / (2 * p.getM())) * p.getF());
     }
 }
@@ -94,6 +95,7 @@ void calculateX()
 void calculateV()
 {
     for (auto& p : particles) {
+        // v = v + Δt * (F + F_old) / (2 * m)
         p.setV(p.getV() + (delta_t / (2 * p.getM())) * (p.getOldF() + p.getF()));
     }
 }
