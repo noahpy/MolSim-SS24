@@ -69,6 +69,10 @@ public:
 
   int getType() const;
 
+  void setF(std::array<double, 3> f_new);
+
+  void setOldF(std::array<double, 3> f);
+
   bool operator==(Particle &other);
 
   std::string toString() const;
