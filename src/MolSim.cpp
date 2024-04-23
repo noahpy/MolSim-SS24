@@ -71,6 +71,9 @@ int main(int argc, char* argsv[])
         }
         std::cout << "Iteration " << iteration << " finished." << std::endl;
 
+        current_time += delta_t;
+    }
+
     std::cout << "output written. Terminating..." << std::endl;
     return 0;
 }
