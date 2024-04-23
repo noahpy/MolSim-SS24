@@ -1,11 +1,15 @@
 
 #include "FileReader.h"
-#include "outputWriter/XYZWriter.h"
 #include "outputWriter/VTKWriter.h"
+#include "outputWriter/XYZWriter.h"
 #include "utils/ArrayUtils.h"
 
+#include <cstdlib>
+#include <getopt.h>
 #include <iostream>
 #include <list>
+#include <stdexcept>
+#include <string>
 
 /**** forward declaration of the calculation functions ****/
 
@@ -34,23 +38,75 @@ void plotParticlesXYZ(int iteration);
  */
 void plotParticlesVTK(int iteration);
 
+void printHelp(std::string progName)
+{
+    std::cout << "Usage: " << progName << " [OPTIONS] FILE" << std::endl
+              << "Simulate particle dynamics and output results in FILE in VTK format." << std::endl
+              << "Options:" << std::endl
+              << "  -d, --delta_t=VALUE    Set the time step (default: 0.014)" << std::endl
+              << "  -e, --end_time=VALUE   Set the end time for simulation (default: 0.28)"
+              << std::endl
+              << "  -h, --help             Display this help message" << std::endl;
+}
+
 constexpr double start_time = 0;
-constexpr double end_time = 0.014*10*20;
-constexpr double delta_t = 0.014;
+double end_time = 0.014 * 10 * 20;
+double delta_t = 0.014;
 
 // TODO: what data structure to pick?
 std::list<Particle> particles;
 
 int main(int argc, char* argsv[])
 {
-    std::cout << "Hello from MolSim for PSE!" << std::endl;
-    if (argc != 2) {
-        std::cout << "Erroneous programme call! " << std::endl;
-        std::cout << "./molsym filename" << std::endl;
+    // Long options definition
+    static struct option long_options[] = { { "delta_t", required_argument, 0, 'd' },
+                                            { "end_time", required_argument, 0, 'e' },
+                                            { "help", required_argument, 0, 'h' },
+                                            { 0, 0, 0, 0 } };
+
+    int opt;
+    while ((opt = getopt_long(argc, argsv, "d:e:h", long_options, NULL)) != -1) {
+        switch (opt) {
+        case 'd':
+            try {
+                delta_t = std::stof(optarg);
+            } catch (std::invalid_argument& e) {
+                std::cout << "Invalid float argument: " << optarg << std::endl;
+                return EXIT_FAILURE;
+            } catch (std::out_of_range& e) {
+                std::cout << "Given float is out of range: " << optarg << std::endl;
+                return EXIT_FAILURE;
+            }
+            break;
+        case 'e':
+            try {
+                end_time = std::stof(optarg);
+            } catch (std::invalid_argument& e) {
+                std::cout << "Invalid float argument: " << optarg << std::endl;
+                return EXIT_FAILURE;
+            } catch (std::out_of_range& e) {
+                std::cout << "Given float is out of range: " << optarg << std::endl;
+                return EXIT_FAILURE;
+            }
+            break;
+        case 'h':
+            printHelp(argsv[0]);
+            return EXIT_SUCCESS;
+        case '?':
+        default:
+            printHelp(argsv[0]);
+            return EXIT_FAILURE;
+        }
+    }
+
+    if (argc - optind != 1) {
+        std::cout << "Missing positional argument: FILE" << std::endl;
+        printHelp(argsv[0]);
+        return EXIT_FAILURE;
     }
 
     FileReader fileReader;
-    fileReader.readFile(particles, argsv[1]);
+    fileReader.readFile(particles, argsv[optind]);
 
     double current_time = start_time;
 
@@ -113,24 +169,23 @@ void calculateV()
     }
 }
 
+void plotParticlesXYZ(int iteration)
+{
+    std::string out_name("MD_vtk");
 
-void plotParticlesXYZ(int iteration) {
-
-  std::string out_name("MD_vtk");
-
-  outputWriter::XYZWriter writer;
-  writer.plotParticles(particles, out_name, iteration);
+    outputWriter::XYZWriter writer;
+    writer.plotParticles(particles, out_name, iteration);
 }
 
-void plotParticlesVTK(int iteration) {
+void plotParticlesVTK(int iteration)
+{
+    outputWriter::VTKWriter writer;
+    writer.initializeOutput(particles.size());
 
-  outputWriter::VTKWriter writer;
-  writer.initializeOutput(particles.size());
+    for (auto& p : particles) {
+        writer.plotParticle(p);
+    }
 
-  for (auto &p : particles) {
-    writer.plotParticle(p);
-  }
-
-  std::string out_name("MD_vtk");
-  writer.writeFile(out_name, iteration);
+    std::string out_name("MD_vtk");
+    writer.writeFile(out_name, iteration);
 }
