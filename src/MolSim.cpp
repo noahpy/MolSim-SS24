@@ -41,65 +41,75 @@ constexpr double delta_t = 0.014;
 // TODO: what data structure to pick?
 std::list<Particle> particles;
 
-int main(int argc, char *argsv[]) {
-
-  std::cout << "Hello from MolSim for PSE!" << std::endl;
-  if (argc != 2) {
-    std::cout << "Erroneous programme call! " << std::endl;
-    std::cout << "./molsym filename" << std::endl;
-  }
-
-  FileReader fileReader;
-  fileReader.readFile(particles, argsv[1]);
-
-  double current_time = start_time;
-
-  int iteration = 0;
-
-  // for this loop, we assume: current x, current f and current v are known
-  while (current_time < end_time) {
-    // calculate new x
-    calculateX();
-    // calculate new f
-    calculateF();
-    // calculate new v
-    calculateV();
-
-    iteration++;
-    if (iteration % 10 == 0) {
-        plotParticlesVTK(iteration);
+int main(int argc, char* argsv[])
+{
+    std::cout << "Hello from MolSim for PSE!" << std::endl;
+    if (argc != 2) {
+        std::cout << "Erroneous programme call! " << std::endl;
+        std::cout << "./molsym filename" << std::endl;
     }
-    std::cout << "Iteration " << iteration << " finished." << std::endl;
 
-    current_time += delta_t;
-  }
+    FileReader fileReader;
+    fileReader.readFile(particles, argsv[1]);
 
-  std::cout << "output written. Terminating..." << std::endl;
-  return 0;
+    double current_time = start_time;
+
+    int iteration = 0;
+
+    // for this loop, we assume: current x, current f and current v are known
+    while (current_time < end_time) {
+        // calculate new x
+        calculateX();
+        // calculate new f
+        calculateF();
+        // calculate new v
+        calculateV();
+
+        iteration++;
+        if (iteration % 10 == 0) {
+            plotParticlesVTK(iteration);
+        }
+        std::cout << "Iteration " << iteration << " finished." << std::endl;
+
+    std::cout << "output written. Terminating..." << std::endl;
+    return 0;
 }
 
-void calculateF() {
-  std::list<Particle>::iterator iterator;
-  iterator = particles.begin();
-
-  for (auto &p1 : particles) {
-    for (auto &p2 : particles) {
-      // @TODO: insert calculation of forces here!
+void calculateF()
+{
+    for (auto& p1 : particles) {
+        std::array<double, 3> f_i = { 0.0, 0.0, 0.0 };
+        for (auto& p2 : particles) {
+            double m_mul = p1.getM() * p2.getM();
+            double dist = std::pow(ArrayUtils::L2Norm(p1.getX() - p2.getX()), 3);
+            // check for distance = 0
+            if (dist == 0)
+                continue;
+            double coeff = m_mul / dist;
+            // f_i = f_i + f_ij
+            f_i = f_i + coeff * (p2.getX() - p1.getX());
+        }
+        p1.setOldF(p1.getF());
+        p1.setF(f_i);
     }
-  }
 }
 
-void calculateX() {
-  for (auto &p : particles) {
-    // @TODO: insert calculation of position updates here!
-  }
+void calculateX()
+{
+    for (auto& p : particles) {
+        // x = x + Δt * v + (Δt)^2 * F / (2 * m)
+        p.setX(p.getX() + delta_t * p.getV() + (delta_t * delta_t / (2 * p.getM())) * p.getF());
+    }
 }
 
-void calculateV() {
-  for (auto &p : particles) {
-    // @TODO: insert calculation of veclocity updates here!
-  }
+void calculateV()
+{
+    for (auto& p : particles) {
+        // v = v + Δt * (F + F_old) / (2 * m)
+        p.setV(p.getV() + (delta_t / (2 * p.getM())) * (p.getOldF() + p.getF()));
+    }
 }
+
 
 void plotParticlesXYZ(int iteration) {
 
