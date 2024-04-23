@@ -1,6 +1,7 @@
 
 #include "FileReader.h"
 #include "outputWriter/XYZWriter.h"
+#include "outputWriter/VTKWriter.h"
 #include "utils/ArrayUtils.h"
 
 #include <iostream>
@@ -26,10 +27,15 @@ void calculateV();
 /**
  * plot the particles to a xyz-file
  */
-void plotParticles(int iteration);
+void plotParticlesXYZ(int iteration);
+
+/**
+ * plot the particles to a vtk-file
+ */
+void plotParticlesVTK(int iteration);
 
 constexpr double start_time = 0;
-constexpr double end_time = 1000;
+constexpr double end_time = 0.014*10*20;
 constexpr double delta_t = 0.014;
 
 // TODO: what data structure to pick?
@@ -61,12 +67,9 @@ int main(int argc, char* argsv[])
 
         iteration++;
         if (iteration % 10 == 0) {
-            plotParticles(iteration);
+            plotParticlesVTK(iteration);
         }
         std::cout << "Iteration " << iteration << " finished." << std::endl;
-
-        current_time += delta_t;
-    }
 
     std::cout << "output written. Terminating..." << std::endl;
     return 0;
@@ -107,10 +110,24 @@ void calculateV()
     }
 }
 
-void plotParticles(int iteration)
-{
-    std::string out_name("MD_vtk");
 
-    outputWriter::XYZWriter writer;
-    writer.plotParticles(particles, out_name, iteration);
+void plotParticlesXYZ(int iteration) {
+
+  std::string out_name("MD_vtk");
+
+  outputWriter::XYZWriter writer;
+  writer.plotParticles(particles, out_name, iteration);
+}
+
+void plotParticlesVTK(int iteration) {
+
+  outputWriter::VTKWriter writer;
+  writer.initializeOutput(particles.size());
+
+  for (auto &p : particles) {
+    writer.plotParticle(p);
+  }
+
+  std::string out_name("MD_vtk");
+  writer.writeFile(out_name, iteration);
 }
