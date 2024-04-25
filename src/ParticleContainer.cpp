@@ -36,13 +36,13 @@ std::pair<Particle&, Particle&> ParticleContainer::PairIterator::operator*() con
 
 // Advances the iterator to the next pair
 ParticleContainer::PairIterator& ParticleContainer::PairIterator::operator++() {
-    ++second;
     if (second == last) {
-        // Check for last pair
+        // In case of last pair: return the last pair without change
         if (first == last) return *this;
         ++first;
         second = start;
     }
+    ++second;
     return *this;
 }
 
