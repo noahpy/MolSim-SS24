@@ -1,6 +1,9 @@
 
 #include <iostream>
+#include <gtest/gtest.h>
 
-int main(){
-    std::cout << "Here are our tests!" << std::endl;
+TEST(Test, test1){
+    std::cout << "Test!" << std::endl;
+    EXPECT_EQ(true, true);
 }
+
