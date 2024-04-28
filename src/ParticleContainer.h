@@ -31,7 +31,7 @@ public:
      */
     class PairIterator {
     private:
-        std::vector<Particle>:: iterator start, first, second, last;
+        std::vector<Particle>::iterator start, first, second, last;
 
     public:
         PairIterator(std::vector<Particle>::iterator start, std::vector<Particle>:: iterator first, std::vector<Particle>::iterator last);
