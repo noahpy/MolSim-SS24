@@ -16,6 +16,7 @@ Particle::Particle(int type_arg)
     std::cout << "Particle generated!" << std::endl;
     f = { 0., 0., 0. };
     old_f = { 0., 0., 0. };
+    m = 3;
 }
 
 Particle::Particle(const Particle& other)
