@@ -6,7 +6,6 @@
 #define PARTICLECONTAINER_H
 
 #include "Particle.h"
-#include <functional>
 #include <vector>
 
 
@@ -44,7 +43,6 @@ public:
     PairIterator beginPairs();
     PairIterator endPairs();
 };
-
 
 
 #endif //PARTICLECONTAINER_H
