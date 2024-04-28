@@ -34,7 +34,7 @@ ParticleContainer::PairIterator ParticleContainer::beginPairs()
 // Returns an iterator indicating the end of pairs
 ParticleContainer::PairIterator ParticleContainer::endPairs()
 {
-    return { particles.begin(), particles.end(), particles.end() };
+    return { particles.begin(), particles.end() - 1, particles.end() };
 }
 
 // PairIterator constructor
@@ -60,12 +60,13 @@ std::pair<Particle&, Particle&> ParticleContainer::PairIterator::operator*() con
 // Advances the iterator to the next pair
 ParticleContainer::PairIterator& ParticleContainer::PairIterator::operator++()
 {
-    if (second == last) {
+    if (second == last - 1) {
         // In case of last pair: return the last pair without change
-        if (first == last)
+        if (first == last - 1)
             return *this;
         ++first;
-        second = start;
+        second = first+1;
+        return *this;
     }
     ++second;
     return *this;
