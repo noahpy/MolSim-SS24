@@ -2,6 +2,7 @@
 #include "Particle.h"
 #include "ParticleContainer.h"
 #include <gtest/gtest.h>
+#include <iostream>
 #include <vector>
 
 std::array<double, 3> zeros { 0, 0, 0 };
@@ -32,7 +33,7 @@ TEST(PContainerTests, particleItZero)
     ParticleContainer container { particles };
 
     unsigned count = 0;
-    for(auto& p: container){
+    for (auto& p : container) {
         ++count;
     }
 
