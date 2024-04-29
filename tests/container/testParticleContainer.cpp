@@ -8,11 +8,11 @@
 // check if enhanced loop work as intended
 TEST(PContainerTests, enhancedForLoopParticles)
 {
-    std::array<double, 3> zeros{0, 0, 0};
+    std::array<double, 3> zeros { 0, 0, 0 };
 
-    Particle p1{zeros, zeros, 5, 0};
-    Particle p2{zeros, zeros, 3, 0};
-    Particle p3{zeros, zeros, 1, 0};
+    Particle p1 { zeros, zeros, 5, 0 };
+    Particle p2 { zeros, zeros, 3, 0 };
+    Particle p3 { zeros, zeros, 1, 0 };
 
     std::vector<Particle> particles { p1, p2, p3 };
 
@@ -28,18 +28,18 @@ TEST(PContainerTests, enhancedForLoopParticles)
 
 TEST(PContainerTests, pairIterators)
 {
-    std::array<double, 3> zeros{0, 0, 0};
+    std::array<double, 3> zeros { 0, 0, 0 };
 
-    Particle p1{zeros, zeros, 5, 0};
-    Particle p2{zeros, zeros, 3, 0};
-    Particle p3{zeros, zeros, 1, 0};
+    Particle p1 { zeros, zeros, 5, 0 };
+    Particle p2 { zeros, zeros, 3, 0 };
+    Particle p3 { zeros, zeros, 1, 0 };
 
     std::vector<Particle> particles { p1, p2, p3 };
 
     ParticleContainer container { particles };
 
     unsigned count = 0;
-    for(auto it = container.beginPairs(); it != container.endPairs(); ++it){
+    for (auto it = container.beginPairs(); it != container.endPairs(); ++it) {
         std::pair<Particle&, Particle&> pt_pair = *it;
         std::cout << pt_pair.first.getM() << " | " << pt_pair.second.getM() << std::endl;
         ++count;
@@ -51,13 +51,11 @@ TEST(PContainerTests, pairIterators)
     container.addParticle(p1);
 
     count = 0;
-    for(auto it = container.beginPairs(); it != container.endPairs(); ++it){
+    for (auto it = container.beginPairs(); it != container.endPairs(); ++it) {
         std::pair<Particle&, Particle&> pt_pair = *it;
         std::cout << pt_pair.first.getM() << " | " << pt_pair.second.getM() << std::endl;
         ++count;
     }
 
     EXPECT_EQ(count, 10);
-
-
 }

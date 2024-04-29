@@ -24,7 +24,6 @@ public:
     // Returns an iterator to the end
     std::vector<Particle>::iterator end();
 
-
     /*
      * Pair Iterator nested class:
      * Iterate from one fixed particle over every possible pair
@@ -47,7 +46,6 @@ public:
 
     PairIterator beginPairs();
     PairIterator endPairs();
-
 };
 
 #endif // PARTICLECONTAINER_H
