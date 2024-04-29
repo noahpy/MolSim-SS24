@@ -1,14 +1,13 @@
 
-#include "FileReader.h"
-#include "ParticleContainer.h"
-#include "outputWriter/VTKWriter.h"
-#include "outputWriter/XYZWriter.h"
+#include "io/FileReader.h"
+#include "models/ParticleContainer.h"
+#include "io/outputWriter/VTKWriter.h"
+#include "io/outputWriter/XYZWriter.h"
 #include "utils/ArrayUtils.h"
 
 #include <cstdlib>
 #include <getopt.h>
 #include <iostream>
-#include <list>
 #include <stdexcept>
 #include <string>
 

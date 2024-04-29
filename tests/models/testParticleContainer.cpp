@@ -1,8 +1,7 @@
 
-#include "Particle.h"
-#include "ParticleContainer.h"
+#include "models/Particle.h"
+#include "models/ParticleContainer.h"
 #include <gtest/gtest.h>
-#include <iostream>
 #include <vector>
 
 std::array<double, 3> zeros { 0, 0, 0 };
