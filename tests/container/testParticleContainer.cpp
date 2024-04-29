@@ -38,8 +38,26 @@ TEST(PContainerTests, pairIterators)
 
     ParticleContainer container { particles };
 
+    unsigned count = 0;
     for(auto it = container.beginPairs(); it != container.endPairs(); ++it){
         std::pair<Particle&, Particle&> pt_pair = *it;
         std::cout << pt_pair.first.getM() << " | " << pt_pair.second.getM() << std::endl;
+        ++count;
     }
+
+    EXPECT_EQ(count, 3);
+
+    container.addParticle(p1);
+    container.addParticle(p1);
+
+    count = 0;
+    for(auto it = container.beginPairs(); it != container.endPairs(); ++it){
+        std::pair<Particle&, Particle&> pt_pair = *it;
+        std::cout << pt_pair.first.getM() << " | " << pt_pair.second.getM() << std::endl;
+        ++count;
+    }
+
+    EXPECT_EQ(count, 10);
+
+
 }

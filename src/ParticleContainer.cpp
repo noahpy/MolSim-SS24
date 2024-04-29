@@ -25,6 +25,7 @@ std::vector<Particle>::iterator ParticleContainer::end()
     return particles.end();
 }
 
+
 // Returns an iterator to the first pair of particles
 ParticleContainer::PairIterator ParticleContainer::beginPairs()
 {
@@ -60,6 +61,7 @@ std::pair<Particle&, Particle&> ParticleContainer::PairIterator::operator*() con
 // Advances the iterator to the next pair
 ParticleContainer::PairIterator& ParticleContainer::PairIterator::operator++()
 {
+    // inc second if possible, else inc first and reset second
     if (second == last - 1) {
         // In case of last pair: return the last pair without change
         if (first == last - 1)
