@@ -9,11 +9,10 @@
 #include <vector>
 
 class ParticleContainer {
-private:
-    // Store Particles in vector
-    std::vector<Particle> particles;
 
 public:
+    std::vector<Particle> particles;
+
     ParticleContainer(const std::vector<Particle>& particles);
 
     // Adds a particle to the container

@@ -1,5 +1,6 @@
 
 #include "FileReader.h"
+#include "ParticleContainer.h"
 #include "outputWriter/VTKWriter.h"
 #include "outputWriter/XYZWriter.h"
 #include "utils/ArrayUtils.h"
@@ -53,8 +54,7 @@ constexpr double start_time = 0;
 double end_time = 0.014 * 10 * 20;
 double delta_t = 0.014;
 
-// TODO: what data structure to pick?
-std::list<Particle> particles;
+ParticleContainer particles { {} };
 
 int main(int argc, char* argsv[])
 {
@@ -180,7 +180,7 @@ void plotParticlesXYZ(int iteration)
 void plotParticlesVTK(int iteration)
 {
     outputWriter::VTKWriter writer;
-    writer.initializeOutput(particles.size());
+    writer.initializeOutput(particles.particles.size());
 
     for (auto& p : particles) {
         writer.plotParticle(p);

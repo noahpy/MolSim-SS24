@@ -3,6 +3,7 @@
  */
 
 #include "ParticleContainer.h"
+#include "Particle.h"
 
 ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
 {
