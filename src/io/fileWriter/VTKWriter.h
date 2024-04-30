@@ -7,8 +7,10 @@
 
 #pragma once
 
+#include "io/fileWriter/FileWriter.h"
+#include "io/fileWriter/vtk-unstructured.h"
 #include "models/Particle.h"
-#include "io/outputWriter/vtk-unstructured.h"
+#include "simulation/baseSimulation.h"
 
 namespace outputWriter {
 
@@ -16,11 +18,13 @@ namespace outputWriter {
  * This class implements the functionality to generate vtk output from
  * particles.
  */
-class VTKWriter {
+class VTKWriter : public FileWriter {
 public:
     VTKWriter();
 
     virtual ~VTKWriter();
+
+    void plotParticles(const Simulation& s) override;
 
     /**
      * set up internal data structures and prepare to plot a particle.

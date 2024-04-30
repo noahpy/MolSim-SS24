@@ -5,19 +5,28 @@
  *      Author: eckhardw
  */
 
-#include "FileReader.h"
+#include "io/fileReader/FileReader.h"
 #include "models/Particle.h"
 
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
 
-FileReader::FileReader() = default;
+FileReader::FileReader(std::string file)
+    : filename(file)
+{
+}
 
 FileReader::~FileReader() = default;
 
-void FileReader::readFile(ParticleContainer& particles, char* filename)
+void FileReader::readFile(Simulation& sim)
+{
+    readFile(sim.container, filename);
+}
+
+void FileReader::readFile(ParticleContainer& particles, std::string filename)
 {
     std::array<double, 3> x;
     std::array<double, 3> v;

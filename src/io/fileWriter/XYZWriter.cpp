@@ -5,7 +5,7 @@
  *      Author: eckhardw
  */
 
-#include "io/outputWriter/XYZWriter.h"
+#include "io/fileWriter/XYZWriter.h"
 #include "models/ParticleContainer.h"
 #include <fstream>
 #include <iomanip>
@@ -16,6 +16,11 @@ namespace outputWriter {
 XYZWriter::XYZWriter() = default;
 
 XYZWriter::~XYZWriter() = default;
+
+void XYZWriter::plotParticles(const Simulation& s)
+{
+    plotParticles(s.container, this->out_name, s.iteration);
+}
 
 void XYZWriter::plotParticles(
     ParticleContainer particles, const std::string& filename, int iteration)
