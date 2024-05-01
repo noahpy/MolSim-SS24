@@ -2,6 +2,7 @@
 #include "physics/forceCal/forceCal.h"
 #include "utils/ArrayUtils.h"
 #include <vector>
+#include <iostream>
 
 void force_stroemer_verlet(const Simulation& sim)
 {
@@ -33,11 +34,15 @@ void force_stroemer_verlet_V2(const Simulation& sim)
     std::array<double, 3> f_ij = {0, 0, 0};
     for (auto it = sim.container.beginPairs(); it != sim.container.endPairs(); ++it) {
         std::pair<Particle&, Particle&> pair = *it;
+		double m_mul = pair.first.getM() * pair.second.getM();
         double dist = std::pow(ArrayUtils::L2Norm(pair.first.getX() - pair.second.getX()), 3);
-        double coeff = (pair.first.getM() * pair.second.getM()) / dist;
+        double coeff = m_mul / dist;
         f_ij = coeff * (pair.second.getX() - pair.first.getX());
+		std::cout << "f_ij = " << f_ij << "\n";
         f_i[k+j] = f_i[k+j] - f_ij;
+		std::cout << "f[" << k+j << "] = " << f_i[k+j] << "\n";
         f_i[k] = f_i[k] + f_ij;
+		std::cout << "f[" << k << "] = " << f_i[k] << "\n";
         if (it == sim.container.endPairs()) {
             sim.container.getContainer()[k+1].setOldF(sim.container.getContainer()[k+1].getF());
             sim.container.getContainer()[k+1].setF(f_i[k+1]);
