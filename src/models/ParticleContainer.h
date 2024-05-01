@@ -18,6 +18,8 @@ public:
     // Adds a particle to the container
     void addParticle(const Particle& p);
 
+    std::vector<Particle> getContainer();
+
     // Returns an iterator to the beginning
     std::vector<Particle>::iterator begin();
     // Returns an iterator to the end
@@ -37,10 +39,14 @@ public:
             std::vector<Particle>::iterator start,
             std::vector<Particle>::iterator first,
             std::vector<Particle>::iterator last);
+
+        // Get last particle
+        Particle& getLast();
         // Operators for Iteration traversal
         std::pair<Particle&, Particle&> operator*() const;
         PairIterator& operator++();
         bool operator!=(const PairIterator& other) const;
+        bool operator==(const PairIterator& other) const;
     };
 
     PairIterator beginPairs();

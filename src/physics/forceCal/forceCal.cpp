@@ -1,6 +1,7 @@
 
 #include "physics/forceCal/forceCal.h"
 #include "utils/ArrayUtils.h"
+#include <vector>
 
 void force_stroemer_verlet(const Simulation& sim)
 {
@@ -18,5 +19,36 @@ void force_stroemer_verlet(const Simulation& sim)
         }
         p1.setOldF(p1.getF());
         p1.setF(f_i);
+    }
+}
+
+void force_stroemer_verlet_V2(const Simulation& sim)
+{
+    int k = 0;
+    int j = 1;
+    std::vector<std::array<double, 3>> f_i;
+    for (auto& p : sim.container) {
+        f_i.push_back(std::array<double,3> {0, 0, 0});
+    }
+    std::array<double, 3> f_ij = {0, 0, 0};
+    for (auto it = sim.container.beginPairs(); it != sim.container.endPairs(); ++it) {
+        std::pair<Particle&, Particle&> pair = *it;
+        double dist = std::pow(ArrayUtils::L2Norm(pair.first.getX() - pair.second.getX()), 3);
+        double coeff = (pair.first.getM() * pair.second.getM()) / dist;
+        f_ij = coeff * (pair.second.getX() - pair.first.getX());
+        f_i[k+j] = f_i[k+j] - f_ij;
+        f_i[k] = f_i[k] + f_ij;
+        if (it == sim.container.endPairs()) {
+            sim.container.getContainer()[k+1].setOldF(sim.container.getContainer()[k+1].getF());
+            sim.container.getContainer()[k+1].setF(f_i[k+1]);
+        }
+        if (pair.second == it.getLast()){
+            sim.container.getContainer()[k].setOldF(sim.container.getContainer()[k].getF());
+            sim.container.getContainer()[k].setF(f_i[k]);
+            ++k;
+            j = 1;
+        } else {
+            ++j;
+        }
     }
 }
