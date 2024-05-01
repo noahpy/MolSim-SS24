@@ -1,10 +1,10 @@
 
-#include "simulation/stdSimulation.h"
+#include "simulation/planetSim.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
 #include <iostream>
 
-StandardSimulation::StandardSimulation(
+PlanetSimulation::PlanetSimulation(
     double time,
     double delta_t,
     double end_time,
@@ -16,7 +16,7 @@ StandardSimulation::StandardSimulation(
 {
 }
 
-void StandardSimulation::runSim()
+void PlanetSimulation::runSim()
 {
     while (time < end_time) {
         strategy.calX(*this);

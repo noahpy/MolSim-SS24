@@ -7,7 +7,7 @@
 #include "physics/locationCal/locationCal.h"
 #include "physics/strategy.h"
 #include "physics/velocityCal/velocityCal.h"
-#include "simulation/stdSimulation.h"
+#include "simulation/planetSim.h"
 
 #include <cstdlib>
 #include <getopt.h>
@@ -38,7 +38,7 @@ int main(int argc, char* argsv[])
     ParticleContainer particles { {} };
 
     // Setup simulation
-    StandardSimulation sim { start_time, delta_t, end_time, particles, strat, writer, fileReader };
+    PlanetSimulation sim { start_time, delta_t, end_time, particles, strat, writer, fileReader };
 
     // Run simulation
     sim.runSim();

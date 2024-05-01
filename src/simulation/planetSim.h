@@ -2,12 +2,12 @@
 #include "models/ParticleContainer.h"
 #include "simulation/baseSimulation.h"
 
-class StandardSimulation : public Simulation {
+class PlanetSimulation : public Simulation {
 public:
 
     using Simulation::Simulation;
 
-    StandardSimulation(
+    PlanetSimulation(
     double time,
     double delta_t,
     double end_time,
