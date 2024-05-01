@@ -15,39 +15,60 @@
 namespace outputWriter {
 
 /**
- * This class implements the functionality to generate vtk output from
- * particles.
+ * @brief This class implements the functionality to generate vtk output from particles.
  */
 class VTKWriter : public FileWriter {
 public:
+    /**
+     * @brief Constructor of the VTKWriter class
+     * @return A new VTKWriter object
+     */
     VTKWriter();
 
+    /**
+     * @brief Destructor of the VTKWriter class
+     * @return void
+     */
     virtual ~VTKWriter();
 
+    /**
+     * @brief Writes the simulation data to a file for one iteration
+     * @param s Simulation object
+     */
     void plotParticles(const Simulation& s) override;
 
     /**
-     * set up internal data structures and prepare to plot a particle.
+     * @brief Set up internal data structures and prepare to plot a particle
+     * @param numParticles The number of particles to be plotted
+     * @return void
      */
     void initializeOutput(int numParticles);
 
     /**
-     * plot type, mass, position, velocity and force of a particle.
-     *
+     * @brief plot type, mass, position, velocity and force of a particle.
      * @note: initializeOutput() must have been called before.
+     * @param p the particle to be plotted
+     * @return void
      */
     void plotParticle(Particle& p);
 
     /**
-     * writes the final output file.
+     * @brief writes the final output file.
+     *
+     * @note This will write a file for all particles plotted so far using plotParticle()
      *
      * @param filename the base name of the file to be written.
      * @param iteration the number of the current iteration,
      *        which is used to generate an unique filename
+     *
+     * @return void
      */
     void writeFile(const std::string& filename, int iteration);
 
 private:
+    /**
+     * @brief The VTK file object
+     */
     VTKFile_t* vtkFile;
 };
 

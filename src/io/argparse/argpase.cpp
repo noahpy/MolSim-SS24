@@ -5,6 +5,11 @@
 #include <stdexcept>
 #include <string>
 
+/**
+ * @brief Print the help message
+ * @param progName The name of the program
+ * @return void
+ */
 void printHelp(std::string progName)
 {
     std::cout << "Usage: " << progName << " [OPTIONS] FILE" << std::endl
