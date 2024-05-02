@@ -14,12 +14,13 @@
 #include <iostream>
 #include <string>
 
+// Main function
 int main(int argc, char* argsv[])
 {
-    constexpr double start_time = 0;
-    double end_time = 0.014 * 10 * 20;
-    double delta_t = 0.014;
-    std::string output_file;
+    constexpr double start_time = 0; // start time
+    double end_time = 0.014 * 10 * 20; // end time
+    double delta_t = 0.014; // time increment
+    std::string output_file; // output filename
 
     // parse arguments
     argparse(argc, argsv, end_time, delta_t, output_file);
@@ -43,6 +44,7 @@ int main(int argc, char* argsv[])
     // Run simulation
     sim.runSim();
 
+    // inform user that output has been written
     std::cout << "output written. Terminating..." << std::endl;
     return 0;
 }
