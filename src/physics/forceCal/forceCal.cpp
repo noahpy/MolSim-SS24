@@ -40,8 +40,9 @@ void force_stroemer_verlet_rv(const Simulation& sim)
         double dist = std::pow(ArrayUtils::L2Norm(p1.getX() - p2.getX()), 3);
         double coeff = m_mul / dist;
 
-        p1.setF(p1.getF() + coeff * (p2.getX() - p1.getX()));
-        p2.setF(p2.getF() + coeff * (p1.getX() - p2.getX()));
+        std::array<double, 3> distance = coeff * (p2.getX() - p1.getX());
+        p1.setF(p1.getF() + distance);
+        p2.setF(p2.getF() - distance);
     }
 }
 
