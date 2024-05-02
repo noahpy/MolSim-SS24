@@ -12,7 +12,7 @@
 #include <string>
 
 /**
- * @brief Class for reading files.
+ * @brief Class for reading input files for a simulation.
  */
 class FileReader {
 public:
