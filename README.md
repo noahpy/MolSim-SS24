@@ -71,6 +71,6 @@ You will get an output along the lines of:
 ```
 ## Project structure
 The project is structured as follows:
-![Project structure UML](report/report1/res)
+![Project structure UML](report/report1/res/strategy_long.png)
 
 
