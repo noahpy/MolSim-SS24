@@ -14,5 +14,8 @@ public:
      */
     virtual void plotParticles(const Simulation& s) = 0;
 
+    /**
+     * @brief The name of the output file
+     */
     std::string out_name = "MD_vtk";
 };
