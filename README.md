@@ -69,4 +69,8 @@ You will get an output along the lines of:
 [==========] 9 tests from 2 test suites ran. (10159 ms total)
 [  PASSED  ] 9 tests.
 ```
+## Project structure
+The project is structured as follows:
+![Project structure UML](report/report1/res)
+
 
