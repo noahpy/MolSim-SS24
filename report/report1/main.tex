@@ -76,7 +76,7 @@ The pull request can be found \href{www.google.com}{here}
         \item The main benefit of having binary output files would be, to have smaller output files
         \item This may become relevant, as soon as the simulation is run for longer periods of time i.e. more files are written
         \item We also wonder, if it really is necessary to write a file for every iteration, or if it is possible to combine them. This will need further investigation
-        \item We ware eager to see, how other groups managed to find a solution
+        \item We are eager to see, how other groups managed to find a solution
     \end{itemize}
     \item We implemented command line arguments using getopt
     \begin{itemize}
@@ -141,6 +141,7 @@ Finally to the interesting part.
     \item Theoretically, this should yield a speedup of 2, as only half the number of calculations are necessary
     \item The values we measured can be seen in Table \ref{tab:speedup}. This is only a speedup of around 1.25
         \begin{table}[H]
+            \centering
             \begin{tabular}{|l|l|l|l|l|}
             \hline
                 & Time for $10^6$ iterations \\ \hline
