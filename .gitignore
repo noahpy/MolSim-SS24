@@ -41,3 +41,6 @@ doxys_documentation/
 # Build folders.
 # This rule ignores any folder in the project root that contains "build"
 /*build*/
+
+# Mac stuff
+.DS_Store
