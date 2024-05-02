@@ -89,3 +89,14 @@ Note that this is not a perfect UML diagram, but rather a visualization of the b
 **`FileReader`**
 - Template method class defining a common interface of different readers
 - Currently not abstract yet, as only one reader is existant
+
+## Folder structure
+This section describes the folder strcuture of this project:
+- `tests`: tests of the project 
+- `src`: source files of the project
+- `src/io`: all source files relating to I/O
+- `src/models`: all source files relating to classes representing parts of the model
+- `src/physics`: all source files relating to physical calculations
+- `src/simulation`: all source files relating to the `Simlation` class
+- `src/MolSim.cpp`: source file holding main function
+
