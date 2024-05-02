@@ -17,6 +17,7 @@ make
 ## Run instructions
 To run the project, run the following command:
 ```
+
 //inside build
 src/MolSim -d <delta_t> -e <end_t> ../input/<input_file>
 ```
