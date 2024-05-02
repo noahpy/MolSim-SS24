@@ -17,9 +17,14 @@ make
 ## Run instructions
 To run the project, run the following command:
 ```
-./MolSim <input_file>
-```
 
+//inside build
+src/MolSim -d <delta_t> -e <end_t> ../input/<input_file>
+```
+For more information about arguments and default settings, type:
+```
+src/MolSim -h
+```
 ## Generate Doxygen documentation
 To generate the Doxygen documentation, run the following command:
 ```
