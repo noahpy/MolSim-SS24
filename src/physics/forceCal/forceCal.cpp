@@ -2,7 +2,7 @@
 #include "physics/forceCal/forceCal.h"
 #include "utils/ArrayUtils.h"
 #include <vector>
-#include <iostream>
+#include <unordered_map>
 
 void force_stroemer_verlet(const Simulation& sim)
 {
@@ -25,35 +25,39 @@ void force_stroemer_verlet(const Simulation& sim)
 
 void force_stroemer_verlet_V2(const Simulation& sim)
 {
-    int k = 0;
-    int j = 1;
-    std::vector<std::array<double, 3>> f_i;
-    for (auto& p : sim.container) {
-        f_i.push_back(std::array<double,3> {0, 0, 0});
+    // map for indices of the particle container
+    std::unordered_map<const Particle*, size_t> particleIndexMap;
+    const auto& particles = sim.container.getContainer();
+    for (size_t i = 0; i < particles.size(); ++i) {
+        particleIndexMap[&particles[i]] = i;
     }
-    std::array<double, 3> f_ij = {0, 0, 0};
+
+    // Force vector for storing computed F_i
+    std::vector<std::array<double, 3>> f_i(sim.container.getContainer().size(), {0.0, 0.0, 0.0});
+
+    // Force Calculation with unique pairs by adding F_ij and F_ji = - F_ij to the right forces
     for (auto it = sim.container.beginPairs(); it != sim.container.endPairs(); ++it) {
-        std::pair<Particle&, Particle&> pair = *it;
-		double m_mul = pair.first.getM() * pair.second.getM();
-        double dist = std::pow(ArrayUtils::L2Norm(pair.first.getX() - pair.second.getX()), 3);
+        auto pair = *it;
+        Particle& p1 = pair.first;
+        Particle& p2 = pair.second;
+
+        size_t index1 = particleIndexMap[&p1];
+        size_t index2 = particleIndexMap[&p2];
+
+        double m_mul = p1.getM() * p2.getM();
+        double dist = std::pow(ArrayUtils::L2Norm(p1.getX() - p2.getX()), 3);
         double coeff = m_mul / dist;
-        f_ij = coeff * (pair.second.getX() - pair.first.getX());
-		std::cout << "f_ij = " << f_ij << "\n";
-        f_i[k+j] = f_i[k+j] - f_ij;
-		std::cout << "f[" << k+j << "] = " << f_i[k+j] << "\n";
-        f_i[k] = f_i[k] + f_ij;
-		std::cout << "f[" << k << "] = " << f_i[k] << "\n";
-        if (it == sim.container.endPairs()) {
-            sim.container.getContainer()[k+1].setOldF(sim.container.getContainer()[k+1].getF());
-            sim.container.getContainer()[k+1].setF(f_i[k+1]);
-        }
-        if (pair.second == it.getLast()){
-            sim.container.getContainer()[k].setOldF(sim.container.getContainer()[k].getF());
-            sim.container.getContainer()[k].setF(f_i[k]);
-            ++k;
-            j = 1;
-        } else {
-            ++j;
-        }
+        std::array<double, 3> f_ij = coeff * (p2.getX() - p1.getX());
+
+        f_i[index1] = f_i[index1] + f_ij;
+        f_i[index2] = f_i[index2] - f_ij;
+    }
+
+    //Storing computed Forces to particles
+    int k = 0;
+    for (auto& p : sim.container) {
+        p.setOldF(p.getF());
+        p.setF(f_i[k]);
+        ++k;
     }
 }

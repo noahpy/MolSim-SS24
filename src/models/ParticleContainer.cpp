@@ -16,7 +16,7 @@ void ParticleContainer::addParticle(const Particle& p)
     particles.push_back(p);
 }
 
-std::vector<Particle> ParticleContainer::getContainer()
+std::vector<Particle> ParticleContainer::getContainer() const
 {
     return particles;
 }
