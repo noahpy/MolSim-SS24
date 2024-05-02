@@ -43,7 +43,7 @@ TEST(PContainerTests, particleItModF)
     }
 
     EXPECT_EQ(result, 0);
-    
+
     result = 0;
     for (auto& p : container) {
         result += p.getF()[0];
@@ -51,7 +51,6 @@ TEST(PContainerTests, particleItModF)
 
     EXPECT_EQ(result, 3);
 }
-
 
 TEST(PContainerTests, particleItModX)
 {
@@ -70,7 +69,7 @@ TEST(PContainerTests, particleItModX)
     }
 
     EXPECT_EQ(result, 0);
-    
+
     result = 0;
     for (auto& p : container) {
         result += p.getX()[0];
@@ -96,7 +95,7 @@ TEST(PContainerTests, particleItModV)
     }
 
     EXPECT_EQ(result, 0);
-    
+
     result = 0;
     for (auto& p : container) {
         result += p.getV()[0];
@@ -104,9 +103,6 @@ TEST(PContainerTests, particleItModV)
 
     EXPECT_EQ(result, 3);
 }
-
-
-
 
 TEST(PContainerTests, particleItZero)
 {
@@ -160,7 +156,9 @@ TEST(PContainerTests, pairIterators)
     count = 0;
     for (auto it = container.beginPairs(); it != container.endPairs(); ++it) {
         std::pair<Particle&, Particle&> pt_pair = *it;
-        for (auto [pp1, pp2] : pairs) {
+        for (std::pair<Particle, Particle> particle_pair : pairs) {
+            Particle pp1 = particle_pair.first;
+            Particle pp2 = particle_pair.second;
             EXPECT_FALSE(
                 pt_pair.first.getM() == pp1.getM() && pt_pair.second.getM() == pp2.getM() ||
                 pt_pair.first.getM() == pp2.getM() && pt_pair.second.getM() == pp1.getM())
