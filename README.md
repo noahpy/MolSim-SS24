@@ -72,5 +72,20 @@ You will get an output along the lines of:
 ## Project structure
 The project is structured as follows:
 ![Project structure UML](report/report1/res/strategy_long.png)
+Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
 
+**`Simulation`**
+- Any kinds of a simulations are represented as a child class of the `Simulation` class
+- Any simulation instance defines the `runSim()` function, which uses the I/O classes (`FileReader`, `FileWriter`), the `PhysicsStrategy` class and the model variables passed to it to calculate the simulation through time.
+- Child simulations might extend with new model varibales their parent simulations.
 
+**`PhysicsStrategy`**
+- Strategy interface to different implementation of strategy functions
+- Strategy functions are interchangable / compareable
+
+**`FileWriter`**
+- Template method class defining a common interface of different writers
+
+**`FileReader`**
+- Template method class defining a common interface of different readers
+- Currently not abstract yet, as only one reader is existant
