@@ -71,17 +71,14 @@ The pull request can be found \href{www.google.com}{here}
     \item The VTK-output was basically a simple drop in replacement which did not make any problems
     \begin{itemize}
         \item During the refactoring described later in \ref{sec:Refactoring}, we needed to slightly adapted the VTK Output writer to take the simulation object as a parameter
-        \item However, we did not manage to generate binary output
-        \item We tried to find a way for multiple hours
-        \item The main benefit of having binary output files would be, to have smaller output files
+        \item We did not manage to generate binary outputs, even though the benefit of having smaller output files is tempting
         \item This may become relevant, as soon as the simulation is run for longer periods of time i.e. more files are written
-        \item We also wonder, if it really is necessary to write a file for every iteration, or if it is possible to combine them. This will need further investigation
-        \item We are eager to see, how other groups managed to find a solution
+        \item We also question the necessaty to write a file for every iteration. We intend to tackle this in the next assignment
     \end{itemize}
-    \item We implemented command line arguments using getopt
+    \item We implemented command line arguments using \verb|getopt|
     \begin{itemize}
         \item This is the typical c approach and we may switch to \verb|boost::program_options| in the future
-        \item For now this is doing what we need and we are familiar with getopt from past courses
+        \item For now this approach seems sufficient, we adapt if needed
     \end{itemize}
 \end{itemize}
 
@@ -108,35 +105,37 @@ Finally to the interesting part.
 \subsection{ParticleContainer}
 \label{sec:Refactoring:ParticleContainer}
 \begin{itemize}
-    \item The ParticleContainer class is our implementation of a data structure managing all particles of the simulation
-    \item Essentially, the particles are stored in a \verb|std::vector<Particle>| allowing for constant access and extensibility if ever required
-    \item This also allows to use range based for loops out of the box to loop over the particles (by accessing the vector)
-    \item Moreover, we introduced an internal class \verb|PairIterator| within the particle container to iterate over all pairs of particles
-    \item This is useful for example when calculating the forces in one simulation step, as you need to access each distinct pair
+    \item The \verb|ParticleContainer| class is our implementation of a data structure managing all particles of the simulation (see folder src/models)
+    \item Particles are stored in a \verb|std::vector<Particle>|. This is advantageous over using \verb|std::list|, as we do not expect the number of particles to change: fast extensiblity of the container is not necessary. Additionally, we expect to loop over the particles often. Storing \verb|Particle|s in contiguous memory allows faster access, which is guaranteed when using \verb|std::vector<Particle>|.
+    \item To facilitate a looping access over the particles, we implemented the \verb|begin()| and the \verb|end()| functions of our custom Container
+    \item To calculate the force between particles, one needs to loop over all distinct pairs of particles. To facilitate / optimize this, we implemented an internal class \verb|PairIterator| within the \verb|ParticleContainer|, which acts as an iterator over those pairs. One can simply reach the next distinct pair by incrementing the iterator. This also avoids duplicate / twin pairs when compared to using two for-loops. See this in action in src/physics/forceCal/forceCal.cpp.
 \end{itemize}
 
-\subsection{Strategy Pattern}
+\subsection{Extensibilty of our project}
 \begin{itemize}
     \item To allow for high flexibility regarding the approach of calculating the forces, velocities, and positions, we opted to implement the strategy pattern
-    \item For that we moved all physic calculations into a subdirectory \verb|src/physics|
-    \item There you can find the class \verb|PhysicsStrategy| which has the different methods for calculating the physics as members i.e. \verb|calX|, \verb|calV|, and \verb|calF|
-    \item When initializing \verb|PhysicsStrategy| you can pass the desired strategy of doing the physics in the simulation as parameters in the constructor
-    \item This way, the concrete function to use for the calculations is resolved at runtime by accessing \verb|PhysicsStrategy.calX()| etc.
-    \item This is further expanded as we introduce the \verb|Simulation| class
-    \item This class is an abstract class to use as a basis for different simulations
-    \item For the simulation of this problem sheet, we implemented the class \verb|PlanetSimulation|
-    \item The created simulation object will be passed to the specified functions in \verb|PhysicsStrategy|, sothat different strategies can access different class members, according to the specific requirements of one simulation
+    \item In src/physics one can find the class \verb|PhysicsStrategy| which has the different methods for calculating the physics as members i.e. \verb|calX|, \verb|calV|, and \verb|calF|
+    \item When initializing \verb|PhysicsStrategy| you can pass the desired strategy of doing the physics in the simulation as parameters in the constructor. This way, the \verb|PhysicsStragey| class acts as an interface to different strategy functions, allowing to interchange different implementation quickly and observe their differences.
+    \item Now, as different approaches may use different model variables, we need to find a way to standardize the function signatures. This is solved by introducing the \verb|Simulation| class, which represents the simulation flow and all its variables as a whole. The simulation class runs (\verb|Simulation::runSim()|) the simulation by using the I/O classes, model variables and \verb|PhysicsStrategy| passed to it. When doing so, it passes itself to the strategy functions, so that they have the complete access on all model variables. This allows a standardized signature over all different strategy functions, whilst assuring their access on necessary variables.
+    \item Moreover, we may want to introduce new kinds of simulations with different flow of calculation / additional model variables (such as temperature, constant gravitational force). Thus, the \verb|Simulation| class is abstract and different simulation instances (child classes) can extend on this base simulation. This way, those child classes are always "backwards compatible" to parent classes, meaning they can be passed to strategy function which only require "older" simulations. This allows us to run child simulations with "older" strategy functions, which facilitates the implementation of those.
+        This class is an abstract class to use as a basis for different simulations
+    \item For the simulation of this problem sheet, we implemented the \verb|PlanetSimulation| class
+
+    \item To ensure the extensiblity of the different I/O methods, we opted to use the Template method pattern,  defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
+    \item In this instance, the \verb|FileReader| and \verb|FileWriter| classes are the super classes defining the skeleton of subclasses implementing future methods. 
+    \item All I/O related classes were implemented in src/io
 \end{itemize}
 
 \subsection{Improving the force calculations}
 \label{sec:Refactoring:forceimprovements}
 
 \begin{itemize}
-    \item We implemented a second strategy for calculating the forces in our simulation
+    \item We implemented a second strategy for calculating the forces in our simulation, optimizing the runtime.
     \item For this we use the simple identity $F_{i,j} = -F_{j,i}$
         \begin{equation}
             F_{i,j} = \frac{m_im_j}{(||x_i-x_j||_2)^3} (x_j - x_i) = \frac{m_jm_i}{(||x_j-x_i||_2)^3} \left(-1 \cdot \left(x_i - x_j\right)\right) = - F_{j,i} 
         \end{equation}
+        Thus, one only needs to iterate over all distinct pairs (without identical pairs) of particles instead of all tuples to calculate all forces.
     \item This is implemented using the pairwise iterator mentioned in \ref{sec:Refactoring:ParticleContainer}
     \item Theoretically, this should yield a speedup of 2, as only half the number of calculations are necessary
     \item The values we measured can be seen in Table \ref{tab:speedup}. This is only a speedup of around 1.25
