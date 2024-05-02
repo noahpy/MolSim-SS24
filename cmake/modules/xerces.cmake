@@ -1,3 +1,2 @@
-# require newest version
-find_package(XercesC 3.2.5 REQUIRED)
+find_package(XercesC 3.2.2 REQUIRED)
 

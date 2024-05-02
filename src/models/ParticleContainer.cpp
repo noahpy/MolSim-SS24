@@ -3,6 +3,7 @@
  */
 
 #include "ParticleContainer.h"
+#include "Particle.h"
 
 ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
 {
@@ -13,6 +14,11 @@ ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
 void ParticleContainer::addParticle(const Particle& p)
 {
     particles.push_back(p);
+}
+
+std::vector<Particle> ParticleContainer::getContainer() const
+{
+    return particles;
 }
 
 // Iterator for single particles
@@ -57,6 +63,11 @@ ParticleContainer::PairIterator::PairIterator(
         ++second;
 }
 
+Particle& ParticleContainer::PairIterator::getLast()
+{
+    return *last;
+}
+
 // Returns a reference to the current pair
 std::pair<Particle&, Particle&> ParticleContainer::PairIterator::operator*() const
 {
@@ -83,4 +94,9 @@ ParticleContainer::PairIterator& ParticleContainer::PairIterator::operator++()
 bool ParticleContainer::PairIterator::operator!=(const PairIterator& other) const
 {
     return first != other.first || second != other.second;
+}
+
+bool ParticleContainer::PairIterator::operator==(const PairIterator& other) const
+{
+    return first == other.first && second == other.second;
 }

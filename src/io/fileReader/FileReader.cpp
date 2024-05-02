@@ -5,18 +5,28 @@
  *      Author: eckhardw
  */
 
-#include "FileReader.h"
+#include "io/fileReader/FileReader.h"
+#include "models/Particle.h"
 
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
 
-FileReader::FileReader() = default;
+FileReader::FileReader(std::string file)
+    : filename(file)
+{
+}
 
 FileReader::~FileReader() = default;
 
-void FileReader::readFile(std::list<Particle>& particles, char* filename)
+void FileReader::readFile(Simulation& sim)
+{
+    readFile(sim.container, filename);
+}
+
+void FileReader::readFile(ParticleContainer& particles, std::string filename)
 {
     std::array<double, 3> x;
     std::array<double, 3> v;
@@ -56,7 +66,7 @@ void FileReader::readFile(std::list<Particle>& particles, char* filename)
                 exit(-1);
             }
             datastream >> m;
-            particles.emplace_back(x, v, m);
+            particles.addParticle({ x, v, m });
 
             getline(input_file, tmp_string);
             std::cout << "Read line: " << tmp_string << std::endl;

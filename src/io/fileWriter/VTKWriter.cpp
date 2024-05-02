@@ -5,7 +5,7 @@
  *      Author: eckhardw
  */
 
-#include "VTKWriter.h"
+#include "io/fileWriter/VTKWriter.h"
 
 #include <cstdlib>
 #include <fstream>
@@ -18,6 +18,16 @@ namespace outputWriter {
 VTKWriter::VTKWriter() = default;
 
 VTKWriter::~VTKWriter() = default;
+
+void VTKWriter::plotParticles(const Simulation& s)
+{
+    initializeOutput(s.container.particles.size());
+    for (auto& p : s.container) {
+        plotParticle(p);
+    }
+
+    writeFile(this->out_name, s.iteration);
+}
 
 void VTKWriter::initializeOutput(int numParticles)
 {

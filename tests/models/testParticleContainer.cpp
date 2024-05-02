@@ -1,11 +1,11 @@
 
-#include "Particle.h"
-#include "ParticleContainer.h"
+#include "models/Particle.h"
+#include "models/ParticleContainer.h"
 #include <gtest/gtest.h>
-#include <iostream>
 #include <vector>
 
 std::array<double, 3> zeros { 0, 0, 0 };
+std::array<double, 3> ones { 1, 1, 1 };
 
 // check if enhanced loop work as intended
 TEST(PContainerTests, particleIterate)
@@ -25,6 +25,88 @@ TEST(PContainerTests, particleIterate)
 
     EXPECT_EQ(result, 9);
 }
+
+TEST(PContainerTests, particleItModF)
+{
+    Particle p1 { zeros, zeros, 5, 0 };
+    Particle p2 { zeros, zeros, 3, 0 };
+    Particle p3 { zeros, zeros, 1, 0 };
+
+    std::vector<Particle> particles { p1, p2, p3 };
+
+    ParticleContainer container { particles };
+
+    double result = 0;
+    for (auto& p : container) {
+        result += p.getF()[0];
+        p.setF(ones);
+    }
+
+    EXPECT_EQ(result, 0);
+    
+    result = 0;
+    for (auto& p : container) {
+        result += p.getF()[0];
+    }
+
+    EXPECT_EQ(result, 3);
+}
+
+
+TEST(PContainerTests, particleItModX)
+{
+    Particle p1 { zeros, zeros, 5, 0 };
+    Particle p2 { zeros, zeros, 3, 0 };
+    Particle p3 { zeros, zeros, 1, 0 };
+
+    std::vector<Particle> particles { p1, p2, p3 };
+
+    ParticleContainer container { particles };
+
+    double result = 0;
+    for (auto& p : container) {
+        result += p.getX()[0];
+        p.setX(ones);
+    }
+
+    EXPECT_EQ(result, 0);
+    
+    result = 0;
+    for (auto& p : container) {
+        result += p.getX()[0];
+    }
+
+    EXPECT_EQ(result, 3);
+}
+
+TEST(PContainerTests, particleItModV)
+{
+    Particle p1 { zeros, zeros, 5, 0 };
+    Particle p2 { zeros, zeros, 3, 0 };
+    Particle p3 { zeros, zeros, 1, 0 };
+
+    std::vector<Particle> particles { p1, p2, p3 };
+
+    ParticleContainer container { particles };
+
+    double result = 0;
+    for (auto& p : container) {
+        result += p.getV()[0];
+        p.setV(ones);
+    }
+
+    EXPECT_EQ(result, 0);
+    
+    result = 0;
+    for (auto& p : container) {
+        result += p.getV()[0];
+    }
+
+    EXPECT_EQ(result, 3);
+}
+
+
+
 
 TEST(PContainerTests, particleItZero)
 {
