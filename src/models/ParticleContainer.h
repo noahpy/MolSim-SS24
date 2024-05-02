@@ -37,7 +37,7 @@ public:
      * @brief Get the particles within the container
      * @return The vector of particles
      */
-    std::vector<Particle> getContainer();
+    std::vector<Particle> getContainer() const;
 
     /**
      * @brief Iterator to the beginning

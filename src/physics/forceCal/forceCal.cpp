@@ -1,8 +1,8 @@
 
 #include "physics/forceCal/forceCal.h"
 #include "utils/ArrayUtils.h"
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 void force_stroemer_verlet(const Simulation& sim)
 {
@@ -23,6 +23,28 @@ void force_stroemer_verlet(const Simulation& sim)
     }
 }
 
+void force_stroemer_verlet_rv(const Simulation& sim)
+{
+    std::array<double, 3> zeros { 0, 0, 0 };
+    for (auto& p : sim.container) {
+        p.setOldF(p.getF());
+        p.setF(zeros);
+    }
+
+    for (auto it = sim.container.beginPairs(); it != sim.container.endPairs(); ++it) {
+        auto pair = *it;
+        Particle& p1 = pair.first;
+        Particle& p2 = pair.second;
+
+        double m_mul = p1.getM() * p2.getM();
+        double dist = std::pow(ArrayUtils::L2Norm(p1.getX() - p2.getX()), 3);
+        double coeff = m_mul / dist;
+
+        p1.setF(p1.getF() + coeff * (p2.getX() - p1.getX()));
+        p2.setF(p2.getF() + coeff * (p1.getX() - p2.getX()));
+    }
+}
+
 void force_stroemer_verlet_V2(const Simulation& sim)
 {
     // map for indices of the particle container
@@ -33,7 +55,7 @@ void force_stroemer_verlet_V2(const Simulation& sim)
     }
 
     // Force vector for storing computed F_i
-    std::vector<std::array<double, 3>> f_i(sim.container.getContainer().size(), {0.0, 0.0, 0.0});
+    std::vector<std::array<double, 3>> f_i(sim.container.getContainer().size(), { 0.0, 0.0, 0.0 });
 
     // Force Calculation with unique pairs by adding F_ij and F_ji = - F_ij to the right forces
     for (auto it = sim.container.beginPairs(); it != sim.container.endPairs(); ++it) {
@@ -53,7 +75,7 @@ void force_stroemer_verlet_V2(const Simulation& sim)
         f_i[index2] = f_i[index2] - f_ij;
     }
 
-    //Storing computed Forces to particles
+    // Storing computed Forces to particles
     int k = 0;
     for (auto& p : sim.container) {
         p.setOldF(p.getF());

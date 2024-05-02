@@ -33,7 +33,7 @@ int main(int argc, char* argsv[])
     // Intialize physics strategy
     PhysicsStrategy strat { location_stroemer_verlet,
                             velocity_stroemer_verlet,
-                            force_stroemer_verlet_V2 };
+                            force_stroemer_verlet_rv };
 
     // Intialize empty particle container
     ParticleContainer particles { {} };

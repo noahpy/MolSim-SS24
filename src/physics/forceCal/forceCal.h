@@ -15,3 +15,6 @@ void force_stroemer_verlet(const Simulation& sim);
  * @return void
  */
 void force_stroemer_verlet_V2(const Simulation& sim);
+
+
+void force_stroemer_verlet_rv(const Simulation& sim);
