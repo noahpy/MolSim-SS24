@@ -20,13 +20,13 @@ int main(int argc, char* argsv[])
     constexpr double start_time = 0; // start time
     double end_time = 0.014 * 10 * 20; // end time
     double delta_t = 0.014; // time increment
-    std::string output_file; // output filename
+    std::string input_file; // output filename
 
     // parse arguments
-    argparse(argc, argsv, end_time, delta_t, output_file);
+    argparse(argc, argsv, end_time, delta_t, input_file);
 
     // Initialize reader
-    FileReader fileReader(output_file);
+    FileReader fileReader(input_file);
     // Initialize writer
     outputWriter::VTKWriter writer;
 

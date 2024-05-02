@@ -21,7 +21,7 @@ void printHelp(std::string progName)
               << "  -h, --help             Display this help message" << std::endl;
 }
 
-void argparse(int argc, char* argsv[], double& end_time, double& delta_t, std::string& output)
+void argparse(int argc, char* argsv[], double& end_time, double& delta_t, std::string& input)
 {
     // Long options definition
     static struct option long_options[] = { { "delta_t", required_argument, 0, 'd' },
@@ -70,5 +70,5 @@ void argparse(int argc, char* argsv[], double& end_time, double& delta_t, std::s
         exit(EXIT_FAILURE);
     }
 
-    output = argsv[optind];
+    input = argsv[optind];
 }
