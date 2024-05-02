@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
+\usepackage{xcolor}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -10,7 +11,7 @@
     urlcolor=blue,
 }
 
-\title{Scientific Computing - Molecular dynamics}
+\title{Scientific Computing - Molecular dynamics \\ Group F}
 \newcommand{\subtitle}{Problem sheet 1}
 \author{
     Jimin Kim \\
@@ -26,6 +27,10 @@
 \begin{center}
     \LARGE \subtitle{}
 \end{center}
+
+\section{Pull request}
+\textcolor{red}{TODO}
+The pull request can be found \href{www.google.com}{here}
 
 \section{First Steps}
 
@@ -48,7 +53,7 @@
     \item We then created the pull request using Github's interface
     \item We later expanded the README to be more detailed
     \item A link to the pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1}{here}
-    \item \emph{Please not, that we are aware that the documentation cannot be built on the branch that we created the initial pull request for, as the documentation was only added with another branch}
+    \item \emph{Please note that we are aware that the documentation cannot be built on the branch that we created the initial pull request for, as the documentation was only added later with another branch}
 \end{itemize}
 
 \section{Completion of the program frame}
@@ -61,9 +66,11 @@
         \item Velocities: $v_i(t_{n+1}) = v_i(t_n) + \Delta t \frac{F_i(t_n) + F_i(t_{n+1})}{2m_i}$
         \item Forces: $F_i = \sum_{j=1, j \neq i}^{\#particles}
         \frac{m_im_j}{(||x_i-x_j||_2)^3} (x_j - x_i) $
+        \item For this we utilized the array helper functions given to us within the \verb|utils| folder
     \end{itemize}
     \item The VTK-output was basically a simple drop in replacement which did not make any problems
     \begin{itemize}
+        \item During the refactoring described later in \ref{sec:Refactoring}, we needed to slightly adapted the VTK Output writer to take the simulation object as a parameter
         \item However, we did not manage to generate binary output
         \item We tried to find a way for multiple hours
         \item The main benefit of having binary output files would be, to have smaller output files
@@ -94,6 +101,7 @@
 \end{itemize}
 
 \section{Refactoring and documentation}
+\label{sec:Refactoring}
 
 Finally to the interesting part.
 
@@ -102,14 +110,14 @@ Finally to the interesting part.
 \begin{itemize}
     \item The ParticleContainer class is our implementation of a data structure managing all particles of the simulation
     \item Essentially, the particles are stored in a \verb|std::vector<Particle>| allowing for constant access and extensibility if ever required
-    \item This also allows to use range based for loops to loop over the particles (by accessing the vector)
+    \item This also allows to use range based for loops out of the box to loop over the particles (by accessing the vector)
     \item Moreover, we introduced an internal class \verb|PairIterator| within the particle container to iterate over all pairs of particles
-    \item This is useful for example when calculating the forces in one simulation step, as you need to access each pair
+    \item This is useful for example when calculating the forces in one simulation step, as you need to access each distinct pair
 \end{itemize}
 
 \subsection{Strategy Pattern}
 \begin{itemize}
-    \item To allow high flexibility regarding the approach of calculating the forces, velocities, and positions, we opted to implement the strategy pattern
+    \item To allow for high flexibility regarding the approach of calculating the forces, velocities, and positions, we opted to implement the strategy pattern
     \item For that we moved all physic calculations into a subdirectory \verb|src/physics|
     \item There you can find the class \verb|PhysicsStrategy| which has the different methods for calculating the physics as members i.e. \verb|calX|, \verb|calV|, and \verb|calF|
     \item When initializing \verb|PhysicsStrategy| you can pass the desired strategy of doing the physics in the simulation as parameters in the constructor
@@ -142,14 +150,18 @@ Finally to the interesting part.
             \caption{Values measured for the two different force calculation strategies. One being the naive implementation, while the other utilizes $F_{1,2} = - F_{2,1}$. This yields a speedup of approx 1.25.}
             \label{tab:speedup}
         \end{table}
+    \item To reproduce the numbers, simply run the test code for timing both approaches. It will load the \verb|sonne-eingabe.txt| file and run a force calculation for $10^6$ times
+    \item Note that this will vary
 \end{itemize}
 
 \subsection{Testing}
 
 \begin{itemize}
     \item Even though tests were not mandatory, we opted to integrate some basic test to check our implementation
-    \item This is many focused on the \verb|ParticleContainer| class and its iterators
+    \item This was done using the \verb|gtest| testing library
+    \item This is mainly focused on the \verb|ParticleContainer| class and its iterators
     \item But we also included a test for the two different approaches on calculating the forces as mentioned in \ref{sec:Refactoring:forceimprovements} and measuring the speedup
+    \item To run the tests follow the README
 \end{itemize}
 
 \end{document}
