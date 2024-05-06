@@ -1,8 +1,7 @@
 MolSim Group F
 ===
 
-![Testing workflow]
-(https://github.com/noahpy/MolSim-SS24/actions/workflows/tests.yaml/badge.svg)
+![Testing workflow](https://github.com/noahpy/MolSim-SS24/actions/workflows/tests.yaml/badge.svg)
 
 ## Group members
 - [Noah Schlenker](https://github.com/noahpy)
