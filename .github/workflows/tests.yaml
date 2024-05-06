@@ -1,0 +1,68 @@
+# This is for testing the project
+name: Run-tests
+run-name: Run gtests for the project
+
+# Run the testing pipeline on every push a pull request of our assignment* branches and master
+on:
+  push:
+    branches:
+      - 'assignment*'
+      - master
+  pull_request:
+    branches:
+      - 'assignment*'
+      - master
+  workflow_dispatch:
+
+
+jobs:
+  # Build the project
+  build:
+    # Run the tests on ubuntu-20.04
+    runs-on: ubuntu-20.04
+    steps:
+      # Install all the dependencies
+      - name: install dependencies
+        run: >
+          apt-get update
+          && apt-get install -y build-essential
+          gcc
+          g++
+          gdb
+          clang
+          make
+          ninja-build 
+          cmake 
+          autoconf 
+          automake 
+          libtool 
+          valgrind 
+          locales-all 
+          dos2unix 
+          rsync 
+          tar 
+          python 
+          python-dev 
+          libxerces-c-dev 
+          doxygen 
+          libgtest-dev 
+          && apt-get clean
+      # Check out the repository
+      - uses: actions/checkout@v4
+
+      - name: Build the project
+        run: >
+          mkdir build
+          && cd build
+          && cmake ..
+          && make
+
+      - name: Run the tests
+        run: >
+          cd build
+          && tests/tests
+
+      - name: Create doxygen documentation
+        run: >
+          cd build
+          && make doc_doxygen
