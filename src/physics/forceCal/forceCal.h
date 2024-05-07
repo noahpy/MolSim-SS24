@@ -7,7 +7,7 @@
  * @param sim The simulation object to calculate the forces for
  * @return void
  */
-void force_stroemer_verlet(const Simulation& sim);
+void force_gravity(const Simulation& sim);
 
 /**
  * @brief Calculate the forces between particles using the Stroemer-Verlet algorithm, while
@@ -15,4 +15,4 @@ void force_stroemer_verlet(const Simulation& sim);
  * @param sim The simulation object to calculate the forces for
  * @return void
  */
-void force_stroemer_verlet_V2(const Simulation& sim);
+void force_gravity_V2(const Simulation& sim);
