@@ -1,0 +1,17 @@
+﻿---
+BasedOnStyle: WebKit
+
+AlignAfterOpenBracket: AlwaysBreak
+AlignOperands: true
+AllowShortFunctionsOnASingleLine: Inline
+AlwaysBreakBeforeMultilineStrings: true
+AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: false
+BinPackParameters: false
+BreakBeforeBinaryOperators: None
+ColumnLimit: 100
+KeepEmptyLinesAtTheStartOfBlocks: false
+PenaltyBreakBeforeFirstCallParameter: 100
+PenaltyReturnTypeOnItsOwnLine: 1000
+SpaceInEmptyBlock: false
+...

@@ -1,0 +1,48 @@
+\documentclass[10pt,aspectratio=169]{beamer}
+% Packages
+\usepackage{mathabx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{standalone}
+\usepackage{mhchem}
+\usepackage{textpos}
+\usepackage{graphicx}
+
+% Configure template
+\setbeamertemplate{navigation symbols}{}
+
+% Theme
+\usetheme[progressbar=frametitle]{metropolis}
+\setbeamertemplate{caption}[numbered]
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+% Title page details: 
+\title{Scientific Computing - Molecular dynamics}
+\subtitle{Problemsheet XX}
+\author{Jimin Kim, Christian Nix, Noah Schlenker}
+\date{date}
+\institute{Technical University of Munich}
+
+\begin{document}
+
+% Title page frame
+\maketitle
+
+\addtobeamertemplate{frametitle}{}{
+\begin{textblock*}{100mm}(.945\textwidth,-.85cm)
+\includegraphics[scale=0.14]{res/tum_logo.png}
+\end{textblock*}}
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+% Slides for chapterXX
+\include{chapters/chapterXX}
+
+% Slides for References
+\include{chapters/references}
+
+\end{document}

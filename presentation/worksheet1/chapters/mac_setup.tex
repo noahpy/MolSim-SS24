@@ -1,0 +1,20 @@
+\section{Mac Setup}
+
+\begin{frame}
+    \frametitle{Using docker to remotelz build the project}
+
+    \textbf{Problem:} xerces is not available on MacOS and code will be evaluated on a Linux system
+
+    \textbf{Solution:} Clion offers remote toolchains to build, run, and debug project
+
+    \begin{itemize}
+        \item Similar to WSL described on problem sheet for Windows
+        \item Create Docker container with Ubuntu base image and all necessary files and libraries
+        \item Create a new toolchain in Clion
+        \item Configure Clion's Cmake profile and configuration to use the created docker image
+        \item Use the IDE as you normally would
+        \item Even connect to the container via terminal to do intensive debugging
+    \end{itemize}
+
+    \textbf{Be aware that this approach will have its limits}
+\end{frame}

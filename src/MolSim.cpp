@@ -1,104 +1,48 @@
 
-#include "FileReader.h"
-#include "outputWriter/XYZWriter.h"
-#include "utils/ArrayUtils.h"
+#include "io/argparse/argparse.h"
+#include "io/fileReader/FileReader.h"
+#include "io/fileWriter/VTKWriter.h"
+#include "models/ParticleContainer.h"
+#include "physics/forceCal/forceCal.h"
+#include "physics/locationCal/locationCal.h"
+#include "physics/strategy.h"
+#include "physics/velocityCal/velocityCal.h"
+#include "simulation/planetSim.h"
 
+#include <cstdlib>
+#include <getopt.h>
 #include <iostream>
-#include <list>
+#include <string>
 
-/**** forward declaration of the calculation functions ****/
+// Main function
+int main(int argc, char* argsv[])
+{
+    constexpr double start_time = 0; // start time
+    double end_time = 0.014 * 10 * 20; // end time
+    double delta_t = 0.014; // time increment
+    std::string input_file; // output filename
 
-/**
- * calculate the force for all particles
- */
-void calculateF();
+    // parse arguments
+    argparse(argc, argsv, end_time, delta_t, input_file);
 
-/**
- * calculate the position for all particles
- */
-void calculateX();
+    // Initialize reader
+    FileReader fileReader(input_file);
+    // Initialize writer
+    outputWriter::VTKWriter writer;
 
-/**
- * calculate the position for all particles
- */
-void calculateV();
+    // Intialize physics strategy
+    PhysicsStrategy strat { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };
 
-/**
- * plot the particles to a xyz-file
- */
-void plotParticles(int iteration);
+    // Intialize empty particle container
+    ParticleContainer particles { {} };
 
-constexpr double start_time = 0;
-constexpr double end_time = 1000;
-constexpr double delta_t = 0.014;
+    // Setup simulation
+    PlanetSimulation sim { start_time, delta_t, end_time, particles, strat, writer, fileReader };
 
-// TODO: what data structure to pick?
-std::list<Particle> particles;
+    // Run simulation
+    sim.runSim();
 
-int main(int argc, char *argsv[]) {
-
-  std::cout << "Hello from MolSim for PSE!" << std::endl;
-  if (argc != 2) {
-    std::cout << "Erroneous programme call! " << std::endl;
-    std::cout << "./molsym filename" << std::endl;
-  }
-
-  FileReader fileReader;
-  fileReader.readFile(particles, argsv[1]);
-
-  double current_time = start_time;
-
-  int iteration = 0;
-
-  // for this loop, we assume: current x, current f and current v are known
-  while (current_time < end_time) {
-    // calculate new x
-    calculateX();
-    // calculate new f
-    calculateF();
-    // calculate new v
-    calculateV();
-
-    iteration++;
-    if (iteration % 10 == 0) {
-      plotParticles(iteration);
-    }
-    std::cout << "Iteration " << iteration << " finished." << std::endl;
-
-    current_time += delta_t;
-  }
-
-  std::cout << "output written. Terminating..." << std::endl;
-  return 0;
-}
-
-void calculateF() {
-  std::list<Particle>::iterator iterator;
-  iterator = particles.begin();
-
-  for (auto &p1 : particles) {
-    for (auto &p2 : particles) {
-      // @TODO: insert calculation of forces here!
-    }
-  }
-}
-
-void calculateX() {
-  for (auto &p : particles) {
-    // @TODO: insert calculation of position updates here!
-  }
-}
-
-void calculateV() {
-  for (auto &p : particles) {
-    // @TODO: insert calculation of veclocity updates here!
-  }
-}
-
-void plotParticles(int iteration) {
-
-  std::string out_name("MD_vtk");
-
-  outputWriter::XYZWriter writer;
-  writer.plotParticles(particles, out_name, iteration);
+    // inform user that output has been written
+    std::cout << "output written. Terminating..." << std::endl;
+    return 0;
 }
