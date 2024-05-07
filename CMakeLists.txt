@@ -21,6 +21,7 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 include(doxygen)
 include(xerces)
 include(gtest)
+include(clang-format)
 
 # add subdirectory
 add_subdirectory(src)
