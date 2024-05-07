@@ -24,14 +24,14 @@ jobs:
       # Install all the dependencies
       - name: install dependencies
         run: >
-          apt-get update
-          && apt-get install -y build-essential
+          sudo apt-get update
+          && sudo apt-get install -y build-essential
           clang
           cmake  
           libxerces-c-dev 
           doxygen 
           libgtest-dev 
-          && apt-get clean
+          && sudo apt-get clean
       # Check out the repository
       - uses: actions/checkout@v4
 
