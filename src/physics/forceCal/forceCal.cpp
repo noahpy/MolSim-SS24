@@ -45,4 +45,3 @@ void force_stroemer_verlet_V2(const Simulation& sim)
         p2.setF(p2.getF() - distance);
     }
 }
-

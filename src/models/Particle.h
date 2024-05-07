@@ -42,7 +42,8 @@ private:
 
     /**
      * @brief Type of the particle.
-     * @details Use it for whatever you want (e.g. to separate molecules belonging to different bodies, matters, and so on)
+     * @details Use it for whatever you want (e.g. to separate molecules belonging to different
+     * bodies, matters, and so on)
      */
     int type;
 
