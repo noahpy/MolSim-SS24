@@ -31,9 +31,7 @@ int main(int argc, char* argsv[])
     outputWriter::VTKWriter writer;
 
     // Intialize physics strategy
-    PhysicsStrategy strat { location_stroemer_verlet,
-                            velocity_stroemer_verlet,
-                            force_gravity_V2 };
+    PhysicsStrategy strat { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };
 
     // Intialize empty particle container
     ParticleContainer particles { {} };
