@@ -48,5 +48,5 @@ int main(int argc, char* argsv[])
 
     // inform user that output has been written
     std::cout << "output written. Terminating..." << std::endl;
-    return 0;
+    return *prt;
 }
