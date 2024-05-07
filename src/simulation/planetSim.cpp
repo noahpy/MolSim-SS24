@@ -19,9 +19,9 @@ PlanetSimulation::PlanetSimulation(
 void PlanetSimulation::runSim()
 {
     while (time < end_time) {
-        strategy.calX(*this);
         strategy.calF(*this);
         strategy.calV(*this);
+        strategy.calX(*this);
 
         ++iteration;
         if (iteration % 10 == 0) {

@@ -1,5 +1,5 @@
 
-# pragma once
+#pragma once
 #include "simulation/baseSimulation.h"
 
 /**

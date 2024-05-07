@@ -12,7 +12,6 @@
  * @brief The ParticleContainer class is a data structure that holds the collection of particles
  */
 class ParticleContainer {
-
 public:
     /**
      * @brief Vector that contains all the particles
@@ -52,7 +51,8 @@ public:
 
     /**
      * @brief Pair Iterator nested class for iterating over all pairs of particles
-     * @details Iterate from one fixed particle over every possible pair and continue to the next fixed particle.
+     * @details Iterate from one fixed particle over every possible pair and continue to the next
+     * fixed particle.
      */
     class PairIterator {
     private:

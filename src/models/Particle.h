@@ -42,7 +42,8 @@ private:
 
     /**
      * @brief Type of the particle.
-     * @details Use it for whatever you want (e.g. to separate molecules belonging to different bodies, matters, and so on)
+     * @details Use it for whatever you want (e.g. to separate molecules belonging to different
+     * bodies, matters, and so on)
      */
     int type;
 
@@ -124,28 +125,28 @@ public:
      * @param x_new The new position of the particle
      * @return void
      */
-    void setX(std::array<double, 3> x_new);
+    void setX(const std::array<double, 3>& x_new);
 
     /**
      * @brief Set the velocity of the particle
      * @param v_new The new velocity of the particle
      * @return void
      */
-    void setV(std::array<double, 3> v_new);
+    void setV(const std::array<double, 3>& v_new);
 
     /**
      * @brief Set the force effective on the particle
      * @param f_new The new force effective on the particle
      * @return void
      */
-    void setF(std::array<double, 3> f_new);
+    void setF(const std::array<double, 3>& f_new);
 
     /**
      * @brief Set the previous force effective on the particle
      * @param f The previous force effective on the particle
      * @return void
      */
-    void setOldF(std::array<double, 3> f);
+    void setOldF(const std::array<double, 3>& f);
 
     /**
      * @brief Overload the == operator for the Particle class
