@@ -44,9 +44,7 @@ int main(int argc, char* argsv[])
     // Run simulation
     sim.runSim();
 
-    int *prt = new int;
-
     // inform user that output has been written
     std::cout << "output written. Terminating..." << std::endl;
-    return *prt;
+    return 0;
 }
