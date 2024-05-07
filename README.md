@@ -12,7 +12,7 @@ MolSim Group F
 To build the project, run the following commands:
 ```
 mkdir build && cd build
-ccmake ..
+cmake ..
 make
 ```
 
@@ -39,38 +39,14 @@ make tests
 tests/tests
 ```
 
-You will get an output along the lines of:
+## Format code
+If your system has clang-format installed, the target `clangformat` will be created. You can then run:
 ```
-[==========] Running 9 tests from 2 test suites.
-[----------] Global test environment set-up.
-[----------] 2 tests from calcForceTest
-[ RUN      ] calcForceTest.CompareNaiiveV2
-[       OK ] calcForceTest.CompareNaiiveV2 (81 ms)
-[ RUN      ] calcForceTest.Timing
-[       OK ] calcForceTest.Timing (10077 ms)
-[----------] 2 tests from calcForceTest (10159 ms total)
-
-[----------] 7 tests from PContainerTests
-[ RUN      ] PContainerTests.particleIterate
-[       OK ] PContainerTests.particleIterate (0 ms)
-[ RUN      ] PContainerTests.particleItModF
-[       OK ] PContainerTests.particleItModF (0 ms)
-[ RUN      ] PContainerTests.particleItModX
-[       OK ] PContainerTests.particleItModX (0 ms)
-[ RUN      ] PContainerTests.particleItModV
-[       OK ] PContainerTests.particleItModV (0 ms)
-[ RUN      ] PContainerTests.particleItZero
-[       OK ] PContainerTests.particleItZero (0 ms)
-[ RUN      ] PContainerTests.pairIterators
-[       OK ] PContainerTests.pairIterators (0 ms)
-[ RUN      ] PContainerTests.pairItZero
-[       OK ] PContainerTests.pairItZero (0 ms)
-[----------] 7 tests from PContainerTests (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 9 tests from 2 test suites ran. (10159 ms total)
-[  PASSED  ] 9 tests.
+make clangformat
 ```
+to format the code.
+
+
 ## Project structure
 The project is structured as follows:
 ![Project structure UML](report/report1/res/strategy_long.png)

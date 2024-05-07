@@ -1,8 +1,6 @@
 
 #include "physics/forceCal/forceCal.h"
 #include "utils/ArrayUtils.h"
-#include <unordered_map>
-#include <vector>
 
 void force_gravity(const Simulation& sim)
 {
@@ -45,4 +43,3 @@ void force_gravity_V2(const Simulation& sim)
         p2.setF(p2.getF() - distance);
     }
 }
-
