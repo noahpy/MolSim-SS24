@@ -42,7 +42,6 @@ public:
      */
     virtual void runSim() = 0;
 
-
     double time; /**< The current time of the simulation */
     double delta_t; /**< The time increment */
     double end_time; /**< The end time of the simulation */

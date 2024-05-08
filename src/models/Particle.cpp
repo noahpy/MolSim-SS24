@@ -68,11 +68,11 @@ const std::array<double, 3>& Particle::getOldF() const
     return old_f;
 }
 
-void Particle::setF(std::array<double, 3> f_new)
+void Particle::setF(const std::array<double, 3>& f_new)
 {
     f = f_new;
 }
-void Particle::setOldF(std::array<double, 3> f)
+void Particle::setOldF(const std::array<double, 3>& f)
 {
     old_f = f;
 }
@@ -87,12 +87,12 @@ int Particle::getType() const
     return type;
 }
 
-void Particle::setV(std::array<double, 3> v_new)
+void Particle::setV(const std::array<double, 3>& v_new)
 {
     v = v_new;
 }
 
-void Particle::setX(std::array<double, 3> x_new)
+void Particle::setX(const std::array<double, 3>& x_new)
 {
     x = x_new;
 }

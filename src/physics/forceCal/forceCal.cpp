@@ -2,7 +2,7 @@
 #include "physics/forceCal/forceCal.h"
 #include "utils/ArrayUtils.h"
 
-void force_stroemer_verlet(const Simulation& sim)
+void force_gravity(const Simulation& sim)
 {
     for (auto& p1 : sim.container) {
         std::array<double, 3> f_i = { 0.0, 0.0, 0.0 };
@@ -21,7 +21,7 @@ void force_stroemer_verlet(const Simulation& sim)
     }
 }
 
-void force_stroemer_verlet_V2(const Simulation& sim)
+void force_gravity_V2(const Simulation& sim)
 {
     std::array<double, 3> zeros { 0, 0, 0 };
     for (auto& p : sim.container) {
