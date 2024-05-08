@@ -1,5 +1,6 @@
 
 #include "physics/forceCal/forceCal.h"
+#include "simulation/baseSimulation.h"
 #include "utils/ArrayUtils.h"
 
 void force_gravity(const Simulation& sim)
@@ -44,7 +45,7 @@ void force_gravity_V2(const Simulation& sim)
     }
 }
 
-void force_lennard_jones(const LennardJonesSimulation& sim)
+void force_lennard_jones(const Simulation& sim)
 {
     std::array<double, 3> zeros { 0, 0, 0 };
     for (auto& p : sim.container) {
@@ -52,10 +53,12 @@ void force_lennard_jones(const LennardJonesSimulation& sim)
         p.setF(zeros);
     }
 
+    const LennardJonesSimulation& len_sim = static_cast<const LennardJonesSimulation&>(sim);
+
     // these values are constant for the simulation and are precomputed
-    double alpha = sim.getAlpha();
-    double beta = sim.getBeta();
-    double gamma = sim.getGamma();
+    double alpha = len_sim.getAlpha();
+    double beta = len_sim.getBeta();
+    double gamma = len_sim.getGamma();
 
     for (auto it = sim.container.beginPairs(); it != sim.container.endPairs(); ++it) {
         auto pair = *it;

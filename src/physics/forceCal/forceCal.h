@@ -23,4 +23,4 @@ void force_gravity_V2(const Simulation& sim);
  * @param sim The Lennard Jones simulation object to calculate the forces for
  * @return void
  */
-void force_lennard_jones(const LennardJonesSimulation& sim);
+void force_lennard_jones(const Simulation& sim);
