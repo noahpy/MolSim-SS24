@@ -33,10 +33,18 @@ make doc_doxygen
 This will generate the documentation into the folder `doxys_documentation`.
 
 ## Run tests
+To build the tests run:
+```
+cd build
+make tests
+```
 To run the tests, run the following command:
 ```
-make tests
 tests/tests
+```
+Or alternatively with ctest:
+```
+ctest --test-dir tests
 ```
 
 ## Format code
