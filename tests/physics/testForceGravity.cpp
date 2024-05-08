@@ -34,8 +34,8 @@ protected:
               delta_t(0.014),
               fileReader(file),
               writer(),
-              stratA{location_stroemer_verlet, velocity_stroemer_verlet, force_stroemer_verlet},
-              stratB{location_stroemer_verlet, velocity_stroemer_verlet, force_stroemer_verlet_V2},
+              stratA{location_stroemer_verlet, velocity_stroemer_verlet, force_gravity},
+              stratB{location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2},
               particlesA{{}},
               particlesB{{}},
               simA(start_time, delta_t, end_time, particlesA, stratA, writer, fileReader),
@@ -48,8 +48,8 @@ protected:
 TEST_F(calcForceTest, CompareNaiiveV2) {
     while (simA.time < simA.end_time) {
         // do one step of the simulation
-        force_stroemer_verlet(simA);
-        force_stroemer_verlet_V2(simB);
+        force_gravity(simA);
+        force_gravity_V2(simB);
 
         for (size_t i = 0; i < simA.container.particles.size(); i++) {
             Particle &pA = simA.container.particles[i];
@@ -69,14 +69,14 @@ TEST_F(calcForceTest, Timing) {
 
     const auto startNaive = std::chrono::high_resolution_clock::now();
     for (int i = 0; i<num_iters; i++) {
-        force_stroemer_verlet(simA);
+        force_gravity(simA);
         simA.time += simA.delta_t;
     }
     const auto endNaive = std::chrono::high_resolution_clock::now();
 
     const auto startV2 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i<num_iters; i++) {
-        force_stroemer_verlet_V2(simB);
+        force_gravity_V2(simB);
         simB.time += simB.delta_t;
     }
     const auto endV2 = std::chrono::high_resolution_clock::now();
