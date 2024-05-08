@@ -45,6 +45,7 @@ protected:
 
 };
 
+// Compare force caluculation between the two functions
 TEST_F(calcForceTest, CompareNaiiveV2) {
     while (simA.time < simA.end_time) {
         // do one step of the simulation
