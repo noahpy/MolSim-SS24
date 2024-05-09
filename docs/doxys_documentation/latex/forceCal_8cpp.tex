@@ -1,0 +1,71 @@
+\doxysection{src/physics/force\+Cal/force\+Cal.cpp File Reference}
+\hypertarget{forceCal_8cpp}{}\label{forceCal_8cpp}\index{src/physics/forceCal/forceCal.cpp@{src/physics/forceCal/forceCal.cpp}}
+{\ttfamily \#include "{}physics/force\+Cal/force\+Cal.\+h"{}}\newline
+{\ttfamily \#include "{}simulation/base\+Simulation.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Array\+Utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{forceCal_8cpp_a684f8d139798e74b987af1df9902e439}{force\+\_\+gravity}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8cpp_af832ee8c3785fcfd06487030f3ab7860}{force\+\_\+gravity\+\_\+\+V2}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm, while exploiting F\+\_\+12 = -\/F\+\_\+21 and iterating over distinct pairs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8cpp_ae14c2cd283291bf9db0b7b73e74e56e0}{force\+\_\+lennard\+\_\+jones}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Lennard-\/\+Jones potential. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{forceCal_8cpp_a684f8d139798e74b987af1df9902e439}\label{forceCal_8cpp_a684f8d139798e74b987af1df9902e439} 
+\index{forceCal.cpp@{forceCal.cpp}!force\_gravity@{force\_gravity}}
+\index{force\_gravity@{force\_gravity}!forceCal.cpp@{forceCal.cpp}}
+\doxysubsubsection{\texorpdfstring{force\_gravity()}{force\_gravity()}}
+{\footnotesize\ttfamily void force\+\_\+gravity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim }\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation object to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{forceCal_8cpp_af832ee8c3785fcfd06487030f3ab7860}\label{forceCal_8cpp_af832ee8c3785fcfd06487030f3ab7860} 
+\index{forceCal.cpp@{forceCal.cpp}!force\_gravity\_V2@{force\_gravity\_V2}}
+\index{force\_gravity\_V2@{force\_gravity\_V2}!forceCal.cpp@{forceCal.cpp}}
+\doxysubsubsection{\texorpdfstring{force\_gravity\_V2()}{force\_gravity\_V2()}}
+{\footnotesize\ttfamily void force\+\_\+gravity\+\_\+\+V2 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim }\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm, while exploiting F\+\_\+12 = -\/F\+\_\+21 and iterating over distinct pairs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation object to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{forceCal_8cpp_ae14c2cd283291bf9db0b7b73e74e56e0}\label{forceCal_8cpp_ae14c2cd283291bf9db0b7b73e74e56e0} 
+\index{forceCal.cpp@{forceCal.cpp}!force\_lennard\_jones@{force\_lennard\_jones}}
+\index{force\_lennard\_jones@{force\_lennard\_jones}!forceCal.cpp@{forceCal.cpp}}
+\doxysubsubsection{\texorpdfstring{force\_lennard\_jones()}{force\_lennard\_jones()}}
+{\footnotesize\ttfamily void force\+\_\+lennard\+\_\+jones (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim }\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles using the Lennard-\/\+Jones potential. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The Lennard Jones simulation object to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

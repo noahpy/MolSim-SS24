@@ -1,0 +1,270 @@
+\doxysection{Lennard\+Jones\+Simulation Class Reference}
+\hypertarget{classLennardJonesSimulation}{}\label{classLennardJonesSimulation}\index{LennardJonesSimulation@{LennardJonesSimulation}}
+
+
+\doxylink{classSimulation}{Simulation} class for the Lennard-\/\+Jones simulation.  
+
+
+
+
+{\ttfamily \#include $<$lennard\+Jones\+Sim.\+h$>$}
+
+Inheritance diagram for Lennard\+Jones\+Simulation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLennardJonesSimulation}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLennardJonesSimulation_a8043c7860d00f744e517386a20f886f5}{Lennard\+Jones\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, \mbox{\hyperlink{classFileWriter}{File\+Writer}} \&\mbox{\hyperlink{classSimulation_a28d2e68c23e6f82e8f13b2f9f2b09be0}{writer}}, \mbox{\hyperlink{classFileReader}{File\+Reader}} \&\mbox{\hyperlink{classSimulation_aed1f741dee19acb462367a8d22132e7b}{reader}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}})
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLennardJonesSimulation_aa7b28b4c292473bc44481a5a988e4735}{run\+Sim}} () override
+\begin{DoxyCompactList}\small\item\em Run the simulation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a42422dd40e29be6f43c1911934b6c4fb}{get\+Epsilon}} () const
+\begin{DoxyCompactList}\small\item\em Get the epsilon parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a456b96b4514880185a9aea867a855af3}{get\+Sigma}} () const
+\begin{DoxyCompactList}\small\item\em Get the sigma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a41a1c4c60c6a2760aa11af66f656e1a4}{get\+Alpha}} () const
+\begin{DoxyCompactList}\small\item\em Get the alpha parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_ab177ce539ce797212d9b24303ae65f2f}{get\+Beta}} () const
+\begin{DoxyCompactList}\small\item\em Get the beta parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a0d7cf6c105468d3677d1c9538752a85b}{get\+Gamma}} () const
+\begin{DoxyCompactList}\small\item\em Get the gamma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLennardJonesSimulation_aaa6a7518b3b85bd326baadc746fd8f1e}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, \mbox{\hyperlink{classFileWriter}{File\+Writer}} \&\mbox{\hyperlink{classSimulation_a28d2e68c23e6f82e8f13b2f9f2b09be0}{writer}}, \mbox{\hyperlink{classFileReader}{File\+Reader}} \&\mbox{\hyperlink{classSimulation_aed1f741dee19acb462367a8d22132e7b}{reader}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimulation_aaa6a7518b3b85bd326baadc746fd8f1e}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, \mbox{\hyperlink{classFileWriter}{File\+Writer}} \&\mbox{\hyperlink{classSimulation_a28d2e68c23e6f82e8f13b2f9f2b09be0}{writer}}, \mbox{\hyperlink{classFileReader}{File\+Reader}} \&\mbox{\hyperlink{classSimulation_aed1f741dee19acb462367a8d22132e7b}{reader}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a99f2652b63a24bfb8b4c5e270d079429}{alpha}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a8e4e4a8fb0b0f6a2d8be5b856e1dd8e1}{beta}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a67fb7cac88492151222b2200a0e1b5af}{gamma}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \& \mbox{\hyperlink{classSimulation_abdb48771e24ba63a3db95b27d153b629}{strategy}}
+\item 
+\mbox{\hyperlink{classFileWriter}{File\+Writer}} \& \mbox{\hyperlink{classSimulation_a28d2e68c23e6f82e8f13b2f9f2b09be0}{writer}}
+\item 
+\mbox{\hyperlink{classFileReader}{File\+Reader}} \& \mbox{\hyperlink{classSimulation_aed1f741dee19acb462367a8d22132e7b}{reader}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}
+\item 
+double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}
+\item 
+double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}
+\item 
+unsigned \mbox{\hyperlink{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1}{iteration}} = 0
+\item 
+\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \& \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classSimulation}{Simulation} class for the Lennard-\/\+Jones simulation. 
+
+This class is a subclass of the \doxylink{classSimulation}{Simulation} class and is used to simulate the movement of particles according to the Lennard-\/\+Jones potential. This is the simulation class used in the second problem sheet. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLennardJonesSimulation_a8043c7860d00f744e517386a20f886f5}\label{classLennardJonesSimulation_a8043c7860d00f744e517386a20f886f5} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!LennardJonesSimulation@{LennardJonesSimulation}}
+\index{LennardJonesSimulation@{LennardJonesSimulation}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{LennardJonesSimulation()}{LennardJonesSimulation()}}
+{\footnotesize\ttfamily Lennard\+Jones\+Simulation\+::\+Lennard\+Jones\+Simulation (\begin{DoxyParamCaption}\item[{double}]{time,  }\item[{double}]{delta\+\_\+t,  }\item[{double}]{end\+\_\+time,  }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container,  }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat,  }\item[{\mbox{\hyperlink{classFileWriter}{File\+Writer}} \&}]{writer,  }\item[{\mbox{\hyperlink{classFileReader}{File\+Reader}} \&}]{reader,  }\item[{double}]{epsilon,  }\item[{double}]{sigma }\end{DoxyParamCaption})}
+
+
+
+Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The current time of the simulation i.\+e. start time \\
+\hline
+{\em delta\+\_\+t} & The time increment for each iteration \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em container} & The container of particles \\
+\hline
+{\em strat} & The strategy to be used for the physics calculations \\
+\hline
+{\em writer} & The writer object to write the output to file \\
+\hline
+{\em reader} & The reader object to read the input from file \\
+\hline
+{\em epsilon} & The epsilon parameter of the Lennard-\/\+Jones potential \\
+\hline
+{\em sigma} & The sigma parameter of the Lennard-\/\+Jones potential \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLennardJonesSimulation_a41a1c4c60c6a2760aa11af66f656e1a4}\label{classLennardJonesSimulation_a41a1c4c60c6a2760aa11af66f656e1a4} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!getAlpha@{getAlpha}}
+\index{getAlpha@{getAlpha}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getAlpha()}{getAlpha()}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::get\+Alpha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the alpha parameter of the Lennard-\/\+Jones potential. 
+
+The alpha parameter is calculated as -\/24 \texorpdfstring{$\ast$}{*} epsilon and will be used to simplify the calculations \begin{DoxyReturn}{Returns}
+The alpha parameter i.\+e. -\/24 \texorpdfstring{$\ast$}{*} epsilon 
+\end{DoxyReturn}
+\Hypertarget{classLennardJonesSimulation_ab177ce539ce797212d9b24303ae65f2f}\label{classLennardJonesSimulation_ab177ce539ce797212d9b24303ae65f2f} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!getBeta@{getBeta}}
+\index{getBeta@{getBeta}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getBeta()}{getBeta()}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::get\+Beta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the beta parameter of the Lennard-\/\+Jones potential. 
+
+The beta parameter is calculated as sigma\texorpdfstring{$^\wedge$}{\string^}6 and will be used to simplify the calculations \begin{DoxyReturn}{Returns}
+The beta parameter i.\+e. sigma\texorpdfstring{$^\wedge$}{\string^}6 
+\end{DoxyReturn}
+\Hypertarget{classLennardJonesSimulation_a42422dd40e29be6f43c1911934b6c4fb}\label{classLennardJonesSimulation_a42422dd40e29be6f43c1911934b6c4fb} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!getEpsilon@{getEpsilon}}
+\index{getEpsilon@{getEpsilon}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getEpsilon()}{getEpsilon()}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::get\+Epsilon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the epsilon parameter of the Lennard-\/\+Jones potential. 
+
+\begin{DoxyReturn}{Returns}
+The epsilon parameter 
+\end{DoxyReturn}
+\Hypertarget{classLennardJonesSimulation_a0d7cf6c105468d3677d1c9538752a85b}\label{classLennardJonesSimulation_a0d7cf6c105468d3677d1c9538752a85b} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!getGamma@{getGamma}}
+\index{getGamma@{getGamma}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getGamma()}{getGamma()}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::get\+Gamma (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the gamma parameter of the Lennard-\/\+Jones potential. 
+
+The gamma parameter is calculated as -\/2 \texorpdfstring{$\ast$}{*} sigma\texorpdfstring{$^\wedge$}{\string^}12 and will be used to simplify the calculations \begin{DoxyReturn}{Returns}
+The gamma parameter i.\+e. -\/2 \texorpdfstring{$\ast$}{*} sigma\texorpdfstring{$^\wedge$}{\string^}12 
+\end{DoxyReturn}
+\Hypertarget{classLennardJonesSimulation_a456b96b4514880185a9aea867a855af3}\label{classLennardJonesSimulation_a456b96b4514880185a9aea867a855af3} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!getSigma@{getSigma}}
+\index{getSigma@{getSigma}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getSigma()}{getSigma()}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::get\+Sigma (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the sigma parameter of the Lennard-\/\+Jones potential. 
+
+\begin{DoxyReturn}{Returns}
+The sigma parameter 
+\end{DoxyReturn}
+\Hypertarget{classLennardJonesSimulation_aa7b28b4c292473bc44481a5a988e4735}\label{classLennardJonesSimulation_aa7b28b4c292473bc44481a5a988e4735} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!runSim@{runSim}}
+\index{runSim@{runSim}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{runSim()}{runSim()}}
+{\footnotesize\ttfamily void Lennard\+Jones\+Simulation\+::run\+Sim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Run the simulation. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSimulation_ada940a3e4924c796b043a062950e3c49}{Simulation}}.
+
+\Hypertarget{classLennardJonesSimulation_aaa6a7518b3b85bd326baadc746fd8f1e}\label{classLennardJonesSimulation_aaa6a7518b3b85bd326baadc746fd8f1e} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!Simulation@{Simulation}}
+\index{Simulation@{Simulation}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{Simulation()}{Simulation()}}
+{\footnotesize\ttfamily Simulation\+::\+Simulation (\begin{DoxyParamCaption}\item[{double}]{time,  }\item[{double}]{delta\+\_\+t,  }\item[{double}]{end\+\_\+time,  }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container,  }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat,  }\item[{\mbox{\hyperlink{classFileWriter}{File\+Writer}} \&}]{writer,  }\item[{\mbox{\hyperlink{classFileReader}{File\+Reader}} \&}]{reader }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classSimulation}{Simulation} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The start time of the simulation \\
+\hline
+{\em delta\+\_\+t} & The time increment \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em container} & The particle container which holds all particles \\
+\hline
+{\em strat} & The strategy which is used to calculate the physics \\
+\hline
+{\em writer} & The output writer \\
+\hline
+{\em reader} & The input reader \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classSimulation}{Simulation} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLennardJonesSimulation_a99f2652b63a24bfb8b4c5e270d079429}\label{classLennardJonesSimulation_a99f2652b63a24bfb8b4c5e270d079429} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!alpha@{alpha}}
+\index{alpha@{alpha}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{alpha}{alpha}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::alpha\hspace{0.3cm}{\ttfamily [protected]}}
+
+-\/24 \texorpdfstring{$\ast$}{*} epsilon, will be used to simplify the calculations \Hypertarget{classLennardJonesSimulation_a8e4e4a8fb0b0f6a2d8be5b856e1dd8e1}\label{classLennardJonesSimulation_a8e4e4a8fb0b0f6a2d8be5b856e1dd8e1} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!beta@{beta}}
+\index{beta@{beta}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{beta}{beta}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::beta\hspace{0.3cm}{\ttfamily [protected]}}
+
+sigma\texorpdfstring{$^\wedge$}{\string^}6, will be used to simplify the calculations \Hypertarget{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}\label{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!epsilon@{epsilon}}
+\index{epsilon@{epsilon}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{epsilon}{epsilon}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::epsilon\hspace{0.3cm}{\ttfamily [protected]}}
+
+The epsilon parameter of the Lennard-\/\+Jones potential \Hypertarget{classLennardJonesSimulation_a67fb7cac88492151222b2200a0e1b5af}\label{classLennardJonesSimulation_a67fb7cac88492151222b2200a0e1b5af} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!gamma@{gamma}}
+\index{gamma@{gamma}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{gamma}{gamma}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::gamma\hspace{0.3cm}{\ttfamily [protected]}}
+
+-\/2 \texorpdfstring{$\ast$}{*} sigma\texorpdfstring{$^\wedge$}{\string^}12, will be used to simplify the calculations \Hypertarget{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}\label{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0} 
+\index{LennardJonesSimulation@{LennardJonesSimulation}!sigma@{sigma}}
+\index{sigma@{sigma}!LennardJonesSimulation@{LennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{sigma}{sigma}}
+{\footnotesize\ttfamily double Lennard\+Jones\+Simulation\+::sigma\hspace{0.3cm}{\ttfamily [protected]}}
+
+The sigma parameter of the Lennard-\/\+Jones potential 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/simulation/\mbox{\hyperlink{lennardJonesSim_8h}{lennard\+Jones\+Sim.\+h}}\item 
+src/simulation/\mbox{\hyperlink{lennardJonesSim_8cpp}{lennard\+Jones\+Sim.\+cpp}}\end{DoxyCompactItemize}

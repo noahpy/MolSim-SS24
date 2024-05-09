@@ -1,0 +1,70 @@
+\doxysection{File\+Writer Class Reference}
+\hypertarget{classFileWriter}{}\label{classFileWriter}\index{FileWriter@{FileWriter}}
+
+
+Abstract class \doxylink{classFileWriter}{File\+Writer}.  
+
+
+
+
+{\ttfamily \#include $<$File\+Writer.\+h$>$}
+
+Inheritance diagram for File\+Writer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classFileWriter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classFileWriter_a30e2074c246bae28cb0af971c76609ed}{plot\+Particles}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&s)=0
+\begin{DoxyCompactList}\small\item\em Write the simulation data to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}} = "{}MD\+\_\+vtk"{}
+\begin{DoxyCompactList}\small\item\em The name of the output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class \doxylink{classFileWriter}{File\+Writer}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFileWriter_a30e2074c246bae28cb0af971c76609ed}\label{classFileWriter_a30e2074c246bae28cb0af971c76609ed} 
+\index{FileWriter@{FileWriter}!plotParticles@{plotParticles}}
+\index{plotParticles@{plotParticles}!FileWriter@{FileWriter}}
+\doxysubsubsection{\texorpdfstring{plotParticles()}{plotParticles()}}
+{\footnotesize\ttfamily virtual void File\+Writer\+::plot\+Particles (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Write the simulation data to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \doxylink{classSimulation}{Simulation} object \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classoutputWriter_1_1VTKWriter_a9d5534653f9ebcbde862a2b32a0c858d}{output\+Writer\+::\+VTKWriter}}, and \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a557f8a7e86bad751fda9119a2538f6ae}{output\+Writer\+::\+XYZWriter}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}\label{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e} 
+\index{FileWriter@{FileWriter}!out\_name@{out\_name}}
+\index{out\_name@{out\_name}!FileWriter@{FileWriter}}
+\doxysubsubsection{\texorpdfstring{out\_name}{out\_name}}
+{\footnotesize\ttfamily std\+::string File\+Writer\+::out\+\_\+name = "{}MD\+\_\+vtk"{}}
+
+
+
+The name of the output file. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/io/file\+Writer/\mbox{\hyperlink{FileWriter_8h}{File\+Writer.\+h}}\end{DoxyCompactItemize}

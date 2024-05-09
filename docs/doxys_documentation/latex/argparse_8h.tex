@@ -1,0 +1,37 @@
+\doxysection{src/io/argparse/argparse.h File Reference}
+\hypertarget{argparse_8h}{}\label{argparse_8h}\index{src/io/argparse/argparse.h@{src/io/argparse/argparse.h}}
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{argparse_8h_a8c707006b571ddea115859a358754141}{argparse}} (int argc, char \texorpdfstring{$\ast$}{*}argsv\mbox{[}$\,$\mbox{]}, double \&end\+\_\+time, double \&delta\+\_\+t, std\+::string \&input)
+\begin{DoxyCompactList}\small\item\em Parse the command line arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{argparse_8h_a8c707006b571ddea115859a358754141}\label{argparse_8h_a8c707006b571ddea115859a358754141} 
+\index{argparse.h@{argparse.h}!argparse@{argparse}}
+\index{argparse@{argparse}!argparse.h@{argparse.h}}
+\doxysubsubsection{\texorpdfstring{argparse()}{argparse()}}
+{\footnotesize\ttfamily void argparse (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argsv\mbox{[}$\,$\mbox{]},  }\item[{double \&}]{end\+\_\+time,  }\item[{double \&}]{delta\+\_\+t,  }\item[{std\+::string \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Parse the command line arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of arguments \\
+\hline
+{\em argsv} & Command line arguments \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em delta\+\_\+t} & The time increment of the simulation \\
+\hline
+{\em input} & The input file name to load the data from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void, will set the values of end\+\_\+time, delta\+\_\+t, and output 
+\end{DoxyReturn}

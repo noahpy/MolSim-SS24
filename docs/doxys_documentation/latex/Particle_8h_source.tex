@@ -1,0 +1,73 @@
+\doxysection{Particle.\+h}
+\hypertarget{Particle_8h_source}{}\label{Particle_8h_source}\index{src/models/Particle.h@{src/models/Particle.h}}
+\mbox{\hyperlink{Particle_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Particle.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 23.02.2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ eckhardw}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticle}{Particle}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticle_a027e5a09c12953df5fcbbdb15896de3e}{x}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticle_a0fe6d1e0651ad949d0b37ac327c9c6d1}{v}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticle_a968dfd29adaa41fb25a08d3c45903156}{old\_f}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticle_aedcc7e1bc53b0e2b1a4a07c9a1b47563}{m}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classParticle_a2b73dd42bcd56ba2e7ffeb0a5515a866}{type}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classParticle_a866812d3dfb9c539e5e24593e596a8c9}{Particle}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtype}{type}}\ =\ 0);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classParticle_a866812d3dfb9c539e5e24593e596a8c9}{Particle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticle}{Particle}}\&\ other);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classParticle_a866812d3dfb9c539e5e24593e596a8c9}{Particle}}(}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ visualization,\ we\ need\ always\ 3\ coordinates}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/>\ in\ case\ of\ 2d,\ we\ use\ only\ the\ first\ and\ the\ second}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ x\_arg,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ v\_arg,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ m\_arg,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtype}{type}}\ =\ 0);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classParticle_ad030d0fe7b88cf81744b127c99244ff4}{\string~Particle}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_ad5f097eb9cef2c4f1bae890014282867}{getX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_afcca7d6019f3e2fdc8df36bd0428f492}{getV}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_a74b516167925a350dac3e96e7b3d98b3}{getF}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_a2523afe674a4a1f8a135fd62742ad614}{getOldF}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticle_aa83367a14789f70d80fbf565530f52b8}{getM}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classParticle_a806c077af237adf8b34dd0661cf92e5f}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a349cfd2dffbdb84f444046a5bfc85c40}{setX}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ x\_new);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_ae50e8aecb7b790c67b956dbe16837150}{setV}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ v\_new);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a0c6a31aabc41ff9d772115c3420f2e74}{setF}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ f\_new);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a1258d6f77d09205e3bd2679a477341f4}{setOldF}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}});}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticle_a5034babb77618a56e00927d8891afabe}{operator==}}(\mbox{\hyperlink{classParticle}{Particle}}\&\ other);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00162\ \ \ \ \ std::string\ \mbox{\hyperlink{classParticle_a41f3a8baf5d8b29ec806681d63ab2f81}{toString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00163\ \};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00171\ std::ostream\&\ \mbox{\hyperlink{Particle_8h_a81ef406001cd289eaccd54181e64f98d}{operator<<}}(std::ostream\&\ stream,\ \mbox{\hyperlink{classParticle}{Particle}}\&\ p);}
+
+\end{DoxyCode}

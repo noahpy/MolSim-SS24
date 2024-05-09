@@ -1,0 +1,148 @@
+\doxysection{Planet\+Simulation Class Reference}
+\hypertarget{classPlanetSimulation}{}\label{classPlanetSimulation}\index{PlanetSimulation@{PlanetSimulation}}
+
+
+\doxylink{classSimulation}{Simulation} class for the planet simulation.  
+
+
+
+
+{\ttfamily \#include $<$planet\+Sim.\+h$>$}
+
+Inheritance diagram for Planet\+Simulation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPlanetSimulation}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPlanetSimulation_a129147243c54c55204fac9dbb8e28344}{Planet\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, \mbox{\hyperlink{classFileWriter}{File\+Writer}} \&\mbox{\hyperlink{classSimulation_a28d2e68c23e6f82e8f13b2f9f2b09be0}{writer}}, \mbox{\hyperlink{classFileReader}{File\+Reader}} \&\mbox{\hyperlink{classSimulation_aed1f741dee19acb462367a8d22132e7b}{reader}})
+\begin{DoxyCompactList}\small\item\em Construct a new Planet \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlanetSimulation_a9e9abcf4d8960f3bc22644e29411f928}{run\+Sim}} () override
+\begin{DoxyCompactList}\small\item\em Run the simulation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlanetSimulation_aaa6a7518b3b85bd326baadc746fd8f1e}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, \mbox{\hyperlink{classFileWriter}{File\+Writer}} \&\mbox{\hyperlink{classSimulation_a28d2e68c23e6f82e8f13b2f9f2b09be0}{writer}}, \mbox{\hyperlink{classFileReader}{File\+Reader}} \&\mbox{\hyperlink{classSimulation_aed1f741dee19acb462367a8d22132e7b}{reader}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimulation_aaa6a7518b3b85bd326baadc746fd8f1e}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, \mbox{\hyperlink{classFileWriter}{File\+Writer}} \&\mbox{\hyperlink{classSimulation_a28d2e68c23e6f82e8f13b2f9f2b09be0}{writer}}, \mbox{\hyperlink{classFileReader}{File\+Reader}} \&\mbox{\hyperlink{classSimulation_aed1f741dee19acb462367a8d22132e7b}{reader}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}
+\item 
+double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}
+\item 
+double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}
+\item 
+unsigned \mbox{\hyperlink{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1}{iteration}} = 0
+\item 
+\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \& \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \& \mbox{\hyperlink{classSimulation_abdb48771e24ba63a3db95b27d153b629}{strategy}}
+\item 
+\mbox{\hyperlink{classFileWriter}{File\+Writer}} \& \mbox{\hyperlink{classSimulation_a28d2e68c23e6f82e8f13b2f9f2b09be0}{writer}}
+\item 
+\mbox{\hyperlink{classFileReader}{File\+Reader}} \& \mbox{\hyperlink{classSimulation_aed1f741dee19acb462367a8d22132e7b}{reader}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classSimulation}{Simulation} class for the planet simulation. 
+
+This class is a subclass of the \doxylink{classSimulation}{Simulation} class and is used to simulate the movement of planets This is the simulation class used in the first problem sheet 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPlanetSimulation_a129147243c54c55204fac9dbb8e28344}\label{classPlanetSimulation_a129147243c54c55204fac9dbb8e28344} 
+\index{PlanetSimulation@{PlanetSimulation}!PlanetSimulation@{PlanetSimulation}}
+\index{PlanetSimulation@{PlanetSimulation}!PlanetSimulation@{PlanetSimulation}}
+\doxysubsubsection{\texorpdfstring{PlanetSimulation()}{PlanetSimulation()}}
+{\footnotesize\ttfamily Planet\+Simulation\+::\+Planet\+Simulation (\begin{DoxyParamCaption}\item[{double}]{time,  }\item[{double}]{delta\+\_\+t,  }\item[{double}]{end\+\_\+time,  }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container,  }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat,  }\item[{\mbox{\hyperlink{classFileWriter}{File\+Writer}} \&}]{writer,  }\item[{\mbox{\hyperlink{classFileReader}{File\+Reader}} \&}]{reader }\end{DoxyParamCaption})}
+
+
+
+Construct a new Planet \doxylink{classSimulation}{Simulation} object. 
+
+This constructor is used to create a new Planet \doxylink{classSimulation}{Simulation} object and will simply call the constructor of the \doxylink{classSimulation}{Simulation} class 
+\begin{DoxyParams}{Parameters}
+{\em time} & The current time of the simulation i.\+e. start time \\
+\hline
+{\em delta\+\_\+t} & The time increment for each iteration \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em container} & The container of particles \\
+\hline
+{\em strat} & The strategy to be used for the physics calculations \\
+\hline
+{\em writer} & The writer object to write the output to file \\
+\hline
+{\em reader} & The reader object to read the input from file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new Planet \doxylink{classSimulation}{Simulation} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPlanetSimulation_a9e9abcf4d8960f3bc22644e29411f928}\label{classPlanetSimulation_a9e9abcf4d8960f3bc22644e29411f928} 
+\index{PlanetSimulation@{PlanetSimulation}!runSim@{runSim}}
+\index{runSim@{runSim}!PlanetSimulation@{PlanetSimulation}}
+\doxysubsubsection{\texorpdfstring{runSim()}{runSim()}}
+{\footnotesize\ttfamily void Planet\+Simulation\+::run\+Sim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Run the simulation. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSimulation_ada940a3e4924c796b043a062950e3c49}{Simulation}}.
+
+\Hypertarget{classPlanetSimulation_aaa6a7518b3b85bd326baadc746fd8f1e}\label{classPlanetSimulation_aaa6a7518b3b85bd326baadc746fd8f1e} 
+\index{PlanetSimulation@{PlanetSimulation}!Simulation@{Simulation}}
+\index{Simulation@{Simulation}!PlanetSimulation@{PlanetSimulation}}
+\doxysubsubsection{\texorpdfstring{Simulation()}{Simulation()}}
+{\footnotesize\ttfamily Simulation\+::\+Simulation (\begin{DoxyParamCaption}\item[{double}]{time,  }\item[{double}]{delta\+\_\+t,  }\item[{double}]{end\+\_\+time,  }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container,  }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat,  }\item[{\mbox{\hyperlink{classFileWriter}{File\+Writer}} \&}]{writer,  }\item[{\mbox{\hyperlink{classFileReader}{File\+Reader}} \&}]{reader }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classSimulation}{Simulation} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The start time of the simulation \\
+\hline
+{\em delta\+\_\+t} & The time increment \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em container} & The particle container which holds all particles \\
+\hline
+{\em strat} & The strategy which is used to calculate the physics \\
+\hline
+{\em writer} & The output writer \\
+\hline
+{\em reader} & The input reader \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classSimulation}{Simulation} object 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/simulation/\mbox{\hyperlink{planetSim_8h}{planet\+Sim.\+h}}\item 
+src/simulation/\mbox{\hyperlink{planetSim_8cpp}{planet\+Sim.\+cpp}}\end{DoxyCompactItemize}

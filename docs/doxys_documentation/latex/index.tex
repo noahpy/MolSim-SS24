@@ -1,0 +1,100 @@
+\chapter{Mol\+Sim Group F}
+\hypertarget{index}{}\label{index}\index{MolSim Group F@{MolSim Group F}}
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+
+
+\hypertarget{index_autotoc_md0}{}\doxysection{\texorpdfstring{Group members}{Group members}}\label{index_autotoc_md0}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/noahpy}{\texttt{ Noah Schlenker}}
+\item \href{https://github.com/jimin31}{\texttt{ Jimin Kim}}
+\item \href{https://github.com/Chryzl}{\texttt{ Christian Nix}}
+\end{DoxyItemize}\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Build instructions}{Build instructions}}\label{index_autotoc_md1}
+To build the project, run the following commands\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Run instructions}{Run instructions}}\label{index_autotoc_md2}
+To run the project, run the following command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ -\/d\ <delta\_t>\ -\/e\ <end\_t>\ ../input/<input\_file>}
+
+\end{DoxyCode}
+ For more information about arguments and default settings, type\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ -\/h}
+
+\end{DoxyCode}
+ \hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{Generate Doxygen documentation}{Generate Doxygen documentation}}\label{index_autotoc_md3}
+To generate the Doxygen documentation, run the following command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ doc\_doxygen}
+
+\end{DoxyCode}
+ This will generate the documentation into the folder {\ttfamily doxys\+\_\+documentation}.\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{Run tests}{Run tests}}\label{index_autotoc_md4}
+To build the tests run\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{make\ tests}
+
+\end{DoxyCode}
+ To run the tests, run the following command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{tests/tests}
+
+\end{DoxyCode}
+ Or alternatively with ctest\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ tests}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{Format code}{Format code}}\label{index_autotoc_md5}
+If your system has clang-\/format installed, the target {\ttfamily clangformat} will be created. You can then run\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clangformat}
+
+\end{DoxyCode}
+ to format the code.\hypertarget{index_autotoc_md6}{}\doxysection{\texorpdfstring{Project structure}{Project structure}}\label{index_autotoc_md6}
+The project is structured as follows\+:  
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{strategy_long.png}%Project structure UML
+\end{DoxyInlineImage}
+    Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classSimulation}{Simulation}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\begin{DoxyItemize}
+\item Any kinds of a simulations are represented as a child class of the {\ttfamily \doxylink{classSimulation}{Simulation}} class
+\item Any simulation instance defines the {\ttfamily run\+Sim()} function, which uses the I/O classes ({\ttfamily \doxylink{classFileReader}{File\+Reader}}, {\ttfamily \doxylink{classFileWriter}{File\+Writer}}), the {\ttfamily \doxylink{classPhysicsStrategy}{Physics\+Strategy}} class and the model variables passed to it to calculate the simulation through time.
+\item Child simulations might extend with new model varibales their parent simulations.
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classPhysicsStrategy}{Physics\+Strategy}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\begin{DoxyItemize}
+\item Strategy interface to different implementation of strategy functions
+\item Strategy functions are interchangable / compareable
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classFileWriter}{File\+Writer}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\begin{DoxyItemize}
+\item Template method class defining a common interface of different writers
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classFileReader}{File\+Reader}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\begin{DoxyItemize}
+\item Template method class defining a common interface of different readers
+\item Currently not abstract yet, as only one reader is existant
+\end{DoxyItemize}\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{Folder structure}{Folder structure}}\label{index_autotoc_md7}
+This section describes the folder strcuture of this project\+:
+\begin{DoxyItemize}
+\item {\ttfamily tests}\+: tests of the project
+\item {\ttfamily src}\+: source files of the project
+\item {\ttfamily src/io}\+: all source files relating to I/O
+\item {\ttfamily src/models}\+: all source files relating to classes representing parts of the model
+\item {\ttfamily src/physics}\+: all source files relating to physical calculations
+\item {\ttfamily src/simulation}\+: all source files relating to the {\ttfamily Simlation} class
+\item {\ttfamily \doxylink{MolSim_8cpp}{src/\+Mol\+Sim.\+cpp}}\+: source file holding main function 
+\end{DoxyItemize}

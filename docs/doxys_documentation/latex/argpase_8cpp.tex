@@ -1,0 +1,60 @@
+\doxysection{src/io/argparse/argpase.cpp File Reference}
+\hypertarget{argpase_8cpp}{}\label{argpase_8cpp}\index{src/io/argparse/argpase.cpp@{src/io/argparse/argpase.cpp}}
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{argpase_8cpp_af0a2e48d9a9a00010182ab9a820e1e6b}{print\+Help}} (std\+::string prog\+Name)
+\begin{DoxyCompactList}\small\item\em Print the help message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{argpase_8cpp_a8c707006b571ddea115859a358754141}{argparse}} (int argc, char \texorpdfstring{$\ast$}{*}argsv\mbox{[}$\,$\mbox{]}, double \&end\+\_\+time, double \&delta\+\_\+t, std\+::string \&input)
+\begin{DoxyCompactList}\small\item\em Parse the command line arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{argpase_8cpp_a8c707006b571ddea115859a358754141}\label{argpase_8cpp_a8c707006b571ddea115859a358754141} 
+\index{argpase.cpp@{argpase.cpp}!argparse@{argparse}}
+\index{argparse@{argparse}!argpase.cpp@{argpase.cpp}}
+\doxysubsubsection{\texorpdfstring{argparse()}{argparse()}}
+{\footnotesize\ttfamily void argparse (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argsv\mbox{[}$\,$\mbox{]},  }\item[{double \&}]{end\+\_\+time,  }\item[{double \&}]{delta\+\_\+t,  }\item[{std\+::string \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Parse the command line arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of arguments \\
+\hline
+{\em argsv} & Command line arguments \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em delta\+\_\+t} & The time increment of the simulation \\
+\hline
+{\em input} & The input file name to load the data from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void, will set the values of end\+\_\+time, delta\+\_\+t, and output 
+\end{DoxyReturn}
+\Hypertarget{argpase_8cpp_af0a2e48d9a9a00010182ab9a820e1e6b}\label{argpase_8cpp_af0a2e48d9a9a00010182ab9a820e1e6b} 
+\index{argpase.cpp@{argpase.cpp}!printHelp@{printHelp}}
+\index{printHelp@{printHelp}!argpase.cpp@{argpase.cpp}}
+\doxysubsubsection{\texorpdfstring{printHelp()}{printHelp()}}
+{\footnotesize\ttfamily void print\+Help (\begin{DoxyParamCaption}\item[{std\+::string}]{prog\+Name }\end{DoxyParamCaption})}
+
+
+
+Print the help message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+Name} & The name of the program \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
