@@ -22,14 +22,7 @@ include(doxygen)
 include(xerces)
 include(gtest)
 include(clang-format)
-include(FetchContent)
-FetchContent_Declare(
-        spdlog
-        GIT_REPOSITORY "https://github.com/gabime/spdlog.git"
-        GIT_TAG v1.14.1
-)
-# download spdlog
-FetchContent_MakeAvailable(spdlog)
+include(spdlog)
 
 # add subdirectory
 add_subdirectory(src)

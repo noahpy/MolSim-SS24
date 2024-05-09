@@ -28,7 +28,7 @@ void PlanetSimulation::runSim()
         if (iteration % 10 == 0) {
             writer.plotParticles(*this);
         }
-        spdlog::info("Iteration: {}", iteration);
+        spdlog::debug("Iteration: {}", iteration);
 
         time += delta_t;
     }

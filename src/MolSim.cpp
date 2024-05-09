@@ -8,6 +8,7 @@
 #include "physics/strategy.h"
 #include "physics/velocityCal/velocityCal.h"
 #include "simulation/planetSim.h"
+#include "spdlog/spdlog.h"
 
 #include <cstdlib>
 #include <getopt.h>
@@ -21,6 +22,7 @@ int main(int argc, char* argsv[])
     double end_time = 0.014 * 10 * 20; // end time
     double delta_t = 0.014; // time increment
     std::string input_file; // output filename
+    spdlog::set_level(spdlog::level::debug);// set global log level to debug
 
     // parse arguments
     argparse(argc, argsv, end_time, delta_t, input_file);
@@ -43,6 +45,6 @@ int main(int argc, char* argsv[])
     sim.runSim();
 
     // inform user that output has been written
-    std::cout << "output written. Terminating..." << std::endl;
+    spdlog::info("Output written. Terminating...");
     return 0;
 }
