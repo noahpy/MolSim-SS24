@@ -20,10 +20,15 @@ void printHelp(std::string progName)
               << "  -d, --delta_t=VALUE    Set the time step (default: 0.014)" << std::endl
               << "  -e, --end_time=VALUE   Set the end time for simulation (default: 0.28)"
               << std::endl
-              << "  -l, --log_level 1 to 7 Set the logging level (default: info)" << std::endl
+              << "  -l, --log_level=LEVEL  Set the logging level (1=trace, 2=debug, 3=info, 4=warn, 5=err, 6=critical, 7=off; default: 3)" << std::endl
               << "  -h, --help             Display this help message" << std::endl;
 }
 
+/**
+ * @brief For setting spdlog level with default level info
+ * @param level Integers 1 to 7 from parameter argument corresponds to level trace to off
+ * @return
+ */
 spdlog::level::level_enum getLogLevel(int level)
 {
     if (level == 1) return spdlog::level::trace;
