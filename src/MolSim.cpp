@@ -8,6 +8,7 @@
 #include "physics/strategy.h"
 #include "physics/velocityCal/velocityCal.h"
 #include "simulation/planetSim.h"
+#include "spdlog/spdlog.h"
 
 #include <cstdlib>
 #include <getopt.h>
@@ -43,6 +44,6 @@ int main(int argc, char* argsv[])
     sim.runSim();
 
     // inform user that output has been written
-    std::cout << "output written. Terminating..." << std::endl;
+    spdlog::info("Output written. Terminating...");
     return 0;
 }

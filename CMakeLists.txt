@@ -22,6 +22,7 @@ include(doxygen)
 include(xerces)
 include(gtest)
 include(clang-format)
+include(spdlog)
 
 # add subdirectory
 add_subdirectory(src)
