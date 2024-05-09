@@ -3,10 +3,15 @@ MolSim Group F
 
 ![Testing workflow](https://github.com/noahpy/MolSim-SS24/actions/workflows/tests.yaml/badge.svg)
 
+The molecular dynamics SS24 code base of Group F.  
+You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSim-SS24/](https://noahpy.github.io/MolSim-SS24/).
+
+
 ## Group members
 - [Noah Schlenker](https://github.com/noahpy)
 - [Jimin Kim](https://github.com/jimin31)
 - [Christian Nix](https://github.com/Chryzl)
+
 
 ## Build instructions
 To build the project, run the following commands:
@@ -57,7 +62,7 @@ to format the code.
 
 ## Project structure
 The project is structured as follows:
-![Project structure UML](report/report1/res/strategy_long.png)
+![Project structure UML](docs/report/report1/res/strategy_long.png)
 Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
 
 **`Simulation`**
