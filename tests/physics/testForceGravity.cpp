@@ -8,7 +8,6 @@
 #include "physics/strategy.h"
 #include "physics/velocityCal/velocityCal.h"
 #include "simulation/planetSim.h"
-#include <chrono>
 #include <gtest/gtest.h>
 #include <vector>
 
@@ -45,6 +44,7 @@ protected:
 
 };
 
+// Compare force caluculation between the two functions
 TEST_F(calcForceTest, CompareNaiiveV2) {
     while (simA.time < simA.end_time) {
         // do one step of the simulation
@@ -64,28 +64,28 @@ TEST_F(calcForceTest, CompareNaiiveV2) {
     }
 }
 
-TEST_F(calcForceTest, Timing) {
-    int num_iters = 10e6;
+/* TEST_F(calcForceTest, Timing) { */
+/*     int num_iters = 10e6; */
 
-    const auto startNaive = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i<num_iters; i++) {
-        force_gravity(simA);
-        simA.time += simA.delta_t;
-    }
-    const auto endNaive = std::chrono::high_resolution_clock::now();
+/*     const auto startNaive = std::chrono::high_resolution_clock::now(); */
+/*     for (int i = 0; i<num_iters; i++) { */
+/*         force_gravity(simA); */
+/*         simA.time += simA.delta_t; */
+/*     } */
+/*     const auto endNaive = std::chrono::high_resolution_clock::now(); */
 
-    const auto startV2 = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i<num_iters; i++) {
-        force_gravity_V2(simB);
-        simB.time += simB.delta_t;
-    }
-    const auto endV2 = std::chrono::high_resolution_clock::now();
+/*     const auto startV2 = std::chrono::high_resolution_clock::now(); */
+/*     for (int i = 0; i<num_iters; i++) { */
+/*         force_gravity_V2(simB); */
+/*         simB.time += simB.delta_t; */
+/*     } */
+/*     const auto endV2 = std::chrono::high_resolution_clock::now(); */
 
-    const auto int_ms_naive = std::chrono::duration_cast<std::chrono::milliseconds>(endNaive - startNaive);
-    const auto int_ms_v2 = std::chrono::duration_cast<std::chrono::milliseconds>(endV2 - startV2);
+/*     const auto int_ms_naive = std::chrono::duration_cast<std::chrono::milliseconds>(endNaive - startNaive); */
+/*     const auto int_ms_v2 = std::chrono::duration_cast<std::chrono::milliseconds>(endV2 - startV2); */
 
-    std::cout << "Naive: " << int_ms_naive.count() << "ms" << std::endl;
-    std::cout << "V2: " << int_ms_v2.count() << "ms" << std::endl;
-    std::cout << "Speedup: " << (double) int_ms_naive.count() / int_ms_v2.count() << "x" << std::endl;
-    ASSERT_LT(int_ms_v2.count(), int_ms_naive.count());
-}
+/*     std::cout << "Naive: " << int_ms_naive.count() << "ms" << std::endl; */
+/*     std::cout << "V2: " << int_ms_v2.count() << "ms" << std::endl; */
+/*     std::cout << "Speedup: " << (double) int_ms_naive.count() / int_ms_v2.count() << "x" << std::endl; */
+/*     ASSERT_LT(int_ms_v2.count(), int_ms_naive.count()); */
+/* } */

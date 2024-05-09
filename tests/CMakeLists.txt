@@ -15,4 +15,4 @@ target_link_libraries(tests
 
 # use function from GoogleTest to discover tests
 include(GoogleTest)
-gtest_discover_tests(tests)
+gtest_discover_tests(tests WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
