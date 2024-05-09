@@ -31,15 +31,23 @@ void printHelp(std::string progName)
  */
 spdlog::level::level_enum getLogLevel(int level)
 {
-    if (level == 1) return spdlog::level::trace;
-    if (level == 2) return spdlog::level::debug;
-    if (level == 3) return spdlog::level::info;
-    if (level == 4) return spdlog::level::warn;
-    if (level == 5) return spdlog::level::err;
-    if (level == 6) return spdlog::level::critical;
-    if (level == 7) return spdlog::level::off;
+    switch(level){
+        case 1:
+            return spdlog::level::trace;
+        case 2:
+            return spdlog::level::debug;
+        case 3:
+            return spdlog::level::info;
+        case 4:
+            return spdlog::level::warn;
+        case 5:
+            return spdlog::level::err;
+        case 6:
+            return spdlog::level::critical;
+        case 7: 
+            return spdlog::level::off;
+    }
     return spdlog::level::info;
-
 }
 
 void argparse(int argc, char* argsv[], double& end_time, double& delta_t, std::string& input)
