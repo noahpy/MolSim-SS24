@@ -1,6 +1,7 @@
 
 #pragma once
 #include "simulation/baseSimulation.h"
+#include "simulation/lennardJonesSim.h"
 
 /**
  * @brief Calculate the forces between particles using the Stroemer-Verlet algorithm
@@ -16,3 +17,10 @@ void force_gravity(const Simulation& sim);
  * @return void
  */
 void force_gravity_V2(const Simulation& sim);
+
+/**
+ * @brief Calculate the forces between particles using the Lennard-Jones potential
+ * @param sim The Lennard Jones simulation object to calculate the forces for
+ * @return void
+ */
+void force_lennard_jones(const Simulation& sim);

@@ -41,7 +41,7 @@ public:
      * @param sim The simulation to store the data in
      * @return void
      */
-    void readFile(Simulation& sim);
+    virtual void readFile(Simulation& sim);
 
 private:
     /**
