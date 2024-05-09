@@ -22,7 +22,6 @@ int main(int argc, char* argsv[])
     double end_time = 0.014 * 10 * 20; // end time
     double delta_t = 0.014; // time increment
     std::string input_file; // output filename
-    spdlog::set_level(spdlog::level::debug);// set global log level to debug
 
     // parse arguments
     argparse(argc, argsv, end_time, delta_t, input_file);
