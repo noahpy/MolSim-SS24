@@ -90,4 +90,5 @@ This section describes the folder strcuture of this project:
 - `src/physics`: all source files relating to physical calculations
 - `src/simulation`: all source files relating to the `Simlation` class
 - `src/MolSim.cpp`: source file holding main function
+- `src/generators`: all source files related to generating initial particle clusters
 
