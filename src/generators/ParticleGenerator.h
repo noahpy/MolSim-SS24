@@ -13,8 +13,9 @@
  * CuboidParticleCluster cluster2 = CuboidParticleCluster(std::array<double, 3> {15,15,0}, 8,8,1, 1.1225, 1, std::array<double, 3> {0,-10,0}, 0.1, 2);
  *
  * ParticleGenerator p = ParticleGenerator(simLJ.container);
- * p.registerCluster(cluster1);
- * p.registerCluster(cluster2);
+ *
+ * p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster1));
+ * p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster2));
  * p.generateClusters();
  * @endcode
  */
