@@ -1,5 +1,5 @@
 
-#include "simulation/ParticleGenerator.h"
+#include "models/generators/ParticleGenerator.h"
 #include "utils/ArrayUtils.h"
 #include <gtest/gtest.h>
 
@@ -36,7 +36,7 @@ protected:
         this->container = ParticleContainer { particles };
 
         ParticleGenerator generator { this->container };
-        generator.generateCuboid(
+        CuboidParticleCluster cluster = CuboidParticleCluster(
             origin,
             numParticlesWidth,
             numParticlesHeight,
@@ -46,6 +46,8 @@ protected:
             initialVelocity,
             meanVelocity,
             dimensions);
+        generator.registerCluster(std::make_unique<CuboidParticleCluster>(cluster));
+        generator.generateClusters();
     }
 };
 
@@ -99,4 +101,48 @@ TEST_F(ParticleGeneratorTest, CorrectCuboid)
     EXPECT_EQ(
         container.getContainer().size(),
         numParticlesWidth * numParticlesHeight * numParticlesDepth);
+}
+
+// Test if the corners of the cuboid are correct
+TEST_F(ParticleGeneratorTest, CorrectCorners)
+{
+    std::array<double, 3> corner1 = origin;
+    std::array<double, 3> corner2 = { origin[0] + (numParticlesWidth - 1) * spacing,
+                                      origin[1],
+                                      origin[2] };
+    std::array<double, 3> corner3 = { origin[0],
+                                      origin[1] + (numParticlesHeight - 1) * spacing,
+                                      origin[2] };
+    std::array<double, 3> corner4 = { origin[0] + (numParticlesWidth - 1) * spacing,
+                                      origin[1] + (numParticlesHeight - 1) * spacing,
+                                      origin[2] };
+    std::array<double, 3> corner5 = { origin[0],
+                                      origin[1],
+                                      origin[2] + (numParticlesDepth - 1) * spacing };
+    std::array<double, 3> corner6 = { origin[0] + (numParticlesWidth - 1) * spacing,
+                                      origin[1],
+                                      origin[2] + (numParticlesDepth - 1) * spacing };
+    std::array<double, 3> corner7 = { origin[0],
+                                      origin[1] + (numParticlesHeight - 1) * spacing,
+                                      origin[2] + (numParticlesDepth - 1) * spacing };
+    std::array<double, 3> corner8 = { origin[0] + (numParticlesWidth - 1) * spacing,
+                                      origin[1] + (numParticlesHeight - 1) * spacing,
+                                      origin[2] + (numParticlesDepth - 1) * spacing };
+
+    std::array<std::array<double, 3>, 8> corners = { corner1, corner2, corner3, corner4,
+                                                     corner5, corner6, corner7, corner8 };
+    std::array<bool, 8> found = { false, false, false, false, false, false, false, false };
+
+    for (auto& p : container) {
+        std::array<double, 3> pos = p.getX();
+        for (int i = 0; i < 8; i++) {
+            if (ArrayUtils::L2Norm(pos - corners[i]) < 1e-6) {
+                found[i] = true;
+            }
+        }
+    }
+
+    for (int i = 0; i < 8; i++) {
+        EXPECT_TRUE(found[i]);
+    }
 }

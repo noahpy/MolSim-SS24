@@ -2,8 +2,8 @@
 #include "lennardJonesSim.h"
 #include "physics/strategy.h"
 #include "io/fileWriter/FileWriter.h"
-#include <iostream>
 #include <cmath>
+#include <spdlog/spdlog.h>
 
 LennardJonesSimulation::LennardJonesSimulation(double time,
                                                double delta_t,
@@ -33,7 +33,7 @@ void LennardJonesSimulation::runSim()
         if (iteration % 10 == 0) {
             writer.plotParticles(*this);
         }
-        std::cout << "Iteration " << iteration << " finished." << std::endl;
+        spdlog::debug("Iteration {} finished.", iteration);
 
         time += delta_t;
     }

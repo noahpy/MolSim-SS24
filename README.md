@@ -81,12 +81,18 @@ Note that this is not a perfect UML diagram, but rather a visualization of the b
 - Template method class defining a common interface of different readers
 - Currently not abstract yet, as only one reader is existant
 
+**`ParticleCluster`**
+- Represents a cluster of particles that can be used to initialize the simulation
+- Based on an abstract `ParticleCluster` class
+- Child classes include e.g. `CuboidParticleCluster` used in problem sheet 2
+
 ## Folder structure
 This section describes the folder strcuture of this project:
 - `tests`: tests of the project 
 - `src`: source files of the project
 - `src/io`: all source files relating to I/O
 - `src/models`: all source files relating to classes representing parts of the model
+  -  `src/models/generators`: all source files related to generating initial particle clusters
 - `src/physics`: all source files relating to physical calculations
 - `src/simulation`: all source files relating to the `Simlation` class
 - `src/MolSim.cpp`: source file holding main function
