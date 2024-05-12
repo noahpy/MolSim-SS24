@@ -1,6 +1,7 @@
 
 #include "models/ParticleContainer.h"
 #include "generators/CuboidParticleCluster.h"
+#include <memory>
 
 /**
  * @brief Class to generate particles for the simulation
@@ -31,7 +32,7 @@ public:
      * @param cluster The cluster to generate
      * @return void
      */
-    void registerCluster(const CuboidParticleCluster& cluster);
+    void registerCluster(std::unique_ptr<ParticleCluster> cluster);
     /**
      * @brief Generate the clusters into the container specified in the constructor
      * @details Generates the clusters into the container specified in the constructor. The clusters are generated in the order they were registered and the vector containing the clusters will be cleared after the generation
@@ -42,5 +43,5 @@ public:
 
 private:
     ParticleContainer& container; /**< The container to store the particles in */
-    std::vector<CuboidParticleCluster> clusters; /**< The clusters to generate */
+    std::vector<std::unique_ptr<ParticleCluster>> clusters; /**< The clusters to generate */
 };

@@ -1,11 +1,10 @@
 
-#include "models/Particle.h"
-#include <vector>
+#include "generators/ParticleCluster.h"
 
 /**
  * @brief A class to model a cluster of particles in the shape of a cuboid, see ParticleCluster
  */
-class CuboidParticleCluster {
+class CuboidParticleCluster : public ParticleCluster {
 public:
     /**
      * @brief Constructor for the CuboidParticleCluster class
@@ -36,28 +35,23 @@ public:
      * @return The total number of particles in the cluster i.e. numParticlesWidth *
      * numParticlesHeight * numParticlesDepth
      */
-    size_t getTotalNumberOfParticles() const;
+    size_t getTotalNumberOfParticles() const override;
     /**
      * @brief Generate the cluster of particles
      * @param particles The vector to insert the particles into
      * @param insertionIndex The index to start inserting the particles at (will be incremented)
      * @return void
      */
-    void generateCluster(std::vector<Particle>& particles, size_t& insertionIndex) const;
+    void generateCluster(std::vector<Particle>& particles, size_t& insertionIndex) const override;
     /**
      * @brief Get a string representation of the cluster
      * @return A string representation of the cluster
      */
-    std::string toString() const;
+    std::string toString() const override;
 
 protected:
     int numParticlesWidth; /**< The number of particles in the width of the cuboid (x) */
     int numParticlesHeight; /**< The number of particles in the height of the cuboid (y) */
     int numParticlesDepth; /**< The number of particles in the depth of the cuboid (z) */
     double spacing; /**< The spacing between the particles */
-    std::array<double, 3> origin; /**< The origin of the cluster */
-    double mass; /**< The mass of the particles in the cluster */
-    std::array<double, 3> initialVelocity; /**< The initial velocity of the particles in the cluster */
-    double meanVelocity; /**< The mean velocity of the particles in the cluster */
-    size_t dimensions; /**< The dimensions of the cluster */
 };

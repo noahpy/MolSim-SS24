@@ -1,25 +1,24 @@
 
 #include "ParticleGenerator.h"
-#include "utils/ArrayUtils.h"
 #include <spdlog/spdlog.h>
 
 ParticleGenerator::ParticleGenerator(ParticleContainer& container)
     : container(container)
-    , clusters(std::vector<CuboidParticleCluster> {})
+    , clusters(std::vector<std::unique_ptr<ParticleCluster>> {})
 {
 }
 
-void ParticleGenerator::registerCluster(const CuboidParticleCluster& cluster)
+void ParticleGenerator::registerCluster(std::unique_ptr<ParticleCluster> cluster)
 {
-    clusters.push_back(cluster);
-    spdlog::info("Registered cluster: {}", cluster.toString());
+    clusters.push_back(std::move(cluster));
+    spdlog::info("Registered cluster: {}", clusters.back()->toString());
 }
 
 void ParticleGenerator::generateClusters()
 {
     size_t totalParticles = 0;
     for (const auto& cluster : clusters) {
-        totalParticles += cluster.getTotalNumberOfParticles();
+        totalParticles += cluster->getTotalNumberOfParticles();
     }
 
     spdlog::info("Generating {} particles", totalParticles);
@@ -27,7 +26,7 @@ void ParticleGenerator::generateClusters()
     std::vector<Particle> particles(totalParticles);
     size_t insertionIndex = 0;
     for (const auto& cluster : clusters) {
-        cluster.generateCluster(particles, insertionIndex);
+        cluster->generateCluster(particles, insertionIndex);
     }
 
     // Set the particles in the container

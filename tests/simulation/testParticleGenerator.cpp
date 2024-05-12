@@ -46,7 +46,7 @@ protected:
             initialVelocity,
             meanVelocity,
             dimensions);
-        generator.registerCluster(cluster);
+        generator.registerCluster(std::make_unique<CuboidParticleCluster>(cluster));
         generator.generateClusters();
     }
 };

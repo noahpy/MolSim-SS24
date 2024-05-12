@@ -14,11 +14,7 @@ CuboidParticleCluster::CuboidParticleCluster(
     std::array<double, 3> initialVelocity,
     double meanVelocity,
     size_t dimensions)
-    : origin(origin)
-    , mass(mass)
-    , initialVelocity(initialVelocity)
-    , meanVelocity(meanVelocity)
-    , dimensions(dimensions)
+    : ParticleCluster(origin, mass, initialVelocity, meanVelocity, dimensions)
     , numParticlesWidth(numParticlesWidth)
     , numParticlesHeight(numParticlesHeight)
     , numParticlesDepth(numParticlesDepth)
