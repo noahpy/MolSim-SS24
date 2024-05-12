@@ -3,6 +3,7 @@
 #include "utils/ArrayUtils.h"
 #include "utils/MaxwellBoltzmannDistribution.h"
 #include <spdlog/spdlog.h>
+#include <sstream>
 
 CuboidParticleCluster::CuboidParticleCluster(
     std::array<double, 3> origin,
@@ -65,16 +66,16 @@ void CuboidParticleCluster::generateCluster(
 
 std::string CuboidParticleCluster::toString() const
 {
-    std::string str = "origin: " + std::to_string(origin[0]) + ", " + std::to_string(origin[1]) +
-                      ", " + std::to_string(origin[2]) + "; ";
-    str += "mass: " + std::to_string(mass) + "; ";
-    str += "initialVelocity: " + std::to_string(initialVelocity[0]) + ", " +
-           std::to_string(initialVelocity[1]) + ", " + std::to_string(initialVelocity[2]) + "; ";
-    str += "meanVelocity: " + std::to_string(meanVelocity) + "; ";
-    str += "dimensions: " + std::to_string(dimensions) + "; ";
-    str += "numParticlesWidth: " + std::to_string(numParticlesWidth) + "; ";
-    str += "numParticlesHeight: " + std::to_string(numParticlesHeight) + "; ";
-    str += "numParticlesDepth: " + std::to_string(numParticlesDepth) + "; ";
-    str += "spacing: " + std::to_string(spacing) + "; ";
-    return str;
+    std::ostringstream oss;
+    oss << "origin: " << origin[0] << ", " << origin[1] << ", " << origin[2] << "; ";
+    oss << "mass: " << mass << "; ";
+    oss << "initialVelocity: " << initialVelocity[0] << ", " << initialVelocity[1] << ", "
+        << initialVelocity[2] << "; ";
+    oss << "meanVelocity: " << meanVelocity << "; ";
+    oss << "dimensions: " << dimensions << "; ";
+    oss << "numParticlesWidth: " << numParticlesWidth << "; ";
+    oss << "numParticlesHeight: " << numParticlesHeight << "; ";
+    oss << "numParticlesDepth: " << numParticlesDepth << "; ";
+    oss << "spacing: " << spacing << "; ";
+    return oss.str();
 }

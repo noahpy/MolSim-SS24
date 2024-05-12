@@ -1,5 +1,5 @@
 
-#include "generators/ParticleGenerator.h"
+#include "models/generators/ParticleGenerator.h"
 #include "utils/ArrayUtils.h"
 #include <gtest/gtest.h>
 

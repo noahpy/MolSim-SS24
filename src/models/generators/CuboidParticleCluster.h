@@ -1,5 +1,5 @@
 
-#include "generators/ParticleCluster.h"
+#include "ParticleCluster.h"
 
 /**
  * @brief A class to model a cluster of particles in the shape of a cuboid, see ParticleCluster

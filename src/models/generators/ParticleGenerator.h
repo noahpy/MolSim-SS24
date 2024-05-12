@@ -1,6 +1,6 @@
 
+#include "CuboidParticleCluster.h"
 #include "models/ParticleContainer.h"
-#include "generators/CuboidParticleCluster.h"
 #include <memory>
 
 /**

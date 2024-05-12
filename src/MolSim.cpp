@@ -10,9 +10,8 @@
 #include "simulation/planetSim.h"
 #include "spdlog/spdlog.h"
 
-#include <cstdlib>
-#include <getopt.h>
-#include <iostream>
+#include "models/generators/ParticleGenerator.h"
+
 #include <string>
 
 // Main function
@@ -32,16 +31,26 @@ int main(int argc, char* argsv[])
     outputWriter::VTKWriter writer;
 
     // Intialize physics strategy
-    PhysicsStrategy strat { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };
+    PhysicsStrategy strat { location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones };
 
     // Intialize empty particle container
     ParticleContainer particles { {} };
 
     // Setup simulation
     PlanetSimulation sim { start_time, delta_t, end_time, particles, strat, writer, fileReader };
+    LennardJonesSimulation simLJ { start_time, delta_t, end_time, particles, strat, writer, fileReader , 5, 1};
+
+    CuboidParticleCluster cluster1 = CuboidParticleCluster(std::array<double, 3> {0,0,0}, 40,8,1, 1.1225, 1, std::array<double, 3> {0,0,0}, 0.1, 2);
+    CuboidParticleCluster cluster2 = CuboidParticleCluster(std::array<double, 3> {15,15,0}, 8,8,1, 1.1225, 1, std::array<double, 3> {0,-10,0}, 0.1, 2);
+
+    ParticleGenerator p = ParticleGenerator(simLJ.container);
+    p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster1));
+    p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster2));
+    p.generateClusters();
 
     // Run simulation
-    sim.runSim();
+    // sim.runSim();
+    simLJ.runSim();
 
     // inform user that output has been written
     spdlog::info("Output written. Terminating...");
