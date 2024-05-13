@@ -3,10 +3,15 @@ MolSim Group F
 
 ![Testing workflow](https://github.com/noahpy/MolSim-SS24/actions/workflows/tests.yaml/badge.svg)
 
+The molecular dynamics SS24 code base of Group F.  
+You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSim-SS24/](https://noahpy.github.io/MolSim-SS24/).
+
+
 ## Group members
 - [Noah Schlenker](https://github.com/noahpy)
 - [Jimin Kim](https://github.com/jimin31)
 - [Christian Nix](https://github.com/Chryzl)
+
 
 ## Build instructions
 To build the project, run the following commands:
@@ -57,7 +62,7 @@ to format the code.
 
 ## Project structure
 The project is structured as follows:
-![Project structure UML](report/report1/res/strategy_long.png)
+![Project structure UML](docs/report/report1/res/strategy_long.png)
 Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
 
 **`Simulation`**
@@ -76,12 +81,18 @@ Note that this is not a perfect UML diagram, but rather a visualization of the b
 - Template method class defining a common interface of different readers
 - Currently not abstract yet, as only one reader is existant
 
+**`ParticleCluster`**
+- Represents a cluster of particles that can be used to initialize the simulation
+- Based on an abstract `ParticleCluster` class
+- Child classes include e.g. `CuboidParticleCluster` used in problem sheet 2
+
 ## Folder structure
 This section describes the folder strcuture of this project:
 - `tests`: tests of the project 
 - `src`: source files of the project
 - `src/io`: all source files relating to I/O
 - `src/models`: all source files relating to classes representing parts of the model
+  -  `src/models/generators`: all source files related to generating initial particle clusters
 - `src/physics`: all source files relating to physical calculations
 - `src/simulation`: all source files relating to the `Simlation` class
 - `src/MolSim.cpp`: source file holding main function

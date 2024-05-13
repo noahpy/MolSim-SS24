@@ -3,6 +3,7 @@
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
 #include <iostream>
+#include <spdlog/spdlog.h>
 
 PlanetSimulation::PlanetSimulation(
     double time,
@@ -27,7 +28,7 @@ void PlanetSimulation::runSim()
         if (iteration % 10 == 0) {
             writer.plotParticles(*this);
         }
-        std::cout << "Iteration " << iteration << " finished." << std::endl;
+        spdlog::debug("Iteration: {}", iteration);
 
         time += delta_t;
     }
