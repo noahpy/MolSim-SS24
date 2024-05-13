@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\title{Scientific Computing - Molecular dynamics \\ Group F}
+\newcommand{\subtitle}{Problem sheet 2}
+\author{
+    Jimin Kim \\
+    Christian Nix \\
+    Noah Schlenker
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \LARGE \subtitle{}
+\end{center}
+
+\section{Pull request}
+The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/10}{here}.
+
+\section{Unit Tests}
+
+\begin{itemize}
+    \item We already successfully implemented \verb|gtest| in the previous assignment, providing a robust foundation for subsequent testing enhancements.
+    \item Integration of \verb|gtest| through CMake is managed within its dedicated CMake module, reinforcing a decentralized and modular system architecture.
+    \item The system verifies the presence of \verb|gtest| before attempting to fetch the library via CMake.
+    \item Building upon the tests included in the previous assignment, the additions for this iteration solely encompass tests for the force calculation via the Lennard-Jones potential and the particle generator functionality.
+    \item The tests for the Lennard-Jones force calculation perform direct verification of computational accuracy (see \texttt{tests/physics/testForceLJ.cpp}).
+    \item Tests for the particle generator validate the structural integrity of generated cuboids and the properties of contained particles \newline(see \texttt{tests/simulation/testParticleGenerator.cpp}).
+\end{itemize}
+
+\section{Realization of Continuous Integration}
+
+\begin{itemize}
+    \item We implemented CI through Docker, ensuring a consistent and isolated environment for all integration and testing processes.
+    \item We utilized `nektos/act`, a tool that simulates GitHub Actions locally, allowing us to validate workflows before pushing to the repository.
+    \item The CI pipeline was expanded to include dynamic analysis with the GCC `-fsanitize=address` flag and integrated unit tests within the CI pipeline to verify that all tests pass before any code merges into the master or 'assignment{number}' branches, enhancing code reliability.
+    \item Branch protection rules were successfully configured, ensuring no direct pushes can occur and all merges require successful CI checks and pull-request reviews.
+\end{itemize}
+
+\section{Logging Configuration via spdlog}
+
+\begin{itemize}
+    \item Consistent with our approach for integrating \verb|gtest|, \verb|spdlog| was incorporated using a CMake module, including a pre-fetch check to ensure its availability before fetching it via CMake.
+    \item We opted to utilize logging macros provided by \verb|spdlog| due to their compile-time advantages, which allow the exclusion of logging code during compilation, thus enhancing performance.
+    \item The logging level can be dynamically adjusted via the command-line option \texttt{-l}, facilitating the ease of toggling between different logging levels according to the needs of runtime diagnostics.
+\end{itemize}
+
+
+
+\end{document}
