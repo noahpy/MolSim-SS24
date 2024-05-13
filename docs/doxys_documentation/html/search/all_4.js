@@ -13,10 +13,11 @@ var searchData=
   ['decimal_10',['decimal',['../namespacexml__schema.html#a69bfaf24f63a8c18ebd8e21db6b343df',1,'xml_schema']]],
   ['delta_5ft_11',['delta_t',['../classSimulation.html#a3b20666c1d68ccda6afcdece22787224',1,'Simulation']]],
   ['diagnostics_12',['diagnostics',['../namespacexml__schema.html#adfca1b9e214214edf0e6c3ce95f87465',1,'xml_schema']]],
-  ['documentation_13',['Generate Doxygen documentation',['../index.html#autotoc_md3',1,'']]],
-  ['dotproduct_14',['DotProduct',['../namespaceArrayUtils.html#a935b6bf37aaf1221dc8e89861ab863a5',1,'ArrayUtils']]],
-  ['double_5f_15',['double_',['../namespacexml__schema.html#aac2d3d3483d3a20e8d96d2e8e5b3a470',1,'xml_schema']]],
-  ['doxygen_20documentation_16',['Generate Doxygen documentation',['../index.html#autotoc_md3',1,'']]],
-  ['duplicate_5fid_17',['duplicate_id',['../namespacexml__schema.html#ac64e07e653ba3e59be9e286755ba3fea',1,'xml_schema']]],
-  ['duration_18',['duration',['../namespacexml__schema.html#add60070e78c029882cfb717389b480a2',1,'xml_schema']]]
+  ['dimensions_13',['dimensions',['../classParticleCluster.html#ae0153111f3bfe2b3221153c46245d28f',1,'ParticleCluster']]],
+  ['documentation_14',['Generate Doxygen documentation',['../index.html#autotoc_md3',1,'']]],
+  ['dotproduct_15',['DotProduct',['../namespaceArrayUtils.html#a935b6bf37aaf1221dc8e89861ab863a5',1,'ArrayUtils']]],
+  ['double_5f_16',['double_',['../namespacexml__schema.html#aac2d3d3483d3a20e8d96d2e8e5b3a470',1,'xml_schema']]],
+  ['doxygen_20documentation_17',['Generate Doxygen documentation',['../index.html#autotoc_md3',1,'']]],
+  ['duplicate_5fid_18',['duplicate_id',['../namespacexml__schema.html#ac64e07e653ba3e59be9e286755ba3fea',1,'xml_schema']]],
+  ['duration_19',['duration',['../namespacexml__schema.html#add60070e78c029882cfb717389b480a2',1,'xml_schema']]]
 ];

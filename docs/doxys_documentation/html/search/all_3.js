@@ -9,7 +9,11 @@ var searchData=
   ['cells_6',['Cells',['../classCells.html',1,'Cells'],['../classPieceUnstructuredGrid__t.html#ae00ada2b3ebb0e98bf56b3673d61d1a9',1,'PieceUnstructuredGrid_t::Cells() const'],['../classPieceUnstructuredGrid__t.html#a49e65eacff6577cd353fa15a09febf86',1,'PieceUnstructuredGrid_t::Cells()'],['../classPieceUnstructuredGrid__t.html#a366f0cff854ef350eb1be9da22df6d14',1,'PieceUnstructuredGrid_t::Cells(const Cells_type &amp;x)'],['../classPieceUnstructuredGrid__t.html#af45bb840ff71549e6728d774d1e36048',1,'PieceUnstructuredGrid_t::Cells(::std::unique_ptr&lt; Cells_type &gt; p)'],['../classCells.html#a092d62bc15648a54755a413dbf9a2db0',1,'Cells::Cells()'],['../classCells.html#af1a07200b66d04cdae42c6ff67b0a8cb',1,'Cells::Cells(const ::xercesc::DOMElement &amp;e, ::xml_schema::flags f=0, ::xml_schema::container *c=0)'],['../classCells.html#aedddde8d9dc624b426b0d60a12d0009a',1,'Cells::Cells(const Cells &amp;x, ::xml_schema::flags f=0, ::xml_schema::container *c=0)']]],
   ['cells_5ftraits_7',['Cells_traits',['../classPieceUnstructuredGrid__t.html#a01bda67f5e41fd4bd7eea49c3c5e2989',1,'PieceUnstructuredGrid_t']]],
   ['cells_5ftype_8',['Cells_type',['../classPieceUnstructuredGrid__t.html#aca1ec38eff08bde0cd115c54dbb7a20f',1,'PieceUnstructuredGrid_t']]],
-  ['code_9',['Format code',['../index.html#autotoc_md5',1,'']]],
-  ['container_10',['container',['../classSimulation.html#a40d5374878745375d1112892ca47290c',1,'Simulation::container'],['../namespacexml__schema.html#a395f5179c5fc4643909d66e9ff28d8ca',1,'xml_schema::container']]],
-  ['content_5forder_11',['content_order',['../namespacexml__schema.html#abfdaa1799f19fad815c6760100da8f8d',1,'xml_schema']]]
+  ['clusters_9',['clusters',['../classParticleGenerator.html#a2904f5b8a5bae25f3c9d378d07c22793',1,'ParticleGenerator']]],
+  ['code_10',['Format code',['../index.html#autotoc_md5',1,'']]],
+  ['container_11',['container',['../classParticleGenerator.html#a20c5546328fde02b7cc84194c5a53a23',1,'ParticleGenerator::container'],['../classSimulation.html#a40d5374878745375d1112892ca47290c',1,'Simulation::container'],['../namespacexml__schema.html#a395f5179c5fc4643909d66e9ff28d8ca',1,'xml_schema::container']]],
+  ['content_5forder_12',['content_order',['../namespacexml__schema.html#abfdaa1799f19fad815c6760100da8f8d',1,'xml_schema']]],
+  ['cuboidparticlecluster_13',['CuboidParticleCluster',['../classCuboidParticleCluster.html',1,'CuboidParticleCluster'],['../classCuboidParticleCluster.html#a962f0c7bbf8c90d8d621f17083db647d',1,'CuboidParticleCluster::CuboidParticleCluster()']]],
+  ['cuboidparticlecluster_2ecpp_14',['CuboidParticleCluster.cpp',['../CuboidParticleCluster_8cpp.html',1,'']]],
+  ['cuboidparticlecluster_2eh_15',['CuboidParticleCluster.h',['../CuboidParticleCluster_8h.html',1,'']]]
 ];

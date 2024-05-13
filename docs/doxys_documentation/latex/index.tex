@@ -4,7 +4,10 @@
 \Hypertarget{index_md_README}%
 
 
-\hypertarget{index_autotoc_md0}{}\doxysection{\texorpdfstring{Group members}{Group members}}\label{index_autotoc_md0}
+
+
+The molecular dynamics SS24 code base of Group F. ~\newline
+ You can find the doxygen documentation hosted on \href{https://noahpy.github.io/MolSim-SS24/}{\texttt{ https\+://noahpy.\+github.\+io/\+Mol\+Sim-\/\+SS24/}}.\hypertarget{index_autotoc_md0}{}\doxysection{\texorpdfstring{Group members}{Group members}}\label{index_autotoc_md0}
 
 \begin{DoxyItemize}
 \item \href{https://github.com/noahpy}{\texttt{ Noah Schlenker}}
@@ -87,6 +90,13 @@ The project is structured as follows\+:
 \begin{DoxyItemize}
 \item Template method class defining a common interface of different readers
 \item Currently not abstract yet, as only one reader is existant
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classParticleCluster}{Particle\+Cluster}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\begin{DoxyItemize}
+\item Represents a cluster of particles that can be used to initialize the simulation
+\item Based on an abstract {\ttfamily \doxylink{classParticleCluster}{Particle\+Cluster}} class
+\item Child classes include e.\+g. {\ttfamily \doxylink{classCuboidParticleCluster}{Cuboid\+Particle\+Cluster}} used in problem sheet 2
 \end{DoxyItemize}\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{Folder structure}{Folder structure}}\label{index_autotoc_md7}
 This section describes the folder strcuture of this project\+:
 \begin{DoxyItemize}
@@ -94,6 +104,9 @@ This section describes the folder strcuture of this project\+:
 \item {\ttfamily src}\+: source files of the project
 \item {\ttfamily src/io}\+: all source files relating to I/O
 \item {\ttfamily src/models}\+: all source files relating to classes representing parts of the model
+\begin{DoxyItemize}
+\item {\ttfamily src/models/generators}\+: all source files related to generating initial particle clusters
+\end{DoxyItemize}
 \item {\ttfamily src/physics}\+: all source files relating to physical calculations
 \item {\ttfamily src/simulation}\+: all source files relating to the {\ttfamily Simlation} class
 \item {\ttfamily \doxylink{MolSim_8cpp}{src/\+Mol\+Sim.\+cpp}}\+: source file holding main function 

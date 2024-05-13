@@ -76,6 +76,8 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <p><img src="https://github.com/noahpy/MolSim-SS24/actions/workflows/tests.yaml/badge.svg" alt="Testing workflow" style="pointer-events: none;" class="inline"/></p>
+<p>The molecular dynamics SS24 code base of Group F. <br  />
+ You can find the doxygen documentation hosted on <a href="https://noahpy.github.io/MolSim-SS24/">https://noahpy.github.io/MolSim-SS24/</a>.</p>
 <h1><a class="anchor" id="autotoc_md0"></a>
 Group members</h1>
 <ul>
@@ -125,13 +127,21 @@ Project structure</h1>
 <li>Template method class defining a common interface of different readers</li>
 <li>Currently not abstract yet, as only one reader is existant</li>
 </ul>
+<p>**<code><a class="el" href="classParticleCluster.html" title="An abstract class to model a cluster of particles.">ParticleCluster</a></code>**</p><ul>
+<li>Represents a cluster of particles that can be used to initialize the simulation</li>
+<li>Based on an abstract <code><a class="el" href="classParticleCluster.html" title="An abstract class to model a cluster of particles.">ParticleCluster</a></code> class</li>
+<li>Child classes include e.g. <code><a class="el" href="classCuboidParticleCluster.html" title="A class to model a cluster of particles in the shape of a cuboid, see ParticleCluster.">CuboidParticleCluster</a></code> used in problem sheet 2</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md7"></a>
 Folder structure</h1>
 <p>This section describes the folder strcuture of this project:</p><ul>
 <li><code>tests</code>: tests of the project</li>
 <li><code>src</code>: source files of the project</li>
 <li><code>src/io</code>: all source files relating to I/O</li>
-<li><code>src/models</code>: all source files relating to classes representing parts of the model</li>
+<li><code>src/models</code>: all source files relating to classes representing parts of the model<ul>
+<li><code>src/models/generators</code>: all source files related to generating initial particle clusters</li>
+</ul>
+</li>
 <li><code>src/physics</code>: all source files relating to physical calculations</li>
 <li><code>src/simulation</code>: all source files relating to the <code>Simlation</code> class</li>
 <li><code><a class="el" href="MolSim_8cpp.html">src/MolSim.cpp</a></code>: source file holding main function </li>

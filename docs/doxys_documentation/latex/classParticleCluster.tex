@@ -1,0 +1,179 @@
+\doxysection{Particle\+Cluster Class Reference}
+\hypertarget{classParticleCluster}{}\label{classParticleCluster}\index{ParticleCluster@{ParticleCluster}}
+
+
+An abstract class to model a cluster of particles.  
+
+
+
+
+{\ttfamily \#include $<$Particle\+Cluster.\+h$>$}
+
+Inheritance diagram for Particle\+Cluster\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classParticleCluster}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleCluster_a441dd67850571f3bc6d03fdc964dc1df}{Particle\+Cluster}} (std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}}, double \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}}, std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initial\+Velocity}}, double \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{mean\+Velocity}}, size\+\_\+t \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classParticleCluster_abeb65133a030f3c6c5708163dd2090c6}{\texorpdfstring{$\sim$}{\string~}\+Particle\+Cluster}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \mbox{\hyperlink{classParticleCluster_ac4f75cbf593129fb391ef0ca6c55dc2b}{get\+Total\+Number\+Of\+Particles}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the total number of particles in the cluster. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classParticleCluster_a89c4a884946202191e646f44a0a345da}{generate\+Cluster}} (std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&particles, size\+\_\+t \&insertion\+Index) const =0
+\begin{DoxyCompactList}\small\item\em Generate the cluster of particles. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classParticleCluster_a9427aeece5cd04430ef8fc2e849010ce}{to\+String}} () const =0
+\begin{DoxyCompactList}\small\item\em Get a string representation of the cluster. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}}
+\item 
+double \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initial\+Velocity}}
+\item 
+double \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{mean\+Velocity}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An abstract class to model a cluster of particles. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classParticleCluster_a441dd67850571f3bc6d03fdc964dc1df}\label{classParticleCluster_a441dd67850571f3bc6d03fdc964dc1df} 
+\index{ParticleCluster@{ParticleCluster}!ParticleCluster@{ParticleCluster}}
+\index{ParticleCluster@{ParticleCluster}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{ParticleCluster()}{ParticleCluster()}}
+{\footnotesize\ttfamily Particle\+Cluster\+::\+Particle\+Cluster (\begin{DoxyParamCaption}\item[{std\+::array$<$ double, 3 $>$}]{origin,  }\item[{double}]{mass,  }\item[{std\+::array$<$ double, 3 $>$}]{initial\+Velocity,  }\item[{double}]{mean\+Velocity,  }\item[{size\+\_\+t}]{dimensions }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & The origin of the cluster \\
+\hline
+{\em mass} & The mass of the particles \\
+\hline
+{\em initial\+Velocity} & The initial velocity of the particles \\
+\hline
+{\em mean\+Velocity} & The mean velocity of the particles \\
+\hline
+{\em dimensions} & The dimensions of the cluster (2 or 3). Will be passed to \doxylink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity()} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classParticleCluster_abeb65133a030f3c6c5708163dd2090c6}\label{classParticleCluster_abeb65133a030f3c6c5708163dd2090c6} 
+\index{ParticleCluster@{ParticleCluster}!````~ParticleCluster@{\texorpdfstring{$\sim$}{\string~}ParticleCluster}}
+\index{````~ParticleCluster@{\texorpdfstring{$\sim$}{\string~}ParticleCluster}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ParticleCluster()}{\string~ParticleCluster()}}
+{\footnotesize\ttfamily virtual Particle\+Cluster\+::\texorpdfstring{$\sim$}{\string~}\+Particle\+Cluster (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classParticleCluster_a89c4a884946202191e646f44a0a345da}\label{classParticleCluster_a89c4a884946202191e646f44a0a345da} 
+\index{ParticleCluster@{ParticleCluster}!generateCluster@{generateCluster}}
+\index{generateCluster@{generateCluster}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{generateCluster()}{generateCluster()}}
+{\footnotesize\ttfamily virtual void Particle\+Cluster\+::generate\+Cluster (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&}]{particles,  }\item[{size\+\_\+t \&}]{insertion\+Index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Generate the cluster of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & The vector to insert the particles into \\
+\hline
+{\em insertion\+Index} & The index to start inserting the particles at (will be incremented) \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCuboidParticleCluster_ac8629622c8f8ebde085fb519cfe1d343}{Cuboid\+Particle\+Cluster}}.
+
+\Hypertarget{classParticleCluster_ac4f75cbf593129fb391ef0ca6c55dc2b}\label{classParticleCluster_ac4f75cbf593129fb391ef0ca6c55dc2b} 
+\index{ParticleCluster@{ParticleCluster}!getTotalNumberOfParticles@{getTotalNumberOfParticles}}
+\index{getTotalNumberOfParticles@{getTotalNumberOfParticles}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{getTotalNumberOfParticles()}{getTotalNumberOfParticles()}}
+{\footnotesize\ttfamily virtual size\+\_\+t Particle\+Cluster\+::get\+Total\+Number\+Of\+Particles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the total number of particles in the cluster. 
+
+\begin{DoxyReturn}{Returns}
+The total number of particles in the cluster 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCuboidParticleCluster_aea57abe040a9679b2cb3e0a0456dc395}{Cuboid\+Particle\+Cluster}}.
+
+\Hypertarget{classParticleCluster_a9427aeece5cd04430ef8fc2e849010ce}\label{classParticleCluster_a9427aeece5cd04430ef8fc2e849010ce} 
+\index{ParticleCluster@{ParticleCluster}!toString@{toString}}
+\index{toString@{toString}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily virtual std\+::string Particle\+Cluster\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get a string representation of the cluster. 
+
+\begin{DoxyReturn}{Returns}
+The string representation of the cluster 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCuboidParticleCluster_a3d354998e031848be5d4f14c14058dec}{Cuboid\+Particle\+Cluster}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}\label{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f} 
+\index{ParticleCluster@{ParticleCluster}!dimensions@{dimensions}}
+\index{dimensions@{dimensions}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{dimensions}{dimensions}}
+{\footnotesize\ttfamily size\+\_\+t Particle\+Cluster\+::dimensions\hspace{0.3cm}{\ttfamily [protected]}}
+
+The dimensions of the cluster (2 or 3) \Hypertarget{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}\label{classParticleCluster_a02bda91a0d17077ece50fb50c4965311} 
+\index{ParticleCluster@{ParticleCluster}!initialVelocity@{initialVelocity}}
+\index{initialVelocity@{initialVelocity}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{initialVelocity}{initialVelocity}}
+{\footnotesize\ttfamily std\+::array$<$double, 3$>$ Particle\+Cluster\+::initial\+Velocity\hspace{0.3cm}{\ttfamily [protected]}}
+
+The initial velocity of the particles \Hypertarget{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}\label{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6} 
+\index{ParticleCluster@{ParticleCluster}!mass@{mass}}
+\index{mass@{mass}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{mass}{mass}}
+{\footnotesize\ttfamily double Particle\+Cluster\+::mass\hspace{0.3cm}{\ttfamily [protected]}}
+
+The mass of the particles \Hypertarget{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}\label{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8} 
+\index{ParticleCluster@{ParticleCluster}!meanVelocity@{meanVelocity}}
+\index{meanVelocity@{meanVelocity}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{meanVelocity}{meanVelocity}}
+{\footnotesize\ttfamily double Particle\+Cluster\+::mean\+Velocity\hspace{0.3cm}{\ttfamily [protected]}}
+
+The mean velocity of the particles \Hypertarget{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}\label{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b} 
+\index{ParticleCluster@{ParticleCluster}!origin@{origin}}
+\index{origin@{origin}!ParticleCluster@{ParticleCluster}}
+\doxysubsubsection{\texorpdfstring{origin}{origin}}
+{\footnotesize\ttfamily std\+::array$<$double, 3$>$ Particle\+Cluster\+::origin\hspace{0.3cm}{\ttfamily [protected]}}
+
+The origin of the cluster 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/generators/\mbox{\hyperlink{ParticleCluster_8h}{Particle\+Cluster.\+h}}\item 
+src/models/generators/\mbox{\hyperlink{ParticleCluster_8cpp}{Particle\+Cluster.\+cpp}}\end{DoxyCompactItemize}
