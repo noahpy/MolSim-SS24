@@ -1,5 +1,5 @@
 
-#include "io/fileReader/FileReader.h"
+#include "io/fileReader/emptyReader.h"
 #include "io/fileWriter/VTKWriter.h"
 #include "models/Particle.h"
 #include "physics/forceCal/forceCal.h"
@@ -10,19 +10,14 @@
 #include <cmath>
 #include <gtest/gtest.h>
 
-class EmptyFileReader : public FileReader {
-    using FileReader::FileReader;
-    void readFile(Simulation& sim) override {}
-};
-
 class calcForceLJTest : public ::testing::Test {
 protected:
     double start_time;
     double end_time;
     double delta_t;
     double PRESICION = 10e-5;
-    EmptyFileReader fileReader;
-    outputWriter::VTKWriter writer;
+    std::unique_ptr<EmptyFileReader> fileReader;
+    std::unique_ptr<outputWriter::VTKWriter> writer;
     PhysicsStrategy strat;
     ParticleContainer particles;
 
@@ -30,8 +25,8 @@ protected:
         : start_time(0)
         , end_time(1000)
         , delta_t(0.014)
-        , fileReader("")
-        , writer()
+        , fileReader(std::make_unique<EmptyFileReader>(""))
+        , writer(std::make_unique<outputWriter::VTKWriter>())
         , strat { location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones }
         , particles { {} }
     {
@@ -56,7 +51,15 @@ TEST_F(calcForceLJTest, calcForceLJNormed)
     double sigma = 1;
 
     LennardJonesSimulation sim(
-        start_time, delta_t, end_time, particles, strat, writer, fileReader, epsilon, sigma);
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        epsilon,
+        sigma);
 
     particles.particles = { p1, p2, p3 };
 
@@ -92,7 +95,15 @@ TEST_F(calcForceLJTest, calcForceLJEquilibrium)
     double sigma = 0.8908987181403393;
 
     LennardJonesSimulation sim(
-        start_time, delta_t, end_time, particles, strat, writer, fileReader, epsilon, sigma);
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        epsilon,
+        sigma);
 
     particles.particles = { p1, p2, p3 };
 
@@ -127,7 +138,15 @@ TEST_F(calcForceLJTest, calcForceLJUnNormed)
     std::array<std::array<double, 3>, 3> expectedFs = { p1F, p2F, p3F };
 
     LennardJonesSimulation sim(
-        start_time, delta_t, end_time, particles, strat, writer, fileReader, epsilon, sigma);
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        epsilon,
+        sigma);
 
     particles.particles = { p1, p2, p3 };
 
