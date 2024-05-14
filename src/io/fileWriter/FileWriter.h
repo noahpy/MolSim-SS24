@@ -18,4 +18,7 @@ public:
      * @brief The name of the output file
      */
     std::string out_name = "MD_vtk";
+
+
+    virtual ~FileWriter() = default;
 };

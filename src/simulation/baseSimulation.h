@@ -49,6 +49,8 @@ public:
     unsigned iteration = 0; /**< The current iteration of the simulation */
     ParticleContainer& container; /**< The particle container which holds all particles */
 
+    virtual ~Simulation() = default;
+
 protected:
     PhysicsStrategy& strategy; /**< The strategy which is used to calculate the physics */
     std::unique_ptr<FileWriter> writer; /**< The output writer */
