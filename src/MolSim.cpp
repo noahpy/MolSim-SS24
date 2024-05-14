@@ -1,7 +1,7 @@
 
 #include "io/argparse/argparse.h"
 #include "io/fileReader/readerFactory.h"
-#include "io/fileWriter/VTKWriter.h"
+#include "io/fileWriter/writerFactory.h"
 #include "models/ParticleContainer.h"
 #include "physics/stratFactory.h"
 #include "physics/strategy.h"
@@ -41,7 +41,7 @@ int main(int argc, char* argsv[])
     auto readPointer = readerFactory(input_file, reader_type);
 
     // Initialize writer
-    auto writePointer = std::make_unique<outputWriter::VTKWriter>();
+    auto writePointer = writerFactory(writer_type);
 
     // Intialize physics strategy
     PhysicsStrategy strat = stratFactory(simulation_type);

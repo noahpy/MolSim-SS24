@@ -125,7 +125,7 @@ void argparse(
                                             { 0, 0, 0, 0 } };
 
     int opt;
-    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:", long_options, NULL)) != -1) {
+    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:", long_options, NULL)) != -1) {
         switch (opt) {
         case 'd':
             convertToDouble(optarg, delta_t);
