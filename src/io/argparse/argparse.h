@@ -11,6 +11,7 @@
  * @param sigma The zero-crossing of LJ potential
  * @param input The input file name to load the data from
  * @param reader_type Type specification of the FileReader
+ * @param writer_type Type specification of the FileWriter 
  * @param simulation_type Type specification of the Simulation
  * @return void, will set the values of end_time, delta_t, and input
  */

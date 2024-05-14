@@ -49,6 +49,9 @@ public:
     unsigned iteration = 0; /**< The current iteration of the simulation */
     ParticleContainer& container; /**< The particle container which holds all particles */
 
+    /*
+     * @brief Destructor of Simulation
+     * */
     virtual ~Simulation() = default;
 
 protected:
