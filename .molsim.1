@@ -1,0 +1,125 @@
+
+.\" Manpage for MolSim 
+.TH man 1 "14 May 2024" "1.0" "MolSim man page"
+.SH NAME
+MolSim \- Particle dynamics simulation
+
+.SH SYNOPSIS
+MolSim [OPTIONS] FILE
+
+
+.SH DESCRIPTION
+MolSim is a particle simulation program created for the PSE Molecular Dynamics course at TUM. It reads particle information from FILE, simulates particle dynamics, and outputs results in VTK format.
+
+
+.SH OPTIONS
+.TP
+\fB-d, --delta_t=VALUE\fR
+Set the time step (default: 0.014).
+.TP
+\fB-e, --end_time=VALUE\fR
+Set the end time for simulation (default: 0.28).
+.TP
+\fB--epsilon=VALUE\fR
+Set the depth of LJ potential well (default: 5).
+.TP
+\fB--sigma=VALUE\fR
+Set the Zero crossing of LJ potential (default: 1).
+.TP
+\fB-l, --log_level=LEVEL\fR
+Set the logging level (default: 3).
+.br
+The loglevel are set as following:
+.br
+.br
+1=trace, 
+2=debug, 
+3=info, 
+4=warn, 
+5=err, 
+6=critical, 
+7=off
+.br
+.TP
+\fB-c\fR
+Specify that the given input file describes clusters.
+.br
+For the format of the input file, refer to the \fBINPUT FILE\fR section.
+.br
+.TP
+\fB-s, --simtype=VALUE\fR
+Specify simulation type (default: 0).
+.br
+0 = PlanetSimulation
+.br
+.br
+1 = LennardJonesSimulation
+.br
+.TP
+\fB-w, --writetype=VALUE\fR
+Specify writer type (default: 0).
+.br
+0 = VTKWriter
+.br
+.br
+1 = XYZWriter
+.br
+.TP
+\fB-h, --help\fR
+Display help message.
+
+.SH INPUT FILE
+MolSim supports two types of input file formats:
+
+\fBParticle Input Format\fR:
+.br
+This format is used for providing particle data directly.
+The file starts with optional comment lines denoted by '#' at the beginning of each line.
+The first non-comment line must be an integer indicating the number of particle data sets.
+Then, every following line specifies a particle.
+Each line of particle consists of these parameters in order, seperated by spaces.
+.br
+- XYZ coordinates (3 double values)
+.br
+- Velocities (2 or 3 double values)
+.br
+- Mass (1 double value)
+
+\fBCluster Format\fR:
+.br
+This format is used for specifying clusters.
+The file starts with optional comment lines denoted by '#' at the beginning of each line.
+Each line specifies a cluster with the first character indicating the cluster type followed by parameters separated by spaces.
+These parameters depend on the cluster type.
+.br
+.br
+
+.br
+Cuboid Cluster:
+.br
+- 'C' for cuboid
+.br
+- Position in x, y, z directions (3 double values)
+.br
+- Width, height, depth of the cluster (3 double values)
+.br
+- Spacing between particles (1 double value)
+.br
+- Mass of the particles (1 double value)
+.br
+- Brownian mean velocity  (1 double value)
+.br
+- Velocity in x, y, z directions (3 double values)
+.br
+- Dimensionality (1 integer value)
+
+.SH BUGS
+No known bugs.
+
+
+.SH AUTHORS
+Jimin Kim
+.br
+Noah Schlenker 
+.br
+Christian Nix
