@@ -60,22 +60,22 @@ protected:
 };
 
 // Compare force caluculation between the two functions
-/* TEST_F(calcForceTest, CompareNaiiveV2) */
-/* { */
-/*     while (simA.time < simA.end_time) { */
-/*         // do one step of the simulation */
-/*         force_gravity(simA); */
-/*         force_gravity_V2(simB); */
+TEST_F(calcForceTest, CompareNaiiveV2)
+{
+    while (simA.time < simA.end_time) {
+        // do one step of the simulation
+        force_gravity(simA);
+        force_gravity_V2(simB);
 
-/*         for (size_t i = 0; i < simA.container.particles.size(); i++) { */
-/*             Particle& pA = simA.container.particles[i]; */
-/*             Particle& pB = simB.container.particles[i]; */
-/*             for (size_t j = 0; j < 3; j++) { */
-/*                 // check if every component is the same */
-/*                 ASSERT_NEAR(pA.getF()[j], pB.getF()[j], 1e-6); */
-/*             } */
-/*         } */
+        for (size_t i = 0; i < simA.container.particles.size(); i++) {
+            Particle& pA = simA.container.particles[i];
+            Particle& pB = simB.container.particles[i];
+            for (size_t j = 0; j < 3; j++) {
+                // check if every component is the same
+                ASSERT_NEAR(pA.getF()[j], pB.getF()[j], 1e-6);
+            }
+        }
 
-/*         simA.time += simA.delta_t; */
-/*     } */
-/* } */
+        simA.time += simA.delta_t;
+    }
+}
