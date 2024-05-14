@@ -43,7 +43,7 @@ public:
      */
     virtual void readFile(Simulation& sim);
 
-private:
+protected:
     /**
      * @brief The name of the file to read
      */
