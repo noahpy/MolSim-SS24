@@ -26,7 +26,7 @@ public:
      * @brief Destroy the FileReader object
      * @return void
      */
-    virtual ~FileReader() = default;
+    virtual ~FileReader();
 
     /**
      * @brief Read a file and store the data in a ParticleContainer
