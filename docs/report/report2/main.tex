@@ -35,6 +35,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
 
 \section{Unit Tests}
 \label{sec:ut}
+
 \begin{itemize}
     \item We already successfully implemented \verb|gtest| in the previous assignment, providing a robust foundation for subsequent testing enhancements.
     \item Integration of \verb|gtest| through CMake is managed within its dedicated CMake module, reinforcing a decentralized and modular system architecture.
@@ -46,6 +47,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
 
 \section{Realization of Continuous Integration}
 \label{sec:ci}
+
 \begin{itemize}
     \item We implemented CI through Docker, ensuring a consistent and isolated environment for all integration and testing processes.
     \item We utilized `nektos/act`, a tool that simulates GitHub Actions locally, allowing us to validate workflows before pushing to the repository.
@@ -55,6 +57,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
 
 \section{Logging Configuration via spdlog}
 \label{sec:spd}
+
 \begin{itemize}
     \item In alignment with our methodology for integrating \verb|gtest|, \verb|spdlog| was incorporated using a CMake module, including a pre-fetch check to ensure its availability before fetching it via CMake.
     \item We opted to utilize the functions provided by \verb|spdlog|, favoring their type safety and straightforward integration, which aids in more explicit and clear code management and debugging. This approach ensures that each logging call is checked at runtime, maintaining flexibility while slightly increasing overhead.
@@ -75,6 +78,14 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
     \item Additionally, a factory function was included to facilitate switching between \texttt{xyz} and \texttt{vtk} file writers, enhancing our output flexibility.
 \end{itemize}
 
+\subsection{Simulation Expansion}
+\label{subsec:sim}
+
+\begin{itemize}
+    \item The simulation for using the Lennard-Jones-potential was included.
+    \item We included a factory function for the simulations that allows for interchangeable scenarios.
+\end{itemize}
+
 \subsection{Additional Arguments for the Program}
 \label{subsec:arg}
 
@@ -88,6 +99,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
 
 \section{Inclusion of Man page}
 \label{sec:man}
+
 \begin{itemize}
     \item We included a man page, which can be accessed by executing the command \texttt{man ./molsim.1} from the root directory of the project.
     \item It includes more specified details for the input formats and the functionalities of our program.
