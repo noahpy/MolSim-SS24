@@ -18,4 +18,10 @@ public:
      * @brief The name of the output file
      */
     std::string out_name = "MD_vtk";
+
+
+    /*
+     * @brief Destructor of FileWriter
+     * */
+    virtual ~FileWriter() = default;
 };

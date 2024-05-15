@@ -9,16 +9,16 @@ Simulation::Simulation(
     double end_time,
     ParticleContainer& container,
     PhysicsStrategy& strat,
-    FileWriter& writer,
-    FileReader& reader)
+    std::unique_ptr<FileWriter> writer,
+    std::unique_ptr<FileReader> reader)
     : time(time)
     , delta_t(delta_t)
     , end_time(end_time)
     , container(container)
     , strategy(strat)
-    , writer(writer)
-    , reader(reader)
+    , writer(std::move(writer))
+    , reader(std::move(reader))
 {
     // read simulation parameter from file
-    reader.readFile(*this);
+    this->reader->readFile(*this);
 }

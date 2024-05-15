@@ -1,25 +1,28 @@
 
 #include "lennardJonesSim.h"
-#include "physics/strategy.h"
 #include "io/fileWriter/FileWriter.h"
+#include "io/fileReader/FileReader.h"
+#include "physics/strategy.h"
 #include <cmath>
 #include <spdlog/spdlog.h>
 
-LennardJonesSimulation::LennardJonesSimulation(double time,
-                                               double delta_t,
-                                               double end_time,
-                                               ParticleContainer &container,
-                                               PhysicsStrategy &strat,
-                                               FileWriter &writer,
-                                               FileReader &reader,
-                                               double epsilon,
-                                               double sigma) : Simulation(time, delta_t, end_time, container, strat, writer, reader),
-                                               epsilon(epsilon),
-                                               sigma(sigma)
+LennardJonesSimulation::LennardJonesSimulation(
+    double time,
+    double delta_t,
+    double end_time,
+    ParticleContainer& container,
+    PhysicsStrategy& strat,
+    std::unique_ptr<FileWriter> writer,
+    std::unique_ptr<FileReader> reader,
+    double epsilon,
+    double sigma)
+    : Simulation(time, delta_t, end_time, container, strat, std::move(writer), std::move(reader))
+    , epsilon(epsilon)
+    , sigma(sigma)
 {
     this->alpha = -24 * epsilon;
     this->beta = std::pow(sigma, 6);
-    this->gamma = -2 * std::pow(sigma,12);
+    this->gamma = -2 * std::pow(sigma, 12);
 }
 
 void LennardJonesSimulation::runSim()
@@ -31,7 +34,7 @@ void LennardJonesSimulation::runSim()
 
         ++iteration;
         if (iteration % 10 == 0) {
-            writer.plotParticles(*this);
+            writer->plotParticles(*this);
         }
         spdlog::debug("Iteration {} finished.", iteration);
 
