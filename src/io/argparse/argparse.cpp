@@ -19,7 +19,7 @@ void printHelp(std::string progName)
               << std::endl
               << "Options:" << std::endl
               << "  -d, --delta_t=VALUE    Set the time step (default: 0.014)" << std::endl
-              << "  -e, --end_time=VALUE   Set the end time for simulation (default: 0.28)"
+              << "  -e, --end_time=VALUE   Set the end time for simulation (default: 2.8)"
               << std::endl
               << "      --epsilon=VALUE    Set the depth of LJ potential well (default: 5)"
               << std::endl
@@ -27,7 +27,8 @@ void printHelp(std::string progName)
               << std::endl
               << "  -l, --log_level=LEVEL  Set the logging level (default: 3)" << std::endl
               << "  -c                     Specify that the given input file describes clusters "
-                 "(see man page)"
+              << std::endl
+              << "  -a                     Specify that the given input file is of type ascii art"
               << std::endl
               << "  -s, --simtype=VALUE    Specify simulation type (default: 0)" << std::endl
               << "  -w, --writetype=VALUE  Specify writer type (default: 0)" << std::endl

@@ -1,21 +1,27 @@
 
 #include "io/fileReader/asciiReader.h"
+#include "utils/ArrayUtils.h"
+#include "utils/MaxwellBoltzmannDistribution.h"
 #include <algorithm>
 #include <fstream>
-#include <iostream>
 #include <spdlog/spdlog.h>
 #include <sstream>
 
 void AsciiReader::readFile(Simulation& sim)
 {
-    std::cout << "Ascii!!" << std::endl;
     std::ifstream input_file(filename);
-    std::string line;
-
     if (!input_file.is_open()) {
         spdlog::error("Error: could not open file {}", filename);
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
+    while (readAscii(sim, input_file))
+        ;
+}
+
+bool AsciiReader::readAscii(Simulation& sim, std::ifstream& input_file)
+{
+    bool nextArt = false;
+    std::string line;
 
     // Read origin position
     double ox, oy, oz;
@@ -30,17 +36,16 @@ void AsciiReader::readFile(Simulation& sim)
     }
 
     // Read velocity
-    double vx, vy, vz, mass, spacing;
+    double vx, vy, vz, mass, spacing, meanVel;
     if (!std::getline(input_file, line)) {
-        spdlog::error("Could not read velocity!");
+        spdlog::error("Could not read parameters!");
         exit(EXIT_FAILURE);
     }
     std::istringstream parameter_stream(line);
-    if (!(parameter_stream >> vx >> vy >> vz >> mass >> spacing)) {
-        spdlog::error("Could not read velocity, mass, and spacing!");
+    if (!(parameter_stream >> vx >> vy >> vz >> mass >> spacing >> meanVel)) {
+        spdlog::error("Could not parse velocity, mass, spacing and meanVel!");
         exit(EXIT_FAILURE);
     }
-    std::cout << spacing << std::endl;
 
     // Read characters representing particles
     std::vector<char> particle_chars;
@@ -49,25 +54,40 @@ void AsciiReader::readFile(Simulation& sim)
         spdlog::error("Could not read particle characters!");
         exit(EXIT_FAILURE);
     }
-    std::cout << particle_chars_line << std::endl;
     std::istringstream particle_chars_stream(particle_chars_line);
     char c;
     while (particle_chars_stream >> c) {
         particle_chars.push_back(c);
     }
 
+    spdlog::info(
+        "Read Ascii cluster: Origin ({}, {}, {}); Velocity ({}, {}, {}); Mass({}); Particles({}); "
+        "Spacing({}); meanVel({})",
+        ox,
+        oy,
+        oz,
+        vx,
+        vy,
+        vz,
+        mass,
+        particle_chars_line,
+        spacing,
+        meanVel);
+
     // Read ASCII art
     std::vector<std::string> ascii_art;
     while (std::getline(input_file, line)) {
         if (!line.empty()) {
             ascii_art.push_back(line);
+        } else {
+            nextArt = true;
+            break;
         }
     }
 
     // Generate particles based on ASCII art
     for (size_t i = 0; i < ascii_art.size(); ++i) {
         const std::string& row = ascii_art[i];
-        std::cout << row << std::endl;
         for (size_t j = 0; j < row.size(); ++j) {
             char particle_char = row[j];
             // Check if character represents a particle
@@ -76,8 +96,12 @@ void AsciiReader::readFile(Simulation& sim)
                 double x = ox + j * spacing; // Calculate particle position
                 double y = oy - i * spacing; // Invert y-axis for ASCII art convention
                 double z = oz; // Assume particles are in the same plane
-                sim.container.addParticle({ { x, y, z }, { vx, vy, vz }, mass });
+                std::array<double, 3> initialVel { vx, vy, vz };
+                std::array<double, 3> velocity =
+                    initialVel + maxwellBoltzmannDistributedVelocity(meanVel, 2);
+                sim.container.addParticle({ { x, y, z }, velocity, mass });
             }
         }
     }
+    return nextArt;
 }
