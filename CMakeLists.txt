@@ -23,7 +23,9 @@ include(xerces)
 include(gtest)
 include(clang-format)
 include(spdlog)
+include(gbench)
 
 # add subdirectory
 add_subdirectory(src)
 add_subdirectory(tests)
+add_subdirectory(bench)

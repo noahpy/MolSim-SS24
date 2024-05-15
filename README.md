@@ -13,6 +13,7 @@ You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSi
     - [Run instructions](#run-instructions)
     - [Generate Doxygen documentation](#generate-doxygen-documentation)
     - [Run tests](#run-tests)
+    - [Run benchmarks](#run-benchmarks)
     - [Format code](#format-code)
     - [Open man page](#open-man-page)
 3. [Documentation](#documentation)
@@ -33,6 +34,11 @@ mkdir build && cd build
 cmake ..
 make
 ```
+To build without doxygen and benchmarks run
+```
+cmake .. -DGENERATE_DOC=OFF  -DBUILD_BENCH=OFF
+```
+instead.
 
 ### Run instructions
 To run the project, run the following command:
@@ -63,6 +69,18 @@ tests/tests
 Or alternatively with ctest:
 ```
 ctest --test-dir tests
+```
+
+### Run benchmarks 
+The benchmarks are run using [Google benchmark](https://github.com/google/benchmark).
+Build:
+```
+cd build
+make benchmarks
+```
+Run:
+```
+bench/benchmarks
 ```
 
 ### Format code
