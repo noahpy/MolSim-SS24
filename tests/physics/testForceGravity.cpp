@@ -28,7 +28,7 @@ protected:
     PlanetSimulation simB;
 
     calcForceTest()
-        : file("../input/eingabe-sonne.txt")
+        : file("../tests/data/eingabe-sonne.txt")
         , start_time(0)
         , end_time(1000)
         , delta_t(0.014)
