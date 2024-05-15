@@ -73,7 +73,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classFileReader-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">FileReader Class Reference</div></div>
 </div><!--header-->
@@ -83,6 +83,17 @@ $(function() {
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="FileReader_8h_source.html">FileReader.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for FileReader:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classFileReader.png" usemap="#FileReader_map" alt=""/>
+  <map id="FileReader_map" name="FileReader_map">
+<area href="classAsciiReader.html" alt="AsciiReader" shape="rect" coords="0,56,108,80"/>
+<area href="classClusterReader.html" title="A class for reading cluster data from a file." alt="ClusterReader" shape="rect" coords="118,56,226,80"/>
+<area href="classEmptyFileReader.html" title="A class for handling empty files." alt="EmptyFileReader" shape="rect" coords="236,56,344,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -99,8 +110,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7f33eef4ad8b47e67c2721eb9a3a8e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a file and store the data in a <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a>.  <br /></td></tr>
 <tr class="separator:a7f33eef4ad8b47e67c2721eb9a3a8e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:a2447d05b699d0eff1574c5d7fe66f8df" id="r_a2447d05b699d0eff1574c5d7fe66f8df"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2447d05b699d0eff1574c5d7fe66f8df">filename</a></td></tr>
 <tr class="memdesc:a2447d05b699d0eff1574c5d7fe66f8df"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the file to read.  <br /></td></tr>
 <tr class="separator:a2447d05b699d0eff1574c5d7fe66f8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,6 +237,8 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
+<p>Reimplemented in <a class="el" href="classAsciiReader.html#a8fadf7de4caa12a2ab0e74ada783e62b">AsciiReader</a>, <a class="el" href="classClusterReader.html#a65eab595a3b38a7ee17231a6595efa25">ClusterReader</a>, and <a class="el" href="classEmptyFileReader.html#a12faa2ffd74c326d6f2e970a1ccb1741">EmptyFileReader</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -244,7 +257,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

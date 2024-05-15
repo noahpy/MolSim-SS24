@@ -1,0 +1,31 @@
+\doxysection{src/io/file\+Writer/writer\+Factory.h File Reference}
+\hypertarget{writerFactory_8h}{}\label{writerFactory_8h}\index{src/io/fileWriter/writerFactory.h@{src/io/fileWriter/writerFactory.h}}
+{\ttfamily \#include "{}io/file\+Writer/\+File\+Writer.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{writerFactory_8h_ad4e7ade60cb2de0fa1cd05c691183cb6}{writer\+Factory}} (unsigned \mbox{\hyperlink{classtype}{type}})
+\begin{DoxyCompactList}\small\item\em A factory function for creating \doxylink{classFileWriter}{File\+Writer} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{writerFactory_8h_ad4e7ade60cb2de0fa1cd05c691183cb6}\label{writerFactory_8h_ad4e7ade60cb2de0fa1cd05c691183cb6} 
+\index{writerFactory.h@{writerFactory.h}!writerFactory@{writerFactory}}
+\index{writerFactory@{writerFactory}!writerFactory.h@{writerFactory.h}}
+\doxysubsubsection{\texorpdfstring{writerFactory()}{writerFactory()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ writer\+Factory (\begin{DoxyParamCaption}\item[{unsigned}]{type }\end{DoxyParamCaption})}
+
+
+
+A factory function for creating \doxylink{classFileWriter}{File\+Writer} objects. 
+
+This function creates and returns a unique pointer to a \doxylink{classFileWriter}{File\+Writer} or one of its derived classes based on the file type provided.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & An unsigned integer representing the type of file writer to create. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique pointer to a \doxylink{classFileWriter}{File\+Writer} object or nullptr if the file type is not supported. 
+\end{DoxyReturn}

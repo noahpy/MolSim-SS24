@@ -97,12 +97,14 @@ Inheritance diagram for Simulation:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaa6a7518b3b85bd326baadc746fd8f1e" id="r_aaa6a7518b3b85bd326baadc746fd8f1e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa6a7518b3b85bd326baadc746fd8f1e">Simulation</a> (double <a class="el" href="#a838684076d88a5e923c35c513a1d676c">time</a>, double <a class="el" href="#a3b20666c1d68ccda6afcdece22787224">delta_t</a>, double <a class="el" href="#a197fe4555b78abaae9c4c111c2f05f27">end_time</a>, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;<a class="el" href="#a40d5374878745375d1112892ca47290c">container</a>, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, <a class="el" href="classFileWriter.html">FileWriter</a> &amp;<a class="el" href="#a28d2e68c23e6f82e8f13b2f9f2b09be0">writer</a>, <a class="el" href="classFileReader.html">FileReader</a> &amp;<a class="el" href="#aed1f741dee19acb462367a8d22132e7b">reader</a>)</td></tr>
-<tr class="memdesc:aaa6a7518b3b85bd326baadc746fd8f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object.  <br /></td></tr>
-<tr class="separator:aaa6a7518b3b85bd326baadc746fd8f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b7e110d1db518fe23ddb28ea6241df7" id="r_a0b7e110d1db518fe23ddb28ea6241df7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b7e110d1db518fe23ddb28ea6241df7">Simulation</a> (double <a class="el" href="#a838684076d88a5e923c35c513a1d676c">time</a>, double <a class="el" href="#a3b20666c1d68ccda6afcdece22787224">delta_t</a>, double <a class="el" href="#a197fe4555b78abaae9c4c111c2f05f27">end_time</a>, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;<a class="el" href="#a40d5374878745375d1112892ca47290c">container</a>, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; <a class="el" href="#a9c3c9fd1d02a83eea80af98eca001975">writer</a>, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; <a class="el" href="#a490b1c45277ba9305d71c9db52eae51a">reader</a>)</td></tr>
+<tr class="memdesc:a0b7e110d1db518fe23ddb28ea6241df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object.  <br /></td></tr>
+<tr class="separator:a0b7e110d1db518fe23ddb28ea6241df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada940a3e4924c796b043a062950e3c49" id="r_ada940a3e4924c796b043a062950e3c49"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada940a3e4924c796b043a062950e3c49">runSim</a> ()=0</td></tr>
 <tr class="memdesc:ada940a3e4924c796b043a062950e3c49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the simulation.  <br /></td></tr>
 <tr class="separator:ada940a3e4924c796b043a062950e3c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85781a859dbdf089b4c807ac11646e18" id="r_a85781a859dbdf089b4c807ac11646e18"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85781a859dbdf089b4c807ac11646e18">~Simulation</a> ()=default</td></tr>
+<tr class="separator:a85781a859dbdf089b4c807ac11646e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -121,17 +123,17 @@ Public Attributes</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:abdb48771e24ba63a3db95b27d153b629" id="r_abdb48771e24ba63a3db95b27d153b629"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdb48771e24ba63a3db95b27d153b629">strategy</a></td></tr>
 <tr class="separator:abdb48771e24ba63a3db95b27d153b629"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28d2e68c23e6f82e8f13b2f9f2b09be0" id="r_a28d2e68c23e6f82e8f13b2f9f2b09be0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFileWriter.html">FileWriter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28d2e68c23e6f82e8f13b2f9f2b09be0">writer</a></td></tr>
-<tr class="separator:a28d2e68c23e6f82e8f13b2f9f2b09be0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed1f741dee19acb462367a8d22132e7b" id="r_aed1f741dee19acb462367a8d22132e7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFileReader.html">FileReader</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed1f741dee19acb462367a8d22132e7b">reader</a></td></tr>
-<tr class="separator:aed1f741dee19acb462367a8d22132e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c3c9fd1d02a83eea80af98eca001975" id="r_a9c3c9fd1d02a83eea80af98eca001975"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c3c9fd1d02a83eea80af98eca001975">writer</a></td></tr>
+<tr class="separator:a9c3c9fd1d02a83eea80af98eca001975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a490b1c45277ba9305d71c9db52eae51a" id="r_a490b1c45277ba9305d71c9db52eae51a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a490b1c45277ba9305d71c9db52eae51a">reader</a></td></tr>
+<tr class="separator:a490b1c45277ba9305d71c9db52eae51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for all simulations. </p>
 <p>This class is the base class for all simulations. It contains the members need to do the calculations for the different strategies. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aaa6a7518b3b85bd326baadc746fd8f1e" name="aaa6a7518b3b85bd326baadc746fd8f1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa6a7518b3b85bd326baadc746fd8f1e">&#9670;&#160;</a></span>Simulation()</h2>
+<a id="a0b7e110d1db518fe23ddb28ea6241df7" name="a0b7e110d1db518fe23ddb28ea6241df7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b7e110d1db518fe23ddb28ea6241df7">&#9670;&#160;</a></span>Simulation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,12 +166,12 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classFileWriter.html">FileWriter</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>writer</em>, </span></td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>writer</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classFileReader.html">FileReader</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>reader</em></span>&#160;)</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>reader</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -188,6 +190,31 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object </dd></dl>
+
+</div>
+</div>
+<a id="a85781a859dbdf089b4c807ac11646e18" name="a85781a859dbdf089b4c807ac11646e18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85781a859dbdf089b4c807ac11646e18">&#9670;&#160;</a></span>~Simulation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Simulation::~Simulation </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -282,8 +309,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aed1f741dee19acb462367a8d22132e7b" name="aed1f741dee19acb462367a8d22132e7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed1f741dee19acb462367a8d22132e7b">&#9670;&#160;</a></span>reader</h2>
+<a id="a490b1c45277ba9305d71c9db52eae51a" name="a490b1c45277ba9305d71c9db52eae51a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a490b1c45277ba9305d71c9db52eae51a">&#9670;&#160;</a></span>reader</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,7 +319,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classFileReader.html">FileReader</a>&amp; Simulation::reader</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classFileReader.html">FileReader</a>&gt; Simulation::reader</td>
         </tr>
       </table>
   </td>
@@ -343,8 +370,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a28d2e68c23e6f82e8f13b2f9f2b09be0" name="a28d2e68c23e6f82e8f13b2f9f2b09be0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28d2e68c23e6f82e8f13b2f9f2b09be0">&#9670;&#160;</a></span>writer</h2>
+<a id="a9c3c9fd1d02a83eea80af98eca001975" name="a9c3c9fd1d02a83eea80af98eca001975"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c3c9fd1d02a83eea80af98eca001975">&#9670;&#160;</a></span>writer</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,7 +380,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classFileWriter.html">FileWriter</a>&amp; Simulation::writer</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classFileWriter.html">FileWriter</a>&gt; Simulation::writer</td>
         </tr>
       </table>
   </td>

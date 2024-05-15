@@ -1,0 +1,31 @@
+\doxysection{src/physics/strat\+Factory.h File Reference}
+\hypertarget{stratFactory_8h}{}\label{stratFactory_8h}\index{src/physics/stratFactory.h@{src/physics/stratFactory.h}}
+{\ttfamily \#include "{}physics/strategy.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \mbox{\hyperlink{stratFactory_8h_a3823d74372be4e497cb377cb6f6a8eae}{strat\+Factory}} (unsigned simulation\+\_\+type)
+\begin{DoxyCompactList}\small\item\em A factory function for creating \doxylink{classPhysicsStrategy}{Physics\+Strategy} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{stratFactory_8h_a3823d74372be4e497cb377cb6f6a8eae}\label{stratFactory_8h_a3823d74372be4e497cb377cb6f6a8eae} 
+\index{stratFactory.h@{stratFactory.h}!stratFactory@{stratFactory}}
+\index{stratFactory@{stratFactory}!stratFactory.h@{stratFactory.h}}
+\doxysubsubsection{\texorpdfstring{stratFactory()}{stratFactory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} strat\+Factory (\begin{DoxyParamCaption}\item[{unsigned}]{simulation\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+A factory function for creating \doxylink{classPhysicsStrategy}{Physics\+Strategy} objects. 
+
+This function creates and returns a \doxylink{classPhysicsStrategy}{Physics\+Strategy} object based on the simulation type provided.
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation\+\_\+type} & An unsigned integer representing the type of simulation strategy to create. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classPhysicsStrategy}{Physics\+Strategy} object representing the appropriate simulation strategy. 
+\end{DoxyReturn}

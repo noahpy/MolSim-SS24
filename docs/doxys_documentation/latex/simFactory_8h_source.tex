@@ -1,0 +1,23 @@
+\doxysection{sim\+Factory.\+h}
+\hypertarget{simFactory_8h_source}{}\label{simFactory_8h_source}\index{src/simulation/simFactory.h@{src/simulation/simFactory.h}}
+\mbox{\hyperlink{simFactory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{strategy_8h}{physics/strategy.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00025\ std::unique\_ptr<Simulation>\ \mbox{\hyperlink{simFactory_8h_a22b52f2aca72ab6f2d743bd529fc9a00}{simFactory}}(}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ sim\_type,}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{double}\ start\_time,}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ delta\_t,}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{double}\ end\_time,}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ epsilon,}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{double}\ sigma,}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ particles,}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00034\ \ \ \ \ std::unique\_ptr<FileWriter>\ writePointer,}
+\DoxyCodeLine{00035\ \ \ \ \ std::unique\_ptr<FileReader>\ readPointer);}
+
+\end{DoxyCode}

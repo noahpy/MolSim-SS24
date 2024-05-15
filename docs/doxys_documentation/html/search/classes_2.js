@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['filereader_0',['FileReader',['../classFileReader.html',1,'']]],
-  ['filewriter_1',['FileWriter',['../classFileWriter.html',1,'']]]
+  ['dataarray_5ft_0',['DataArray_t',['../classDataArray__t.html',1,'']]],
+  ['dataarraylist_5ft_1',['DataArrayList_t',['../classDataArrayList__t.html',1,'']]]
 ];

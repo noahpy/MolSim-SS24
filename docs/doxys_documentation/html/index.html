@@ -79,37 +79,63 @@ $(function() {
 <p>The molecular dynamics SS24 code base of Group F. <br  />
  You can find the doxygen documentation hosted on <a href="https://noahpy.github.io/MolSim-SS24/">https://noahpy.github.io/MolSim-SS24/</a>.</p>
 <h1><a class="anchor" id="autotoc_md0"></a>
+Table of Contents</h1>
+<ol type="1">
+<li>Group members</li>
+<li>Quickstart<ul>
+<li>Build instructions</li>
+<li>Run instructions</li>
+<li>Generate Doxygen documentation</li>
+<li>Run tests</li>
+<li>Format code</li>
+<li>Open man page</li>
+</ul>
+</li>
+<li>Documentation<ul>
+<li>Project structure</li>
+<li>Folder structure</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md1"></a>
 Group members</h1>
 <ul>
 <li><a href="https://github.com/noahpy">Noah Schlenker</a></li>
 <li><a href="https://github.com/jimin31">Jimin Kim</a></li>
 <li><a href="https://github.com/Chryzl">Christian Nix</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Build instructions</h1>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Quickstart</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Build instructions</h2>
 <p>To build the project, run the following commands: </p><div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
 <div class="line">cmake ..</div>
 <div class="line">make</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
-Run instructions</h1>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+Run instructions</h2>
 <p>To run the project, run the following command: </p><div class="fragment"><div class="line">src/MolSim -d &lt;delta_t&gt; -e &lt;end_t&gt; ../input/&lt;input_file&gt;</div>
 </div><!-- fragment --><p> For more information about arguments and default settings, type: </p><div class="fragment"><div class="line">src/MolSim -h</div>
-</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md3"></a>
-Generate Doxygen documentation</h1>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md5"></a>
+Generate Doxygen documentation</h2>
 <p>To generate the Doxygen documentation, run the following command: </p><div class="fragment"><div class="line">make doc_doxygen</div>
 </div><!-- fragment --><p> This will generate the documentation into the folder <code>doxys_documentation</code>.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Run tests</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Run tests</h2>
 <p>To build the tests run: </p><div class="fragment"><div class="line">cd build</div>
 <div class="line">make tests</div>
 </div><!-- fragment --><p> To run the tests, run the following command: </p><div class="fragment"><div class="line">tests/tests</div>
 </div><!-- fragment --><p> Or alternatively with ctest: </p><div class="fragment"><div class="line">ctest --test-dir tests</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
-Format code</h1>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Format code</h2>
 <p>If your system has clang-format installed, the target <code>clangformat</code> will be created. You can then run: </p><div class="fragment"><div class="line">make clangformat</div>
 </div><!-- fragment --><p> to format the code.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
-Project structure</h1>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Open man page</h2>
+<p>To see more details on how to use the program, you can look at our man page. Enter the project root and then run: </p><div class="fragment"><div class="line">man ./.molsim.1</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
+Documentation</h1>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Project structure</h2>
 <p>The project is structured as follows: <img src="strategy_long.png" alt="" class="inline" title="Project structure UML"/>     Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.</p>
 <p>**<code><a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a></code>**</p><ul>
 <li>Any kinds of a simulations are represented as a child class of the <code><a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a></code> class</li>
@@ -132,8 +158,8 @@ Project structure</h1>
 <li>Based on an abstract <code><a class="el" href="classParticleCluster.html" title="An abstract class to model a cluster of particles.">ParticleCluster</a></code> class</li>
 <li>Child classes include e.g. <code><a class="el" href="classCuboidParticleCluster.html" title="A class to model a cluster of particles in the shape of a cuboid, see ParticleCluster.">CuboidParticleCluster</a></code> used in problem sheet 2</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md7"></a>
-Folder structure</h1>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Folder structure</h2>
 <p>This section describes the folder strcuture of this project:</p><ul>
 <li><code>tests</code>: tests of the project</li>
 <li><code>src</code>: source files of the project</li>

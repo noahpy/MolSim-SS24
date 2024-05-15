@@ -7,13 +7,32 @@
 
 
 The molecular dynamics SS24 code base of Group F. ~\newline
- You can find the doxygen documentation hosted on \href{https://noahpy.github.io/MolSim-SS24/}{\texttt{ https\+://noahpy.\+github.\+io/\+Mol\+Sim-\/\+SS24/}}.\hypertarget{index_autotoc_md0}{}\doxysection{\texorpdfstring{Group members}{Group members}}\label{index_autotoc_md0}
+ You can find the doxygen documentation hosted on \href{https://noahpy.github.io/MolSim-SS24/}{\texttt{ https\+://noahpy.\+github.\+io/\+Mol\+Sim-\/\+SS24/}}.\hypertarget{index_autotoc_md0}{}\doxysection{\texorpdfstring{Table of Contents}{Table of Contents}}\label{index_autotoc_md0}
+
+\begin{DoxyEnumerate}
+\item Group members
+\item Quickstart
+\begin{DoxyItemize}
+\item Build instructions
+\item Run instructions
+\item Generate Doxygen documentation
+\item Run tests
+\item Format code
+\item Open man page
+\end{DoxyItemize}
+\item Documentation
+\begin{DoxyItemize}
+\item Project structure
+\item Folder structure
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Group members}{Group members}}\label{index_autotoc_md1}
 
 \begin{DoxyItemize}
 \item \href{https://github.com/noahpy}{\texttt{ Noah Schlenker}}
 \item \href{https://github.com/jimin31}{\texttt{ Jimin Kim}}
 \item \href{https://github.com/Chryzl}{\texttt{ Christian Nix}}
-\end{DoxyItemize}\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Build instructions}{Build instructions}}\label{index_autotoc_md1}
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Quickstart}{Quickstart}}\label{index_autotoc_md2}
+\hypertarget{index_autotoc_md3}{}\doxysubsection{\texorpdfstring{Build instructions}{Build instructions}}\label{index_autotoc_md3}
 To build the project, run the following commands\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
@@ -21,7 +40,7 @@ To build the project, run the following commands\+:
 \DoxyCodeLine{make}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Run instructions}{Run instructions}}\label{index_autotoc_md2}
+\hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{Run instructions}{Run instructions}}\label{index_autotoc_md4}
 To run the project, run the following command\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{src/MolSim\ -\/d\ <delta\_t>\ -\/e\ <end\_t>\ ../input/<input\_file>}
@@ -32,13 +51,13 @@ To run the project, run the following command\+:
 \DoxyCodeLine{src/MolSim\ -\/h}
 
 \end{DoxyCode}
- \hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{Generate Doxygen documentation}{Generate Doxygen documentation}}\label{index_autotoc_md3}
+ \hypertarget{index_autotoc_md5}{}\doxysubsection{\texorpdfstring{Generate Doxygen documentation}{Generate Doxygen documentation}}\label{index_autotoc_md5}
 To generate the Doxygen documentation, run the following command\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{make\ doc\_doxygen}
 
 \end{DoxyCode}
- This will generate the documentation into the folder {\ttfamily doxys\+\_\+documentation}.\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{Run tests}{Run tests}}\label{index_autotoc_md4}
+ This will generate the documentation into the folder {\ttfamily doxys\+\_\+documentation}.\hypertarget{index_autotoc_md6}{}\doxysubsection{\texorpdfstring{Run tests}{Run tests}}\label{index_autotoc_md6}
 To build the tests run\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{cd\ build}
@@ -55,13 +74,20 @@ To build the tests run\+:
 \DoxyCodeLine{ctest\ -\/-\/test-\/dir\ tests}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{Format code}{Format code}}\label{index_autotoc_md5}
+\hypertarget{index_autotoc_md7}{}\doxysubsection{\texorpdfstring{Format code}{Format code}}\label{index_autotoc_md7}
 If your system has clang-\/format installed, the target {\ttfamily clangformat} will be created. You can then run\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{make\ clangformat}
 
 \end{DoxyCode}
- to format the code.\hypertarget{index_autotoc_md6}{}\doxysection{\texorpdfstring{Project structure}{Project structure}}\label{index_autotoc_md6}
+ to format the code.\hypertarget{index_autotoc_md8}{}\doxysubsection{\texorpdfstring{Open man page}{Open man page}}\label{index_autotoc_md8}
+To see more details on how to use the program, you can look at our man page. Enter the project root and then run\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{man\ ./.molsim.1}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md9}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{index_autotoc_md9}
+\hypertarget{index_autotoc_md10}{}\doxysubsection{\texorpdfstring{Project structure}{Project structure}}\label{index_autotoc_md10}
 The project is structured as follows\+:  
 \begin{DoxyInlineImage}
 \includegraphics[height=\baselineskip,keepaspectratio=true]{strategy_long.png}%Project structure UML
@@ -97,7 +123,7 @@ The project is structured as follows\+:
 \item Represents a cluster of particles that can be used to initialize the simulation
 \item Based on an abstract {\ttfamily \doxylink{classParticleCluster}{Particle\+Cluster}} class
 \item Child classes include e.\+g. {\ttfamily \doxylink{classCuboidParticleCluster}{Cuboid\+Particle\+Cluster}} used in problem sheet 2
-\end{DoxyItemize}\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{Folder structure}{Folder structure}}\label{index_autotoc_md7}
+\end{DoxyItemize}\hypertarget{index_autotoc_md11}{}\doxysubsection{\texorpdfstring{Folder structure}{Folder structure}}\label{index_autotoc_md11}
 This section describes the folder strcuture of this project\+:
 \begin{DoxyItemize}
 \item {\ttfamily tests}\+: tests of the project

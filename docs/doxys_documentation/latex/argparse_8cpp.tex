@@ -1,8 +1,8 @@
 \doxysection{src/io/argparse/argparse.cpp File Reference}
 \hypertarget{argparse_8cpp}{}\label{argparse_8cpp}\index{src/io/argparse/argparse.cpp@{src/io/argparse/argparse.cpp}}
-{\ttfamily \#include "{}spdlog/spdlog.\+h"{}}\newline
 {\ttfamily \#include $<$getopt.\+h$>$}\newline
 {\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
 {\ttfamily \#include $<$stdexcept$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 \doxysubsubsection*{Functions}
@@ -12,16 +12,22 @@ void \mbox{\hyperlink{argparse_8cpp_af0a2e48d9a9a00010182ab9a820e1e6b}{print\+He
 \begin{DoxyCompactList}\small\item\em Print the help message. \end{DoxyCompactList}\item 
 spdlog\+::level\+::level\+\_\+enum \mbox{\hyperlink{argparse_8cpp_a7be5749a22cf499287d18226ffc61bf3}{get\+Log\+Level}} (int level)
 \begin{DoxyCompactList}\small\item\em For setting spdlog level with default level info. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{argparse_8cpp_a8c707006b571ddea115859a358754141}{argparse}} (int argc, char \texorpdfstring{$\ast$}{*}argsv\mbox{[}$\,$\mbox{]}, double \&end\+\_\+time, double \&delta\+\_\+t, std\+::string \&input)
+void \mbox{\hyperlink{argparse_8cpp_a0eb70a19ee7229823d645991a9124e87}{convert\+To\+Int}} (char \texorpdfstring{$\ast$}{*}optarg, int \&value)
+\item 
+void \mbox{\hyperlink{argparse_8cpp_a3e97f84a295d12024e87f0657cbd1f1c}{convert\+To\+Unsigned}} (char \texorpdfstring{$\ast$}{*}optarg, unsigned \&value)
+\item 
+void \mbox{\hyperlink{argparse_8cpp_a69eec8d6f073aeb302f5035b3c8bfeb6}{convert\+To\+Double}} (char \texorpdfstring{$\ast$}{*}optarg, double \&value)
+\item 
+void \mbox{\hyperlink{argparse_8cpp_ae39942a109dec47b9c6b45d47573cee6}{argparse}} (int argc, char \texorpdfstring{$\ast$}{*}argsv\mbox{[}$\,$\mbox{]}, double \&end\+\_\+time, double \&delta\+\_\+t, double \&epsilon, double \&sigma, std\+::string \&input, unsigned \&reader\+\_\+type, unsigned \&writer\+\_\+type, unsigned \&simulation\+\_\+type)
 \begin{DoxyCompactList}\small\item\em Parse the command line arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{argparse_8cpp_a8c707006b571ddea115859a358754141}\label{argparse_8cpp_a8c707006b571ddea115859a358754141} 
+\Hypertarget{argparse_8cpp_ae39942a109dec47b9c6b45d47573cee6}\label{argparse_8cpp_ae39942a109dec47b9c6b45d47573cee6} 
 \index{argparse.cpp@{argparse.cpp}!argparse@{argparse}}
 \index{argparse@{argparse}!argparse.cpp@{argparse.cpp}}
 \doxysubsubsection{\texorpdfstring{argparse()}{argparse()}}
-{\footnotesize\ttfamily void argparse (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argsv\mbox{[}$\,$\mbox{]},  }\item[{double \&}]{end\+\_\+time,  }\item[{double \&}]{delta\+\_\+t,  }\item[{std\+::string \&}]{input }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void argparse (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argsv\mbox{[}$\,$\mbox{]},  }\item[{double \&}]{end\+\_\+time,  }\item[{double \&}]{delta\+\_\+t,  }\item[{double \&}]{epsilon,  }\item[{double \&}]{sigma,  }\item[{std\+::string \&}]{input,  }\item[{unsigned \&}]{reader\+\_\+type,  }\item[{unsigned \&}]{writer\+\_\+type,  }\item[{unsigned \&}]{simulation\+\_\+type }\end{DoxyParamCaption})}
 
 
 
@@ -37,12 +43,40 @@ Parse the command line arguments.
 \hline
 {\em delta\+\_\+t} & The time increment of the simulation \\
 \hline
+{\em epsilon} & The depth of potential well \\
+\hline
+{\em sigma} & The zero-\/crossing of LJ potential \\
+\hline
 {\em input} & The input file name to load the data from \\
+\hline
+{\em reader\+\_\+type} & Type specification of the \doxylink{classFileReader}{File\+Reader} \\
+\hline
+{\em writer\+\_\+type} & Type specification of the \doxylink{classFileWriter}{File\+Writer} \\
+\hline
+{\em simulation\+\_\+type} & Type specification of the \doxylink{classSimulation}{Simulation} \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-void, will set the values of end\+\_\+time, delta\+\_\+t, and output 
+void, will set the values of end\+\_\+time, delta\+\_\+t, and input 
 \end{DoxyReturn}
+\Hypertarget{argparse_8cpp_a69eec8d6f073aeb302f5035b3c8bfeb6}\label{argparse_8cpp_a69eec8d6f073aeb302f5035b3c8bfeb6} 
+\index{argparse.cpp@{argparse.cpp}!convertToDouble@{convertToDouble}}
+\index{convertToDouble@{convertToDouble}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{convertToDouble()}{convertToDouble()}}
+{\footnotesize\ttfamily void convert\+To\+Double (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{optarg,  }\item[{double \&}]{value }\end{DoxyParamCaption})}
+
+\Hypertarget{argparse_8cpp_a0eb70a19ee7229823d645991a9124e87}\label{argparse_8cpp_a0eb70a19ee7229823d645991a9124e87} 
+\index{argparse.cpp@{argparse.cpp}!convertToInt@{convertToInt}}
+\index{convertToInt@{convertToInt}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{convertToInt()}{convertToInt()}}
+{\footnotesize\ttfamily void convert\+To\+Int (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{optarg,  }\item[{int \&}]{value }\end{DoxyParamCaption})}
+
+\Hypertarget{argparse_8cpp_a3e97f84a295d12024e87f0657cbd1f1c}\label{argparse_8cpp_a3e97f84a295d12024e87f0657cbd1f1c} 
+\index{argparse.cpp@{argparse.cpp}!convertToUnsigned@{convertToUnsigned}}
+\index{convertToUnsigned@{convertToUnsigned}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{convertToUnsigned()}{convertToUnsigned()}}
+{\footnotesize\ttfamily void convert\+To\+Unsigned (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{optarg,  }\item[{unsigned \&}]{value }\end{DoxyParamCaption})}
+
 \Hypertarget{argparse_8cpp_a7be5749a22cf499287d18226ffc61bf3}\label{argparse_8cpp_a7be5749a22cf499287d18226ffc61bf3} 
 \index{argparse.cpp@{argparse.cpp}!getLogLevel@{getLogLevel}}
 \index{getLogLevel@{getLogLevel}!argparse.cpp@{argparse.cpp}}
