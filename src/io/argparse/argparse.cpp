@@ -125,7 +125,7 @@ void argparse(
                                             { 0, 0, 0, 0 } };
 
     int opt;
-    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:", long_options, NULL)) != -1) {
+    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:a", long_options, NULL)) != -1) {
         switch (opt) {
         case 'd':
             convertToDouble(optarg, delta_t);
@@ -152,6 +152,9 @@ void argparse(
             break;
         case 'c':
             reader_type = 1;
+            break;
+        case 'a':
+            reader_type = 3;
             break;
         case 'h':
             printHelp(argsv[0]);
