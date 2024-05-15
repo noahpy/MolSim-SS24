@@ -44,7 +44,13 @@ The loglevel are set as following:
 \fB-c\fR
 Specify that the given input file describes clusters.
 .br
-For the format of the input file, refer to the \fBINPUT FILE\fR section.
+For the format of the input file, refer to the \fBCluster Format\fR section.
+.br
+.TP
+\fB-a\fR
+Specify that the given input file describes ASCII art particles.
+.br
+For the format of the input file, refer to the \fBASCII Art Format\fR section.
 .br
 .TP
 \fB-s, --simtype=VALUE\fR
@@ -87,9 +93,9 @@ Each line of particle consists of these parameters in order, seperated by spaces
 
 \fBCluster Format\fR:
 .br
-This format is used for specifying clusters.
-The file starts with optional comment lines denoted by '#' at the beginning of each line.
-Each line specifies a cluster with the first character indicating the cluster type followed by parameters separated by spaces.
+This format is used for specifying clusters (Example: see input/clusters.txt).
+The file can contain comment lines starting with '#' and empty lines which are going to be ignored.
+Each other line specifies a cluster with the first character indicating the cluster type followed by parameters separated by spaces.
 These parameters depend on the cluster type.
 .br
 .br
@@ -112,6 +118,22 @@ Cuboid Cluster:
 - Velocity in x, y, z directions (3 double values)
 .br
 - Dimensionality (1 integer value)
+
+\fBASCII Art Format\fR:
+.br
+This format is used for specifying the Particles using ASCII arts (Example: see input/tum.txt).
+It can contain multiple ASCII arts, where every particle in an ASCII art has the same properties.
+Each ASCII art specification should be seperated by a single empty line.
+.br
+An Ascii art specification has the following format:
+.br
+- One line with three doubles specifying the origin of the art (top left corner)
+.br
+- One line specifying additional 6 double parameters (vx, vy, vz, mass, spacing, meanVel)
+.br
+- One line of characters seperated with spaces which represent partciles in the art
+.br
+- Arbritrary many lines of Ascii art, ending with EOF or empty line if there is another art.
 
 .SH BUGS
 No known bugs.
