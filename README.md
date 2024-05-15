@@ -6,6 +6,18 @@ MolSim Group F
 The molecular dynamics SS24 code base of Group F.  
 You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSim-SS24/](https://noahpy.github.io/MolSim-SS24/).
 
+## Table of Contents
+1. [Group members](#group-members)
+2. [Quickstart](#quickstart)
+    - [Build instructions](#build-instructions)
+    - [Run instructions](#run-instructions)
+    - [Generate Doxygen documentation](#generate-doxygen-documentation)
+    - [Run tests](#run-tests)
+    - [Format code](#format-code)
+    - [Open man page](#open-man-page)
+3. [Documentation](#documentation)
+    - [Project structure](#project-structure)
+    - [Folder structure](#folder-structure)
 
 ## Group members
 - [Noah Schlenker](https://github.com/noahpy)
@@ -13,7 +25,8 @@ You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSi
 - [Christian Nix](https://github.com/Chryzl)
 
 
-## Build instructions
+## Quickstart
+### Build instructions
 To build the project, run the following commands:
 ```
 mkdir build && cd build
@@ -21,7 +34,7 @@ cmake ..
 make
 ```
 
-## Run instructions
+### Run instructions
 To run the project, run the following command:
 ```
 src/MolSim -d <delta_t> -e <end_t> ../input/<input_file>
@@ -30,14 +43,14 @@ For more information about arguments and default settings, type:
 ```
 src/MolSim -h
 ```
-## Generate Doxygen documentation
+### Generate Doxygen documentation
 To generate the Doxygen documentation, run the following command:
 ```
 make doc_doxygen
 ```
 This will generate the documentation into the folder `doxys_documentation`.
 
-## Run tests
+### Run tests
 To build the tests run:
 ```
 cd build
@@ -52,15 +65,23 @@ Or alternatively with ctest:
 ctest --test-dir tests
 ```
 
-## Format code
+### Format code
 If your system has clang-format installed, the target `clangformat` will be created. You can then run:
 ```
 make clangformat
 ```
 to format the code.
 
+### Open man page
+To see more details on how to use the program, you can look at our man page.
+Enter the project root and then run:
+```
+man ./.molsim.1
+```
 
-## Project structure
+## Documentation
+
+### Project structure
 The project is structured as follows:
 ![Project structure UML](docs/report/report1/res/strategy_long.png)
 Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
@@ -86,7 +107,7 @@ Note that this is not a perfect UML diagram, but rather a visualization of the b
 - Based on an abstract `ParticleCluster` class
 - Child classes include e.g. `CuboidParticleCluster` used in problem sheet 2
 
-## Folder structure
+### Folder structure
 This section describes the folder strcuture of this project:
 - `tests`: tests of the project 
 - `src`: source files of the project

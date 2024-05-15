@@ -31,8 +31,8 @@ public:
         double end_time,
         ParticleContainer& container,
         PhysicsStrategy& strat,
-        FileWriter& writer,
-        FileReader& reader);
+        std::unique_ptr<FileWriter> writer,
+        std::unique_ptr<FileReader> reader);
 
     /**
      * @brief Run the simulation

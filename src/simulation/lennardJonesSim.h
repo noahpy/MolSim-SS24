@@ -1,15 +1,15 @@
 
-#include "simulation/baseSimulation.h"
 #include "models/ParticleContainer.h"
+#include "simulation/baseSimulation.h"
 
 /**
  * @brief Simulation class for the Lennard-Jones simulation
- * @details This class is a subclass of the Simulation class and is used to simulate the movement of particles
- * according to the Lennard-Jones potential. This is the simulation class used in the second problem sheet.
+ * @details This class is a subclass of the Simulation class and is used to simulate the movement of
+ * particles according to the Lennard-Jones potential. This is the simulation class used in the
+ * second problem sheet.
  */
 class LennardJonesSimulation : public Simulation {
 public:
-
     // lift simulation constructor
     using Simulation::Simulation;
 
@@ -26,15 +26,15 @@ public:
      * @param sigma The sigma parameter of the Lennard-Jones potential
      */
     LennardJonesSimulation(
-            double time,
-            double delta_t,
-            double end_time,
-            ParticleContainer& container,
-            PhysicsStrategy& strat,
-            FileWriter& writer,
-            FileReader& reader,
-            double epsilon,
-            double sigma);
+        double time,
+        double delta_t,
+        double end_time,
+        ParticleContainer& container,
+        PhysicsStrategy& strat,
+        std::unique_ptr<FileWriter> writer,
+        std::unique_ptr<FileReader> reader,
+        double epsilon,
+        double sigma);
 
     /**
      * @brief Run the simulation
@@ -54,19 +54,22 @@ public:
     double getSigma() const { return sigma; }
     /**
      * @brief Get the alpha parameter of the Lennard-Jones potential
-     * @details The alpha parameter is calculated as -24 * epsilon and will be used to simplify the calculations
+     * @details The alpha parameter is calculated as -24 * epsilon and will be used to simplify the
+     * calculations
      * @return The alpha parameter i.e. -24 * epsilon
      */
     double getAlpha() const { return alpha; }
     /**
      * @brief Get the beta parameter of the Lennard-Jones potential
-     * @details The beta parameter is calculated as sigma^6 and will be used to simplify the calculations
+     * @details The beta parameter is calculated as sigma^6 and will be used to simplify the
+     * calculations
      * @return The beta parameter i.e. sigma^6
      */
     double getBeta() const { return beta; }
     /**
      * @brief Get the gamma parameter of the Lennard-Jones potential
-     * @details The gamma parameter is calculated as -2 * sigma^12 and will be used to simplify the calculations
+     * @details The gamma parameter is calculated as -2 * sigma^12 and will be used to simplify the
+     * calculations
      * @return The gamma parameter i.e. -2 * sigma^12
      */
     double getGamma() const { return gamma; }
@@ -78,4 +81,3 @@ protected:
     double beta; /**< sigma^6, will be used to simplify the calculations */
     double gamma; /**< -2 * sigma^12, will be used to simplify the calculations */
 };
-

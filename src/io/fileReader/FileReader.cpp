@@ -39,18 +39,18 @@ void FileReader::readFile(ParticleContainer& particles, std::string filename)
 
     if (input_file.is_open()) {
         getline(input_file, tmp_string);
-        spdlog::info("Read line: {}", tmp_string);
+        spdlog::debug("Read line: {}", tmp_string);
 
         while (tmp_string.empty() or tmp_string[0] == '#') {
             getline(input_file, tmp_string);
-            spdlog::info("Read line {}", tmp_string);
+            spdlog::debug("Read line {}", tmp_string);
         }
 
         std::istringstream numstream(tmp_string);
         numstream >> num_particles;
-        spdlog::info("Reading {}", num_particles);
+        spdlog::debug("Reading {}", num_particles);
         getline(input_file, tmp_string);
-        spdlog::info("Read line: {}", tmp_string);
+        spdlog::debug("Read line: {}", tmp_string);
 
         for (int i = 0; i < num_particles; i++) {
             std::istringstream datastream(tmp_string);
@@ -69,7 +69,7 @@ void FileReader::readFile(ParticleContainer& particles, std::string filename)
             particles.addParticle({ x, v, m });
 
             getline(input_file, tmp_string);
-            spdlog::info("Read line: {}", tmp_string);
+            spdlog::debug("Read line: {}", tmp_string);
         }
     } else {
         spdlog::error("Error: could not open file {}", filename);

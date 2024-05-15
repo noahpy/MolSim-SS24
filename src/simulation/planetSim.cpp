@@ -1,8 +1,9 @@
 
 #include "simulation/planetSim.h"
+#include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
-#include <iostream>
+#include <memory>
 #include <spdlog/spdlog.h>
 
 PlanetSimulation::PlanetSimulation(
@@ -11,9 +12,9 @@ PlanetSimulation::PlanetSimulation(
     double end_time,
     ParticleContainer& container,
     PhysicsStrategy& strat,
-    FileWriter& writer,
-    FileReader& reader)
-    : Simulation(time, delta_t, end_time, container, strat, writer, reader)
+    std::unique_ptr<FileWriter> writer,
+    std::unique_ptr<FileReader> reader)
+    : Simulation(time, delta_t, end_time, container, strat, std::move(writer), std::move(reader))
 {
 }
 
@@ -26,7 +27,7 @@ void PlanetSimulation::runSim()
 
         ++iteration;
         if (iteration % 10 == 0) {
-            writer.plotParticles(*this);
+            writer->plotParticles(*this);
         }
         spdlog::debug("Iteration: {}", iteration);
 
