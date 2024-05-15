@@ -60,9 +60,10 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
 
 \begin{itemize}
     \item In alignment with our methodology for integrating \verb|gtest|, \verb|spdlog| was incorporated using a CMake module, including a pre-fetch check to ensure its availability before fetching it via CMake.
-    \item We opted to utilize the functions provided by \verb|spdlog|, favoring their type safety and straightforward integration, which aids in more explicit and clear code management and debugging. This approach ensures that each logging call is checked at runtime, maintaining flexibility while slightly increasing overhead.
+    \item We opted to utilize the functions provided by \verb|spdlog|, favoring their type safety, which aids in more explicit and clear code management and debugging. This approach ensures that each logging call is checked at runtime.
+    \item Although \verb|spdlog| macros offer potential performance enhancements by omitting logging code at compile-time for disabled log levels, we determined that this advantage was not critical for our current project scope, as it utilizes run-time configuration of the global log level.
+    \item For us, the slight performance gain from the lazy evaluation of macro arguments (where evaluation occurs only if the level check passes) did not outweigh the benefits of using functions. However, we may reconsider this decision in future assignments if a significant performance difference is observed.
     \item The logging level can be dynamically adjusted via the command-line option \texttt{-l}, facilitating the ease of toggling between different logging levels according to the needs of runtime diagnostics.
-    \item Although \verb|spdlog| macros offer potential performance enhancements by excluding logging code at compile-time for disabled log levels, we determined that this advantage was not critical for our current project scope. The slight performance gain did not outweigh the benefits of using functions for our purposes. However, we may reconsider this decision in future assignments if a significant performance difference is observed.
 \end{itemize}
 
 \section{Adjustment of program frame}
