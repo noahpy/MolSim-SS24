@@ -30,10 +30,11 @@
 \end{center}
 
 \section{Pull request}
+\label{sec:pr}
 The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/10}{here}.
 
 \section{Unit Tests}
-
+\label{sec:ut}
 \begin{itemize}
     \item We already successfully implemented \verb|gtest| in the previous assignment, providing a robust foundation for subsequent testing enhancements.
     \item Integration of \verb|gtest| through CMake is managed within its dedicated CMake module, reinforcing a decentralized and modular system architecture.
@@ -44,7 +45,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
 \end{itemize}
 
 \section{Realization of Continuous Integration}
-
+\label{sec:ci}
 \begin{itemize}
     \item We implemented CI through Docker, ensuring a consistent and isolated environment for all integration and testing processes.
     \item We utilized `nektos/act`, a tool that simulates GitHub Actions locally, allowing us to validate workflows before pushing to the repository.
@@ -53,7 +54,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
 \end{itemize}
 
 \section{Logging Configuration via spdlog}
-
+\label{sec:spd}
 \begin{itemize}
     \item In alignment with our methodology for integrating \verb|gtest|, \verb|spdlog| was incorporated using a CMake module, including a pre-fetch check to ensure its availability before fetching it via CMake.
     \item We opted to utilize the functions provided by \verb|spdlog|, favoring their type safety and straightforward integration, which aids in more explicit and clear code management and debugging. This approach ensures that each logging call is checked at runtime, maintaining flexibility while slightly increasing overhead.
@@ -61,7 +62,36 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
     \item Although \verb|spdlog| macros offer potential performance enhancements by excluding logging code at compile-time for disabled log levels, we determined that this advantage was not critical for our current project scope. The slight performance gain did not outweigh the benefits of using functions for our purposes. However, we may reconsider this decision in future assignments if a significant performance difference is observed.
 \end{itemize}
 
+\section{Adjustment of program frame}
+\label{sec:adj}
 
+\subsection{I/O Expansion}
+\label{subsec:file}
+
+\begin{itemize}
+    \item We have enhanced our I/O functionalities to support various input file formats.
+    \item Introduction of specialized file-reader functions enabled us to handle different data types, including cluster and ASCII art data. These functions extend the capabilities of the base reader function (see \texttt{src/io/fileReader}).
+    \item We implemented a factory function that returns a unique pointer to either a specific file-reader or the default file-reader, depending on the input file format.
+    \item Additionally, a factory function was included to facilitate switching between \texttt{xyz} and \texttt{vtk} file writers, enhancing our output flexibility.
+\end{itemize}
+
+\subsection{Additional Arguments for the Program}
+\label{subsec:arg}
+
+\begin{itemize}
+    \item We have included several additional command-line options in response to recent changes in our program.
+    \item The parameters \texttt{epsilon} and \texttt{sigma} can now be specified via command-line if the default values are not suitable for the user's needs.
+    \item Additional command-line arguments have been introduced to allow users to specify the input file format, supporting both clusters and ASCII art (options \texttt{-c} or \texttt{-a}).
+    \item Users now have the flexibility to set the simulation parameters with \texttt{-s} and the file-writer type with \texttt{-w} after compiling, enhancing runtime configurability.
+\end{itemize}
+
+
+\section{Inclusion of Man page}
+\label{sec:man}
+\begin{itemize}
+    \item We included a man page, which can be accessed by executing the command \texttt{man ./molsim.1} from the root directory of the project.
+    \item It includes more specified details for the input formats and the functionalities of our program.
+\end{itemize}
 
 
 \end{document}
