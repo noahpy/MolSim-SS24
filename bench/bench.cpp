@@ -1,6 +1,6 @@
 
 #include "io/fileReader/emptyReader.h"
-#include "io/fileWriter/VTKWriter.h"
+#include "io/fileWriter/emptyWriter.h"
 #include "models/generators/CuboidParticleCluster.h"
 #include "models/generators/ParticleGenerator.h"
 #include "physics/forceCal/forceCal.h"
@@ -19,10 +19,10 @@ static void BM_LJSimulation(benchmark::State& state)
     // Initialize reader
     EmptyFileReader fileReader("");
     // Initialize writer
-    outputWriter::VTKWriter writer;
+    EmptyFileWriter writer;
 
     auto readerPointer = std::make_unique<EmptyFileReader>(fileReader);
-    auto writerPointer = std::make_unique<outputWriter::VTKWriter>(writer);
+    auto writerPointer = std::make_unique<EmptyFileWriter>(writer);
 
     // Intialize physics strategy
     PhysicsStrategy strat { location_stroemer_verlet,
