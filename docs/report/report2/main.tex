@@ -45,6 +45,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
     \item Building upon the tests included in the previous assignment, the additions for this iteration solely encompass tests for the force calculation via the Lennard-Jones potential and the particle generator functionality.
     \item The tests for the Lennard-Jones force calculation perform direct verification of computational correctness (see \texttt{tests/physics/testForceLJ.cpp}).
     \item Tests for the particle generator validate the structural integrity of generated cuboids and the properties of contained particles \newline(see \texttt{tests/simulation/testParticleGenerator.cpp}).
+    \item Further tests for new input and output systems were also included (see \texttt{tests/io})
 \end{itemize}
 
 \section{Realization of Continuous Integration}
@@ -127,7 +128,6 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
     \item The abstraction allows for easy extension. Looking at the tasks for the next weeks "falling drop" sounded to us, as if we would need to generate spherical clusters in the upcoming weeks
 \end{itemize}
 
-
 \section{Inclusion of Man page}
 \label{sec:man}
 
@@ -136,5 +136,39 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
     \item It includes more specified details for the input formats and the functionalities of our program.
 \end{itemize}
 
+\section{Performance testing}
+\label{sec:perf}
+\begin{itemize}
+    \item Benchmarking of the Lennard-Jones calculations on cuboid particle clusters was implemented in its separate folder called \texttt{bench}.
+    \item This will ensure quick and easy performance test implementations for future assignments.
+    \item We already included time measurements in the last assignment, using singular force calculations for pairs of particles. The speedup observed was ca. 1.2 compared to a naive implementation of the force (see \texttt{docs/report/report1}).
+    \item The measurements for this assignment are for showcasing the functionality of the new benchmark environment and for comparison to results of other groups with similar hardware specifications.
+    \item The Hardware specs used for the benchmarking are the following:
+    \begin{itemize}
+        \item CPU:
+        \item RAM:
+        \item Storage:
+        \item Motherboard:
+        \item OS:
+    \end{itemize}
+    \item We chose the following input parameters:
+    \begin{itemize}
+        \item $\epsilon = 5$
+        \item $\sigma = 1$
+        \item Cuboid cluster 1: $width = 40, height = 8, mean velocity = 0.1, dimension = 2$
+        \item Cuboid cluster 2: $width = 8, height = 8, mean velocity = 0.1, dimension = 2$
+    \end{itemize}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            & Time \\ \hline
+            mean & 99999ms                  \\ \hline
+            median & 99999ms                  \\ \hline
+        \end{tabular}
+        \caption{Measured times for Lennard-Jones-force calculation on cuboid particle clusters repeated N-times}
+        \label{tab:benchmark}
+    \end{table}
+\end{itemize}
 
 \end{document}
