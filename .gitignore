@@ -35,7 +35,7 @@
 .idea/
 .vscode/
 
-# doxygen documentation
+# doxygen folder
 doxys_documentation/
 
 # Build folders.

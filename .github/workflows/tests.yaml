@@ -52,8 +52,3 @@ jobs:
         run: >
           cd build
           && make doc_doxygen
-
-      - name: Build benchmarks
-        run: >
-          cd build
-          && make benchmarks

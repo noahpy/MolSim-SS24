@@ -177,20 +177,6 @@ auto L2Norm(const Container& c)
         return a + b * b;
     }));
 }
-
-/**
- * Calculates the dor product for a given container with itself.
- * @tparam Container Type of container
- * @param c Container to calculate the dot product for
- * @return sum_i(abs(c[i])) i.e. c dot c
- */
-template <class Container>
-auto DotProduct(const Container& c)
-{
-    return std::accumulate(std::cbegin(c), std::cend(c), 0.0, [](auto a, auto b) {
-        return a + b * b;
-    });
-}
 } // namespace ArrayUtils
 
 /**
