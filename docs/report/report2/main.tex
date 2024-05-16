@@ -93,8 +93,8 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
         F_{i,j} &= -\frac{\epsilon \cdot 24}{(||x_i-x_j||_2)^2} \left( \left( \frac{\sigma}{||x_i-x_j||_2} \right) ^6 - 2 \left( \frac{\sigma}{||x_i-x_j||_2} \right) ^{12} \right) (x_i-x_j) \\
                 &= \frac{-\epsilon \cdot 24}{(||x_i-x_j||_2)^2} \left(  \frac{\sigma ^6 }{||x_i-x_j||_2 ^6 } + \frac{-2 \cdot \sigma^{12}}{||x_i-x_j||_2^{12}}  \right) (x_i-x_j)
     \end{align}
-    Where  $-\epsilon \cdot 24 := \alpha$, $\sigma ^6 := \beta$, and $-2 \cdot \sigma^{12} := \gamma$ are constant for a simulation of only one type of particle. We therefore only calculate these once upon initialization of the Lennard-Jones-Simulation, as judging from the presentation of week one, we will only be dealing with particles of one type, where $\sigma$ and $\epsilon$ are true for all particles in the simulation. \\
-    Further, let $x_i-x_j := \delta \in \mathbb{R}^3$
+    Where  $-\epsilon \cdot 24 =: \alpha$, $\sigma ^6 =: \beta$, and $-2 \cdot \sigma^{12} =: \gamma$ are constant for a simulation of only one type of particle. We therefore only calculate these once upon initialization of the Lennard-Jones-Simulation, as judging from the presentation of week one, we will only be dealing with particles of one type, where $\sigma$ and $\epsilon$ are true for all particles in the simulation. \\
+    Further, let $x_i-x_j =: \delta \in \mathbb{R}^3$
     \begin{align}
         F_{i,j} &= \frac{\alpha}{(||\delta||_2)^2} \left(  \frac{\beta}{||\delta||_2 ^6 } + \frac{\gamma}{||\delta||_2^{12}}  \right) \cdot \delta \\
         &= \frac{\alpha}{\delta ^T\delta} \left(  \frac{\beta}{(\delta ^T\delta) ^3} + \frac{\gamma}{(\delta ^T\delta) ^6}  \right) \cdot \delta \\
@@ -170,5 +170,13 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
         \label{tab:benchmark}
     \end{table}
 \end{itemize}
+
+\section{Miscellaneous}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{res/UML.png}
+    \caption{UML-like diagram showing our modelling ideas. Note that only the white classes are new or modified; the grey classes are unchanged.}
+    \label{fig:UML}
+\end{figure}
 
 \end{document}
