@@ -3,53 +3,114 @@ MolSim Group F
 
 ![Testing workflow](https://github.com/noahpy/MolSim-SS24/actions/workflows/tests.yaml/badge.svg)
 
+The molecular dynamics SS24 code base of Group F.  
+You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSim-SS24/](https://noahpy.github.io/MolSim-SS24/).
+
+## Table of Contents
+1. [Group members](#group-members)
+2. [Quickstart](#quickstart)
+    - [Build instructions](#build-instructions)
+    - [Run instructions](#run-instructions)
+    - [Generate Doxygen documentation](#generate-doxygen-documentation)
+    - [Run tests](#run-tests)
+    - [Run benchmarks](#run-benchmarks)
+    - [Format code](#format-code)
+    - [Open man page](#open-man-page)
+3. [Documentation](#documentation)
+    - [Project structure](#project-structure)
+    - [Folder structure](#folder-structure)
+
 ## Group members
 - [Noah Schlenker](https://github.com/noahpy)
 - [Jimin Kim](https://github.com/jimin31)
 - [Christian Nix](https://github.com/Chryzl)
 
-## Build instructions
+
+## Quickstart
+### Build instructions
 To build the project, run the following commands:
 ```
 mkdir build && cd build
 cmake ..
 make
 ```
+To build without doxygen and benchmarks run
+```
+cmake .. -DGENERATE_DOC=OFF  -DBUILD_BENCH=OFF
+```
+instead.
 
-## Run instructions
-To run the project, run the following command:
+### Run instructions
+To run the project (in general), run the following command:
 ```
 src/MolSim -d <delta_t> -e <end_t> ../input/<input_file>
+```
+#### Assignment 1 simulation
+```
+src/MolSim ../input/eingabe-sonne.txt -e 1000 
+```
+#### Assignment 2 simulation
+```
+src/MolSim ../input/clusters.txt -c -s 2 -d 0.0002 -e 5
 ```
 For more information about arguments and default settings, type:
 ```
 src/MolSim -h
 ```
-## Generate Doxygen documentation
+or read the [man page](#open-man-page)
+### Generate Doxygen documentation
 To generate the Doxygen documentation, run the following command:
 ```
 make doc_doxygen
 ```
 This will generate the documentation into the folder `doxys_documentation`.
 
-## Run tests
+### Run tests
+To build the tests run:
+```
+cd build
+make tests
+```
 To run the tests, run the following command:
 ```
-make tests
 tests/tests
 ```
+Or alternatively with ctest:
+```
+ctest --test-dir tests
+```
 
-## Format code
+### Run benchmarks 
+The benchmarks are run using [Google benchmark](https://github.com/google/benchmark).
+Build:
+```
+cd build
+make benchmarks
+```
+Run:
+```
+bench/benchmarks
+```
+
+### Format code
 If your system has clang-format installed, the target `clangformat` will be created. You can then run:
 ```
 make clangformat
 ```
 to format the code.
 
+### Open man page
+To see more details on how to use the program, you can look at our man page.
+Enter the project root and then run:
+```
+man ./.molsim.1
+```
 
-## Project structure
+## Documentation
+
+### Project structure
 The project is structured as follows:
-![Project structure UML](report/report1/res/strategy_long.png)
+![Project structure UML](docs/report/report1/res/strategy_long.png)
 Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
 
 **`Simulation`**
@@ -68,12 +129,18 @@ Note that this is not a perfect UML diagram, but rather a visualization of the b
 - Template method class defining a common interface of different readers
 - Currently not abstract yet, as only one reader is existant
 
-## Folder structure
+**`ParticleCluster`**
+- Represents a cluster of particles that can be used to initialize the simulation
+- Based on an abstract `ParticleCluster` class
+- Child classes include e.g. `CuboidParticleCluster` used in problem sheet 2
+
+### Folder structure
 This section describes the folder strcuture of this project:
 - `tests`: tests of the project 
 - `src`: source files of the project
 - `src/io`: all source files relating to I/O
 - `src/models`: all source files relating to classes representing parts of the model
+  -  `src/models/generators`: all source files related to generating initial particle clusters
 - `src/physics`: all source files relating to physical calculations
 - `src/simulation`: all source files relating to the `Simlation` class
 - `src/MolSim.cpp`: source file holding main function

@@ -26,6 +26,7 @@ TEST(PContainerTests, particleIterate)
     EXPECT_EQ(result, 9);
 }
 
+// check if modifying F works
 TEST(PContainerTests, particleItModF)
 {
     Particle p1 { zeros, zeros, 5, 0 };
@@ -52,6 +53,7 @@ TEST(PContainerTests, particleItModF)
     EXPECT_EQ(result, 3);
 }
 
+// check if modifying X works
 TEST(PContainerTests, particleItModX)
 {
     Particle p1 { zeros, zeros, 5, 0 };
@@ -78,6 +80,7 @@ TEST(PContainerTests, particleItModX)
     EXPECT_EQ(result, 3);
 }
 
+// check if modifying V works
 TEST(PContainerTests, particleItModV)
 {
     Particle p1 { zeros, zeros, 5, 0 };
@@ -104,6 +107,7 @@ TEST(PContainerTests, particleItModV)
     EXPECT_EQ(result, 3);
 }
 
+// check if empty particle container works
 TEST(PContainerTests, particleItZero)
 {
     std::vector<Particle> particles {};
@@ -118,6 +122,7 @@ TEST(PContainerTests, particleItZero)
     EXPECT_EQ(count, 0);
 }
 
+// check if distinct pair iteration works
 TEST(PContainerTests, pairIterators)
 {
     Particle p1 { zeros, zeros, 5, 0 };
@@ -171,6 +176,7 @@ TEST(PContainerTests, pairIterators)
     EXPECT_EQ(count, 10);
 }
 
+// check if distinct pair iteration works with none / one particle in container
 TEST(PContainerTests, pairItZero)
 {
     std::vector<Particle> particles {};

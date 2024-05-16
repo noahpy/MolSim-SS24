@@ -18,7 +18,7 @@ public:
      * call the constructor of the Simulation class
      * @param time The current time of the simulation i.e. start time
      * @param delta_t The time increment for each iteration
-     * @param end_time The end time of the iteration
+     * @param end_time The end time of the simulation
      * @param container The container of particles
      * @param strat The strategy to be used for the physics calculations
      * @param writer The writer object to write the output to file
@@ -31,8 +31,8 @@ public:
         double end_time,
         ParticleContainer& container,
         PhysicsStrategy& strat,
-        FileWriter& writer,
-        FileReader& reader);
+        std::unique_ptr<FileWriter> writer,
+        std::unique_ptr<FileReader> reader);
 
     /**
      * @brief Run the simulation

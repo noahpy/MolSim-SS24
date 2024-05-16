@@ -22,7 +22,12 @@ target_include_directories(
 )
 
 # include libraries
-target_link_libraries(src PUBLIC xerces-c)
+target_link_libraries(
+        src
+        PUBLIC
+        xerces-c
+        spdlog::spdlog
+)
 
 # define MolSim target
 add_executable(MolSim MolSim.cpp)
