@@ -62,7 +62,8 @@ void FileReader::readFile(ParticleContainer& particles, std::string filename)
                 datastream >> vj;
             }
             if (datastream.eof()) {
-                spdlog::error("Error reading file: eof reached unexpectedly reading from line {}", i);
+                spdlog::error(
+                    "Error reading file: eof reached unexpectedly reading from line {}", i);
                 exit(-1);
             }
             datastream >> m;

@@ -1,7 +1,7 @@
 
 #include "lennardJonesSim.h"
-#include "io/fileWriter/FileWriter.h"
 #include "io/fileReader/FileReader.h"
+#include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
 #include <cmath>
 #include <spdlog/spdlog.h>

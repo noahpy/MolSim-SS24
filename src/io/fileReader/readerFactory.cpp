@@ -1,8 +1,8 @@
 
 #include "io/fileReader/readerFactory.h"
+#include "io/fileReader/asciiReader.h"
 #include "io/fileReader/clusterReader.h"
 #include "io/fileReader/emptyReader.h"
-#include "io/fileReader/asciiReader.h"
 #include <spdlog/spdlog.h>
 
 std::unique_ptr<FileReader> readerFactory(std::string input_file, unsigned type)
