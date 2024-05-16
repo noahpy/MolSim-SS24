@@ -15,7 +15,8 @@ public:
      * @param mass The mass of the particles
      * @param initialVelocity The initial velocity of the particles
      * @param meanVelocity The mean velocity of the particles
-     * @param dimensions The dimensions of the cluster (2 or 3). Will be passed to maxwellBoltzmannDistributedVelocity()
+     * @param dimensions The dimensions of the cluster (2 or 3). Will be passed to
+     * maxwellBoltzmannDistributedVelocity()
      */
     ParticleCluster(
         std::array<double, 3> origin,

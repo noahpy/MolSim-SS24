@@ -19,7 +19,6 @@ public:
      */
     std::string out_name = "MD_vtk";
 
-
     /*
      * @brief Destructor of FileWriter
      * */

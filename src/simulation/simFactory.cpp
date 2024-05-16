@@ -1,9 +1,9 @@
 
 #include "simFactory.h"
-#include "simulation/lennardJonesSim.h"
-#include "simulation/planetSim.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
+#include "simulation/lennardJonesSim.h"
+#include "simulation/planetSim.h"
 #include <spdlog/spdlog.h>
 
 std::unique_ptr<Simulation> simFactory(

@@ -70,8 +70,10 @@ void force_lennard_jones(const Simulation& sim)
         double dotDelta3 = std::pow(dotDelta, 3);
         double dotDelta6 = std::pow(dotDelta3, 2);
 
-        // The formula has been rearranged to avoid unnecessary calculations; please see the report for more details
-        std::array<double, 3> force = (alpha / dotDelta) * (beta / dotDelta3 + gamma / dotDelta6) * delta;
+        // The formula has been rearranged to avoid unnecessary calculations; please see the report
+        // for more details
+        std::array<double, 3> force =
+            (alpha / dotDelta) * (beta / dotDelta3 + gamma / dotDelta6) * delta;
         p1.setF(p1.getF() + force);
         p2.setF(p2.getF() - force);
     }
