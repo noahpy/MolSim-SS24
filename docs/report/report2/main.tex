@@ -119,8 +119,8 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/1
 \begin{itemize}
     \item The \verb|ParticleGenerator| class has two methods to generate clusters of particles
     \begin{enumerate}
-        \item \verb|registerCluster|: This methods takes a unique pointer to a \verb|ParticleCluster| object and pushes it onto a vector of pointers to store the references for the following generation of the particles
-        \item \verb|generateClusters|: This is method will create a vector of the length of all particles in all registered particles and will then call \verb|generateCluster| on every registered \verb|ParticleCluster|
+        \item \verb|registerCluster|: This method takes a unique pointer to a \verb|ParticleCluster| object and pushes it onto a vector of pointers to store the references for the following generation of the particles
+        \item \verb|generateClusters|: This method will create a vector of the length of all particles in all registered particles and will then call \verb|generateCluster| on every registered \verb|ParticleCluster|
     \end{enumerate}
     \item The advantage of having a dedicated register method is that the number of particles to be generated is known which allows to create a vector of the fitting length which will minimize memory operations and accelerate the code
     \item \verb|ParticleCluster| is an abstract class requiring child classes to implement three methods. (i) \verb|getTotalNumberOfParticles| $\rightarrow$ Returns the number of particles in the cluster (ii) \verb|generateCluster| $\rightarrow$ insert all particles into the passed particles vector (iii) \verb|toString| $\rightarrow$ Stringify for logging
