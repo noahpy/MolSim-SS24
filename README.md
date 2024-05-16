@@ -101,7 +101,7 @@ man ./.molsim.1
 
 ### Project structure
 The project is structured as follows:
-![Project structure UML](docs/report/report1/res/strategy_long.png)
+![Project structure UML](docs/report/report2/res/UML.png)
 Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
 
 **`Simulation`**
