@@ -41,14 +41,23 @@ cmake .. -DGENERATE_DOC=OFF  -DBUILD_BENCH=OFF
 instead.
 
 ### Run instructions
-To run the project, run the following command:
+To run the project (in general), run the following command:
 ```
 src/MolSim -d <delta_t> -e <end_t> ../input/<input_file>
+```
+#### Assignment 1 simulation
+```
+src/MolSim ../input/eingabe-sonne.txt -e 1000 
+```
+#### Assignment 2 simulation
+```
+src/MolSim ../input/clusters.txt -c -s 2 -d 0.0002 -e 5
 ```
 For more information about arguments and default settings, type:
 ```
 src/MolSim -h
 ```
+or read the [man page](#open-man-page)
 ### Generate Doxygen documentation
 To generate the Doxygen documentation, run the following command:
 ```
