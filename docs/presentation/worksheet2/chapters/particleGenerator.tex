@@ -1,0 +1,28 @@
+\section{Particle Generator}
+
+\begin{frame}
+    \frametitle{Abstracting Particle Clusters for simple Particle Generator}
+    
+    Particle clusters describe a collection of particles in a predefined structure
+
+    \begin{itemize}
+        \item \emph{ParticleCluster} is an abstract class requiring child classes to implement three methods:
+        \begin{enumerate}
+            \item (i) \emph{getTotalNumberOfParticles} $\rightarrow$ Returns the number of particles in the cluster
+            \item (ii) \emph{generateCluster} $\rightarrow$ insert all particles into the passed particles vector
+            \item (iii) \emph{toString} $\rightarrow$ Stringify for logging
+        \end{enumerate}  
+        \item We implemented a child class \emph{CuboidParticleCluster} which will generate a cluster as described on the problem sheet
+        \item[] \!\!\!\!\!\!\!\!\! \textcolor{orange}{$\Rightarrow$} Abstraction allows for easy extension $\rightarrow$ "falling drop" sounds as if spherical clusters will become important
+    \end{itemize}
+
+    \begin{itemize}
+        \item The \emph{ParticleGenerator} class has two methods to generate clusters of particles
+        \begin{enumerate}
+            \item \emph{registerCluster} $\rightarrow$ Add unique pointer to \emph{ParticleCluster} onto a vector 
+            \item \emph{generateClusters} $\rightarrow$ Call \emph{generateCluster} on every registered \emph{ParticleCluster}
+        \end{enumerate}
+        \item[] \!\!\!\!\!\!\!\!\! \textcolor{orange}{$\Rightarrow$} Registering clusters first allows to know the total number of particles $\rightarrow$ allocate \textbf{one} vector 
+    \end{itemize}
+
+\end{frame}
