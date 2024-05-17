@@ -4,7 +4,7 @@
 
 /**
  * @brief A class for reading cluster data from a file.
- * 
+ *
  * This class inherits from FileReader and provides functionality
  * to read cluster data from a file into a Simulation object.
  */

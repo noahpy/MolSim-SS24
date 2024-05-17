@@ -11,8 +11,8 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <string>
 #include <spdlog/spdlog.h>
+#include <string>
 
 namespace outputWriter {
 

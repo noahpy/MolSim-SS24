@@ -13,6 +13,7 @@ You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSi
     - [Run instructions](#run-instructions)
     - [Generate Doxygen documentation](#generate-doxygen-documentation)
     - [Run tests](#run-tests)
+    - [Run benchmarks](#run-benchmarks)
     - [Format code](#format-code)
     - [Open man page](#open-man-page)
 3. [Documentation](#documentation)
@@ -33,16 +34,30 @@ mkdir build && cd build
 cmake ..
 make
 ```
+To build without doxygen and benchmarks run
+```
+cmake .. -DGENERATE_DOC=OFF  -DBUILD_BENCH=OFF
+```
+instead.
 
 ### Run instructions
-To run the project, run the following command:
+To run the project (in general), run the following command:
 ```
 src/MolSim -d <delta_t> -e <end_t> ../input/<input_file>
+```
+#### Assignment 1 simulation
+```
+src/MolSim ../input/eingabe-sonne.txt -e 1000 
+```
+#### Assignment 2 simulation
+```
+src/MolSim ../input/clusters.txt -c -s 2 -d 0.0002 -e 5
 ```
 For more information about arguments and default settings, type:
 ```
 src/MolSim -h
 ```
+or read the [man page](#open-man-page)
 ### Generate Doxygen documentation
 To generate the Doxygen documentation, run the following command:
 ```
@@ -65,6 +80,18 @@ Or alternatively with ctest:
 ctest --test-dir tests
 ```
 
+### Run benchmarks 
+The benchmarks are run using [Google benchmark](https://github.com/google/benchmark).
+Build:
+```
+cd build
+make benchmarks
+```
+Run:
+```
+bench/benchmarks
+```
+
 ### Format code
 If your system has clang-format installed, the target `clangformat` will be created. You can then run:
 ```
@@ -83,7 +110,7 @@ man ./.molsim.1
 
 ### Project structure
 The project is structured as follows:
-![Project structure UML](docs/report/report1/res/strategy_long.png)
+![Project structure UML](docs/report/report2/res/UML.png)
 Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
 
 **`Simulation`**

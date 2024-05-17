@@ -1,0 +1,24 @@
+\section{Continuous Integration}
+
+\begin{frame}
+    \frametitle{GitHub workflow}
+
+    \begin{itemize}
+        \item CI realization through Docker and 'nektos/act'
+        \item Utilizing the ubuntu-latest image
+        \item Ran tests with sanitizer flag
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Branch protection}
+
+    Only push to assignment* and master if:
+    \begin{itemize}
+        \item Only over PR
+        \item Changes need to pass CI tests
+        \item Changes need to be approved
+    \end{itemize}
+
+\end{frame}
