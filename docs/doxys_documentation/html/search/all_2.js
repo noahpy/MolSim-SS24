@@ -1,18 +1,4 @@
 var searchData=
 [
-  ['base64_5fbinary_0',['base64_binary',['../namespacexml__schema.html#a10ecc8404a8b1e769c232b0be7264262',1,'xml_schema']]],
-  ['basesimulation_2ecpp_1',['baseSimulation.cpp',['../baseSimulation_8cpp.html',1,'']]],
-  ['basesimulation_2eh_2',['baseSimulation.h',['../baseSimulation_8h.html',1,'']]],
-  ['begin_3',['begin',['../classParticleContainer.html#a9c6e5afbd08a15591cfc867f85eb146b',1,'ParticleContainer']]],
-  ['beginpairs_4',['beginPairs',['../classParticleContainer.html#a8ad5de2a6c97452ecf68222fa78cbbab',1,'ParticleContainer']]],
-  ['beta_5',['beta',['../classLennardJonesSimulation.html#a8e4e4a8fb0b0f6a2d8be5b856e1dd8e1',1,'LennardJonesSimulation']]],
-  ['boolean_6',['boolean',['../namespacexml__schema.html#ae5ada4ec9c54b51765c3e4c0e9631bba',1,'xml_schema']]],
-  ['bounds_7',['bounds',['../namespacexml__schema.html#a38d9d30667480b2997c5da8b0125a990',1,'xml_schema']]],
-  ['buffer_8',['buffer',['../namespacexml__schema.html#a922fdef76246f6b57b8c1822c278c69a',1,'xml_schema']]],
-  ['build_20instructions_9',['Build instructions',['../index.html#autotoc_md3',1,'']]],
-  ['byte_10',['byte',['../namespacexml__schema.html#a2a462724b41fb68016d13b34f9a84b7d',1,'xml_schema']]],
-  ['byte_5forder_11',['byte_order',['../classVTKFile__t.html#a22da4137077f83dafbd41e118a1846db',1,'VTKFile_t']]],
-  ['byte_5forder_5fdefault_5fvalue_12',['byte_order_default_value',['../classVTKFile__t.html#a4538fe428d79eff40025d874e200bec1',1,'VTKFile_t']]],
-  ['byte_5forder_5ftraits_13',['byte_order_traits',['../classVTKFile__t.html#a408d194228046977e554411dcf8424d3',1,'VTKFile_t']]],
-  ['byte_5forder_5ftype_14',['byte_order_type',['../classVTKFile__t.html#ab08dd45c560dd0635d0e5c0a5e42d2e8',1,'VTKFile_t']]]
+  ['_5fclone_0',['_clone',['../classDataArrayList__t.html#a8303457db583a0cb6631dedc01172fca',1,'DataArrayList_t::_clone()'],['../classDataArray__t.html#a73debee539c564a1f2ecd98c30f2aeaf',1,'DataArray_t::_clone()'],['../classPieceUnstructuredGrid__t.html#a19d3d04eff0b3008186849b6f498dbdf',1,'PieceUnstructuredGrid_t::_clone()'],['../classUnstructuredGrid__t.html#a1bb2d9c2493c3bc793e0f9b61a1614ea',1,'UnstructuredGrid_t::_clone()'],['../classPolyData__t.html#a408693b963b9a5b101e396167cb6e3b7',1,'PolyData_t::_clone()'],['../classVTKFile__t.html#ab7a656f76ddd464274c7903633bbcd8f',1,'VTKFile_t::_clone()'],['../classtype.html#a6c86bff15d42db0acfdcc449add18a90',1,'type::_clone()'],['../classPointData.html#a32c7d33a106927b3c4dba5b0d742e70c',1,'PointData::_clone()'],['../classCellData.html#a087f468a0292e3b6d8d6bfe0463dce88',1,'CellData::_clone()'],['../classPoints.html#a69876250eedb284d5b6ce40b757616af',1,'Points::_clone()'],['../classCells.html#aee0049d8d31f40f0ed90b86c8dfddd84',1,'Cells::_clone()']]]
 ];

@@ -14,20 +14,21 @@
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <array>}}
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <random>}}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwellBoltzmannDistributedVelocity}}(\textcolor{keywordtype}{double}\ averageVelocity,\ \textcolor{keywordtype}{size\_t}\ dimensions)}
-\DoxyCodeLine{00023\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ we\ use\ a\ constant\ seed\ for\ repeatability.}}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ random\ engine\ needs\ static\ lifetime\ otherwise\ it\ would\ be\ recreated\ for\ every\ call.}}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ std::default\_random\_engine\ randomEngine(42);}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ when\ adding\ independent\ normally\ distributed\ values\ to\ all\ velocity\ components}}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ the\ velocity\ change\ is\ maxwell\ boltzmann\ distributed}}
-\DoxyCodeLine{00030\ \ \ \ \ std::normal\_distribution<double>\ normalDistribution\ \{\ 0,\ 1\ \};}
-\DoxyCodeLine{00031\ \ \ \ \ std::array<double,\ 3>\ randomVelocity\ \{\};}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ dimensions;\ ++i)\ \{}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ randomVelocity[i]\ =\ averageVelocity\ *\ normalDistribution(randomEngine);}
-\DoxyCodeLine{00034\ \ \ \ \ \}}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ randomVelocity;}
-\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwellBoltzmannDistributedVelocity}}(}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{double}\ averageVelocity,\ \textcolor{keywordtype}{size\_t}\ dimensions)}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ we\ use\ a\ constant\ seed\ for\ repeatability.}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ random\ engine\ needs\ static\ lifetime\ otherwise\ it\ would\ be\ recreated\ for\ every\ call.}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ std::default\_random\_engine\ randomEngine(42);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ when\ adding\ independent\ normally\ distributed\ values\ to\ all\ velocity\ components}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ the\ velocity\ change\ is\ maxwell\ boltzmann\ distributed}}
+\DoxyCodeLine{00031\ \ \ \ \ std::normal\_distribution<double>\ normalDistribution\ \{\ 0,\ 1\ \};}
+\DoxyCodeLine{00032\ \ \ \ \ std::array<double,\ 3>\ randomVelocity\ \{\};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ dimensions;\ ++i)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ randomVelocity[i]\ =\ averageVelocity\ *\ normalDistribution(randomEngine);}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{return}\ randomVelocity;}
+\DoxyCodeLine{00037\ \}}
 
 \end{DoxyCode}

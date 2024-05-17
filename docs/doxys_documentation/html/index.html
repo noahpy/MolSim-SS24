@@ -87,6 +87,7 @@ Table of Contents</h1>
 <li>Run instructions</li>
 <li>Generate Doxygen documentation</li>
 <li>Run tests</li>
+<li>Run benchmarks</li>
 <li>Format code</li>
 <li>Open man page</li>
 </ul>
@@ -111,32 +112,46 @@ Build instructions</h2>
 <p>To build the project, run the following commands: </p><div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
 <div class="line">cmake ..</div>
 <div class="line">make</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><p> To build without doxygen and benchmarks run </p><div class="fragment"><div class="line">cmake .. -DGENERATE_DOC=OFF  -DBUILD_BENCH=OFF</div>
+</div><!-- fragment --><p> instead.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Run instructions</h2>
-<p>To run the project, run the following command: </p><div class="fragment"><div class="line">src/MolSim -d &lt;delta_t&gt; -e &lt;end_t&gt; ../input/&lt;input_file&gt;</div>
+<p>To run the project (in general), run the following command: </p><div class="fragment"><div class="line">src/MolSim -d &lt;delta_t&gt; -e &lt;end_t&gt; ../input/&lt;input_file&gt;</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md5"></a>
+Assignment 1 simulation</h3>
+<div class="fragment"><div class="line">src/MolSim ../input/eingabe-sonne.txt -e 1000 </div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md6"></a>
+Assignment 2 simulation</h3>
+<div class="fragment"><div class="line">src/MolSim ../input/clusters.txt -c -s 2 -d 0.0002 -e 5</div>
 </div><!-- fragment --><p> For more information about arguments and default settings, type: </p><div class="fragment"><div class="line">src/MolSim -h</div>
-</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><p> or read the man page </p>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Generate Doxygen documentation</h2>
 <p>To generate the Doxygen documentation, run the following command: </p><div class="fragment"><div class="line">make doc_doxygen</div>
 </div><!-- fragment --><p> This will generate the documentation into the folder <code>doxys_documentation</code>.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Run tests</h2>
 <p>To build the tests run: </p><div class="fragment"><div class="line">cd build</div>
 <div class="line">make tests</div>
 </div><!-- fragment --><p> To run the tests, run the following command: </p><div class="fragment"><div class="line">tests/tests</div>
 </div><!-- fragment --><p> Or alternatively with ctest: </p><div class="fragment"><div class="line">ctest --test-dir tests</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+Run benchmarks</h2>
+<p>The benchmarks are run using <a href="https://github.com/google/benchmark">Google benchmark</a>. Build: </p><div class="fragment"><div class="line">cd build</div>
+<div class="line">make benchmarks</div>
+</div><!-- fragment --><p> Run: </p><div class="fragment"><div class="line">bench/benchmarks</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 Format code</h2>
 <p>If your system has clang-format installed, the target <code>clangformat</code> will be created. You can then run: </p><div class="fragment"><div class="line">make clangformat</div>
 </div><!-- fragment --><p> to format the code.</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Open man page</h2>
 <p>To see more details on how to use the program, you can look at our man page. Enter the project root and then run: </p><div class="fragment"><div class="line">man ./.molsim.1</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
 Documentation</h1>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Project structure</h2>
-<p>The project is structured as follows: <img src="strategy_long.png" alt="" class="inline" title="Project structure UML"/>     Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.</p>
+<p>The project is structured as follows: <img src="UML.png" alt="" class="inline" title="Project structure UML"/>     Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.</p>
 <p>**<code><a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a></code>**</p><ul>
 <li>Any kinds of a simulations are represented as a child class of the <code><a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a></code> class</li>
 <li>Any simulation instance defines the <code>runSim()</code> function, which uses the I/O classes (<code><a class="el" href="classFileReader.html" title="Class for reading input files for a simulation.">FileReader</a></code>, <code><a class="el" href="classFileWriter.html" title="Abstract class FileWriter.">FileWriter</a></code>), the <code><a class="el" href="classPhysicsStrategy.html" title="Strategy pattern for physics calculations.">PhysicsStrategy</a></code> class and the model variables passed to it to calculate the simulation through time.</li>
@@ -158,7 +173,7 @@ Project structure</h2>
 <li>Based on an abstract <code><a class="el" href="classParticleCluster.html" title="An abstract class to model a cluster of particles.">ParticleCluster</a></code> class</li>
 <li>Child classes include e.g. <code><a class="el" href="classCuboidParticleCluster.html" title="A class to model a cluster of particles in the shape of a cuboid, see ParticleCluster.">CuboidParticleCluster</a></code> used in problem sheet 2</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Folder structure</h2>
 <p>This section describes the folder strcuture of this project:</p><ul>
 <li><code>tests</code>: tests of the project</li>

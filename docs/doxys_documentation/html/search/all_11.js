@@ -1,27 +1,5 @@
 var searchData=
 [
-  ['second_0',['second',['../classParticleContainer_1_1PairIterator.html#a1968817078e9ea36baa45b41fb013602',1,'ParticleContainer::PairIterator']]],
-  ['serialization_1',['serialization',['../namespacexml__schema.html#afde75641e1b21952c96ea275f5971bce',1,'xml_schema']]],
-  ['setf_2',['setF',['../classParticle.html#a0c6a31aabc41ff9d772115c3420f2e74',1,'Particle']]],
-  ['setoldf_3',['setOldF',['../classParticle.html#a1258d6f77d09205e3bd2679a477341f4',1,'Particle']]],
-  ['setv_4',['setV',['../classParticle.html#ae50e8aecb7b790c67b956dbe16837150',1,'Particle']]],
-  ['setx_5',['setX',['../classParticle.html#a349cfd2dffbdb84f444046a5bfc85c40',1,'Particle']]],
-  ['severity_6',['severity',['../namespacexml__schema.html#aaac8e21420b35e58ad94533db40ccf41',1,'xml_schema']]],
-  ['short_5f_7',['short_',['../namespacexml__schema.html#a705720c1fed1575ccdcfd21cb7ab39ab',1,'xml_schema']]],
-  ['sigma_8',['sigma',['../classLennardJonesSimulation.html#afefdd4b7b8084169ea224a7099e6c3e0',1,'LennardJonesSimulation']]],
-  ['simfactory_9',['simFactory',['../simFactory_8cpp.html#a22b52f2aca72ab6f2d743bd529fc9a00',1,'simFactory(unsigned sim_type, double start_time, double delta_t, double end_time, double epsilon, double sigma, ParticleContainer &amp;particles, PhysicsStrategy &amp;strat, std::unique_ptr&lt; FileWriter &gt; writePointer, std::unique_ptr&lt; FileReader &gt; readPointer):&#160;simFactory.cpp'],['../simFactory_8h.html#a22b52f2aca72ab6f2d743bd529fc9a00',1,'simFactory(unsigned sim_type, double start_time, double delta_t, double end_time, double epsilon, double sigma, ParticleContainer &amp;particles, PhysicsStrategy &amp;strat, std::unique_ptr&lt; FileWriter &gt; writePointer, std::unique_ptr&lt; FileReader &gt; readPointer):&#160;simFactory.cpp']]],
-  ['simfactory_2ecpp_10',['simFactory.cpp',['../simFactory_8cpp.html',1,'']]],
-  ['simfactory_2eh_11',['simFactory.h',['../simFactory_8h.html',1,'']]],
-  ['simple_5ftype_12',['simple_type',['../namespacexml__schema.html#a1aae3f3aaa6cf9d07828a4d36f76754b',1,'xml_schema']]],
-  ['simulation_13',['Simulation',['../classSimulation.html',1,'Simulation'],['../classSimulation.html#a0b7e110d1db518fe23ddb28ea6241df7',1,'Simulation::Simulation()'],['../classLennardJonesSimulation.html#a0b7e110d1db518fe23ddb28ea6241df7',1,'LennardJonesSimulation::Simulation()'],['../classPlanetSimulation.html#a0b7e110d1db518fe23ddb28ea6241df7',1,'PlanetSimulation::Simulation()']]],
-  ['spacing_14',['spacing',['../classCuboidParticleCluster.html#a0c84dd0f2a7bbe896ceefec9c6bd5393',1,'CuboidParticleCluster']]],
-  ['start_15',['start',['../classParticleContainer_1_1PairIterator.html#a1a396db660eba6faf30cef00eeb5d3c5',1,'ParticleContainer::PairIterator']]],
-  ['strategy_16',['strategy',['../classSimulation.html#abdb48771e24ba63a3db95b27d153b629',1,'Simulation']]],
-  ['strategy_2ecpp_17',['strategy.cpp',['../strategy_8cpp.html',1,'']]],
-  ['strategy_2eh_18',['strategy.h',['../strategy_8h.html',1,'']]],
-  ['stratfactory_19',['stratFactory',['../stratFactory_8cpp.html#a3823d74372be4e497cb377cb6f6a8eae',1,'stratFactory(unsigned simulation_type):&#160;stratFactory.cpp'],['../stratFactory_8h.html#a3823d74372be4e497cb377cb6f6a8eae',1,'stratFactory(unsigned simulation_type):&#160;stratFactory.cpp']]],
-  ['stratfactory_2ecpp_20',['stratFactory.cpp',['../stratFactory_8cpp.html',1,'']]],
-  ['stratfactory_2eh_21',['stratFactory.h',['../stratFactory_8h.html',1,'']]],
-  ['string_22',['string',['../namespacexml__schema.html#a107bc4cd8f36e47026c8dbb154f9b587',1,'xml_schema']]],
-  ['structure_23',['Structure',['../index.html#autotoc_md11',1,'Folder structure'],['../index.html#autotoc_md10',1,'Project structure']]]
+  ['qname_0',['qname',['../namespacexml__schema.html#a4991b5d00f9b784659ede67786cb4d78',1,'xml_schema']]],
+  ['quickstart_1',['Quickstart',['../index.html#autotoc_md2',1,'']]]
 ];

@@ -96,21 +96,22 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="MaxwellBoltzmannDistribution_8h.html#a4072527de9b13fe5fb563ef877ae78c5">   22</a></span><span class="keyword">inline</span> std::array&lt;double, 3&gt; <a class="code hl_function" href="MaxwellBoltzmannDistribution_8h.html#a4072527de9b13fe5fb563ef877ae78c5">maxwellBoltzmannDistributedVelocity</a>(<span class="keywordtype">double</span> averageVelocity, <span class="keywordtype">size_t</span> dimensions)</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// we use a constant seed for repeatability.</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// random engine needs static lifetime otherwise it would be recreated for every call.</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">static</span> std::default_random_engine randomEngine(42);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// when adding independent normally distributed values to all velocity components</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// the velocity change is maxwell boltzmann distributed</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::normal_distribution&lt;double&gt; normalDistribution { 0, 1 };</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    std::array&lt;double, 3&gt; randomVelocity {};</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; dimensions; ++i) {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        randomVelocity[i] = averageVelocity * normalDistribution(randomEngine);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> randomVelocity;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="MaxwellBoltzmannDistribution_8h.html#a4072527de9b13fe5fb563ef877ae78c5">   22</a></span><span class="keyword">inline</span> std::array&lt;double, 3&gt; <a class="code hl_function" href="MaxwellBoltzmannDistribution_8h.html#a4072527de9b13fe5fb563ef877ae78c5">maxwellBoltzmannDistributedVelocity</a>(</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">double</span> averageVelocity, <span class="keywordtype">size_t</span> dimensions)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// we use a constant seed for repeatability.</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// random engine needs static lifetime otherwise it would be recreated for every call.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> std::default_random_engine randomEngine(42);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// when adding independent normally distributed values to all velocity components</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// the velocity change is maxwell boltzmann distributed</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    std::normal_distribution&lt;double&gt; normalDistribution { 0, 1 };</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    std::array&lt;double, 3&gt; randomVelocity {};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; dimensions; ++i) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        randomVelocity[i] = averageVelocity * normalDistribution(randomEngine);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">return</span> randomVelocity;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 </div>
 <div class="ttc" id="aMaxwellBoltzmannDistribution_8h_html_a4072527de9b13fe5fb563ef877ae78c5"><div class="ttname"><a href="MaxwellBoltzmannDistribution_8h.html#a4072527de9b13fe5fb563ef877ae78c5">maxwellBoltzmannDistributedVelocity</a></div><div class="ttdeci">std::array&lt; double, 3 &gt; maxwellBoltzmannDistributedVelocity(double averageVelocity, size_t dimensions)</div><div class="ttdef"><b>Definition</b> MaxwellBoltzmannDistribution.h:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
