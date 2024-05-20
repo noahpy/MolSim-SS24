@@ -3,6 +3,10 @@
 
 #include "models/Particle.h"
 #include <vector>
+#include "utils/ArrayUtils.h"
+#include "utils/MaxwellBoltzmannDistribution.h"
+#include <spdlog/spdlog.h>
+#include <sstream>
 
 /**
  * @brief An abstract class to model a cluster of particles

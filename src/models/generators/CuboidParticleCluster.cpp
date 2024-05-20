@@ -1,9 +1,5 @@
 
 #include "CuboidParticleCluster.h"
-#include "utils/ArrayUtils.h"
-#include "utils/MaxwellBoltzmannDistribution.h"
-#include <spdlog/spdlog.h>
-#include <sstream>
 
 CuboidParticleCluster::CuboidParticleCluster(
     std::array<double, 3> origin,
