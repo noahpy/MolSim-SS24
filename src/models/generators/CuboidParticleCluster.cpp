@@ -27,14 +27,6 @@ size_t CuboidParticleCluster::getTotalNumberOfParticles() const
 void CuboidParticleCluster::generateCluster(
     std::vector<Particle>& particles, size_t& insertionIndex) const
 {
-    if (dimensions != 2 && dimensions != 3) {
-        spdlog::warn(
-            "The dimensions specified for a Cuboid Particle cluster was set to {}. It can only be "
-            "of values 2 or 3",
-            dimensions);
-        throw std::invalid_argument("Dimensions must be 2 or 3.");
-    }
-
     for (int i = 0; i < numParticlesWidth; i++) { // x
         for (int j = 0; j < numParticlesHeight; j++) { // y
             for (int k = 0; k < numParticlesDepth; k++) { // z
