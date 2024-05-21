@@ -1,5 +1,4 @@
 // file      : xsd/cxx/xml/char-utf8.txx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #include <xsd/cxx/config.hxx> // XSD_CXX11
@@ -116,20 +115,24 @@ namespace xsd
               rs[i + 3] = C ((u | 0x80UL) & 0xBFUL);
               u >>= 6;
             }
+            // Fall through.
           case 3:
             {
               rs[i + 2] = C ((u | 0x80UL) & 0xBFUL);
               u >>= 6;
             }
+            // Fall through.
           case 2:
             {
               rs[i + 1] = C ((u | 0x80UL) & 0xBFUL);
               u >>= 6;
             }
+            // Fall through.
           case 1:
             {
               rs[i] = C (u | first_byte_mask_[count]);
             }
+            // Fall through.
           }
 
           i += count;
@@ -152,7 +155,7 @@ namespace xsd
 
         for (const C* p (s); p < end; ++p)
         {
-          unsigned char c (*p);
+          unsigned char c (static_cast<unsigned char> (*p));
 
           if (c < 0x80)
           {
@@ -201,7 +204,7 @@ namespace xsd
 
         for (const C* p (s); p < end; ++p)
         {
-          unsigned char c (*p);
+          unsigned char c (static_cast<unsigned char> (*p));
 
           if (c < 0x80)
           {
@@ -217,7 +220,7 @@ namespace xsd
             //
             u = (c & 0x1F) << 6;
 
-            c = *++p;
+            c = static_cast<unsigned char> (*++p);
             if ((c >> 6) != 2)
             {
               valid = false;
@@ -232,7 +235,7 @@ namespace xsd
             //
             u = (c & 0x0F) << 6;
 
-            c = *++p;
+            c = static_cast<unsigned char> (*++p);
             if ((c >> 6) != 2)
             {
               valid = false;
@@ -240,7 +243,7 @@ namespace xsd
             }
             u = (u | (c & 0x3F)) << 6;
 
-            c = *++p;
+            c = static_cast<unsigned char> (*++p);
             if ((c >> 6) != 2)
             {
               valid = false;
@@ -255,7 +258,7 @@ namespace xsd
             //
             u = (c & 0x07) << 6;
 
-            c = *++p;
+            c = static_cast<unsigned char> (*++p);
             if ((c >> 6) != 2)
             {
               valid = false;
@@ -263,7 +266,7 @@ namespace xsd
             }
             u = (u | (c & 0x3F)) << 6;
 
-            c = *++p;
+            c = static_cast<unsigned char> (*++p);
             if ((c >> 6) != 2)
             {
               valid = false;
@@ -271,7 +274,7 @@ namespace xsd
             }
             u = (u | (c & 0x3F)) << 6;
 
-            c = *++p;
+            c = static_cast<unsigned char> (*++p);
             if ((c >> 6) != 2)
             {
               valid = false;

@@ -1,5 +1,4 @@
 // file      : xsd/cxx/tree/type-factory-map.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #ifndef XSD_CXX_TREE_TYPE_FACTORY_MAP_HXX
@@ -151,11 +150,14 @@ namespace xsd
 
       //
       //
-      template<unsigned long id, typename C, typename T>
+      template<unsigned long id, typename C>
       struct element_factory_initializer
       {
+        typedef typename type_factory_map<C>::factory factory;
+
         element_factory_initializer (const C* root_name, const C* root_ns,
-                                     const C* subst_name, const C* subst_ns);
+                                     const C* subst_name, const C* subst_ns,
+                                     factory);
 
         ~element_factory_initializer ();
 
