@@ -16,6 +16,7 @@ PlanetSimulation::PlanetSimulation(
     std::unique_ptr<FileReader> reader)
     : Simulation(time, delta_t, end_time, container, strat, std::move(writer), std::move(reader))
 {
+    this->reader->readFile(*this);
 }
 
 void PlanetSimulation::runSim()
