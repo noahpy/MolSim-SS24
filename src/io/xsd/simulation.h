@@ -36,8 +36,8 @@
  * @brief Generated from simulation.xsd.
  */
 
-#ifndef SIMULATION_H
-#define SIMULATION_H
+#ifndef CXX_HOME_NOAH_UNI_PSEM_CODE_MOL_SIM_SS24_SRC_IO_XSD_SIMULATION_H
+#define CXX_HOME_NOAH_UNI_PSEM_CODE_MOL_SIM_SS24_SRC_IO_XSD_SIMULATION_H
 
 #ifndef XSD_CXX11
 #define XSD_CXX11
@@ -620,6 +620,7 @@ class doubleVec_t;
 class intVec_t;
 class dimension_t;
 class cuboid_t;
+class sphere_t;
 class clusters_t;
 class params_t;
 class simulation_t;
@@ -1746,6 +1747,328 @@ class cuboid_t: public ::xml_schema::type
 };
 
 /**
+ * @brief Class corresponding to the %sphere_t schema type.
+ *
+ * Defines the properties of a sphere-shaped cluster.
+ *
+ * @nosubgrouping
+ */
+class sphere_t: public ::xml_schema::type
+{
+  public:
+  /**
+   * @name center
+   *
+   * @brief Accessor and modifier functions for the %center
+   * required element.
+   *
+   * The center position of the sphere in 3D space.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::doubleVec_t center_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< center_type, char > center_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const center_type&
+  center () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  center_type&
+  center ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  center (const center_type& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly
+   * instead of making a copy.
+   */
+  void
+  center (::std::unique_ptr< center_type > p);
+
+  //@}
+
+  /**
+   * @name radius
+   *
+   * @brief Accessor and modifier functions for the %radius
+   * required element.
+   *
+   * The radius of the sphere.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ radius_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< radius_type, char, ::xsd::cxx::tree::schema_type::double_ > radius_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const radius_type&
+  radius () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  radius_type&
+  radius ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  radius (const radius_type& x);
+
+  //@}
+
+  /**
+   * @name mass
+   *
+   * @brief Accessor and modifier functions for the %mass
+   * required element.
+   *
+   * The mass of the sphere.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ mass_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< mass_type, char, ::xsd::cxx::tree::schema_type::double_ > mass_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const mass_type&
+  mass () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  mass_type&
+  mass ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  mass (const mass_type& x);
+
+  //@}
+
+  /**
+   * @name spacing
+   *
+   * @brief Accessor and modifier functions for the %spacing
+   * required element.
+   *
+   * The spacing between particles in the sphere.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ spacing_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< spacing_type, char, ::xsd::cxx::tree::schema_type::double_ > spacing_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const spacing_type&
+  spacing () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  spacing_type&
+  spacing ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  spacing (const spacing_type& x);
+
+  //@}
+
+  /**
+   * @name Constructors
+   */
+  //@{
+
+  /**
+   * @brief Create an instance from the ultimate base and
+   * initializers for required elements and attributes.
+   */
+  sphere_t (const center_type&,
+            const radius_type&,
+            const mass_type&,
+            const spacing_type&);
+
+  /**
+   * @brief Create an instance from the ultimate base and
+   * initializers for required elements and attributes
+   * (::std::unique_ptr version).
+   *
+   * This constructor will try to use the passed values directly
+   * instead of making copies.
+   */
+  sphere_t (::std::unique_ptr< center_type >,
+            const radius_type&,
+            const mass_type&,
+            const spacing_type&);
+
+  /**
+   * @brief Create an instance from a DOM element.
+   *
+   * @param e A DOM element to extract the data from.
+   * @param f Flags to create the new instance with.
+   * @param c A pointer to the object that will contain the new
+   * instance.
+   */
+  sphere_t (const ::xercesc::DOMElement& e,
+            ::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy constructor.
+   *
+   * @param x An instance to make a copy of.
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  sphere_t (const sphere_t& x,
+            ::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy the instance polymorphically.
+   *
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   * @return A pointer to the dynamically allocated copy.
+   *
+   * This function ensures that the dynamic type of the instance is
+   * used for copying and should be used for polymorphic object
+   * models instead of the copy constructor.
+   */
+  virtual sphere_t*
+  _clone (::xml_schema::flags f = 0,
+          ::xml_schema::container* c = 0) const;
+
+  /**
+   * @brief Copy assignment operator.
+   *
+   * @param x An instance to make a copy of.
+   * @return A reference to itself.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  sphere_t&
+  operator= (const sphere_t& x);
+
+  //@}
+
+  /**
+   * @brief Destructor.
+   */
+  virtual 
+  ~sphere_t ();
+
+  // Implementation.
+  //
+
+  //@cond
+
+  protected:
+  void
+  parse (::xsd::cxx::xml::dom::parser< char >&,
+         ::xml_schema::flags);
+
+  protected:
+  ::xsd::cxx::tree::one< center_type > center_;
+  ::xsd::cxx::tree::one< radius_type > radius_;
+  ::xsd::cxx::tree::one< mass_type > mass_;
+  ::xsd::cxx::tree::one< spacing_type > spacing_;
+
+  //@endcond
+};
+
+/**
  * @brief Class corresponding to the %clusters_t schema type.
  *
  * Represents a collection of clusters.
@@ -1818,6 +2141,72 @@ class clusters_t: public ::xml_schema::type
    */
   void
   cuboid (const cuboid_sequence& s);
+
+  //@}
+
+  /**
+   * @name sphere
+   *
+   * @brief Accessor and modifier functions for the %sphere
+   * sequence element.
+   *
+   * A sphere cluster within the collection.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::sphere_t sphere_type;
+
+  /**
+   * @brief Element sequence container type.
+   */
+  typedef ::xsd::cxx::tree::sequence< sphere_type > sphere_sequence;
+
+  /**
+   * @brief Element iterator type.
+   */
+  typedef sphere_sequence::iterator sphere_iterator;
+
+  /**
+   * @brief Element constant iterator type.
+   */
+  typedef sphere_sequence::const_iterator sphere_const_iterator;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< sphere_type, char > sphere_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * sequence.
+   *
+   * @return A constant reference to the sequence container.
+   */
+  const sphere_sequence&
+  sphere () const;
+
+  /**
+   * @brief Return a read-write reference to the element sequence.
+   *
+   * @return A reference to the sequence container.
+   */
+  sphere_sequence&
+  sphere ();
+
+  /**
+   * @brief Copy elements from a given sequence.
+   *
+   * @param s A sequence to copy elements from.
+   *
+   * For each element in @a s this function makes a copy and adds it 
+   * to the sequence. Note that this operation completely changes the 
+   * sequence and all old elements will be lost.
+   */
+  void
+  sphere (const sphere_sequence& s);
 
   //@}
 
@@ -1903,6 +2292,7 @@ class clusters_t: public ::xml_schema::type
 
   protected:
   cuboid_sequence cuboid_;
+  sphere_sequence sphere_;
 
   //@endcond
 };
@@ -2792,6 +3182,9 @@ void
 operator<< (::xercesc::DOMElement&, const cuboid_t&);
 
 void
+operator<< (::xercesc::DOMElement&, const sphere_t&);
+
+void
 operator<< (::xercesc::DOMElement&, const clusters_t&);
 
 void
@@ -2968,4 +3361,4 @@ simulation (const ::simulation_t& x,
 //
 // End epilogue.
 
-#endif // SIMULATION_H
+#endif // CXX_HOME_NOAH_UNI_PSEM_CODE_MOL_SIM_SS24_SRC_IO_XSD_SIMULATION_H

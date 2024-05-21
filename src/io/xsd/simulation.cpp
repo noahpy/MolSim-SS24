@@ -314,6 +314,88 @@ brownDim (::std::unique_ptr< brownDim_type > x)
 }
 
 
+// sphere_t
+//
+
+const sphere_t::center_type& sphere_t::
+center () const
+{
+  return this->center_.get ();
+}
+
+sphere_t::center_type& sphere_t::
+center ()
+{
+  return this->center_.get ();
+}
+
+void sphere_t::
+center (const center_type& x)
+{
+  this->center_.set (x);
+}
+
+void sphere_t::
+center (::std::unique_ptr< center_type > x)
+{
+  this->center_.set (std::move (x));
+}
+
+const sphere_t::radius_type& sphere_t::
+radius () const
+{
+  return this->radius_.get ();
+}
+
+sphere_t::radius_type& sphere_t::
+radius ()
+{
+  return this->radius_.get ();
+}
+
+void sphere_t::
+radius (const radius_type& x)
+{
+  this->radius_.set (x);
+}
+
+const sphere_t::mass_type& sphere_t::
+mass () const
+{
+  return this->mass_.get ();
+}
+
+sphere_t::mass_type& sphere_t::
+mass ()
+{
+  return this->mass_.get ();
+}
+
+void sphere_t::
+mass (const mass_type& x)
+{
+  this->mass_.set (x);
+}
+
+const sphere_t::spacing_type& sphere_t::
+spacing () const
+{
+  return this->spacing_.get ();
+}
+
+sphere_t::spacing_type& sphere_t::
+spacing ()
+{
+  return this->spacing_.get ();
+}
+
+void sphere_t::
+spacing (const spacing_type& x)
+{
+  this->spacing_.set (x);
+}
+
+
 // clusters_t
 //
 
@@ -333,6 +415,24 @@ void clusters_t::
 cuboid (const cuboid_sequence& s)
 {
   this->cuboid_ = s;
+}
+
+const clusters_t::sphere_sequence& clusters_t::
+sphere () const
+{
+  return this->sphere_;
+}
+
+clusters_t::sphere_sequence& clusters_t::
+sphere ()
+{
+  return this->sphere_;
+}
+
+void clusters_t::
+sphere (const sphere_sequence& s)
+{
+  this->sphere_ = s;
 }
 
 
@@ -1072,13 +1172,188 @@ cuboid_t::
 {
 }
 
+// sphere_t
+//
+
+sphere_t::
+sphere_t (const center_type& center,
+          const radius_type& radius,
+          const mass_type& mass,
+          const spacing_type& spacing)
+: ::xml_schema::type (),
+  center_ (center, this),
+  radius_ (radius, this),
+  mass_ (mass, this),
+  spacing_ (spacing, this)
+{
+}
+
+sphere_t::
+sphere_t (::std::unique_ptr< center_type > center,
+          const radius_type& radius,
+          const mass_type& mass,
+          const spacing_type& spacing)
+: ::xml_schema::type (),
+  center_ (std::move (center), this),
+  radius_ (radius, this),
+  mass_ (mass, this),
+  spacing_ (spacing, this)
+{
+}
+
+sphere_t::
+sphere_t (const sphere_t& x,
+          ::xml_schema::flags f,
+          ::xml_schema::container* c)
+: ::xml_schema::type (x, f, c),
+  center_ (x.center_, f, this),
+  radius_ (x.radius_, f, this),
+  mass_ (x.mass_, f, this),
+  spacing_ (x.spacing_, f, this)
+{
+}
+
+sphere_t::
+sphere_t (const ::xercesc::DOMElement& e,
+          ::xml_schema::flags f,
+          ::xml_schema::container* c)
+: ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+  center_ (this),
+  radius_ (this),
+  mass_ (this),
+  spacing_ (this)
+{
+  if ((f & ::xml_schema::flags::base) == 0)
+  {
+    ::xsd::cxx::xml::dom::parser< char > p (e, true, false, false);
+    this->parse (p, f);
+  }
+}
+
+void sphere_t::
+parse (::xsd::cxx::xml::dom::parser< char >& p,
+       ::xml_schema::flags f)
+{
+  for (; p.more_content (); p.next_content (false))
+  {
+    const ::xercesc::DOMElement& i (p.cur_element ());
+    const ::xsd::cxx::xml::qualified_name< char > n (
+      ::xsd::cxx::xml::dom::name< char > (i));
+
+    // center
+    //
+    if (n.name () == "center" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< center_type > r (
+        center_traits::create (i, f, this));
+
+      if (!center_.present ())
+      {
+        this->center_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // radius
+    //
+    if (n.name () == "radius" && n.namespace_ ().empty ())
+    {
+      if (!radius_.present ())
+      {
+        this->radius_.set (radius_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // mass
+    //
+    if (n.name () == "mass" && n.namespace_ ().empty ())
+    {
+      if (!mass_.present ())
+      {
+        this->mass_.set (mass_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // spacing
+    //
+    if (n.name () == "spacing" && n.namespace_ ().empty ())
+    {
+      if (!spacing_.present ())
+      {
+        this->spacing_.set (spacing_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    break;
+  }
+
+  if (!center_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "center",
+      "");
+  }
+
+  if (!radius_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "radius",
+      "");
+  }
+
+  if (!mass_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "mass",
+      "");
+  }
+
+  if (!spacing_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "spacing",
+      "");
+  }
+}
+
+sphere_t* sphere_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class sphere_t (*this, f, c);
+}
+
+sphere_t& sphere_t::
+operator= (const sphere_t& x)
+{
+  if (this != &x)
+  {
+    static_cast< ::xml_schema::type& > (*this) = x;
+    this->center_ = x.center_;
+    this->radius_ = x.radius_;
+    this->mass_ = x.mass_;
+    this->spacing_ = x.spacing_;
+  }
+
+  return *this;
+}
+
+sphere_t::
+~sphere_t ()
+{
+}
+
 // clusters_t
 //
 
 clusters_t::
 clusters_t ()
 : ::xml_schema::type (),
-  cuboid_ (this)
+  cuboid_ (this),
+  sphere_ (this)
 {
 }
 
@@ -1087,7 +1362,8 @@ clusters_t (const clusters_t& x,
             ::xml_schema::flags f,
             ::xml_schema::container* c)
 : ::xml_schema::type (x, f, c),
-  cuboid_ (x.cuboid_, f, this)
+  cuboid_ (x.cuboid_, f, this),
+  sphere_ (x.sphere_, f, this)
 {
 }
 
@@ -1096,7 +1372,8 @@ clusters_t (const ::xercesc::DOMElement& e,
             ::xml_schema::flags f,
             ::xml_schema::container* c)
 : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
-  cuboid_ (this)
+  cuboid_ (this),
+  sphere_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -1126,6 +1403,17 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       continue;
     }
 
+    // sphere
+    //
+    if (n.name () == "sphere" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< sphere_type > r (
+        sphere_traits::create (i, f, this));
+
+      this->sphere_.push_back (::std::move (r));
+      continue;
+    }
+
     break;
   }
 }
@@ -1144,6 +1432,7 @@ operator= (const clusters_t& x)
   {
     static_cast< ::xml_schema::type& > (*this) = x;
     this->cuboid_ = x.cuboid_;
+    this->sphere_ = x.sphere_;
   }
 
   return *this;
@@ -1863,6 +2152,56 @@ operator<< (::xercesc::DOMElement& e, const cuboid_t& i)
 }
 
 void
+operator<< (::xercesc::DOMElement& e, const sphere_t& i)
+{
+  e << static_cast< const ::xml_schema::type& > (i);
+
+  // center
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "center",
+        e));
+
+    s << i.center ();
+  }
+
+  // radius
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "radius",
+        e));
+
+    s << ::xml_schema::as_double(i.radius ());
+  }
+
+  // mass
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "mass",
+        e));
+
+    s << ::xml_schema::as_double(i.mass ());
+  }
+
+  // spacing
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "spacing",
+        e));
+
+    s << ::xml_schema::as_double(i.spacing ());
+  }
+}
+
+void
 operator<< (::xercesc::DOMElement& e, const clusters_t& i)
 {
   e << static_cast< const ::xml_schema::type& > (i);
@@ -1878,6 +2217,22 @@ operator<< (::xercesc::DOMElement& e, const clusters_t& i)
     ::xercesc::DOMElement& s (
       ::xsd::cxx::xml::dom::create_element (
         "cuboid",
+        e));
+
+    s << x;
+  }
+
+  // sphere
+  //
+  for (clusters_t::sphere_const_iterator
+       b (i.sphere ().begin ()), n (i.sphere ().end ());
+       b != n; ++b)
+  {
+    const clusters_t::sphere_type& x (*b);
+
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "sphere",
         e));
 
     s << x;

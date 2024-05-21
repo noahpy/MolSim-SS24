@@ -138,6 +138,44 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="sphere_t">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the properties of a sphere-shaped cluster.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="center" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The center position of the sphere in 3D space.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="radius" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The radius of the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mass" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The mass of the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spacing" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The spacing between particles in the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- Clusters type definition -->
 
   <xs:complexType name="clusters_t">
@@ -146,15 +184,22 @@
         Represents a collection of clusters.
       </xs:documentation>
     </xs:annotation>
-    <xs:sequence>
-      <xs:element name="cuboid" type="cuboid_t" maxOccurs="unbounded" minOccurs="0">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="cuboid" type="cuboid_t">
         <xs:annotation>
           <xs:documentation>
             A cuboid cluster within the collection.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-    </xs:sequence>
+      <xs:element name="sphere" type="sphere_t">
+        <xs:annotation>
+          <xs:documentation>
+            A sphere cluster within the collection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
   </xs:complexType>
 
   <!-- Parameters type definition -->
