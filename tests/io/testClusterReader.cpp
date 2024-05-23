@@ -47,7 +47,6 @@ TEST_F(clusterReaderTest, testComments)
     EXPECT_TRUE(particles.particles.empty());
 }
 
-/*
 // test if program terminates when faced with unknown cluster
 TEST_F(clusterReaderTest, testUnknownCluster)
 {
@@ -65,6 +64,7 @@ TEST_F(clusterReaderTest, testUnknownCluster)
         },
         ".*");
 }
+
 // test if program terminates when faced with missing parameter
 TEST_F(clusterReaderTest, testMissingParam)
 {
@@ -114,4 +114,3 @@ TEST_F(clusterReaderTest, testClusterGeneration)
         EXPECT_EQ(p.getM(), 1);
     }
 }
-*/
