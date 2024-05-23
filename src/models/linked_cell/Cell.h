@@ -10,11 +10,20 @@
 // Class representing a cell in the grid
 class Cell final{
 public:
+    // Default constructor
+    Cell();
+
     // Constructor with cell type
     explicit Cell(CellType type);
 
     // Destructor
     ~Cell();
+
+    // Define copy constructor, had to do this because of some error
+    Cell(const Cell& other);
+
+    // Define copy assignment operator, had to do this because of some error
+    Cell& operator=(const Cell& other);
 
     // Method to add a particle to the cell
     void addParticle(std::unique_ptr<Particle> particle);
