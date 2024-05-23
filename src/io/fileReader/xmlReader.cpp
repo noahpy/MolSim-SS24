@@ -27,6 +27,10 @@ void XmlReader::readFile(Simulation& sim)
             sim.delta_t = params.delta_t().get();
         if (params.end_time().present())
             sim.end_time = params.end_time().get();
+        if (params.output().present())
+            sim.setOutputFile(params.output().get());
+        if (params.frequency().present())
+            sim.frequency = params.frequency().get();
         if (params.epsilon().present() || params.sigma().present()) {
             // try downcasting if parameters are present
             try {
