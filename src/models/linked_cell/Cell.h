@@ -1,0 +1,43 @@
+
+#pragma once
+
+#include <list>
+#include "models/Particle.h"
+#include "CellType.h"
+
+#include <memory>
+
+// Class representing a cell in the grid
+class Cell final{
+public:
+    // Constructor with cell type
+    explicit Cell(CellType type);
+
+    // Destructor
+    ~Cell();
+
+    // Method to add a particle to the cell
+    void addParticle(std::unique_ptr<Particle> particle);
+
+    // Method to remove a particle from the cell
+    void removeParticle(const Particle* particle);
+
+    // Method to get all particles in the cell
+    [[nodiscard]] std::list<std::unique_ptr<Particle>>& getParticles();
+
+    // Method to get the type of the cell
+    [[nodiscard]] CellType getType() const;
+
+    // Method to get an iterator to the beginning of the particles list
+    std::list<std::unique_ptr<Particle>>::iterator begin();
+
+    // Method to get an iterator to the end of the particles list
+    std::list<std::unique_ptr<Particle>>::iterator end();
+
+private:
+    // Type of the cell
+    CellType type;
+
+    // List to store pointers to particles in the cell
+    std::list<std::unique_ptr<Particle>> particles;
+};
