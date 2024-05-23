@@ -20,3 +20,7 @@ Simulation::Simulation(
     , reader(std::move(reader))
 {
 }
+
+void Simulation::setOutputFile(std::string output){
+    this->writer->out_name = output;
+}

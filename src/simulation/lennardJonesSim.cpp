@@ -47,7 +47,7 @@ void LennardJonesSimulation::runSim()
         strategy.calX(*this);
 
         ++iteration;
-        if (iteration % 10 == 0) {
+        if (iteration % frequency == 0) {
             writer->plotParticles(*this);
         }
         spdlog::debug("Iteration {} finished.", iteration);
