@@ -5,6 +5,8 @@
     <end_time>1.0</end_time>
     <epsilon>0.5</epsilon>
     <sigma>1.0</sigma>
+    <output>sim</output>
+    <frequency>20</frequency>
   </params>
   <clusters>
     <cuboid>
