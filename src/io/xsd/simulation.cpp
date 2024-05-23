@@ -535,6 +535,60 @@ sigma (const sigma_optional& x)
   this->sigma_ = x;
 }
 
+const params_t::output_optional& params_t::
+output () const
+{
+  return this->output_;
+}
+
+params_t::output_optional& params_t::
+output ()
+{
+  return this->output_;
+}
+
+void params_t::
+output (const output_type& x)
+{
+  this->output_.set (x);
+}
+
+void params_t::
+output (const output_optional& x)
+{
+  this->output_ = x;
+}
+
+void params_t::
+output (::std::unique_ptr< output_type > x)
+{
+  this->output_.set (std::move (x));
+}
+
+const params_t::frequency_optional& params_t::
+frequency () const
+{
+  return this->frequency_;
+}
+
+params_t::frequency_optional& params_t::
+frequency ()
+{
+  return this->frequency_;
+}
+
+void params_t::
+frequency (const frequency_type& x)
+{
+  this->frequency_.set (x);
+}
+
+void params_t::
+frequency (const frequency_optional& x)
+{
+  this->frequency_ = x;
+}
+
 
 // simulation_t
 //
@@ -1452,7 +1506,9 @@ params_t ()
   delta_t_ (this),
   end_time_ (this),
   epsilon_ (this),
-  sigma_ (this)
+  sigma_ (this),
+  output_ (this),
+  frequency_ (this)
 {
 }
 
@@ -1464,7 +1520,9 @@ params_t (const params_t& x,
   delta_t_ (x.delta_t_, f, this),
   end_time_ (x.end_time_, f, this),
   epsilon_ (x.epsilon_, f, this),
-  sigma_ (x.sigma_, f, this)
+  sigma_ (x.sigma_, f, this),
+  output_ (x.output_, f, this),
+  frequency_ (x.frequency_, f, this)
 {
 }
 
@@ -1476,7 +1534,9 @@ params_t (const ::xercesc::DOMElement& e,
   delta_t_ (this),
   end_time_ (this),
   epsilon_ (this),
-  sigma_ (this)
+  sigma_ (this),
+  output_ (this),
+  frequency_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -1539,6 +1599,31 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // output
+    //
+    if (n.name () == "output" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< output_type > r (
+        output_traits::create (i, f, this));
+
+      if (!this->output_)
+      {
+        this->output_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // frequency
+    //
+    if (n.name () == "frequency" && n.namespace_ ().empty ())
+    {
+      if (!this->frequency_)
+      {
+        this->frequency_.set (frequency_traits::create (i, f, this));
+        continue;
+      }
+    }
+
     break;
   }
 }
@@ -1560,6 +1645,8 @@ operator= (const params_t& x)
     this->end_time_ = x.end_time_;
     this->epsilon_ = x.epsilon_;
     this->sigma_ = x.sigma_;
+    this->output_ = x.output_;
+    this->frequency_ = x.frequency_;
   }
 
   return *this;
@@ -2290,6 +2377,30 @@ operator<< (::xercesc::DOMElement& e, const params_t& i)
         e));
 
     s << ::xml_schema::as_double(*i.sigma ());
+  }
+
+  // output
+  //
+  if (i.output ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "output",
+        e));
+
+    s << *i.output ();
+  }
+
+  // frequency
+  //
+  if (i.frequency ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "frequency",
+        e));
+
+    s << *i.frequency ();
   }
 }
 
