@@ -2,6 +2,7 @@
 #pragma once
 
 #include "models/ParticleContainer.h"
+#include <memory>
 
 // forward-declare PhysicsStrategy
 class PhysicsStrategy;
@@ -34,8 +35,8 @@ public:
         double end_time,
         ParticleContainer& container,
         PhysicsStrategy& strat,
-        FileWriter& writer,
-        FileReader& reader);
+        std::unique_ptr<FileWriter> writer,
+        std::unique_ptr<FileReader> reader);
 
     /**
      * @brief Run the simulation
@@ -48,8 +49,13 @@ public:
     unsigned iteration = 0; /**< The current iteration of the simulation */
     ParticleContainer& container; /**< The particle container which holds all particles */
 
+    /*
+     * @brief Destructor of Simulation
+     * */
+    virtual ~Simulation() = default;
+
 protected:
     PhysicsStrategy& strategy; /**< The strategy which is used to calculate the physics */
-    FileWriter& writer; /**< The output writer */
-    FileReader& reader; /**< The input reader */
+    std::unique_ptr<FileWriter> writer; /**< The output writer */
+    std::unique_ptr<FileReader> reader; /**< The input reader */
 };

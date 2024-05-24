@@ -1,0 +1,20 @@
+\section{Lennard-Jones Forces}
+
+\begin{frame}
+    \frametitle{Rearraning formula to avoid unnecessary calculations}
+    
+    Let's start from the given formula and extract constant terms:
+
+    \begin{align}
+        F_{i,j} &= -\frac{\epsilon \cdot 24}{(||x_i-x_j||_2)^2} \left( \left( \frac{\sigma}{||x_i-x_j||_2} \right) ^6 - 2 \left( \frac{\sigma}{||x_i-x_j||_2} \right) ^{12} \right) (x_i-x_j) \\
+                &= \frac{-\epsilon \cdot 24}{(||x_i-x_j||_2)^2} \left(  \frac{\sigma ^6 }{||x_i-x_j||_2 ^6 } + \frac{-2 \cdot \sigma^{12}}{||x_i-x_j||_2^{12}}  \right) (x_i-x_j)
+    \end{align}
+
+    Let $-\epsilon \cdot 24 =: \alpha$, $\sigma ^6 =: \beta$, and $-2 \cdot \sigma^{12} =: \gamma$ $\Rightarrow$ calculate once upon initialization of Lennard-Jones simulation \\
+    Further, let $x_i-x_j =: \delta \in \mathbb{R}^3$
+
+    \begin{align}
+        F_{i,j} &= \frac{\alpha}{\delta ^T\delta} \left(  \frac{\beta}{(\delta ^T\delta) ^3} + \frac{\gamma}{((\delta ^T\delta) ^3) ^2}  \right) \cdot \delta
+    \end{align} 
+
+\end{frame}

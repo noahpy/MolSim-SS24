@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <spdlog/spdlog.h>
 #include <string>
 
 namespace outputWriter {
@@ -74,9 +75,9 @@ void VTKWriter::writeFile(const std::string& filename, int iteration)
 void VTKWriter::plotParticle(Particle& p)
 {
     if (vtkFile->UnstructuredGrid().present()) {
-        std::cout << "UnstructuredGrid is present" << std::endl;
+        spdlog::trace("UnstructuredGrid is present");
     } else {
-        std::cout << "ERROR: No UnstructuredGrid present" << std::endl;
+        spdlog::error("No UnstructuredGrid present", 1);
     }
 
     PointData::DataArray_sequence& pointDataSequence =
@@ -84,19 +85,16 @@ void VTKWriter::plotParticle(Particle& p)
     PointData::DataArray_iterator dataIterator = pointDataSequence.begin();
 
     dataIterator->push_back(p.getM());
-    // cout << "Appended mass data in: " << dataIterator->Name();
 
     dataIterator++;
     dataIterator->push_back(p.getV()[0]);
     dataIterator->push_back(p.getV()[1]);
     dataIterator->push_back(p.getV()[2]);
-    // cout << "Appended velocity data in: " << dataIterator->Name();
 
     dataIterator++;
     dataIterator->push_back(p.getOldF()[0]);
     dataIterator->push_back(p.getOldF()[1]);
     dataIterator->push_back(p.getOldF()[2]);
-    // cout << "Appended force data in: " << dataIterator->Name();
 
     dataIterator++;
     dataIterator->push_back(p.getType());

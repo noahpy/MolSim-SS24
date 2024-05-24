@@ -1,0 +1,18 @@
+\section{Spdlog}
+
+\begin{frame}
+    \frametitle{spdlog functions vs macros}
+
+    \begin{itemize}
+        \item Incorporation using CMake module, including pre-fetch check for availability
+        \item Macro benefits: Compile-time and run-time benefits
+        \item Function benefits: type safety
+        \item Run-time adjustment of log levels $\Rightarrow$ Compile-time benefits of macros not relevant
+        \item Current project status undergoes frequent changes $\Rightarrow $safety preferred
+    \end{itemize}
+    \bigskip
+
+    $\Rightarrow$ Log-level can be specified by user with option \texttt{-l}
+
+\end{frame}
+

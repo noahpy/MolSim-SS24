@@ -1,0 +1,67 @@
+\documentclass[10pt,aspectratio=169]{beamer}
+% Packages
+\usepackage{mathabx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{standalone}
+\usepackage{mhchem}
+\usepackage{textpos}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\graphicspath{{images}}
+
+% Configure template
+\setbeamertemplate{navigation symbols}{}
+
+% Theme
+\usetheme[progressbar=frametitle]{metropolis}
+\setbeamertemplate{caption}[numbered]
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+% Title page details: 
+\title{Scientific Computing: Molecular dynamics}
+\subtitle{Problemsheet 2}
+\author{Jimin Kim, Christian Nix, Noah Schlenker}
+\date{17. Mai 2024}
+\institute{Technical University of Munich}
+
+\begin{document}
+
+% Title page frame
+\maketitle
+
+\addtobeamertemplate{frametitle}{}{
+\begin{textblock*}{100mm} (.945\textwidth,-.85cm)
+\includegraphics[scale=0.14]{../template/res/tum_logo.png}
+\end{textblock*}}
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+%Slides for Unit tests
+\include{chapters/googletest}
+
+%Slides for CI
+\include{chapters/ci}
+
+%Slides for spdlog
+\include{chapters/spdlog}
+
+\include{chapters/generators}
+\include{chapters/particleGenerator}
+\include{chapters/lennardJonesForces}
+
+
+\include{chapters/benchmark}
+\include{chapters/sprinkles}
+
+% Slides for References
+\include{chapters/references}
+
+
+
+\end{document}
+
