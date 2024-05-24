@@ -15,7 +15,7 @@ public:
      * @param mass The mass of the particles within the cluster
      * @param initialVelocity The initial velocity of all particles in the cluster
      * @param meanVelocity The mean velocity of all particles in the cluster (passed to maxwellBoltzmannDistributedVelocity())
-     * @param brownianMotionDimensions The dimensions of the cluster (2 or 3) will be passed to maxwellBoltzmannDistributedVelocity()
+     * @param brownianMotionDimensions The dimensions of the cluster (<= 3) will be passed to maxwellBoltzmannDistributedVelocity() if set to 0 no brownian motion will be added, if set to 1 then only on the x axis, then x+y, and finally x+y+z axis
      */
     SphereParticleCluster(
         std::array<double, 3> origin,
