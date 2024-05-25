@@ -52,6 +52,8 @@ protected:
 
 private:
     size_t totalNumberOfParticles; /**< The total amount of particles that will be generated */
+    std::vector<size_t> radiusList;
+
     /**
      * @brief Convert a radius in particles into a radius of distance
      * @param radius The radius in particles

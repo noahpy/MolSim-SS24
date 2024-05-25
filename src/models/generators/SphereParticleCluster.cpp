@@ -29,10 +29,17 @@ SphereParticleCluster::SphereParticleCluster(
     }
 
     // Initialize the total number of particles to be generated
+    double realRadius = getRealRadius(sphereRadius);
     totalNumberOfParticles = getNumberOfParticlesDisc(sphereRadius);
-    if (sphereDimensions == 3 && sphereRadius > 0)
-        for (size_t discRadius = sphereRadius - 1; discRadius > 0; discRadius--)
-            totalNumberOfParticles += 2 * getNumberOfParticlesDisc(discRadius);
+    if (sphereDimensions == 3 && sphereRadius > 0) {
+        for (double z_offset = spacing; z_offset < realRadius; z_offset += spacing) {
+            double phi = std::asin(z_offset / realRadius);
+            double z_radius = std::cos(phi) * realRadius;
+            size_t z_radius_pc = (size_t)(z_radius / spacing) + 1;
+            radiusList.push_back(z_radius_pc);
+            totalNumberOfParticles += 2 * getNumberOfParticlesDisc(z_radius_pc);
+        }
+    }
 }
 
 size_t SphereParticleCluster::getTotalNumberOfParticles() const
@@ -51,7 +58,7 @@ void SphereParticleCluster::generateRing(
         Particle particle = Particle(position, velocity, mass);
 
         particles[insertionIndex++] = particle;
-    } else if (radius > 1){
+    } else if (radius > 1) {
         double realRadius = getRealRadius(radius);
         double circumference = 2 * realRadius * M_PI;
         auto numParticles = (size_t)(circumference / spacing);
@@ -91,14 +98,13 @@ void SphereParticleCluster::generateCluster(
 {
     // A sphere is a stack of discs decreasing in radius
     generateDisc(particles, insertionIndex, sphereRadius, 0);
-    double z_offset_a = spacing, z_offset_b = -1 * spacing;
     if (sphereDimensions == 3 && sphereRadius > 0) {
-        for (size_t discRadius = sphereRadius - 1; discRadius > 0; discRadius--) {
-            generateDisc(particles, insertionIndex, discRadius, z_offset_a);
-            generateDisc(particles, insertionIndex, discRadius, z_offset_b);
-
-            z_offset_a += spacing;
-            z_offset_b -= spacing;
+        size_t index = 0;
+        for (double z_offset = (double)spacing; z_offset < getRealRadius(sphereRadius); z_offset += spacing) {
+            size_t discRadius = radiusList.at(index);
+            generateDisc(particles, insertionIndex, discRadius, z_offset);
+            generateDisc(particles, insertionIndex, discRadius, -z_offset);
+            ++index;
         }
     }
 
