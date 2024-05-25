@@ -1,5 +1,4 @@
 // file      : xsd/cxx/tree/list.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #ifndef XSD_CXX_TREE_LIST_HXX
@@ -63,6 +62,11 @@ namespace xsd
         {
         }
 
+#ifdef XSD_CXX11
+        list&
+        operator= (const list&) = default;
+#endif
+
       public:
         list (const xercesc::DOMElement&, flags = 0, container* c = 0);
 
@@ -112,6 +116,11 @@ namespace xsd
             : sequence<T> (l, f, c)
         {
         }
+
+#ifdef XSD_CXX11
+        list&
+        operator= (const list&) = default;
+#endif
 
       public:
         list (const xercesc::DOMElement&, flags = 0, container* c = 0);

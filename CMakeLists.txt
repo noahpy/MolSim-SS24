@@ -24,6 +24,7 @@ include(gtest)
 include(clang-format)
 include(spdlog)
 include(gbench)
+include(xsd)
 
 # add subdirectory
 add_subdirectory(src)

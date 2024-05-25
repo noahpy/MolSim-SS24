@@ -20,6 +20,7 @@ std::unique_ptr<Simulation> simFactory(
 {
     switch (sim_type) {
     case 0:
+        spdlog::info("Initializing Planet Simulation...");
         return std::make_unique<PlanetSimulation>(
             start_time,
             delta_t,
@@ -29,6 +30,7 @@ std::unique_ptr<Simulation> simFactory(
             std::move(writePointer),
             std::move(readPointer));
     case 1:
+        spdlog::info("Initializing LJ Simulation...");
         return std::make_unique<LennardJonesSimulation>(
             start_time,
             delta_t,

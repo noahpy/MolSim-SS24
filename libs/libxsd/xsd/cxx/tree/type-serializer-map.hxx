@@ -1,5 +1,4 @@
 // file      : xsd/cxx/tree/type-serializer-map.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #ifndef XSD_CXX_TREE_TYPE_SERIALIZER_MAP_HXX
@@ -217,8 +216,11 @@ namespace xsd
       template<unsigned long id, typename C, typename T>
       struct element_serializer_initializer
       {
+        typedef typename type_serializer_map<C>::serializer serializer;
+
         element_serializer_initializer (const C* root_name, const C* root_ns,
-                                        const C* subst_name, const C* subst_ns);
+                                        const C* subst_name, const C* subst_ns,
+                                        serializer);
 
         ~element_serializer_initializer ();
 

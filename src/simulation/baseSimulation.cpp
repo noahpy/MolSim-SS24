@@ -19,6 +19,8 @@ Simulation::Simulation(
     , writer(std::move(writer))
     , reader(std::move(reader))
 {
-    // read simulation parameter from file
-    this->reader->readFile(*this);
+}
+
+void Simulation::setOutputFile(std::string output){
+    this->writer->out_name = output;
 }
