@@ -33,8 +33,7 @@ SphereParticleCluster::SphereParticleCluster(
     totalNumberOfParticles = getNumberOfParticlesDisc(sphereRadius);
     if (sphereDimensions == 3 && sphereRadius > 0) {
         for (double z_offset = spacing; z_offset < realRadius; z_offset += spacing) {
-            double phi = std::asin(z_offset / realRadius);
-            double z_radius = std::cos(phi) * realRadius;
+            double z_radius = std::sqrt(sphereRadius*sphereRadius - z_offset * z_offset);
             size_t z_radius_pc = (size_t)(z_radius / spacing) + 1;
             radiusList.push_back(z_radius_pc);
             totalNumberOfParticles += 2 * getNumberOfParticlesDisc(z_radius_pc);
