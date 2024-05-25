@@ -9,7 +9,7 @@ var searchData=
   ['particlecluster_6',['ParticleCluster',['../classParticleCluster.html',1,'ParticleCluster'],['../classParticleCluster.html#a441dd67850571f3bc6d03fdc964dc1df',1,'ParticleCluster::ParticleCluster()']]],
   ['particlecluster_2ecpp_7',['ParticleCluster.cpp',['../ParticleCluster_8cpp.html',1,'']]],
   ['particlecluster_2eh_8',['ParticleCluster.h',['../ParticleCluster_8h.html',1,'']]],
-  ['particlecontainer_9',['ParticleContainer',['../classParticleContainer.html',1,'ParticleContainer'],['../classParticleContainer.html#ae9539f4acc05f090f213ef5a245b1f8c',1,'ParticleContainer::ParticleContainer()']]],
+  ['particlecontainer_9',['ParticleContainer',['../classParticleContainer.html',1,'ParticleContainer'],['../classParticleContainer.html#ae9539f4acc05f090f213ef5a245b1f8c',1,'ParticleContainer::ParticleContainer(const std::vector&lt; Particle &gt; &amp;particles)'],['../classParticleContainer.html#a76d21bdb5141158cf664d65e2d8b1db7',1,'ParticleContainer::ParticleContainer()']]],
   ['particlecontainer_2ecpp_10',['ParticleContainer.cpp',['../ParticleContainer_8cpp.html',1,'']]],
   ['particlecontainer_2eh_11',['ParticleContainer.h',['../ParticleContainer_8h.html',1,'']]],
   ['particlegenerator_12',['ParticleGenerator',['../classParticleGenerator.html',1,'ParticleGenerator'],['../classParticleGenerator.html#a856c26e2c6c6dd96fef3678fca9e39cd',1,'ParticleGenerator::ParticleGenerator()']]],
