@@ -18,7 +18,7 @@ on:
 jobs:
   # Build the project
   build:
-    # Run the tests on ubuntu-20.04
+    # Run the tests on ubuntu-22.04
     runs-on: ubuntu-latest
     steps:
       # Install all the dependencies

@@ -26,6 +26,13 @@ public:
     ParticleContainer(const std::vector<Particle>& particles);
 
     /**
+     * @brief Construct a new empty Particle Container object
+     * @return ParticleContainer object
+     */
+    ParticleContainer();
+
+
+    /**
      * @brief Adds a particle to the container
      * @param p The particle to be added
      * @return void

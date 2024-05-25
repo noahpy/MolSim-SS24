@@ -2,6 +2,7 @@
 #include "io/fileReader/clusterReader.h"
 #include "models/generators/CuboidParticleCluster.h"
 #include "models/generators/ParticleGenerator.h"
+#include "models/generators/SphereParticleCluster.h"
 #include <fstream>
 #include <spdlog/spdlog.h>
 #include <sstream>
@@ -31,13 +32,14 @@ void ClusterReader::readFile(Simulation& sim)
             exit(EXIT_FAILURE);
         }
 
+        double ox, oy, oz;
+        int nx, ny, nz;
+        double h, m, mv;
+        double vx, vy, vz;
+        double dim;
+        unsigned radius, sphereDim;
         switch (clusterType) {
         case 'C':
-            double ox, oy, oz;
-            int nx, ny, nz;
-            double h, m, mv;
-            double vx, vy, vz;
-            double dim;
             if (!(iss >> ox >> oy >> oz >> nx >> ny >> nz >> h >> m >> mv >> vx >> vy >> vz >>
                   dim)) {
                 spdlog::error(
@@ -47,6 +49,17 @@ void ClusterReader::readFile(Simulation& sim)
             generator.registerCluster(std::make_unique<CuboidParticleCluster>(
                 CuboidParticleCluster({ ox, oy, oz }, nx, ny, nz, h, m, { vx, vy, vz }, mv, dim)));
             break;
+        case 'S':
+            if (!(iss >> ox >> oy >> oz >> radius >> sphereDim >> h >> m >> mv >> vx >> vy >> vz >>
+                  dim)) {
+                spdlog::error(
+                    "When reading cluster type Cuboid: Could not read parameters correctly");
+                exit(EXIT_FAILURE);
+            }
+            generator.registerCluster(std::make_unique<SphereParticleCluster>(
+                SphereParticleCluster({ ox, oy, oz }, radius, sphereDim, h, m, { vx, vy, vz }, mv, dim)));
+            break;
+
         default:
             spdlog::error("Invalid clusterType: {}", clusterType);
             exit(EXIT_FAILURE);

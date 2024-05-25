@@ -53,7 +53,7 @@ TEST_F(clusterReaderTest, testUnknownCluster)
     fileReader = std::make_unique<ClusterReader>(unknownClusterFile);
     EXPECT_DEATH(
         {
-            PlanetSimulation sim = PlanetSimulation(
+            PlanetSimulation sim(
                 start_time,
                 delta_t,
                 end_time,
@@ -71,7 +71,7 @@ TEST_F(clusterReaderTest, testMissingParam)
     fileReader = std::make_unique<ClusterReader>(missingParamFile);
     EXPECT_DEATH(
         {
-            PlanetSimulation sim = PlanetSimulation(
+            PlanetSimulation sim(
                 start_time,
                 delta_t,
                 end_time,
@@ -89,7 +89,7 @@ TEST_F(clusterReaderTest, testMissingType)
     fileReader = std::make_unique<ClusterReader>(nonExistFile);
     EXPECT_DEATH(
         {
-            PlanetSimulation sim = PlanetSimulation(
+            PlanetSimulation sim(
                 start_time,
                 delta_t,
                 end_time,
@@ -105,7 +105,7 @@ TEST_F(clusterReaderTest, testMissingType)
 TEST_F(clusterReaderTest, testClusterGeneration)
 {
     fileReader = std::make_unique<ClusterReader>(clusterFile);
-    PlanetSimulation sim = PlanetSimulation(
+    PlanetSimulation sim(
         start_time, delta_t, end_time, particles, strat, std::move(writer), std::move(fileReader));
 
     EXPECT_EQ(384, particles.particles.size());
