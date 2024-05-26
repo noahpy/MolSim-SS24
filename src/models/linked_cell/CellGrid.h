@@ -28,15 +28,15 @@ public:
     // Iterator for boundary particles
     class BoundaryIterator {
     public:
-        explicit BoundaryIterator(std::vector<std::vector<std::vector<Cell>>>& cells, bool end = false);
+        explicit BoundaryIterator(std::vector<Cell>& boundaryCells, bool end = false);
 
         std::unique_ptr<Particle>& operator*() const;
         BoundaryIterator& operator++();
         bool operator!=(const BoundaryIterator& other) const;
 
     private:
-        std::vector<std::vector<std::vector<Cell>>>& cells;
-        size_t x, y, z;
+        std::vector<Cell>& boundaryCells;
+        size_t cellIndex;
         std::list<std::unique_ptr<Particle>>::iterator particleIt;
         void advance();
     };
@@ -47,21 +47,52 @@ public:
     // Iterator for halo particles
     class HaloIterator {
     public:
-        explicit HaloIterator(std::vector<std::vector<std::vector<Cell>>>& cells, bool end = false);
+        explicit HaloIterator(std::vector<Cell>& haloCells, bool end = false);
 
         std::unique_ptr<Particle>& operator*() const;
         HaloIterator& operator++();
         bool operator!=(const HaloIterator& other) const;
 
     private:
-        std::vector<std::vector<std::vector<Cell>>>& cells;
-        size_t x, y, z;
+        std::vector<Cell>& haloCells;
+        size_t cellIndex;
         std::list<std::unique_ptr<Particle>>::iterator particleIt;
         void advance();
     };
 
     HaloIterator beginHaloParticles();
     HaloIterator endHaloParticles();
+
+    // PairIterator for list of particle pointers
+    class PairIterator {
+    public:
+        // Constructor
+        explicit PairIterator(std::list<std::unique_ptr<Particle>>& particles, bool end = false);
+
+        // Dereference operator
+        std::pair<Particle*, Particle*> operator*() const;
+
+        // Increment operator
+        PairIterator& operator++();
+
+        // Inequality operator
+        bool operator!=(const PairIterator& other) const;
+
+        // Functions to get the beginning and end pair iterators
+        static PairIterator beginPairs(std::list<std::unique_ptr<Particle>>& particles);
+        static PairIterator endPairs(std::list<std::unique_ptr<Particle>>& particles);
+
+    private:
+        // Reference to the list of particles
+        std::list<std::unique_ptr<Particle>>& particles;
+
+        // Iterators to manage the current pair
+        std::list<std::unique_ptr<Particle>>::iterator firstIt;
+        std::list<std::unique_ptr<Particle>>::iterator secondIt;
+
+        // Method to advance the iterator to the next pair
+        void advance();
+    };
 
 private:
     // Method to initialize the grid based on the domain size and cutoff radius
@@ -81,4 +112,8 @@ private:
 
     // 3D vector of cells
     std::vector<std::vector<std::vector<Cell>>> cells;
+
+    // Vectors to store boundary and halo cells
+    std::vector<Cell> boundaryCells;
+    std::vector<Cell> haloCells;
 };

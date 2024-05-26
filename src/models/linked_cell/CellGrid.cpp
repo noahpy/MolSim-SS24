@@ -1,7 +1,6 @@
 
 #include "CellGrid.h"
 #include <cmath>
-#include <stdexcept>
 
 CellGrid::CellGrid(const std::array<double, 3>& domainSize, double cutoffRadius)
     : domainSize(domainSize), cutoffRadius(cutoffRadius), gridDimensions({0, 0, 0}) {
@@ -49,7 +48,10 @@ void CellGrid::initializeGrid() {
         for (size_t y = 0; y < gridDimensions[1]; ++y) {
             cells[x][y].resize(gridDimensions[2]);
             for (size_t z = 0; z < gridDimensions[2]; ++z) {
-                cells[x][y][z] = Cell(determineCellType({x, y, z}));
+                CellType type = determineCellType({x, y, z});
+                cells[x][y][z] = Cell(type);
+                if (type == CellType::Boundary) boundaryCells.push_back(cells[x][y][z]);
+                else if (type == CellType::Halo) haloCells.push_back(cells[x][y][z]);
             }
         }
     }
@@ -71,14 +73,14 @@ CellType CellGrid::determineCellType(const std::array<size_t, 3>& indices) const
 
 // BoundaryIterator Implementation
 
-CellGrid::BoundaryIterator::BoundaryIterator(std::vector<std::vector<std::vector<Cell>>>& cells, bool end)
-    : cells(cells), x(0), y(0), z(0) {
+CellGrid::BoundaryIterator::BoundaryIterator(std::vector<Cell>& boundaryCells, bool end)
+    : boundaryCells(boundaryCells), cellIndex(0) {
     if (!end) {
         // Initialize to the first boundary particle
         advance();
     } else {
         // Initialize to the end state
-        x = cells.size();
+        cellIndex = boundaryCells.size();
     }
 }
 
@@ -93,44 +95,32 @@ CellGrid::BoundaryIterator& CellGrid::BoundaryIterator::operator++() {
 }
 
 bool CellGrid::BoundaryIterator::operator!=(const BoundaryIterator& other) const {
-    return x != other.x || y != other.y || z != other.z || particleIt != other.particleIt;
+    return cellIndex != other.cellIndex || particleIt != other.particleIt;
 }
 
 void CellGrid::BoundaryIterator::advance() {
-    while (x < cells.size()) {
-        while (y < cells[x].size()) {
-            while (z < cells[x][y].size()) {
-                if (cells[x][y][z].getType() == CellType::Boundary) {
-                    if (particleIt == cells[x][y][z].getParticles().end()) {
-                        ++z;
-                        if (z < cells[x][y].size()) {
-                            particleIt = cells[x][y][z].getParticles().begin();
-                        }
-                    } else {
-                        return;
-                    }
-                } else {
-                    ++z;
-                }
+    while (cellIndex < boundaryCells.size()) {
+        if (particleIt == boundaryCells[cellIndex].getParticles().end()) {
+            ++cellIndex;
+            if (cellIndex < boundaryCells.size()) {
+                particleIt = boundaryCells[cellIndex].getParticles().begin();
             }
-            z = 0;
-            ++y;
+        } else {
+            return;
         }
-        y = 0;
-        ++x;
     }
 }
 
 // HaloIterator Implementation
 
-CellGrid::HaloIterator::HaloIterator(std::vector<std::vector<std::vector<Cell>>>& cells, bool end)
-    : cells(cells), x(0), y(0), z(0) {
+CellGrid::HaloIterator::HaloIterator(std::vector<Cell>& haloCells, bool end)
+    : haloCells(haloCells), cellIndex(0) {
     if (!end) {
         // Initialize to the first halo particle
         advance();
     } else {
         // Initialize to the end state
-        x = cells.size();
+        cellIndex = haloCells.size();
     }
 }
 
@@ -145,47 +135,83 @@ CellGrid::HaloIterator& CellGrid::HaloIterator::operator++() {
 }
 
 bool CellGrid::HaloIterator::operator!=(const HaloIterator& other) const {
-    return x != other.x || y != other.y || z != other.z || particleIt != other.particleIt;
+    return cellIndex != other.cellIndex || particleIt != other.particleIt;
 }
 
 void CellGrid::HaloIterator::advance() {
-    while (x < cells.size()) {
-        while (y < cells[x].size()) {
-            while (z < cells[x][y].size()) {
-                if (cells[x][y][z].getType() == CellType::Halo) {
-                    if (particleIt == cells[x][y][z].getParticles().end()) {
-                        ++z;
-                        if (z < cells[x][y].size()) {
-                            particleIt = cells[x][y][z].getParticles().begin();
-                        }
-                    } else {
-                        return;
-                    }
-                } else {
-                    ++z;
-                }
+    while (cellIndex < haloCells.size()) {
+        if (particleIt == haloCells[cellIndex].getParticles().end()) {
+            ++cellIndex;
+            if (cellIndex < haloCells.size()) {
+                particleIt = haloCells[cellIndex].getParticles().begin();
             }
-            z = 0;
-            ++y;
+        } else {
+            return;
         }
-        y = 0;
-        ++x;
     }
 }
 
 // Methods to get boundary and halo particle iterators
 CellGrid::BoundaryIterator CellGrid::beginBoundaryParticles() {
-    return BoundaryIterator(cells);
+    return BoundaryIterator(boundaryCells, false);
 }
 
 CellGrid::BoundaryIterator CellGrid::endBoundaryParticles() {
-    return BoundaryIterator(cells, true);
+    return BoundaryIterator(boundaryCells, true);
 }
 
 CellGrid::HaloIterator CellGrid::beginHaloParticles() {
-    return HaloIterator(cells);
+    return HaloIterator(haloCells, false);
 }
 
 CellGrid::HaloIterator CellGrid::endHaloParticles() {
-    return HaloIterator(cells, true);
+    return HaloIterator(haloCells, true);
+}
+
+// PairIterator Implementation
+
+CellGrid::PairIterator::PairIterator(std::list<std::unique_ptr<Particle>>& particles, bool end)
+    : particles(particles), firstIt(particles.begin()), secondIt(particles.begin()) {
+    if (!end) {
+        if (secondIt != particles.end()) {
+            ++secondIt;
+        }
+    } else {
+        firstIt = particles.end();
+        secondIt = particles.end();
+    }
+}
+
+std::pair<Particle*, Particle*> CellGrid::PairIterator::operator*() const {
+    return {firstIt->get(), secondIt->get()};
+}
+
+CellGrid::PairIterator& CellGrid::PairIterator::operator++() {
+    advance();
+    return *this;
+}
+
+bool CellGrid::PairIterator::operator!=(const PairIterator& other) const {
+    return firstIt != other.firstIt || secondIt != other.secondIt;
+}
+
+void CellGrid::PairIterator::advance() {
+    if (firstIt == particles.end()) {
+        return;
+    }
+
+    if (secondIt == particles.end()) {
+        ++firstIt;
+        if (firstIt != particles.end()) {
+            secondIt = std::next(firstIt);
+        }
+    } else ++secondIt;
+}
+
+CellGrid::PairIterator CellGrid::PairIterator::beginPairs(std::list<std::unique_ptr<Particle>>& particles) {
+    return PairIterator(particles, false);
+}
+
+CellGrid::PairIterator CellGrid::PairIterator::endPairs(std::list<std::unique_ptr<Particle>>& particles) {
+    return PairIterator(particles, true);
 }
