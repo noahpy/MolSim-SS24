@@ -1,13 +1,13 @@
 
 #include "Cell.h"
 
-Cell::Cell() : type(CellType::Inner) {}
+Cell::Cell() : type(CellType::Inner), neighborCounter(0) {}
 
-Cell::Cell(const CellType type) : type(type) {}
+Cell::Cell(const CellType type) : type(type), neighborCounter(0) {}
 
 Cell::~Cell() = default;
 
-Cell::Cell(const Cell& other) : type(other.type) {
+Cell::Cell(const Cell& other) : type(other.type), neighborCounter(other.neighborCounter) {
     for (const auto& particle : other.particles) {
         particles.push_back(std::make_unique<Particle>(*particle));
     }
@@ -17,6 +17,7 @@ Cell& Cell::operator=(const Cell& other) {
     if (this == &other) return *this;
 
     type = other.type;
+    neighborCounter = other.neighborCounter;
     particles.clear();
     for (const auto& particle : other.particles) {
         particles.push_back(std::make_unique<Particle>(*particle));
@@ -47,4 +48,12 @@ std::list<std::unique_ptr<Particle>>::iterator Cell::begin() {
 
 std::list<std::unique_ptr<Particle>>::iterator Cell::end() {
     return particles.end();
+}
+
+int Cell::getCounter() const {
+    return neighborCounter;
+}
+
+void Cell::setCounter(int count) {
+    neighborCounter = count;
 }

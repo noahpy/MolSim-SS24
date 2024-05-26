@@ -43,9 +43,17 @@ public:
     // Method to get an iterator to the end of the particles list
     std::list<std::unique_ptr<Particle>>::iterator end();
 
+    // Getter and setter for neighborCounter
+    [[nodiscard]] int getCounter() const;
+    void setCounter(int);
+
+
 private:
     // Type of the cell
     CellType type;
+
+    // Counter for processed neighbors
+    int neighborCounter;
 
     // List to store pointers to particles in the cell
     std::list<std::unique_ptr<Particle>> particles;

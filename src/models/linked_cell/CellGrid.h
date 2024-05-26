@@ -25,6 +25,9 @@ public:
     // Method to get all cells
     [[nodiscard]] const std::vector<std::vector<std::vector<Cell>>>& getCells() const;
 
+    // Create a list of all particle pointers of a cell and it's neighbors
+    [[nodiscard]] std::list<std::unique_ptr<Particle>> getNeighboringParticles(const std::array<size_t, 3>& cellIndex);
+
     // Iterator for boundary particles
     class BoundaryIterator {
     public:

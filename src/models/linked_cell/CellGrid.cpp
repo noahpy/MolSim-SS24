@@ -50,6 +50,7 @@ void CellGrid::initializeGrid() {
             for (size_t z = 0; z < gridDimensions[2]; ++z) {
                 CellType type = determineCellType({x, y, z});
                 cells[x][y][z] = Cell(type);
+                // Initialize vectors for boundary and halo cells
                 if (type == CellType::Boundary) boundaryCells.push_back(cells[x][y][z]);
                 else if (type == CellType::Halo) haloCells.push_back(cells[x][y][z]);
             }
@@ -214,4 +215,46 @@ CellGrid::PairIterator CellGrid::PairIterator::beginPairs(std::list<std::unique_
 
 CellGrid::PairIterator CellGrid::PairIterator::endPairs(std::list<std::unique_ptr<Particle>>& particles) {
     return PairIterator(particles, true);
+}
+
+std::list<std::unique_ptr<Particle>> CellGrid::getNeighboringParticles(const std::array<size_t, 3>& cellIndex) {
+    std::list<std::unique_ptr<Particle>> particleList;
+    Cell& mainCell = cells[cellIndex[0]][cellIndex[1]][cellIndex[2]];
+
+    // Check if the cell at the given index is a halo cell
+    if (cells[cellIndex[0]][cellIndex[1]][cellIndex[2]].getType() == CellType::Halo) {
+        return particleList; // Return empty list if the cell is a halo cell
+    }
+
+    // Iterate over all neighbors including the cell itself
+    for (int dx = -1; dx <= 1; ++dx) {
+        for (int dy = -1; dy <= 1; ++dy) {
+            for (int dz = -1; dz <= 1; ++dz) {
+                size_t nx = cellIndex[0] + dx;
+                size_t ny = cellIndex[1] + dy;
+                size_t nz = cellIndex[2] + dz;
+
+                if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
+                    Cell& neighborCell = cells[nx][ny][nz];
+                    // Check if the neighboring cell is a halo cell or if its neighborCounter > 0
+                    if (neighborCell.getType() != CellType::Halo) {
+                        if (neighborCell.getCounter() > 0) {
+                            neighborCell.setCounter(cells[nx][ny][nz].getCounter() - 1); // Decrease the neighborCounter
+                            continue; // Skip this neighbor to ensure the unique pair iteration
+                        }
+
+                        // Add particle pointer from neighbor to the main list
+                        const auto& neighborParticles = neighborCell.getParticles();
+                        for (const auto& particle : neighborParticles) {
+                            particleList.push_back(std::make_unique<Particle>(*particle));
+                        }
+                        // Increment neighborCounter if particles from a neighbor are added
+                        mainCell.setCounter(mainCell.getCounter() + 1);
+                    }
+                }
+            }
+        }
+    }
+
+    return particleList;
 }
