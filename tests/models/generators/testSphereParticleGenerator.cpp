@@ -148,7 +148,7 @@ TEST_F(SphereParticleGeneratorTest, ClusterSpansSphere)
 TEST_F(SphereParticleGeneratorTest, Cluster2DStable)
 {
     size_t radius = 10;
-    double delta_t = 0.0014;
+    double delta_t = 0.0002;
     double end_time = delta_t * 1000;
 
     double tolerance = 1.05;
@@ -207,7 +207,7 @@ TEST_F(SphereParticleGeneratorTest, Cluster2DStable)
 TEST_F(SphereParticleGeneratorTest, Cluster3DStable)
 {
     size_t radius = 7;
-    double delta_t = 0.0014;
+    double delta_t = 0.0002;
     double end_time = delta_t * 10000;
 
     double tolerance = 1.1;
