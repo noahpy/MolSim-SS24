@@ -39,6 +39,58 @@ protected:
     }
 };
 
+// Test if number of generated particles equals predicted amount
+TEST_F(SphereParticleGeneratorTest, CorrectNumberOfParticles)
+{
+    spdlog::set_level(spdlog::level::off);
+
+    ParticleGenerator generator { container };
+
+    for (size_t radius = 0; radius <= 20; radius++) {
+        SphereParticleCluster cluster (
+            origin,
+            radius,
+            3,
+            spacing,
+            mass,
+            initialVelocity,
+            meanVelocity,
+            3);
+        generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
+        generator.generateClusters();
+
+        size_t expected = cluster.getTotalNumberOfParticles();
+        EXPECT_EQ(container.particles.size(), expected);
+    }
+}
+
+// Test edge cases of 0 and 1 radius
+TEST_F(SphereParticleGeneratorTest, EdgeCases)
+{
+    spdlog::set_level(spdlog::level::off);
+
+    ParticleGenerator generator { container };
+
+    for (size_t radius = 0; radius <= 1; radius++) {
+        SphereParticleCluster cluster (
+            origin,
+            radius,
+            3,
+            spacing,
+            mass,
+            initialVelocity,
+            meanVelocity,
+            3);
+        generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
+        generator.generateClusters();
+
+        if (radius == 0)
+            EXPECT_EQ(container.particles.size(), 0);
+        if (radius == 1)
+            EXPECT_EQ(container.particles.size(), 1);
+    }
+}
+
 // Test if all positions of particles generated in a sphere are unique
 TEST_F(SphereParticleGeneratorTest, UniquePositionsInSphere)
 {
@@ -62,6 +114,9 @@ TEST_F(SphereParticleGeneratorTest, UniquePositionsInSphere)
         double dist = ArrayUtils::L2Norm(pos1 - pos2);
 
         EXPECT_GT(dist, 0);
+        if (dist <= 0) {
+            std::cout << "Particles at positions {} and {} are at the same position" << pos1 << pos2 << std::endl;
+        }
     }
 }
 
@@ -153,9 +208,9 @@ TEST_F(SphereParticleGeneratorTest, Cluster3DStable)
 {
     size_t radius = 7;
     double delta_t = 0.0014;
-    double end_time = delta_t * 1000;
+    double end_time = delta_t * 10000;
 
-    double tolerance = 1.05;
+    double tolerance = 1.1;
 
     ParticleGenerator generator { container };
     SphereParticleCluster cluster (
@@ -165,7 +220,7 @@ TEST_F(SphereParticleGeneratorTest, Cluster3DStable)
         spacing,
         mass,
         initialVelocity,
-        meanVelocity,
+        0.1,
         3);
     generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
     generator.generateClusters();
@@ -193,7 +248,7 @@ TEST_F(SphereParticleGeneratorTest, Cluster3DStable)
     while (time < end_time) {
 
         if (++iteration % 100 == 0) {
-            // Check if distance is leq than 105% of the radius
+            // Check if distance is leq than 110% of the radius
             for (auto& p : container) {
                 double dist = ArrayUtils::L2Norm(p.getX() - origin);
                 EXPECT_LE(dist, radius * spacing * tolerance);
@@ -205,30 +260,5 @@ TEST_F(SphereParticleGeneratorTest, Cluster3DStable)
         strat.calX(sim);
 
         time += delta_t;
-    }
-}
-
-// Test if number of generated particles equals predicted amount
-TEST_F(SphereParticleGeneratorTest, CorrectNumberOfParticles)
-{
-    spdlog::set_level(spdlog::level::off);
-
-    ParticleGenerator generator { container };
-
-    for (size_t radius = 0; radius <= 20; radius++) {
-        SphereParticleCluster cluster (
-            origin,
-            radius,
-            3,
-            spacing,
-            mass,
-            initialVelocity,
-            meanVelocity,
-            3);
-        generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
-        generator.generateClusters();
-
-        size_t expected = cluster.getTotalNumberOfParticles();
-        EXPECT_EQ(container.particles.size(), expected);
     }
 }

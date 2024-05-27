@@ -57,43 +57,59 @@ private:
      * @param radius The radius in particles
      * @return The radius in distance ((radius_in_particles - 1) * spacing)
      */
-    double getRealRadius(size_t radius) const { return ((double) radius - 1) * spacing; }
+    double getRealRadius(size_t radius) const {
+        if (radius == 0) return 0;
+
+        return ((double) radius - 1) * spacing;
+    }
+    /**
+     * @brief Get the real radius of a ring given the radius of the sphere and the offset along the z axis
+     * @param radius The radius of the circle in number of particles
+     * @param offset The offset of the disc on the z-axis
+     * @return The real radius regarding the offset of the disc
+     */
+    double getRealRadius(size_t radius, double offset) const {
+        if (std::abs(getRealRadius(radius) - offset) < 1e-6) {
+            return 0; // if they are the same, then the radius must be 0
+        }
+        return std::sqrt(std::pow(getRealRadius(radius), 2) - std::pow(offset, 2));
+    }
 
     /**
      * @brief Get the number of particles in a disc of a given radius in particles
-     * @param radius The radius in number of particles
+     * @param realRadius The actual radius of the ring to generate
      * @return The number of particles in the disc
      */
-    size_t getNumberOfParticlesDisc(size_t radius) const;
+    size_t getNumberOfParticlesDisc(double realRadius) const;
     /**
      * @brief Get the number of particles in a ring of a given radius in particles
-     * @param radius The radius in number of particles
+     * @param realRadius The actual radius of the ring to generate
      * @return The number of particles in the ring
      */
-    size_t getNumberOfParticlesRing(size_t radius) const;
+    size_t getNumberOfParticlesRing(double realRadius) const;
 
     /**
      * @brief Generate a disc into the particles vector starting at the index provided
      * @param particles The vector reference into which to insert
      * @param insertionIndex The index from which to start inserting from
-     * @param radius The radius of the disc to generate
+     * @param realRadius The actual radius of the ring to generate
      * @param z_offset The offset along the z axis from the origin
      */
     void generateDisc(
         std::vector<Particle>& particles,
         size_t& insertionIndex,
-        size_t radius,
+        double realRadius,
         double z_offset) const;
     /**
      * @brief Generate a ring of particles into the particles vector starting at the index provided
      * @param particles The vector reference into which to insert
      * @param insertionIndex The index from which to start inserting from
-     * @param radius The radius of the ring to generate
+     * @param realRadius The actual radius of the ring to generate
      * @param z_offset The offset along the z axis from the origin
      */
     void generateRing(
         std::vector<Particle>& particles,
         size_t& insertionIndex,
-        size_t radius,
+        double realRadius,
         double z_offset) const;
 };
