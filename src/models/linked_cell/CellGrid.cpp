@@ -207,7 +207,7 @@ CellGrid::HaloIterator CellGrid::endHaloParticles()
 
 // PairIterator Implementation
 
-CellGrid::PairIterator::PairIterator(std::list<std::unique_ptr<Particle>>& particles, bool end)
+CellGrid::PairIterator::PairIterator(std::list<std::reference_wrapper<Particle>>& particles, bool end)
     : particles(particles)
     , firstIt(particles.begin())
     , secondIt(particles.begin())
@@ -224,7 +224,7 @@ CellGrid::PairIterator::PairIterator(std::list<std::unique_ptr<Particle>>& parti
 
 std::pair<Particle*, Particle*> CellGrid::PairIterator::operator*() const
 {
-    return { firstIt->get(), secondIt->get() };
+    return { &(*firstIt).get(), &(*secondIt).get() };
 }
 
 CellGrid::PairIterator& CellGrid::PairIterator::operator++()
@@ -254,13 +254,13 @@ void CellGrid::PairIterator::advance()
 }
 
 CellGrid::PairIterator CellGrid::PairIterator::beginPairs(
-    std::list<std::unique_ptr<Particle>>& particles)
+    std::list<std::reference_wrapper<Particle>>& particles)
 {
     return PairIterator(particles, false);
 }
 
 CellGrid::PairIterator CellGrid::PairIterator::endPairs(
-    std::list<std::unique_ptr<Particle>>& particles)
+    std::list<std::reference_wrapper<Particle>>& particles)
 {
     return PairIterator(particles, true);
 }

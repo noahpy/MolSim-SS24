@@ -73,7 +73,7 @@ public:
     class PairIterator {
     public:
         // Constructor
-        explicit PairIterator(std::list<std::unique_ptr<Particle>>& particles, bool end = false);
+        explicit PairIterator(std::list<std::reference_wrapper<Particle>>& particles, bool end = false);
 
         // Dereference operator
         std::pair<Particle*, Particle*> operator*() const;
@@ -85,16 +85,16 @@ public:
         bool operator!=(const PairIterator& other) const;
 
         // Functions to get the beginning and end pair iterators
-        static PairIterator beginPairs(std::list<std::unique_ptr<Particle>>& particles);
-        static PairIterator endPairs(std::list<std::unique_ptr<Particle>>& particles);
+        static PairIterator beginPairs(std::list<std::reference_wrapper<Particle>>& particles);
+        static PairIterator endPairs(std::list<std::reference_wrapper<Particle>>& particles);
 
     private:
         // Reference to the list of particles
-        std::list<std::unique_ptr<Particle>>& particles;
+        std::list<std::reference_wrapper<Particle>>& particles;
 
         // Iterators to manage the current pair
-        std::list<std::unique_ptr<Particle>>::iterator firstIt;
-        std::list<std::unique_ptr<Particle>>::iterator secondIt;
+        std::list<std::reference_wrapper<Particle>>::iterator firstIt;
+        std::list<std::reference_wrapper<Particle>>::iterator secondIt;
 
         // Method to advance the iterator to the next pair
         void advance();
