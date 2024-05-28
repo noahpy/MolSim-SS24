@@ -35,7 +35,8 @@ SphereParticleCluster::SphereParticleCluster(
     double z_offset = spacing;
     if (sphereDimensions == 3 && sphereRadius > 0)
         for (size_t discRadius = sphereRadius - 1; discRadius > 0; discRadius--) {
-            double realRadius = getRealRadius(sphereRadius, z_offset);
+            double capRadiusOffset = discRadius == 1 ? spacing * 0.25 : 0;
+            double realRadius = getRealRadius(sphereRadius, z_offset - capRadiusOffset);
             totalNumberOfParticles += 2 * getNumberOfParticlesDisc(realRadius);
             z_offset += spacing;
         }
@@ -61,10 +62,10 @@ void SphereParticleCluster::generateRing(
 
         particles[insertionIndex++] = particle;
     } else if (realRadius >= spacing) {
-        double circumference = 2 * realRadius * M_PI;
-        auto numParticles = (size_t)(circumference / spacing);
+        double step = 2 * std::asin(spacing / (2 * realRadius)); // make sure the particles are spaced by at least the spacing
         double fullRotation = (2 * M_PI);
-        auto step = (double)(fullRotation / (double)numParticles);
+        auto numParticles = (size_t)(fullRotation / step);
+        step = fullRotation / (double)(numParticles);
         double radianAngle = 0;
         while (radianAngle + step / 2 < fullRotation) {
             double x_coordinate = std::cos(radianAngle) * realRadius;
@@ -98,6 +99,12 @@ void SphereParticleCluster::generateDisc(
     }
     // A disc is a collection of rings decreasing in radius
     auto numSteps = (size_t)(realRadius / spacing);
+
+    if (numSteps == 0) {
+        generateRing(particles, insertionIndex, realRadius, z_offset);
+        return;
+    }
+
     double step = realRadius / (double)(numSteps);
     while (std::abs(realRadius) > 1e-8) {
         generateRing(particles, insertionIndex, realRadius, z_offset);
@@ -115,7 +122,8 @@ void SphereParticleCluster::generateCluster(
     double z_offset_a = spacing, z_offset_b = -1 * spacing;
     if (sphereDimensions == 3 && sphereRadius > 0)
         for (size_t discRadius = sphereRadius - 1; discRadius > 0; discRadius--) {
-            double realRadius = getRealRadius(sphereRadius, z_offset_a);
+            double capRadiusOffset = discRadius == 1 ? spacing * 0.25 : 0; // if last iteration, we need to create a cap, which is said to be size the half off-set. This is necessary, because otherwise the radius would be 0
+            double realRadius = getRealRadius(sphereRadius, z_offset_a - capRadiusOffset);
             generateDisc(particles, insertionIndex, realRadius, z_offset_a);
             generateDisc(particles, insertionIndex, realRadius, z_offset_b);
 
@@ -131,6 +139,9 @@ size_t SphereParticleCluster::getNumberOfParticlesDisc(double realRadius) const
 
     size_t num = 0;
     auto numSteps = (size_t)(realRadius / spacing);
+
+    if (numSteps == 0) return getNumberOfParticlesRing(0);
+
     double step = realRadius / (double)(numSteps);
     while (std::abs(realRadius) > 1e-8) {
         num += getNumberOfParticlesRing(realRadius);
@@ -145,8 +156,9 @@ size_t SphereParticleCluster::getNumberOfParticlesRing(double realRadius) const
     if (realRadius < spacing)
         return 1;
     else {
-        double circumference = 2 * realRadius * M_PI;
-        auto numParticles = (size_t)(circumference / spacing);
+        double step = 2 * std::asin(spacing / (2 * realRadius));
+        double fullRotation = (2 * M_PI);
+        auto numParticles = (size_t)(fullRotation / step);
 
         return numParticles;
     }
