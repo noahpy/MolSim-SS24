@@ -19,16 +19,16 @@ public:
     ~CellGrid();
 
     // Method to add a particle to the grid
-    void addParticle(std::unique_ptr<Particle> particle);
+    void addParticle(Particle& particle);
 
     // Method to add particles from ParticleContainer
-    void addParticlesFromContainer(const ParticleContainer& particleContainer);
+    void addParticlesFromContainer(ParticleContainer& particleContainer);
 
     // Method to get all cells
     [[nodiscard]] const CellVec getCells() const;
 
     // Create a list of all particle pointers of a cell and it's neighbors
-    [[nodiscard]] std::list<std::unique_ptr<Particle>> getNeighboringParticles(
+    [[nodiscard]] std::list<std::reference_wrapper<Particle>> getNeighboringParticles(
         const std::array<size_t, 3>& cellIndex);
 
     // Iterator for boundary particles

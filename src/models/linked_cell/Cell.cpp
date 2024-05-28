@@ -15,42 +15,18 @@ Cell::Cell(const CellType type)
 
 Cell::~Cell() = default;
 
-Cell::Cell(const Cell& other)
-    : type(other.type)
-    , neighborCounter(other.neighborCounter)
+void Cell::addParticle(Particle& particle)
 {
-    for (const auto& particle : other.particles) {
-        particles.push_back(std::make_unique<Particle>(*particle));
-    }
+    particles.emplace_back(particle);
 }
 
-Cell& Cell::operator=(const Cell& other)
-{
-    if (this == &other)
-        return *this;
-
-    type = other.type;
-    neighborCounter = other.neighborCounter;
-    particles.clear();
-    for (const auto& particle : other.particles) {
-        particles.push_back(std::make_unique<Particle>(*particle));
-    }
-
-    return *this;
-}
-
-void Cell::addParticle(std::unique_ptr<Particle> particle)
-{
-    particles.push_back(std::move(particle));
-}
-
-void Cell::removeParticle(const Particle* particle)
+void Cell::removeParticle(const Particle& particle)
 {
     particles.remove_if(
-        [particle](const std::unique_ptr<Particle>& p) { return p.get() == particle; });
+        [particle](const std::reference_wrapper<Particle>& p) { return &p.get() == &particle; });
 }
 
-[[nodiscard]] std::list<std::unique_ptr<Particle>>& Cell::getParticles()
+[[nodiscard]] std::list<std::reference_wrapper<Particle>>& Cell::getParticles()
 {
     return particles;
 }
@@ -60,12 +36,12 @@ CellType Cell::getType() const
     return type;
 }
 
-std::list<std::unique_ptr<Particle>>::iterator Cell::begin()
+std::list<std::reference_wrapper<Particle>>::iterator Cell::begin()
 {
     return particles.begin();
 }
 
-std::list<std::unique_ptr<Particle>>::iterator Cell::end()
+std::list<std::reference_wrapper<Particle>>::iterator Cell::end()
 {
     return particles.end();
 }

@@ -16,9 +16,9 @@ CellGrid::CellGrid(const std::array<double, 3>& domainSize, double cutoffRadius)
 
 CellGrid::~CellGrid() = default;
 
-void CellGrid::addParticle(std::unique_ptr<Particle> particle)
+void CellGrid::addParticle(Particle& particle)
 {
-    auto pos = particle->getX();
+    auto pos = particle.getX();
     std::array<size_t, 3> indices { 0, 0, 0 };
 
     for (int i = 0; i < 3; ++i) {
@@ -31,14 +31,13 @@ void CellGrid::addParticle(std::unique_ptr<Particle> particle)
         }
     }
 
-    cells[indices[0]][indices[1]][indices[2]]->addParticle(std::move(particle));
+    cells[indices[0]][indices[1]][indices[2]]->addParticle(particle);
 }
 
-void CellGrid::addParticlesFromContainer(const ParticleContainer& particleContainer)
+void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
 {
-    for (const auto& particle : particleContainer.particles) {
-        auto uniqueParticle = std::make_unique<Particle>(particle);
-        addParticle(std::move(uniqueParticle));
+    for (auto& particle : particleContainer.particles) {
+        addParticle(particle);
     }
 }
 
@@ -266,10 +265,10 @@ CellGrid::PairIterator CellGrid::PairIterator::endPairs(
     return PairIterator(particles, true);
 }
 
-std::list<std::unique_ptr<Particle>> CellGrid::getNeighboringParticles(
+std::list<std::reference_wrapper<Particle>> CellGrid::getNeighboringParticles(
     const std::array<size_t, 3>& cellIndex)
 {
-    std::list<std::unique_ptr<Particle>> particleList;
+    std::list<std::reference_wrapper<Particle>> particleList;
 
     // Check if the cell at the given index is a halo cell
     if (cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->getType() == CellType::Halo) {
@@ -296,7 +295,7 @@ std::list<std::unique_ptr<Particle>> CellGrid::getNeighboringParticles(
                         // Add particle pointer from neighbor to the main list
                         const auto& neighborParticles = cells[nx][ny][nz]->getParticles();
                         for (const auto& particle : neighborParticles) {
-                            particleList.push_back(std::make_unique<Particle>(*particle));
+                            particleList.push_back(particle);
                         }
                         // Increment neighborCounter if particles from a neighbor are added
                         cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->setCounter(cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->getCounter() + 1);
