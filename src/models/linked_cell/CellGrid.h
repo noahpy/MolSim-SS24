@@ -1,11 +1,13 @@
 
 #pragma once
 
-#include <vector>
-#include <array>
 #include "Cell.h"
 #include "CellType.h"
 #include "models/ParticleContainer.h"
+#include <array>
+#include <vector>
+
+typedef std::vector<std::vector<std::vector<std::unique_ptr<Cell>>>> CellVec;
 
 // Class representing the grid of cells
 class CellGrid {
@@ -23,10 +25,11 @@ public:
     void addParticlesFromContainer(const ParticleContainer& particleContainer);
 
     // Method to get all cells
-    [[nodiscard]] const std::vector<std::vector<std::vector<Cell>>>& getCells() const;
+    [[nodiscard]] const CellVec getCells() const;
 
     // Create a list of all particle pointers of a cell and it's neighbors
-    [[nodiscard]] std::list<std::unique_ptr<Particle>> getNeighboringParticles(const std::array<size_t, 3>& cellIndex);
+    [[nodiscard]] std::list<std::unique_ptr<Particle>> getNeighboringParticles(
+        const std::array<size_t, 3>& cellIndex);
 
     // Iterator for boundary particles
     class BoundaryIterator {
@@ -114,9 +117,9 @@ private:
     std::array<size_t, 3> gridDimensions;
 
     // 3D vector of cells
-    std::vector<std::vector<std::vector<Cell>>> cells;
+    CellVec cells;
 
     // Vectors to store boundary and halo cells
-    std::vector<Cell> boundaryCells;
-    std::vector<Cell> haloCells;
+    std::vector<CellIndex> boundaryCells;
+    std::vector<CellIndex> haloCells;
 };

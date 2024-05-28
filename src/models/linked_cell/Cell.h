@@ -1,14 +1,15 @@
 
 #pragma once
 
-#include <list>
-#include "models/Particle.h"
 #include "CellType.h"
-
+#include "models/Particle.h"
+#include <list>
 #include <memory>
 
+typedef std::array<size_t, 3> CellIndex;
+
 // Class representing a cell in the grid
-class Cell final{
+class Cell {
 public:
     // Default constructor
     Cell();
@@ -16,11 +17,11 @@ public:
     // Constructor with cell type
     explicit Cell(CellType type);
 
-    // Destructor
-    ~Cell();
-
     // Define copy constructor, had to do this because of some error
     Cell(const Cell& other);
+
+    // Destructor
+    ~Cell();
 
     // Define copy assignment operator, had to do this because of some error
     Cell& operator=(const Cell& other);
@@ -46,7 +47,6 @@ public:
     // Getter and setter for neighborCounter
     [[nodiscard]] int getCounter() const;
     void setCounter(int);
-
 
 private:
     // Type of the cell
