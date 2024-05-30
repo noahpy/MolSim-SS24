@@ -3,6 +3,10 @@
 
 #include "models/Particle.h"
 #include <vector>
+#include "utils/ArrayUtils.h"
+#include "utils/MaxwellBoltzmannDistribution.h"
+#include <spdlog/spdlog.h>
+#include <sstream>
 
 /**
  * @brief An abstract class to model a cluster of particles
@@ -15,8 +19,7 @@ public:
      * @param mass The mass of the particles
      * @param initialVelocity The initial velocity of the particles
      * @param meanVelocity The mean velocity of the particles
-     * @param dimensions The dimensions of the cluster (2 or 3). Will be passed to
-     * maxwellBoltzmannDistributedVelocity()
+     * @param dimensions The dimensions of the cluster (<= 3). Will be passed to maxwellBoltzmannDistributedVelocity() The dimensions of the cluster (<= 3) will be passed to maxwellBoltzmannDistributedVelocity() if set to 0 no brownian motion will be added, if set to 1 then only on the x axis, then x+y, and finally x+y+z axis
      */
     ParticleCluster(
         std::array<double, 3> origin,
