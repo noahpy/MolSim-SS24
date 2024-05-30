@@ -41,10 +41,6 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
     }
 }
 
-const CellVec CellGrid::getCells() const
-{
-    return cells;
-}
 
 void CellGrid::initializeGrid()
 {
@@ -124,19 +120,19 @@ bool CellGrid::BoundaryIterator::operator!=(const BoundaryIterator& other) const
     return cellIndex != other.cellIndex || particleIt != other.particleIt;
 }
 
-void CellGrid::BoundaryIterator::advance()
-{
-    while (cellIndex < boundaryCells.size()) {
-        if (particleIt == boundaryCells[cellIndex].getParticles().end()) {
-            ++cellIndex;
-            if (cellIndex < boundaryCells.size()) {
-                particleIt = boundaryCells[cellIndex].getParticles().begin();
-            }
-        } else {
-            return;
-        }
-    }
-}
+/* void CellGrid::BoundaryIterator::advance() */
+/* { */
+/*     while (cellIndex < boundaryCells.size()) { */
+/*         if (particleIt == boundaryCells[cellIndex].getParticles().end()) { */
+/*             ++cellIndex; */
+/*             if (cellIndex < boundaryCells.size()) { */
+/*                 particleIt = boundaryCells[cellIndex].getParticles().begin(); */
+/*             } */
+/*         } else { */
+/*             return; */
+/*         } */
+/*     } */
+/* } */
 
 // HaloIterator Implementation
 
@@ -170,19 +166,19 @@ bool CellGrid::HaloIterator::operator!=(const HaloIterator& other) const
     return cellIndex != other.cellIndex || particleIt != other.particleIt;
 }
 
-void CellGrid::HaloIterator::advance()
-{
-    while (cellIndex < haloCells.size()) {
-        if (particleIt == haloCells[cellIndex].getParticles().end()) {
-            ++cellIndex;
-            if (cellIndex < haloCells.size()) {
-                particleIt = haloCells[cellIndex].getParticles().begin();
-            }
-        } else {
-            return;
-        }
-    }
-}
+/* void CellGrid::HaloIterator::advance() */
+/* { */
+/*     while (cellIndex < haloCells.size()) { */
+/*         if (particleIt == haloCells[cellIndex].getParticles().end()) { */
+/*             ++cellIndex; */
+/*             if (cellIndex < haloCells.size()) { */
+/*                 particleIt = haloCells[cellIndex].getParticles().begin(); */
+/*             } */
+/*         } else { */
+/*             return; */
+/*         } */
+/*     } */
+/* } */
 
 // Methods to get boundary and halo particle iterators
 /* CellGrid::BoundaryIterator CellGrid::beginBoundaryParticles() */

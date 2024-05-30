@@ -5,6 +5,7 @@
 #include "CellType.h"
 #include "models/ParticleContainer.h"
 #include <array>
+#include <memory>
 #include <vector>
 
 typedef std::vector<std::vector<std::vector<std::unique_ptr<Cell>>>> CellVec;
@@ -23,9 +24,6 @@ public:
 
     // Method to add particles from ParticleContainer
     void addParticlesFromContainer(ParticleContainer& particleContainer);
-
-    // Method to get all cells
-    [[nodiscard]] const CellVec getCells() const;
 
     // Create a list of all particle pointers of a cell and it's neighbors
     [[nodiscard]] std::list<std::reference_wrapper<Particle>> getNeighboringParticles(
@@ -73,7 +71,8 @@ public:
     class PairIterator {
     public:
         // Constructor
-        explicit PairIterator(std::list<std::reference_wrapper<Particle>>& particles, bool end = false);
+        explicit PairIterator(
+            std::list<std::reference_wrapper<Particle>>& particles, bool end = false);
 
         // Dereference operator
         std::pair<Particle*, Particle*> operator*() const;

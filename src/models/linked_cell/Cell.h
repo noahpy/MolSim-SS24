@@ -4,7 +4,6 @@
 #include "CellType.h"
 #include "models/Particle.h"
 #include <list>
-#include <memory>
 
 typedef std::array<size_t, 3> CellIndex;
 
