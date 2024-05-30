@@ -1,53 +1,88 @@
-
 #pragma once
 
 #include "CellType.h"
 #include "models/Particle.h"
 #include <list>
 
+/** @brief A 3D index representing a cell's position within the grid. */
 typedef std::array<size_t, 3> CellIndex;
 
-// Class representing a cell in the grid
+/** @class Cell
+ *  @brief Represents a single cell within the CellGrid.
+ *
+ *  A Cell stores particles and tracks its type (boundary, halo, or bulk).
+ *  It provides methods for managing particles, accessing their references,
+ *  and managing a neighbor counter.
+ */
 class Cell {
 public:
-    // Default constructor
+    /** @brief Default constructor for Cell, initializes it as a bulk cell. */
     Cell();
 
-    // Constructor with cell type
+    /**
+     * @brief Constructor for Cell with a specified type.
+     * @param type The type of the cell (boundary, halo, or bulk).
+     */
     explicit Cell(CellType type);
 
-    // Destructor
+    /** @brief Destructor for Cell. */
     ~Cell();
 
-    // Method to add a particle to the cell
+    /**
+     * @brief Adds a particle to the cell.
+     * @param particle A reference to the particle to be added.
+     */
     void addParticle(Particle& particle);
 
-    // Method to remove a particle from the cell
+    /**
+     * @brief Removes a particle from the cell.
+     * @param particle A reference to the particle to be removed.
+     */
     void removeParticle(const Particle& particle);
 
-    // Method to get all particles in the cell
+    /**
+     * @brief Returns a list of references to all particles in the cell.
+     * @return A list of references to the particles in the cell.
+     */
     [[nodiscard]] std::list<std::reference_wrapper<Particle>>& getParticles();
 
-    // Method to get the type of the cell
+    /**
+     * @brief Returns the type of the cell.
+     * @return The CellType of the cell (boundary, halo, or bulk).
+     */
     [[nodiscard]] CellType getType() const;
 
-    // Method to get an iterator to the beginning of the particles list
+    /**
+     * @brief Returns an iterator pointing to the beginning of the particle list.
+     * @return An iterator to the beginning of the particle list.
+     */
     std::list<std::reference_wrapper<Particle>>::iterator begin();
 
-    // Method to get an iterator to the end of the particles list
+    /**
+     * @brief Returns an iterator pointing to the end of the particle list.
+     * @return An iterator to the end of the particle list.
+     */
     std::list<std::reference_wrapper<Particle>>::iterator end();
 
-    // Getter and setter for neighborCounter
+    /**
+     * @brief Gets the current value of the neighbor counter.
+     * @return The current value of the neighbor counter.
+     */
     [[nodiscard]] int getCounter() const;
-    void setCounter(int);
+
+    /**
+     * @brief Sets the value of the neighbor counter.
+     * @param value The new value for the neighbor counter.
+     */
+    void setCounter(int value);
 
 private:
-    // Type of the cell
+    /// The type of the cell (boundary, halo, or bulk).
     CellType type;
 
-    // Counter for processed neighbors
+    /// A counter used for tracking processed neighbors (e.g., during force calculations).
     int neighborCounter;
 
-    // List to store pointers to particles in the cell
+    /// A list storing references to particles within the cell.
     std::list<std::reference_wrapper<Particle>> particles;
 };
