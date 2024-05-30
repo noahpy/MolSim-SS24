@@ -2,6 +2,7 @@
 
 #include "CellType.h"
 #include "models/Particle.h"
+#include <functional>
 #include <list>
 
 /** @brief A 3D index representing a cell's position within the grid. */

@@ -20,11 +20,11 @@ void Cell::addParticle(Particle& particle)
     particles.emplace_back(particle);
 }
 
-/* void Cell::removeParticle(const Particle& particle) */
-/* { */
-/*     particles.remove_if( */
-/*         [particle](const std::reference_wrapper<Particle>& p) { return &p.get() == &particle; }); */
-/* } */
+void Cell::removeParticle(const Particle& particle)
+{
+    particles.remove_if(
+        [particle](const std::reference_wrapper<Particle>& p) { return &p.get() == &particle; });
+}
 
 [[nodiscard]] std::list<std::reference_wrapper<Particle>>& Cell::getParticles()
 {
