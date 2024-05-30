@@ -3,7 +3,7 @@
 
 /* ########### BoundaryIterator Implementation ########### */
 CellGrid::BoundaryIterator::BoundaryIterator(std::vector<CellIndex>& boundaries, bool end)
-    : boundries(boundaries)
+    : boundaries(boundaries)
 {
     if (end) {
         index = boundaries.size();
@@ -14,14 +14,14 @@ CellGrid::BoundaryIterator::BoundaryIterator(std::vector<CellIndex>& boundaries,
 
 CellIndex CellGrid::BoundaryIterator::operator*() const
 {
-    if (index < boundries.size())
-        return boundries.at(index);
+    if (index < boundaries.size())
+        return boundaries.at(index);
     return { 0, 0, 0 };
 }
 
 CellGrid::BoundaryIterator& CellGrid::BoundaryIterator::operator++()
 {
-    if (index < boundries.size())
+    if (index < boundaries.size())
         ++index;
     return *this;
 }
