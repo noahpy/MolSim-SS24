@@ -185,25 +185,25 @@ void CellGrid::HaloIterator::advance()
 }
 
 // Methods to get boundary and halo particle iterators
-CellGrid::BoundaryIterator CellGrid::beginBoundaryParticles()
-{
-    return BoundaryIterator(boundaryCells, false);
-}
+/* CellGrid::BoundaryIterator CellGrid::beginBoundaryParticles() */
+/* { */
+/*     return BoundaryIterator(boundaryCells, false); */
+/* } */
 
-CellGrid::BoundaryIterator CellGrid::endBoundaryParticles()
-{
-    return BoundaryIterator(boundaryCells, true);
-}
+/* CellGrid::BoundaryIterator CellGrid::endBoundaryParticles() */
+/* { */
+/*     return BoundaryIterator(boundaryCells, true); */
+/* } */
 
-CellGrid::HaloIterator CellGrid::beginHaloParticles()
-{
-    return HaloIterator(haloCells, false);
-}
+/* CellGrid::HaloIterator CellGrid::beginHaloParticles() */
+/* { */
+/*     return HaloIterator(haloCells, false); */
+/* } */
 
-CellGrid::HaloIterator CellGrid::endHaloParticles()
-{
-    return HaloIterator(haloCells, true);
-}
+/* CellGrid::HaloIterator CellGrid::endHaloParticles() */
+/* { */
+/*     return HaloIterator(haloCells, true); */
+/* } */
 
 // PairIterator Implementation
 
