@@ -22,8 +22,16 @@ void Cell::addParticle(Particle& particle)
 
 void Cell::removeParticle(const Particle& particle)
 {
+    /*
+     * It is necessary to use the pointer to be able to pass it to the lambda function
+     * Intern the pointer is necessary because if we pass the particle object, it will be copied
+     * Thus changing its memory address and the comparison will not work
+     *
+     * Before it was done like so: [particle](const std::reference_wrapper<particle>& p) { return &p.get() == &particle; }
+     */
+    const Particle* particlePtr = &particle;
     particles.remove_if(
-        [particle](const std::reference_wrapper<Particle>& p) { return &p.get() == &particle; });
+        [particlePtr](const std::reference_wrapper<Particle>& p) { return &p.get() == particlePtr; });
 }
 
 [[nodiscard]] std::list<std::reference_wrapper<Particle>>& Cell::getParticles()
