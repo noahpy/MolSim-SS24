@@ -21,10 +21,14 @@ class CellGrid {
 public:
     /**
      * @brief Constructor for CellGrid.
+     * @param domainOrigin 3D array representing the "origin" of the simulation domain.
      * @param domainSize A 3D array representing the size of the simulation domain.
      * @param cutoffRadius The cutoff radius for particle interactions.
      */
-    CellGrid(const std::array<double, 3>& domainSize, double cutoffRadius);
+    CellGrid(
+        const std::array<double, 3> domainOrigin,
+        const std::array<double, 3>& domainSize,
+        double cutoffRadius);
 
     /** @brief Destructor for CellGrid. */
     ~CellGrid();
@@ -87,6 +91,9 @@ private:
     /// The cutoff radius for particle interactions.
     double cutoffRadius;
 
+    // The top-left-front point of the domain
+    std::array<double, 3> domainOrigin;
+
     /// The dimensions of the cell grid in each dimension.
     std::array<size_t, 3> gridDimensions;
 
@@ -99,7 +106,7 @@ private:
     /// A vector storing the indices of halo cells.
     std::vector<CellIndex> haloCells;
 
-/* ##### Detailed Iterator Definitions ##### */
+    /* ##### Detailed Iterator Definitions ##### */
 public:
     /** @class BoundaryIterator
      * @brief Iterator for iterating over boundary cells.

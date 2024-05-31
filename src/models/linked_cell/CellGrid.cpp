@@ -6,8 +6,12 @@
 #include "models/linked_cell/InnerCell.h"
 #include <cmath>
 
-CellGrid::CellGrid(const std::array<double, 3>& domainSize, double cutoffRadius)
-    : domainSize(domainSize)
+CellGrid::CellGrid(
+    const std::array<double, 3> domainOrigin,
+    const std::array<double, 3>& domainSize,
+    double cutoffRadius)
+    : domainOrigin(domainOrigin)
+    , domainSize(domainSize)
     , cutoffRadius(cutoffRadius)
     , gridDimensions({ 0, 0, 0 })
 {
