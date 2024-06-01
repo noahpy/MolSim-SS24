@@ -4,6 +4,7 @@
 #include "models/linked_cell/Cell.h"
 #include "models/linked_cell/HaloCell.h"
 #include "models/linked_cell/InnerCell.h"
+#include "utils/ArrayUtils.h"
 #include <cmath>
 
 CellGrid::CellGrid(
@@ -59,10 +60,7 @@ CellType CellGrid::determineCellType(const std::array<size_t, 3>& indices) const
     for (int i = 0; i < 3; ++i) {
         if (indices[i] == 0 || indices[i] == gridDimensions[i] - 1) {
             return CellType::Halo;
-        }
-    }
-    for (int i = 0; i < 3; ++i) {
-        if (indices[i] == 1 || indices[i] == gridDimensions[i] - 2) {
+        } else if (indices[i] == 1 || indices[i] == gridDimensions[i] - 2) {
             return CellType::Boundary;
         }
     }
@@ -92,7 +90,7 @@ CellGrid::HaloIterator CellGrid::endHaloParticles()
 
 void CellGrid::addParticle(Particle& particle)
 {
-    auto pos = particle.getX();
+    auto pos = particle.getX() - domainOrigin;
     std::array<size_t, 3> indices { 0, 0, 0 };
 
     for (int i = 0; i < 3; ++i) {
