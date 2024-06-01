@@ -29,7 +29,7 @@ public:
     explicit Cell(CellType type);
 
     /** @brief Destructor for Cell. */
-    ~Cell();
+    virtual ~Cell();
 
     /**
      * @brief Adds a particle to the cell.
