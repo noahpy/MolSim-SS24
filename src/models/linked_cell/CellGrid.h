@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "Cell.h"
-#include "CellType.h"
+#include "models/linked_cell/cell/Cell.h"
+#include "models/linked_cell/cell/CellType.h"
 #include "models/ParticleContainer.h"
 #include <array>
 #include <memory>

@@ -1,6 +1,6 @@
 
 #include "models/ParticleContainer.h"
-#include "models/linked_cell/Cell.h"
+#include "models/linked_cell/cell/Cell.h"
 #include "models/linked_cell/CellGrid.h"
 #include <array>
 #include <cmath>

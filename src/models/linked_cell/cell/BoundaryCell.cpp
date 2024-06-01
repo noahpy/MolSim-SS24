@@ -1,7 +1,7 @@
 
-#include "models/linked_cell/BoundaryCell.h"
-#include "models/linked_cell/Cell.h"
-#include "models/linked_cell/CellType.h"
+#include "models/linked_cell/cell/BoundaryCell.h"
+#include "models/linked_cell/cell/Cell.h"
+#include "models/linked_cell/cell/CellType.h"
 
 BoundaryCell::BoundaryCell(
     CellIndex myIndex,

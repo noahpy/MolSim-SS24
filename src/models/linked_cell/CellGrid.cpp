@@ -1,9 +1,9 @@
 
 #include "CellGrid.h"
-#include "models/linked_cell/BoundaryCell.h"
-#include "models/linked_cell/Cell.h"
-#include "models/linked_cell/HaloCell.h"
-#include "models/linked_cell/InnerCell.h"
+#include "models/linked_cell/cell/BoundaryCell.h"
+#include "models/linked_cell/cell/Cell.h"
+#include "models/linked_cell/cell/HaloCell.h"
+#include "models/linked_cell/cell/InnerCell.h"
 #include "utils/ArrayUtils.h"
 #include <cmath>
 

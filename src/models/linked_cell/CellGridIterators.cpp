@@ -1,6 +1,6 @@
 
 #include "CellGrid.h"
-#include "models/linked_cell/Cell.h"
+#include "models/linked_cell/cell/Cell.h"
 
 /* ########### BoundaryIterator Implementation ########### */
 CellGrid::BoundaryIterator::BoundaryIterator(std::vector<CellIndex>& boundaries, bool end)

@@ -1,9 +1,8 @@
 
 #include <gtest/gtest.h>
-#include "models/linked_cell/Cell.h"
-#include "models/linked_cell/BoundaryCell.h"
-#include "models/linked_cell/HaloCell.h"
-#include "models/linked_cell/InnerCell.h"
+#include "models/linked_cell/cell/BoundaryCell.h"
+#include "models/linked_cell/cell/HaloCell.h"
+#include "models/linked_cell/cell/InnerCell.h"
 #include <vector>
 
 // Check if all cell types can be instantiated

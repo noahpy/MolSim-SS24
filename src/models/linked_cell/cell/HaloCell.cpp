@@ -1,6 +1,6 @@
 
-#include "models/linked_cell/HaloCell.h"
-#include "models/linked_cell/CellType.h"
+#include "models/linked_cell/cell/HaloCell.h"
+#include "models/linked_cell/cell/CellType.h"
 
 HaloCell::HaloCell(
     CellIndex myIndex,
