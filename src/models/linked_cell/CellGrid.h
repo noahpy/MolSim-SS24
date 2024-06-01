@@ -28,6 +28,7 @@ public:
     CellGrid(
         const std::array<double, 3> domainOrigin,
         const std::array<double, 3>& domainSize,
+        std::array<double, 3> cellSize,
         double cutoffRadius);
 
     /** @brief Destructor for CellGrid. */
@@ -87,6 +88,9 @@ protected:
 private:
     /// The size of the simulation domain in each dimension.
     std::array<double, 3> domainSize;
+
+    /// The size of a cell according to the domain size.
+    std::array<double, 3> cellSize;
 
     /// The cutoff radius for particle interactions.
     double cutoffRadius;

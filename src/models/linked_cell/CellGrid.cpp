@@ -9,9 +9,11 @@
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
     const std::array<double, 3>& domainSize,
+    std::array<double, 3> cellSize,
     double cutoffRadius)
     : domainOrigin(domainOrigin)
     , domainSize(domainSize)
+    , cellSize(cellSize)
     , cutoffRadius(cutoffRadius)
     , gridDimensions({ 0, 0, 0 })
 {
@@ -23,8 +25,9 @@ CellGrid::~CellGrid() = default;
 void CellGrid::initializeGrid()
 {
     for (int i = 0; i < 3; ++i) {
-        // Extra cells for halo
-        gridDimensions[i] = static_cast<size_t>(std::ceil(domainSize[i] / cutoffRadius)) + 2;
+        gridDimensions[i] = static_cast<size_t>(std::floor(domainSize[i] / cutoffRadius));
+        cellSize[i] = domainSize[i] / static_cast<double>(gridDimensions[i]);
+        gridDimensions[i] += 2;
     }
 
     cells.resize(gridDimensions[0]);
