@@ -1,50 +1,65 @@
 
 #include "Cell.h"
 
-Cell::Cell() : type(CellType::Inner) {}
+Cell::Cell()
+    : type(CellType::Inner)
+    , neighborCounter(0)
+{
+}
 
-Cell::Cell(const CellType type) : type(type) {}
+Cell::Cell(const CellType type)
+    : type(type)
+    , neighborCounter(0)
+{
+}
 
 Cell::~Cell() = default;
 
-Cell::Cell(const Cell& other) : type(other.type) {
-    for (const auto& particle : other.particles) {
-        particles.push_back(std::make_unique<Particle>(*particle));
-    }
+void Cell::addParticle(Particle& particle)
+{
+    particles.emplace_back(particle);
 }
 
-Cell& Cell::operator=(const Cell& other) {
-    if (this == &other) return *this;
-
-    type = other.type;
-    particles.clear();
-    for (const auto& particle : other.particles) {
-        particles.push_back(std::make_unique<Particle>(*particle));
-    }
-
-    return *this;
+void Cell::removeParticle(const Particle& particle)
+{
+    /*
+     * It is necessary to use the pointer to be able to pass it to the lambda function
+     * Intern the pointer is necessary because if we pass the particle object, it will be copied
+     * Thus changing its memory address and the comparison will not work
+     *
+     * Before it was done like so: [particle](const std::reference_wrapper<particle>& p) { return &p.get() == &particle; }
+     */
+    const Particle* particlePtr = &particle;
+    particles.remove_if(
+        [particlePtr](const std::reference_wrapper<Particle>& p) { return &p.get() == particlePtr; });
 }
 
-void Cell::addParticle(std::unique_ptr<Particle> particle) {
-    particles.push_back(std::move(particle));
-}
-
-void Cell::removeParticle (const Particle* particle) {
-    particles.remove_if([particle](const std::unique_ptr<Particle>& p) {return p.get() == particle; });
-}
-
-[[nodiscard]] std::list<std::unique_ptr<Particle>>& Cell::getParticles() {
+[[nodiscard]] std::list<std::reference_wrapper<Particle>>& Cell::getParticles()
+{
     return particles;
 }
 
-CellType Cell::getType() const {
+CellType Cell::getType() const
+{
     return type;
 }
 
-std::list<std::unique_ptr<Particle>>::iterator Cell::begin() {
+std::list<std::reference_wrapper<Particle>>::iterator Cell::begin()
+{
     return particles.begin();
 }
 
-std::list<std::unique_ptr<Particle>>::iterator Cell::end() {
+std::list<std::reference_wrapper<Particle>>::iterator Cell::end()
+{
     return particles.end();
+}
+
+int Cell::getCounter() const
+{
+    return neighborCounter;
+}
+
+void Cell::setCounter(int count)
+{
+    neighborCounter = count;
 }

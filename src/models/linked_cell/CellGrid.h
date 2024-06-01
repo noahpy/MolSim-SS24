@@ -1,84 +1,248 @@
 
 #pragma once
 
-#include <vector>
-#include <array>
 #include "Cell.h"
 #include "CellType.h"
 #include "models/ParticleContainer.h"
+#include <array>
+#include <memory>
+#include <vector>
 
-// Class representing the grid of cells
+typedef std::vector<std::vector<std::vector<std::unique_ptr<Cell>>>> CellVec;
+
+/** @class CellGrid
+ *  @brief Represents a 3D grid of cells to organize particles in a simulation.
+ *
+ *  This class provides methods for adding particles, identifying neighboring particles,
+ *  and iterating over boundary and halo cells. It also internally manages the domain size,
+ *  cutoff radius, and grid dimensions.
+ */
 class CellGrid {
 public:
-    // Constructor
-    CellGrid(const std::array<double, 3>& domainSize, double cutoffRadius);
+    /**
+     * @brief Constructor for CellGrid.
+     * @param domainOrigin 3D array representing the "origin" of the simulation domain.
+     * @param domainSize A 3D array representing the size of the simulation domain.
+     * @param cutoffRadius The cutoff radius for particle interactions.
+     */
+    CellGrid(
+        const std::array<double, 3> domainOrigin,
+        const std::array<double, 3>& domainSize,
+        double cutoffRadius);
 
-    // Destructor
+    /** @brief Destructor for CellGrid. */
     ~CellGrid();
 
-    // Method to add a particle to the grid
-    void addParticle(std::unique_ptr<Particle> particle);
+    /**
+     * @brief Adds a particle to the appropriate cell in the grid.
+     * @param particle The particle to be added.
+     */
+    void addParticle(Particle& particle);
 
-    // Method to add particles from ParticleContainer
-    void addParticlesFromContainer(const ParticleContainer& particleContainer);
+    /**
+     * @brief Adds all particles from a ParticleContainer to the grid.
+     * @param particleContainer The container holding the particles to be added.
+     */
+    void addParticlesFromContainer(ParticleContainer& particleContainer);
 
-    // Method to get all cells
-    [[nodiscard]] const std::vector<std::vector<std::vector<Cell>>>& getCells() const;
+    /**
+     * @brief Returns all particle references of a given cell and its neighbors
+     * @param cellIndex The index of the target cell
+     * @return A list of references to all particles in the target cell and its neighbors
+     */
+    [[nodiscard]] std::list<std::reference_wrapper<Particle>> getNeighboringParticles(
+        const std::array<size_t, 3>& cellIndex);
 
-    // Iterator for boundary particles
+    // Forward declaration (see bottom)
+    class BoundaryIterator;
+
+    // Forward declaration (see bottom)
+    class HaloIterator;
+
+    /** @brief Returns an iterator to the beginning of boundary particles. */
+    BoundaryIterator beginBoundaryParticles();
+
+    /** @brief Returns an iterator to the end of boundary particles. */
+    BoundaryIterator endBoundaryParticles();
+
+    /** @brief Returns an iterator to the beginning of halo particles. */
+    HaloIterator beginHaloParticles();
+
+    /** @brief Returns an iterator to the end of halo particles. */
+    HaloIterator endHaloParticles();
+
+protected:
+    /**
+     * @brief Initializes the grid structure based on the domain size and cutoff radius.
+     */
+    void initializeGrid();
+
+    /**
+     * @brief Determines the cell type (boundary, halo, or bulk) based on its indices.
+     * @param indices The 3D index of the cell.
+     * @return The CellType of the specified cell.
+     */
+    [[nodiscard]] CellType determineCellType(const std::array<size_t, 3>& indices) const;
+
+private:
+    /// The size of the simulation domain in each dimension.
+    std::array<double, 3> domainSize;
+
+    /// The cutoff radius for particle interactions.
+    double cutoffRadius;
+
+    // The top-left-front point of the domain
+    std::array<double, 3> domainOrigin;
+
+    /// The dimensions of the cell grid in each dimension.
+    std::array<size_t, 3> gridDimensions;
+
+    /// The 3D vector storing the cells in the grid.
+    CellVec cells;
+
+    /// A vector storing the indices of boundary cells.
+    std::vector<CellIndex> boundaryCells;
+
+    /// A vector storing the indices of halo cells.
+    std::vector<CellIndex> haloCells;
+
+    /* ##### Detailed Iterator Definitions ##### */
+public:
+    /** @class BoundaryIterator
+     * @brief Iterator for iterating over boundary cells.
+     */
     class BoundaryIterator {
     public:
-        explicit BoundaryIterator(std::vector<std::vector<std::vector<Cell>>>& cells, bool end = false);
+        /**
+         * @brief Constructor for BoundaryIterator.
+         * @param boundaries A reference to the vector of boundary cell indices.
+         * @param end Set to true to create an end iterator.
+         */
+        explicit BoundaryIterator(std::vector<CellIndex>& boundaries, bool end = false);
 
-        std::unique_ptr<Particle>& operator*() const;
+        /**
+         * @brief Dereferences the iterator, returning the current CellIndex.
+         * @return The CellIndex of the current boundary cell.
+         */
+        CellIndex operator*() const;
+
+        /**
+         * @brief Increments the iterator to the next boundary cell.
+         * @return A reference to the incremented BoundaryIterator.
+         */
         BoundaryIterator& operator++();
+
+        /**
+         * @brief Checks if this iterator is not equal to another BoundaryIterator.
+         * @param other The other BoundaryIterator to compare with.
+         * @return True if the iterators are not equal, false otherwise.
+         */
         bool operator!=(const BoundaryIterator& other) const;
 
     private:
-        std::vector<std::vector<std::vector<Cell>>>& cells;
-        size_t x, y, z;
-        std::list<std::unique_ptr<Particle>>::iterator particleIt;
-        void advance();
+        /// The current index in the boundary cell vector.
+        size_t index;
+
+        /// A reference to the vector of boundary cell indices.
+        std::vector<CellIndex>& boundaries;
     };
 
-    BoundaryIterator beginBoundaryParticles();
-    BoundaryIterator endBoundaryParticles();
-
-    // Iterator for halo particles
+    /** @class HaloIterator
+     * @brief Iterator for iterating over halo cells.
+     */
     class HaloIterator {
     public:
-        explicit HaloIterator(std::vector<std::vector<std::vector<Cell>>>& cells, bool end = false);
+        /**
+         * @brief Constructor for HaloIterator.
+         * @param halos A reference to the vector of halo cell indices.
+         * @param end Set to true to create an end iterator.
+         */
+        explicit HaloIterator(std::vector<CellIndex>& halos, bool end = false);
 
-        std::unique_ptr<Particle>& operator*() const;
+        /**
+         * @brief Dereferences the iterator, returning the current CellIndex.
+         * @return The CellIndex of the current halo cell.
+         */
+        CellIndex operator*() const;
+
+        /**
+         * @brief Increments the iterator to the next halo cell.
+         * @return A reference to the incremented HaloIterator.
+         */
         HaloIterator& operator++();
+
+        /**
+         * @brief Checks if this iterator is not equal to another HaloIterator.
+         * @param other The other HaloIterator to compare with.
+         * @return True if the iterators are not equal, false otherwise.
+         */
         bool operator!=(const HaloIterator& other) const;
 
     private:
-        std::vector<std::vector<std::vector<Cell>>>& cells;
-        size_t x, y, z;
-        std::list<std::unique_ptr<Particle>>::iterator particleIt;
-        void advance();
+        /// A reference to the vector of halo cell indices.
+        std::vector<CellIndex>& halos;
+
+        /// The current index in the halo cell vector.
+        size_t index;
     };
 
-    HaloIterator beginHaloParticles();
-    HaloIterator endHaloParticles();
+    // PairIterator for list of particle pointers
+    class PairIterator {
+    public:
+        /**
+         * @brief Constructor for PairIterator.
+         * @param particles A reference to the list of particles.
+         * @param end Set to true to create an end iterator.
+         */
+        explicit PairIterator(
+            std::list<std::reference_wrapper<Particle>>& particles, bool end = false);
 
-private:
-    // Method to initialize the grid based on the domain size and cutoff radius
-    void initializeGrid();
+        /**
+         * @brief Dereferences the iterator, returning a pair of particle pointers.
+         * @return A pair of pointers to the current particle pair.
+         */
+        std::pair<Particle*, Particle*> operator*() const;
 
-    // Method to determine the cell type based on indices
-    [[nodiscard]] CellType determineCellType(const std::array<size_t, 3>& indices) const;
+        /**
+         * @brief Increments the iterator to the next particle pair.
+         * @return A reference to the incremented PairIterator.
+         */
+        PairIterator& operator++();
 
-    // Domain size
-    std::array<double, 3> domainSize;
+        /**
+         * @brief Checks if this iterator is not equal to another PairIterator.
+         * @param other The other PairIterator to compare with.
+         * @return True if the iterators are not equal, false otherwise.
+         */
+        bool operator!=(const PairIterator& other) const;
 
-    // Cutoff radius
-    double cutoffRadius;
+        /**
+         * @brief Returns a PairIterator pointing to the beginning of the particle pairs.
+         * @param particles A reference to the list of particles.
+         * @return A PairIterator at the beginning of the pairs.
+         */
+        static PairIterator beginPairs(std::list<std::reference_wrapper<Particle>>& particles);
 
-    // Grid dimensions
-    std::array<size_t, 3> gridDimensions;
+        /**
+         * @brief Returns a PairIterator pointing to the end of the particle pairs.
+         * @param particles A reference to the list of particles.
+         * @return A PairIterator at the end of the pairs.
+         */
+        static PairIterator endPairs(std::list<std::reference_wrapper<Particle>>& particles);
 
-    // 3D vector of cells
-    std::vector<std::vector<std::vector<Cell>>> cells;
+    private:
+        /// A reference to the list of particles to iterate over.
+        std::list<std::reference_wrapper<Particle>>& particles;
+
+        /// An iterator to the first particle in the current pair.
+        std::list<std::reference_wrapper<Particle>>::iterator firstIt;
+
+        /// An iterator to the second particle in the current pair.
+        std::list<std::reference_wrapper<Particle>>::iterator secondIt;
+
+        /**
+         * @brief Advances the iterators to the next valid particle pair.
+         */
+        void advance();
+    };
 };
