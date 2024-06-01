@@ -7,6 +7,8 @@
 
 /** @brief A 3D index representing a cell's position within the grid. */
 typedef std::array<size_t, 3> CellIndex;
+/** @brief A list of references to particles in a cell. */
+typedef std::list<std::reference_wrapper<Particle>> ParticleRefList;
 
 /** @class Cell
  *  @brief Represents a single cell within the CellGrid.
@@ -45,7 +47,7 @@ public:
      * @brief Returns a list of references to all particles in the cell.
      * @return A list of references to the particles in the cell.
      */
-    [[nodiscard]] std::list<std::reference_wrapper<Particle>>& getParticles();
+    [[nodiscard]] ParticleRefList& getParticles();
 
     /**
      * @brief Returns the type of the cell.
@@ -57,13 +59,13 @@ public:
      * @brief Returns an iterator pointing to the beginning of the particle list.
      * @return An iterator to the beginning of the particle list.
      */
-    std::list<std::reference_wrapper<Particle>>::iterator begin();
+    ParticleRefList::iterator begin();
 
     /**
      * @brief Returns an iterator pointing to the end of the particle list.
      * @return An iterator to the end of the particle list.
      */
-    std::list<std::reference_wrapper<Particle>>::iterator end();
+    ParticleRefList::iterator end();
 
     /**
      * @brief Gets the current value of the neighbor counter.
@@ -77,6 +79,16 @@ public:
      */
     void setCounter(int value);
 
+    /**
+     * @brief Decrements the neighbor counter.
+     */
+    void decrementCounter() { neighborCounter--; };
+
+    /**
+     * @brief Increments the neighbor counter.
+     */
+    void incrementCounter() { neighborCounter++; };
+
 private:
     /// The type of the cell (boundary, halo, or bulk).
     CellType type;
@@ -85,5 +97,5 @@ private:
     int neighborCounter;
 
     /// A list storing references to particles within the cell.
-    std::list<std::reference_wrapper<Particle>> particles;
+    ParticleRefList particles;
 };

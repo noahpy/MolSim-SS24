@@ -1,5 +1,6 @@
 
 #include "CellGrid.h"
+#include "models/linked_cell/Cell.h"
 
 /* ########### BoundaryIterator Implementation ########### */
 CellGrid::BoundaryIterator::BoundaryIterator(std::vector<CellIndex>& boundaries, bool end)
@@ -62,8 +63,7 @@ bool CellGrid::HaloIterator::operator!=(const HaloIterator& other) const
 }
 
 /* ########### PairIterator Implementation ########### */
-CellGrid::PairIterator::PairIterator(
-    std::list<std::reference_wrapper<Particle>>& particles, bool end)
+CellGrid::PairIterator::PairIterator(ParticleRefList& particles, bool end)
     : particles(particles)
     , firstIt(particles.begin())
     , secondIt(particles.begin())
@@ -109,14 +109,12 @@ void CellGrid::PairIterator::advance()
         ++secondIt;
 }
 
-CellGrid::PairIterator CellGrid::PairIterator::beginPairs(
-    std::list<std::reference_wrapper<Particle>>& particles)
+CellGrid::PairIterator CellGrid::PairIterator::beginPairs(ParticleRefList& particles)
 {
     return PairIterator(particles, false);
 }
 
-CellGrid::PairIterator CellGrid::PairIterator::endPairs(
-    std::list<std::reference_wrapper<Particle>>& particles)
+CellGrid::PairIterator CellGrid::PairIterator::endPairs(ParticleRefList& particles)
 {
     return PairIterator(particles, true);
 }

@@ -10,13 +10,12 @@
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
     const std::array<double, 3>& domainSize,
-    std::array<double, 3> cellSize,
     double cutoffRadius)
     : domainOrigin(domainOrigin)
     , domainSize(domainSize)
-    , cellSize(cellSize)
     , cutoffRadius(cutoffRadius)
     , gridDimensions({ 0, 0, 0 })
+    , cellSize({ 0.0, 0.0, 0.0 })
 {
     initializeGrid();
 }
@@ -33,9 +32,9 @@ void CellGrid::initializeGrid()
 
     cells.resize(gridDimensions[0]);
     for (size_t x = 0; x < gridDimensions[0]; ++x) {
-        cells[x].resize(gridDimensions[1]);
+        cells.at(x).resize(gridDimensions[1]);
         for (size_t y = 0; y < gridDimensions[1]; ++y) {
-            cells[x][y].resize(gridDimensions[2]);
+            cells.at(x).at(y).resize(gridDimensions[2]);
             for (size_t z = 0; z < gridDimensions[2]; ++z) {
                 CellType type = determineCellType({ x, y, z });
                 // Initialize vectors for boundary and halo cells
@@ -49,7 +48,7 @@ void CellGrid::initializeGrid()
                 } else {
                     cellPointer = std::make_unique<InnerCell>(InnerCell());
                 }
-                cells[x][y][z] = std::move(cellPointer);
+                cells.at(x).at(y).at(z) = std::move(cellPointer);
             }
         }
     }
@@ -60,7 +59,10 @@ CellType CellGrid::determineCellType(const std::array<size_t, 3>& indices) const
     for (int i = 0; i < 3; ++i) {
         if (indices[i] == 0 || indices[i] == gridDimensions[i] - 1) {
             return CellType::Halo;
-        } else if (indices[i] == 1 || indices[i] == gridDimensions[i] - 2) {
+        }
+    }
+    for (int i = 0; i < 3; ++i) {
+        if (indices[i] == 1 || indices[i] == gridDimensions[i] - 2) {
             return CellType::Boundary;
         }
     }
@@ -99,11 +101,11 @@ void CellGrid::addParticle(Particle& particle)
         } else if (pos[i] >= domainSize[i]) {
             indices[i] = gridDimensions[i] - 1;
         } else {
-            indices[i] = static_cast<size_t>(pos[i] / cutoffRadius) + 1;
+            indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
         }
     }
 
-    cells[indices[0]][indices[1]][indices[2]]->addParticle(particle);
+    cells.at(indices[0]).at(indices[1]).at(indices[2])->addParticle(particle);
 }
 
 void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
@@ -113,14 +115,13 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
     }
 }
 
-std::list<std::reference_wrapper<Particle>> CellGrid::getNeighboringParticles(
-    const std::array<size_t, 3>& cellIndex)
+ParticleRefList CellGrid::getNeighboringParticles(const CellIndex& cellIndex)
 {
-    std::list<std::reference_wrapper<Particle>> particleList;
+    ParticleRefList particleList;
 
-    // Check if the cell at the given index is a halo cell
-    if (cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->getType() == CellType::Halo) {
-        return particleList; // Return empty list if the cell is a halo cell
+    // If not all neighbours have been paired up, return an empty list
+    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() > 0) {
+        return particleList;
     }
 
     // Iterate over all neighbors including the cell itself
@@ -131,24 +132,31 @@ std::list<std::reference_wrapper<Particle>> CellGrid::getNeighboringParticles(
                 size_t ny = cellIndex[1] + dy;
                 size_t nz = cellIndex[2] + dz;
 
-                if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
-                    // Check if the neighboring cell is a halo cell or if its neighborCounter > 0
-                    if (cells[nx][ny][nz]->getType() != CellType::Halo) {
-                        if (cells[nx][ny][nz]->getCounter() > 0) {
-                            cells[nx][ny][nz]->setCounter(
-                                cells[nx][ny][nz]->getCounter() -
-                                1); // Decrease the neighborCounter
-                            continue; // Skip this neighbor to ensure the unique pair iteration
-                        }
+                // Skip if it is the original cell
+                if (dx + dy + dz == 0) {
+                    continue;
+                }
 
-                        // Add particle pointer from neighbor to the main list
-                        const auto& neighborParticles = cells[nx][ny][nz]->getParticles();
-                        for (const auto& particle : neighborParticles) {
-                            particleList.push_back(particle);
-                        }
-                        // Increment neighborCounter if particles from a neighbor are added
-                        cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->setCounter(
-                            cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->getCounter() + 1);
+                if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
+                    if (cells.at(nx).at(ny).at(nz)->getCounter() > 0) {
+                        // Decrease counter
+                        cells.at(nx).at(ny).at(nz)->decrementCounter();
+                        // Skip this neighbour
+                        continue;
+                    }
+
+                    // Add particle pointer from neighbor to the main list
+                    ParticleRefList& neighborParticles = cells.at(nx).at(ny).at(nz)->getParticles();
+                    // Insert all particles into particleList
+                    particleList.insert(
+                        particleList.end(), neighborParticles.begin(), neighborParticles.end());
+
+                    if (cells.at(nx).at(ny).at(nz)->getType() != CellType::Halo) {
+                        // Increment neighborCounter if not a halo cell
+                        cells.at(cellIndex[0])
+                            .at(cellIndex[1])
+                            .at(cellIndex[2])
+                            ->incrementCounter();
                     }
                 }
             }

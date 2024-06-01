@@ -34,7 +34,7 @@ void Cell::removeParticle(const Particle& particle)
         [particlePtr](const std::reference_wrapper<Particle>& p) { return &p.get() == particlePtr; });
 }
 
-[[nodiscard]] std::list<std::reference_wrapper<Particle>>& Cell::getParticles()
+[[nodiscard]] ParticleRefList& Cell::getParticles()
 {
     return particles;
 }
@@ -44,12 +44,12 @@ CellType Cell::getType() const
     return type;
 }
 
-std::list<std::reference_wrapper<Particle>>::iterator Cell::begin()
+ParticleRefList::iterator Cell::begin()
 {
     return particles.begin();
 }
 
-std::list<std::reference_wrapper<Particle>>::iterator Cell::end()
+ParticleRefList::iterator Cell::end()
 {
     return particles.end();
 }
