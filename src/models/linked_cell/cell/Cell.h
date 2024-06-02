@@ -1,7 +1,8 @@
 #pragma once
 
-#include "models/linked_cell/cell/CellType.h"
 #include "models/Particle.h"
+#include "models/linked_cell/cell/CellType.h"
+#include "utils/Position.h"
 #include <functional>
 #include <list>
 
@@ -20,13 +21,13 @@ typedef std::list<std::reference_wrapper<Particle>> ParticleRefList;
 class Cell {
 public:
     /** @brief Default constructor for Cell, initializes it as a bulk cell. */
-    Cell();
+    Cell(const CellIndex index);
 
     /**
      * @brief Constructor for Cell with a specified type.
      * @param type The type of the cell (boundary, halo, or bulk).
      */
-    explicit Cell(CellType type);
+    explicit Cell(CellType type, const CellIndex index);
 
     /** @brief Destructor for Cell. */
     virtual ~Cell();
@@ -91,6 +92,14 @@ public:
      * @brief Increments the neighbor counter.
      */
     void incrementCounter() { neighborCounter++; };
+
+    /** @brief Index of the cell. */
+    CellIndex myIndex;
+
+    /** @brief Neighbours of the cell. */
+    std::vector<std::pair<CellIndex, std::vector<Position>>> boundaryNeighbours;
+    std::vector<std::pair<CellIndex, std::vector<Position>>> haloNeighbours;
+    std::vector<std::pair<CellIndex, std::vector<Position>>> innerNeighbours;
 
 private:
     /// The type of the cell (boundary, halo, or bulk).

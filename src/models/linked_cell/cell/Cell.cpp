@@ -1,15 +1,18 @@
 
 #include "Cell.h"
 
-Cell::Cell()
+Cell::Cell(const CellIndex index)
     : type(CellType::Inner)
     , neighborCounter(0)
+    , myIndex(index)
 {
 }
 
-Cell::Cell(const CellType type)
+Cell::Cell(const CellType type, const CellIndex index)
     : type(type)
     , neighborCounter(0)
+    , myIndex(index)
+
 {
 }
 
@@ -28,11 +31,13 @@ void Cell::removeParticle(Particle& particle)
      * Intern the pointer is necessary because if we pass the particle object, it will be copied
      * Thus changing its memory address and the comparison will not work
      *
-     * Before it was done like so: [particle](const std::reference_wrapper<particle>& p) { return &p.get() == &particle; }
+     * Before it was done like so: [particle](const std::reference_wrapper<particle>& p) { return
+     * &p.get() == &particle; }
      */
     const Particle* particlePtr = &particle;
-    particles.remove_if(
-        [particlePtr](const std::reference_wrapper<Particle>& p) { return &p.get() == particlePtr; });
+    particles.remove_if([particlePtr](const std::reference_wrapper<Particle>& p) {
+        return &p.get() == particlePtr;
+    });
 }
 
 [[nodiscard]] ParticleRefList& Cell::getParticles()
