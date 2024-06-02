@@ -60,6 +60,10 @@ TEST_F(CellGridTest, AddSingleParticle)
     EXPECT_EQ(grid.cells[4][4][4]->getType(), CellType::Boundary);
 
     // Inner Cells
+    EXPECT_EQ(grid.cells[2][2][2]->getParticles().size(), 0);
+    EXPECT_EQ(grid.cells[2][2][2]->getType(), CellType::Inner);
+
+
     EXPECT_EQ(grid.cells[2][2][3]->getParticles().size(), 2);
     EXPECT_EQ(grid.cells[2][2][3]->getType(), CellType::Inner);
 
@@ -110,6 +114,63 @@ TEST_F(CellGridTest, AddParticlesFromContainer)
 
     EXPECT_EQ(grid.cells[5][5][5]->getParticles().size(), 1);
     EXPECT_EQ(grid.cells[5][5][5]->getType(), CellType::Halo);
+}
+
+
+// Test CellGrid Update
+TEST_F(CellGridTest, CellGridUpdateTest)
+{
+    ParticleContainer container(particles);
+
+    grid.addParticlesFromContainer(container);
+
+    // Boundary Cells
+    EXPECT_EQ(grid.cells[1][1][2]->getParticles().size(), 1);
+    EXPECT_EQ(grid.cells[1][1][2]->getType(), CellType::Boundary);
+
+    EXPECT_EQ(grid.cells[1][1][1]->getParticles().size(), 2);
+    EXPECT_EQ(grid.cells[1][1][1]->getType(), CellType::Boundary);
+
+    EXPECT_EQ(grid.cells[4][4][4]->getParticles().size(), 1);
+    EXPECT_EQ(grid.cells[4][4][4]->getType(), CellType::Boundary);
+
+    // Inner Cells
+    EXPECT_EQ(grid.cells[2][2][3]->getParticles().size(), 2);
+    EXPECT_EQ(grid.cells[2][2][3]->getType(), CellType::Inner);
+
+    EXPECT_EQ(grid.cells[3][3][3]->getParticles().size(), 1);
+    EXPECT_EQ(grid.cells[3][3][3]->getType(), CellType::Inner);
+
+    // Halo Cells
+    EXPECT_EQ(grid.cells[0][0][0]->getParticles().size(), 1);
+    EXPECT_EQ(grid.cells[0][0][0]->getType(), CellType::Halo);
+
+    EXPECT_EQ(grid.cells[5][1][1]->getParticles().size(), 1);
+    EXPECT_EQ(grid.cells[5][1][1]->getType(), CellType::Halo);
+
+    EXPECT_EQ(grid.cells[5][5][5]->getParticles().size(), 1);
+    EXPECT_EQ(grid.cells[5][5][5]->getType(), CellType::Halo);
+
+    // Update particle position
+    for (Particle& p : container) {
+        p.setX({ p.getX().at(0) + 0.5, p.getX().at(1) + 0.5, p.getX().at(2) + 0.5 });
+    }
+
+    grid.updateCells();
+
+
+    // Check update cell 
+    EXPECT_EQ(grid.cells[0][0][0]->getParticles().size(), 0);
+    EXPECT_EQ(grid.cells[1][1][1]->getParticles().size(), 3);
+    EXPECT_EQ(grid.cells[1][1][2]->getParticles().size(), 0);
+    EXPECT_EQ(grid.cells[2][2][3]->getParticles().size(), 0);
+    EXPECT_EQ(grid.cells[2][2][4]->getParticles().size(), 2);
+    EXPECT_EQ(grid.cells[3][3][3]->getParticles().size(), 1);
+    EXPECT_EQ(grid.cells[4][4][4]->getParticles().size(), 0);
+    EXPECT_EQ(grid.cells[5][5][5]->getParticles().size(), 2);
+    EXPECT_EQ(grid.cells[5][1][1]->getParticles().size(), 1);
+
+
 }
 
 // Test Get Neighboring Particles (Comprehensive)
