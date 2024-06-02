@@ -31,6 +31,9 @@ public:
     /** @brief Destructor for Cell. */
     virtual ~Cell();
 
+    /** @brief Flag to check if this cell has been visited. */
+    bool visited = false;
+
     /**
      * @brief Adds a particle to the cell.
      * @param particle A reference to the particle to be added.

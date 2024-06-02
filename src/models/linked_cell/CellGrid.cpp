@@ -156,13 +156,28 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
     }
 }
 
-ParticleRefList CellGrid::getNeighboringParticles(const CellIndex& cellIndex)
+std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex)
 {
-    ParticleRefList particleList;
+    std::list<CellIndex> cellList;
 
     // If not all neighbours have been paired up, return an empty list
-    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() > 0) {
-        return particleList;
+    // If the cell is a halo, return an empty list
+    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() > 0 ||
+        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getType() == CellType::Halo) {
+        return cellList;
+    }
+
+    // check if this cell was not visited
+    if (!cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited) {
+        // Mark this cell as visited
+        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = true;
+        // Set forces
+        auto particleRefs =
+            cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getParticles();
+        for (auto& p : particleRefs) {
+            p.get().setOldF(p.get().getF());
+            p.get().setF({ 0.0, 0.0, 0.0 });
+        }
     }
 
     // Iterate over all neighbors including the cell itself
@@ -174,7 +189,7 @@ ParticleRefList CellGrid::getNeighboringParticles(const CellIndex& cellIndex)
                 size_t nz = cellIndex[2] + dz;
 
                 // Skip if it is the original cell
-                if (dx + dy + dz == 0) {
+                if (dx == 0 && dy == 0 && dz == 0) {
                     continue;
                 }
 
@@ -182,15 +197,28 @@ ParticleRefList CellGrid::getNeighboringParticles(const CellIndex& cellIndex)
                     if (cells.at(nx).at(ny).at(nz)->getCounter() > 0) {
                         // Decrease counter
                         cells.at(nx).at(ny).at(nz)->decrementCounter();
+                        // if counter reached zero, reset visited
+                        if (cells.at(nx).at(ny).at(nz)->getCounter() == 0) {
+                            cells.at(nx).at(ny).at(nz)->visited = false;
+                        }
                         // Skip this neighbour
                         continue;
                     }
 
-                    // Add particle pointer from neighbor to the main list
-                    ParticleRefList& neighborParticles = cells.at(nx).at(ny).at(nz)->getParticles();
                     // Insert all particles into particleList
-                    particleList.insert(
-                        particleList.end(), neighborParticles.begin(), neighborParticles.end());
+                    cellList.emplace_back(CellIndex { nx, ny, nz });
+
+                    // check if not visited yet
+                    if (!cells.at(nx).at(ny).at(nz)->visited) {
+                        // Mark as visited
+                        cells.at(nx).at(ny).at(nz)->visited = true;
+                        // Set OldF to F and zero F
+                        auto particleRefs = cells.at(nx).at(ny).at(nz)->getParticles();
+                        for (auto& p : particleRefs) {
+                            p.get().setOldF(p.get().getF());
+                            p.get().setF({ 0.0, 0.0, 0.0 });
+                        }
+                    }
 
                     if (cells.at(nx).at(ny).at(nz)->getType() != CellType::Halo) {
                         // Increment neighborCounter if not a halo cell
@@ -204,5 +232,5 @@ ParticleRefList CellGrid::getNeighboringParticles(const CellIndex& cellIndex)
         }
     }
 
-    return particleList;
+    return cellList;
 }

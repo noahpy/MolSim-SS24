@@ -1,7 +1,7 @@
 
 #include "models/ParticleContainer.h"
-#include "models/linked_cell/cell/Cell.h"
 #include "models/linked_cell/CellGrid.h"
+#include "models/linked_cell/cell/Cell.h"
 #include <array>
 #include <cmath>
 #include <gtest/gtest.h>
@@ -27,6 +27,13 @@ protected:
         Particle({ 1000, 0, 0 }, { 1.0, 1.0, 1.0 }, 1.5), // Halo
         Particle({ 10, 10, 10 }, { 0.1, 0.1, 0.1 }, 1.0), // Halo
     };
+
+    CellGridTest()
+    {
+        for (auto& p : particles) {
+            p.setF({ 3, 4, 0.1 });
+        }
+    }
 };
 
 // Test Initialization
@@ -62,7 +69,6 @@ TEST_F(CellGridTest, AddSingleParticle)
     // Inner Cells
     EXPECT_EQ(grid.cells[2][2][2]->getParticles().size(), 0);
     EXPECT_EQ(grid.cells[2][2][2]->getType(), CellType::Inner);
-
 
     EXPECT_EQ(grid.cells[2][2][3]->getParticles().size(), 2);
     EXPECT_EQ(grid.cells[2][2][3]->getType(), CellType::Inner);
@@ -116,7 +122,6 @@ TEST_F(CellGridTest, AddParticlesFromContainer)
     EXPECT_EQ(grid.cells[5][5][5]->getType(), CellType::Halo);
 }
 
-
 // Test CellGrid Update
 TEST_F(CellGridTest, CellGridUpdateTest)
 {
@@ -158,8 +163,7 @@ TEST_F(CellGridTest, CellGridUpdateTest)
 
     grid.updateCells();
 
-
-    // Check update cell 
+    // Check update cell
     EXPECT_EQ(grid.cells[0][0][0]->getParticles().size(), 0);
     EXPECT_EQ(grid.cells[1][1][1]->getParticles().size(), 3);
     EXPECT_EQ(grid.cells[1][1][2]->getParticles().size(), 0);
@@ -169,8 +173,16 @@ TEST_F(CellGridTest, CellGridUpdateTest)
     EXPECT_EQ(grid.cells[4][4][4]->getParticles().size(), 0);
     EXPECT_EQ(grid.cells[5][5][5]->getParticles().size(), 2);
     EXPECT_EQ(grid.cells[5][1][1]->getParticles().size(), 1);
+}
 
-
+// sum the size of neighbouring cells
+int sumNeighboringCells(CellGrid& grid, std::list<CellIndex>& indices)
+{
+    int sum = 0;
+    for (CellIndex& i : indices) {
+        sum += grid.cells.at(i.at(0)).at(i.at(1)).at(i.at(2))->getParticles().size();
+    }
+    return sum;
 }
 
 // Test Get Neighboring Particles
@@ -180,20 +192,43 @@ TEST_F(CellGridTest, GetNeighboringParticles)
         grid.addParticle(p);
     }
 
-
     // 1 from {0, 0, 0}, 1 from {1, 1, 2}
-    EXPECT_EQ(grid.getNeighboringParticles({ 1, 1, 1 }).size(), 2);
+    auto indices = grid.getNeighbourCells({ 1, 1, 1 });
+    EXPECT_EQ(indices.size(), 26);
+    EXPECT_EQ(sumNeighboringCells(grid, indices), 2);
+    EXPECT_EQ(grid.cells.at(1).at(1).at(1)->getCounter(), 7);
+    // check effetcs on neighbour
+    EXPECT_TRUE(grid.cells.at(1).at(1).at(1)->visited);
+    for (auto parRef : grid.cells.at(1).at(1).at(1)->getParticles()) {
+        for (auto& f : parRef.get().getF()) {
+            EXPECT_EQ(f, 0.0);
+        }
+        for (auto& f : parRef.get().getOldF()) {
+            EXPECT_NE(f, 0.0);
+        }
+    }
+
     // 2 from {2, 2, 3}
-    EXPECT_EQ(grid.getNeighboringParticles({ 1, 1, 2 }).size(), 2);
+    indices = grid.getNeighbourCells({ 2, 2, 3 });
+    EXPECT_EQ(indices.size(), 26);
+    EXPECT_EQ(sumNeighboringCells(grid, indices), 2);
+    EXPECT_EQ(grid.cells.at(2).at(2).at(3)->getCounter(), 26);
+
     // 1 from {3, 3, 3}, 1 from {5, 5, 5}
-    EXPECT_EQ(grid.getNeighboringParticles({ 4, 4, 4 }).size(), 2);
-    // 1 from {5, 5, 5}
-    EXPECT_EQ(grid.getNeighboringParticles({ 5, 4, 4 }).size(), 1);
-    
-    EXPECT_EQ(grid.getNeighboringParticles({ 0, 0, 0 }).size(), 0);
+    indices = grid.getNeighbourCells({ 4, 4, 4 });
+    EXPECT_EQ(indices.size(), 26);
+    EXPECT_EQ(sumNeighboringCells(grid, indices), 2);
+    EXPECT_EQ(grid.cells.at(4).at(4).at(4)->getCounter(), 7);
+
+    // 1 from {5, 5, 5} , but is a halo cell*/
+    indices = grid.getNeighbourCells({ 5, 4, 4 });
+    EXPECT_EQ(indices.size(), 0);
+
+    // Also halo cell
+    EXPECT_EQ(grid.getNeighbourCells({ 0, 0, 0 }).size(), 0);
 
     // Test out-of-bounds index
-    EXPECT_THROW({ auto _ = grid.getNeighboringParticles({ 6, 2, 3 }); }, std::out_of_range);
+    EXPECT_THROW({ auto _ = grid.getNeighbourCells({ 6, 2, 3 }); }, std::out_of_range);
 }
 
 // Test 5: Boundary and Halo Iterators

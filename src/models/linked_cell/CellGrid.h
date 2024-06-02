@@ -50,12 +50,14 @@ public:
     void addParticlesFromContainer(ParticleContainer& particleContainer);
 
     /**
-     * @brief Returns references to all particles of those neighbours,
+     * @brief Returns the index to all neighbours,
      *        which have not been paired up to the specified cell.
+     *        It also saves and resets the forces of the specified cell and its
+     *        neighbout cells, so that one can simply add the new forces to the particles.
      * @param cellIndex The index of the target cell
      * @return A list of references to all particles in the target cell and its neighbors
      */
-    [[nodiscard]] ParticleRefList getNeighboringParticles(const CellIndex& cellIndex);
+    [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex);
 
     /**
      * @brief Updates the cell lists by the position of all particles.
