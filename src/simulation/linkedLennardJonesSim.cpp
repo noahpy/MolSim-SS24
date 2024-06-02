@@ -1,5 +1,7 @@
 
 #include "simulation/linkedLennardJonesSim.h"
+#include "io/fileWriter/FileWriter.h"
+#include "io/fileReader/FileReader.h"
 
 LinkedLennardJonesSimulation::LinkedLennardJonesSimulation(
     double time,
