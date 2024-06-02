@@ -5,6 +5,9 @@ Cell::Cell(const CellIndex index)
     : type(CellType::Inner)
     , neighborCounter(0)
     , myIndex(index)
+    , boundaryNeighbours()
+    , haloNeighbours()
+    , innerNeighbours()
 {
 }
 
@@ -12,6 +15,9 @@ Cell::Cell(const CellType type, const CellIndex index)
     : type(type)
     , neighborCounter(0)
     , myIndex(index)
+    , boundaryNeighbours()
+    , haloNeighbours()
+    , innerNeighbours()
 
 {
 }

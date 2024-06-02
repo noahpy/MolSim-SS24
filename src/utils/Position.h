@@ -17,31 +17,54 @@ enum Position { LEFT, RIGHT, TOP, BOTTOM, FRONT, BACK };
  * @return The boundary position of the coordinate
  */
 inline std::vector<Position> coordinateToPosition(
-    std::array<size_t, 3> coordinate, std::array<size_t, 3> cellSize)
+    std::array<size_t, 3> coordinate, std::array<size_t, 3> gridDimensions)
 {
     std::vector<Position> positions;
     if (coordinate[0] == 1) {
         positions.push_back(Position::LEFT);
     }
-    if (coordinate[0] == cellSize[0] - 2) {
+    if (coordinate[0] == gridDimensions[0] - 2) {
         positions.push_back(Position::RIGHT);
     }
     if (coordinate[1] == 1) {
         positions.push_back(Position::TOP);
     }
-    if (coordinate[1] == cellSize[1] - 2) {
+    if (coordinate[1] == gridDimensions[1] - 2) {
         positions.push_back(Position::BOTTOM);
     }
     if (coordinate[2] == 1) {
         positions.push_back(Position::FRONT);
     }
-    if (coordinate[2] == cellSize[2] - 2) {
+    if (coordinate[2] == gridDimensions[2] - 2) {
         positions.push_back(Position::BACK);
     }
 
     if (positions.empty())
         throw std::invalid_argument("Coordinate is not on the boundary");
 
+    return positions;
+}
+
+inline std::vector<Position> relCoordinateToPos(std::array<size_t, 3> coordinate){
+    std::vector<Position> positions;
+    if (coordinate[0] == -1) {
+        positions.push_back(Position::LEFT);
+    }
+    if (coordinate[0] == 1) {
+        positions.push_back(Position::RIGHT);
+    }
+    if (coordinate[1] == -1) {
+        positions.push_back(Position::TOP);
+    }
+    if (coordinate[1] == 1) {
+        positions.push_back(Position::BOTTOM);
+    }
+    if (coordinate[2] == -1) {
+        positions.push_back(Position::FRONT);
+    }
+    if (coordinate[2] == 1) {
+        positions.push_back(Position::BACK);
+    }
     return positions;
 }
 

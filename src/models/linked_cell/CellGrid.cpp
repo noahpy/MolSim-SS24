@@ -36,26 +36,27 @@ void CellGrid::determineNeighbours(CellIndex cell)
                 }
                 CellIndex neighbourIndex = { cell[0] + i, cell[1] + j, cell[2] + k };
 
-                auto positions = coordinateToPosition(neighbourIndex, gridDimensions);
+                auto positions = relCoordinateToPos({ static_cast<unsigned long>(i),
+                                                      static_cast<unsigned long>(j),
+                                                      static_cast<unsigned long>(k) });
 
                 switch (determineCellType(neighbourIndex)) {
                 case CellType::Boundary:
-                    cells.at(cell[0] + i)
-                        .at(cell[1] + j)
-                        .at(cell[2] + k)
-                        ->boundaryNeighbours.emplace_back(
-                            std::make_pair(neighbourIndex, positions));
+                    cells.at(cell[0])
+                        .at(cell[1])
+                        .at(cell[2])
+                        ->boundaryNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
                     break;
                 case CellType::Halo:
-                    cells.at(cell[0] + i)
-                        .at(cell[1] + j)
-                        .at(cell[2] + k)
+                    cells.at(cell[0])
+                        .at(cell[1])
+                        .at(cell[2])
                         ->haloNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
                     break;
                 case CellType::Inner:
-                    cells.at(cell[0] + i)
-                        .at(cell[1] + j)
-                        .at(cell[2] + k)
+                    cells.at(cell[0])
+                        .at(cell[1])
+                        .at(cell[2])
                         ->innerNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
                     break;
                 default:
