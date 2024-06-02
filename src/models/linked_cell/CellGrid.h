@@ -1,9 +1,9 @@
 
 #pragma once
 
+#include "models/ParticleContainer.h"
 #include "models/linked_cell/cell/Cell.h"
 #include "models/linked_cell/cell/CellType.h"
-#include "models/ParticleContainer.h"
 #include <array>
 #include <memory>
 #include <vector>
@@ -56,6 +56,11 @@ public:
      * @return A list of references to all particles in the target cell and its neighbors
      */
     [[nodiscard]] ParticleRefList getNeighboringParticles(const CellIndex& cellIndex);
+
+    /**
+     * @brief Updates the cell lists by the position of all particles.
+     */
+    void updateCells();
 
     // Forward declaration (see bottom)
     class BoundaryIterator;

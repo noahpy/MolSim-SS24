@@ -6,6 +6,7 @@
 #include "models/linked_cell/cell/InnerCell.h"
 #include "utils/ArrayUtils.h"
 #include <cmath>
+#include <iostream>
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
@@ -67,6 +68,47 @@ CellType CellGrid::determineCellType(const std::array<size_t, 3>& indices) const
         }
     }
     return CellType::Inner;
+}
+
+void CellGrid::updateCells()
+{
+    std::list<std::pair<CellIndex, std::reference_wrapper<Particle>>> addList;
+    for (size_t x = 0; x < gridDimensions[0]; ++x) {
+        for (size_t y = 0; y < gridDimensions[1]; ++y) {
+            for (size_t z = 0; z < gridDimensions[2]; ++z) {
+                ParticleRefList& particles = cells.at(x).at(y).at(z)->getParticles();
+                ParticleRefList::iterator it = particles.begin();
+                while (it != particles.end()) {
+                    // Calculate new index
+                    auto pos = (*it).get().getX() - domainOrigin;
+                    CellIndex indices { 0, 0, 0 };
+                    for (int i = 0; i < 3; ++i) {
+                        if (pos[i] < 0) {
+                            indices[i] = 0;
+                        } else if (pos[i] >= domainSize[i]) {
+                            indices[i] = gridDimensions[i] - 1;
+                        } else {
+                            indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
+                        }
+                    }
+                    // Add the particle to different cell if particle moved
+                    if (indices.at(0) != x || indices.at(1) != y || indices.at(2) != z) {
+                        // Save addition for later
+                        addList.emplace_back(indices, *it);
+                        // Remove particle from old cell
+                        particles.erase(it++);
+                    } else {
+                        ++it;
+                    }
+                }
+            }
+        }
+    }
+
+    // Add particles to their new cells
+    for (auto& p : addList) {
+        cells.at(p.first.at(0)).at(p.first.at(1)).at(p.first.at(2))->addParticle(p.second);
+    }
 }
 
 // Methods to get boundary and halo particle iterators
