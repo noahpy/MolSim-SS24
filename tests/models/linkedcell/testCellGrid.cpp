@@ -173,7 +173,7 @@ TEST_F(CellGridTest, CellGridUpdateTest)
 
 }
 
-// Test Get Neighboring Particles (Comprehensive)
+// Test Get Neighboring Particles
 TEST_F(CellGridTest, GetNeighboringParticles)
 {
     for (Particle& p : particles) {

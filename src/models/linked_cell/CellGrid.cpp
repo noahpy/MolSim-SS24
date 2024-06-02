@@ -6,11 +6,10 @@
 #include "models/linked_cell/cell/InnerCell.h"
 #include "utils/ArrayUtils.h"
 #include <cmath>
-#include <iostream>
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
-    const std::array<double, 3>& domainSize,
+    const std::array<double, 3> domainSize,
     double cutoffRadius)
     : domainOrigin(domainOrigin)
     , domainSize(domainSize)

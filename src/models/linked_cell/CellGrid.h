@@ -28,7 +28,7 @@ public:
      */
     CellGrid(
         const std::array<double, 3> domainOrigin,
-        const std::array<double, 3>& domainSize,
+        const std::array<double, 3> domainSize,
         double cutoffRadius);
 
     /** @brief Destructor for CellGrid. */
