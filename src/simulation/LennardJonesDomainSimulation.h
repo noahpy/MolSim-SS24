@@ -9,6 +9,7 @@
  * third problem sheet.
  */
 class LennardJonesDomainSimulation : public LennardJonesSimulation {
+public:
     // lift simulation constructor
     using LennardJonesSimulation::LennardJonesSimulation;
 
@@ -45,7 +46,6 @@ class LennardJonesDomainSimulation : public LennardJonesSimulation {
      */
     void runSim() override;
 
-protected:
     CellGrid& domain; /**< The domain into which the particles are restricted */
     BoundaryConditionHandler& bcHandler; /**< The boundary condition handler */
 };

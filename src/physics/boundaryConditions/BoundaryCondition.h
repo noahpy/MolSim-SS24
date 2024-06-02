@@ -1,6 +1,6 @@
 
-#include "Position.h"
 #include "simulation/baseSimulation.h"
+#include "utils/Position.h"
 
 /**
  * @brief The BoundaryCondition class is an abstract class that defines the interface for boundary conditions
