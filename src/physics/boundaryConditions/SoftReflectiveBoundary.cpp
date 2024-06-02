@@ -9,7 +9,7 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 
     // Rather I have a beginBoundaryParticles(position) that only gives the ones relevant
     // Maybe even directly the cells by iterating over the cells matrix
-    for (auto it = LGDSim.domain.beginBoundaryParticles(position); it != LGDSim.domain.endBoundaryParticles(position); ++it) {
+    for (auto it = LGDSim.domain.beginBoundaryParticles(); it != LGDSim.domain.endBoundaryParticles(); ++it) {
         auto boundaryCellIndex = *it;
         bool isRelevant = false;
         for (Position cellPosition : LGDSim.domain.cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]->boundarySides) {
@@ -20,9 +20,10 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
         }
         if (!isRelevant) continue; // Skip boundary cell if it does not belong to the boundary
 
+        // How to I loop efficiently?
         for (auto& particle : LGDSim.domain.cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]->getParticles()) {
             std::array<double, 3> pos = particle.get().getX();
-            std::array<double, 3> pointOnBoundary = {1,2,3};
+            std::array<double, 3> pointOnBoundary = {1,2,3}; // TODO: Get a point on the boundary. Is this saved in the cell maybe?
             std::array<double, 3> normal = getNormalVectorOfBoundary(position);
 
             std::array<double, 3> diff = pointOnBoundary - pos;
@@ -32,6 +33,8 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             // Now update the force of the particle with one step using the halo particle only
             // But this would be overwritten by the force calculation in the next step
             // I do not need to add the particle itself to the halo cells
+
+            // For overflow, how do I remove the particle?
         }
     }
 }
