@@ -95,6 +95,12 @@ protected:
      */
     [[nodiscard]] CellType determineCellType(const std::array<size_t, 3>& indices) const;
 
+    /**
+     * @brief Determines the neighbours of the specified cell.
+     * @param cell The index of the cell to determine the neighbours of.
+     */
+    void determineNeighbours(CellIndex cell);
+
 private:
     /// The size of the simulation domain in each dimension.
     std::array<double, 3> domainSize;

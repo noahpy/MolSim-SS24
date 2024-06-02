@@ -1,10 +1,8 @@
 
 #include "CellGrid.h"
-#include "models/linked_cell/cell/BoundaryCell.h"
 #include "models/linked_cell/cell/Cell.h"
-#include "models/linked_cell/cell/HaloCell.h"
-#include "models/linked_cell/cell/InnerCell.h"
 #include "utils/ArrayUtils.h"
+#include "utils/Position.h"
 #include <cmath>
 
 CellGrid::CellGrid(
@@ -21,6 +19,52 @@ CellGrid::CellGrid(
 }
 
 CellGrid::~CellGrid() = default;
+
+void CellGrid::determineNeighbours(CellIndex cell)
+{
+    for (int i = -1; i <= 1; ++i) {
+        for (int j = -1; j <= 1; ++j) {
+            for (int k = -1; k <= 1; ++k) {
+                if (i == 0 && j == 0 && k == 0) {
+                    continue;
+                }
+                // check if cell is in bounds
+                if (cell[0] + i < 0 || cell[0] + i >= gridDimensions[0] || cell[1] + j < 0 ||
+                    cell[1] + j >= gridDimensions[1] || cell[2] + k < 0 ||
+                    cell[2] + k >= gridDimensions[2]) {
+                    continue;
+                }
+                CellIndex neighbourIndex = { cell[0] + i, cell[1] + j, cell[2] + k };
+
+                auto positions = coordinateToPosition(neighbourIndex, gridDimensions);
+
+                switch (determineCellType(neighbourIndex)) {
+                case CellType::Boundary:
+                    cells.at(cell[0] + i)
+                        .at(cell[1] + j)
+                        .at(cell[2] + k)
+                        ->boundaryNeighbours.emplace_back(
+                            std::make_pair(neighbourIndex, positions));
+                    break;
+                case CellType::Halo:
+                    cells.at(cell[0] + i)
+                        .at(cell[1] + j)
+                        .at(cell[2] + k)
+                        ->haloNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
+                    break;
+                case CellType::Inner:
+                    cells.at(cell[0] + i)
+                        .at(cell[1] + j)
+                        .at(cell[2] + k)
+                        ->innerNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    }
+}
 
 void CellGrid::initializeGrid()
 {
@@ -40,15 +84,29 @@ void CellGrid::initializeGrid()
                 // Initialize vectors for boundary and halo cells
                 std::unique_ptr<Cell> cellPointer;
                 if (type == CellType::Boundary) {
-                    cellPointer = std::make_unique<BoundaryCell>(BoundaryCell({ x, y, z }));
+                    // create unique pointer
+                    cellPointer = std::make_unique<Cell>(Cell(CellType::Boundary, { x, y, z }));
+                    // save indices
                     boundaryCells.push_back({ x, y, z });
+                    // save pointer
+                    cells.at(x).at(y).at(z) = std::move(cellPointer);
+                    // determine neighbours
+                    determineNeighbours({ x, y, z });
                 } else if (type == CellType::Halo) {
-                    cellPointer = std::make_unique<HaloCell>(HaloCell({ x, y, z }));
+                    // create unique pointer
+                    cellPointer = std::make_unique<Cell>(Cell(CellType::Halo, { x, y, z }));
+                    // save indices
                     haloCells.push_back({ x, y, z });
+                    // save pointer
+                    cells.at(x).at(y).at(z) = std::move(cellPointer);
+                    // determine neighbours
+                    determineNeighbours({ x, y, z });
                 } else {
-                    cellPointer = std::make_unique<InnerCell>(InnerCell());
+                    // create unique pointer
+                    cellPointer = std::make_unique<Cell>(Cell(CellType::Inner, { x, y, z }));
+                    // save pointer
+                    cells.at(x).at(y).at(z) = std::move(cellPointer);
                 }
-                cells.at(x).at(y).at(z) = std::move(cellPointer);
             }
         }
     }
