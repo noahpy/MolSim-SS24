@@ -41,7 +41,7 @@ public:
      * @brief Removes a particle from the cell.
      * @param particle A reference to the particle to be removed.
      */
-    void removeParticle(const Particle& particle);
+    void removeParticle(Particle& particle);
 
     /**
      * @brief Returns a list of references to all particles in the cell.

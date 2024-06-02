@@ -17,10 +17,11 @@ Cell::~Cell() = default;
 
 void Cell::addParticle(Particle& particle)
 {
-    particles.emplace_back(particle);
+    std::reference_wrapper<Particle> particleRef(particle);
+    particles.emplace_back(particleRef);
 }
 
-void Cell::removeParticle(const Particle& particle)
+void Cell::removeParticle(Particle& particle)
 {
     /*
      * It is necessary to use the pointer to be able to pass it to the lambda function
