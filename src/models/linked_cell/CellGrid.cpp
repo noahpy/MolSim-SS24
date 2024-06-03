@@ -4,6 +4,8 @@
 #include "utils/ArrayUtils.h"
 #include "utils/Position.h"
 #include <cmath>
+#include <iostream>
+#include <spdlog/spdlog.h>
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
@@ -206,6 +208,7 @@ void CellGrid::addParticle(Particle& particle)
     }
 
     cells.at(indices[0]).at(indices[1]).at(indices[2])->addParticle(particle);
+    spdlog::debug("Particle {} added to cell ({}, {}, {})", particle.toString(),indices[0], indices[1], indices[2]);
 }
 
 void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
