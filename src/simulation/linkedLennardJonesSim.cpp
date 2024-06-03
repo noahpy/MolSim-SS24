@@ -42,6 +42,7 @@ void LinkedLennardJonesSimulation::runSim()
         ++iteration;
         if (iteration % 10 == 0) {
             writer->plotParticles(*this);
+            cellGrid.updateCells();
         }
         spdlog::debug("Iteration {} finished.", iteration);
 
