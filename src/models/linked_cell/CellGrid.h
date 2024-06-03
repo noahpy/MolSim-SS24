@@ -1,13 +1,14 @@
 
 #pragma once
 
-#include "Cell.h"
-#include "CellType.h"
 #include "models/ParticleContainer.h"
+#include "models/linked_cell/cell/Cell.h"
+#include "models/linked_cell/cell/CellType.h"
 #include <array>
 #include <memory>
 #include <vector>
 
+/** @brief A 3D vector of pointers to Cells. */
 typedef std::vector<std::vector<std::vector<std::unique_ptr<Cell>>>> CellVec;
 
 /** @class CellGrid
@@ -27,11 +28,14 @@ public:
      */
     CellGrid(
         const std::array<double, 3> domainOrigin,
-        const std::array<double, 3>& domainSize,
+        const std::array<double, 3> domainSize,
         double cutoffRadius);
 
     /** @brief Destructor for CellGrid. */
     ~CellGrid();
+
+    /// The 3D vector storing the cells in the grid.
+    CellVec cells;
 
     /**
      * @brief Adds a particle to the appropriate cell in the grid.
@@ -46,12 +50,19 @@ public:
     void addParticlesFromContainer(ParticleContainer& particleContainer);
 
     /**
-     * @brief Returns all particle references of a given cell and its neighbors
+     * @brief Returns the index to all neighbours,
+     *        which have not been paired up to the specified cell.
+     *        It also saves and resets the forces of the specified cell and its
+     *        neighbout cells, so that one can simply add the new forces to the particles.
      * @param cellIndex The index of the target cell
      * @return A list of references to all particles in the target cell and its neighbors
      */
-    [[nodiscard]] std::list<std::reference_wrapper<Particle>> getNeighboringParticles(
-        const std::array<size_t, 3>& cellIndex);
+    [[nodiscard]] std::list<CellIndex> getNeighbourCells (const CellIndex& cellIndex) const;
+
+    /**
+     * @brief Updates the cell lists by the position of all particles.
+     */
+    void updateCells();
 
     // Forward declaration (see bottom)
     class BoundaryIterator;
@@ -84,9 +95,18 @@ protected:
      */
     [[nodiscard]] CellType determineCellType(const std::array<size_t, 3>& indices) const;
 
+    /**
+     * @brief Determines the neighbours of the specified cell.
+     * @param cell The index of the cell to determine the neighbours of.
+     */
+    void determineNeighbours(CellIndex cell);
+
 private:
     /// The size of the simulation domain in each dimension.
     std::array<double, 3> domainSize;
+
+    /// The size of a cell according to the domain size.
+    std::array<double, 3> cellSize;
 
     /// The cutoff radius for particle interactions.
     double cutoffRadius;
@@ -96,9 +116,6 @@ private:
 
     /// The dimensions of the cell grid in each dimension.
     std::array<size_t, 3> gridDimensions;
-
-    /// The 3D vector storing the cells in the grid.
-    CellVec cells;
 
     /// A vector storing the indices of boundary cells.
     std::vector<CellIndex> boundaryCells;
@@ -184,65 +201,5 @@ public:
 
         /// The current index in the halo cell vector.
         size_t index;
-    };
-
-    // PairIterator for list of particle pointers
-    class PairIterator {
-    public:
-        /**
-         * @brief Constructor for PairIterator.
-         * @param particles A reference to the list of particles.
-         * @param end Set to true to create an end iterator.
-         */
-        explicit PairIterator(
-            std::list<std::reference_wrapper<Particle>>& particles, bool end = false);
-
-        /**
-         * @brief Dereferences the iterator, returning a pair of particle pointers.
-         * @return A pair of pointers to the current particle pair.
-         */
-        std::pair<Particle*, Particle*> operator*() const;
-
-        /**
-         * @brief Increments the iterator to the next particle pair.
-         * @return A reference to the incremented PairIterator.
-         */
-        PairIterator& operator++();
-
-        /**
-         * @brief Checks if this iterator is not equal to another PairIterator.
-         * @param other The other PairIterator to compare with.
-         * @return True if the iterators are not equal, false otherwise.
-         */
-        bool operator!=(const PairIterator& other) const;
-
-        /**
-         * @brief Returns a PairIterator pointing to the beginning of the particle pairs.
-         * @param particles A reference to the list of particles.
-         * @return A PairIterator at the beginning of the pairs.
-         */
-        static PairIterator beginPairs(std::list<std::reference_wrapper<Particle>>& particles);
-
-        /**
-         * @brief Returns a PairIterator pointing to the end of the particle pairs.
-         * @param particles A reference to the list of particles.
-         * @return A PairIterator at the end of the pairs.
-         */
-        static PairIterator endPairs(std::list<std::reference_wrapper<Particle>>& particles);
-
-    private:
-        /// A reference to the list of particles to iterate over.
-        std::list<std::reference_wrapper<Particle>>& particles;
-
-        /// An iterator to the first particle in the current pair.
-        std::list<std::reference_wrapper<Particle>>::iterator firstIt;
-
-        /// An iterator to the second particle in the current pair.
-        std::list<std::reference_wrapper<Particle>>::iterator secondIt;
-
-        /**
-         * @brief Advances the iterators to the next valid particle pair.
-         */
-        void advance();
     };
 };

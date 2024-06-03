@@ -1,6 +1,8 @@
 
 #pragma once
+#include <stdexcept>
 #include <vector>
+#include <array>
 
 /**
  * @brief An enum to represent the position across a cube
@@ -14,26 +16,26 @@ enum Position { LEFT, RIGHT, TOP, BOTTOM, FRONT, BACK };
  * @param domainSize The size of the domain
  * @return The boundary position of the coordinate
  */
-std::vector<Position> coordinateToPosition(
-    std::array<size_t, 3> coordinate, std::array<size_t, 3> domainSize)
+inline std::vector<Position> coordinateToPosition(
+    std::array<size_t, 3> coordinate, std::array<size_t, 3> gridDimensions)
 {
     std::vector<Position> positions;
     if (coordinate[0] == 1) {
         positions.push_back(Position::LEFT);
     }
-    if (coordinate[0] == domainSize[0] - 2) {
+    if (coordinate[0] == gridDimensions[0] - 2) {
         positions.push_back(Position::RIGHT);
     }
     if (coordinate[1] == 1) {
         positions.push_back(Position::TOP);
     }
-    if (coordinate[1] == domainSize[1] - 2) {
+    if (coordinate[1] == gridDimensions[1] - 2) {
         positions.push_back(Position::BOTTOM);
     }
     if (coordinate[2] == 1) {
         positions.push_back(Position::FRONT);
     }
-    if (coordinate[2] == domainSize[2] - 2) {
+    if (coordinate[2] == gridDimensions[2] - 2) {
         positions.push_back(Position::BACK);
     }
 
@@ -43,7 +45,30 @@ std::vector<Position> coordinateToPosition(
     return positions;
 }
 
-std::array<double, 3> getNormalVectorOfBoundary(Position position)
+inline std::vector<Position> relCoordinateToPos(std::array<size_t, 3> coordinate){
+    std::vector<Position> positions;
+    if (coordinate[0] == -1) {
+        positions.push_back(Position::LEFT);
+    }
+    if (coordinate[0] == 1) {
+        positions.push_back(Position::RIGHT);
+    }
+    if (coordinate[1] == -1) {
+        positions.push_back(Position::TOP);
+    }
+    if (coordinate[1] == 1) {
+        positions.push_back(Position::BOTTOM);
+    }
+    if (coordinate[2] == -1) {
+        positions.push_back(Position::FRONT);
+    }
+    if (coordinate[2] == 1) {
+        positions.push_back(Position::BACK);
+    }
+    return positions;
+}
+
+inline std::array<double, 3> getNormalVectorOfBoundary(Position position)
 {
     switch (position) {
     case Position::LEFT:

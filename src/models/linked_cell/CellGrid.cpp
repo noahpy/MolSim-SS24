@@ -1,51 +1,113 @@
 
 #include "CellGrid.h"
-#include "models/linked_cell/BoundaryCell.h"
-#include "models/linked_cell/Cell.h"
-#include "models/linked_cell/HaloCell.h"
-#include "models/linked_cell/InnerCell.h"
+#include "models/linked_cell/cell/Cell.h"
+#include "utils/ArrayUtils.h"
+#include "utils/Position.h"
 #include <cmath>
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
-    const std::array<double, 3>& domainSize,
+    const std::array<double, 3> domainSize,
     double cutoffRadius)
     : domainOrigin(domainOrigin)
     , domainSize(domainSize)
     , cutoffRadius(cutoffRadius)
     , gridDimensions({ 0, 0, 0 })
+    , cellSize({ 0.0, 0.0, 0.0 })
 {
     initializeGrid();
 }
 
 CellGrid::~CellGrid() = default;
 
+void CellGrid::determineNeighbours(CellIndex cell)
+{
+    for (int i = -1; i <= 1; ++i) {
+        for (int j = -1; j <= 1; ++j) {
+            for (int k = -1; k <= 1; ++k) {
+                if (i == 0 && j == 0 && k == 0) {
+                    continue;
+                }
+                // check if cell is in bounds
+                if (cell[0] + i < 0 || cell[0] + i >= gridDimensions[0] || cell[1] + j < 0 ||
+                    cell[1] + j >= gridDimensions[1] || cell[2] + k < 0 ||
+                    cell[2] + k >= gridDimensions[2]) {
+                    continue;
+                }
+                CellIndex neighbourIndex = { cell[0] + i, cell[1] + j, cell[2] + k };
+
+                auto positions = relCoordinateToPos({ static_cast<unsigned long>(i),
+                                                      static_cast<unsigned long>(j),
+                                                      static_cast<unsigned long>(k) });
+
+                switch (determineCellType(neighbourIndex)) {
+                case CellType::Boundary:
+                    cells.at(cell[0])
+                        .at(cell[1])
+                        .at(cell[2])
+                        ->boundaryNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
+                    break;
+                case CellType::Halo:
+                    cells.at(cell[0])
+                        .at(cell[1])
+                        .at(cell[2])
+                        ->haloNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
+                    break;
+                case CellType::Inner:
+                    cells.at(cell[0])
+                        .at(cell[1])
+                        .at(cell[2])
+                        ->innerNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    }
+}
+
 void CellGrid::initializeGrid()
 {
     for (int i = 0; i < 3; ++i) {
-        // Extra cells for halo
-        gridDimensions[i] = static_cast<size_t>(std::ceil(domainSize[i] / cutoffRadius)) + 2;
+        gridDimensions[i] = static_cast<size_t>(std::floor(domainSize[i] / cutoffRadius));
+        cellSize[i] = domainSize[i] / static_cast<double>(gridDimensions[i]);
+        gridDimensions[i] += 2;
     }
 
     cells.resize(gridDimensions[0]);
     for (size_t x = 0; x < gridDimensions[0]; ++x) {
-        cells[x].resize(gridDimensions[1]);
+        cells.at(x).resize(gridDimensions[1]);
         for (size_t y = 0; y < gridDimensions[1]; ++y) {
-            cells[x][y].resize(gridDimensions[2]);
+            cells.at(x).at(y).resize(gridDimensions[2]);
             for (size_t z = 0; z < gridDimensions[2]; ++z) {
                 CellType type = determineCellType({ x, y, z });
                 // Initialize vectors for boundary and halo cells
                 std::unique_ptr<Cell> cellPointer;
                 if (type == CellType::Boundary) {
-                    cellPointer = std::make_unique<BoundaryCell>(BoundaryCell({ x, y, z }));
+                    // create unique pointer
+                    cellPointer = std::make_unique<Cell>(Cell(CellType::Boundary, { x, y, z }));
+                    // save indices
                     boundaryCells.push_back({ x, y, z });
+                    // save pointer
+                    cells.at(x).at(y).at(z) = std::move(cellPointer);
+                    // determine neighbours
+                    determineNeighbours({ x, y, z });
                 } else if (type == CellType::Halo) {
-                    cellPointer = std::make_unique<HaloCell>(HaloCell({ x, y, z }));
+                    // create unique pointer
+                    cellPointer = std::make_unique<Cell>(Cell(CellType::Halo, { x, y, z }));
+                    // save indices
                     haloCells.push_back({ x, y, z });
+                    // save pointer
+                    cells.at(x).at(y).at(z) = std::move(cellPointer);
+                    // determine neighbours
+                    determineNeighbours({ x, y, z });
                 } else {
-                    cellPointer = std::make_unique<InnerCell>(InnerCell());
+                    // create unique pointer
+                    cellPointer = std::make_unique<Cell>(Cell(CellType::Inner, { x, y, z }));
+                    // save pointer
+                    cells.at(x).at(y).at(z) = std::move(cellPointer);
                 }
-                cells[x][y][z] = std::move(cellPointer);
             }
         }
     }
@@ -64,6 +126,47 @@ CellType CellGrid::determineCellType(const std::array<size_t, 3>& indices) const
         }
     }
     return CellType::Inner;
+}
+
+void CellGrid::updateCells()
+{
+    std::list<std::pair<CellIndex, std::reference_wrapper<Particle>>> addList;
+    for (size_t x = 0; x < gridDimensions[0]; ++x) {
+        for (size_t y = 0; y < gridDimensions[1]; ++y) {
+            for (size_t z = 0; z < gridDimensions[2]; ++z) {
+                ParticleRefList& particles = cells.at(x).at(y).at(z)->getParticles();
+                ParticleRefList::iterator it = particles.begin();
+                while (it != particles.end()) {
+                    // Calculate new index
+                    auto pos = (*it).get().getX() - domainOrigin;
+                    CellIndex indices { 0, 0, 0 };
+                    for (int i = 0; i < 3; ++i) {
+                        if (pos[i] < 0) {
+                            indices[i] = 0;
+                        } else if (pos[i] >= domainSize[i]) {
+                            indices[i] = gridDimensions[i] - 1;
+                        } else {
+                            indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
+                        }
+                    }
+                    // Add the particle to different cell if particle moved
+                    if (indices.at(0) != x || indices.at(1) != y || indices.at(2) != z) {
+                        // Save addition for later
+                        addList.emplace_back(indices, *it);
+                        // Remove particle from old cell
+                        particles.erase(it++);
+                    } else {
+                        ++it;
+                    }
+                }
+            }
+        }
+    }
+
+    // Add particles to their new cells
+    for (auto& p : addList) {
+        cells.at(p.first.at(0)).at(p.first.at(1)).at(p.first.at(2))->addParticle(p.second);
+    }
 }
 
 // Methods to get boundary and halo particle iterators
@@ -89,7 +192,7 @@ CellGrid::HaloIterator CellGrid::endHaloParticles()
 
 void CellGrid::addParticle(Particle& particle)
 {
-    auto pos = particle.getX();
+    auto pos = particle.getX() - domainOrigin;
     std::array<size_t, 3> indices { 0, 0, 0 };
 
     for (int i = 0; i < 3; ++i) {
@@ -98,11 +201,11 @@ void CellGrid::addParticle(Particle& particle)
         } else if (pos[i] >= domainSize[i]) {
             indices[i] = gridDimensions[i] - 1;
         } else {
-            indices[i] = static_cast<size_t>(pos[i] / cutoffRadius) + 1;
+            indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
         }
     }
 
-    cells[indices[0]][indices[1]][indices[2]]->addParticle(particle);
+    cells.at(indices[0]).at(indices[1]).at(indices[2])->addParticle(particle);
 }
 
 void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
@@ -112,14 +215,28 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
     }
 }
 
-std::list<std::reference_wrapper<Particle>> CellGrid::getNeighboringParticles(
-    const std::array<size_t, 3>& cellIndex)
+std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) const
 {
-    std::list<std::reference_wrapper<Particle>> particleList;
+    std::list<CellIndex> cellList;
 
-    // Check if the cell at the given index is a halo cell
-    if (cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->getType() == CellType::Halo) {
-        return particleList; // Return empty list if the cell is a halo cell
+    // If not all neighbours have been paired up, return an empty list
+    // If the cell is a halo, return an empty list
+    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() > 0 ||
+        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getType() == CellType::Halo) {
+        return cellList;
+    }
+
+    // check if this cell was not visited
+    if (!cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited) {
+        // Mark this cell as visited
+        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = true;
+        // Set forces
+        auto particleRefs =
+            cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getParticles();
+        for (auto& p : particleRefs) {
+            p.get().setOldF(p.get().getF());
+            p.get().setF({ 0.0, 0.0, 0.0 });
+        }
     }
 
     // Iterate over all neighbors including the cell itself
@@ -130,29 +247,49 @@ std::list<std::reference_wrapper<Particle>> CellGrid::getNeighboringParticles(
                 size_t ny = cellIndex[1] + dy;
                 size_t nz = cellIndex[2] + dz;
 
-                if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
-                    // Check if the neighboring cell is a halo cell or if its neighborCounter > 0
-                    if (cells[nx][ny][nz]->getType() != CellType::Halo) {
-                        if (cells[nx][ny][nz]->getCounter() > 0) {
-                            cells[nx][ny][nz]->setCounter(
-                                cells[nx][ny][nz]->getCounter() -
-                                1); // Decrease the neighborCounter
-                            continue; // Skip this neighbor to ensure the unique pair iteration
-                        }
+                // Skip if it is the original cell
+                if (dx == 0 && dy == 0 && dz == 0) {
+                    continue;
+                }
 
-                        // Add particle pointer from neighbor to the main list
-                        const auto& neighborParticles = cells[nx][ny][nz]->getParticles();
-                        for (const auto& particle : neighborParticles) {
-                            particleList.push_back(particle);
+                if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
+                    if (cells.at(nx).at(ny).at(nz)->getCounter() > 0) {
+                        // Decrease counter
+                        cells.at(nx).at(ny).at(nz)->decrementCounter();
+                        // if counter reached zero, reset visited
+                        if (cells.at(nx).at(ny).at(nz)->getCounter() == 0) {
+                            cells.at(nx).at(ny).at(nz)->visited = false;
                         }
-                        // Increment neighborCounter if particles from a neighbor are added
-                        cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->setCounter(
-                            cells[cellIndex[0]][cellIndex[1]][cellIndex[2]]->getCounter() + 1);
+                        // Skip this neighbour
+                        continue;
+                    }
+
+                    // Insert all particles into particleList
+                    cellList.emplace_back(CellIndex { nx, ny, nz });
+
+                    // check if not visited yet
+                    if (!cells.at(nx).at(ny).at(nz)->visited) {
+                        // Mark as visited
+                        cells.at(nx).at(ny).at(nz)->visited = true;
+                        // Set OldF to F and zero F
+                        auto particleRefs = cells.at(nx).at(ny).at(nz)->getParticles();
+                        for (auto& p : particleRefs) {
+                            p.get().setOldF(p.get().getF());
+                            p.get().setF({ 0.0, 0.0, 0.0 });
+                        }
+                    }
+
+                    if (cells.at(nx).at(ny).at(nz)->getType() != CellType::Halo) {
+                        // Increment neighborCounter if not a halo cell
+                        cells.at(cellIndex[0])
+                            .at(cellIndex[1])
+                            .at(cellIndex[2])
+                            ->incrementCounter();
                     }
                 }
             }
         }
     }
 
-    return particleList;
+    return cellList;
 }

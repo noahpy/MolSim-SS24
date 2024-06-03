@@ -1,5 +1,6 @@
 
 #include "CellGrid.h"
+#include "models/linked_cell/cell/Cell.h"
 
 /* ########### BoundaryIterator Implementation ########### */
 CellGrid::BoundaryIterator::BoundaryIterator(std::vector<CellIndex>& boundaries, bool end)
@@ -59,64 +60,4 @@ CellGrid::HaloIterator& CellGrid::HaloIterator::operator++()
 bool CellGrid::HaloIterator::operator!=(const HaloIterator& other) const
 {
     return this->index != other.index;
-}
-
-/* ########### PairIterator Implementation ########### */
-CellGrid::PairIterator::PairIterator(
-    std::list<std::reference_wrapper<Particle>>& particles, bool end)
-    : particles(particles)
-    , firstIt(particles.begin())
-    , secondIt(particles.begin())
-{
-    if (!end) {
-        if (secondIt != particles.end()) {
-            ++secondIt;
-        }
-    } else {
-        firstIt = particles.end();
-        secondIt = particles.end();
-    }
-}
-
-std::pair<Particle*, Particle*> CellGrid::PairIterator::operator*() const
-{
-    return { &(*firstIt).get(), &(*secondIt).get() };
-}
-
-CellGrid::PairIterator& CellGrid::PairIterator::operator++()
-{
-    advance();
-    return *this;
-}
-
-bool CellGrid::PairIterator::operator!=(const PairIterator& other) const
-{
-    return firstIt != other.firstIt || secondIt != other.secondIt;
-}
-
-void CellGrid::PairIterator::advance()
-{
-    if (firstIt == particles.end()) {
-        return;
-    }
-
-    if (secondIt == particles.end()) {
-        ++firstIt;
-        if (firstIt != particles.end()) {
-            secondIt = std::next(firstIt);
-        }
-    } else
-        ++secondIt;
-}
-
-CellGrid::PairIterator CellGrid::PairIterator::beginPairs(
-    std::list<std::reference_wrapper<Particle>>& particles)
-{
-    return PairIterator(particles, false);
-}
-
-CellGrid::PairIterator CellGrid::PairIterator::endPairs(
-    std::list<std::reference_wrapper<Particle>>& particles)
-{
-    return PairIterator(particles, true);
 }
