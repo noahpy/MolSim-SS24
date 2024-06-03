@@ -16,6 +16,7 @@ PhysicsStrategy stratFactory(unsigned simulation_type)
         spdlog::info("Initializing Force LJ Strat...");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones };
     case 2:
+        spdlog::info("Initializing Force LJ LC Strat...");
         return {location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones_lc};
     default:
         spdlog::info("Unknown simulation type, proceeding with default physics strategy.");

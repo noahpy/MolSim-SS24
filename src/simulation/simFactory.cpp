@@ -37,6 +37,7 @@ std::unique_ptr<Simulation> simFactory(
             params.epsilon,
             params.sigma);
     case 2:
+        spdlog::info("Initializing Linked LJ Simulation...");
         return std::make_unique<LinkedLennardJonesSimulation>(
             params.start_time,
             params.delta_t,
