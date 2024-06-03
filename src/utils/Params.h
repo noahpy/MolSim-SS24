@@ -14,7 +14,7 @@ class Params {
     unsigned reader_type = 0;
     unsigned writer_type = 0;
     unsigned simulation_type = 0;
-    std::array<double, 3> domain_origin = {0, 0, 0};
-    std::array<double, 3> domain_size = {20, 20, 20};
-    double cutoff = 2.5;
+    std::array<double, 3> domain_origin = {-50, -50, -50};
+    std::array<double, 3> domain_size = {100, 100, 100};
+    double cutoff = 5;
 };
