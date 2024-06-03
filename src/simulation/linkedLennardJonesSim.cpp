@@ -30,6 +30,7 @@ LinkedLennardJonesSimulation::LinkedLennardJonesSimulation(
           sigma)
     , cellGrid(domainOrigin, domainSize, cutoff)
 {
+    cellGrid.addParticlesFromContainer(container);
 }
 
 void LinkedLennardJonesSimulation::runSim()
@@ -44,7 +45,7 @@ void LinkedLennardJonesSimulation::runSim()
             writer->plotParticles(*this);
             cellGrid.updateCells();
         }
-        spdlog::debug("Iteration {} finished.", iteration);
+        spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;
     }
