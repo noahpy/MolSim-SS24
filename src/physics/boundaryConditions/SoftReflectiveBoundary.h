@@ -28,10 +28,6 @@ private:
         return { 0, 0, 0 };
     };
 
-    void clearAllHaloParticleReferences() {
-        //TODO clear all halo particle references in the halo cells
-    };
-
     std::vector<Particle> insertedParticles;
     size_t insertionIndex;
 };

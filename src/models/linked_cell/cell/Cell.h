@@ -48,6 +48,12 @@ public:
     void removeParticle(Particle& particle);
 
     /**
+     * @brief Clears all particles from the cell.
+     * @return void
+     */
+    void clearParticles();
+
+    /**
      * @brief Returns a list of references to all particles in the cell.
      * @return A list of references to the particles in the cell.
      */

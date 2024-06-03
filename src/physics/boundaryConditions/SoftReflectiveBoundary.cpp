@@ -4,13 +4,15 @@
 
 void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 {
+    const LennardJonesDomainSimulation& LGDSim =
+        static_cast<const LennardJonesDomainSimulation&>(simulation);
+
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
     // reset old halo references used previously
-    clearAllHaloParticleReferences();
-
-    const LennardJonesDomainSimulation& LGDSim =
-        static_cast<const LennardJonesDomainSimulation&>(simulation);
+    for (auto haloCellIndex : LGDSim.domain.haloCellIterator(position)) {
+        LGDSim.domain.cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]->clearParticles();
+    };
 
     for (auto boundaryCellIndex : LGDSim.domain.boundaryCellIterator(position)) {
         for (auto& particle :
