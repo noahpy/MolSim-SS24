@@ -3,20 +3,7 @@
 #include "models/linked_cell/cell/Cell.h"
 
 // forward declare
-/**
- * @brief Get the Boundary Indices object. This includes the irrelevantBoundary (first) and the
- * relevantBoundaryIndices (second)
- * @param position The position of the boundary of the domain
- * @return irrelevantBoundary (first), relevantBoundaryIndices (second)
- */
 std::pair<size_t, std::pair<size_t, size_t>> getBoundaryIndices(Position position);
-/**
- * @brief Get the Coordinate of the Irrelevant Axis
- * @param position The position of the boundary of the domain
- * @param gridDimensions The dimensions of the grid
- * @param irrelevantBoundary The irrelevant boundary
- * @return The coordinate of the irrelevant axis
- */
 size_t getCoordinateIrrelevantAxis(
     Position position, std::array<size_t, 3> gridDimensions, size_t irrelevantBoundary);
 
@@ -152,6 +139,13 @@ bool CellGrid::HaloIterator::operator!=(const HaloIterator& other) const
     return this->index != other.index;
 }
 
+//------------ Misc Functions ------------
+/**
+ * @brief Get the Boundary Indices object. This includes the irrelevantBoundary (first) and the
+ * relevantBoundaryIndices (second)
+ * @param position The position of the boundary of the domain
+ * @return irrelevantBoundary (first), relevantBoundaryIndices (second)
+ */
 std::pair<size_t, std::pair<size_t, size_t>> getBoundaryIndices(Position position)
 {
     std::pair<size_t, size_t> relevantBoundaryIndices;
@@ -176,6 +170,13 @@ std::pair<size_t, std::pair<size_t, size_t>> getBoundaryIndices(Position positio
     return { irrelevantBoundary, relevantBoundaryIndices };
 }
 
+/**
+ * @brief Get the Coordinate of the Irrelevant Axis
+ * @param position The position of the boundary of the domain
+ * @param gridDimensions The dimensions of the grid
+ * @param irrelevantBoundary The irrelevant boundary
+ * @return The coordinate of the irrelevant axis
+ */
 size_t getCoordinateIrrelevantAxis(
     Position position, std::array<size_t, 3> gridDimensions, size_t irrelevantBoundary)
 {
