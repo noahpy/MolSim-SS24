@@ -1,5 +1,6 @@
 
 
+#include "utils/Params.h"
 #include <getopt.h>
 #include <iostream>
 #include <spdlog/spdlog.h>
@@ -105,14 +106,7 @@ void convertToDouble(char* optarg, double& value)
 void argparse(
     int argc,
     char* argsv[],
-    double& end_time,
-    double& delta_t,
-    double& epsilon,
-    double& sigma,
-    std::string& input,
-    unsigned& reader_type,
-    unsigned& writer_type,
-    unsigned& simulation_type)
+    Params& params)
 {
     // Long options definition
     static struct option long_options[] = { { "delta_t", required_argument, 0, 'd' },
@@ -129,10 +123,10 @@ void argparse(
     while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:a", long_options, NULL)) != -1) {
         switch (opt) {
         case 'd':
-            convertToDouble(optarg, delta_t);
+            convertToDouble(optarg, params.delta_t);
             break;
         case 'e':
-            convertToDouble(optarg, end_time);
+            convertToDouble(optarg, params.end_time);
             break;
         case 'l':
             int loglevel;
@@ -140,22 +134,22 @@ void argparse(
             spdlog::set_level(getLogLevel(loglevel));
             break;
         case 'E':
-            convertToDouble(optarg, epsilon);
+            convertToDouble(optarg, params.epsilon);
             break;
         case 'S':
-            convertToDouble(optarg, sigma);
+            convertToDouble(optarg, params.sigma);
             break;
         case 's':
-            convertToUnsigned(optarg, simulation_type);
+            convertToUnsigned(optarg, params.simulation_type);
             break;
         case 'w':
-            convertToUnsigned(optarg, writer_type);
+            convertToUnsigned(optarg, params.writer_type);
             break;
         case 'c':
-            reader_type = 1;
+            params.reader_type = 1;
             break;
         case 'a':
-            reader_type = 3;
+            params.reader_type = 3;
             break;
         case 'h':
             printHelp(argsv[0]);
@@ -173,5 +167,5 @@ void argparse(
         exit(EXIT_FAILURE);
     }
 
-    input = argsv[optind];
+    params.input_file = argsv[optind];
 }

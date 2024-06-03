@@ -8,55 +8,33 @@
 #include "simulation/planetSim.h"
 #include "simulation/simFactory.h"
 #include "spdlog/spdlog.h"
+#include "utils/Params.h"
 
 #include <string>
 
 // Main function
 int main(int argc, char* argsv[])
 {
-    constexpr double start_time = 0; // start time
-    double end_time = 0.014 * 10 * 20; // end time
-    double delta_t = 0.014; // time increment
-    double epsilon = 5; // depth of potential well
-    double sigma = 1; // zero-crossing of LJ potential
-    std::string input_file; // output filename
-    unsigned reader_type = 0;
-    unsigned writer_type = 0;
-    unsigned simulation_type = 0;
+    Params params;
 
     // parse arguments
-    argparse(
-        argc,
-        argsv,
-        end_time,
-        delta_t,
-        epsilon,
-        sigma,
-        input_file,
-        reader_type,
-        writer_type,
-        simulation_type);
+    argparse(argc, argsv, params);
 
     // Initialize reader
-    auto readPointer = readerFactory(input_file, reader_type);
+    auto readPointer = readerFactory(params.input_file, params.reader_type);
 
     // Initialize writer
-    auto writePointer = writerFactory(writer_type);
+    auto writePointer = writerFactory(params.writer_type);
 
     // Intialize physics strategy
-    PhysicsStrategy strat = stratFactory(simulation_type);
+    PhysicsStrategy strat = stratFactory(params.simulation_type);
 
     // Intialize empty particle container
     ParticleContainer particles { {} };
 
     // Intialize simulation and read the input files
     auto simPointer = simFactory(
-        simulation_type,
-        start_time,
-        delta_t,
-        end_time,
-        epsilon,
-        sigma,
+        params,
         particles,
         strat,
         std::move(writePointer),
