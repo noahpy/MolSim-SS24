@@ -71,16 +71,11 @@ public:
     class HaloIterator;
 
     /** @brief Returns an iterator to the beginning of boundary particles. */
-    BoundaryIterator beginBoundaryParticles();
-
-    /** @brief Returns an iterator to the end of boundary particles. */
-    BoundaryIterator endBoundaryParticles();
+    BoundaryIterator boundaryCellIterator(Position position);
 
     /** @brief Returns an iterator to the beginning of halo particles. */
-    HaloIterator beginHaloParticles();
+    HaloIterator haloCellIterator(Position position);
 
-    /** @brief Returns an iterator to the end of halo particles. */
-    HaloIterator endHaloParticles();
 
 protected:
     /**
@@ -135,7 +130,10 @@ public:
          * @param boundaries A reference to the vector of boundary cell indices.
          * @param end Set to true to create an end iterator.
          */
-        explicit BoundaryIterator(std::vector<CellIndex>& boundaries, bool end = false);
+        BoundaryIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
+
+        BoundaryIterator begin();
+        BoundaryIterator end();
 
         /**
          * @brief Dereferences the iterator, returning the current CellIndex.
@@ -157,11 +155,13 @@ public:
         bool operator!=(const BoundaryIterator& other) const;
 
     private:
-        /// The current index in the boundary cell vector.
+        /// The current index in the boundaries vector.
         size_t index;
 
-        /// A reference to the vector of boundary cell indices.
-        std::vector<CellIndex>& boundaries;
+        /// The relevant boundaries to consider
+        std::vector<CellIndex> boundaries;
+
+        std::array<size_t, 3> gridDimensions;
     };
 
     /** @class HaloIterator
@@ -174,7 +174,7 @@ public:
          * @param halos A reference to the vector of halo cell indices.
          * @param end Set to true to create an end iterator.
          */
-        explicit HaloIterator(std::vector<CellIndex>& halos, bool end = false);
+        explicit HaloIterator(std::vector<CellIndex>& halos, Position position, bool end = false);
 
         /**
          * @brief Dereferences the iterator, returning the current CellIndex.

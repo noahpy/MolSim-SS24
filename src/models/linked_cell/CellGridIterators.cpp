@@ -2,15 +2,78 @@
 #include "CellGrid.h"
 #include "models/linked_cell/cell/Cell.h"
 
+// TODO Move the creation the iterators to the class and then only return the fresh ones
 /* ########### BoundaryIterator Implementation ########### */
-CellGrid::BoundaryIterator::BoundaryIterator(std::vector<CellIndex>& boundaries, bool end)
-    : boundaries(boundaries)
+CellGrid::BoundaryIterator::BoundaryIterator(
+    Position position, std::array<size_t, 3> gridDimensions, bool end)
+    : gridDimensions(gridDimensions)
+    , index(0)
 {
-    if (end) {
-        index = boundaries.size();
-        return;
+    std::pair<size_t, size_t> relevantBoundaryIndices;
+    size_t irrelevantBoundary;
+    switch (position) {
+    case LEFT:
+    case RIGHT:
+        relevantBoundaryIndices = { 1, 2 };
+        irrelevantBoundary = 0;
+        break;
+    case TOP:
+    case BOTTOM:
+        relevantBoundaryIndices = { 0, 2 };
+        irrelevantBoundary = 1;
+        break;
+    case FRONT:
+    case BACK:
+        relevantBoundaryIndices = { 0, 1 };
+        irrelevantBoundary = 2;
+        break;
     }
-    index = 0;
+
+    size_t coordinateIrrelevantAxis;
+    switch (position) {
+    case LEFT:
+    case TOP:
+    case FRONT:
+        coordinateIrrelevantAxis = 1;
+        break;
+    case RIGHT:
+    case BOTTOM:
+    case BACK:
+        coordinateIrrelevantAxis = gridDimensions[irrelevantBoundary] - 2;
+        break;
+    }
+
+    std::vector<CellIndex> relevantBoundaries(
+        gridDimensions[relevantBoundaryIndices.first] *
+        gridDimensions[relevantBoundaryIndices.second]);
+    size_t insertionIndex = 0;
+
+    for (size_t i = 1; i < gridDimensions[relevantBoundaryIndices.first] - 1; i++)
+        for (size_t j = 1; j < gridDimensions[relevantBoundaryIndices.second] - 1; j++) {
+            CellIndex boundary;
+            if (irrelevantBoundary == 0)
+                boundary = { coordinateIrrelevantAxis, i, j };
+            else if (irrelevantBoundary == 1)
+                boundary = { i, coordinateIrrelevantAxis, j };
+            else
+                boundary = { i, j, coordinateIrrelevantAxis };
+
+            relevantBoundaries.at(insertionIndex++) = boundary;
+        }
+}
+
+CellGrid::BoundaryIterator CellGrid::BoundaryIterator::begin()
+{
+    BoundaryIterator startIterator = *this;
+    startIterator.index = 0;
+    return startIterator;
+}
+
+CellGrid::BoundaryIterator CellGrid::BoundaryIterator::end()
+{
+    BoundaryIterator endIterator = *this;
+    endIterator.index = boundaries.size();
+    return endIterator;
 }
 
 CellIndex CellGrid::BoundaryIterator::operator*() const
@@ -33,7 +96,7 @@ bool CellGrid::BoundaryIterator::operator!=(const BoundaryIterator& other) const
 }
 
 /* ########### HaloIterator Implementation ########### */
-CellGrid::HaloIterator::HaloIterator(std::vector<CellIndex>& halos, bool end)
+CellGrid::HaloIterator::HaloIterator(std::vector<CellIndex>& halos, Position position, bool end)
     : halos(halos)
 {
     if (end) {

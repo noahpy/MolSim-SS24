@@ -170,24 +170,14 @@ void CellGrid::updateCells()
 }
 
 // Methods to get boundary and halo particle iterators
-CellGrid::BoundaryIterator CellGrid::beginBoundaryParticles()
+CellGrid::BoundaryIterator CellGrid::boundaryCellIterator(Position position)
 {
-    return BoundaryIterator(boundaryCells, false);
+    return {position, gridDimensions, false};
 }
 
-CellGrid::BoundaryIterator CellGrid::endBoundaryParticles()
+CellGrid::HaloIterator CellGrid::haloCellIterator(Position position)
 {
-    return BoundaryIterator(boundaryCells, true);
-}
-
-CellGrid::HaloIterator CellGrid::beginHaloParticles()
-{
-    return HaloIterator(haloCells, false);
-}
-
-CellGrid::HaloIterator CellGrid::endHaloParticles()
-{
-    return HaloIterator(haloCells, true);
+    return HaloIterator(haloCells, position, false);
 }
 
 void CellGrid::addParticle(Particle& particle)
