@@ -60,7 +60,7 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             }
 
             // add the particle to the halo cell
-            LGDSim.domain.cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
+            LGDSim.domain.cells[neighboringHaloCellIndex[0]][neighboringHaloCellIndex[1]][neighboringHaloCellIndex[2]]
                 ->addParticle(insertedParticles[insertionIndex++]);
         }
     }
