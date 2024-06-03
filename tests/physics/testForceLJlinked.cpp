@@ -46,6 +46,8 @@ TEST_F(calcForceLJLinkedTest, calcForceLJNormed)
     Particle p2 { { 0, 0.5, -c }, { 0, 0, 0 }, 1 };
     Particle p3 { { 0, -0.5, -c }, { 0, 0, 0 }, 1 };
 
+    particles = std::vector<Particle> { p1, p2, p3 };
+
     std::array<double, 3> p1F { 0, 0, 24 * 4 * c };
     std::array<double, 3> p2F { 0, 24 * 1.5, 24 * -2 * c };
     std::array<double, 3> p3F { 0, 24 * -1.5, 24 * -2 * c };
@@ -68,7 +70,6 @@ TEST_F(calcForceLJLinkedTest, calcForceLJNormed)
         domainSize,
         cutoff);
 
-    particles.particles = { p1, p2, p3 };
 
     force_lennard_jones_lc(sim);
 
@@ -93,6 +94,8 @@ TEST_F(calcForceLJLinkedTest, calcForceLJEquilibrium)
     Particle p2 { { 0, 0.5, -c }, { 0, 0, 0 }, 1 };
     Particle p3 { { 0, -0.5, -c }, { 0, 0, 0 }, 1 };
 
+    particles = std::vector<Particle> { p1, p2, p3 };
+
     std::array<double, 3> p1F { 0, 0, 0 };
     std::array<double, 3> p2F { 0, 0, 0 };
     std::array<double, 3> p3F { 0, 0, 0 };
@@ -114,8 +117,6 @@ TEST_F(calcForceLJLinkedTest, calcForceLJEquilibrium)
         domainOrigin,
         domainSize,
         cutoff);
-
-    particles.particles = { p1, p2, p3 };
 
     force_lennard_jones_lc(sim);
 
@@ -139,6 +140,8 @@ TEST_F(calcForceLJLinkedTest, calcForceLJUnNormed)
     Particle p2 { { 0, 0.5, -c }, { 0, 0, 0 }, 1 };
     Particle p3 { { 0, -0.5, -c }, { 0, 0, 0 }, 1 };
 
+    particles = std::vector<Particle> { p1, p2, p3 };
+
     double epsilon = 3.14159;
     double sigma = 1;
 
@@ -160,8 +163,6 @@ TEST_F(calcForceLJLinkedTest, calcForceLJUnNormed)
         domainOrigin,
         domainSize,
         cutoff);
-
-    particles.particles = { p1, p2, p3 };
 
     force_lennard_jones_lc(sim);
 
