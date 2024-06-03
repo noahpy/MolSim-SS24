@@ -47,6 +47,37 @@ TEST_F(CellGridTest, Initialization)
             EXPECT_EQ(grid.cells[i][j].size(), 6);
         }
     }
+
+    // Ensure right neighbour instantiation
+
+    // Inner inner cells
+    for (size_t i = 3; i < grid.cells.size() - 4; ++i) {
+        for (size_t j = 3; j < grid.cells[i].size() - 4; ++j) {
+            for (size_t k = 3; k < grid.cells[i][j].size() - 4; ++k) {
+                EXPECT_EQ(grid.cells[i][j][k]->innerNeighbours.size(), 26);
+                EXPECT_EQ(grid.cells[i][j][k]->haloNeighbours.size(), 0);
+                EXPECT_EQ(grid.cells[i][j][k]->boundaryNeighbours.size(), 0);
+            }
+        }
+    }
+    // Outer inner cells
+    for (auto i : std::vector<size_t> { 2, grid.cells.size() - 3 }) {
+        for (auto j : std::vector<size_t> { 2, grid.cells[i].size() - 3 }) {
+            for (auto k : std::vector<size_t> { 2, grid.cells[i][j].size() - 3 }) {
+                EXPECT_LE(grid.cells[i][j][k]->innerNeighbours.size(), 17)
+                    << "Position: " << i << " " << j << " " << k;
+                EXPECT_GE(grid.cells[i][j][k]->boundaryNeighbours.size(), 9)
+                    << "Position: " << i << " " << j << " " << k;
+                EXPECT_EQ(grid.cells[i][j][k]->haloNeighbours.size(), 0)
+                    << "Position: " << i << " " << j << " " << k;
+                // check the sum of inner and boundary
+                EXPECT_EQ(
+                    grid.cells[i][j][k]->innerNeighbours.size() +
+                        grid.cells[i][j][k]->boundaryNeighbours.size(),
+                    26);
+            }
+        }
+    }
 }
 
 // Test Particle Addition (Single)
