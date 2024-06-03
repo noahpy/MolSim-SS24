@@ -98,6 +98,11 @@ void Particle::setX(const std::array<double, 3>& x_new)
     x = x_new;
 }
 
+void Particle::setM(double m_new)
+{
+    m = m_new;
+}
+
 std::string Particle::toString() const
 {
     std::stringstream stream;
