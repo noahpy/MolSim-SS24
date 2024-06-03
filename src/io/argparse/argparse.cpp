@@ -156,9 +156,6 @@ void argparse(
         case 'x':
             params.reader_type = 4;
             break;
-        case 'x':
-            reader_type = 4;
-            break;
         case 'h':
             printHelp(argsv[0]);
             exit(EXIT_SUCCESS);
