@@ -8,7 +8,7 @@
 #pragma once
 
 #include "io/fileWriter/FileWriter.h"
-#include "io/fileWriter/vtk-unstructured.h"
+#include "io/xsd/vtk-unstructured.h"
 #include "models/Particle.h"
 #include "simulation/baseSimulation.h"
 

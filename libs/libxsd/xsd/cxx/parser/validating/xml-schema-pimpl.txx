@@ -1,11 +1,11 @@
 // file      : xsd/cxx/parser/validating/xml-schema-pimpl.txx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #include <limits>
 #include <locale>
 
 #ifdef XSD_CXX11
+#  include <cmath>   // std::isfinite
 #  include <utility> // std::move
 #endif
 
@@ -717,9 +717,13 @@ namespace xsd
           zc_istream<C> is (str);
           is.imbue (std::locale::classic ());
 
-          //@@ TODO: now we accept scientific notations and INF/NaN.
+          // Note that std::isfinite() returns false for INF/NaN.
           //
+#ifdef XSD_CXX11
+          if (!(is >> value_ && std::isfinite (value_) && is.exhausted ()))
+#else
           if (!(is >> value_ && is.exhausted ()))
+#endif
             throw invalid_value<C> (bits::decimal<C> (), str);
         }
 

@@ -1,28 +1,43 @@
-// file      : xsd/cxx/version.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
+// file      : xsd/cxx/version.hxx.in
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
-#ifndef XSD_CXX_VERSION_HXX
-#define XSD_CXX_VERSION_HXX
+#ifndef LIBXSD_VERSION // Note: using the version macro itself.
 
-// Version format is AABBCCDD where
+// The numeric version format is AAAAABBBBBCCCCCDDDE where:
 //
-// AA - major version number
-// BB - minor version number
-// CC - bugfix version number
-// DD - alpha / beta (DD + 50) version number
+// AAAAA - major version number
+// BBBBB - minor version number
+// CCCCC - bugfix version number
+// DDD   - alpha / beta (DDD + 500) version number
+// E     - final (0) / snapshot (1)
 //
-// When DD is not 00, 1 is subtracted from AABBCC. For example:
+// When DDDE is not 0, 1 is subtracted from AAAAABBBBBCCCCC. For example:
 //
-// Version     AABBCCDD
-// 2.0.0       02000000
-// 2.1.0       02010000
-// 2.1.1       02010100
-// 2.2.0.a1    02019901
-// 3.0.0.b2    02999952
+// Version      AAAAABBBBBCCCCCDDDE
 //
+// 0.1.0        0000000001000000000
+// 0.1.2        0000000001000020000
+// 1.2.3        0000100002000030000
+// 2.2.0-a.1    0000200001999990010
+// 3.0.0-b.2    0000299999999995020
+// 2.2.0-a.1.z  0000200001999990011
+//
+#define LIBXSD_VERSION       400002000000000ULL
+#define LIBXSD_VERSION_STR   "4.2.0"
+#define LIBXSD_VERSION_ID    "4.2.0"
+#define LIBXSD_VERSION_FULL  "4.2.0"
 
-#define XSD_STR_VERSION "4.0.0"
-#define XSD_INT_VERSION 4000000L
+#define LIBXSD_VERSION_MAJOR 4
+#define LIBXSD_VERSION_MINOR 2
+#define LIBXSD_VERSION_PATCH 0
 
-#endif  // XSD_CXX_VERSION_HXX
+#define LIBXSD_PRE_RELEASE   false
+
+#define LIBXSD_SNAPSHOT      0ULL
+#define LIBXSD_SNAPSHOT_ID   ""
+
+// Note that Xerces and Expat compatibility is verified by the respective
+// parsers (see parser/xerces/elements.hxx and parser/expat/elements.hxx for
+// details).
+
+#endif // LIBXSD_VERSION

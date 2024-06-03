@@ -31,6 +31,8 @@ void printHelp(std::string progName)
               << std::endl
               << "  -a                     Specify that the given input file is of type ascii art"
               << std::endl
+              << "  -x                     Specify that the given input file is of type XML"
+              << std::endl
               << "  -s, --simtype=VALUE    Specify simulation type (default: 0)" << std::endl
               << "  -w, --writetype=VALUE  Specify writer type (default: 0)" << std::endl
               << "  -h, --help             Display this help message" << std::endl
@@ -120,7 +122,7 @@ void argparse(
                                             { 0, 0, 0, 0 } };
 
     int opt;
-    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:a", long_options, NULL)) != -1) {
+    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:ax", long_options, NULL)) != -1) {
         switch (opt) {
         case 'd':
             convertToDouble(optarg, params.delta_t);
@@ -153,6 +155,9 @@ void argparse(
             break;
         case 'x':
             params.reader_type = 4;
+            break;
+        case 'x':
+            reader_type = 4;
             break;
         case 'h':
             printHelp(argsv[0]);

@@ -47,6 +47,21 @@ void ClusterReader::readFile(Simulation& sim)
             generator.registerCluster(std::make_unique<CuboidParticleCluster>(
                 CuboidParticleCluster({ ox, oy, oz }, nx, ny, nz, h, m, { vx, vy, vz }, mv, dim)));
             break;
+        case 'S':
+            double osx, osy, osz;
+            size_t nr, dimS;
+            double spacing, mass, brownianMotion;
+            double ivx, ivy, ivz;
+            size_t dimBrow;
+            if (!(iss >> osx >> osy >> osz >> nr >> dimS >> spacing >> mass >> brownianMotion >> ivx >> ivy >> ivz >>
+                  dimBrow)) {
+                spdlog::error(
+                    "When reading cluster type Sphere: Could not read parameters correctly");
+                exit(EXIT_FAILURE);
+            }
+            generator.registerCluster(std::make_unique<SphereParticleCluster>(
+                SphereParticleCluster({ osx, osy, osz }, nr, dimS, spacing, mass, { ivx, ivy, ivz }, brownianMotion, dimBrow)));
+            break;
         default:
             spdlog::error("Invalid clusterType: {}", clusterType);
             exit(EXIT_FAILURE);
