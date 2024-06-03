@@ -176,7 +176,10 @@ public:
          * @param halos A reference to the vector of halo cell indices.
          * @param end Set to true to create an end iterator.
          */
-        explicit HaloIterator(std::vector<CellIndex>& halos, Position position, bool end = false);
+        explicit HaloIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
+
+        HaloIterator begin();
+        HaloIterator end();
 
         /**
          * @brief Dereferences the iterator, returning the current CellIndex.
@@ -198,8 +201,10 @@ public:
         bool operator!=(const HaloIterator& other) const;
 
     private:
-        /// A reference to the vector of halo cell indices.
-        std::vector<CellIndex>& halos;
+        /// The relevant boundaries to consider
+        std::vector<CellIndex> boundaries;
+
+        std::array<size_t, 3> gridDimensions;
 
         /// The current index in the halo cell vector.
         size_t index;
