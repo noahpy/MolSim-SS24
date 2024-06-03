@@ -48,6 +48,7 @@ CellGrid::BoundaryIterator::BoundaryIterator(
         gridDimensions[relevantBoundaryIndices.second]);
     size_t insertionIndex = 0;
 
+    // TODO dimensions check. Where is top, bottom, etc. ie where is the origin 0,0,0
     for (size_t i = 1; i < gridDimensions[relevantBoundaryIndices.first] - 1; i++)
         for (size_t j = 1; j < gridDimensions[relevantBoundaryIndices.second] - 1; j++) {
             CellIndex boundary;

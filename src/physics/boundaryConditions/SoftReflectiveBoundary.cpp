@@ -1,40 +1,71 @@
 
 #include "SoftReflectiveBoundary.h"
-#include "simulation/LennardJonesDomainSimulation.h"
 #include "utils/ArrayUtils.h"
 
 void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 {
-    const LennardJonesDomainSimulation& LGDSim = static_cast<const LennardJonesDomainSimulation&>(simulation);
+    // reset the insertion index, to reuse already created particles
+    insertionIndex = 0;
+    // reset old halo references used previously
+    clearAllHaloParticleReferences();
 
-    // Rather I have a beginBoundaryParticles(position) that only gives the ones relevant
-    // Maybe even directly the cells by iterating over the cells matrix
-    for (auto it = LGDSim.domain.beginBoundaryParticles(); it != LGDSim.domain.endBoundaryParticles(); ++it) {
-        auto boundaryCellIndex = *it;
-        bool isRelevant = false;
-        for (Position cellPosition : LGDSim.domain.cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]->boundarySides) {
-            if (cellPosition == position) {
-                isRelevant = true;
+    const LennardJonesDomainSimulation& LGDSim =
+        static_cast<const LennardJonesDomainSimulation&>(simulation);
+
+    for (auto boundaryCellIndex : LGDSim.domain.boundaryCellIterator(position)) {
+        for (auto& particle :
+             LGDSim.domain.cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
+                 ->getParticles()) {
+            std::array<double, 3> pos = particle.get().getX();
+            std::array<double, 3> pointOnBoundaryPlane {};
+            switch (position) {
+            // To mirror point, we need a point on the plane to mirror it about
+            case TOP:
+            case LEFT:
+            case FRONT:
+                pointOnBoundaryPlane = LGDSim.domain.domainOrigin;
+                break;
+            case BOTTOM:
+            case RIGHT:
+            case BACK:
+                pointOnBoundaryPlane = LGDSim.domain.domainEnd;
                 break;
             }
-        }
-        if (!isRelevant) continue; // Skip boundary cell if it does not belong to the boundary
 
-        // How to I loop efficiently?
-        for (auto& particle : LGDSim.domain.cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]->getParticles()) {
-            std::array<double, 3> pos = particle.get().getX();
-            std::array<double, 3> pointOnBoundary = {1,2,3}; // TODO: Get a point on the boundary. Is this saved in the cell maybe?
+            // Get the position of the halo cell by mirroring the particle about the boundary
             std::array<double, 3> normal = getNormalVectorOfBoundary(position);
+            std::array<double, 3> diff = pointOnBoundaryPlane - pos;
+            double dotProd =
+                std::inner_product(std::begin(diff), std::end(diff), std::begin(normal), 0.0);
+            std::array<double, 3> haloPosition = pos + dotProd * 2 * normal;
 
-            std::array<double, 3> diff = pointOnBoundary - pos;
-            double dotProd = std::inner_product(std::begin(diff), std::end(diff), std::begin(normal), 0.0);
-            std::array<double, 3> haloPosition = pos + dotProd*2*normal;
+            // Get the corresponding halo cell
+            CellIndex neighboringHaloCellIndex = filterHaloNeighbors(
+                LGDSim.domain
+                    .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
+                    ->haloNeighbours);
 
-            // Now update the force of the particle with one step using the halo particle only
-            // But this would be overwritten by the force calculation in the next step
-            // I do not need to add the particle itself to the halo cells
+            if (insertionIndex < insertedParticles.size()) {
+                // simply update, if there is already a particle to reuse
+                insertedParticles[insertionIndex].setX(haloPosition);
+                insertedParticles[insertionIndex].setV({ 0, 0, 0 });
+                insertedParticles[insertionIndex].setF({ 0, 0, 0 });
+                insertedParticles[insertionIndex].setM(particle.get().getM());
+            } else {
+                // create a new particle
+                Particle haloParticle = Particle(haloPosition, { 0, 0, 0 }, particle.get().getM());
+                insertedParticles.push_back(haloParticle);
+            }
 
-            // For overflow, how do I remove the particle?
+            // add the particle to the halo cell
+            LGDSim.domain.cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
+                ->addParticle(insertedParticles[insertionIndex++]);
         }
+    }
+
+    // erase all leftover particles, if there are any
+    if (insertionIndex < insertedParticles.size()) {
+        insertedParticles.erase(
+            insertedParticles.begin() + (long)insertionIndex, insertedParticles.end());
     }
 }

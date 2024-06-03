@@ -37,6 +37,11 @@ public:
     /// The 3D vector storing the cells in the grid.
     CellVec cells;
 
+    // The top-left-front point of the domain
+    std::array<double, 3> domainOrigin;
+    // The bottom-right-back point of the domain
+    std::array<double, 3> domainEnd;
+
     /**
      * @brief Adds a particle to the appropriate cell in the grid.
      * @param particle The particle to be added.
@@ -105,9 +110,6 @@ private:
 
     /// The cutoff radius for particle interactions.
     double cutoffRadius;
-
-    // The top-left-front point of the domain
-    std::array<double, 3> domainOrigin;
 
     /// The dimensions of the cell grid in each dimension.
     std::array<size_t, 3> gridDimensions;
