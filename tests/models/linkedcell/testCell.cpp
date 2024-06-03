@@ -121,3 +121,67 @@ TEST(SimpleCellParticleTest, ParticleIterate)
         EXPECT_EQ(cCount, 3);
     }
 }
+
+std::array<double, 3> zero { 0, 0, 0 };
+
+// Check if unique pair iteration works on the particle reference list in cell
+TEST(PairListItTests, pairListIterator)
+{
+
+    std::vector<Particle> particles {
+        Particle(zero, zero, 5, 0),
+        Particle(zero, zero, 3, 0),
+        Particle(zero, zero, 1, 0),
+        Particle(zero, zero, 9, 0),
+        Particle(zero, zero, 8, 0),
+    };
+
+    Cell cell(CellType::Inner, {0, 0, 0});
+
+    for (int i = 0; i < 5; ++i) {
+        Particle& p_ref = particles[i];
+        cell.addParticle(p_ref);
+    }
+
+    std::vector<std::pair<Particle&, Particle&>> pairs;
+
+    unsigned count = 0;
+    for (auto it = cell.beginPairs(); it != cell.endPairs(); ++it) {
+        std::pair<Particle&, Particle&> pt_pair = *it;
+        for (std::pair<Particle&, Particle&> particle_pair : pairs) {
+            Particle pp1 = particle_pair.first;
+            Particle pp2 = particle_pair.second;
+            EXPECT_FALSE(
+                pt_pair.first.getM() == pp1.getM() && pt_pair.second.getM() == pp2.getM() ||
+                pt_pair.first.getM() == pp2.getM() && pt_pair.second.getM() == pp1.getM())
+                << "Found duplicate pair!";
+        }
+        pairs.emplace_back(pt_pair);
+        ++count;
+    }
+
+    EXPECT_EQ(count, 10);
+}
+
+// Check if the pair iteration works on empty list and list with one element
+TEST(PairListItTests, pairListItZero)
+{
+    Particle p1 (zero, zero, 5, 0);
+    Cell cell(CellType::Inner, {0, 0, 0});
+    Particle& p_ref = p1;
+    cell.addParticle(p_ref);
+
+    unsigned count = 0;
+    for (auto it = cell.beginPairs(); it != cell.endPairs(); ++it) {
+        ++count;
+    }
+
+    EXPECT_EQ(count, 0);
+
+    cell.removeParticle(p_ref);
+    for (auto it = cell.beginPairs(); it != cell.endPairs(); ++it) {
+        ++count;
+    }
+
+    EXPECT_EQ(count, 0);
+}

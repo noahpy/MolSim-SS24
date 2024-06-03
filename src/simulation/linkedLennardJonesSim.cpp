@@ -1,7 +1,9 @@
 
-#include "simulation/linkedLennardJonesSim.h"
+#include "linkedLennardJonesSim.h"
 #include "io/fileWriter/FileWriter.h"
 #include "io/fileReader/FileReader.h"
+#include "physics/strategy.h"
+#include <spdlog/spdlog.h>
 
 LinkedLennardJonesSimulation::LinkedLennardJonesSimulation(
     double time,
@@ -28,4 +30,21 @@ LinkedLennardJonesSimulation::LinkedLennardJonesSimulation(
           sigma)
     , cellGrid(domainOrigin, domainSize, cutoff)
 {
+}
+
+void LinkedLennardJonesSimulation::runSim()
+{
+    while (time < end_time) {
+        strategy.calF(*this);
+        strategy.calV(*this);
+        strategy.calX(*this);
+
+        ++iteration;
+        if (iteration % 10 == 0) {
+            writer->plotParticles(*this);
+        }
+        spdlog::debug("Iteration {} finished.", iteration);
+
+        time += delta_t;
+    }
 }

@@ -57,7 +57,7 @@ public:
      * @param cellIndex The index of the target cell
      * @return A list of references to all particles in the target cell and its neighbors
      */
-    [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex);
+    [[nodiscard]] std::list<CellIndex> getNeighbourCells (const CellIndex& cellIndex) const;
 
     /**
      * @brief Updates the cell lists by the position of all particles.
@@ -201,64 +201,5 @@ public:
 
         /// The current index in the halo cell vector.
         size_t index;
-    };
-
-    // PairIterator for list of particle pointers
-    class PairIterator {
-    public:
-        /**
-         * @brief Constructor for PairIterator.
-         * @param particles A reference to the list of particles.
-         * @param end Set to true to create an end iterator.
-         */
-        explicit PairIterator(ParticleRefList& particles, bool end = false);
-
-        /**
-         * @brief Dereferences the iterator, returning a pair of particle pointers.
-         * @return A pair of pointers to the current particle pair.
-         */
-        std::pair<Particle*, Particle*> operator*() const;
-
-        /**
-         * @brief Increments the iterator to the next particle pair.
-         * @return A reference to the incremented PairIterator.
-         */
-        PairIterator& operator++();
-
-        /**
-         * @brief Checks if this iterator is not equal to another PairIterator.
-         * @param other The other PairIterator to compare with.
-         * @return True if the iterators are not equal, false otherwise.
-         */
-        bool operator!=(const PairIterator& other) const;
-
-        /**
-         * @brief Returns a PairIterator pointing to the beginning of the particle pairs.
-         * @param particles A reference to the list of particles.
-         * @return A PairIterator at the beginning of the pairs.
-         */
-        static PairIterator beginPairs(ParticleRefList& particles);
-
-        /**
-         * @brief Returns a PairIterator pointing to the end of the particle pairs.
-         * @param particles A reference to the list of particles.
-         * @return A PairIterator at the end of the pairs.
-         */
-        static PairIterator endPairs(ParticleRefList& particles);
-
-    private:
-        /// A reference to the list of particles to iterate over.
-        ParticleRefList& particles;
-
-        /// An iterator to the first particle in the current pair.
-        ParticleRefList::iterator firstIt;
-
-        /// An iterator to the second particle in the current pair.
-        ParticleRefList::iterator secondIt;
-
-        /**
-         * @brief Advances the iterators to the next valid particle pair.
-         */
-        void advance();
     };
 };

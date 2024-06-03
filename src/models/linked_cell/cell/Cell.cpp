@@ -1,5 +1,6 @@
 
 #include "Cell.h"
+#include <spdlog/spdlog.h>
 
 Cell::Cell(const CellIndex index)
     : type(CellType::Inner)
@@ -74,4 +75,58 @@ int Cell::getCounter() const
 void Cell::setCounter(int count)
 {
     neighborCounter = count;
+}
+
+Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
+    : particles(particles)
+    , firstIt(particles.begin())
+    , secondIt(particles.begin())
+{
+    if (!end && particles.size() > 1) {
+        if (secondIt != particles.end()) {
+            ++secondIt;
+        }
+    } else {
+        firstIt = particles.end();
+        secondIt = particles.end();
+    }
+}
+
+std::pair<Particle&, Particle&> Cell::PairListIterator::operator*() const
+{
+    return { (*firstIt).get(), (*secondIt).get() };
+}
+
+Cell::PairListIterator& Cell::PairListIterator::operator++()
+{
+    if (firstIt == particles.end()) {
+        return *this;
+    }
+    ++secondIt;
+    if (secondIt == particles.end()) {
+        ++firstIt;
+        if (firstIt != particles.end()) {
+            secondIt = std::next(firstIt);
+            if (secondIt == particles.end()) {
+                firstIt = particles.end();
+            }
+        }
+    }
+
+    return *this;
+}
+
+bool Cell::PairListIterator::operator!=(const PairListIterator& other) const
+{
+    return firstIt != other.firstIt || secondIt != other.secondIt;
+}
+
+Cell::PairListIterator Cell::beginPairs()
+{
+    return PairListIterator(particles, false);
+}
+
+Cell::PairListIterator Cell::endPairs()
+{
+    return PairListIterator(particles, true);
 }

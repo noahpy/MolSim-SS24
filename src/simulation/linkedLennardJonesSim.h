@@ -45,6 +45,8 @@ public:
      */
     void runSim() override;
 
+    [[nodiscard]] const CellGrid& getGrid() const { return cellGrid; }
+
 protected:
     CellGrid cellGrid;
 

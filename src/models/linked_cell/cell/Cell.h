@@ -101,6 +101,21 @@ public:
     std::vector<std::pair<CellIndex, std::vector<Position>>> haloNeighbours;
     std::vector<std::pair<CellIndex, std::vector<Position>>> innerNeighbours;
 
+    // Forward declaration.
+    class PairListIterator;
+
+    /**
+    * @brief Returns a PairIterator pointing to the beginning of the particle pairs.
+    * @return A PairIterator at the beginning of the pairs.
+    */
+    PairListIterator beginPairs();
+
+    /**
+    * @brief Returns a PairIterator pointing to the end of the particle pairs.
+    * @return A PairIterator at the end of the pairs.
+    */
+    PairListIterator endPairs();
+
 private:
     /// The type of the cell (boundary, halo, or bulk).
     CellType type;
@@ -110,4 +125,44 @@ private:
 
     /// A list storing references to particles within the cell.
     ParticleRefList particles;
+
+public:
+    class PairListIterator {
+    public:
+     /**
+    * @brief Constructor for PairIterator.
+    * @param particles A reference to the list of particles.
+    * @param end Set to true to create an end iterator.
+    */
+    explicit PairListIterator(ParticleRefList& particles, bool end = false);
+
+    /**
+    * @brief Dereferences the iterator, returning a pair of particle pointers.
+    * @return A pair of pointers to the current particle pair.
+    */
+    std::pair<Particle&, Particle&> operator*() const;
+
+        /**
+         * @brief Increments the iterator to the next particle pair.
+         * @return A reference to the incremented PairIterator.
+         */
+        PairListIterator& operator++();
+
+        /**
+         * @brief Checks if this iterator is not equal to another PairIterator.
+         * @param other The other PairIterator to compare with.
+         * @return True if the iterators are not equal, false otherwise.
+         */
+        bool operator!=(const PairListIterator& other) const;
+
+    private:
+        /// A reference to the list of particles to iterate over.
+        ParticleRefList& particles;
+
+        /// An iterator to the first particle in the current pair.
+        ParticleRefList::iterator firstIt;
+
+        /// An iterator to the second particle in the current pair.
+        ParticleRefList::iterator secondIt;
+    };
 };

@@ -215,7 +215,7 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
     }
 }
 
-std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex)
+std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) const
 {
     std::list<CellIndex> cellList;
 

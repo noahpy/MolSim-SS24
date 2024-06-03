@@ -13,6 +13,8 @@ PhysicsStrategy stratFactory(unsigned simulation_type)
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };
     case 1:
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones };
+    case 2:
+        return {location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones_lc};
     default:
         spdlog::info("Unknown simulation type, proceeding with default physics strategy.");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };
