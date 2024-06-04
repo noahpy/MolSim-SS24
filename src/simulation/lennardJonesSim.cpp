@@ -20,10 +20,24 @@ LennardJonesSimulation::LennardJonesSimulation(
     , epsilon(epsilon)
     , sigma(sigma)
 {
+    this->reader->readFile(*this);
     this->alpha = -24 * epsilon;
     this->beta = std::pow(sigma, 6);
     this->gamma = -2 * std::pow(sigma, 12);
 }
+
+void LennardJonesSimulation::setEpsilon(double eps)
+{
+    this->epsilon = eps;
+    this->alpha = -24 * epsilon;
+};
+
+void LennardJonesSimulation::setSigma(double sig)
+{
+    this->sigma = sig;
+    this->beta = std::pow(sigma, 6);
+    this->gamma = -2 * std::pow(sigma, 12);
+};
 
 void LennardJonesSimulation::runSim()
 {
@@ -33,7 +47,7 @@ void LennardJonesSimulation::runSim()
         strategy.calX(*this);
 
         ++iteration;
-        if (iteration % 10 == 0) {
+        if (iteration % frequency == 0) {
             writer->plotParticles(*this);
         }
         spdlog::debug("Iteration {} finished.", iteration);

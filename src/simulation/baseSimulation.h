@@ -47,12 +47,19 @@ public:
     double delta_t; /**< The time increment */
     double end_time; /**< The end time of the simulation */
     unsigned iteration = 0; /**< The current iteration of the simulation */
+    unsigned frequency = 10; /**< The frequency for writing outputs */
     ParticleContainer& container; /**< The particle container which holds all particles */
 
     /*
      * @brief Destructor of Simulation
      * */
     virtual ~Simulation() = default;
+
+    /*
+     * @brief Set the output file name of the writer
+     * @param output Specifies the basename of the output file
+     * */
+    void setOutputFile(std::string output);
 
 protected:
     PhysicsStrategy& strategy; /**< The strategy which is used to calculate the physics */

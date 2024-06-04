@@ -4,6 +4,7 @@
 #include "utils/ArrayUtils.h"
 #include "utils/Position.h"
 #include <cmath>
+#include <spdlog/spdlog.h>
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
@@ -44,22 +45,16 @@ void CellGrid::determineNeighbours(CellIndex cell)
 
                 switch (determineCellType(neighbourIndex)) {
                 case CellType::Boundary:
-                    cells.at(cell[0])
-                        .at(cell[1])
-                        .at(cell[2])
-                        ->boundaryNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
+                    cells.at(cell[0]).at(cell[1]).at(cell[2])->boundaryNeighbours.emplace_back(
+                        std::make_pair(neighbourIndex, positions));
                     break;
                 case CellType::Halo:
-                    cells.at(cell[0])
-                        .at(cell[1])
-                        .at(cell[2])
-                        ->haloNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
+                    cells.at(cell[0]).at(cell[1]).at(cell[2])->haloNeighbours.emplace_back(
+                        std::make_pair(neighbourIndex, positions));
                     break;
                 case CellType::Inner:
-                    cells.at(cell[0])
-                        .at(cell[1])
-                        .at(cell[2])
-                        ->innerNeighbours.emplace_back(std::make_pair(neighbourIndex, positions));
+                    cells.at(cell[0]).at(cell[1]).at(cell[2])->innerNeighbours.emplace_back(
+                        std::make_pair(neighbourIndex, positions));
                     break;
                 default:
                     break;
@@ -72,6 +67,17 @@ void CellGrid::determineNeighbours(CellIndex cell)
 void CellGrid::initializeGrid()
 {
     for (int i = 0; i < 3; ++i) {
+        // if dimension is zero
+        if (domainSize[i] == 0) {
+            spdlog::error("Domain size cannot be zero!");
+            exit(EXIT_FAILURE);
+        }
+        // if cutoff radius is bigger than domain size
+        if (domainSize[i] < cutoffRadius) {
+            cellSize[i] = domainSize[i];
+            gridDimensions[i] = 3;
+            continue;
+        }
         gridDimensions[i] = static_cast<size_t>(std::floor(domainSize[i] / cutoffRadius));
         cellSize[i] = domainSize[i] / static_cast<double>(gridDimensions[i]);
         gridDimensions[i] += 2;
@@ -85,30 +91,16 @@ void CellGrid::initializeGrid()
             for (size_t z = 0; z < gridDimensions[2]; ++z) {
                 CellType type = determineCellType({ x, y, z });
                 // Initialize vectors for boundary and halo cells
-                std::unique_ptr<Cell> cellPointer;
-                if (type == CellType::Boundary) {
-                    // create unique pointer
-                    cellPointer = std::make_unique<Cell>(Cell(CellType::Boundary, { x, y, z }));
-                    // save indices
+                std::unique_ptr<Cell> cellPointer = std::make_unique<Cell>(Cell(type, { x, y, z }));
+                // save pointer
+                cells.at(x).at(y).at(z) = std::move(cellPointer);
+                // determine neighbours
+                determineNeighbours({ x, y, z });
+                if(type == CellType::Boundary) {
                     boundaryCells.push_back({ x, y, z });
-                    // save pointer
-                    cells.at(x).at(y).at(z) = std::move(cellPointer);
-                    // determine neighbours
-                    determineNeighbours({ x, y, z });
-                } else if (type == CellType::Halo) {
-                    // create unique pointer
-                    cellPointer = std::make_unique<Cell>(Cell(CellType::Halo, { x, y, z }));
-                    // save indices
+                }
+                if(type == CellType::Halo) {
                     haloCells.push_back({ x, y, z });
-                    // save pointer
-                    cells.at(x).at(y).at(z) = std::move(cellPointer);
-                    // determine neighbours
-                    determineNeighbours({ x, y, z });
-                } else {
-                    // create unique pointer
-                    cellPointer = std::make_unique<Cell>(Cell(CellType::Inner, { x, y, z }));
-                    // save pointer
-                    cells.at(x).at(y).at(z) = std::move(cellPointer);
                 }
             }
         }
@@ -130,6 +122,23 @@ CellType CellGrid::determineCellType(const std::array<size_t, 3>& indices) const
     return CellType::Inner;
 }
 
+CellIndex CellGrid::getIndexFromPos(const std::array<double, 3>& ppos) const
+{
+    auto pos = ppos - domainOrigin;
+    CellIndex indices { 0, 0, 0 };
+
+    for (int i = 0; i < 3; ++i) {
+        if (pos[i] < 0) {
+            indices[i] = 0;
+        } else if (pos[i] >= domainSize[i]) {
+            indices[i] = gridDimensions[i] - 1;
+        } else {
+            indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
+        }
+    }
+    return indices;
+}
+
 void CellGrid::updateCells()
 {
     std::list<std::pair<CellIndex, std::reference_wrapper<Particle>>> addList;
@@ -140,17 +149,7 @@ void CellGrid::updateCells()
                 ParticleRefList::iterator it = particles.begin();
                 while (it != particles.end()) {
                     // Calculate new index
-                    auto pos = (*it).get().getX() - domainOrigin;
-                    CellIndex indices { 0, 0, 0 };
-                    for (int i = 0; i < 3; ++i) {
-                        if (pos[i] < 0) {
-                            indices[i] = 0;
-                        } else if (pos[i] >= domainSize[i]) {
-                            indices[i] = gridDimensions[i] - 1;
-                        } else {
-                            indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
-                        }
-                    }
+                    CellIndex indices = getIndexFromPos((*it).get().getX());
                     // Add the particle to different cell if particle moved
                     if (indices.at(0) != x || indices.at(1) != y || indices.at(2) != z) {
                         // Save addition for later
@@ -184,20 +183,15 @@ CellGrid::HaloIterator CellGrid::haloCellIterator(Position position)
 
 void CellGrid::addParticle(Particle& particle)
 {
-    auto pos = particle.getX() - domainOrigin;
-    std::array<size_t, 3> indices { 0, 0, 0 };
-
-    for (int i = 0; i < 3; ++i) {
-        if (pos[i] < 0) {
-            indices[i] = 0;
-        } else if (pos[i] >= domainSize[i]) {
-            indices[i] = gridDimensions[i] - 1;
-        } else {
-            indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
-        }
-    }
+    CellIndex indices = getIndexFromPos(particle.getX());
 
     cells.at(indices[0]).at(indices[1]).at(indices[2])->addParticle(particle);
+    spdlog::debug(
+        "Particle {} added to cell ({}, {}, {})",
+        particle.toString(),
+        indices[0],
+        indices[1],
+        indices[2]);
 }
 
 void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)

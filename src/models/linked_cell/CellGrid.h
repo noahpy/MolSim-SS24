@@ -109,6 +109,14 @@ protected:
      */
     void determineNeighbours(CellIndex cell);
 
+
+    /**
+     * @brief Returns the index of the cell containing the specified position.
+     * @param pos The 3D position of the cell.
+     * @return The 3D index of the cell containing the specified position.
+     */
+    CellIndex getIndexFromPos (const std::array<double, 3>& pos) const;
+
 private:
     /// The size of the simulation domain in each dimension.
     std::array<double, 3> domainSize;

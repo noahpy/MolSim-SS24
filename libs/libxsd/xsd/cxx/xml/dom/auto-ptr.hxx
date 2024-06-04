@@ -1,5 +1,4 @@
 // file      : xsd/cxx/xml/dom/auto-ptr.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #ifndef XSD_CXX_XML_DOM_AUTO_PTR_HXX
@@ -54,8 +53,11 @@ namespace xsd
           unique_ptr (unique_ptr&& p): base (std::move (p)) {}
           template <class T1>
           unique_ptr (unique_ptr<T1>&& p): base (std::move (p)) {}
+
+#if !defined(__cplusplus) || __cplusplus < 201703L
           template <class T1>
           unique_ptr (std::auto_ptr<T1>&& p): base (std::move (p)) {}
+#endif
 
           unique_ptr& operator= (unique_ptr&& p)
           {

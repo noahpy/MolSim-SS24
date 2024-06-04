@@ -1,0 +1,15 @@
+
+# file format:
+# Lines of comment start with '#', empty lines are skipped
+# Each line specifies a cluster.
+# The first character seperated with space defines the cluster type.
+# According to the cluster types, following parameter specifications
+# are expected.
+#
+# Cluster specifications:
+#   - Cuboid Cluster
+#     C posx posy posz width height depth spacing mass meanVel vx vy vz dim
+#   - Spherical Cluster
+#     S posx posy posz radius sphereDimensions spacing mass meanVel vx vy vz dimBrownian
+
+S 0.0 0.0 0.0 8 3 1.1225 1 0.1 1 2 3 3

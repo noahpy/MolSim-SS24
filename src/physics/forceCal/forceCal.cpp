@@ -1,10 +1,8 @@
 
 #include "physics/forceCal/forceCal.h"
-#include "simulation/baseSimulation.h"
 #include "models/linked_cell/CellGrid.h"
+#include "simulation/baseSimulation.h"
 #include "utils/ArrayUtils.h"
-
-class LinkedLennardJonesSimulation;
 
 void force_gravity(const Simulation& sim)
 {
@@ -86,7 +84,8 @@ void force_lennard_jones(const Simulation& sim)
 
 void force_lennard_jones_lc(const Simulation& sim)
 {
-    const LinkedLennardJonesSimulation& len_sim = static_cast<const LinkedLennardJonesSimulation&>(sim);
+    const LinkedLennardJonesSimulation& len_sim =
+        static_cast<const LinkedLennardJonesSimulation&>(sim);
 
     // these values are constant for the simulation and are precomputed
     double alpha = len_sim.getAlpha();
@@ -95,19 +94,25 @@ void force_lennard_jones_lc(const Simulation& sim)
 
     const CellGrid& cellGrid = len_sim.getGrid();
 
-    for (size_t i = 0; i < cellGrid.cells.size(); ++i) {
+    // for all cells in the grid
+    for (size_t x = 0; x < cellGrid.cells.size(); ++x) {
         for (size_t y = 0; y < cellGrid.cells[0].size(); ++y) {
             for (size_t z = 0; z < cellGrid.cells[0][0].size(); ++z) {
-                Cell& main = *cellGrid.cells[i][y][z];
-                for (auto it = main.beginPairs(); it != main.endPairs(); ++it) {
+                // calculate the LJ forces in the cell
+                for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
+                     it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
+                     ++it) {
                     auto pair = *it;
                     lj_calc(pair.first, pair.second, alpha, beta, gamma);
                 }
-                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({i,y,z});
-                for (auto index: neighbors) {
-                    Cell& neighbour = *cellGrid.cells[index[0]][index[1]][index[2]];
-                    for (auto p1 : main.getParticles()) {
-                        for (auto p2 : neighbour) {
+                // calculate LJ forces with the neighbours
+                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
+                for (auto i : neighbors) {
+                    // for all particles in the cell
+                    for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
+                        // go over all particles in the neighbour
+                        for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
+                            // and calculate the force
                             lj_calc(p1, p2, alpha, beta, gamma);
                         }
                     }

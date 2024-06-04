@@ -1,5 +1,4 @@
 // file      : xsd/cxx/tree/containers.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #ifndef XSD_CXX_TREE_CONTAINERS_HXX
@@ -129,14 +128,12 @@ namespace xsd
       class one<T, false>
       {
       public:
+        typedef T value_type;
+
         ~one ();
-
         one (container*);
-
         one (const T&, container*);
-
         one (XSD_AUTO_PTR<T>, container*);
-
         one (const one&, flags, container*);
 
         one&
@@ -193,16 +190,10 @@ namespace xsd
       class one<T, true>
       {
       public:
-        one (container*)
-            : present_ (false)
-        {
-        }
+        typedef T value_type;
 
-        one (const T& x, container*)
-            : x_ (x), present_ (true)
-        {
-        }
-
+        one (container*): present_ (false) {}
+        one (const T& x, container*) : x_ (x), present_ (true) {}
         one (const one& x, flags, container*)
             : x_ (x.x_), present_ (x.present_)
         {
@@ -258,6 +249,8 @@ namespace xsd
       class optional<T, false>
       {
       public:
+        typedef T value_type;
+
         ~optional ();
 
         explicit
@@ -373,11 +366,10 @@ namespace xsd
       class optional<T, true>
       {
       public:
+        typedef T value_type;
+
         explicit
-        optional (container* = 0)
-            : present_ (false)
-        {
-        }
+        optional (container* = 0) : present_ (false) {}
 
         explicit
         optional (const T&, container* = 0);
@@ -866,6 +858,11 @@ namespace xsd
         {
         }
 
+#ifdef XSD_CXX11
+        sequence&
+        operator= (const sequence&) = default;
+#endif
+
       public:
         void
         assign (size_type n, const T& x)
@@ -1098,7 +1095,7 @@ namespace xsd
         }
 
         // Note that the container object of the two sequences being
-	// swapped should be the same.
+        // swapped should be the same.
         //
         void
         swap (sequence& x)
@@ -1140,6 +1137,11 @@ namespace xsd
             : base_sequence (s)
         {
         }
+
+#ifdef XSD_CXX11
+        sequence&
+        operator= (const sequence&) = default;
+#endif
       };
 
 

@@ -43,6 +43,18 @@ public:
     void runSim() override;
 
     /**
+     * @brief Set the epsilon parameter of the Lennard-Jones potential
+     * @param eps The new epsilon value
+     */
+    void setEpsilon(double eps);
+
+    /**
+     * @brief Set the sigma parameter of the Lennard-Jones potential
+     * @param sig The new sigma value
+     */
+    void setSigma(double sig);
+
+    /**
      * @brief Get the epsilon parameter of the Lennard-Jones potential
      * @return The epsilon parameter
      */
