@@ -1,17 +1,18 @@
-#include "lennardJonesSim.h"
-#include "models/linked_cell/CellGrid.h"
+
 #include "physics/boundaryConditions/BoundaryConditionHandler.h"
+#include "simulation/linkedLennardJonesSim.h"
 
 /**
- * @brief Simulation class for the Lennard-Jones simulation within a restricted domain
- * @details This class is a subclass of the Lennard-Jones simulation class and is used to simulate the movement of
- * particles according to the Lennard-Jones potential within a restricted domain. This is the simulation class used in the
- * third problem sheet.
+ * @brief Simulation class for the Lennard-Jones simulation within a restricted domain and linked
+ * cell algorithm
+ * @details This class is a subclass of the Lennard-Jones simulation class using linked cells and is
+ * used to simulate the movement of particles according to the Lennard-Jones potential within a
+ * restricted domain. This is the simulation class used in the third problem sheet.
  */
-class LennardJonesDomainSimulation : public LennardJonesSimulation {
+class LennardJonesDomainSimulation : public LinkedLennardJonesSimulation {
 public:
     // lift simulation constructor
-    using LennardJonesSimulation::LennardJonesSimulation;
+    using LinkedLennardJonesSimulation::LinkedLennardJonesSimulation;
 
     /**
      * @brief Construct a new Lennard Jones Domain Simulation object
@@ -24,8 +25,13 @@ public:
      * @param reader The reader object to read the input from file
      * @param epsilon The epsilon parameter of the Lennard-Jones potential
      * @param sigma The sigma parameter of the Lennard-Jones potential
-     * @param domain The domain in which the particles are restricted
+     * @param domainOrigin The origin of the simulation domain
+     * @param domainSize The size of the simulation domain
+     * @param cutoff The cutoff radius of the simulation
      * @param bcHandler The boundary condition handler
+     * @param frequency The frequency for writing outputs (default = 10)
+     * @param updateFrequency The frequency for updating the grid (default = 10)
+     * @param read_file Whether to read the input file (default = true)
      */
     LennardJonesDomainSimulation(
         double time,
@@ -37,8 +43,13 @@ public:
         std::unique_ptr<FileReader> reader,
         double epsilon,
         double sigma,
-        CellGrid& domain,
-        BoundaryConditionHandler& bcHandler);
+        std::array<double, 3> domainOrigin,
+        std::array<double, 3> domainSize,
+        double cutoff,
+        BoundaryConditionHandler& bcHandler,
+        unsigned frequency = 10,
+        unsigned updateFrequency = 10,
+        bool read_file = true);
 
     /**
      * @brief Run the simulation
@@ -46,7 +57,5 @@ public:
      */
     void runSim() override;
 
-    CellGrid& domain; /**< The domain into which the particles are restricted */
     BoundaryConditionHandler& bcHandler; /**< The boundary condition handler */
 };
-

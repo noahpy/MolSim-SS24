@@ -35,38 +35,44 @@ namespace is_container_impl {
      * @tparam T
      */
     template <typename T>
-    struct is_container : std::false_type {};
+    struct is_container : std::false_type {
+    };
     /**
      * Specialization to allow std::array.
      * @tparam T
      * @tparam N
      */
     template <typename T, std::size_t N>
-    struct is_container<std::array<T, N>> : std::true_type {};
+    struct is_container<std::array<T, N>> : std::true_type {
+    };
     /**
      * Specialization to allow std::vector.
      * @tparam Args
      */
     template <typename... Args>
-    struct is_container<std::vector<Args...>> : std::true_type {};
+    struct is_container<std::vector<Args...>> : std::true_type {
+    };
     /**
      * Specialization to allow std::list.
      * @tparam Args
      */
     template <typename... Args>
-    struct is_container<std::list<Args...>> : std::true_type {};
+    struct is_container<std::list<Args...>> : std::true_type {
+    };
     /**
      * Specialization to allow std::set.
      * @tparam Args
      */
     template <typename... Args>
-    struct is_container<std::set<Args...>> : std::true_type {};
+    struct is_container<std::set<Args...>> : std::true_type {
+    };
     /**
      * Specialization to allow std::unordered_set
      * @tparam Args
      */
     template <typename... Args>
-    struct is_container<std::unordered_set<Args...>> : std::true_type {};
+    struct is_container<std::unordered_set<Args...>> : std::true_type {
+    };
 } // namespace is_container_impl
 
 /**

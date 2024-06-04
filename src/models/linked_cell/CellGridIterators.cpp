@@ -6,7 +6,10 @@
 // forward declare
 std::pair<size_t, std::pair<size_t, size_t>> getBoundaryIndices(Position position);
 size_t getCoordinateIrrelevantAxis(
-    Position position, std::array<size_t, 3> gridDimensions, size_t irrelevantBoundary, CellType cellType);
+    Position position,
+    std::array<size_t, 3> gridDimensions,
+    size_t irrelevantBoundary,
+    CellType cellType);
 size_t getNumberOfRelevantBoundaries(size_t dim1, size_t dim2, size_t dimZ);
 
 // TODO Move the creation the iterators to the class and then only return the fresh ones
@@ -112,7 +115,8 @@ CellGrid::HaloIterator::HaloIterator(
     boundaries = relevantBoundaries;
 
     // TODO check in 2D case
-    //std::cout << "Correct Number (Halo) " << (insertionIndex == relevantBoundaries.size()) << std::endl;
+    // std::cout << "Correct Number (Halo) " << (insertionIndex == relevantBoundaries.size()) <<
+    // std::endl;
 }
 
 CellGrid::HaloIterator CellGrid::HaloIterator::begin()
@@ -187,7 +191,10 @@ std::pair<size_t, std::pair<size_t, size_t>> getBoundaryIndices(Position positio
  * @return The coordinate of the irrelevant axis
  */
 size_t getCoordinateIrrelevantAxis(
-    Position position, std::array<size_t, 3> gridDimensions, size_t irrelevantBoundary, CellType cellType)
+    Position position,
+    std::array<size_t, 3> gridDimensions,
+    size_t irrelevantBoundary,
+    CellType cellType)
 {
     size_t coordinateIrrelevantAxis;
     switch (position) {
@@ -200,7 +207,8 @@ size_t getCoordinateIrrelevantAxis(
     case BOTTOM:
     case BACK:
         coordinateIrrelevantAxis = gridDimensions[irrelevantBoundary] - 1;
-        if (cellType == CellType::Boundary) coordinateIrrelevantAxis-=1;
+        if (cellType == CellType::Boundary)
+            coordinateIrrelevantAxis -= 1;
         break;
     }
 

@@ -111,15 +111,15 @@ public:
     class PairListIterator;
 
     /**
-    * @brief Returns a PairIterator pointing to the beginning of the particle pairs.
-    * @return A PairIterator at the beginning of the pairs.
-    */
+     * @brief Returns a PairIterator pointing to the beginning of the particle pairs.
+     * @return A PairIterator at the beginning of the pairs.
+     */
     PairListIterator beginPairs();
 
     /**
-    * @brief Returns a PairIterator pointing to the end of the particle pairs.
-    * @return A PairIterator at the end of the pairs.
-    */
+     * @brief Returns a PairIterator pointing to the end of the particle pairs.
+     * @return A PairIterator at the end of the pairs.
+     */
     PairListIterator endPairs();
 
 private:
@@ -135,18 +135,18 @@ private:
 public:
     class PairListIterator {
     public:
-     /**
-    * @brief Constructor for PairIterator.
-    * @param particles A reference to the list of particles.
-    * @param end Set to true to create an end iterator.
-    */
-    explicit PairListIterator(ParticleRefList& particles, bool end = false);
+        /**
+         * @brief Constructor for PairIterator.
+         * @param particles A reference to the list of particles.
+         * @param end Set to true to create an end iterator.
+         */
+        explicit PairListIterator(ParticleRefList& particles, bool end = false);
 
-    /**
-    * @brief Dereferences the iterator, returning a pair of particle pointers.
-    * @return A pair of pointers to the current particle pair.
-    */
-    std::pair<Particle&, Particle&> operator*() const;
+        /**
+         * @brief Dereferences the iterator, returning a pair of particle pointers.
+         * @return A pair of pointers to the current particle pair.
+         */
+        std::pair<Particle&, Particle&> operator*() const;
 
         /**
          * @brief Increments the iterator to the next particle pair.

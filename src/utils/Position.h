@@ -1,13 +1,15 @@
 
 #pragma once
+#include <array>
 #include <stdexcept>
 #include <vector>
-#include <array>
 
 /**
  * @brief An enum to represent the position across a cube
  */
 enum Position { LEFT, RIGHT, TOP, BOTTOM, FRONT, BACK };
+static std::vector<Position> allPositions = { Position::LEFT,   Position::RIGHT, Position::TOP,
+                                              Position::BOTTOM, Position::FRONT, Position::BACK };
 
 /**
  * @brief Converts a coordinate to a position. This assumes the halo cells added to the bounds i.e.
@@ -45,7 +47,8 @@ inline std::vector<Position> coordinateToPosition(
     return positions;
 }
 
-inline std::vector<Position> relCoordinateToPos(std::array<size_t, 3> coordinate){
+inline std::vector<Position> relCoordinateToPos(std::array<size_t, 3> coordinate)
+{
     std::vector<Position> positions;
     if (coordinate[0] == -1) {
         positions.push_back(Position::LEFT);

@@ -2,7 +2,8 @@
 #include "simulation/LennardJonesDomainSimulation.h"
 
 /**
- * @brief The OverflowBoundary class is a class that represents a boundary condition where particles that leave the domain are removed
+ * @brief The OverflowBoundary class is a class that represents a boundary condition where particles
+ * that leave the domain are removed
  */
 class OverflowBoundary : public BoundaryCondition {
 public:
@@ -10,7 +11,8 @@ public:
     using BoundaryCondition::BoundaryCondition;
 
     /**
-     * @brief The call to apply the boundary condition to the simulation before all updates are made. This does nothing, as all changes are performed after the updates
+     * @brief The call to apply the boundary condition to the simulation before all updates are
+     * made. This does nothing, as all changes are performed after the updates
      * @param simulation The simulation to apply the boundary to
      * @return void
      */
@@ -18,7 +20,8 @@ public:
         // Do nothing
     };
     /**
-     * @brief The call to apply the boundary condition to the simulation after all updates are made. This will remove the particles that left the domain
+     * @brief The call to apply the boundary condition to the simulation after all updates are made.
+     * This will remove the particles that left the domain
      * @param simulation The simulation to apply the boundary to
      * @return void
      */

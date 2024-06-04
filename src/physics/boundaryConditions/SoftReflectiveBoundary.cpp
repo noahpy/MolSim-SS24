@@ -10,12 +10,15 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
     // reset old halo references used previously
-    for (auto haloCellIndex : LGDSim.domain.haloCellIterator(position))
-        LGDSim.domain.cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]->clearParticles();
+    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position))
+        LGDSim.getGrid()
+            .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+            ->clearParticles();
 
-    for (auto boundaryCellIndex : LGDSim.domain.boundaryCellIterator(position)) {
+    for (auto boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
         for (auto& particle :
-             LGDSim.domain.cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
+             LGDSim.getGrid()
+                 .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
                  ->getParticles()) {
             std::array<double, 3> pos = particle.get().getX();
             std::array<double, 3> pointOnBoundaryPlane {};
@@ -24,12 +27,12 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             case TOP:
             case LEFT:
             case FRONT:
-                pointOnBoundaryPlane = LGDSim.domain.domainOrigin;
+                pointOnBoundaryPlane = LGDSim.getGrid().domainOrigin;
                 break;
             case BOTTOM:
             case RIGHT:
             case BACK:
-                pointOnBoundaryPlane = LGDSim.domain.domainEnd;
+                pointOnBoundaryPlane = LGDSim.getGrid().domainEnd;
                 break;
             }
 
@@ -42,7 +45,7 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 
             // Get the corresponding halo cell
             CellIndex neighboringHaloCellIndex = filterHaloNeighbors(
-                LGDSim.domain
+                LGDSim.getGrid()
                     .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
                     ->haloNeighbours);
 
@@ -59,7 +62,9 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             }
 
             // add the particle to the halo cell
-            LGDSim.domain.cells[neighboringHaloCellIndex[0]][neighboringHaloCellIndex[1]][neighboringHaloCellIndex[2]]
+            LGDSim.getGrid()
+                .cells[neighboringHaloCellIndex[0]][neighboringHaloCellIndex[1]]
+                      [neighboringHaloCellIndex[2]]
                 ->addParticle(insertedParticles[insertionIndex++]);
         }
     }

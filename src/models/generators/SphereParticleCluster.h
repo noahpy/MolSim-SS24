@@ -9,13 +9,20 @@ public:
      * @details A sphere is either a singe disc in the case of 2D spheres or a stack of discs with
      * decreasing radii. Discs are a collection of rings.
      * @param origin The center of the sphere
-     * @param radius The radius of the sphere to be generated in number of particles (i.e. 1 -> a single particle, 2 -> single particle in the center surrounded by a single circle of particles, etc.)
-     * @param sphereDimensions The dimensionality of the sphere (must be 2 i.e. disc or 3 i.e. sphere)
-     * @param spacing The spacing between the particles (i.e. separation between the discs and the distance along the circumference of a given ring)
+     * @param radius The radius of the sphere to be generated in number of particles (i.e. 1 -> a
+     * single particle, 2 -> single particle in the center surrounded by a single circle of
+     * particles, etc.)
+     * @param sphereDimensions The dimensionality of the sphere (must be 2 i.e. disc or 3 i.e.
+     * sphere)
+     * @param spacing The spacing between the particles (i.e. separation between the discs and the
+     * distance along the circumference of a given ring)
      * @param mass The mass of the particles within the cluster
      * @param initialVelocity The initial velocity of all particles in the cluster
-     * @param meanVelocity The mean velocity of all particles in the cluster (passed to maxwellBoltzmannDistributedVelocity())
-     * @param brownianMotionDimensions The dimensions of the cluster (<= 3) will be passed to maxwellBoltzmannDistributedVelocity() if set to 0 no brownian motion will be added, if set to 1 then only on the x axis, then x+y, and finally x+y+z axis
+     * @param meanVelocity The mean velocity of all particles in the cluster (passed to
+     * maxwellBoltzmannDistributedVelocity())
+     * @param brownianMotionDimensions The dimensions of the cluster (<= 3) will be passed to
+     * maxwellBoltzmannDistributedVelocity() if set to 0 no brownian motion will be added, if set to
+     * 1 then only on the x axis, then x+y, and finally x+y+z axis
      */
     SphereParticleCluster(
         std::array<double, 3> origin,
@@ -46,9 +53,12 @@ public:
     std::string toString() const override;
 
 protected:
-    size_t sphereRadius; /**< The radius of the sphere to be generated. This is a natural number indicating the number of particles along the radius*/
-    double spacing; /**< The spacing between the particles. This is also the spacing between the discs and the distance between particles along the circumference */
-    size_t sphereDimensions; /**< The dimensionality of the sphere. Can be 2 (a single disc) or 3 (a sphere) */
+    size_t sphereRadius; /**< The radius of the sphere to be generated. This is a natural number
+                            indicating the number of particles along the radius*/
+    double spacing; /**< The spacing between the particles. This is also the spacing between the
+                       discs and the distance between particles along the circumference */
+    size_t sphereDimensions; /**< The dimensionality of the sphere. Can be 2 (a single disc) or 3 (a
+                                sphere) */
 
 private:
     size_t totalNumberOfParticles; /**< The total amount of particles that will be generated */
@@ -57,18 +67,22 @@ private:
      * @param radius The radius in particles
      * @return The radius in distance ((radius_in_particles - 1) * spacing)
      */
-    double getRealRadius(size_t radius) const {
-        if (radius == 0) return 0;
+    double getRealRadius(size_t radius) const
+    {
+        if (radius == 0)
+            return 0;
 
-        return ((double) radius - 1) * spacing;
+        return ((double)radius - 1) * spacing;
     }
     /**
-     * @brief Get the real radius of a ring given the radius of the sphere and the offset along the z axis
+     * @brief Get the real radius of a ring given the radius of the sphere and the offset along the
+     * z axis
      * @param radius The radius of the circle in number of particles
      * @param offset The offset of the disc on the z-axis
      * @return The real radius regarding the offset of the disc
      */
-    double getRealRadius(size_t radius, double offset) const {
+    double getRealRadius(size_t radius, double offset) const
+    {
         if (std::abs(getRealRadius(radius) - offset) < 1e-6) {
             return 0; // if they are the same, then the radius must be 0
         }

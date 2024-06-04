@@ -3,7 +3,8 @@
 #include "utils/Position.h"
 
 /**
- * @brief The BoundaryCondition class is an abstract class that defines the interface for boundary conditions
+ * @brief The BoundaryCondition class is an abstract class that defines the interface for boundary
+ * conditions
  */
 class BoundaryCondition {
 public:
@@ -11,7 +12,13 @@ public:
      * @brief Constructor for the BoundaryCondition class
      * @param position The position of the boundary condition
      */
-    explicit BoundaryCondition(Position position) : position(position) {}
+    explicit BoundaryCondition(Position position)
+        : position(position)
+    {
+    }
+
+    // Virtual destructor
+    virtual ~BoundaryCondition() = default;
 
     /**
      * @brief The call to apply the boundary condition to the simulation before any updates are made

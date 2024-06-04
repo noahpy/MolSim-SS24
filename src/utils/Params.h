@@ -7,7 +7,7 @@ enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
 
 enum WriterType { XYZ, VTK };
 
-enum SimulationType { PLANET, LJ, LINKED_LJ };
+enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ };
 
 class Params {
 public:

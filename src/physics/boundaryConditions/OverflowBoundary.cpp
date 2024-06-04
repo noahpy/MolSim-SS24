@@ -9,10 +9,11 @@ void OverflowBoundary::postUpdateBoundaryHandling(Simulation& simulation)
 
     // merge all particles that are in halo cells to remove them
     ParticleRefList particlesToRemove {};
-    for (auto haloCellIndex : LGDSim.domain.haloCellIterator(position)) {
+    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
         particlesToRemove.splice(
             particlesToRemove.end(),
-            LGDSim.domain.cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+            LGDSim.getGrid()
+                .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
                 ->getParticles());
     }
 
@@ -26,7 +27,9 @@ void OverflowBoundary::postUpdateBoundaryHandling(Simulation& simulation)
     LGDSim.container.removeParticles(particlesToRemoveMap);
 
     // Remove references to the particles that were deleted
-    for (auto haloCellIndex : LGDSim.domain.haloCellIterator(position)) {
-        LGDSim.domain.cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]->clearParticles();
+    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
+        LGDSim.getGrid()
+            .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+            ->clearParticles();
     }
 }

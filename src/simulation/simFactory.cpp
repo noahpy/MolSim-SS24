@@ -2,6 +2,7 @@
 #include "simFactory.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
+#include "simulation/LennardJonesDomainSimulation.h"
 #include "simulation/linkedLennardJonesSim.h"
 #include "simulation/planetSim.h"
 #include <spdlog/spdlog.h>
@@ -13,6 +14,15 @@ std::unique_ptr<Simulation> simFactory(
     std::unique_ptr<FileWriter> writePointer,
     std::unique_ptr<FileReader> readPointer)
 {
+
+    std::vector<std::unique_ptr<BoundaryCondition>> boundaries(6);
+    size_t insert = 0;
+    for (Position pos : allPositions) {
+        boundaries[insert++] = std::make_unique<OverflowBoundary>(pos);
+    }
+    BoundaryConditionHandler bcHandlder { std::move(boundaries) };
+
+
     switch (params.simulation_type) {
     case SimulationType::PLANET:
         spdlog::info("Initializing Planet Simulation with:");
@@ -84,6 +94,44 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_origin,
             params.domain_size,
             params.cutoff,
+            params.plot_frequency,
+            params.update_frequency);
+    case SimulationType::DOMAIN_LJ:
+        spdlog::info("Initializing Linked and domain bound LJ Simulation with:");
+        spdlog::info(
+            "delta_t: {}, end_time: {}, epsilon: {}, sigma: {}, plot_frequency: {}",
+            params.delta_t,
+            params.end_time,
+            params.epsilon,
+            params.sigma,
+            params.plot_frequency);
+        spdlog::info(
+            "domain_origin: ({}, {}, {}), domain_size: ({}, {}, {}), cutoff: {}, update_frequency: "
+            "{}",
+            params.domain_origin[0],
+            params.domain_origin[1],
+            params.domain_origin[2],
+            params.domain_size[0],
+            params.domain_size[1],
+            params.domain_size[2],
+            params.cutoff,
+            params.update_frequency);
+        // TODO get boundaries
+
+        return std::make_unique<LennardJonesDomainSimulation>(
+            params.start_time,
+            params.delta_t,
+            params.end_time,
+            particles,
+            strat,
+            std::move(writePointer),
+            std::move(readPointer),
+            params.epsilon,
+            params.sigma,
+            params.domain_origin,
+            params.domain_size,
+            params.cutoff,
+            bcHandlder,
             params.plot_frequency,
             params.update_frequency);
     default:

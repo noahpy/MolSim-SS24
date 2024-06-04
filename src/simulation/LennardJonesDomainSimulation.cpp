@@ -15,9 +15,14 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
     std::unique_ptr<FileReader> reader,
     double epsilon,
     double sigma,
-    CellGrid& domain,
-    BoundaryConditionHandler& bcHandler)
-    : LennardJonesSimulation(
+    std::array<double, 3> domainOrigin,
+    std::array<double, 3> domainSize,
+    double cutoff,
+    BoundaryConditionHandler& bcHandler,
+    unsigned frequency,
+    unsigned updateFrequency,
+    bool read_file)
+    : LinkedLennardJonesSimulation(
           time,
           delta_t,
           end_time,
@@ -26,8 +31,13 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
           std::move(writer),
           std::move(reader),
           epsilon,
-          sigma)
-    , domain(domain)
+          sigma,
+          domainOrigin,
+          domainSize,
+          cutoff,
+          frequency,
+          updateFrequency,
+          read_file)
     , bcHandler(bcHandler)
 {
 }
@@ -44,10 +54,13 @@ void LennardJonesDomainSimulation::runSim()
         bcHandler.postUpdateBoundaryHandling(*this);
 
         ++iteration;
-        if (iteration % 10 == 0) {
+        if (iteration % frequency == 0) {
             writer->plotParticles(*this);
         }
-        spdlog::debug("Iteration {} finished.", iteration);
+        if (iteration % updateFrequency == 0) {
+            cellGrid.updateCells();
+        }
+        spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;
     }

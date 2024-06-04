@@ -62,7 +62,7 @@ public:
      * @param cellIndex The index of the target cell
      * @return A list of references to all particles in the target cell and its neighbors
      */
-    [[nodiscard]] std::list<CellIndex> getNeighbourCells (const CellIndex& cellIndex) const;
+    [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const;
 
     /**
      * @brief Updates the cell lists by the position of all particles.
@@ -80,27 +80,26 @@ public:
      * @param position The position of the boundary.
      * @return A BoundaryIterator for the given position
      */
-    BoundaryIterator boundaryCellIterator(Position position);
+    BoundaryIterator boundaryCellIterator(Position position) const;
 
     /**
      * @brief Returns an iterator to the beginning of halo particles.
      * @param position The position of the boundary.
      * @return A HaloIterator for the given position
      */
-    HaloIterator haloCellIterator(Position position);
+    HaloIterator haloCellIterator(Position position) const;
 
-
-    /* @brief Sets the domain origin. 
+    /* @brief Sets the domain origin.
      * @param domainOrigin 3D array representing the "origin" of the simulation domain.
      * */
     void setDomainOrigin(const std::array<double, 3>& domainOrigin);
 
-    /* @brief Sets the domain size. 
+    /* @brief Sets the domain size.
      * @param domainSize A 3D array representing the size of the simulation domain.
      * */
     void setDomainSize(const std::array<double, 3>& domainSize);
 
-    /* @brief Sets the cutoff radius. 
+    /* @brief Sets the cutoff radius.
      * @param cutoffRadius The cutoff radius for particle interactions.
      * */
     void setCutoffRadius(double cutoffRadius);
@@ -124,13 +123,12 @@ protected:
      */
     void determineNeighbours(CellIndex cell);
 
-
     /**
      * @brief Returns the index of the cell containing the specified position.
      * @param pos The 3D position of the cell.
      * @return The 3D index of the cell containing the specified position.
      */
-    CellIndex getIndexFromPos (const std::array<double, 3>& pos) const;
+    CellIndex getIndexFromPos(const std::array<double, 3>& pos) const;
 
 private:
     /// The size of the simulation domain in each dimension.
@@ -166,12 +164,14 @@ public:
         BoundaryIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
 
         /**
-         * @brief Returns an iterator to the beginning of boundary cells of the given position (for range based loop)
+         * @brief Returns an iterator to the beginning of boundary cells of the given position (for
+         * range based loop)
          * @return The beginning BoundaryIterator
          */
         BoundaryIterator begin();
         /**
-         * @brief Returns an iterator to the end of boundary cells of the given position (for range based loop)
+         * @brief Returns an iterator to the end of boundary cells of the given position (for range
+         * based loop)
          * @return The end BoundaryIterator
          */
         BoundaryIterator end();
@@ -218,12 +218,14 @@ public:
         HaloIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
 
         /**
-         * @brief Returns an iterator to the beginning of halo cells of the given position (for range based loop)
+         * @brief Returns an iterator to the beginning of halo cells of the given position (for
+         * range based loop)
          * @return The beginning HaloIterator
          */
         HaloIterator begin();
         /**
-         * @brief Returns an iterator to the end of halo cells of the given position (for range based loop)
+         * @brief Returns an iterator to the end of halo cells of the given position (for range
+         * based loop)
          * @return The end HaloIterator
          */
         HaloIterator end();

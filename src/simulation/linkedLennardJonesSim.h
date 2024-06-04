@@ -1,7 +1,7 @@
 
 #pragma once
-#include "simulation/lennardJonesSim.h"
 #include "models/linked_cell/CellGrid.h"
+#include "simulation/lennardJonesSim.h"
 
 /**
  * @brief Simulation class for the Lennard-Jones simulation
@@ -38,7 +38,7 @@ public:
         double epsilon,
         double sigma,
         std::array<double, 3> domainOrigin,
-        std::array<double, 3> domainSize, 
+        std::array<double, 3> domainSize,
         double cutoff,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
@@ -51,7 +51,6 @@ public:
     void runSim() override;
 
     [[nodiscard]] const CellGrid& getGrid() const { return cellGrid; }
-
 
     /**
      * @brief Set the origin of the simulation domain
@@ -74,5 +73,4 @@ public:
 protected:
     CellGrid cellGrid;
     unsigned updateFrequency;
-
 };

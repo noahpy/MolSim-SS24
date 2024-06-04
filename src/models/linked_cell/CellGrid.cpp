@@ -18,7 +18,9 @@ CellGrid::CellGrid(
     , gridDimensions({ 0, 0, 0 })
     , cellSize({ 0.0, 0.0, 0.0 })
     // TODO check if this is the right interpretation of the dimensions
-    , domainEnd({domainOrigin[0] + domainSize[0], domainOrigin[1] - domainSize[1], domainOrigin[2] + domainSize[2]})
+    , domainEnd({ domainOrigin[0] + domainSize[0],
+                  domainOrigin[1] - domainSize[1],
+                  domainOrigin[2] + domainSize[2] })
 {
     initializeGrid();
 }
@@ -98,10 +100,10 @@ void CellGrid::initializeGrid()
                 cells.at(x).at(y).at(z) = std::move(cellPointer);
                 // determine neighbours
                 determineNeighbours({ x, y, z });
-                if(type == CellType::Boundary) {
+                if (type == CellType::Boundary) {
                     boundaryCells.push_back({ x, y, z });
                 }
-                if(type == CellType::Halo) {
+                if (type == CellType::Halo) {
                     haloCells.push_back({ x, y, z });
                 }
             }
@@ -173,14 +175,14 @@ void CellGrid::updateCells()
 }
 
 // Methods to get boundary and halo particle iterators
-CellGrid::BoundaryIterator CellGrid::boundaryCellIterator(Position position)
+CellGrid::BoundaryIterator CellGrid::boundaryCellIterator(Position position) const
 {
-    return {position, gridDimensions, false};
+    return { position, gridDimensions, false };
 }
 
-CellGrid::HaloIterator CellGrid::haloCellIterator(Position position)
+CellGrid::HaloIterator CellGrid::haloCellIterator(Position position) const
 {
-    return {position, gridDimensions, false};
+    return { position, gridDimensions, false };
 }
 
 void CellGrid::addParticle(Particle& particle)
@@ -282,7 +284,6 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
     return cellList;
 }
 
-
 void CellGrid::setCutoffRadius(double cutoffRadius)
 {
     this->cutoffRadius = cutoffRadius;
@@ -296,4 +297,4 @@ void CellGrid::setDomainSize(const std::array<double, 3>& domainSize)
 void CellGrid::setDomainOrigin(const std::array<double, 3>& domainOrigin)
 {
     this->domainOrigin = domainOrigin;
-} 
+}

@@ -3,7 +3,8 @@
 #include "simulation/baseSimulation.h"
 
 /**
- * @brief The BoundaryConditionHandler class is a class that handles the application of boundary conditions to a simulation
+ * @brief The BoundaryConditionHandler class is a class that handles the application of boundary
+ * conditions to a simulation
  */
 class BoundaryConditionHandler {
 public:

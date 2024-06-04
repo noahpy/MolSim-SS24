@@ -18,7 +18,15 @@ LennardJonesSimulation::LennardJonesSimulation(
     double sigma,
     unsigned frequency,
     bool read_file)
-    : Simulation(time, delta_t, end_time, container, strat, std::move(writer), std::move(reader), frequency)
+    : Simulation(
+          time,
+          delta_t,
+          end_time,
+          container,
+          strat,
+          std::move(writer),
+          std::move(reader),
+          frequency)
     , epsilon(epsilon)
     , sigma(sigma)
 {
