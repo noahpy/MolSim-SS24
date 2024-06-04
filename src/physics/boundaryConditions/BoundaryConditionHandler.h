@@ -1,8 +1,6 @@
 
 #include "physics/boundaryConditions/BoundaryCondition.h"
 #include "physics/boundaryConditions/BoundaryConfig.h"
-#include "physics/boundaryConditions/OverflowBoundary.h"
-#include "physics/boundaryConditions/SoftReflectiveBoundary.h"
 #include "simulation/baseSimulation.h"
 #include <list>
 
@@ -16,26 +14,7 @@ public:
      * @brief Constructor for the BoundaryConditionHandler class
      * @param boundaryConfig The boundary conditions to apply described in the object
      */
-    explicit BoundaryConditionHandler(const BoundaryConfig& boundaryConfig)
-        : boundaryConditions()
-    {
-        for (auto boundary : boundaryConfig.boundaryMap) {
-            Position position = boundary.first;
-            BoundaryType type = boundary.second;
-
-            switch (type) {
-            case BoundaryType::OVERFLOW:
-                boundaryConditions.push_back(std::make_unique<OverflowBoundary>(position));
-                break;
-            case BoundaryType::SOFT_REFLECTIVE:
-                boundaryConditions.push_back(std::make_unique<SoftReflectiveBoundary>(position));
-                break;
-            default:
-                spdlog::error("Boundary type not recognized.");
-                break;
-            }
-        }
-    }
+    explicit BoundaryConditionHandler(const BoundaryConfig& boundaryConfig);
 
     /**
      * @brief The call to apply the boundary condition to the simulation before any updates are made
