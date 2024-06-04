@@ -179,7 +179,7 @@ CellGrid::BoundaryIterator CellGrid::boundaryCellIterator(Position position)
 
 CellGrid::HaloIterator CellGrid::haloCellIterator(Position position)
 {
-    return HaloIterator(haloCells, position, false);
+    return {position, gridDimensions, false};
 }
 
 void CellGrid::addParticle(Particle& particle)

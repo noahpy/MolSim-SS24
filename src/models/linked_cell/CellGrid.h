@@ -176,7 +176,7 @@ public:
          * @param halos A reference to the vector of halo cell indices.
          * @param end Set to true to create an end iterator.
          */
-        explicit HaloIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
+        HaloIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
 
         HaloIterator begin();
         HaloIterator end();
