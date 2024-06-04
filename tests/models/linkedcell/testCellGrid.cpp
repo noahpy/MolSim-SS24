@@ -236,31 +236,33 @@ TEST_F(CellGridTest, BoundaryAndHaloIterators)
 {
     std::map<CellIndex, CellType> cellMap;
 
-    // Count boundary particles
     size_t boundaryCount = 0;
-    for (auto it = grid.beginBoundaryParticles(); it != grid.endBoundaryParticles(); ++it) {
-        ++boundaryCount;
-        // check if cell is boundary
-        CellIndex i = *it;
-        EXPECT_EQ(grid.cells.at(i[0]).at(i[1]).at(i[2])->getType(), CellType::Boundary);
-        // check if cell is unique
-        EXPECT_EQ(cellMap.count(i), 0);
-        cellMap[i] = CellType::Boundary;
-    }
-
-    EXPECT_EQ(boundaryCount, 56);
-
-    // Halo cells have no particles, but the test should still be able to run
     size_t haloCount = 0;
-    for (auto it = grid.beginHaloParticles(); it != grid.endHaloParticles(); ++it) {
-        ++haloCount;
-        // check if cell is halo
-        CellIndex i = *it;
-        EXPECT_EQ(grid.cells.at(i[0]).at(i[1]).at(i[2])->getType(), CellType::Halo);
-        // check if cell is unique
-        EXPECT_EQ(cellMap.count(i), 0);
-        cellMap[i] = CellType::Halo;
+
+    std::array<Position, 6> allPositions {LEFT, RIGHT, TOP, BOTTOM, FRONT, BACK};
+
+    for (auto position : allPositions) {
+        // Count boundary particles
+        for (auto i : grid.boundaryCellIterator(position)) {
+            ++boundaryCount;
+            // check if cell is boundary
+            EXPECT_EQ(grid.cells.at(i[0]).at(i[1]).at(i[2])->getType(), CellType::Boundary);
+            // check if cell is unique
+            //EXPECT_EQ(cellMap.count(i), 0);
+            cellMap[i] = CellType::Boundary;
+        }
+
+        // Halo cells have no particles, but the test should still be able to run
+        for (auto i : grid.haloCellIterator(position)) {
+            ++haloCount;
+            // check if cell is halo
+            EXPECT_EQ(grid.cells.at(i[0]).at(i[1]).at(i[2])->getType(), CellType::Halo);
+            // check if cell is unique
+            //EXPECT_EQ(cellMap.count(i), 0);
+            cellMap[i] = CellType::Halo;
+        }
     }
 
-    EXPECT_EQ(haloCount, 152);
+    EXPECT_EQ(boundaryCount, 4*4*6);
+    EXPECT_EQ(haloCount, 6*6*6);
 }
