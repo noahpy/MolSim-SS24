@@ -589,6 +589,114 @@ frequency (const frequency_optional& x)
   this->frequency_ = x;
 }
 
+const params_t::domainOrigin_optional& params_t::
+domainOrigin () const
+{
+  return this->domainOrigin_;
+}
+
+params_t::domainOrigin_optional& params_t::
+domainOrigin ()
+{
+  return this->domainOrigin_;
+}
+
+void params_t::
+domainOrigin (const domainOrigin_type& x)
+{
+  this->domainOrigin_.set (x);
+}
+
+void params_t::
+domainOrigin (const domainOrigin_optional& x)
+{
+  this->domainOrigin_ = x;
+}
+
+void params_t::
+domainOrigin (::std::unique_ptr< domainOrigin_type > x)
+{
+  this->domainOrigin_.set (std::move (x));
+}
+
+const params_t::domainSize_optional& params_t::
+domainSize () const
+{
+  return this->domainSize_;
+}
+
+params_t::domainSize_optional& params_t::
+domainSize ()
+{
+  return this->domainSize_;
+}
+
+void params_t::
+domainSize (const domainSize_type& x)
+{
+  this->domainSize_.set (x);
+}
+
+void params_t::
+domainSize (const domainSize_optional& x)
+{
+  this->domainSize_ = x;
+}
+
+void params_t::
+domainSize (::std::unique_ptr< domainSize_type > x)
+{
+  this->domainSize_.set (std::move (x));
+}
+
+const params_t::cutoff_optional& params_t::
+cutoff () const
+{
+  return this->cutoff_;
+}
+
+params_t::cutoff_optional& params_t::
+cutoff ()
+{
+  return this->cutoff_;
+}
+
+void params_t::
+cutoff (const cutoff_type& x)
+{
+  this->cutoff_.set (x);
+}
+
+void params_t::
+cutoff (const cutoff_optional& x)
+{
+  this->cutoff_ = x;
+}
+
+const params_t::updateFreq_optional& params_t::
+updateFreq () const
+{
+  return this->updateFreq_;
+}
+
+params_t::updateFreq_optional& params_t::
+updateFreq ()
+{
+  return this->updateFreq_;
+}
+
+void params_t::
+updateFreq (const updateFreq_type& x)
+{
+  this->updateFreq_.set (x);
+}
+
+void params_t::
+updateFreq (const updateFreq_optional& x)
+{
+  this->updateFreq_ = x;
+}
+
 
 // simulation_t
 //
@@ -1508,7 +1616,11 @@ params_t ()
   epsilon_ (this),
   sigma_ (this),
   output_ (this),
-  frequency_ (this)
+  frequency_ (this),
+  domainOrigin_ (this),
+  domainSize_ (this),
+  cutoff_ (this),
+  updateFreq_ (this)
 {
 }
 
@@ -1522,7 +1634,11 @@ params_t (const params_t& x,
   epsilon_ (x.epsilon_, f, this),
   sigma_ (x.sigma_, f, this),
   output_ (x.output_, f, this),
-  frequency_ (x.frequency_, f, this)
+  frequency_ (x.frequency_, f, this),
+  domainOrigin_ (x.domainOrigin_, f, this),
+  domainSize_ (x.domainSize_, f, this),
+  cutoff_ (x.cutoff_, f, this),
+  updateFreq_ (x.updateFreq_, f, this)
 {
 }
 
@@ -1536,7 +1652,11 @@ params_t (const ::xercesc::DOMElement& e,
   epsilon_ (this),
   sigma_ (this),
   output_ (this),
-  frequency_ (this)
+  frequency_ (this),
+  domainOrigin_ (this),
+  domainSize_ (this),
+  cutoff_ (this),
+  updateFreq_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -1624,6 +1744,56 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // domainOrigin
+    //
+    if (n.name () == "domainOrigin" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< domainOrigin_type > r (
+        domainOrigin_traits::create (i, f, this));
+
+      if (!this->domainOrigin_)
+      {
+        this->domainOrigin_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // domainSize
+    //
+    if (n.name () == "domainSize" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< domainSize_type > r (
+        domainSize_traits::create (i, f, this));
+
+      if (!this->domainSize_)
+      {
+        this->domainSize_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // cutoff
+    //
+    if (n.name () == "cutoff" && n.namespace_ ().empty ())
+    {
+      if (!this->cutoff_)
+      {
+        this->cutoff_.set (cutoff_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // updateFreq
+    //
+    if (n.name () == "updateFreq" && n.namespace_ ().empty ())
+    {
+      if (!this->updateFreq_)
+      {
+        this->updateFreq_.set (updateFreq_traits::create (i, f, this));
+        continue;
+      }
+    }
+
     break;
   }
 }
@@ -1647,6 +1817,10 @@ operator= (const params_t& x)
     this->sigma_ = x.sigma_;
     this->output_ = x.output_;
     this->frequency_ = x.frequency_;
+    this->domainOrigin_ = x.domainOrigin_;
+    this->domainSize_ = x.domainSize_;
+    this->cutoff_ = x.cutoff_;
+    this->updateFreq_ = x.updateFreq_;
   }
 
   return *this;
@@ -2401,6 +2575,54 @@ operator<< (::xercesc::DOMElement& e, const params_t& i)
         e));
 
     s << *i.frequency ();
+  }
+
+  // domainOrigin
+  //
+  if (i.domainOrigin ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "domainOrigin",
+        e));
+
+    s << *i.domainOrigin ();
+  }
+
+  // domainSize
+  //
+  if (i.domainSize ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "domainSize",
+        e));
+
+    s << *i.domainSize ();
+  }
+
+  // cutoff
+  //
+  if (i.cutoff ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "cutoff",
+        e));
+
+    s << ::xml_schema::as_double(*i.cutoff ());
+  }
+
+  // updateFreq
+  //
+  if (i.updateFreq ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "updateFreq",
+        e));
+
+    s << *i.updateFreq ();
   }
 }
 

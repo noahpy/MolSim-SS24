@@ -15,6 +15,17 @@ public:
     virtual void plotParticles(const Simulation& s) = 0;
 
     /**
+     * @brief Constructor of FileWriter
+     */
+    FileWriter() = default;
+
+    /** @brief Constructor of FileWriter */
+    inline FileWriter(std::string out_name)
+        : out_name(out_name)
+    {
+    }
+
+    /**
      * @brief The name of the output file
      */
     std::string out_name = "MD_vtk";

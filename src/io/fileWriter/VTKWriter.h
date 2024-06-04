@@ -26,6 +26,15 @@ public:
     VTKWriter();
 
     /**
+     * @brief This function initializes the VTKWriter class
+     * @param out_name the name of the output file
+     */
+    VTKWriter(std::string out_name)
+        : FileWriter(out_name)
+    {
+    }
+
+    /**
      * @brief Destructor of the VTKWriter class
      * @return void
      */

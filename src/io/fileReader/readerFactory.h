@@ -1,6 +1,7 @@
 
 #pragma once
 #include "io/fileReader/FileReader.h"
+#include "utils/Params.h"
 #include <memory>
 #include <string>
 
@@ -14,4 +15,4 @@
  * @param type An unsigned integer representing the type of file reader to create.
  * @return A unique pointer to a FileReader object or nullptr if the file type is not supported.
  */
-std::unique_ptr<FileReader> readerFactory(std::string input_file, unsigned type);
+std::unique_ptr<FileReader> readerFactory(std::string input_file, ReaderType type);

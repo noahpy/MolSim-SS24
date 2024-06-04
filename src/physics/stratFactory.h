@@ -1,6 +1,7 @@
 
 #pragma once
 #include "physics/strategy.h"
+#include "utils/Params.h"
 
 /**
  * @brief A factory function for creating PhysicsStrategy objects.
@@ -11,4 +12,4 @@
  * create.
  * @return A PhysicsStrategy object representing the appropriate simulation strategy.
  */
-PhysicsStrategy stratFactory(unsigned simulation_type);
+PhysicsStrategy stratFactory(SimulationType simulation_type);

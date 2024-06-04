@@ -6,15 +6,18 @@
 #include "physics/velocityCal/velocityCal.h"
 #include <spdlog/spdlog.h>
 
-PhysicsStrategy stratFactory(unsigned simulation_type)
+PhysicsStrategy stratFactory(SimulationType simulation_type)
 {
     switch (simulation_type) {
-    case 0:
+    case SimulationType::PLANET:
         spdlog::info("Initializing Force Gravity Strat...");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };
-    case 1:
+    case SimulationType::LJ:
         spdlog::info("Initializing Force LJ Strat...");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones };
+    case SimulationType::LINKED_LJ:
+        spdlog::info("Initializing Force LJ LC Strat...");
+        return { location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones_lc };
     default:
         spdlog::info("Unknown simulation type, proceeding with default physics strategy.");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };

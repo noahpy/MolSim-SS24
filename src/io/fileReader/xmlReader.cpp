@@ -2,11 +2,9 @@
 #include "io/fileReader/xmlReader.h"
 #include "io/xsd/simulation.h"
 #include "models/generators/ParticleGenerator.h"
-#include "simulation/lennardJonesSim.h"
 #include <fstream>
 #include <spdlog/spdlog.h>
 #include <sstream>
-#include <typeinfo>
 
 void XmlReader::readFile(Simulation& sim)
 {
@@ -20,30 +18,6 @@ void XmlReader::readFile(Simulation& sim)
         // try to parse file
         std::unique_ptr<simulation_t> sim_input(
             simulation(input_file, xml_schema::flags::dont_validate));
-
-        // read in params
-        const auto& params = sim_input->params();
-        if (params.delta_t().present())
-            sim.delta_t = params.delta_t().get();
-        if (params.end_time().present())
-            sim.end_time = params.end_time().get();
-        if (params.output().present())
-            sim.setOutputFile(params.output().get());
-        if (params.frequency().present())
-            sim.frequency = params.frequency().get();
-        if (params.epsilon().present() || params.sigma().present()) {
-            // try downcasting if parameters are present
-            try {
-                LennardJonesSimulation& lj = dynamic_cast<LennardJonesSimulation&>(sim);
-                if (params.epsilon().present())
-                    lj.setEpsilon(params.epsilon().get());
-                if (params.sigma().present())
-                    lj.setSigma(params.sigma().get());
-            } catch (const std::bad_cast e) {
-                spdlog::error("Could not downcast to LennardJonesSimulation: {}", e.what());
-                exit(EXIT_FAILURE);
-            }
-        }
 
         // read in cluster
         ParticleGenerator generator(sim.container);

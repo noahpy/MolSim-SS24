@@ -27,6 +27,7 @@ public:
      * @param strat The strategy which is used to calculate the physics
      * @param writer The output writer
      * @param reader The input reader
+     * @param frequency The frequency for writing outputs
      * @return A new Simulation object
      */
     Simulation(
@@ -36,7 +37,8 @@ public:
         ParticleContainer& container,
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
-        std::unique_ptr<FileReader> reader);
+        std::unique_ptr<FileReader> reader,
+        unsigned frequency = 10);
 
     /**
      * @brief Run the simulation
