@@ -7,6 +7,7 @@
 
 #include "Particle.h"
 #include <vector>
+#include <unordered_map>
 
 /**
  * @brief The ParticleContainer class is a data structure that holds the collection of particles
@@ -31,6 +32,13 @@ public:
      * @return void
      */
     void addParticle(const Particle& p);
+
+    /**
+     * @brief Removes the particles in the map from the container
+     * @param particleMap The particles to be removed (true if remove)
+     * @return void
+     */
+    void removeParticles(std::unordered_map<Particle*, bool>& particleMap);
 
     /**
      * @brief Get the particles within the container

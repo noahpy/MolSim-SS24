@@ -10,9 +10,8 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
     // reset old halo references used previously
-    for (auto haloCellIndex : LGDSim.domain.haloCellIterator(position)) {
+    for (auto haloCellIndex : LGDSim.domain.haloCellIterator(position))
         LGDSim.domain.cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]->clearParticles();
-    };
 
     for (auto boundaryCellIndex : LGDSim.domain.boundaryCellIterator(position)) {
         for (auto& particle :
