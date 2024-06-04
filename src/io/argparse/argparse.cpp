@@ -105,10 +105,35 @@ void convertToDouble(char* optarg, double& value)
     }
 }
 
-void argparse(
-    int argc,
-    char* argsv[],
-    Params& params)
+SimulationType unsignedToSimulationType(unsigned value)
+{
+    switch (value) {
+    case 0:
+        return SimulationType::PLANET;
+    case 1:
+        return SimulationType::LJ;
+    case 2:
+        return SimulationType::LINKED_LJ;
+    default:
+        spdlog::warn("Unknown simulation type: {}", value);
+        exit(EXIT_FAILURE);
+    }
+}
+
+WriterType unsignedToWriterType(unsigned value)
+{
+    switch (value) {
+    case 0:
+        return WriterType::VTK;
+    case 1:
+        return WriterType::XYZ;
+    default:
+        spdlog::warn("Unknown writer type: {}", value);
+        exit(EXIT_FAILURE);
+    }
+}
+
+void argparse(int argc, char* argsv[], Params& params)
 {
     // Long options definition
     static struct option long_options[] = { { "delta_t", required_argument, 0, 'd' },
@@ -121,6 +146,7 @@ void argparse(
                                             { "help", no_argument, 0, 'h' },
                                             { 0, 0, 0, 0 } };
 
+    unsigned tmp;
     int opt;
     while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:ax", long_options, NULL)) != -1) {
         switch (opt) {
@@ -142,19 +168,21 @@ void argparse(
             convertToDouble(optarg, params.sigma);
             break;
         case 's':
-            convertToUnsigned(optarg, params.simulation_type);
+            convertToUnsigned(optarg, tmp);
+            params.simulation_type = unsignedToSimulationType(tmp);
             break;
         case 'w':
-            convertToUnsigned(optarg, params.writer_type);
+            convertToUnsigned(optarg, tmp);
+            params.writer_type = unsignedToWriterType(tmp);
             break;
         case 'c':
-            params.reader_type = 1;
+            params.reader_type = ReaderType::CLUSTER;
             break;
         case 'a':
-            params.reader_type = 3;
+            params.reader_type = ReaderType::ASCII;
             break;
         case 'x':
-            params.reader_type = 4;
+            params.reader_type = ReaderType::XML;
             break;
         case 'h':
             printHelp(argsv[0]);

@@ -13,8 +13,17 @@ PlanetSimulation::PlanetSimulation(
     ParticleContainer& container,
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
-    std::unique_ptr<FileReader> reader)
-    : Simulation(time, delta_t, end_time, container, strat, std::move(writer), std::move(reader))
+    std::unique_ptr<FileReader> reader,
+    unsigned frequency)
+    : Simulation(
+          time,
+          delta_t,
+          end_time,
+          container,
+          strat,
+          std::move(writer),
+          std::move(reader),
+          frequency)
 {
     this->reader->readFile(*this);
 }

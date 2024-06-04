@@ -2,6 +2,7 @@
 #include "io/argparse/argparse.h"
 #include "io/fileReader/readerFactory.h"
 #include "io/fileWriter/writerFactory.h"
+#include "io/xmlparse/xmlparse.h"
 #include "models/ParticleContainer.h"
 #include "physics/stratFactory.h"
 #include "physics/strategy.h"
@@ -20,11 +21,16 @@ int main(int argc, char* argsv[])
     // parse arguments
     argparse(argc, argsv, params);
 
+    // optionally parse xml
+    if (params.reader_type == ReaderType::XML) {
+        xmlparse(params, params.input_file);
+    }
+
     // Initialize reader
     auto readPointer = readerFactory(params.input_file, params.reader_type);
 
     // Initialize writer
-    auto writePointer = writerFactory(params.writer_type);
+    auto writePointer = writerFactory(params.writer_type, params.output_file);
 
     // Intialize physics strategy
     PhysicsStrategy strat = stratFactory(params.simulation_type);
@@ -33,12 +39,8 @@ int main(int argc, char* argsv[])
     ParticleContainer particles { {} };
 
     // Intialize simulation and read the input files
-    auto simPointer = simFactory(
-        params,
-        particles,
-        strat,
-        std::move(writePointer),
-        std::move(readPointer));
+    auto simPointer =
+        simFactory(params, particles, strat, std::move(writePointer), std::move(readPointer));
 
     // Run simulation
     simPointer->runSim();

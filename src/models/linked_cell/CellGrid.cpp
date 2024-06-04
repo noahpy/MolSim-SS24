@@ -4,7 +4,9 @@
 #include "utils/ArrayUtils.h"
 #include "utils/Position.h"
 #include <cmath>
+#include <cwchar>
 #include <spdlog/spdlog.h>
+#include <sys/wait.h>
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
@@ -279,3 +281,19 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
 
     return cellList;
 }
+
+
+void CellGrid::setCutoffRadius(double cutoffRadius)
+{
+    this->cutoffRadius = cutoffRadius;
+}
+
+void CellGrid::setDomainSize(const std::array<double, 3>& domainSize)
+{
+    this->domainSize = domainSize;
+}
+
+void CellGrid::setDomainOrigin(const std::array<double, 3>& domainOrigin)
+{
+    this->domainOrigin = domainOrigin;
+} 
