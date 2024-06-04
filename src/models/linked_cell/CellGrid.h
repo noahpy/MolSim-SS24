@@ -75,10 +75,18 @@ public:
     // Forward declaration (see bottom)
     class HaloIterator;
 
-    /** @brief Returns an iterator to the beginning of boundary particles. */
+    /**
+     * @brief Returns an iterator to the beginning of boundary particles.
+     * @param position The position of the boundary.
+     * @return A BoundaryIterator for the given position
+     */
     BoundaryIterator boundaryCellIterator(Position position);
 
-    /** @brief Returns an iterator to the beginning of halo particles. */
+    /**
+     * @brief Returns an iterator to the beginning of halo particles.
+     * @param position The position of the boundary.
+     * @return A HaloIterator for the given position
+     */
     HaloIterator haloCellIterator(Position position);
 
 
@@ -134,7 +142,15 @@ public:
          */
         BoundaryIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
 
+        /**
+         * @brief Returns an iterator to the beginning of boundary cells of the given position (for range based loop)
+         * @return The beginning BoundaryIterator
+         */
         BoundaryIterator begin();
+        /**
+         * @brief Returns an iterator to the end of boundary cells of the given position (for range based loop)
+         * @return The end BoundaryIterator
+         */
         BoundaryIterator end();
 
         /**
@@ -178,7 +194,15 @@ public:
          */
         HaloIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
 
+        /**
+         * @brief Returns an iterator to the beginning of halo cells of the given position (for range based loop)
+         * @return The beginning HaloIterator
+         */
         HaloIterator begin();
+        /**
+         * @brief Returns an iterator to the end of halo cells of the given position (for range based loop)
+         * @return The end HaloIterator
+         */
         HaloIterator end();
 
         /**

@@ -207,6 +207,13 @@ size_t getCoordinateIrrelevantAxis(
     return coordinateIrrelevantAxis;
 }
 
+/**
+ * @brief Get the Number of Relevant Boundaries
+ * @param dim1 The size of the first relevant dimension
+ * @param dim2 The size of the second relevant dimension
+ * @param dimZ The size of the z axis grid (number of cells along the z axis)
+ * @return The number of relevant boundaries
+ */
 size_t getNumberOfRelevantBoundaries(size_t dim1, size_t dim2, size_t dimZ)
 {
     if (dimZ > 1) {
