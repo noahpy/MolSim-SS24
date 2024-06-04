@@ -14,7 +14,7 @@ std::unique_ptr<Simulation> simFactory(
     std::unique_ptr<FileReader> readPointer)
 {
     switch (params.simulation_type) {
-    case 0:
+    case SimulationType::PLANET:
         spdlog::info("Initializing Planet Simulation with:");
         spdlog::info(
             "delta_t: {}, end_time: {}, plot_frequency: {}",
@@ -31,7 +31,7 @@ std::unique_ptr<Simulation> simFactory(
             std::move(readPointer),
             params.plot_frequency);
 
-    case 1:
+    case SimulationType::LJ:
         spdlog::info("Initializing LJ Simulation with:");
         spdlog::info(
             "delta_t: {}, end_time: {}, epsilon: {}, sigma: {}, plot_frequency: {}",
@@ -51,7 +51,7 @@ std::unique_ptr<Simulation> simFactory(
             params.epsilon,
             params.sigma,
             params.plot_frequency);
-    case 2:
+    case SimulationType::LINKED_LJ:
         spdlog::info("Initializing Linked LJ Simulation with:");
         spdlog::info(
             "delta_t: {}, end_time: {}, epsilon: {}, sigma: {}, plot_frequency: {}",
@@ -87,7 +87,7 @@ std::unique_ptr<Simulation> simFactory(
             params.plot_frequency,
             params.update_frequency);
     default:
-        spdlog::error("Unknown simulation type: {}", params.simulation_type);
+        spdlog::error("Unknown simulation type!");
         exit(EXIT_FAILURE);
     }
 }

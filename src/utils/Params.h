@@ -3,6 +3,12 @@
 #include <array>
 #include <string>
 
+enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
+
+enum WriterType { XYZ, VTK };
+
+enum SimulationType { PLANET, LJ, LINKED_LJ };
+
 class Params {
 public:
     double start_time = 0; // start time
@@ -12,9 +18,9 @@ public:
     double sigma = 1; // zero-crossing of LJ potential
     std::string input_file; // input filename
     std::string output_file = "sim";
-    unsigned reader_type = 0;
-    unsigned writer_type = 0;
-    unsigned simulation_type = 0;
+    ReaderType reader_type = ReaderType::STANDARD;
+    WriterType writer_type = WriterType::VTK;
+    SimulationType simulation_type = SimulationType::PLANET;
     std::array<double, 3> domain_origin = { -50, -50, 0 };
     std::array<double, 3> domain_size = { 100, 100, 1 };
     double cutoff = 5;
