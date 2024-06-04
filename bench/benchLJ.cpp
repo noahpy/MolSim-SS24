@@ -13,7 +13,6 @@
 
 static void BM_LJSimulation(benchmark::State& state)
 {
-
     spdlog::set_level(spdlog::level::off);
 
     // Initialize reader
@@ -33,39 +32,34 @@ static void BM_LJSimulation(benchmark::State& state)
     ParticleContainer particles { {} };
 
     // Setup simulation
-    LennardJonesSimulation sim (0, 0.0002, 5, particles, strat, std::move(writerPointer), std::move(readerPointer), 5, 1 );
+    LennardJonesSimulation sim(
+        0, 0.002, 1, particles, strat, std::move(writerPointer), std::move(readerPointer), 5, 1);
 
-    CuboidParticleCluster cluster1 = CuboidParticleCluster(
+    // get particle number
+    auto n = state.range(0);
+    unsigned width = 100;
+    unsigned height = n / 100;
+
+    CuboidParticleCluster cluster = CuboidParticleCluster(
         std::array<double, 3> { 0, 0, 0 },
-        40,
-        8,
+        width,
+        height,
         1,
         1.1225,
         1,
         std::array<double, 3> { 0, 0, 0 },
-        0.1,
-        2);
-    CuboidParticleCluster cluster2 = CuboidParticleCluster(
-        std::array<double, 3> { 15, 15, 0 },
-        8,
-        8,
-        1,
-        1.1225,
-        1,
-        std::array<double, 3> { 0, -10, 0 },
         0.1,
         2);
 
     ParticleGenerator p = ParticleGenerator(sim.container);
-    p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster1));
-    p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster2));
+    p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster));
     p.generateClusters();
-
 
     for (auto _ : state) {
         sim.time = 0;
         sim.runSim();
     }
+    state.SetComplexityN(state.range(0));
 }
 // Register the function as a benchmark
-BENCHMARK(BM_LJSimulation);
+BENCHMARK(BM_LJSimulation)->Arg(1000)->Arg(2000)->Arg(4000)->Arg(8000)->Complexity();
