@@ -2721,6 +2721,229 @@ class params_t: public ::xml_schema::type
   //@}
 
   /**
+   * @name domainOrigin
+   *
+   * @brief Accessor and modifier functions for the %domainOrigin
+   * optional element.
+   *
+   * 3D vector specifying the origin of the simulation domain.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::doubleVec_t domainOrigin_type;
+
+  /**
+   * @brief Element optional container type.
+   */
+  typedef ::xsd::cxx::tree::optional< domainOrigin_type > domainOrigin_optional;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< domainOrigin_type, char > domainOrigin_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * container.
+   *
+   * @return A constant reference to the optional container.
+   */
+  const domainOrigin_optional&
+  domainOrigin () const;
+
+  /**
+   * @brief Return a read-write reference to the element container.
+   *
+   * @return A reference to the optional container.
+   */
+  domainOrigin_optional&
+  domainOrigin ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  domainOrigin (const domainOrigin_type& x);
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x An optional container with the new value to set.
+   *
+   * If the value is present in @a x then this function makes a copy 
+   * of this value and sets it as the new value of the element.
+   * Otherwise the element container is set the 'not present' state.
+   */
+  void
+  domainOrigin (const domainOrigin_optional& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly instead
+   * of making a copy.
+   */
+  void
+  domainOrigin (::std::unique_ptr< domainOrigin_type > p);
+
+  //@}
+
+  /**
+   * @name domainSize
+   *
+   * @brief Accessor and modifier functions for the %domainSize
+   * optional element.
+   *
+   * 3D vector specifying the size of the simulation domain.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::doubleVec_t domainSize_type;
+
+  /**
+   * @brief Element optional container type.
+   */
+  typedef ::xsd::cxx::tree::optional< domainSize_type > domainSize_optional;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< domainSize_type, char > domainSize_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * container.
+   *
+   * @return A constant reference to the optional container.
+   */
+  const domainSize_optional&
+  domainSize () const;
+
+  /**
+   * @brief Return a read-write reference to the element container.
+   *
+   * @return A reference to the optional container.
+   */
+  domainSize_optional&
+  domainSize ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  domainSize (const domainSize_type& x);
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x An optional container with the new value to set.
+   *
+   * If the value is present in @a x then this function makes a copy 
+   * of this value and sets it as the new value of the element.
+   * Otherwise the element container is set the 'not present' state.
+   */
+  void
+  domainSize (const domainSize_optional& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly instead
+   * of making a copy.
+   */
+  void
+  domainSize (::std::unique_ptr< domainSize_type > p);
+
+  //@}
+
+  /**
+   * @name cutoff
+   *
+   * @brief Accessor and modifier functions for the %cutoff
+   * optional element.
+   *
+   * The cutoff radius for the linked cell algorithm.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ cutoff_type;
+
+  /**
+   * @brief Element optional container type.
+   */
+  typedef ::xsd::cxx::tree::optional< cutoff_type > cutoff_optional;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< cutoff_type, char, ::xsd::cxx::tree::schema_type::double_ > cutoff_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * container.
+   *
+   * @return A constant reference to the optional container.
+   */
+  const cutoff_optional&
+  cutoff () const;
+
+  /**
+   * @brief Return a read-write reference to the element container.
+   *
+   * @return A reference to the optional container.
+   */
+  cutoff_optional&
+  cutoff ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  cutoff (const cutoff_type& x);
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x An optional container with the new value to set.
+   *
+   * If the value is present in @a x then this function makes a copy 
+   * of this value and sets it as the new value of the element.
+   * Otherwise the element container is set the 'not present' state.
+   */
+  void
+  cutoff (const cutoff_optional& x);
+
+  //@}
+
+  /**
    * @name Constructors
    */
   //@{
@@ -2807,6 +3030,9 @@ class params_t: public ::xml_schema::type
   sigma_optional sigma_;
   output_optional output_;
   frequency_optional frequency_;
+  domainOrigin_optional domainOrigin_;
+  domainSize_optional domainSize_;
+  cutoff_optional cutoff_;
 
   //@endcond
 };

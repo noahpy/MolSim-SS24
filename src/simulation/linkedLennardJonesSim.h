@@ -23,6 +23,8 @@ public:
      * @param sigma The sigma parameter of the Lennard-Jones potential
      * @param domainOrigin The origin of the simulation domain
      * @param domainSize The size of the simulation domain
+     * @param frequency The frequency for writing outputs
+     * @param updateFrequency The frequency for updating the grid
      * @param cutoff The cutoff radius of the simulation
      */
     LinkedLennardJonesSimulation(
@@ -37,7 +39,10 @@ public:
         double sigma,
         std::array<double, 3> domainOrigin,
         std::array<double, 3> domainSize, 
-        double cutoff);
+        double cutoff,
+        unsigned frequency = 10,
+        unsigned updateFrequency = 10,
+        bool read_file = true);
 
     /**
      * @brief Run the simulation
@@ -47,7 +52,27 @@ public:
 
     [[nodiscard]] const CellGrid& getGrid() const { return cellGrid; }
 
+
+    /**
+     * @brief Set the origin of the simulation domain
+     * @param domainOrigin The origin of the simulation domain
+     */
+    void setDomainOrigin(const std::array<double, 3>& domainOrigin);
+
+    /**
+     * @brief Set the size of the simulation domain
+     * @param domainSize The size of the simulation domain
+     */
+    void setDomainSize(const std::array<double, 3>& domainSize);
+
+    /**
+     * @brief Set the cutoff radius of the simulation
+     * @param cutoff The cutoff radius of the simulation
+     */
+    void setCutoff(double cutoff);
+
 protected:
     CellGrid cellGrid;
+    unsigned updateFrequency;
 
 };

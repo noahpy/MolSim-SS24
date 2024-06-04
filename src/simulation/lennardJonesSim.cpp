@@ -15,12 +15,16 @@ LennardJonesSimulation::LennardJonesSimulation(
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
     double epsilon,
-    double sigma)
-    : Simulation(time, delta_t, end_time, container, strat, std::move(writer), std::move(reader))
+    double sigma,
+    unsigned frequency,
+    bool read_file)
+    : Simulation(time, delta_t, end_time, container, strat, std::move(writer), std::move(reader), frequency)
     , epsilon(epsilon)
     , sigma(sigma)
 {
-    this->reader->readFile(*this);
+    if (read_file) {
+        this->reader->readFile(*this);
+    }
     this->alpha = -24 * epsilon;
     this->beta = std::pow(sigma, 6);
     this->gamma = -2 * std::pow(sigma, 12);

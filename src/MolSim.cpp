@@ -1,5 +1,6 @@
 
 #include "io/argparse/argparse.h"
+#include "io/xmlparse/xmlparse.h"
 #include "io/fileReader/readerFactory.h"
 #include "io/fileWriter/writerFactory.h"
 #include "models/ParticleContainer.h"
@@ -20,11 +21,16 @@ int main(int argc, char* argsv[])
     // parse arguments
     argparse(argc, argsv, params);
 
+    // optionally parse xml
+    if(params.reader_type == 4) {
+        xmlparse(params, params.input_file);
+    }
+
     // Initialize reader
     auto readPointer = readerFactory(params.input_file, params.reader_type);
 
     // Initialize writer
-    auto writePointer = writerFactory(params.writer_type);
+    auto writePointer = writerFactory(params.writer_type, params.output_file);
 
     // Intialize physics strategy
     PhysicsStrategy strat = stratFactory(params.simulation_type);

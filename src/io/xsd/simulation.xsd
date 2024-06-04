@@ -253,6 +253,27 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="domainOrigin" type="doubleVec_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            3D vector specifying the origin of the simulation domain.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="domainSize" type="doubleVec_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            3D vector specifying the size of the simulation domain.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cutoff" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The cutoff radius for the linked cell algorithm.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 

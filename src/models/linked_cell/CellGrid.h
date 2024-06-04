@@ -82,6 +82,21 @@ public:
     /** @brief Returns an iterator to the end of halo particles. */
     HaloIterator endHaloParticles();
 
+    /* @brief Sets the domain origin. 
+     * @param domainOrigin 3D array representing the "origin" of the simulation domain.
+     * */
+    void setDomainOrigin(const std::array<double, 3>& domainOrigin);
+
+    /* @brief Sets the domain size. 
+     * @param domainSize A 3D array representing the size of the simulation domain.
+     * */
+    void setDomainSize(const std::array<double, 3>& domainSize);
+
+    /* @brief Sets the cutoff radius. 
+     * @param cutoffRadius The cutoff radius for particle interactions.
+     * */
+    void setCutoffRadius(double cutoffRadius);
+
 protected:
     /**
      * @brief Initializes the grid structure based on the domain size and cutoff radius.
