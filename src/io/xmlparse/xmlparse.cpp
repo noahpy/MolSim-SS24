@@ -41,6 +41,8 @@ void xmlparse(Params& sim_params, std::string& filename)
             sim_params.cutoff = params.cutoff().get();
         if (params.output().present())
             sim_params.output_file = params.output().get();
+        if (params.updateFreq().present())
+            sim_params.update_frequency = params.updateFreq().get();
 
     } catch (const xml_schema::exception& e) {
         spdlog::error("Error when reading: {}", filename);

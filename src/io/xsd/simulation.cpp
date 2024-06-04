@@ -673,6 +673,30 @@ cutoff (const cutoff_optional& x)
   this->cutoff_ = x;
 }
 
+const params_t::updateFreq_optional& params_t::
+updateFreq () const
+{
+  return this->updateFreq_;
+}
+
+params_t::updateFreq_optional& params_t::
+updateFreq ()
+{
+  return this->updateFreq_;
+}
+
+void params_t::
+updateFreq (const updateFreq_type& x)
+{
+  this->updateFreq_.set (x);
+}
+
+void params_t::
+updateFreq (const updateFreq_optional& x)
+{
+  this->updateFreq_ = x;
+}
+
 
 // simulation_t
 //
@@ -1595,7 +1619,8 @@ params_t ()
   frequency_ (this),
   domainOrigin_ (this),
   domainSize_ (this),
-  cutoff_ (this)
+  cutoff_ (this),
+  updateFreq_ (this)
 {
 }
 
@@ -1612,7 +1637,8 @@ params_t (const params_t& x,
   frequency_ (x.frequency_, f, this),
   domainOrigin_ (x.domainOrigin_, f, this),
   domainSize_ (x.domainSize_, f, this),
-  cutoff_ (x.cutoff_, f, this)
+  cutoff_ (x.cutoff_, f, this),
+  updateFreq_ (x.updateFreq_, f, this)
 {
 }
 
@@ -1629,7 +1655,8 @@ params_t (const ::xercesc::DOMElement& e,
   frequency_ (this),
   domainOrigin_ (this),
   domainSize_ (this),
-  cutoff_ (this)
+  cutoff_ (this),
+  updateFreq_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -1756,6 +1783,17 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // updateFreq
+    //
+    if (n.name () == "updateFreq" && n.namespace_ ().empty ())
+    {
+      if (!this->updateFreq_)
+      {
+        this->updateFreq_.set (updateFreq_traits::create (i, f, this));
+        continue;
+      }
+    }
+
     break;
   }
 }
@@ -1782,6 +1820,7 @@ operator= (const params_t& x)
     this->domainOrigin_ = x.domainOrigin_;
     this->domainSize_ = x.domainSize_;
     this->cutoff_ = x.cutoff_;
+    this->updateFreq_ = x.updateFreq_;
   }
 
   return *this;
@@ -2572,6 +2611,18 @@ operator<< (::xercesc::DOMElement& e, const params_t& i)
         e));
 
     s << ::xml_schema::as_double(*i.cutoff ());
+  }
+
+  // updateFreq
+  //
+  if (i.updateFreq ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "updateFreq",
+        e));
+
+    s << *i.updateFreq ();
   }
 }
 
