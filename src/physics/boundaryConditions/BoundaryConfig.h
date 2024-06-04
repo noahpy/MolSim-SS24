@@ -1,3 +1,5 @@
+
+#pragma once
 #include "utils/Params.h"
 #include "utils/Position.h"
 #include <map>

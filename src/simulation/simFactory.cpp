@@ -2,6 +2,7 @@
 #include "simFactory.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
+#include "physics/boundaryConditions/BoundaryConfig.h"
 #include "simulation/LennardJonesDomainSimulation.h"
 #include "simulation/planetSim.h"
 #include <spdlog/spdlog.h>
@@ -125,8 +126,8 @@ std::unique_ptr<Simulation> simFactory(
             bconf,
             params.plot_frequency,
             params.update_frequency);
-    default:
-        spdlog::error("Unknown simulation type!");
-        exit(EXIT_FAILURE);
     }
+
+    spdlog::error("Invalid simulation type.");
+    exit(EXIT_FAILURE);
 }

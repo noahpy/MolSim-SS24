@@ -1,6 +1,7 @@
 #include "physics/boundaryConditions/BoundaryConditionHandler.h"
 #include "physics/boundaryConditions/OverflowBoundary.h"
 #include "physics/boundaryConditions/SoftReflectiveBoundary.h"
+#include <spdlog/spdlog.h>
 
 BoundaryConditionHandler::BoundaryConditionHandler(const BoundaryConfig& boundaryConfig)
     : boundaryConditions()
@@ -20,5 +21,19 @@ BoundaryConditionHandler::BoundaryConditionHandler(const BoundaryConfig& boundar
             spdlog::error("Boundary type not recognized.");
             break;
         }
+    }
+}
+
+void BoundaryConditionHandler::preUpdateBoundaryHandling(Simulation& simulation)
+{
+    for (auto& bc : boundaryConditions) {
+        bc->preUpdateBoundaryHandling(simulation);
+    }
+}
+
+void BoundaryConditionHandler::postUpdateBoundaryHandling(Simulation& simulation)
+{
+    for (auto& bc : boundaryConditions) {
+        bc->postUpdateBoundaryHandling(simulation);
     }
 }

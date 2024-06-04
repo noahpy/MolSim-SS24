@@ -1,4 +1,5 @@
 
+#pragma once
 #include "simulation/baseSimulation.h"
 #include "utils/Position.h"
 

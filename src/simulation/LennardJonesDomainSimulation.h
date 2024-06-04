@@ -2,8 +2,6 @@
 #include "physics/boundaryConditions/BoundaryConditionHandler.h"
 #include "simulation/linkedLennardJonesSim.h"
 
-class BoundaryConfig;
-
 /**
  * @brief Simulation class for the Lennard-Jones simulation within a restricted domain and linked
  * cell algorithm

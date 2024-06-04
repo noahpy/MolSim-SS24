@@ -1,5 +1,6 @@
 
 #include "LennardJonesDomainSimulation.h"
+#include "physics/boundaryConditions/BoundaryConfig.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"

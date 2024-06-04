@@ -1,8 +1,9 @@
 
-#include "physics/boundaryConditions/BoundaryCondition.h"
+#pragma once
 #include "physics/boundaryConditions/BoundaryConfig.h"
+#include "physics/boundaryConditions/BoundaryCondition.h"
 #include "simulation/baseSimulation.h"
-#include <list>
+
 
 /**
  * @brief The BoundaryConditionHandler class is a class that handles the application of boundary
@@ -21,25 +22,15 @@ public:
      * @param simulation The simulation to apply the boundary condition to
      * @return void
      */
-    void preUpdateBoundaryHandling(Simulation& simulation)
-    {
-        for (auto& bc : boundaryConditions) {
-            bc->preUpdateBoundaryHandling(simulation);
-        }
-    }
+    void preUpdateBoundaryHandling(Simulation& simulation); 
 
     /**
      * @brief The call to apply the boundary condition to the simulation after all updates are made
      * @param simulation The simulation to apply the boundary condition to
      * @return void
      */
-    void postUpdateBoundaryHandling(Simulation& simulation)
-    {
-        for (auto& bc : boundaryConditions) {
-            bc->postUpdateBoundaryHandling(simulation);
-        }
-    }
-
+    void postUpdateBoundaryHandling(Simulation& simulation);
+    
 protected:
     std::vector<std::unique_ptr<BoundaryCondition>>
         boundaryConditions; /**< The boundary conditions to apply */
