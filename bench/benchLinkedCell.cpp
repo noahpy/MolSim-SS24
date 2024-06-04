@@ -74,4 +74,7 @@ static void BM_LinkedLJSimulation(benchmark::State& state)
     state.SetComplexityN(state.range(0));
 }
 
-BENCHMARK(BM_LinkedLJSimulation)->Arg(1000)->Arg(2000)->Arg(4000)->Arg(8000)->Complexity();
+/* BENCHMARK(BM_LinkedLJSimulation)->Arg(1000)->Arg(2000)->Arg(4000)->Arg(8000)->Complexity(); */
+
+BENCHMARK(BM_LinkedLJSimulation)->DenseRange(1000, 10000, 1000);
+

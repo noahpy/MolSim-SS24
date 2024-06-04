@@ -62,4 +62,6 @@ static void BM_LJSimulation(benchmark::State& state)
     state.SetComplexityN(state.range(0));
 }
 // Register the function as a benchmark
-BENCHMARK(BM_LJSimulation)->Arg(1000)->Arg(2000)->Arg(4000)->Arg(8000)->Complexity();
+/* BENCHMARK(BM_LJSimulation)->Arg(1000)->Arg(2000)->Arg(4000)->Arg(8000)->Complexity(); */
+
+BENCHMARK(BM_LJSimulation)->DenseRange(1000, 10000, 1000);
