@@ -2,6 +2,8 @@
 #include "physics/boundaryConditions/BoundaryConditionHandler.h"
 #include "simulation/linkedLennardJonesSim.h"
 
+class BoundaryConfig;
+
 /**
  * @brief Simulation class for the Lennard-Jones simulation within a restricted domain and linked
  * cell algorithm
@@ -28,7 +30,7 @@ public:
      * @param domainOrigin The origin of the simulation domain
      * @param domainSize The size of the simulation domain
      * @param cutoff The cutoff radius of the simulation
-     * @param bcHandler The boundary condition handler
+     * @param boundaryConfig The boundary condition configuration specification
      * @param frequency The frequency for writing outputs (default = 10)
      * @param updateFrequency The frequency for updating the grid (default = 10)
      * @param read_file Whether to read the input file (default = true)
@@ -46,7 +48,7 @@ public:
         std::array<double, 3> domainOrigin,
         std::array<double, 3> domainSize,
         double cutoff,
-        BoundaryConditionHandler& bcHandler,
+        BoundaryConfig boundaryConfig,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
         bool read_file = true);
@@ -57,5 +59,5 @@ public:
      */
     void runSim() override;
 
-    BoundaryConditionHandler& bcHandler; /**< The boundary condition handler */
+    BoundaryConditionHandler bcHandler; /**< The boundary condition handler */
 };

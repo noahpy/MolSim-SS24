@@ -6,7 +6,6 @@
 #include <cmath>
 #include <cwchar>
 #include <spdlog/spdlog.h>
-#include <sys/wait.h>
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,

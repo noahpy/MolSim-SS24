@@ -1,5 +1,6 @@
 
-#include "simulation/LennardJonesDomainSimulation.h"
+#include "models/linked_cell/cell/Cell.h"
+#include "physics/boundaryConditions/BoundaryCondition.h"
 #include <spdlog/spdlog.h>
 
 /**

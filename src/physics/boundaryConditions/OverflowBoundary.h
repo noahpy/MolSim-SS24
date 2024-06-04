@@ -1,5 +1,5 @@
 
-#include "simulation/LennardJonesDomainSimulation.h"
+#include "physics/boundaryConditions/BoundaryCondition.h"
 
 /**
  * @brief The OverflowBoundary class is a class that represents a boundary condition where particles

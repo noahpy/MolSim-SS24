@@ -1,5 +1,7 @@
 
 #include "OverflowBoundary.h"
+#include "models/linked_cell/cell/Cell.h"
+#include "simulation/LennardJonesDomainSimulation.h"
 #include <unordered_map>
 
 void OverflowBoundary::postUpdateBoundaryHandling(Simulation& simulation)

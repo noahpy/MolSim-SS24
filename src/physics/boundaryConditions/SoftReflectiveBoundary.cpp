@@ -1,5 +1,6 @@
 
 #include "SoftReflectiveBoundary.h"
+#include "simulation/LennardJonesDomainSimulation.h"
 #include "utils/ArrayUtils.h"
 
 void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)

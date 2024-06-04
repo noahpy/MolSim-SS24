@@ -18,7 +18,7 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
     std::array<double, 3> domainOrigin,
     std::array<double, 3> domainSize,
     double cutoff,
-    BoundaryConditionHandler& bcHandler,
+    BoundaryConfig boundaryConfig,
     unsigned frequency,
     unsigned updateFrequency,
     bool read_file)
@@ -38,7 +38,7 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
           frequency,
           updateFrequency,
           read_file)
-    , bcHandler(bcHandler)
+    , bcHandler(boundaryConfig)
 {
 }
 

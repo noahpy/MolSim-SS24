@@ -9,6 +9,8 @@ enum WriterType { XYZ, VTK };
 
 enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ };
 
+enum BoundaryType { OVERFLOW, SOFT_REFLECTIVE };
+
 class Params {
 public:
     double start_time = 0; // start time

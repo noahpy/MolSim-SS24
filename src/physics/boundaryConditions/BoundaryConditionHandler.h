@@ -1,6 +1,10 @@
 
-#include "BoundaryCondition.h"
+#include "physics/boundaryConditions/BoundaryCondition.h"
+#include "physics/boundaryConditions/BoundaryConfig.h"
+#include "physics/boundaryConditions/OverflowBoundary.h"
+#include "physics/boundaryConditions/SoftReflectiveBoundary.h"
 #include "simulation/baseSimulation.h"
+#include <list>
 
 /**
  * @brief The BoundaryConditionHandler class is a class that handles the application of boundary
@@ -10,12 +14,27 @@ class BoundaryConditionHandler {
 public:
     /**
      * @brief Constructor for the BoundaryConditionHandler class
-     * @param boundaryConditions The boundary conditions to apply
+     * @param boundaryConfig The boundary conditions to apply described in the object
      */
-    explicit BoundaryConditionHandler(
-        std::vector<std::unique_ptr<BoundaryCondition>> boundaryConditions)
-        : boundaryConditions(std::move(boundaryConditions))
+    explicit BoundaryConditionHandler(const BoundaryConfig& boundaryConfig)
+        : boundaryConditions()
     {
+        for (auto boundary : boundaryConfig.boundaryMap) {
+            Position position = boundary.first;
+            BoundaryType type = boundary.second;
+
+            switch (type) {
+            case BoundaryType::OVERFLOW:
+                boundaryConditions.push_back(std::make_unique<OverflowBoundary>(position));
+                break;
+            case BoundaryType::SOFT_REFLECTIVE:
+                boundaryConditions.push_back(std::make_unique<SoftReflectiveBoundary>(position));
+                break;
+            default:
+                spdlog::error("Boundary type not recognized.");
+                break;
+            }
+        }
     }
 
     /**
