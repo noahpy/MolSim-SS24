@@ -27,6 +27,8 @@ void OverflowBoundary::postUpdateBoundaryHandling(Simulation& simulation)
     for (const auto& particle : particlesToRemove) {
         // particlesToRemoveMap.insert({ &particle.get(), true });
         particle.get().setV({ 0, 0, 0 });
+        particle.get().setF({ 0, 0, 0 });
+        particle.get().setOldF({ 0, 0, 0 });
         particle.get().setX({ -50, -50, -50 });
     }
 
