@@ -184,12 +184,12 @@ void CellGrid::updateCells()
 // Methods to get boundary and halo particle iterators
 CellGrid::BoundaryIterator CellGrid::boundaryCellIterator(Position position) const
 {
-    return { position, gridDimensions, false };
+    return { position, gridDimensions, gridDimensionality == 2};
 }
 
 CellGrid::HaloIterator CellGrid::haloCellIterator(Position position) const
 {
-    return { position, gridDimensions, false };
+    return { position, gridDimensions, gridDimensionality == 2 };
 }
 
 void CellGrid::addParticle(Particle& particle)

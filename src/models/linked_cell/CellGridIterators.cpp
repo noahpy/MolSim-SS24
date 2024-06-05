@@ -10,15 +10,22 @@ size_t getCoordinateIrrelevantAxis(
     std::array<size_t, 3> gridDimensions,
     size_t irrelevantBoundary,
     CellType cellType);
-size_t getNumberOfRelevantBoundaries(size_t dim1, size_t dim2, size_t dimZ);
+size_t getNumberOfRelevantBoundaries(std::array<size_t, 3> gridDimensions, Position position, CellType cellType, bool is2D);
 
 // TODO Move the creation the iterators to the class and then only return the fresh ones
 /* ########### BoundaryIterator Implementation ########### */
 CellGrid::BoundaryIterator::BoundaryIterator(
-    Position position, std::array<size_t, 3> gridDimensions, bool end)
+    Position position, std::array<size_t, 3> gridDimensions, bool is2D)
     : gridDimensions(gridDimensions)
     , index(0)
+    , is2D(is2D)
 {
+    if (is2D && (position == FRONT || position == BACK)) {
+        // if we are in 2D there are no front and Back boundaries
+        boundaries = {};
+        return;
+    }
+
     size_t irrelevantBoundary = getBoundaryIndices(position).first;
     std::pair<size_t, size_t> relevantBoundaryIndices = getBoundaryIndices(position).second;
 
@@ -27,23 +34,34 @@ CellGrid::BoundaryIterator::BoundaryIterator(
 
     // Make space for the required indices
     std::vector<CellIndex> relevantBoundaries(getNumberOfRelevantBoundaries(
-        (gridDimensions[relevantBoundaryIndices.first] - 2),
-        (gridDimensions[relevantBoundaryIndices.second] - 2),
-        gridDimensions[2]));
+        gridDimensions, position, CellType::Boundary, is2D));
     size_t insertionIndex = 0;
 
-    for (size_t i = 1; i < gridDimensions[relevantBoundaryIndices.first] - 1; i++)
-        for (size_t j = 1; j < gridDimensions[relevantBoundaryIndices.second] - 1; j++) {
-            CellIndex boundary;
+    for (size_t i = 1; i < gridDimensions[relevantBoundaryIndices.first] - 1; i++) {
+        CellIndex boundary;
+
+        if (is2D) {
             if (irrelevantBoundary == 0)
-                boundary = { coordinateIrrelevantAxis, i, j };
+                boundary = { coordinateIrrelevantAxis, i, 0 };
             else if (irrelevantBoundary == 1)
-                boundary = { i, coordinateIrrelevantAxis, j };
-            else
-                boundary = { i, j, coordinateIrrelevantAxis };
+                boundary = { i, coordinateIrrelevantAxis, 0 };
+            // there cannot be irrelevantBoundary == 2 in 2D
 
             relevantBoundaries.at(insertionIndex++) = boundary;
+        } else {
+            for (size_t j = 1; j < gridDimensions[relevantBoundaryIndices.second] - 1; j++) {
+                if (irrelevantBoundary == 0)
+                    boundary = { coordinateIrrelevantAxis, i, j };
+                else if (irrelevantBoundary == 1)
+                    boundary = { i, coordinateIrrelevantAxis, j };
+                else
+                    boundary = { i, j, coordinateIrrelevantAxis };
+
+                relevantBoundaries.at(insertionIndex++) = boundary;
+            }
         }
+
+    }
 
     boundaries = relevantBoundaries;
 }
@@ -83,10 +101,17 @@ bool CellGrid::BoundaryIterator::operator!=(const BoundaryIterator& other) const
 
 /* ########### HaloIterator Implementation ########### */
 CellGrid::HaloIterator::HaloIterator(
-    Position position, std::array<size_t, 3> gridDimensions, bool end)
+    Position position, std::array<size_t, 3> gridDimensions, bool is2D)
     : gridDimensions(gridDimensions)
     , index(0)
+    , is2D(is2D)
 {
+    if (is2D && (position == FRONT || position == BACK)) {
+        // if we are in 2D there are no front and Back halos
+        boundaries = {};
+        return;
+    }
+
     size_t irrelevantBoundary = getBoundaryIndices(position).first;
     std::pair<size_t, size_t> relevantBoundaryIndices = getBoundaryIndices(position).second;
 
@@ -94,23 +119,34 @@ CellGrid::HaloIterator::HaloIterator(
         getCoordinateIrrelevantAxis(position, gridDimensions, irrelevantBoundary, CellType::Halo);
 
     std::vector<CellIndex> relevantBoundaries(getNumberOfRelevantBoundaries(
-        gridDimensions[relevantBoundaryIndices.first],
-        gridDimensions[relevantBoundaryIndices.second],
-        gridDimensions[2]));
+        gridDimensions, position, CellType::Halo, is2D));
     size_t insertionIndex = 0;
 
-    for (size_t i = 0; i < gridDimensions[relevantBoundaryIndices.first]; i++)
-        for (size_t j = 0; j < gridDimensions[relevantBoundaryIndices.second]; j++) {
-            CellIndex boundary;
+    for (size_t i = 0; i < gridDimensions[relevantBoundaryIndices.first]; i++) {
+        CellIndex boundary;
+
+        if (is2D) {
             if (irrelevantBoundary == 0)
-                boundary = { coordinateIrrelevantAxis, i, j };
+                boundary = { coordinateIrrelevantAxis, i, 0 };
             else if (irrelevantBoundary == 1)
-                boundary = { i, coordinateIrrelevantAxis, j };
-            else
-                boundary = { i, j, coordinateIrrelevantAxis };
+                boundary = { i, coordinateIrrelevantAxis, 0 };
+            // there cannot be irrelevantBoundary == 2 in 2D
 
             relevantBoundaries.at(insertionIndex++) = boundary;
+        } else {
+            for (size_t j = 0; j < gridDimensions[relevantBoundaryIndices.second]; j++) {
+                if (irrelevantBoundary == 0)
+                    boundary = { coordinateIrrelevantAxis, i, j };
+                else if (irrelevantBoundary == 1)
+                    boundary = { i, coordinateIrrelevantAxis, j };
+                else
+                    boundary = { i, j, coordinateIrrelevantAxis };
+
+                relevantBoundaries.at(insertionIndex++) = boundary;
+            }
         }
+
+    }
 
     boundaries = relevantBoundaries;
 
@@ -222,13 +258,26 @@ size_t getCoordinateIrrelevantAxis(
  * @param dimZ The size of the z axis grid (number of cells along the z axis)
  * @return The number of relevant boundaries
  */
-size_t getNumberOfRelevantBoundaries(size_t dim1, size_t dim2, size_t dimZ)
+size_t getNumberOfRelevantBoundaries(
+    std::array<size_t, 3> gridDimensions, Position position, CellType cellType, bool is2D)
 {
-    if (dimZ > 1) {
-        // 3D
-        return dim1 * dim2;
-    } else {
-        // 2D
-        return 2 * dim1 + 2 * dim2 - 4;
+    std::pair<size_t, size_t> relevantBoundaryIndices = getBoundaryIndices(position).second;
+    size_t numDim1 = gridDimensions[relevantBoundaryIndices.first],
+           numDim2 = gridDimensions[relevantBoundaryIndices.second];
+
+    switch (cellType) {
+    case CellType::Boundary:
+        numDim1 -= 2;
+        numDim2 -= 2;
+        break;
+    case CellType::Halo:
+        break;
+    default:
+        return 0;
     }
+
+    if (is2D)
+        return numDim1;
+    else
+        return numDim1 * numDim2;
 }

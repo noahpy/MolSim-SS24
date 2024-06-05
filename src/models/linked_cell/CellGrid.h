@@ -27,9 +27,7 @@ public:
      * @param cutoffRadius The cutoff radius for particle interactions.
      */
     CellGrid(
-        std::array<double, 3> domainOrigin,
-        std::array<double, 3> domainSize,
-        double cutoffRadius);
+        std::array<double, 3> domainOrigin, std::array<double, 3> domainSize, double cutoffRadius);
 
     /** @brief Destructor for CellGrid. */
     ~CellGrid();
@@ -163,7 +161,7 @@ public:
          * @param boundaries A reference to the vector of boundary cell indices.
          * @param end Set to true to create an end iterator.
          */
-        BoundaryIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
+        BoundaryIterator(Position position, std::array<size_t, 3> gridDimensions, bool is2D);
 
         /**
          * @brief Returns an iterator to the beginning of boundary cells of the given position (for
@@ -204,7 +202,10 @@ public:
         /// The relevant boundaries to consider
         std::vector<CellIndex> boundaries;
 
+        /// The dimensions of the grid
         std::array<size_t, 3> gridDimensions;
+
+        bool is2D; /**< True if the grid is 2D, false if 3D. */
     };
 
     /** @class HaloIterator
@@ -217,7 +218,7 @@ public:
          * @param halos A reference to the vector of halo cell indices.
          * @param end Set to true to create an end iterator.
          */
-        HaloIterator(Position position, std::array<size_t, 3> gridDimensions, bool end = false);
+        HaloIterator(Position position, std::array<size_t, 3> gridDimensions, bool is2D);
 
         /**
          * @brief Returns an iterator to the beginning of halo cells of the given position (for
@@ -259,5 +260,7 @@ public:
 
         /// The current index in the halo cell vector.
         size_t index;
+
+        bool is2D; /**< True if the grid is 2D, false if 3D. */
     };
 };
