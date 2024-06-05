@@ -46,16 +46,15 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
 void LennardJonesDomainSimulation::runSim()
 {
     if (bcHandler.dimensionality != cellGrid.gridDimensionality) {
-        spdlog::error("Dimensionality mismatch between boundary conditions and cell grid.",
-                      "Boundary conditions: {}, Cell grid: {}",
-                      bcHandler.dimensionality, cellGrid.gridDimensionality);
+        spdlog::error(
+            "Dimensionality mismatch between boundary conditions and cell grid.",
+            "Boundary conditions: {}, Cell grid: {}",
+            bcHandler.dimensionality,
+            cellGrid.gridDimensionality);
         exit(EXIT_FAILURE);
     }
 
     while (time < end_time) {
-        if (iteration == 51)
-            spdlog::info("Iteration 51");
-
         bcHandler.preUpdateBoundaryHandling(*this);
 
         strategy.calF(*this);
