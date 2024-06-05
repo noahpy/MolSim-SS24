@@ -16,10 +16,10 @@ CellGrid::CellGrid(
     , cutoffRadius(cutoffRadius)
     , gridDimensions({ 0, 0, 0 })
     , cellSize({ 0.0, 0.0, 0.0 })
-    // TODO check if this is the right interpretation of the dimensions
     , domainEnd({ domainOrigin[0] + domainSize[0],
                   domainOrigin[1] - domainSize[1],
                   domainOrigin[2] + domainSize[2] })
+    , gridDimensionality((domainSize[2] == 0) ? 2 : 3)
 {
     initializeGrid();
 }
@@ -49,15 +49,15 @@ void CellGrid::determineNeighbours(CellIndex cell)
                 switch (determineCellType(neighbourIndex)) {
                 case CellType::Boundary:
                     cells.at(cell[0]).at(cell[1]).at(cell[2])->boundaryNeighbours.emplace_back(
-                        std::make_pair(neighbourIndex, positions));
+                        neighbourIndex, positions);
                     break;
                 case CellType::Halo:
                     cells.at(cell[0]).at(cell[1]).at(cell[2])->haloNeighbours.emplace_back(
-                        std::make_pair(neighbourIndex, positions));
+                        neighbourIndex, positions);
                     break;
                 case CellType::Inner:
                     cells.at(cell[0]).at(cell[1]).at(cell[2])->innerNeighbours.emplace_back(
-                        std::make_pair(neighbourIndex, positions));
+                        neighbourIndex, positions);
                     break;
                 default:
                     break;
@@ -69,10 +69,16 @@ void CellGrid::determineNeighbours(CellIndex cell)
 
 void CellGrid::initializeGrid()
 {
-    for (int i = 0; i < 3; ++i) {
+    if (gridDimensionality == 2) {
+        spdlog::info("Domain is set to 0 in z-Axis. Gird will be constructed in 2D.");
+        gridDimensions[2] = 1; // a single cell
+        cellSize[2] = 0; // no depth
+    }
+
+    for (int i = 0; i < gridDimensionality; ++i) {
         // if dimension is zero
         if (domainSize[i] == 0) {
-            spdlog::error("Domain size cannot be zero!");
+            spdlog::error("Domain size of x-Axis or y-Axis cannot be zero!");
             exit(EXIT_FAILURE);
         }
         // if cutoff radius is bigger than domain size
@@ -81,7 +87,7 @@ void CellGrid::initializeGrid()
             gridDimensions[i] = 3;
             continue;
         }
-        gridDimensions[i] = static_cast<size_t>(std::floor(domainSize[i] / cutoffRadius));
+        gridDimensions[i] = static_cast<size_t>(std::floor(std::abs(domainSize[i] / cutoffRadius)));
         cellSize[i] = domainSize[i] / static_cast<double>(gridDimensions[i]);
         gridDimensions[i] += 2;
     }
@@ -112,12 +118,12 @@ void CellGrid::initializeGrid()
 
 CellType CellGrid::determineCellType(const std::array<size_t, 3>& indices) const
 {
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < gridDimensionality; ++i) {
         if (indices[i] == 0 || indices[i] == gridDimensions[i] - 1) {
             return CellType::Halo;
         }
     }
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < gridDimensionality; ++i) {
         if (indices[i] == 1 || indices[i] == gridDimensions[i] - 2) {
             return CellType::Boundary;
         }
@@ -130,7 +136,7 @@ CellIndex CellGrid::getIndexFromPos(const std::array<double, 3>& ppos) const
     auto pos = ppos - domainOrigin;
     CellIndex indices { 0, 0, 0 };
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < gridDimensionality; ++i) {
         if (pos[i] < 0) {
             indices[i] = 0;
         } else if (pos[i] >= domainSize[i]) {
@@ -139,6 +145,8 @@ CellIndex CellGrid::getIndexFromPos(const std::array<double, 3>& ppos) const
             indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
         }
     }
+    // if gridDimensionality == 2, indices[2] will remain 0 from initialization
+
     return indices;
 }
 
@@ -149,7 +157,7 @@ void CellGrid::updateCells()
         for (size_t y = 0; y < gridDimensions[1]; ++y) {
             for (size_t z = 0; z < gridDimensions[2]; ++z) {
                 ParticleRefList& particles = cells.at(x).at(y).at(z)->getParticles();
-                ParticleRefList::iterator it = particles.begin();
+                auto it = particles.begin();
                 while (it != particles.end()) {
                     // Calculate new index
                     CellIndex indices = getIndexFromPos((*it).get().getX());
@@ -283,17 +291,17 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
     return cellList;
 }
 
-void CellGrid::setCutoffRadius(double cutoffRadius)
+void CellGrid::setCutoffRadius(double pCutoffRadius)
 {
-    this->cutoffRadius = cutoffRadius;
+    cutoffRadius = pCutoffRadius;
 }
 
-void CellGrid::setDomainSize(const std::array<double, 3>& domainSize)
+void CellGrid::setDomainSize(const std::array<double, 3>& pDomainSize)
 {
-    this->domainSize = domainSize;
+    domainSize = pDomainSize;
 }
 
-void CellGrid::setDomainOrigin(const std::array<double, 3>& domainOrigin)
+void CellGrid::setDomainOrigin(const std::array<double, 3>& pDomainOrigin)
 {
-    this->domainOrigin = domainOrigin;
+    domainOrigin = pDomainOrigin;
 }

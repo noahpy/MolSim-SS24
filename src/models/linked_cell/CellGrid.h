@@ -27,8 +27,8 @@ public:
      * @param cutoffRadius The cutoff radius for particle interactions.
      */
     CellGrid(
-        const std::array<double, 3> domainOrigin,
-        const std::array<double, 3> domainSize,
+        std::array<double, 3> domainOrigin,
+        std::array<double, 3> domainSize,
         double cutoffRadius);
 
     /** @brief Destructor for CellGrid. */
@@ -41,6 +41,8 @@ public:
     std::array<double, 3> domainOrigin;
     // The bottom-right-back point of the domain
     std::array<double, 3> domainEnd;
+    /// The dimensionality of the gird (either 2 or 3)
+    size_t gridDimensionality;
 
     /**
      * @brief Adds a particle to the appropriate cell in the grid.

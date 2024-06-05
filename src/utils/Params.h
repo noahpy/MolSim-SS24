@@ -24,7 +24,7 @@ public:
     WriterType writer_type = WriterType::VTK;
     SimulationType simulation_type = SimulationType::PLANET;
     std::array<double, 3> domain_origin = { -50, -50, 0 };
-    std::array<double, 3> domain_size = { 100, 100, 1 };
+    std::array<double, 3> domain_size = { 100, 100, 0 };
     double cutoff = 5;
     unsigned plot_frequency = 10;
     unsigned update_frequency = 10;

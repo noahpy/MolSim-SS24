@@ -46,7 +46,7 @@ public:
         std::array<double, 3> domainOrigin,
         std::array<double, 3> domainSize,
         double cutoff,
-        BoundaryConfig boundaryConfig,
+        const BoundaryConfig& boundaryConfig,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
         bool read_file = true);

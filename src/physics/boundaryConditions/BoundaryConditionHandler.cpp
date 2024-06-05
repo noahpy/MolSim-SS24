@@ -5,7 +5,13 @@
 
 BoundaryConditionHandler::BoundaryConditionHandler(const BoundaryConfig& boundaryConfig)
     : boundaryConditions()
+    , dimensionality((boundaryConfig.boundaryMap.size() == 6) ? 3 : 2)
 {
+    if (boundaryConfig.boundaryMap.size() != 6 && boundaryConfig.boundaryMap.size() != 4) {
+        spdlog::error("BoundaryConfig must have 4 (2D) or 6 (3D) boundaries.");
+        exit(EXIT_FAILURE);
+    }
+
     for (auto boundary : boundaryConfig.boundaryMap) {
         Position position = boundary.first;
         BoundaryType type = boundary.second;
@@ -19,7 +25,7 @@ BoundaryConditionHandler::BoundaryConditionHandler(const BoundaryConfig& boundar
             break;
         default:
             spdlog::error("Boundary type not recognized.");
-            break;
+            exit(EXIT_FAILURE);
         }
     }
 }
