@@ -47,7 +47,7 @@ inline std::vector<Position> coordinateToPosition(
     return positions;
 }
 
-inline std::vector<Position> relCoordinateToPos(std::array<size_t, 3> coordinate)
+inline std::vector<Position> relCoordinateToPos(std::array<int, 3> coordinate)
 {
     std::vector<Position> positions;
     if (coordinate[0] == -1) {

@@ -107,9 +107,16 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_size[2],
             params.cutoff,
             params.update_frequency);
-        // TODO get boundaries
+        spdlog::info(
+            "left boundary: {}, right boundary: {}, top boundary: {}, bottom boundary: {}, front "
+            "boundary: {}, back boundary: {}",
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::LEFT)),
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::RIGHT)),
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::TOP)),
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::BOTTOM)),
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::FRONT)),
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::BACK)));
 
-        BoundaryConfig bconf { OVERFLOW, OVERFLOW, OVERFLOW, OVERFLOW, OVERFLOW, OVERFLOW };
         return std::make_unique<LennardJonesDomainSimulation>(
             params.start_time,
             params.delta_t,
@@ -123,7 +130,7 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_origin,
             params.domain_size,
             params.cutoff,
-            bconf,
+            params.boundaryConfig,
             params.plot_frequency,
             params.update_frequency);
     }

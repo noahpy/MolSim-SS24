@@ -77,6 +77,34 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="boundaryNames_t">
+      <xs:annotation>
+      <xs:documentation>
+        Boundary names for the simulation
+      </xs:documentation>
+    </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="overflow"/>
+            <xs:enumeration value="soft_reflective"/>
+        </xs:restriction>
+ </xs:simpleType>
+
+ <xs:complexType name="boundary_t">
+     <xs:annotation>
+      <xs:documentation>
+        Boundary configuration for four or six boundaries
+      </xs:documentation>
+    </xs:annotation>
+        <xs:choice>
+            <xs:sequence>
+                <xs:element name="bound_four" type="boundaryNames_t" minOccurs="4" maxOccurs="4"/>
+            </xs:sequence>
+            <xs:sequence>
+                <xs:element name="bound_six" type="boundaryNames_t" minOccurs="6" maxOccurs="6"/>
+            </xs:sequence>
+        </xs:choice>
+</xs:complexType>
+
   <!-- Cluster definitions -->
 
   <xs:complexType name="cuboid_t">
@@ -278,6 +306,13 @@
         <xs:annotation>
           <xs:documentation>
               The frequency of updating the grid.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="boundaries" type="boundary_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The boundary configuration for the domain boundaries.
           </xs:documentation>
         </xs:annotation>
       </xs:element>

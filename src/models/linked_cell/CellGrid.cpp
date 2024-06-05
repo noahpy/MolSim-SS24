@@ -42,9 +42,7 @@ void CellGrid::determineNeighbours(CellIndex cell)
                 }
                 CellIndex neighbourIndex = { cell[0] + i, cell[1] + j, cell[2] + k };
 
-                auto positions = relCoordinateToPos({ static_cast<unsigned long>(i),
-                                                      static_cast<unsigned long>(j),
-                                                      static_cast<unsigned long>(k) });
+                auto positions = relCoordinateToPos({ i, j, k });
 
                 switch (determineCellType(neighbourIndex)) {
                 case CellType::Boundary:
@@ -184,7 +182,7 @@ void CellGrid::updateCells()
 // Methods to get boundary and halo particle iterators
 CellGrid::BoundaryIterator CellGrid::boundaryCellIterator(Position position) const
 {
-    return { position, gridDimensions, gridDimensionality == 2};
+    return { position, gridDimensions, gridDimensionality == 2 };
 }
 
 CellGrid::HaloIterator CellGrid::haloCellIterator(Position position) const

@@ -38,9 +38,12 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
           cutoff,
           frequency,
           updateFrequency,
-          read_file)
+          false)
     , bcHandler(boundaryConfig)
 {
+    if (read_file) {
+        this->reader->readFile(*this);
+    }
 }
 
 void LennardJonesDomainSimulation::runSim()
