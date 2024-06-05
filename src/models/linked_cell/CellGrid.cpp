@@ -16,9 +16,7 @@ CellGrid::CellGrid(
     , cutoffRadius(cutoffRadius)
     , gridDimensions({ 0, 0, 0 })
     , cellSize({ 0.0, 0.0, 0.0 })
-    , domainEnd({ domainOrigin[0] + domainSize[0],
-                  domainOrigin[1] - domainSize[1],
-                  domainOrigin[2] + domainSize[2] })
+    , domainEnd(domainOrigin + domainSize)
     , gridDimensionality((domainSize[2] == 0) ? 2 : 3)
 {
     initializeGrid();

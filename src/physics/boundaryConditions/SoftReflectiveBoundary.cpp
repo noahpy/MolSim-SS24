@@ -25,12 +25,12 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             std::array<double, 3> pointOnBoundaryPlane {};
             switch (position) {
             // To mirror point, we need a point on the plane to mirror it about
-            case TOP:
+            case BOTTOM:
             case LEFT:
             case FRONT:
                 pointOnBoundaryPlane = LGDSim.getGrid().domainOrigin;
                 break;
-            case BOTTOM:
+            case TOP:
             case RIGHT:
             case BACK:
                 pointOnBoundaryPlane = LGDSim.getGrid().domainEnd;

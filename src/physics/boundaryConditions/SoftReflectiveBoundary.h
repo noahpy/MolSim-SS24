@@ -39,7 +39,7 @@ private:
      * @return The relevant halo neighbor
      */
     CellIndex filterHaloNeighbors(
-        std::vector<std::pair<CellIndex, std::vector<Position>>> haloNeighbors)
+        const std::vector<std::pair<CellIndex, std::vector<Position>>>& haloNeighbors)
     {
         for (auto& neighbors : haloNeighbors) {
             auto cellIndex = neighbors.first;
@@ -52,7 +52,7 @@ private:
                 }
             }
         }
-        spdlog::warn("No suitable halo neighbor found for boundary handling. This is a bug");
+        spdlog::error("No suitable halo neighbor found for boundary handling. This is a bug");
         return { 0, 0, 0 };
     };
 

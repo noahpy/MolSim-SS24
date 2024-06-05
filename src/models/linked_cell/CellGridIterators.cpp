@@ -10,7 +10,8 @@ size_t getCoordinateIrrelevantAxis(
     std::array<size_t, 3> gridDimensions,
     size_t irrelevantBoundary,
     CellType cellType);
-size_t getNumberOfRelevantBoundaries(std::array<size_t, 3> gridDimensions, Position position, CellType cellType, bool is2D);
+size_t getNumberOfRelevantBoundaries(
+    std::array<size_t, 3> gridDimensions, Position position, CellType cellType, bool is2D);
 
 // TODO Move the creation the iterators to the class and then only return the fresh ones
 /* ########### BoundaryIterator Implementation ########### */
@@ -33,8 +34,8 @@ CellGrid::BoundaryIterator::BoundaryIterator(
         position, gridDimensions, irrelevantBoundary, CellType::Boundary);
 
     // Make space for the required indices
-    std::vector<CellIndex> relevantBoundaries(getNumberOfRelevantBoundaries(
-        gridDimensions, position, CellType::Boundary, is2D));
+    std::vector<CellIndex> relevantBoundaries(
+        getNumberOfRelevantBoundaries(gridDimensions, position, CellType::Boundary, is2D));
     size_t insertionIndex = 0;
 
     for (size_t i = 1; i < gridDimensions[relevantBoundaryIndices.first] - 1; i++) {
@@ -60,7 +61,6 @@ CellGrid::BoundaryIterator::BoundaryIterator(
                 relevantBoundaries.at(insertionIndex++) = boundary;
             }
         }
-
     }
 
     boundaries = relevantBoundaries;
@@ -118,8 +118,8 @@ CellGrid::HaloIterator::HaloIterator(
     size_t coordinateIrrelevantAxis =
         getCoordinateIrrelevantAxis(position, gridDimensions, irrelevantBoundary, CellType::Halo);
 
-    std::vector<CellIndex> relevantBoundaries(getNumberOfRelevantBoundaries(
-        gridDimensions, position, CellType::Halo, is2D));
+    std::vector<CellIndex> relevantBoundaries(
+        getNumberOfRelevantBoundaries(gridDimensions, position, CellType::Halo, is2D));
     size_t insertionIndex = 0;
 
     for (size_t i = 0; i < gridDimensions[relevantBoundaryIndices.first]; i++) {
@@ -145,7 +145,6 @@ CellGrid::HaloIterator::HaloIterator(
                 relevantBoundaries.at(insertionIndex++) = boundary;
             }
         }
-
     }
 
     boundaries = relevantBoundaries;
@@ -235,12 +234,12 @@ size_t getCoordinateIrrelevantAxis(
     size_t coordinateIrrelevantAxis;
     switch (position) {
     case LEFT:
-    case TOP:
+    case BOTTOM:
     case FRONT:
         coordinateIrrelevantAxis = (cellType == CellType::Halo) ? 0 : 1;
         break;
     case RIGHT:
-    case BOTTOM:
+    case TOP:
     case BACK:
         coordinateIrrelevantAxis = gridDimensions[irrelevantBoundary] - 1;
         if (cellType == CellType::Boundary)
