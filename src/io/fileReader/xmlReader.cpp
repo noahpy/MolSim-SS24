@@ -67,6 +67,16 @@ void XmlReader::readFile(Simulation& sim)
         const auto& spheres = sim_input->clusters().sphere();
         for (auto sphere : spheres) {
             // read sphere
+            generator.registerCluster(std::make_unique<SphereParticleCluster>(SphereParticleCluster(
+                { sphere.center().x(), sphere.center().y(), sphere.center().z() },
+                sphere.radius(),
+                sphere.sphereDim(),
+                sphere.spacing(),
+                sphere.mass(),
+                { sphere.vel().x(), sphere.vel().y(), sphere.vel().z() },
+                sphere.brownVel(),
+                sphere.brownDim()
+            )));
         }
 
         generator.generateClusters();

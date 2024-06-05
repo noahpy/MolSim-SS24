@@ -152,6 +152,13 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="vel" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The initial velocity of the sphere in 3D space.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="radius" type="xs:double">
         <xs:annotation>
           <xs:documentation>
@@ -166,10 +173,31 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="sphereDim" type="dimension_t">
+        <xs:annotation>
+          <xs:documentation>
+            The dimensions of the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="spacing" type="xs:double">
         <xs:annotation>
           <xs:documentation>
             The spacing between particles in the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brownVel" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The Brownian motion velocity.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brownDim" type="dimension_t">
+        <xs:annotation>
+          <xs:documentation>
+            The dimension affected by Brownian motion.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
