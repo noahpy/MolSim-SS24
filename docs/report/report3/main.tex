@@ -101,7 +101,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
 
 \begin{itemize}
     \item We added a benchmark test for the linked-cell implementation \newline(see \texttt{bench/benchLinkedCell.cpp}).
-    \item We tested the performance of with the parameters stated in Task 2 \newline(see\ \ref{fig:timelc}).
+    \item We tested the performance of with the parameters stated in Task 2 \newline(see\ \ref{fig:timelc} and\ \ref{fig:timelclong}).
     \item The hardware specifics for running the tests are shown here\ \ref{fig:specs}.
 \end{itemize}
 
@@ -114,9 +114,15 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
 \end{figure}
 
 \begin{figure}[H]
-    \includegraphics[width=\textwidth]{res/signal-2024-06-04-210754_002}
-    \caption{linked-cell and naive simulation times of a 2D-square with 1000, 2000, 4000 and 8000 molecules.}
+    \includegraphics[width=\textwidth]{res/lj_big_plot_linear}
+    \caption{linked-cell and naive simulation times of a 2D-square with 1000 to 10000 molecules.}
     \label{fig:timelc}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{res/lj_big_plot_log}
+    \caption{linked-cell and naive simulation times with 1000 to 10000 particles and a logarithmic time scale}
+    \label{fig:timelclong}
 \end{figure}
 
 \section{Boundary Conditions}
@@ -143,6 +149,26 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
         \item 2D Discs: The disc is created as a collection of concentric rings of particles. \texttt{generateRing()} creates a ring of particles evenly spaced around a circumference and \texttt{generateDisc()} generates rings of particles with decreasing radii.
         \item 3D Sphere: The sphere is constructed as a stack of discs. Discs above and below the origin are iteratively generated with decreasing radii.
     \end{itemize}
+    \item Even spacing of particles in rings is achieved through the use of several trigonometric functions:
+    \begin{enumerate}
+        \item Angular step calculation:
+        \begin{itemize}
+            \item We calculate the angular step $\theta$ between particles to ensure they are spaced by at least a given distance along the circumference.
+            \item Given a ring with radius \textit{r} and particle spacing \textit{s}, the angular step $\theta$ is determined by:
+            \item $\theta = 2 \arcsin\left(\frac{s}{2 \times r}\right)$
+        \end{itemize}
+        \item Number of particles calculation:
+        \begin{itemize}
+            \item The number of particles \textit{N} that can fit in the ring is given by dividing the full circle ($2\pi\ radians$) by the angular step $\theta$:
+            \item $N = \left\lfloor \frac{2\pi}{\theta} \right\rfloor$
+        \end{itemize}
+        \item Positioning particles:
+        \begin{itemize}
+            \item The coordinates for each particle in the ring are calculated using polar coordinates.
+            \item For a particle at index \textit{i}, the position is:
+            \item $x_i = \text{origin}_x + r \cos(i \theta)\newline y_i = \text{origin}_y + r \sin(i \theta)\newline z_i = \text{origin}_z + \text{z\_offset}$
+        \end{itemize}
+    \end{enumerate}
 \end{itemize}
 
 \end{document}
