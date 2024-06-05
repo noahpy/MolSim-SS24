@@ -43,6 +43,7 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
 {
     if (read_file) {
         this->reader->readFile(*this);
+        cellGrid.addParticlesFromContainer(container);
     }
 }
 

@@ -38,8 +38,8 @@ LinkedLennardJonesSimulation::LinkedLennardJonesSimulation(
 {
     if (read_file) {
         this->reader->readFile(*this);
+        cellGrid.addParticlesFromContainer(container);
     }
-    cellGrid.addParticlesFromContainer(container);
 }
 
 void LinkedLennardJonesSimulation::runSim()

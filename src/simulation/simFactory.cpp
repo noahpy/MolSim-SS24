@@ -107,6 +107,7 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_size[2],
             params.cutoff,
             params.update_frequency);
+        bool is2DTmp = params.boundaryConfig.boundaryMap.size() == 4;
         spdlog::info(
             "left boundary: {}, right boundary: {}, top boundary: {}, bottom boundary: {}, front "
             "boundary: {}, back boundary: {}",
@@ -114,8 +115,10 @@ std::unique_ptr<Simulation> simFactory(
             getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::RIGHT)),
             getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::TOP)),
             getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::BOTTOM)),
-            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::FRONT)),
-            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::BACK)));
+            is2DTmp ? "None (2D)"
+                    : getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::FRONT)),
+            is2DTmp ? "None (2D)"
+                    : getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::BACK)));
 
         return std::make_unique<LennardJonesDomainSimulation>(
             params.start_time,
