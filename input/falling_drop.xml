@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simulation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <params>
+    <delta_t>0.01</delta_t>
+    <end_time>1.0</end_time>
+    <epsilon>5</epsilon>
+    <sigma>1.0</sigma>
+    <output>sim</output>
+    <frequency>10</frequency>
+  </params>
+  <clusters>
+    <sphere>
+        <center>
+        <x>15</x>
+        <y>15</y>
+        <z>0</z>
+      </center>
+      <vel>
+        <x>0</x>
+        <y>-10</y>
+        <z>0</z>
+      </vel>
+      <radius>15</radius>
+      <mass>1.0</mass>
+      <sphereDim>3</sphereDim>
+      <spacing>1.1225</spacing>
+      <brownVel>0.1</brownVel>
+      <brownDim>2</brownDim>
+    </sphere>
+  </clusters>
+</simulation>

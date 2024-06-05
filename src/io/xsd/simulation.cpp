@@ -341,6 +341,30 @@ center (::std::unique_ptr< center_type > x)
   this->center_.set (std::move (x));
 }
 
+const sphere_t::vel_type& sphere_t::
+vel () const
+{
+  return this->vel_.get ();
+}
+
+sphere_t::vel_type& sphere_t::
+vel ()
+{
+  return this->vel_.get ();
+}
+
+void sphere_t::
+vel (const vel_type& x)
+{
+  this->vel_.set (x);
+}
+
+void sphere_t::
+vel (::std::unique_ptr< vel_type > x)
+{
+  this->vel_.set (std::move (x));
+}
+
 const sphere_t::radius_type& sphere_t::
 radius () const
 {
@@ -377,6 +401,30 @@ mass (const mass_type& x)
   this->mass_.set (x);
 }
 
+const sphere_t::sphereDim_type& sphere_t::
+sphereDim () const
+{
+  return this->sphereDim_.get ();
+}
+
+sphere_t::sphereDim_type& sphere_t::
+sphereDim ()
+{
+  return this->sphereDim_.get ();
+}
+
+void sphere_t::
+sphereDim (const sphereDim_type& x)
+{
+  this->sphereDim_.set (x);
+}
+
+void sphere_t::
+sphereDim (::std::unique_ptr< sphereDim_type > x)
+{
+  this->sphereDim_.set (std::move (x));
+}
+
 const sphere_t::spacing_type& sphere_t::
 spacing () const
 {
@@ -393,6 +441,48 @@ void sphere_t::
 spacing (const spacing_type& x)
 {
   this->spacing_.set (x);
+}
+
+const sphere_t::brownVel_type& sphere_t::
+brownVel () const
+{
+  return this->brownVel_.get ();
+}
+
+sphere_t::brownVel_type& sphere_t::
+brownVel ()
+{
+  return this->brownVel_.get ();
+}
+
+void sphere_t::
+brownVel (const brownVel_type& x)
+{
+  this->brownVel_.set (x);
+}
+
+const sphere_t::brownDim_type& sphere_t::
+brownDim () const
+{
+  return this->brownDim_.get ();
+}
+
+sphere_t::brownDim_type& sphere_t::
+brownDim ()
+{
+  return this->brownDim_.get ();
+}
+
+void sphere_t::
+brownDim (const brownDim_type& x)
+{
+  this->brownDim_.set (x);
+}
+
+void sphere_t::
+brownDim (::std::unique_ptr< brownDim_type > x)
+{
+  this->brownDim_.set (std::move (x));
 }
 
 
@@ -1339,27 +1429,43 @@ cuboid_t::
 
 sphere_t::
 sphere_t (const center_type& center,
+          const vel_type& vel,
           const radius_type& radius,
           const mass_type& mass,
-          const spacing_type& spacing)
+          const sphereDim_type& sphereDim,
+          const spacing_type& spacing,
+          const brownVel_type& brownVel,
+          const brownDim_type& brownDim)
 : ::xml_schema::type (),
   center_ (center, this),
+  vel_ (vel, this),
   radius_ (radius, this),
   mass_ (mass, this),
-  spacing_ (spacing, this)
+  sphereDim_ (sphereDim, this),
+  spacing_ (spacing, this),
+  brownVel_ (brownVel, this),
+  brownDim_ (brownDim, this)
 {
 }
 
 sphere_t::
 sphere_t (::std::unique_ptr< center_type > center,
+          ::std::unique_ptr< vel_type > vel,
           const radius_type& radius,
           const mass_type& mass,
-          const spacing_type& spacing)
+          const sphereDim_type& sphereDim,
+          const spacing_type& spacing,
+          const brownVel_type& brownVel,
+          const brownDim_type& brownDim)
 : ::xml_schema::type (),
   center_ (std::move (center), this),
+  vel_ (std::move (vel), this),
   radius_ (radius, this),
   mass_ (mass, this),
-  spacing_ (spacing, this)
+  sphereDim_ (sphereDim, this),
+  spacing_ (spacing, this),
+  brownVel_ (brownVel, this),
+  brownDim_ (brownDim, this)
 {
 }
 
@@ -1369,9 +1475,13 @@ sphere_t (const sphere_t& x,
           ::xml_schema::container* c)
 : ::xml_schema::type (x, f, c),
   center_ (x.center_, f, this),
+  vel_ (x.vel_, f, this),
   radius_ (x.radius_, f, this),
   mass_ (x.mass_, f, this),
-  spacing_ (x.spacing_, f, this)
+  sphereDim_ (x.sphereDim_, f, this),
+  spacing_ (x.spacing_, f, this),
+  brownVel_ (x.brownVel_, f, this),
+  brownDim_ (x.brownDim_, f, this)
 {
 }
 
@@ -1381,9 +1491,13 @@ sphere_t (const ::xercesc::DOMElement& e,
           ::xml_schema::container* c)
 : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
   center_ (this),
+  vel_ (this),
   radius_ (this),
   mass_ (this),
-  spacing_ (this)
+  sphereDim_ (this),
+  spacing_ (this),
+  brownVel_ (this),
+  brownDim_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -1416,6 +1530,20 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // vel
+    //
+    if (n.name () == "vel" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< vel_type > r (
+        vel_traits::create (i, f, this));
+
+      if (!vel_.present ())
+      {
+        this->vel_.set (::std::move (r));
+        continue;
+      }
+    }
+
     // radius
     //
     if (n.name () == "radius" && n.namespace_ ().empty ())
@@ -1438,6 +1566,20 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // sphereDim
+    //
+    if (n.name () == "sphereDim" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< sphereDim_type > r (
+        sphereDim_traits::create (i, f, this));
+
+      if (!sphereDim_.present ())
+      {
+        this->sphereDim_.set (::std::move (r));
+        continue;
+      }
+    }
+
     // spacing
     //
     if (n.name () == "spacing" && n.namespace_ ().empty ())
@@ -1449,6 +1591,31 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // brownVel
+    //
+    if (n.name () == "brownVel" && n.namespace_ ().empty ())
+    {
+      if (!brownVel_.present ())
+      {
+        this->brownVel_.set (brownVel_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // brownDim
+    //
+    if (n.name () == "brownDim" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< brownDim_type > r (
+        brownDim_traits::create (i, f, this));
+
+      if (!brownDim_.present ())
+      {
+        this->brownDim_.set (::std::move (r));
+        continue;
+      }
+    }
+
     break;
   }
 
@@ -1456,6 +1623,13 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
   {
     throw ::xsd::cxx::tree::expected_element< char > (
       "center",
+      "");
+  }
+
+  if (!vel_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "vel",
       "");
   }
 
@@ -1473,10 +1647,31 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       "");
   }
 
+  if (!sphereDim_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "sphereDim",
+      "");
+  }
+
   if (!spacing_.present ())
   {
     throw ::xsd::cxx::tree::expected_element< char > (
       "spacing",
+      "");
+  }
+
+  if (!brownVel_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "brownVel",
+      "");
+  }
+
+  if (!brownDim_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "brownDim",
       "");
   }
 }
@@ -1495,9 +1690,13 @@ operator= (const sphere_t& x)
   {
     static_cast< ::xml_schema::type& > (*this) = x;
     this->center_ = x.center_;
+    this->vel_ = x.vel_;
     this->radius_ = x.radius_;
     this->mass_ = x.mass_;
+    this->sphereDim_ = x.sphereDim_;
     this->spacing_ = x.spacing_;
+    this->brownVel_ = x.brownVel_;
+    this->brownDim_ = x.brownDim_;
   }
 
   return *this;
@@ -2428,6 +2627,17 @@ operator<< (::xercesc::DOMElement& e, const sphere_t& i)
     s << i.center ();
   }
 
+  // vel
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "vel",
+        e));
+
+    s << i.vel ();
+  }
+
   // radius
   //
   {
@@ -2450,6 +2660,17 @@ operator<< (::xercesc::DOMElement& e, const sphere_t& i)
     s << ::xml_schema::as_double(i.mass ());
   }
 
+  // sphereDim
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "sphereDim",
+        e));
+
+    s << i.sphereDim ();
+  }
+
   // spacing
   //
   {
@@ -2459,6 +2680,28 @@ operator<< (::xercesc::DOMElement& e, const sphere_t& i)
         e));
 
     s << ::xml_schema::as_double(i.spacing ());
+  }
+
+  // brownVel
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "brownVel",
+        e));
+
+    s << ::xml_schema::as_double(i.brownVel ());
+  }
+
+  // brownDim
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "brownDim",
+        e));
+
+    s << i.brownDim ();
   }
 }
 
