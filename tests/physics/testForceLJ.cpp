@@ -33,9 +33,9 @@ protected:
     }
 };
 
+// Particles with normed distance, epsilon, sigma should be calculated correctly
 TEST_F(calcForceLJTest, calcForceLJNormed)
 {
-    // Particles with normed distance, epsilon, sigma should be calculated correctly
     double c = std::sqrt(3) / 4;
     // Form equilateral triangle
     Particle p1 { { 0, 0, c }, { 0, 0, 0 }, 1 };
@@ -76,10 +76,9 @@ TEST_F(calcForceLJTest, calcForceLJNormed)
     }
 }
 
+// Particles should not experience force when in equilibrium
 TEST_F(calcForceLJTest, calcForceLJEquilibrium)
 {
-    // Particles should not experience force when in equilibrium
-
     double c = std::sqrt(3) / 4;
     // Form equilateral triangle
     Particle p1 { { 0, 0, c }, { 0, 0, 0 }, 1 };
@@ -120,9 +119,9 @@ TEST_F(calcForceLJTest, calcForceLJEquilibrium)
     }
 }
 
+// Particles with normed distance and sigma should be calculated correctly
 TEST_F(calcForceLJTest, calcForceLJUnNormed)
 {
-    // Particles with normed distance and sigma should be calculated correctly
     double c = std::sqrt(3) / 4;
     // Form equilateral triangle
     Particle p1 { { 0, 0, c }, { 0, 0, 0 }, 1 };

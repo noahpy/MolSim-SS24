@@ -35,8 +35,9 @@ int main(int argc, char* argsv[])
     // Intialize physics strategy
     PhysicsStrategy strat = stratFactory(params.simulation_type);
 
+
     // Intialize empty particle container
-    ParticleContainer particles { {} };
+    ParticleContainer particles {};
 
     // Intialize simulation and read the input files
     auto simPointer =
