@@ -75,17 +75,17 @@ inline std::array<double, 3> getNormalVectorOfBoundary(Position position)
 {
     switch (position) {
     case Position::LEFT:
-        return { -1, 0, 0 };
-    case Position::RIGHT:
         return { 1, 0, 0 };
+    case Position::RIGHT:
+        return { -1, 0, 0 };
     case Position::TOP:
-        return { 0, 1, 0 };
-    case Position::BOTTOM:
         return { 0, -1, 0 };
+    case Position::BOTTOM:
+        return { 0, 1, 0 };
     case Position::FRONT:
-        return { 0, 0, 1 };
-    case Position::BACK:
         return { 0, 0, -1 };
+    case Position::BACK:
+        return { 0, 0, 1 };
     default:
         throw std::invalid_argument("Invalid position");
     }
