@@ -132,4 +132,3 @@ void force_lennard_jones_lc(const Simulation& sim)
         }
     }
 }
-

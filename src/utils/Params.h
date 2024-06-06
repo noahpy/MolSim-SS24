@@ -43,6 +43,8 @@ public:
     // update frequency
     unsigned update_frequency = 10;
     // boundary configuration
-    BoundaryConfig boundaryConfig { BoundaryType::SOFT_REFLECTIVE, BoundaryType::SOFT_REFLECTIVE,
-                                    BoundaryType::SOFT_REFLECTIVE, BoundaryType::SOFT_REFLECTIVE };
+    BoundaryConfig boundaryConfig { BoundaryType::SOFT_REFLECTIVE,
+                                    BoundaryType::SOFT_REFLECTIVE,
+                                    BoundaryType::SOFT_REFLECTIVE,
+                                    BoundaryType::SOFT_REFLECTIVE };
 };

@@ -49,8 +49,7 @@ void XmlReader::readFile(Simulation& sim)
                 sphere.mass(),
                 { sphere.vel().x(), sphere.vel().y(), sphere.vel().z() },
                 sphere.brownVel(),
-                sphere.brownDim()
-            )));
+                sphere.brownDim())));
         }
 
         generator.generateClusters();

@@ -32,7 +32,6 @@ public:
      */
     ParticleContainer();
 
-
     /**
      * @brief Adds a particle to the container
      * @param p The particle to be added
