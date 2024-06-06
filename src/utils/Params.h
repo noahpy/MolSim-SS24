@@ -33,9 +33,9 @@ public:
     // simulation type
     SimulationType simulation_type = SimulationType::PLANET;
     // domain origin
-    std::array<double, 3> domain_origin = { -50, -50, 1 };
+    std::array<double, 3> domain_origin = { -10.0, -10.0, 0 };
     // domain size
-    std::array<double, 3> domain_size = { 100, 100, 1 };
+    std::array<double, 3> domain_size = { 20.0, 20.0, 0 };
     // cutoff
     double cutoff = 5;
     // plot frequency
@@ -43,7 +43,6 @@ public:
     // update frequency
     unsigned update_frequency = 10;
     // boundary configuration
-    BoundaryConfig boundaryConfig { BoundaryType::OVERFLOW, BoundaryType::OVERFLOW,
-                                    BoundaryType::OVERFLOW, BoundaryType::OVERFLOW,
-                                    BoundaryType::OVERFLOW, BoundaryType::OVERFLOW };
+    BoundaryConfig boundaryConfig { BoundaryType::SOFT_REFLECTIVE, BoundaryType::SOFT_REFLECTIVE,
+                                    BoundaryType::SOFT_REFLECTIVE, BoundaryType::SOFT_REFLECTIVE };
 };
