@@ -27,12 +27,12 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             // To mirror point, we need a point on the plane to mirror it about
             case BOTTOM:
             case LEFT:
-            case FRONT:
+            case BACK:
                 pointOnBoundaryPlane = LGDSim.getGrid().domainOrigin;
                 break;
             case TOP:
             case RIGHT:
-            case BACK:
+            case FRONT:
                 pointOnBoundaryPlane = LGDSim.getGrid().domainEnd;
                 break;
             }

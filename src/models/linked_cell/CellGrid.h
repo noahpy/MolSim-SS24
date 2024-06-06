@@ -35,7 +35,7 @@ public:
     /// The 3D vector storing the cells in the grid.
     CellVec cells;
 
-    // The bottom-left-front point of the domain
+    // The bottom-left-back point of the domain
     std::array<double, 3> domainOrigin;
     // The bottom-right-back point of the domain
     std::array<double, 3> domainEnd;

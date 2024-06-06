@@ -62,10 +62,10 @@ inline std::vector<Position> relCoordinateToPos(std::array<int, 3> coordinate)
     if (coordinate[1] == -1) {
         positions.push_back(Position::BOTTOM);
     }
-    if (coordinate[2] == -1) {
+    if (coordinate[2] == 1) {
         positions.push_back(Position::FRONT);
     }
-    if (coordinate[2] == 1) {
+    if (coordinate[2] == -1) {
         positions.push_back(Position::BACK);
     }
     return positions;

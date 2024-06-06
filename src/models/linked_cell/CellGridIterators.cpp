@@ -235,12 +235,12 @@ size_t getCoordinateIrrelevantAxis(
     switch (position) {
     case LEFT:
     case BOTTOM:
-    case FRONT:
+    case BACK:
         coordinateIrrelevantAxis = (cellType == CellType::Halo) ? 0 : 1;
         break;
     case RIGHT:
     case TOP:
-    case BACK:
+    case FRONT:
         coordinateIrrelevantAxis = gridDimensions[irrelevantBoundary] - 1;
         if (cellType == CellType::Boundary)
             coordinateIrrelevantAxis -= 1;

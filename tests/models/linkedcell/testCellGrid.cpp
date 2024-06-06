@@ -551,7 +551,7 @@ TEST(CellGridOrientation, BottomParticleInBoundary)
     EXPECT_EQ(particleCount, 1);
 }
 
-// Test if particle inserted at top is also inserted in bottom cells and will be recognized by
+// Test if particle inserted at top is also inserted in top cells and will be recognized by
 // the boundary iterator
 TEST(CellGridOrientation, TopParticleInBoundary)
 {
@@ -574,7 +574,7 @@ TEST(CellGridOrientation, TopParticleInBoundary)
     EXPECT_EQ(particleCount, 1);
 }
 
-// Test if particle inserted left is also inserted in bottom cells and will be recognized by the
+// Test if particle inserted left is also inserted in left cells and will be recognized by the
 // boundary iterator
 TEST(CellGridOrientation, LeftParticleInBoundary)
 {
@@ -597,7 +597,7 @@ TEST(CellGridOrientation, LeftParticleInBoundary)
     EXPECT_EQ(particleCount, 1);
 }
 
-// Test if particle inserted right is also inserted in bottom cells and will be recognized by the
+// Test if particle inserted right is also inserted in right cells and will be recognized by the
 // boundary iterator
 TEST(CellGridOrientation, RightParticleInBoundary)
 {
@@ -614,6 +614,29 @@ TEST(CellGridOrientation, RightParticleInBoundary)
 
     size_t particleCount = 0;
     for (auto index : grid.boundaryCellIterator(RIGHT)) {
+        particleCount += grid.cells[index[0]][index[1]][index[2]]->getParticles().size();
+    }
+
+    EXPECT_EQ(particleCount, 1);
+}
+
+// Test if particle inserted back is also inserted in back cells and will be recognized by the
+// boundary iterator
+TEST(CellGridOrientation, BackParticleInBoundary)
+{
+    std::array<double, 3> domain_origin = { -10, -10, -10 };
+    std::array<double, 3> domain_size = { 60, 40, 60 };
+    double cutoff = 5;
+    CellGrid grid { domain_origin, domain_size, cutoff };
+
+    // Particle left side (paraview)
+    std::vector<Particle> particles { Particle { { -9.1, -9.1, -9.1 }, { 0, -30, 0 }, 1 } };
+
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    size_t particleCount = 0;
+    for (auto index : grid.boundaryCellIterator(BACK)) {
         particleCount += grid.cells[index[0]][index[1]][index[2]]->getParticles().size();
     }
 
