@@ -3,22 +3,23 @@
 {\ttfamily \#include "{}sim\+Factory.\+h"{}}\newline
 {\ttfamily \#include "{}io/file\+Reader/\+File\+Reader.\+h"{}}\newline
 {\ttfamily \#include "{}io/file\+Writer/\+File\+Writer.\+h"{}}\newline
-{\ttfamily \#include "{}simulation/lennard\+Jones\+Sim.\+h"{}}\newline
+{\ttfamily \#include "{}physics/boundary\+Conditions/\+Boundary\+Config.\+h"{}}\newline
+{\ttfamily \#include "{}simulation/\+Lennard\+Jones\+Domain\+Simulation.\+h"{}}\newline
 {\ttfamily \#include "{}simulation/planet\+Sim.\+h"{}}\newline
 {\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulation}{Simulation}} $>$ \mbox{\hyperlink{simFactory_8cpp_a22b52f2aca72ab6f2d743bd529fc9a00}{sim\+Factory}} (unsigned sim\+\_\+type, double start\+\_\+time, double delta\+\_\+t, double end\+\_\+time, double epsilon, double sigma, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particles, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ write\+Pointer, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ read\+Pointer)
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulation}{Simulation}} $>$ \mbox{\hyperlink{simFactory_8cpp_af9ef99ac2323cd749912898d4b87853f}{sim\+Factory}} (\mbox{\hyperlink{classParams}{Params}} \&params, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particles, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ write\+Pointer, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ read\+Pointer)
 \begin{DoxyCompactList}\small\item\em A factory function for creating \doxylink{classSimulation}{Simulation} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{simFactory_8cpp_a22b52f2aca72ab6f2d743bd529fc9a00}\index{simFactory.cpp@{simFactory.cpp}!simFactory@{simFactory}}
+\Hypertarget{simFactory_8cpp_af9ef99ac2323cd749912898d4b87853f}\index{simFactory.cpp@{simFactory.cpp}!simFactory@{simFactory}}
 \index{simFactory@{simFactory}!simFactory.cpp@{simFactory.cpp}}
 \doxysubsubsection{\texorpdfstring{simFactory()}{simFactory()}}
-{\footnotesize\ttfamily \label{simFactory_8cpp_a22b52f2aca72ab6f2d743bd529fc9a00} 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulation}{Simulation}} $>$ sim\+Factory (\begin{DoxyParamCaption}\item[{unsigned}]{sim\+\_\+type}{, }\item[{double}]{start\+\_\+time}{, }\item[{double}]{delta\+\_\+t}{, }\item[{double}]{end\+\_\+time}{, }\item[{double}]{epsilon}{, }\item[{double}]{sigma}{, }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{particles}{, }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$}]{write\+Pointer}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$}]{read\+Pointer}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{simFactory_8cpp_af9ef99ac2323cd749912898d4b87853f} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulation}{Simulation}} $>$ sim\+Factory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParams}{Params}} \&}]{params}{, }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{particles}{, }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$}]{write\+Pointer}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$}]{read\+Pointer}{}\end{DoxyParamCaption})}
 
 
 
@@ -28,17 +29,7 @@ This function creates and returns a \doxylink{classSimulation}{Simulation} objec
 
 
 \begin{DoxyParams}{Parameters}
-{\em sim\+\_\+type} & An unsigned integer representing the type of simulation to create. \\
-\hline
-{\em start\+\_\+time} & The start time of the simulation. \\
-\hline
-{\em delta\+\_\+t} & The time step for the simulation. \\
-\hline
-{\em end\+\_\+time} & The end time of the simulation. \\
-\hline
-{\em epsilon} & The epsilon value for the simulation. \\
-\hline
-{\em sigma} & The sigma value for the simulation. \\
+{\em params} & A reference to the \doxylink{classParams}{Params} object containing simulation parameters. \\
 \hline
 {\em particles} & A reference to the \doxylink{classParticleContainer}{Particle\+Container} containing particles for the simulation. \\
 \hline

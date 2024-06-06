@@ -96,18 +96,19 @@ $(function(){ initResizable(false); });
 <div class="textblock"><code>#include &quot;<a class="el" href="ParticleContainer_8h_source.html">models/ParticleContainer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="strategy_8h_source.html">physics/strategy.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="baseSimulation_8h_source.html">simulation/baseSimulation.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Params_8h_source.html">utils/Params.h</a>&quot;</code><br />
 </div>
 <p><a href="simFactory_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a22b52f2aca72ab6f2d743bd529fc9a00" id="r_a22b52f2aca72ab6f2d743bd529fc9a00"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSimulation.html">Simulation</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22b52f2aca72ab6f2d743bd529fc9a00">simFactory</a> (unsigned sim_type, double start_time, double delta_t, double end_time, double epsilon, double sigma, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;particles, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; writePointer, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; readPointer)</td></tr>
-<tr class="memdesc:a22b52f2aca72ab6f2d743bd529fc9a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">A factory function for creating <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> objects.  <br /></td></tr>
-<tr class="separator:a22b52f2aca72ab6f2d743bd529fc9a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9ef99ac2323cd749912898d4b87853f" id="r_af9ef99ac2323cd749912898d4b87853f"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSimulation.html">Simulation</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9ef99ac2323cd749912898d4b87853f">simFactory</a> (<a class="el" href="classParams.html">Params</a> &amp;params, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;particles, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; writePointer, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; readPointer)</td></tr>
+<tr class="memdesc:af9ef99ac2323cd749912898d4b87853f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A factory function for creating <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> objects.  <br /></td></tr>
+<tr class="separator:af9ef99ac2323cd749912898d4b87853f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a22b52f2aca72ab6f2d743bd529fc9a00" name="a22b52f2aca72ab6f2d743bd529fc9a00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22b52f2aca72ab6f2d743bd529fc9a00">&#9670;&#160;</a></span>simFactory()</h2>
+<a id="af9ef99ac2323cd749912898d4b87853f" name="af9ef99ac2323cd749912898d4b87853f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9ef99ac2323cd749912898d4b87853f">&#9670;&#160;</a></span>simFactory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -115,32 +116,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">std::unique_ptr&lt; <a class="el" href="classSimulation.html">Simulation</a> &gt; simFactory </td>
           <td>(</td>
-          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>sim_type</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>start_time</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>delta_t</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>end_time</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>sigma</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classParams.html">Params</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -169,12 +145,7 @@ Functions</h2></td></tr>
 <p>This function creates and returns a <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object based on the simulation type provided, along with other parameters required for simulation initialization.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sim_type</td><td>An unsigned integer representing the type of simulation to create. </td></tr>
-    <tr><td class="paramname">start_time</td><td>The start time of the simulation. </td></tr>
-    <tr><td class="paramname">delta_t</td><td>The time step for the simulation. </td></tr>
-    <tr><td class="paramname">end_time</td><td>The end time of the simulation. </td></tr>
-    <tr><td class="paramname">epsilon</td><td>The epsilon value for the simulation. </td></tr>
-    <tr><td class="paramname">sigma</td><td>The sigma value for the simulation. </td></tr>
+    <tr><td class="paramname">params</td><td>A reference to the <a class="el" href="classParams.html">Params</a> object containing simulation parameters. </td></tr>
     <tr><td class="paramname">particles</td><td>A reference to the <a class="el" href="classParticleContainer.html" title="The ParticleContainer class is a data structure that holds the collection of particles.">ParticleContainer</a> containing particles for the simulation. </td></tr>
     <tr><td class="paramname">strat</td><td>A reference to the <a class="el" href="classPhysicsStrategy.html" title="Strategy pattern for physics calculations.">PhysicsStrategy</a> object defining the simulation strategy. </td></tr>
     <tr><td class="paramname">writePointer</td><td>A unique pointer to a <a class="el" href="classFileWriter.html" title="Abstract class FileWriter.">FileWriter</a> object for writing simulation data. </td></tr>

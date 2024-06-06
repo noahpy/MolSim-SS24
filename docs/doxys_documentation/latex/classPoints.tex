@@ -20,30 +20,30 @@ Accessor and modifier functions for the Data\+Array sequence element. \begin{Dox
 \item 
 typedef \mbox{\hyperlink{classDataArray__t}{\+::\+Data\+Array\+\_\+t}} \mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
-typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}} $>$ \mbox{\hyperlink{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}{Data\+Array\+\_\+sequence}}
+typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}} $>$ \mbox{\hyperlink{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}{Data\+Array\+\_\+sequence}}
 \begin{DoxyCompactList}\small\item\em Element sequence container type. \end{DoxyCompactList}\item 
 typedef Data\+Array\+\_\+sequence\+::iterator \mbox{\hyperlink{classPoints_ac4cd7a177b464c1e08d493600a7e6e16}{Data\+Array\+\_\+iterator}}
 \begin{DoxyCompactList}\small\item\em Element iterator type. \end{DoxyCompactList}\item 
 typedef Data\+Array\+\_\+sequence\+::const\+\_\+iterator \mbox{\hyperlink{classPoints_a795a395909c3360569fe0e854ba6059e}{Data\+Array\+\_\+const\+\_\+iterator}}
 \begin{DoxyCompactList}\small\item\em Element constant iterator type. \end{DoxyCompactList}\item 
-typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}}, char $>$ \mbox{\hyperlink{classPoints_aafb75afeebe7e8275488497e1cdbf0e8}{Data\+Array\+\_\+traits}}
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}}, char $>$ \mbox{\hyperlink{classPoints_a815b88c9204c7251f4a08c6769645ef1}{Data\+Array\+\_\+traits}}
 \begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}{Data\+Array\+\_\+sequence}} \& \mbox{\hyperlink{classPoints_a2840aa153e79be6637194708dee516dd}{Data\+Array}} () const
+const \mbox{\hyperlink{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}{Data\+Array\+\_\+sequence}} \& \mbox{\hyperlink{classPoints_a2840aa153e79be6637194708dee516dd}{Data\+Array}} () const
 \begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element sequence. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}{Data\+Array\+\_\+sequence}} \& \mbox{\hyperlink{classPoints_a3fdfb1b1b2f1221ad50ba5087826177c}{Data\+Array}} ()
+\mbox{\hyperlink{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}{Data\+Array\+\_\+sequence}} \& \mbox{\hyperlink{classPoints_a3fdfb1b1b2f1221ad50ba5087826177c}{Data\+Array}} ()
 \begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element sequence. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPoints_aa22a86fe31d5f903be59dda3de92bb67}{Data\+Array}} (const \mbox{\hyperlink{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}{Data\+Array\+\_\+sequence}} \&s)
+void \mbox{\hyperlink{classPoints_aa22a86fe31d5f903be59dda3de92bb67}{Data\+Array}} (const \mbox{\hyperlink{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}{Data\+Array\+\_\+sequence}} \&s)
 \begin{DoxyCompactList}\small\item\em Copy elements from a given sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Constructors}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classPoints_aa4e68083d98bd04233c9753dfe1e46ab}{Points}} ()
 \begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPoints_a8d5fc94e5f2a6bd3a19e8c40f484bcb5}{Points}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a8d981c127a1f5106d04ad5853e707361}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_a395f5179c5fc4643909d66e9ff28d8ca}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\mbox{\hyperlink{classPoints_a8d5fc94e5f2a6bd3a19e8c40f484bcb5}{Points}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
 \begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPoints_a7e1c7d82baa5c6900a2a9e8d056c2df7}{Points}} (const \mbox{\hyperlink{classPoints}{Points}} \&x, \mbox{\hyperlink{namespacexml__schema_a8d981c127a1f5106d04ad5853e707361}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_a395f5179c5fc4643909d66e9ff28d8ca}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\mbox{\hyperlink{classPoints_a7e1c7d82baa5c6900a2a9e8d056c2df7}{Points}} (const \mbox{\hyperlink{classPoints}{Points}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
 \begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classPoints}{Points}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classPoints_a69876250eedb284d5b6ce40b757616af}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a8d981c127a1f5106d04ad5853e707361}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_a395f5179c5fc4643909d66e9ff28d8ca}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+virtual \mbox{\hyperlink{classPoints}{Points}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classPoints_a69876250eedb284d5b6ce40b757616af}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
 \begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPoints}{Points}} \& \mbox{\hyperlink{classPoints_abf6e94122cfc53e80543249d72cb87c2}{operator=}} (const \mbox{\hyperlink{classPoints}{Points}} \&x)
 \begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
@@ -75,21 +75,21 @@ typedef Data\+Array\+\_\+sequence\+::iterator \mbox{\hyperlink{classPoints_ac4cd
 
 Element iterator type. 
 
-\Hypertarget{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}\index{Points@{Points}!DataArray\_sequence@{DataArray\_sequence}}
+\Hypertarget{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}\index{Points@{Points}!DataArray\_sequence@{DataArray\_sequence}}
 \index{DataArray\_sequence@{DataArray\_sequence}!Points@{Points}}
 \doxysubsubsection{\texorpdfstring{DataArray\_sequence}{DataArray\_sequence}}
-{\footnotesize\ttfamily \label{classPoints_a7b269183a0b21f4afc9c3b480742f1b0} 
-typedef \+::xsd\+::cxx\+::tree\+::sequence$<$\mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}}$>$ \mbox{\hyperlink{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}{Points\+::\+Data\+Array\+\_\+sequence}}}
+{\footnotesize\ttfamily \label{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016} 
+typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}} $>$ \mbox{\hyperlink{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}{Points\+::\+Data\+Array\+\_\+sequence}}}
 
 
 
 Element sequence container type. 
 
-\Hypertarget{classPoints_aafb75afeebe7e8275488497e1cdbf0e8}\index{Points@{Points}!DataArray\_traits@{DataArray\_traits}}
+\Hypertarget{classPoints_a815b88c9204c7251f4a08c6769645ef1}\index{Points@{Points}!DataArray\_traits@{DataArray\_traits}}
 \index{DataArray\_traits@{DataArray\_traits}!Points@{Points}}
 \doxysubsubsection{\texorpdfstring{DataArray\_traits}{DataArray\_traits}}
-{\footnotesize\ttfamily \label{classPoints_aafb75afeebe7e8275488497e1cdbf0e8} 
-typedef \+::xsd\+::cxx\+::tree\+::traits$<$\mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}}, char$>$ \mbox{\hyperlink{classPoints_aafb75afeebe7e8275488497e1cdbf0e8}{Points\+::\+Data\+Array\+\_\+traits}}}
+{\footnotesize\ttfamily \label{classPoints_a815b88c9204c7251f4a08c6769645ef1} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPoints_a6afedf501b722fe7d7ffeae03ece6238}{Data\+Array\+\_\+type}}, char $>$ \mbox{\hyperlink{classPoints_a815b88c9204c7251f4a08c6769645ef1}{Points\+::\+Data\+Array\+\_\+traits}}}
 
 
 
@@ -122,7 +122,7 @@ Create an instance from the ultimate base and initializers for required elements
 \index{Points@{Points}!Points@{Points}}
 \doxysubsubsection{\texorpdfstring{Points()}{Points()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily \label{classPoints_a8d5fc94e5f2a6bd3a19e8c40f484bcb5} 
-Points\+::\+Points (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a8d981c127a1f5106d04ad5853e707361}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_a395f5179c5fc4643909d66e9ff28d8ca}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+Points\+::\+Points (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
 
 
 
@@ -141,7 +141,7 @@ Create an instance from a DOM element.
 \index{Points@{Points}!Points@{Points}}
 \doxysubsubsection{\texorpdfstring{Points()}{Points()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily \label{classPoints_a7e1c7d82baa5c6900a2a9e8d056c2df7} 
-Points\+::\+Points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoints}{Points}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a8d981c127a1f5106d04ad5853e707361}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_a395f5179c5fc4643909d66e9ff28d8ca}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+Points\+::\+Points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoints}{Points}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
 
 
 
@@ -173,7 +173,7 @@ Destructor.
 \index{\_clone@{\_clone}!Points@{Points}}
 \doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
 {\footnotesize\ttfamily \label{classPoints_a69876250eedb284d5b6ce40b757616af} 
-\mbox{\hyperlink{classPoints}{Points}} \texorpdfstring{$\ast$}{*} Points\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a8d981c127a1f5106d04ad5853e707361}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_a395f5179c5fc4643909d66e9ff28d8ca}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\hyperlink{classPoints}{Points}} \texorpdfstring{$\ast$}{*} Points\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -193,7 +193,7 @@ This function ensures that the dynamic type of the instance is used for copying 
 \index{DataArray@{DataArray}!Points@{Points}}
 \doxysubsubsection{\texorpdfstring{DataArray()}{DataArray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily \label{classPoints_a3fdfb1b1b2f1221ad50ba5087826177c} 
-\mbox{\hyperlink{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}{Points\+::\+Data\+Array\+\_\+sequence}} \& Points\+::\+Data\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+\mbox{\hyperlink{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}{Points\+::\+Data\+Array\+\_\+sequence}} \& Points\+::\+Data\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 
@@ -206,7 +206,7 @@ A reference to the sequence container.
 \index{DataArray@{DataArray}!Points@{Points}}
 \doxysubsubsection{\texorpdfstring{DataArray()}{DataArray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily \label{classPoints_a2840aa153e79be6637194708dee516dd} 
-const \mbox{\hyperlink{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}{Points\+::\+Data\+Array\+\_\+sequence}} \& Points\+::\+Data\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+const \mbox{\hyperlink{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}{Points\+::\+Data\+Array\+\_\+sequence}} \& Points\+::\+Data\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
 
 
@@ -219,7 +219,7 @@ A constant reference to the sequence container.
 \index{DataArray@{DataArray}!Points@{Points}}
 \doxysubsubsection{\texorpdfstring{DataArray()}{DataArray()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily \label{classPoints_aa22a86fe31d5f903be59dda3de92bb67} 
-void Points\+::\+Data\+Array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoints_a7b269183a0b21f4afc9c3b480742f1b0}{Data\+Array\+\_\+sequence}} \&}]{s}{}\end{DoxyParamCaption})}
+void Points\+::\+Data\+Array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoints_ac8b51dcf0e7659ca61ff9b9d24051016}{Data\+Array\+\_\+sequence}} \&}]{s}{}\end{DoxyParamCaption})}
 
 
 
@@ -252,5 +252,5 @@ For polymorphic object models use the {\ttfamily \+\_\+clone} function instead.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/io/file\+Writer/\mbox{\hyperlink{vtk-unstructured_8h}{vtk-\/unstructured.\+h}}\item 
-src/io/file\+Writer/\mbox{\hyperlink{vtk-unstructured_8cpp}{vtk-\/unstructured.\+cpp}}\end{DoxyCompactItemize}
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8h}{vtk-\/unstructured.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8cpp}{vtk-\/unstructured.\+cpp}}\end{DoxyCompactItemize}

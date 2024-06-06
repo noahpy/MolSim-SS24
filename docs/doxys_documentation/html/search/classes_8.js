@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['simulation_0',['Simulation',['../classSimulation.html',1,'']]]
+  ['lennardjonesdomainsimulation_0',['LennardJonesDomainSimulation',['../classLennardJonesDomainSimulation.html',1,'']]],
+  ['lennardjonessimulation_1',['LennardJonesSimulation',['../classLennardJonesSimulation.html',1,'']]],
+  ['linkedlennardjonessimulation_2',['LinkedLennardJonesSimulation',['../classLinkedLennardJonesSimulation.html',1,'']]]
 ];

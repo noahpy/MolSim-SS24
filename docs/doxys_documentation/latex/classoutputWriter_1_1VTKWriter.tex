@@ -20,6 +20,8 @@ Inheritance diagram for output\+Writer\+::VTKWriter\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{classoutputWriter_1_1VTKWriter_a448311c322544e40c6e0a3c158924583}{VTKWriter}} ()
 \begin{DoxyCompactList}\small\item\em Constructor of the \doxylink{classoutputWriter_1_1VTKWriter}{VTKWriter} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoutputWriter_1_1VTKWriter_a4b9d33ce0dbcd05ffe7392ab882ba2d9}{VTKWriter}} (std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}})
+\begin{DoxyCompactList}\small\item\em This function initializes the \doxylink{classoutputWriter_1_1VTKWriter}{VTKWriter} class. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classoutputWriter_1_1VTKWriter_a196a54bcfa3f93638ef292c386f91b61}{\texorpdfstring{$\sim$}{\string~}\+VTKWriter}} ()
 \begin{DoxyCompactList}\small\item\em Destructor of the \doxylink{classoutputWriter_1_1VTKWriter}{VTKWriter} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoutputWriter_1_1VTKWriter_a9d5534653f9ebcbde862a2b32a0c858d}{plot\+Particles}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&s) override
@@ -33,6 +35,10 @@ void \mbox{\hyperlink{classoutputWriter_1_1VTKWriter_ad0d7afb78a2027d05e9a03acde
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFileWriter}{File\+Writer}}}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classFileWriter_ae4dd90b95298451fc84d753b987ddc82}{File\+Writer}} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{classFileWriter}{File\+Writer}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFileWriter_a09798489903156b2438525fc687d3651}{File\+Writer}} (std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}})
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{classFileWriter}{File\+Writer}. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classFileWriter_a004bf2acbdc1a2f72015cd71f17aa2e2}{\texorpdfstring{$\sim$}{\string~}\+File\+Writer}} ()=default
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
@@ -54,7 +60,7 @@ This class implements the functionality to generate vtk output from particles.
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classoutputWriter_1_1VTKWriter_a448311c322544e40c6e0a3c158924583}\index{outputWriter::VTKWriter@{outputWriter::VTKWriter}!VTKWriter@{VTKWriter}}
 \index{VTKWriter@{VTKWriter}!outputWriter::VTKWriter@{outputWriter::VTKWriter}}
-\doxysubsubsection{\texorpdfstring{VTKWriter()}{VTKWriter()}}
+\doxysubsubsection{\texorpdfstring{VTKWriter()}{VTKWriter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \label{classoutputWriter_1_1VTKWriter_a448311c322544e40c6e0a3c158924583} 
 output\+Writer\+::\+VTKWriter\+::\+VTKWriter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
@@ -65,6 +71,21 @@ Constructor of the \doxylink{classoutputWriter_1_1VTKWriter}{VTKWriter} class.
 \begin{DoxyReturn}{Returns}
 A new \doxylink{classoutputWriter_1_1VTKWriter}{VTKWriter} object 
 \end{DoxyReturn}
+\Hypertarget{classoutputWriter_1_1VTKWriter_a4b9d33ce0dbcd05ffe7392ab882ba2d9}\index{outputWriter::VTKWriter@{outputWriter::VTKWriter}!VTKWriter@{VTKWriter}}
+\index{VTKWriter@{VTKWriter}!outputWriter::VTKWriter@{outputWriter::VTKWriter}}
+\doxysubsubsection{\texorpdfstring{VTKWriter()}{VTKWriter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1VTKWriter_a4b9d33ce0dbcd05ffe7392ab882ba2d9} 
+output\+Writer\+::\+VTKWriter\+::\+VTKWriter (\begin{DoxyParamCaption}\item[{std\+::string}]{out\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function initializes the \doxylink{classoutputWriter_1_1VTKWriter}{VTKWriter} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+\_\+name} & the name of the output file \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classoutputWriter_1_1VTKWriter_a196a54bcfa3f93638ef292c386f91b61}\index{outputWriter::VTKWriter@{outputWriter::VTKWriter}!````~VTKWriter@{\texorpdfstring{$\sim$}{\string~}VTKWriter}}
 \index{````~VTKWriter@{\texorpdfstring{$\sim$}{\string~}VTKWriter}!outputWriter::VTKWriter@{outputWriter::VTKWriter}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VTKWriter()}{\string~VTKWriter()}}

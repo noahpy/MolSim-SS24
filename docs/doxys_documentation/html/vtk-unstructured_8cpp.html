@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MolSim: src/io/fileWriter/vtk-unstructured.cpp File Reference</title>
+<title>MolSim: src/io/xsd/vtk-unstructured.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,7 +83,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li><li class="navelem"><a class="el" href="dir_b9fb6d0f90e1712046d3c230f64d1b2a.html">fileWriter</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li><li class="navelem"><a class="el" href="dir_a19165af4dcbe266a5cdcc50a87764d5.html">xsd</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -97,61 +97,61 @@ $(function(){ initResizable(false); });
 <code>#include &quot;<a class="el" href="vtk-unstructured_8h_source.html">vtk-unstructured.h</a>&quot;</code><br />
 <code>#include &lt;xsd/cxx/xml/dom/parsing-source.hxx&gt;</code><br />
 <code>#include &lt;istream&gt;</code><br />
-<code>#include &lt;xsd/cxx/tree/error-handler.hxx&gt;</code><br />
 <code>#include &lt;xsd/cxx/xml/sax/std-input-source.hxx&gt;</code><br />
+<code>#include &lt;xsd/cxx/tree/error-handler.hxx&gt;</code><br />
 <code>#include &lt;ostream&gt;</code><br />
 <code>#include &lt;xsd/cxx/xml/dom/serialization-source.hxx&gt;</code><br />
 <code>#include &lt;xsd/cxx/post.hxx&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af984062b7931b4fdc0ba26da373c1423" id="r_af984062b7931b4fdc0ba26da373c1423"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af984062b7931b4fdc0ba26da373c1423">VTKFile</a> (const ::std::string &amp;u, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:af984062b7931b4fdc0ba26da373c1423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a URI or a local file.  <br /></td></tr>
-<tr class="separator:af984062b7931b4fdc0ba26da373c1423"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa021ac9c7b9253763baa1b320d08431f" id="r_aa021ac9c7b9253763baa1b320d08431f"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa021ac9c7b9253763baa1b320d08431f">VTKFile</a> (const ::std::string &amp;u, <a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;h, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:aa021ac9c7b9253763baa1b320d08431f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a URI or a local file with an error handler.  <br /></td></tr>
-<tr class="separator:aa021ac9c7b9253763baa1b320d08431f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93ba354e2e070a0498612fdcb74d3ca7" id="r_a93ba354e2e070a0498612fdcb74d3ca7"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93ba354e2e070a0498612fdcb74d3ca7">VTKFile</a> (const ::std::string &amp;u, ::xercesc::DOMErrorHandler &amp;h, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:a93ba354e2e070a0498612fdcb74d3ca7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a URI or a local file with a Xerces-C++ DOM error handler.  <br /></td></tr>
-<tr class="separator:a93ba354e2e070a0498612fdcb74d3ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c17bee3f0ffc05664f1ffbe30cb0f17" id="r_a9c17bee3f0ffc05664f1ffbe30cb0f17"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c17bee3f0ffc05664f1ffbe30cb0f17">VTKFile</a> (::std::istream &amp;is, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:a9c17bee3f0ffc05664f1ffbe30cb0f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream.  <br /></td></tr>
-<tr class="separator:a9c17bee3f0ffc05664f1ffbe30cb0f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0281f9d2594861e0f7567a0e0c5a7efd" id="r_a0281f9d2594861e0f7567a0e0c5a7efd"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0281f9d2594861e0f7567a0e0c5a7efd">VTKFile</a> (::std::istream &amp;is, <a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;h, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:a0281f9d2594861e0f7567a0e0c5a7efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with an error handler.  <br /></td></tr>
-<tr class="separator:a0281f9d2594861e0f7567a0e0c5a7efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2925bc4a3c6b0ef83ebf392427ef3ec2" id="r_a2925bc4a3c6b0ef83ebf392427ef3ec2"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2925bc4a3c6b0ef83ebf392427ef3ec2">VTKFile</a> (::std::istream &amp;is, ::xercesc::DOMErrorHandler &amp;h, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:a2925bc4a3c6b0ef83ebf392427ef3ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with a Xerces-C++ DOM error handler.  <br /></td></tr>
-<tr class="separator:a2925bc4a3c6b0ef83ebf392427ef3ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8ea9bc8201e501e5fce88e0030af9b2" id="r_af8ea9bc8201e501e5fce88e0030af9b2"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8ea9bc8201e501e5fce88e0030af9b2">VTKFile</a> (::std::istream &amp;is, const ::std::string &amp;sid, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:af8ea9bc8201e501e5fce88e0030af9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with a resource id.  <br /></td></tr>
-<tr class="separator:af8ea9bc8201e501e5fce88e0030af9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9881daf2b15c5ea8f2225088cfab08dc" id="r_a9881daf2b15c5ea8f2225088cfab08dc"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9881daf2b15c5ea8f2225088cfab08dc">VTKFile</a> (::std::istream &amp;is, const ::std::string &amp;sid, <a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;h, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:a9881daf2b15c5ea8f2225088cfab08dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with a resource id and an error handler.  <br /></td></tr>
-<tr class="separator:a9881daf2b15c5ea8f2225088cfab08dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade57a4104c5b9ecdb65c6ecb1f1a3a83" id="r_ade57a4104c5b9ecdb65c6ecb1f1a3a83"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade57a4104c5b9ecdb65c6ecb1f1a3a83">VTKFile</a> (::std::istream &amp;is, const ::std::string &amp;sid, ::xercesc::DOMErrorHandler &amp;h, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:ade57a4104c5b9ecdb65c6ecb1f1a3a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with a resource id and a Xerces-C++ DOM error handler.  <br /></td></tr>
-<tr class="separator:ade57a4104c5b9ecdb65c6ecb1f1a3a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef1d25f3cd571c039ee4be6db902a68e" id="r_aef1d25f3cd571c039ee4be6db902a68e"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef1d25f3cd571c039ee4be6db902a68e">VTKFile</a> (::xercesc::InputSource &amp;i, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:aef1d25f3cd571c039ee4be6db902a68e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ input source.  <br /></td></tr>
-<tr class="separator:aef1d25f3cd571c039ee4be6db902a68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d4cfe5aa8fc95ea1dc1cabf8a7d9913" id="r_a7d4cfe5aa8fc95ea1dc1cabf8a7d9913"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d4cfe5aa8fc95ea1dc1cabf8a7d9913">VTKFile</a> (::xercesc::InputSource &amp;i, <a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;h, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:a7d4cfe5aa8fc95ea1dc1cabf8a7d9913"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ input source with an error handler.  <br /></td></tr>
-<tr class="separator:a7d4cfe5aa8fc95ea1dc1cabf8a7d9913"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a497b636039c25a2682ff73370db75daf" id="r_a497b636039c25a2682ff73370db75daf"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a497b636039c25a2682ff73370db75daf">VTKFile</a> (::xercesc::InputSource &amp;i, ::xercesc::DOMErrorHandler &amp;h, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:a497b636039c25a2682ff73370db75daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ input source with a Xerces-C++ DOM error handler.  <br /></td></tr>
-<tr class="separator:a497b636039c25a2682ff73370db75daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae72108353dd13779e7671fe1b0a7b272" id="r_ae72108353dd13779e7671fe1b0a7b272"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae72108353dd13779e7671fe1b0a7b272">VTKFile</a> (const ::xercesc::DOMDocument &amp;doc, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;p)</td></tr>
-<tr class="memdesc:ae72108353dd13779e7671fe1b0a7b272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ DOM document.  <br /></td></tr>
-<tr class="separator:ae72108353dd13779e7671fe1b0a7b272"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ca24809552e87aaa3e6fe4ea6037047" id="r_a1ca24809552e87aaa3e6fe4ea6037047"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ca24809552e87aaa3e6fe4ea6037047">VTKFile</a> (::xml_schema::dom::unique_ptr&lt;::xercesc::DOMDocument &gt; d, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;)</td></tr>
-<tr class="memdesc:a1ca24809552e87aaa3e6fe4ea6037047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ DOM document.  <br /></td></tr>
-<tr class="separator:a1ca24809552e87aaa3e6fe4ea6037047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0284960311f10a27a9336af19366479" id="r_aa0284960311f10a27a9336af19366479"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0284960311f10a27a9336af19366479">VTKFile</a> (const ::std::string &amp;u, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:aa0284960311f10a27a9336af19366479"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a URI or a local file.  <br /></td></tr>
+<tr class="separator:aa0284960311f10a27a9336af19366479"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ecfbb5f016353b8537e0e09620fb0e1" id="r_a3ecfbb5f016353b8537e0e09620fb0e1"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ecfbb5f016353b8537e0e09620fb0e1">VTKFile</a> (const ::std::string &amp;u, <a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;h, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a3ecfbb5f016353b8537e0e09620fb0e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a URI or a local file with an error handler.  <br /></td></tr>
+<tr class="separator:a3ecfbb5f016353b8537e0e09620fb0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b68c060c0f0d3f88593575280a1cbd5" id="r_a4b68c060c0f0d3f88593575280a1cbd5"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b68c060c0f0d3f88593575280a1cbd5">VTKFile</a> (const ::std::string &amp;u, ::xercesc::DOMErrorHandler &amp;h, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a4b68c060c0f0d3f88593575280a1cbd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a URI or a local file with a Xerces-C++ DOM error handler.  <br /></td></tr>
+<tr class="separator:a4b68c060c0f0d3f88593575280a1cbd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60d013f464a9124c254b8032518a27cc" id="r_a60d013f464a9124c254b8032518a27cc"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60d013f464a9124c254b8032518a27cc">VTKFile</a> (::std::istream &amp;is, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a60d013f464a9124c254b8032518a27cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream.  <br /></td></tr>
+<tr class="separator:a60d013f464a9124c254b8032518a27cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a793aaa67960350b1d4242f67f03660ac" id="r_a793aaa67960350b1d4242f67f03660ac"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a793aaa67960350b1d4242f67f03660ac">VTKFile</a> (::std::istream &amp;is, <a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;h, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a793aaa67960350b1d4242f67f03660ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with an error handler.  <br /></td></tr>
+<tr class="separator:a793aaa67960350b1d4242f67f03660ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a813507ef229a344e525eed4c5759e33a" id="r_a813507ef229a344e525eed4c5759e33a"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a813507ef229a344e525eed4c5759e33a">VTKFile</a> (::std::istream &amp;is, ::xercesc::DOMErrorHandler &amp;h, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a813507ef229a344e525eed4c5759e33a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with a Xerces-C++ DOM error handler.  <br /></td></tr>
+<tr class="separator:a813507ef229a344e525eed4c5759e33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12c97f0203e0079b0ad4bca01397996" id="r_ae12c97f0203e0079b0ad4bca01397996"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae12c97f0203e0079b0ad4bca01397996">VTKFile</a> (::std::istream &amp;is, const ::std::string &amp;sid, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:ae12c97f0203e0079b0ad4bca01397996"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with a resource id.  <br /></td></tr>
+<tr class="separator:ae12c97f0203e0079b0ad4bca01397996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848a0158f90e38fe1c61ce559f20261d" id="r_a848a0158f90e38fe1c61ce559f20261d"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a848a0158f90e38fe1c61ce559f20261d">VTKFile</a> (::std::istream &amp;is, const ::std::string &amp;sid, <a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;h, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a848a0158f90e38fe1c61ce559f20261d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with a resource id and an error handler.  <br /></td></tr>
+<tr class="separator:a848a0158f90e38fe1c61ce559f20261d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24bf0355d6b66a9b7d3063cb92d11f70" id="r_a24bf0355d6b66a9b7d3063cb92d11f70"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24bf0355d6b66a9b7d3063cb92d11f70">VTKFile</a> (::std::istream &amp;is, const ::std::string &amp;sid, ::xercesc::DOMErrorHandler &amp;h, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a24bf0355d6b66a9b7d3063cb92d11f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a standard input stream with a resource id and a Xerces-C++ DOM error handler.  <br /></td></tr>
+<tr class="separator:a24bf0355d6b66a9b7d3063cb92d11f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a968cfe17860d4c2d57bea74f9e34a4df" id="r_a968cfe17860d4c2d57bea74f9e34a4df"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a968cfe17860d4c2d57bea74f9e34a4df">VTKFile</a> (::xercesc::InputSource &amp;i, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a968cfe17860d4c2d57bea74f9e34a4df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ input source.  <br /></td></tr>
+<tr class="separator:a968cfe17860d4c2d57bea74f9e34a4df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad8d78d8d083d09c45cc70753633a099" id="r_aad8d78d8d083d09c45cc70753633a099"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad8d78d8d083d09c45cc70753633a099">VTKFile</a> (::xercesc::InputSource &amp;i, <a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;h, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:aad8d78d8d083d09c45cc70753633a099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ input source with an error handler.  <br /></td></tr>
+<tr class="separator:aad8d78d8d083d09c45cc70753633a099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cc874c707d4651b6325e59266390e79" id="r_a9cc874c707d4651b6325e59266390e79"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cc874c707d4651b6325e59266390e79">VTKFile</a> (::xercesc::InputSource &amp;i, ::xercesc::DOMErrorHandler &amp;h, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a9cc874c707d4651b6325e59266390e79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ input source with a Xerces-C++ DOM error handler.  <br /></td></tr>
+<tr class="separator:a9cc874c707d4651b6325e59266390e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e769278edd685a08e85383e5d45f5a" id="r_a51e769278edd685a08e85383e5d45f5a"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51e769278edd685a08e85383e5d45f5a">VTKFile</a> (const ::xercesc::DOMDocument &amp;doc, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;p)</td></tr>
+<tr class="memdesc:a51e769278edd685a08e85383e5d45f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ DOM document.  <br /></td></tr>
+<tr class="separator:a51e769278edd685a08e85383e5d45f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c56caf95178c69a1b05f41d1ddd2b20" id="r_a4c56caf95178c69a1b05f41d1ddd2b20"><td class="memItemLeft" align="right" valign="top">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c56caf95178c69a1b05f41d1ddd2b20">VTKFile</a> (::xml_schema::dom::unique_ptr&lt; ::xercesc::DOMDocument &gt; d, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f, const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;)</td></tr>
+<tr class="memdesc:a4c56caf95178c69a1b05f41d1ddd2b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Xerces-C++ DOM document.  <br /></td></tr>
+<tr class="separator:a4c56caf95178c69a1b05f41d1ddd2b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61ab4b44692dc25fbed88bd01294b3a6" id="r_a61ab4b44692dc25fbed88bd01294b3a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61ab4b44692dc25fbed88bd01294b3a6">operator&lt;&lt;</a> (::xercesc::DOMElement &amp;e, const <a class="el" href="classDataArrayList__t.html">DataArrayList_t</a> &amp;i)</td></tr>
 <tr class="separator:a61ab4b44692dc25fbed88bd01294b3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7630c2ebfb09fec59ec9744ab4de05a1" id="r_a7630c2ebfb09fec59ec9744ab4de05a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7630c2ebfb09fec59ec9744ab4de05a1">operator&lt;&lt;</a> (::xercesc::DOMAttr &amp;a, const <a class="el" href="classDataArrayList__t.html">DataArrayList_t</a> &amp;i)</td></tr>
 <tr class="separator:a7630c2ebfb09fec59ec9744ab4de05a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15e37609fa21b26bacce23662c522124" id="r_a15e37609fa21b26bacce23662c522124"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15e37609fa21b26bacce23662c522124">operator&lt;&lt;</a> (<a class="el" href="namespacexml__schema.html#a9576d99877450af6e8cb47e2af87a30e">::xml_schema::list_stream</a> &amp;l, const <a class="el" href="classDataArrayList__t.html">DataArrayList_t</a> &amp;i)</td></tr>
+<tr class="memitem:a15e37609fa21b26bacce23662c522124" id="r_a15e37609fa21b26bacce23662c522124"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15e37609fa21b26bacce23662c522124">operator&lt;&lt;</a> (<a class="el" href="namespacexml__schema.html#a840728106ddd08800e62729d4eddbbc8">::xml_schema::list_stream</a> &amp;l, const <a class="el" href="classDataArrayList__t.html">DataArrayList_t</a> &amp;i)</td></tr>
 <tr class="separator:a15e37609fa21b26bacce23662c522124"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90ac4d883593f3e71cc24b0c8a53f745" id="r_a90ac4d883593f3e71cc24b0c8a53f745"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90ac4d883593f3e71cc24b0c8a53f745">operator&lt;&lt;</a> (::xercesc::DOMElement &amp;e, const <a class="el" href="classDataArray__t.html">DataArray_t</a> &amp;i)</td></tr>
 <tr class="separator:a90ac4d883593f3e71cc24b0c8a53f745"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,35 +163,35 @@ Functions</h2></td></tr>
 <tr class="separator:abece001f0a506ac3847ede9a0a72d81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac655f285f1cdc6fc044b7d58a7596a6a" id="r_ac655f285f1cdc6fc044b7d58a7596a6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac655f285f1cdc6fc044b7d58a7596a6a">operator&lt;&lt;</a> (::xercesc::DOMElement &amp;e, const <a class="el" href="classVTKFile__t.html">VTKFile_t</a> &amp;i)</td></tr>
 <tr class="separator:ac655f285f1cdc6fc044b7d58a7596a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa134e54b6f4b88b40bab9b765f4b474d" id="r_aa134e54b6f4b88b40bab9b765f4b474d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa134e54b6f4b88b40bab9b765f4b474d">VTKFile</a> (::std::ostream &amp;o, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f)</td></tr>
+<tr class="memitem:aa134e54b6f4b88b40bab9b765f4b474d" id="r_aa134e54b6f4b88b40bab9b765f4b474d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa134e54b6f4b88b40bab9b765f4b474d">VTKFile</a> (::std::ostream &amp;o, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f)</td></tr>
 <tr class="memdesc:aa134e54b6f4b88b40bab9b765f4b474d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to a standard output stream.  <br /></td></tr>
 <tr class="separator:aa134e54b6f4b88b40bab9b765f4b474d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac473b4bb1e8139a2818cc9422ecd8074" id="r_ac473b4bb1e8139a2818cc9422ecd8074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac473b4bb1e8139a2818cc9422ecd8074">VTKFile</a> (::std::ostream &amp;o, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, <a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;h, const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f)</td></tr>
+<tr class="memitem:ac473b4bb1e8139a2818cc9422ecd8074" id="r_ac473b4bb1e8139a2818cc9422ecd8074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac473b4bb1e8139a2818cc9422ecd8074">VTKFile</a> (::std::ostream &amp;o, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, <a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;h, const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f)</td></tr>
 <tr class="memdesc:ac473b4bb1e8139a2818cc9422ecd8074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to a standard output stream with an error handler.  <br /></td></tr>
 <tr class="separator:ac473b4bb1e8139a2818cc9422ecd8074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cc53a876b8874263c6cd859ce8180c5" id="r_a0cc53a876b8874263c6cd859ce8180c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cc53a876b8874263c6cd859ce8180c5">VTKFile</a> (::std::ostream &amp;o, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, ::xercesc::DOMErrorHandler &amp;h, const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f)</td></tr>
+<tr class="memitem:a0cc53a876b8874263c6cd859ce8180c5" id="r_a0cc53a876b8874263c6cd859ce8180c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cc53a876b8874263c6cd859ce8180c5">VTKFile</a> (::std::ostream &amp;o, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, ::xercesc::DOMErrorHandler &amp;h, const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f)</td></tr>
 <tr class="memdesc:a0cc53a876b8874263c6cd859ce8180c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to a standard output stream with a Xerces-C++ DOM error handler.  <br /></td></tr>
 <tr class="separator:a0cc53a876b8874263c6cd859ce8180c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ce3dd8745d0cf6e84c57111774b90dd" id="r_a8ce3dd8745d0cf6e84c57111774b90dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ce3dd8745d0cf6e84c57111774b90dd">VTKFile</a> (::xercesc::XMLFormatTarget &amp;t, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f)</td></tr>
+<tr class="memitem:a8ce3dd8745d0cf6e84c57111774b90dd" id="r_a8ce3dd8745d0cf6e84c57111774b90dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ce3dd8745d0cf6e84c57111774b90dd">VTKFile</a> (::xercesc::XMLFormatTarget &amp;t, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f)</td></tr>
 <tr class="memdesc:a8ce3dd8745d0cf6e84c57111774b90dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to a Xerces-C++ XML format target.  <br /></td></tr>
 <tr class="separator:a8ce3dd8745d0cf6e84c57111774b90dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae56b1862c2e2e2799294c95c0540f4fd" id="r_ae56b1862c2e2e2799294c95c0540f4fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae56b1862c2e2e2799294c95c0540f4fd">VTKFile</a> (::xercesc::XMLFormatTarget &amp;t, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, <a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;h, const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f)</td></tr>
+<tr class="memitem:ae56b1862c2e2e2799294c95c0540f4fd" id="r_ae56b1862c2e2e2799294c95c0540f4fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae56b1862c2e2e2799294c95c0540f4fd">VTKFile</a> (::xercesc::XMLFormatTarget &amp;t, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, <a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;h, const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f)</td></tr>
 <tr class="memdesc:ae56b1862c2e2e2799294c95c0540f4fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to a Xerces-C++ XML format target with an error handler.  <br /></td></tr>
 <tr class="separator:ae56b1862c2e2e2799294c95c0540f4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2edb445af88702b397952339844aec1" id="r_ab2edb445af88702b397952339844aec1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2edb445af88702b397952339844aec1">VTKFile</a> (::xercesc::XMLFormatTarget &amp;t, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, ::xercesc::DOMErrorHandler &amp;h, const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f)</td></tr>
+<tr class="memitem:ab2edb445af88702b397952339844aec1" id="r_ab2edb445af88702b397952339844aec1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2edb445af88702b397952339844aec1">VTKFile</a> (::xercesc::XMLFormatTarget &amp;t, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, ::xercesc::DOMErrorHandler &amp;h, const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;m, const ::std::string &amp;e, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f)</td></tr>
 <tr class="memdesc:ab2edb445af88702b397952339844aec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to a Xerces-C++ XML format target with a Xerces-C++ DOM error handler.  <br /></td></tr>
 <tr class="separator:ab2edb445af88702b397952339844aec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62e08536631ebd461aa8d51059adb67c" id="r_a62e08536631ebd461aa8d51059adb67c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62e08536631ebd461aa8d51059adb67c">VTKFile</a> (::xercesc::DOMDocument &amp;d, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a>)</td></tr>
+<tr class="memitem:a62e08536631ebd461aa8d51059adb67c" id="r_a62e08536631ebd461aa8d51059adb67c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62e08536631ebd461aa8d51059adb67c">VTKFile</a> (::xercesc::DOMDocument &amp;d, const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a>)</td></tr>
 <tr class="memdesc:a62e08536631ebd461aa8d51059adb67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to an existing Xerces-C++ DOM document.  <br /></td></tr>
 <tr class="separator:a62e08536631ebd461aa8d51059adb67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab47ce6296c596ae2899728bcbf171c66" id="r_ab47ce6296c596ae2899728bcbf171c66"><td class="memItemLeft" align="right" valign="top">::xml_schema::dom::unique_ptr&lt;::xercesc::DOMDocument &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab47ce6296c596ae2899728bcbf171c66">VTKFile</a> (const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;m, <a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a> f)</td></tr>
-<tr class="memdesc:ab47ce6296c596ae2899728bcbf171c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to a new Xerces-C++ DOM document.  <br /></td></tr>
-<tr class="separator:ab47ce6296c596ae2899728bcbf171c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78311ea10573548ffa4d806987124122" id="r_a78311ea10573548ffa4d806987124122"><td class="memItemLeft" align="right" valign="top">::xml_schema::dom::unique_ptr&lt; ::xercesc::DOMDocument &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78311ea10573548ffa4d806987124122">VTKFile</a> (const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;s, const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;m, <a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a> f)</td></tr>
+<tr class="memdesc:a78311ea10573548ffa4d806987124122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize to a new Xerces-C++ DOM document.  <br /></td></tr>
+<tr class="separator:a78311ea10573548ffa4d806987124122"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39982a892c5c712b9ceaf5451fc6f4ad" id="r_a39982a892c5c712b9ceaf5451fc6f4ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39982a892c5c712b9ceaf5451fc6f4ad">operator&lt;&lt;</a> (::xercesc::DOMElement &amp;e, const <a class="el" href="classtype.html">type</a> &amp;i)</td></tr>
 <tr class="separator:a39982a892c5c712b9ceaf5451fc6f4ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fb8d54838ba8178be88528f342c8b27" id="r_a4fb8d54838ba8178be88528f342c8b27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fb8d54838ba8178be88528f342c8b27">operator&lt;&lt;</a> (::xercesc::DOMAttr &amp;a, const <a class="el" href="classtype.html">type</a> &amp;i)</td></tr>
 <tr class="separator:a4fb8d54838ba8178be88528f342c8b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc84c964f7011b68cb249e0dd527a052" id="r_abc84c964f7011b68cb249e0dd527a052"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc84c964f7011b68cb249e0dd527a052">operator&lt;&lt;</a> (<a class="el" href="namespacexml__schema.html#a9576d99877450af6e8cb47e2af87a30e">::xml_schema::list_stream</a> &amp;l, const <a class="el" href="classtype.html">type</a> &amp;i)</td></tr>
+<tr class="memitem:abc84c964f7011b68cb249e0dd527a052" id="r_abc84c964f7011b68cb249e0dd527a052"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc84c964f7011b68cb249e0dd527a052">operator&lt;&lt;</a> (<a class="el" href="namespacexml__schema.html#a840728106ddd08800e62729d4eddbbc8">::xml_schema::list_stream</a> &amp;l, const <a class="el" href="classtype.html">type</a> &amp;i)</td></tr>
 <tr class="separator:abc84c964f7011b68cb249e0dd527a052"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03c700ca3f77780311236cfbb43b28a6" id="r_a03c700ca3f77780311236cfbb43b28a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03c700ca3f77780311236cfbb43b28a6">operator&lt;&lt;</a> (::xercesc::DOMElement &amp;e, const <a class="el" href="classPointData.html">PointData</a> &amp;i)</td></tr>
 <tr class="separator:a03c700ca3f77780311236cfbb43b28a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -485,7 +485,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a9576d99877450af6e8cb47e2af87a30e">::xml_schema::list_stream</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a840728106ddd08800e62729d4eddbbc8">::xml_schema::list_stream</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -506,7 +506,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a9576d99877450af6e8cb47e2af87a30e">::xml_schema::list_stream</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a840728106ddd08800e62729d4eddbbc8">::xml_schema::list_stream</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -518,14 +518,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2925bc4a3c6b0ef83ebf392427ef3ec2" name="a2925bc4a3c6b0ef83ebf392427ef3ec2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2925bc4a3c6b0ef83ebf392427ef3ec2">&#9670;&#160;</a></span>VTKFile() <span class="overload">[1/22]</span></h2>
+<a id="a813507ef229a344e525eed4c5759e33a" name="a813507ef229a344e525eed4c5759e33a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a813507ef229a344e525eed4c5759e33a">&#9670;&#160;</a></span>VTKFile() <span class="overload">[1/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
@@ -537,12 +537,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -562,31 +562,31 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0281f9d2594861e0f7567a0e0c5a7efd" name="a0281f9d2594861e0f7567a0e0c5a7efd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0281f9d2594861e0f7567a0e0c5a7efd">&#9670;&#160;</a></span>VTKFile() <span class="overload">[2/22]</span></h2>
+<a id="a793aaa67960350b1d4242f67f03660ac" name="a793aaa67960350b1d4242f67f03660ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a793aaa67960350b1d4242f67f03660ac">&#9670;&#160;</a></span>VTKFile() <span class="overload">[2/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -606,26 +606,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9c17bee3f0ffc05664f1ffbe30cb0f17" name="a9c17bee3f0ffc05664f1ffbe30cb0f17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c17bee3f0ffc05664f1ffbe30cb0f17">&#9670;&#160;</a></span>VTKFile() <span class="overload">[3/22]</span></h2>
+<a id="a60d013f464a9124c254b8032518a27cc" name="a60d013f464a9124c254b8032518a27cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60d013f464a9124c254b8032518a27cc">&#9670;&#160;</a></span>VTKFile() <span class="overload">[3/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -644,14 +644,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ade57a4104c5b9ecdb65c6ecb1f1a3a83" name="ade57a4104c5b9ecdb65c6ecb1f1a3a83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade57a4104c5b9ecdb65c6ecb1f1a3a83">&#9670;&#160;</a></span>VTKFile() <span class="overload">[4/22]</span></h2>
+<a id="a24bf0355d6b66a9b7d3063cb92d11f70" name="a24bf0355d6b66a9b7d3063cb92d11f70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24bf0355d6b66a9b7d3063cb92d11f70">&#9670;&#160;</a></span>VTKFile() <span class="overload">[4/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
@@ -668,12 +668,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -695,14 +695,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9881daf2b15c5ea8f2225088cfab08dc" name="a9881daf2b15c5ea8f2225088cfab08dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9881daf2b15c5ea8f2225088cfab08dc">&#9670;&#160;</a></span>VTKFile() <span class="overload">[5/22]</span></h2>
+<a id="a848a0158f90e38fe1c61ce559f20261d" name="a848a0158f90e38fe1c61ce559f20261d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a848a0158f90e38fe1c61ce559f20261d">&#9670;&#160;</a></span>VTKFile() <span class="overload">[5/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
@@ -714,17 +714,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -746,14 +746,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af8ea9bc8201e501e5fce88e0030af9b2" name="af8ea9bc8201e501e5fce88e0030af9b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8ea9bc8201e501e5fce88e0030af9b2">&#9670;&#160;</a></span>VTKFile() <span class="overload">[6/22]</span></h2>
+<a id="ae12c97f0203e0079b0ad4bca01397996" name="ae12c97f0203e0079b0ad4bca01397996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae12c97f0203e0079b0ad4bca01397996">&#9670;&#160;</a></span>VTKFile() <span class="overload">[6/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
@@ -765,12 +765,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -815,7 +815,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a>()</span>, </td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a>()</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -825,7 +825,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -865,12 +865,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a>()</span>, </td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a>()</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -880,7 +880,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -920,7 +920,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a>()</span>, </td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a>()</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -930,7 +930,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -969,7 +969,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -987,14 +987,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a497b636039c25a2682ff73370db75daf" name="a497b636039c25a2682ff73370db75daf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a497b636039c25a2682ff73370db75daf">&#9670;&#160;</a></span>VTKFile() <span class="overload">[11/22]</span></h2>
+<a id="a9cc874c707d4651b6325e59266390e79" name="a9cc874c707d4651b6325e59266390e79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cc874c707d4651b6325e59266390e79">&#9670;&#160;</a></span>VTKFile() <span class="overload">[11/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::xercesc::InputSource &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
@@ -1006,12 +1006,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1031,31 +1031,31 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7d4cfe5aa8fc95ea1dc1cabf8a7d9913" name="a7d4cfe5aa8fc95ea1dc1cabf8a7d9913"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d4cfe5aa8fc95ea1dc1cabf8a7d9913">&#9670;&#160;</a></span>VTKFile() <span class="overload">[12/22]</span></h2>
+<a id="aad8d78d8d083d09c45cc70753633a099" name="aad8d78d8d083d09c45cc70753633a099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad8d78d8d083d09c45cc70753633a099">&#9670;&#160;</a></span>VTKFile() <span class="overload">[12/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::xercesc::InputSource &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1075,26 +1075,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aef1d25f3cd571c039ee4be6db902a68e" name="aef1d25f3cd571c039ee4be6db902a68e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef1d25f3cd571c039ee4be6db902a68e">&#9670;&#160;</a></span>VTKFile() <span class="overload">[13/22]</span></h2>
+<a id="a968cfe17860d4c2d57bea74f9e34a4df" name="a968cfe17860d4c2d57bea74f9e34a4df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a968cfe17860d4c2d57bea74f9e34a4df">&#9670;&#160;</a></span>VTKFile() <span class="overload">[13/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">::xercesc::InputSource &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1137,7 +1137,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a>()</span>, </td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a>()</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1147,7 +1147,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1187,12 +1187,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a>()</span>, </td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a>()</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1202,7 +1202,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1242,7 +1242,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a>()</span>, </td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a>()</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1252,7 +1252,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1272,26 +1272,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1ca24809552e87aaa3e6fe4ea6037047" name="a1ca24809552e87aaa3e6fe4ea6037047"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ca24809552e87aaa3e6fe4ea6037047">&#9670;&#160;</a></span>VTKFile() <span class="overload">[17/22]</span></h2>
+<a id="a4c56caf95178c69a1b05f41d1ddd2b20" name="a4c56caf95178c69a1b05f41d1ddd2b20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c56caf95178c69a1b05f41d1ddd2b20">&#9670;&#160;</a></span>VTKFile() <span class="overload">[17/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
-          <td class="paramtype">::xml_schema::dom::unique_ptr&lt;::xercesc::DOMDocument &gt;</td>          <td class="paramname"><span class="paramname"><em>d</em></span>, </td>
+          <td class="paramtype">::xml_schema::dom::unique_ptr&lt; ::xercesc::DOMDocument &gt;</td>          <td class="paramname"><span class="paramname"><em>d</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1310,14 +1310,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a93ba354e2e070a0498612fdcb74d3ca7" name="a93ba354e2e070a0498612fdcb74d3ca7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93ba354e2e070a0498612fdcb74d3ca7">&#9670;&#160;</a></span>VTKFile() <span class="overload">[18/22]</span></h2>
+<a id="a4b68c060c0f0d3f88593575280a1cbd5" name="a4b68c060c0f0d3f88593575280a1cbd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b68c060c0f0d3f88593575280a1cbd5">&#9670;&#160;</a></span>VTKFile() <span class="overload">[18/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">const ::std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>uri</em></span>, </td>
         </tr>
@@ -1329,12 +1329,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1354,31 +1354,31 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa021ac9c7b9253763baa1b320d08431f" name="aa021ac9c7b9253763baa1b320d08431f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa021ac9c7b9253763baa1b320d08431f">&#9670;&#160;</a></span>VTKFile() <span class="overload">[19/22]</span></h2>
+<a id="a3ecfbb5f016353b8537e0e09620fb0e1" name="a3ecfbb5f016353b8537e0e09620fb0e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ecfbb5f016353b8537e0e09620fb0e1">&#9670;&#160;</a></span>VTKFile() <span class="overload">[19/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">const ::std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>uri</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a20e18995e1836fc092295950af7b1ff8">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0a5d9528e9175cedf199984a8bb64d62">::xml_schema::error_handler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>eh</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1398,26 +1398,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af984062b7931b4fdc0ba26da373c1423" name="af984062b7931b4fdc0ba26da373c1423"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af984062b7931b4fdc0ba26da373c1423">&#9670;&#160;</a></span>VTKFile() <span class="overload">[20/22]</span></h2>
+<a id="aa0284960311f10a27a9336af19366479" name="aa0284960311f10a27a9336af19366479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0284960311f10a27a9336af19366479">&#9670;&#160;</a></span>VTKFile() <span class="overload">[20/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">const ::std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>uri</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1436,26 +1436,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab47ce6296c596ae2899728bcbf171c66" name="ab47ce6296c596ae2899728bcbf171c66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab47ce6296c596ae2899728bcbf171c66">&#9670;&#160;</a></span>VTKFile() <span class="overload">[21/22]</span></h2>
+<a id="a78311ea10573548ffa4d806987124122" name="a78311ea10573548ffa4d806987124122"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78311ea10573548ffa4d806987124122">&#9670;&#160;</a></span>VTKFile() <span class="overload">[21/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::xml_schema::dom::unique_ptr&lt;::xercesc::DOMDocument &gt; VTKFile </td>
+          <td class="memname">::xml_schema::dom::unique_ptr&lt; ::xercesc::DOMDocument &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#aec149a71142d5ffe62028838320146bb">::xml_schema::namespace_infomap</a>()</span>, </td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>m</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a17712c8260e03226f0a9e4d21ab78f42">::xml_schema::namespace_infomap</a>()</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1473,26 +1473,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae72108353dd13779e7671fe1b0a7b272" name="ae72108353dd13779e7671fe1b0a7b272"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae72108353dd13779e7671fe1b0a7b272">&#9670;&#160;</a></span>VTKFile() <span class="overload">[22/22]</span></h2>
+<a id="a51e769278edd685a08e85383e5d45f5a" name="a51e769278edd685a08e85383e5d45f5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e769278edd685a08e85383e5d45f5a">&#9670;&#160;</a></span>VTKFile() <span class="overload">[22/22]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">::std::unique_ptr&lt;<a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
+          <td class="memname">::std::unique_ptr&lt; <a class="el" href="classVTKFile__t.html">::VTKFile_t</a> &gt; VTKFile </td>
           <td>(</td>
           <td class="paramtype">const ::xercesc::DOMDocument &amp;</td>          <td class="paramname"><span class="paramname"><em>d</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a8d981c127a1f5106d04ad5853e707361">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+          <td class="paramtype"><a class="el" href="namespacexml__schema.html#a0612287d030cb2732d31a45b258fdc87">::xml_schema::flags</a></td>          <td class="paramname"><span class="paramname"><em>f</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a12d56e372835940894923cd612293327">::xml_schema::properties</a>()</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespacexml__schema.html#a1a8ebac679580b41baebd62c7d641c1d">::xml_schema::properties</a>()</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

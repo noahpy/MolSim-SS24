@@ -7,17 +7,13 @@
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{strategy_8h}{physics/strategy.h}}"{}}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00025\ std::unique\_ptr<Simulation>\ \mbox{\hyperlink{simFactory_8h_a22b52f2aca72ab6f2d743bd529fc9a00}{simFactory}}(}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ sim\_type,}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{double}\ start\_time,}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ delta\_t,}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{double}\ end\_time,}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ epsilon,}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{double}\ sigma,}
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ particles,}
-\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
-\DoxyCodeLine{00034\ \ \ \ \ std::unique\_ptr<FileWriter>\ writePointer,}
-\DoxyCodeLine{00035\ \ \ \ \ std::unique\_ptr<FileReader>\ readPointer);}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Params_8h}{utils/Params.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00021\ std::unique\_ptr<Simulation>\ \mbox{\hyperlink{simFactory_8h_af9ef99ac2323cd749912898d4b87853f}{simFactory}}(}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classParams}{Params}}\&\ params,}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ particles,}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00025\ \ \ \ \ std::unique\_ptr<FileWriter>\ writePointer,}
+\DoxyCodeLine{00026\ \ \ \ \ std::unique\_ptr<FileReader>\ readPointer);}
 
 \end{DoxyCode}

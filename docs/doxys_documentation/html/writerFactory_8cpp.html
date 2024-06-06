@@ -100,13 +100,13 @@ $(function(){ initResizable(false); });
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad4e7ade60cb2de0fa1cd05c691183cb6" id="r_ad4e7ade60cb2de0fa1cd05c691183cb6"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4e7ade60cb2de0fa1cd05c691183cb6">writerFactory</a> (unsigned <a class="el" href="classtype.html">type</a>)</td></tr>
-<tr class="memdesc:ad4e7ade60cb2de0fa1cd05c691183cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">A factory function for creating <a class="el" href="classFileWriter.html" title="Abstract class FileWriter.">FileWriter</a> objects.  <br /></td></tr>
-<tr class="separator:ad4e7ade60cb2de0fa1cd05c691183cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b644d835e5955df6b5cb6fa574c375" id="r_a63b644d835e5955df6b5cb6fa574c375"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63b644d835e5955df6b5cb6fa574c375">writerFactory</a> (<a class="el" href="Params_8h.html#aded523d07f405f8a622d2b4247de05bf">WriterType</a> <a class="el" href="classtype.html">type</a>, std::string out_name)</td></tr>
+<tr class="memdesc:a63b644d835e5955df6b5cb6fa574c375"><td class="mdescLeft">&#160;</td><td class="mdescRight">A factory function for creating <a class="el" href="classFileWriter.html" title="Abstract class FileWriter.">FileWriter</a> objects.  <br /></td></tr>
+<tr class="separator:a63b644d835e5955df6b5cb6fa574c375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ad4e7ade60cb2de0fa1cd05c691183cb6" name="ad4e7ade60cb2de0fa1cd05c691183cb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4e7ade60cb2de0fa1cd05c691183cb6">&#9670;&#160;</a></span>writerFactory()</h2>
+<a id="a63b644d835e5955df6b5cb6fa574c375" name="a63b644d835e5955df6b5cb6fa574c375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63b644d835e5955df6b5cb6fa574c375">&#9670;&#160;</a></span>writerFactory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -114,8 +114,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; writerFactory </td>
           <td>(</td>
-          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="Params_8h.html#aded523d07f405f8a622d2b4247de05bf">WriterType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>out_name</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -125,6 +129,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>An unsigned integer representing the type of file writer to create. </td></tr>
+    <tr><td class="paramname">out_name</td><td>The name of the output file. </td></tr>
   </table>
   </dd>
 </dl>

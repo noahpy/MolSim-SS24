@@ -102,18 +102,26 @@ Inheritance diagram for LennardJonesSimulation:</div>
  <div class="center">
   <img src="classLennardJonesSimulation.png" usemap="#LennardJonesSimulation_map" alt=""/>
   <map id="LennardJonesSimulation_map" name="LennardJonesSimulation_map">
-<area href="classSimulation.html" title="Abstract base class for all simulations." alt="Simulation" shape="rect" coords="0,0,150,24"/>
+<area href="classSimulation.html" title="Abstract base class for all simulations." alt="Simulation" shape="rect" coords="0,0,192,24"/>
+<area href="classLinkedLennardJonesSimulation.html" title="Simulation class for the Lennard-Jones simulation." alt="LinkedLennardJonesSimulation" shape="rect" coords="0,112,192,136"/>
+<area href="classLennardJonesDomainSimulation.html" title="Simulation class for the Lennard-Jones simulation within a restricted domain and linked cell algorith..." alt="LennardJonesDomainSimulation" shape="rect" coords="0,168,192,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aedc18bafc6b9edbe6623e5d650b11d23" id="r_aedc18bafc6b9edbe6623e5d650b11d23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedc18bafc6b9edbe6623e5d650b11d23">LennardJonesSimulation</a> (double <a class="el" href="classSimulation.html#a838684076d88a5e923c35c513a1d676c">time</a>, double <a class="el" href="classSimulation.html#a3b20666c1d68ccda6afcdece22787224">delta_t</a>, double <a class="el" href="classSimulation.html#a197fe4555b78abaae9c4c111c2f05f27">end_time</a>, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;<a class="el" href="classSimulation.html#a40d5374878745375d1112892ca47290c">container</a>, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; <a class="el" href="classSimulation.html#a9c3c9fd1d02a83eea80af98eca001975">writer</a>, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; <a class="el" href="classSimulation.html#a490b1c45277ba9305d71c9db52eae51a">reader</a>, double <a class="el" href="#aecd5a7e8e606e83f64c4c232034af8bb">epsilon</a>, double <a class="el" href="#afefdd4b7b8084169ea224a7099e6c3e0">sigma</a>)</td></tr>
-<tr class="memdesc:aedc18bafc6b9edbe6623e5d650b11d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Lennard Jones <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object.  <br /></td></tr>
-<tr class="separator:aedc18bafc6b9edbe6623e5d650b11d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a084bc975a00233b880afc787ff0a975c" id="r_a084bc975a00233b880afc787ff0a975c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a084bc975a00233b880afc787ff0a975c">LennardJonesSimulation</a> (double <a class="el" href="classSimulation.html#a838684076d88a5e923c35c513a1d676c">time</a>, double <a class="el" href="classSimulation.html#a3b20666c1d68ccda6afcdece22787224">delta_t</a>, double <a class="el" href="classSimulation.html#a197fe4555b78abaae9c4c111c2f05f27">end_time</a>, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;<a class="el" href="classSimulation.html#a40d5374878745375d1112892ca47290c">container</a>, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; <a class="el" href="classSimulation.html#a9c3c9fd1d02a83eea80af98eca001975">writer</a>, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; <a class="el" href="classSimulation.html#a490b1c45277ba9305d71c9db52eae51a">reader</a>, double <a class="el" href="#aecd5a7e8e606e83f64c4c232034af8bb">epsilon</a>, double <a class="el" href="#afefdd4b7b8084169ea224a7099e6c3e0">sigma</a>, unsigned <a class="el" href="classSimulation.html#af359b0a19b55ad991ed8d70a707f3592">frequency</a>=10, bool read_file=true)</td></tr>
+<tr class="memdesc:a084bc975a00233b880afc787ff0a975c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Lennard Jones <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object.  <br /></td></tr>
+<tr class="separator:a084bc975a00233b880afc787ff0a975c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7b28b4c292473bc44481a5a988e4735" id="r_aa7b28b4c292473bc44481a5a988e4735"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7b28b4c292473bc44481a5a988e4735">runSim</a> () override</td></tr>
 <tr class="memdesc:aa7b28b4c292473bc44481a5a988e4735"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the simulation.  <br /></td></tr>
 <tr class="separator:aa7b28b4c292473bc44481a5a988e4735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b2d037dda00ab1b39cab5808f8abae" id="r_a03b2d037dda00ab1b39cab5808f8abae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03b2d037dda00ab1b39cab5808f8abae">setEpsilon</a> (double eps)</td></tr>
+<tr class="memdesc:a03b2d037dda00ab1b39cab5808f8abae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the epsilon parameter of the Lennard-Jones potential.  <br /></td></tr>
+<tr class="separator:a03b2d037dda00ab1b39cab5808f8abae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71edfeb82be06f000833da94472ea51f" id="r_a71edfeb82be06f000833da94472ea51f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71edfeb82be06f000833da94472ea51f">setSigma</a> (double sig)</td></tr>
+<tr class="memdesc:a71edfeb82be06f000833da94472ea51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sigma parameter of the Lennard-Jones potential.  <br /></td></tr>
+<tr class="separator:a71edfeb82be06f000833da94472ea51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42422dd40e29be6f43c1911934b6c4fb" id="r_a42422dd40e29be6f43c1911934b6c4fb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42422dd40e29be6f43c1911934b6c4fb">getEpsilon</a> () const</td></tr>
 <tr class="memdesc:a42422dd40e29be6f43c1911934b6c4fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the epsilon parameter of the Lennard-Jones potential.  <br /></td></tr>
 <tr class="separator:a42422dd40e29be6f43c1911934b6c4fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,15 +137,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d7cf6c105468d3677d1c9538752a85b" id="r_a0d7cf6c105468d3677d1c9538752a85b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d7cf6c105468d3677d1c9538752a85b">getGamma</a> () const</td></tr>
 <tr class="memdesc:a0d7cf6c105468d3677d1c9538752a85b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the gamma parameter of the Lennard-Jones potential.  <br /></td></tr>
 <tr class="separator:a0d7cf6c105468d3677d1c9538752a85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b7e110d1db518fe23ddb28ea6241df7" id="r_a0b7e110d1db518fe23ddb28ea6241df7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b7e110d1db518fe23ddb28ea6241df7">Simulation</a> (double <a class="el" href="classSimulation.html#a838684076d88a5e923c35c513a1d676c">time</a>, double <a class="el" href="classSimulation.html#a3b20666c1d68ccda6afcdece22787224">delta_t</a>, double <a class="el" href="classSimulation.html#a197fe4555b78abaae9c4c111c2f05f27">end_time</a>, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;<a class="el" href="classSimulation.html#a40d5374878745375d1112892ca47290c">container</a>, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; <a class="el" href="classSimulation.html#a9c3c9fd1d02a83eea80af98eca001975">writer</a>, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; <a class="el" href="classSimulation.html#a490b1c45277ba9305d71c9db52eae51a">reader</a>)</td></tr>
-<tr class="memdesc:a0b7e110d1db518fe23ddb28ea6241df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object.  <br /></td></tr>
-<tr class="separator:a0b7e110d1db518fe23ddb28ea6241df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09afdfe50f109b6626e3fdfd8c4f733b" id="r_a09afdfe50f109b6626e3fdfd8c4f733b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09afdfe50f109b6626e3fdfd8c4f733b">~LennardJonesSimulation</a> ()=default</td></tr>
+<tr class="separator:a09afdfe50f109b6626e3fdfd8c4f733b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac812adfefb2f2421ed20c4929b0565" id="r_a3ac812adfefb2f2421ed20c4929b0565"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ac812adfefb2f2421ed20c4929b0565">Simulation</a> (double <a class="el" href="classSimulation.html#a838684076d88a5e923c35c513a1d676c">time</a>, double <a class="el" href="classSimulation.html#a3b20666c1d68ccda6afcdece22787224">delta_t</a>, double <a class="el" href="classSimulation.html#a197fe4555b78abaae9c4c111c2f05f27">end_time</a>, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;<a class="el" href="classSimulation.html#a40d5374878745375d1112892ca47290c">container</a>, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; <a class="el" href="classSimulation.html#a9c3c9fd1d02a83eea80af98eca001975">writer</a>, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; <a class="el" href="classSimulation.html#a490b1c45277ba9305d71c9db52eae51a">reader</a>, unsigned <a class="el" href="classSimulation.html#af359b0a19b55ad991ed8d70a707f3592">frequency</a>=10)</td></tr>
+<tr class="memdesc:a3ac812adfefb2f2421ed20c4929b0565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object.  <br /></td></tr>
+<tr class="separator:a3ac812adfefb2f2421ed20c4929b0565"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classSimulation"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classSimulation')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classSimulation.html">Simulation</a></td></tr>
-<tr class="memitem:a0b7e110d1db518fe23ddb28ea6241df7 inherit pub_methods_classSimulation" id="r_a0b7e110d1db518fe23ddb28ea6241df7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a0b7e110d1db518fe23ddb28ea6241df7">Simulation</a> (double <a class="el" href="classSimulation.html#a838684076d88a5e923c35c513a1d676c">time</a>, double <a class="el" href="classSimulation.html#a3b20666c1d68ccda6afcdece22787224">delta_t</a>, double <a class="el" href="classSimulation.html#a197fe4555b78abaae9c4c111c2f05f27">end_time</a>, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;<a class="el" href="classSimulation.html#a40d5374878745375d1112892ca47290c">container</a>, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; <a class="el" href="classSimulation.html#a9c3c9fd1d02a83eea80af98eca001975">writer</a>, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; <a class="el" href="classSimulation.html#a490b1c45277ba9305d71c9db52eae51a">reader</a>)</td></tr>
-<tr class="memdesc:a0b7e110d1db518fe23ddb28ea6241df7 inherit pub_methods_classSimulation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object.  <br /></td></tr>
-<tr class="separator:a0b7e110d1db518fe23ddb28ea6241df7 inherit pub_methods_classSimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac812adfefb2f2421ed20c4929b0565 inherit pub_methods_classSimulation" id="r_a3ac812adfefb2f2421ed20c4929b0565"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a3ac812adfefb2f2421ed20c4929b0565">Simulation</a> (double <a class="el" href="classSimulation.html#a838684076d88a5e923c35c513a1d676c">time</a>, double <a class="el" href="classSimulation.html#a3b20666c1d68ccda6afcdece22787224">delta_t</a>, double <a class="el" href="classSimulation.html#a197fe4555b78abaae9c4c111c2f05f27">end_time</a>, <a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;<a class="el" href="classSimulation.html#a40d5374878745375d1112892ca47290c">container</a>, <a class="el" href="classPhysicsStrategy.html">PhysicsStrategy</a> &amp;strat, std::unique_ptr&lt; <a class="el" href="classFileWriter.html">FileWriter</a> &gt; <a class="el" href="classSimulation.html#a9c3c9fd1d02a83eea80af98eca001975">writer</a>, std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt; <a class="el" href="classSimulation.html#a490b1c45277ba9305d71c9db52eae51a">reader</a>, unsigned <a class="el" href="classSimulation.html#af359b0a19b55ad991ed8d70a707f3592">frequency</a>=10)</td></tr>
+<tr class="memdesc:a3ac812adfefb2f2421ed20c4929b0565 inherit pub_methods_classSimulation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> object.  <br /></td></tr>
+<tr class="separator:a3ac812adfefb2f2421ed20c4929b0565 inherit pub_methods_classSimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85781a859dbdf089b4c807ac11646e18 inherit pub_methods_classSimulation" id="r_a85781a859dbdf089b4c807ac11646e18"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a85781a859dbdf089b4c807ac11646e18">~Simulation</a> ()=default</td></tr>
 <tr class="separator:a85781a859dbdf089b4c807ac11646e18 inherit pub_methods_classSimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace2a60993f57c241c081ffea6ea14e99 inherit pub_methods_classSimulation" id="r_ace2a60993f57c241c081ffea6ea14e99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#ace2a60993f57c241c081ffea6ea14e99">setOutputFile</a> (std::string output)</td></tr>
+<tr class="separator:ace2a60993f57c241c081ffea6ea14e99 inherit pub_methods_classSimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -170,6 +182,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a197fe4555b78abaae9c4c111c2f05f27 inherit pub_attribs_classSimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11ba749e855a9f9f3b07416ba6f15bb1 inherit pub_attribs_classSimulation" id="r_a11ba749e855a9f9f3b07416ba6f15bb1"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a11ba749e855a9f9f3b07416ba6f15bb1">iteration</a> = 0</td></tr>
 <tr class="separator:a11ba749e855a9f9f3b07416ba6f15bb1 inherit pub_attribs_classSimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af359b0a19b55ad991ed8d70a707f3592 inherit pub_attribs_classSimulation" id="r_af359b0a19b55ad991ed8d70a707f3592"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#af359b0a19b55ad991ed8d70a707f3592">frequency</a> = 10</td></tr>
+<tr class="separator:af359b0a19b55ad991ed8d70a707f3592 inherit pub_attribs_classSimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40d5374878745375d1112892ca47290c inherit pub_attribs_classSimulation" id="r_a40d5374878745375d1112892ca47290c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classParticleContainer.html">ParticleContainer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a40d5374878745375d1112892ca47290c">container</a></td></tr>
 <tr class="separator:a40d5374878745375d1112892ca47290c inherit pub_attribs_classSimulation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -177,8 +191,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> class for the Lennard-Jones simulation. </p>
 <p>This class is a subclass of the <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> class and is used to simulate the movement of particles according to the Lennard-Jones potential. This is the simulation class used in the second problem sheet. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aedc18bafc6b9edbe6623e5d650b11d23" name="aedc18bafc6b9edbe6623e5d650b11d23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedc18bafc6b9edbe6623e5d650b11d23">&#9670;&#160;</a></span>LennardJonesSimulation()</h2>
+<a id="a084bc975a00233b880afc787ff0a975c" name="a084bc975a00233b880afc787ff0a975c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a084bc975a00233b880afc787ff0a975c">&#9670;&#160;</a></span>LennardJonesSimulation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,7 +240,17 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>sigma</em></span>&#160;)</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>sigma</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>frequency</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>read_file</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -243,9 +267,36 @@ Additional Inherited Members</h2></td></tr>
     <tr><td class="paramname">reader</td><td>The reader object to read the input from file </td></tr>
     <tr><td class="paramname">epsilon</td><td>The epsilon parameter of the Lennard-Jones potential </td></tr>
     <tr><td class="paramname">sigma</td><td>The sigma parameter of the Lennard-Jones potential </td></tr>
+    <tr><td class="paramname">frequency</td><td>The frequency for writing outputs </td></tr>
+    <tr><td class="paramname">read_file</td><td>Set to true to read the input file </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a09afdfe50f109b6626e3fdfd8c4f733b" name="a09afdfe50f109b6626e3fdfd8c4f733b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09afdfe50f109b6626e3fdfd8c4f733b">&#9670;&#160;</a></span>~LennardJonesSimulation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual LennardJonesSimulation::~LennardJonesSimulation </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -418,10 +469,62 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classSimulation.html#ada940a3e4924c796b043a062950e3c49">Simulation</a>.</p>
 
+<p>Reimplemented in <a class="el" href="classLinkedLennardJonesSimulation.html#ac6a4414b99279f5653eae86f9c513114">LinkedLennardJonesSimulation</a>.</p>
+
 </div>
 </div>
-<a id="a0b7e110d1db518fe23ddb28ea6241df7" name="a0b7e110d1db518fe23ddb28ea6241df7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b7e110d1db518fe23ddb28ea6241df7">&#9670;&#160;</a></span>Simulation()</h2>
+<a id="a03b2d037dda00ab1b39cab5808f8abae" name="a03b2d037dda00ab1b39cab5808f8abae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03b2d037dda00ab1b39cab5808f8abae">&#9670;&#160;</a></span>setEpsilon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LennardJonesSimulation::setEpsilon </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>eps</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the epsilon parameter of the Lennard-Jones potential. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eps</td><td>The new epsilon value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a71edfeb82be06f000833da94472ea51f" name="a71edfeb82be06f000833da94472ea51f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71edfeb82be06f000833da94472ea51f">&#9670;&#160;</a></span>setSigma()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LennardJonesSimulation::setSigma </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>sig</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the sigma parameter of the Lennard-Jones potential. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sig</td><td>The new sigma value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3ac812adfefb2f2421ed20c4929b0565" name="a3ac812adfefb2f2421ed20c4929b0565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ac812adfefb2f2421ed20c4929b0565">&#9670;&#160;</a></span>Simulation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,7 +562,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>reader</em></span>&#160;)</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classFileReader.html">FileReader</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>reader</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>frequency</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -474,6 +582,7 @@ Additional Inherited Members</h2></td></tr>
     <tr><td class="paramname">strat</td><td>The strategy which is used to calculate the physics </td></tr>
     <tr><td class="paramname">writer</td><td>The output writer </td></tr>
     <tr><td class="paramname">reader</td><td>The input reader </td></tr>
+    <tr><td class="paramname">frequency</td><td>The frequency for writing outputs </td></tr>
   </table>
   </dd>
 </dl>

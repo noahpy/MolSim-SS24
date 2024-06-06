@@ -23,6 +23,8 @@ class \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}}
 \begin{DoxyCompactList}\small\item\em Construct a new empty \doxylink{classParticle}{Particle} Container object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classParticleContainer_ac9316f41ac4e37e5e4ac55ae4cf176de}{add\+Particle}} (const \mbox{\hyperlink{classParticle}{Particle}} \&p)
 \begin{DoxyCompactList}\small\item\em Adds a particle to the container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticleContainer_a37d65d6494a60ec5268a075da98a2a0d}{remove\+Particles}} (std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classParticle}{Particle}} \texorpdfstring{$\ast$}{*}, bool $>$ \&particle\+Map)
+\begin{DoxyCompactList}\small\item\em Removes the particles in the map from the container. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \mbox{\hyperlink{classParticleContainer_a33a2348e19f93850e67ce59867d1e38f}{get\+Container}} () const
 \begin{DoxyCompactList}\small\item\em Get the particles within the container. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator \mbox{\hyperlink{classParticleContainer_a9c6e5afbd08a15591cfc867f85eb146b}{begin}} ()
@@ -160,6 +162,24 @@ Get the particles within the container.
 
 \begin{DoxyReturn}{Returns}
 The vector of particles 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_a37d65d6494a60ec5268a075da98a2a0d}\index{ParticleContainer@{ParticleContainer}!removeParticles@{removeParticles}}
+\index{removeParticles@{removeParticles}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{removeParticles()}{removeParticles()}}
+{\footnotesize\ttfamily \label{classParticleContainer_a37d65d6494a60ec5268a075da98a2a0d} 
+void Particle\+Container\+::remove\+Particles (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classParticle}{Particle}} \texorpdfstring{$\ast$}{*}, bool $>$ \&}]{particle\+Map}{}\end{DoxyParamCaption})}
+
+
+
+Removes the particles in the map from the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle\+Map} & The particles to be removed (true if remove) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
 \end{DoxyReturn}
 
 

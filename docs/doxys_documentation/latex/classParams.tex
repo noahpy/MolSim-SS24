@@ -1,0 +1,151 @@
+\doxysection{Params Class Reference}
+\hypertarget{classParams}{}\label{classParams}\index{Params@{Params}}
+
+
+{\ttfamily \#include $<$Params.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classParams_a58aa8f184d4751b83e992ef610158743}{start\+\_\+time}} = 0
+\item 
+double \mbox{\hyperlink{classParams_a1503e9313bf34014d9f42d0fa55ae79b}{end\+\_\+time}} = 0.\+014 \texorpdfstring{$\ast$}{*} 10 \texorpdfstring{$\ast$}{*} 20
+\item 
+double \mbox{\hyperlink{classParams_a60115bb457dc6b43c0d14014418c5883}{delta\+\_\+t}} = 0.\+014
+\item 
+double \mbox{\hyperlink{classParams_ae67589d7140634b05eedcfe5a26d72be}{epsilon}} = 5
+\item 
+double \mbox{\hyperlink{classParams_aae2e11191e0482bdec0fc15482b53e31}{sigma}} = 1
+\item 
+std\+::string \mbox{\hyperlink{classParams_aa90b56aa82f503da0c9bba09d8f61f48}{input\+\_\+file}}
+\item 
+std\+::string \mbox{\hyperlink{classParams_afa18c57156c85a592764d81b5449abd2}{output\+\_\+file}} = "{}sim"{}
+\item 
+\mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{Reader\+Type}} \mbox{\hyperlink{classParams_a7ab4f4dc5bbea9600eaa2e9eb2a24433}{reader\+\_\+type}} = \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a9de934790934fe831fe946c851e8338e}{Reader\+Type\+::\+STANDARD}}
+\item 
+\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} \mbox{\hyperlink{classParams_ac63ad1625179ff75dfde8ce796f0d8bd}{writer\+\_\+type}} = \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67}{Writer\+Type\+::\+VTK}}
+\item 
+\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} \mbox{\hyperlink{classParams_a1f6919d2ee4956a96a8443e31bd25a20}{simulation\+\_\+type}} = \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}{Simulation\+Type\+::\+PLANET}}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParams_a704a3d6840d95b50f0620f11590a89fc}{domain\+\_\+origin}} = \{ -\/10.\+0, -\/10.\+0, 0 \}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParams_a342ca27a4b747d4fa08eb07f0e9948c1}{domain\+\_\+size}} = \{ 20.\+0, 20.\+0, 0 \}
+\item 
+double \mbox{\hyperlink{classParams_aff59d573933a5dbf3615086e5656070e}{cutoff}} = 5
+\item 
+unsigned \mbox{\hyperlink{classParams_a7e38512ce3c13c4a586cca338d93c5bf}{plot\+\_\+frequency}} = 10
+\item 
+unsigned \mbox{\hyperlink{classParams_a1509dd331913613b268f1fa9bcb5f0bc}{update\+\_\+frequency}} = 10
+\item 
+\mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \mbox{\hyperlink{classParams_a54cd212690ea669e546586ff5a1b3e6b}{boundary\+Config}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classParams_a54cd212690ea669e546586ff5a1b3e6b}\index{Params@{Params}!boundaryConfig@{boundaryConfig}}
+\index{boundaryConfig@{boundaryConfig}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{boundaryConfig}{boundaryConfig}}
+{\footnotesize\ttfamily \label{classParams_a54cd212690ea669e546586ff5a1b3e6b} 
+\mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} Params\+::boundary\+Config}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{BoundaryType::SOFT\_REFLECTIVE}},\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{BoundaryType::SOFT\_REFLECTIVE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{BoundaryType::SOFT\_REFLECTIVE}},\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{BoundaryType::SOFT\_REFLECTIVE}}\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classParams_aff59d573933a5dbf3615086e5656070e}\index{Params@{Params}!cutoff@{cutoff}}
+\index{cutoff@{cutoff}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{cutoff}{cutoff}}
+{\footnotesize\ttfamily \label{classParams_aff59d573933a5dbf3615086e5656070e} 
+double Params\+::cutoff = 5}
+
+\Hypertarget{classParams_a60115bb457dc6b43c0d14014418c5883}\index{Params@{Params}!delta\_t@{delta\_t}}
+\index{delta\_t@{delta\_t}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{delta\_t}{delta\_t}}
+{\footnotesize\ttfamily \label{classParams_a60115bb457dc6b43c0d14014418c5883} 
+double Params\+::delta\+\_\+t = 0.\+014}
+
+\Hypertarget{classParams_a704a3d6840d95b50f0620f11590a89fc}\index{Params@{Params}!domain\_origin@{domain\_origin}}
+\index{domain\_origin@{domain\_origin}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{domain\_origin}{domain\_origin}}
+{\footnotesize\ttfamily \label{classParams_a704a3d6840d95b50f0620f11590a89fc} 
+std\+::array$<$double, 3$>$ Params\+::domain\+\_\+origin = \{ -\/10.\+0, -\/10.\+0, 0 \}}
+
+\Hypertarget{classParams_a342ca27a4b747d4fa08eb07f0e9948c1}\index{Params@{Params}!domain\_size@{domain\_size}}
+\index{domain\_size@{domain\_size}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{domain\_size}{domain\_size}}
+{\footnotesize\ttfamily \label{classParams_a342ca27a4b747d4fa08eb07f0e9948c1} 
+std\+::array$<$double, 3$>$ Params\+::domain\+\_\+size = \{ 20.\+0, 20.\+0, 0 \}}
+
+\Hypertarget{classParams_a1503e9313bf34014d9f42d0fa55ae79b}\index{Params@{Params}!end\_time@{end\_time}}
+\index{end\_time@{end\_time}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{end\_time}{end\_time}}
+{\footnotesize\ttfamily \label{classParams_a1503e9313bf34014d9f42d0fa55ae79b} 
+double Params\+::end\+\_\+time = 0.\+014 \texorpdfstring{$\ast$}{*} 10 \texorpdfstring{$\ast$}{*} 20}
+
+\Hypertarget{classParams_ae67589d7140634b05eedcfe5a26d72be}\index{Params@{Params}!epsilon@{epsilon}}
+\index{epsilon@{epsilon}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{epsilon}{epsilon}}
+{\footnotesize\ttfamily \label{classParams_ae67589d7140634b05eedcfe5a26d72be} 
+double Params\+::epsilon = 5}
+
+\Hypertarget{classParams_aa90b56aa82f503da0c9bba09d8f61f48}\index{Params@{Params}!input\_file@{input\_file}}
+\index{input\_file@{input\_file}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{input\_file}{input\_file}}
+{\footnotesize\ttfamily \label{classParams_aa90b56aa82f503da0c9bba09d8f61f48} 
+std\+::string Params\+::input\+\_\+file}
+
+\Hypertarget{classParams_afa18c57156c85a592764d81b5449abd2}\index{Params@{Params}!output\_file@{output\_file}}
+\index{output\_file@{output\_file}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{output\_file}{output\_file}}
+{\footnotesize\ttfamily \label{classParams_afa18c57156c85a592764d81b5449abd2} 
+std\+::string Params\+::output\+\_\+file = "{}sim"{}}
+
+\Hypertarget{classParams_a7e38512ce3c13c4a586cca338d93c5bf}\index{Params@{Params}!plot\_frequency@{plot\_frequency}}
+\index{plot\_frequency@{plot\_frequency}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{plot\_frequency}{plot\_frequency}}
+{\footnotesize\ttfamily \label{classParams_a7e38512ce3c13c4a586cca338d93c5bf} 
+unsigned Params\+::plot\+\_\+frequency = 10}
+
+\Hypertarget{classParams_a7ab4f4dc5bbea9600eaa2e9eb2a24433}\index{Params@{Params}!reader\_type@{reader\_type}}
+\index{reader\_type@{reader\_type}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{reader\_type}{reader\_type}}
+{\footnotesize\ttfamily \label{classParams_a7ab4f4dc5bbea9600eaa2e9eb2a24433} 
+\mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{Reader\+Type}} Params\+::reader\+\_\+type = \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a9de934790934fe831fe946c851e8338e}{Reader\+Type\+::\+STANDARD}}}
+
+\Hypertarget{classParams_aae2e11191e0482bdec0fc15482b53e31}\index{Params@{Params}!sigma@{sigma}}
+\index{sigma@{sigma}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{sigma}{sigma}}
+{\footnotesize\ttfamily \label{classParams_aae2e11191e0482bdec0fc15482b53e31} 
+double Params\+::sigma = 1}
+
+\Hypertarget{classParams_a1f6919d2ee4956a96a8443e31bd25a20}\index{Params@{Params}!simulation\_type@{simulation\_type}}
+\index{simulation\_type@{simulation\_type}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{simulation\_type}{simulation\_type}}
+{\footnotesize\ttfamily \label{classParams_a1f6919d2ee4956a96a8443e31bd25a20} 
+\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} Params\+::simulation\+\_\+type = \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}{Simulation\+Type\+::\+PLANET}}}
+
+\Hypertarget{classParams_a58aa8f184d4751b83e992ef610158743}\index{Params@{Params}!start\_time@{start\_time}}
+\index{start\_time@{start\_time}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{start\_time}{start\_time}}
+{\footnotesize\ttfamily \label{classParams_a58aa8f184d4751b83e992ef610158743} 
+double Params\+::start\+\_\+time = 0}
+
+\Hypertarget{classParams_a1509dd331913613b268f1fa9bcb5f0bc}\index{Params@{Params}!update\_frequency@{update\_frequency}}
+\index{update\_frequency@{update\_frequency}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{update\_frequency}{update\_frequency}}
+{\footnotesize\ttfamily \label{classParams_a1509dd331913613b268f1fa9bcb5f0bc} 
+unsigned Params\+::update\+\_\+frequency = 10}
+
+\Hypertarget{classParams_ac63ad1625179ff75dfde8ce796f0d8bd}\index{Params@{Params}!writer\_type@{writer\_type}}
+\index{writer\_type@{writer\_type}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{writer\_type}{writer\_type}}
+{\footnotesize\ttfamily \label{classParams_ac63ad1625179ff75dfde8ce796f0d8bd} 
+\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} Params\+::writer\+\_\+type = \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67}{Writer\+Type\+::\+VTK}}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/utils/\mbox{\hyperlink{Params_8h}{Params.\+h}}\end{DoxyCompactItemize}

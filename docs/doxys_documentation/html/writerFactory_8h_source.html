@@ -94,11 +94,14 @@ $(function(){ initResizable(false); });
 <a href="writerFactory_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="FileWriter_8h.html">io/fileWriter/FileWriter.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>std::unique_ptr&lt;FileWriter&gt; <a class="code hl_function" href="writerFactory_8h.html#ad4e7ade60cb2de0fa1cd05c691183cb6">writerFactory</a>(<span class="keywordtype">unsigned</span> <a class="code hl_class" href="classtype.html">type</a>);</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="Params_8h.html">utils/Params.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>std::unique_ptr&lt;FileWriter&gt; <a class="code hl_function" href="writerFactory_8h.html#a63b644d835e5955df6b5cb6fa574c375">writerFactory</a>(<a class="code hl_enumeration" href="Params_8h.html#aded523d07f405f8a622d2b4247de05bf">WriterType</a> <a class="code hl_class" href="classtype.html">type</a>, std::string out_name);</div>
 <div class="ttc" id="aFileWriter_8h_html"><div class="ttname"><a href="FileWriter_8h.html">FileWriter.h</a></div></div>
-<div class="ttc" id="aclasstype_html"><div class="ttname"><a href="classtype.html">type</a></div><div class="ttdoc">Enumeration class corresponding to the type schema type.</div><div class="ttdef"><b>Definition</b> vtk-unstructured.h:2159</div></div>
-<div class="ttc" id="awriterFactory_8h_html_ad4e7ade60cb2de0fa1cd05c691183cb6"><div class="ttname"><a href="writerFactory_8h.html#ad4e7ade60cb2de0fa1cd05c691183cb6">writerFactory</a></div><div class="ttdeci">std::unique_ptr&lt; FileWriter &gt; writerFactory(unsigned type)</div><div class="ttdoc">A factory function for creating FileWriter objects.</div><div class="ttdef"><b>Definition</b> writerFactory.cpp:7</div></div>
+<div class="ttc" id="aParams_8h_html"><div class="ttname"><a href="Params_8h.html">Params.h</a></div></div>
+<div class="ttc" id="aParams_8h_html_aded523d07f405f8a622d2b4247de05bf"><div class="ttname"><a href="Params_8h.html#aded523d07f405f8a622d2b4247de05bf">WriterType</a></div><div class="ttdeci">WriterType</div><div class="ttdef"><b>Definition</b> Params.h:9</div></div>
+<div class="ttc" id="aclasstype_html"><div class="ttname"><a href="classtype.html">type</a></div><div class="ttdoc">Enumeration class corresponding to the type schema type.</div><div class="ttdef"><b>Definition</b> vtk-unstructured.h:2292</div></div>
+<div class="ttc" id="awriterFactory_8h_html_a63b644d835e5955df6b5cb6fa574c375"><div class="ttname"><a href="writerFactory_8h.html#a63b644d835e5955df6b5cb6fa574c375">writerFactory</a></div><div class="ttdeci">std::unique_ptr&lt; FileWriter &gt; writerFactory(WriterType type, std::string out_name)</div><div class="ttdoc">A factory function for creating FileWriter objects.</div><div class="ttdef"><b>Definition</b> writerFactory.cpp:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

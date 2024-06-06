@@ -93,19 +93,19 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">argparse.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Params_8h_source.html">utils/Params.h</a>&quot;</code><br />
 </div>
 <p><a href="argparse_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae39942a109dec47b9c6b45d47573cee6" id="r_ae39942a109dec47b9c6b45d47573cee6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae39942a109dec47b9c6b45d47573cee6">argparse</a> (int argc, char *argsv[], double &amp;end_time, double &amp;delta_t, double &amp;epsilon, double &amp;sigma, std::string &amp;input, unsigned &amp;reader_type, unsigned &amp;writer_type, unsigned &amp;simulation_type)</td></tr>
-<tr class="memdesc:ae39942a109dec47b9c6b45d47573cee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the command line arguments.  <br /></td></tr>
-<tr class="separator:ae39942a109dec47b9c6b45d47573cee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47bef499cb7b82023764c269b2594a2" id="r_ae47bef499cb7b82023764c269b2594a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae47bef499cb7b82023764c269b2594a2">argparse</a> (int argc, char *argsv[], <a class="el" href="classParams.html">Params</a> &amp;params)</td></tr>
+<tr class="memdesc:ae47bef499cb7b82023764c269b2594a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the command line arguments.  <br /></td></tr>
+<tr class="separator:ae47bef499cb7b82023764c269b2594a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae39942a109dec47b9c6b45d47573cee6" name="ae39942a109dec47b9c6b45d47573cee6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae39942a109dec47b9c6b45d47573cee6">&#9670;&#160;</a></span>argparse()</h2>
+<a id="ae47bef499cb7b82023764c269b2594a2" name="ae47bef499cb7b82023764c269b2594a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47bef499cb7b82023764c269b2594a2">&#9670;&#160;</a></span>argparse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,42 +123,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>end_time</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>delta_t</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>sigma</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>reader_type</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>writer_type</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>simulation_type</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classParams.html">Params</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -168,14 +133,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">argc</td><td>Number of arguments </td></tr>
     <tr><td class="paramname">argsv</td><td>Command line arguments </td></tr>
-    <tr><td class="paramname">end_time</td><td>The end time of the simulation </td></tr>
-    <tr><td class="paramname">delta_t</td><td>The time increment of the simulation </td></tr>
-    <tr><td class="paramname">epsilon</td><td>The depth of potential well </td></tr>
-    <tr><td class="paramname">sigma</td><td>The zero-crossing of LJ potential </td></tr>
-    <tr><td class="paramname">input</td><td>The input file name to load the data from </td></tr>
-    <tr><td class="paramname">reader_type</td><td>Type specification of the <a class="el" href="classFileReader.html" title="Class for reading input files for a simulation.">FileReader</a> </td></tr>
-    <tr><td class="paramname">writer_type</td><td>Type specification of the <a class="el" href="classFileWriter.html" title="Abstract class FileWriter.">FileWriter</a> </td></tr>
-    <tr><td class="paramname">simulation_type</td><td>Type specification of the <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> </td></tr>
+    <tr><td class="paramname">params</td><td>Model parameters </td></tr>
   </table>
   </dd>
 </dl>

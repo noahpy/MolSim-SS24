@@ -94,13 +94,16 @@ $(function(){ initResizable(false); });
 <a href="readerFactory_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="FileReader_8h.html">io/fileReader/FileReader.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>std::unique_ptr&lt;FileReader&gt; <a class="code hl_function" href="readerFactory_8h.html#a07c2a3d95569a6711ee10bdc962d2a78">readerFactory</a>(std::string input_file, <span class="keywordtype">unsigned</span> <a class="code hl_class" href="classtype.html">type</a>);</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="Params_8h.html">utils/Params.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>std::unique_ptr&lt;FileReader&gt; <a class="code hl_function" href="readerFactory_8h.html#a395cac38c5d703e109e3ff79acd6fac4">readerFactory</a>(std::string input_file, <a class="code hl_enumeration" href="Params_8h.html#a678aadae72e7347a5756e370a2978a15">ReaderType</a> <a class="code hl_class" href="classtype.html">type</a>);</div>
 <div class="ttc" id="aFileReader_8h_html"><div class="ttname"><a href="FileReader_8h.html">FileReader.h</a></div></div>
-<div class="ttc" id="aclasstype_html"><div class="ttname"><a href="classtype.html">type</a></div><div class="ttdoc">Enumeration class corresponding to the type schema type.</div><div class="ttdef"><b>Definition</b> vtk-unstructured.h:2159</div></div>
-<div class="ttc" id="areaderFactory_8h_html_a07c2a3d95569a6711ee10bdc962d2a78"><div class="ttname"><a href="readerFactory_8h.html#a07c2a3d95569a6711ee10bdc962d2a78">readerFactory</a></div><div class="ttdeci">std::unique_ptr&lt; FileReader &gt; readerFactory(std::string input_file, unsigned type)</div><div class="ttdoc">A factory function for creating FileReader objects.</div><div class="ttdef"><b>Definition</b> readerFactory.cpp:8</div></div>
+<div class="ttc" id="aParams_8h_html"><div class="ttname"><a href="Params_8h.html">Params.h</a></div></div>
+<div class="ttc" id="aParams_8h_html_a678aadae72e7347a5756e370a2978a15"><div class="ttname"><a href="Params_8h.html#a678aadae72e7347a5756e370a2978a15">ReaderType</a></div><div class="ttdeci">ReaderType</div><div class="ttdef"><b>Definition</b> Params.h:7</div></div>
+<div class="ttc" id="aclasstype_html"><div class="ttname"><a href="classtype.html">type</a></div><div class="ttdoc">Enumeration class corresponding to the type schema type.</div><div class="ttdef"><b>Definition</b> vtk-unstructured.h:2292</div></div>
+<div class="ttc" id="areaderFactory_8h_html_a395cac38c5d703e109e3ff79acd6fac4"><div class="ttname"><a href="readerFactory_8h.html#a395cac38c5d703e109e3ff79acd6fac4">readerFactory</a></div><div class="ttdeci">std::unique_ptr&lt; FileReader &gt; readerFactory(std::string input_file, ReaderType type)</div><div class="ttdoc">A factory function for creating FileReader objects.</div><div class="ttdef"><b>Definition</b> readerFactory.cpp:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

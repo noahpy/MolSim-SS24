@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_0',['value',['../classtype.html#a83781d700ce124b4224c316326a5a975',1,'type']]]
+  ['boundarytype_0',['BoundaryType',['../BoundaryConfig_8h.html#af75d5dd7322fa39ed0af4e7839e600f8',1,'BoundaryConfig.h']]]
 ];

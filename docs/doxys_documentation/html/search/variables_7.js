@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['initialvelocity_0',['initialVelocity',['../classParticleCluster.html#a02bda91a0d17077ece50fb50c4965311',1,'ParticleCluster']]],
-  ['iteration_1',['iteration',['../classSimulation.html#a11ba749e855a9f9f3b07416ba6f15bb1',1,'Simulation']]]
+  ['halocells_0',['haloCells',['../classCellGrid.html#a0d0da1143a110cc59a1fa05a828c3f7c',1,'CellGrid']]],
+  ['haloneighbours_1',['haloNeighbours',['../classCell.html#a4a2cfd9fbc8d813187edba3772ab4374',1,'Cell']]]
 ];

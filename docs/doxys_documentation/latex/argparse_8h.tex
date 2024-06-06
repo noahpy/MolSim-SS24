@@ -1,19 +1,19 @@
 \doxysection{src/io/argparse/argparse.h File Reference}
 \hypertarget{argparse_8h}{}\label{argparse_8h}\index{src/io/argparse/argparse.h@{src/io/argparse/argparse.h}}
-{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}utils/\+Params.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{argparse_8h_ae39942a109dec47b9c6b45d47573cee6}{argparse}} (int argc, char \texorpdfstring{$\ast$}{*}argsv\mbox{[}$\,$\mbox{]}, double \&end\+\_\+time, double \&delta\+\_\+t, double \&epsilon, double \&sigma, std\+::string \&input, unsigned \&reader\+\_\+type, unsigned \&writer\+\_\+type, unsigned \&simulation\+\_\+type)
+void \mbox{\hyperlink{argparse_8h_ae47bef499cb7b82023764c269b2594a2}{argparse}} (int argc, char \texorpdfstring{$\ast$}{*}argsv\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{classParams}{Params}} \&params)
 \begin{DoxyCompactList}\small\item\em Parse the command line arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{argparse_8h_ae39942a109dec47b9c6b45d47573cee6}\index{argparse.h@{argparse.h}!argparse@{argparse}}
+\Hypertarget{argparse_8h_ae47bef499cb7b82023764c269b2594a2}\index{argparse.h@{argparse.h}!argparse@{argparse}}
 \index{argparse@{argparse}!argparse.h@{argparse.h}}
 \doxysubsubsection{\texorpdfstring{argparse()}{argparse()}}
-{\footnotesize\ttfamily \label{argparse_8h_ae39942a109dec47b9c6b45d47573cee6} 
-void argparse (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argsv}{\mbox{[}$\,$\mbox{]}, }\item[{double \&}]{end\+\_\+time}{, }\item[{double \&}]{delta\+\_\+t}{, }\item[{double \&}]{epsilon}{, }\item[{double \&}]{sigma}{, }\item[{std\+::string \&}]{input}{, }\item[{unsigned \&}]{reader\+\_\+type}{, }\item[{unsigned \&}]{writer\+\_\+type}{, }\item[{unsigned \&}]{simulation\+\_\+type}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{argparse_8h_ae47bef499cb7b82023764c269b2594a2} 
+void argparse (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argsv}{\mbox{[}$\,$\mbox{]}, }\item[{\mbox{\hyperlink{classParams}{Params}} \&}]{params}{}\end{DoxyParamCaption})}
 
 
 
@@ -25,21 +25,7 @@ Parse the command line arguments.
 \hline
 {\em argsv} & Command line arguments \\
 \hline
-{\em end\+\_\+time} & The end time of the simulation \\
-\hline
-{\em delta\+\_\+t} & The time increment of the simulation \\
-\hline
-{\em epsilon} & The depth of potential well \\
-\hline
-{\em sigma} & The zero-\/crossing of LJ potential \\
-\hline
-{\em input} & The input file name to load the data from \\
-\hline
-{\em reader\+\_\+type} & Type specification of the \doxylink{classFileReader}{File\+Reader} \\
-\hline
-{\em writer\+\_\+type} & Type specification of the \doxylink{classFileWriter}{File\+Writer} \\
-\hline
-{\em simulation\+\_\+type} & Type specification of the \doxylink{classSimulation}{Simulation} \\
+{\em params} & Model parameters \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

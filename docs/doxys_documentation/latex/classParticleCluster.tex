@@ -67,7 +67,7 @@ Constructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class.
 \hline
 {\em mean\+Velocity} & The mean velocity of the particles \\
 \hline
-{\em dimensions} & The dimensions of the cluster (2 or 3). Will be passed to \doxylink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity()} \\
+{\em dimensions} & The dimensions of the cluster (\texorpdfstring{$<$}{<}= 3). Will be passed to \doxylink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity()} The dimensions of the cluster (\texorpdfstring{$<$}{<}= 3) will be passed to \doxylink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity()} if set to 0 no brownian motion will be added, if set to 1 then only on the x axis, then x+y, and finally x+y+z axis \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classParticleCluster_abeb65133a030f3c6c5708163dd2090c6}\index{ParticleCluster@{ParticleCluster}!````~ParticleCluster@{\texorpdfstring{$\sim$}{\string~}ParticleCluster}}
@@ -102,7 +102,7 @@ Generate the cluster of particles.
 \end{DoxyParams}
 
 
-Implemented in \mbox{\hyperlink{classCuboidParticleCluster_ac8629622c8f8ebde085fb519cfe1d343}{Cuboid\+Particle\+Cluster}}.
+Implemented in \mbox{\hyperlink{classCuboidParticleCluster_ac8629622c8f8ebde085fb519cfe1d343}{Cuboid\+Particle\+Cluster}}, and \mbox{\hyperlink{classSphereParticleCluster_af801fcf4faf4b7b11f3d17c8cee940f0}{Sphere\+Particle\+Cluster}}.
 
 \Hypertarget{classParticleCluster_ac4f75cbf593129fb391ef0ca6c55dc2b}\index{ParticleCluster@{ParticleCluster}!getTotalNumberOfParticles@{getTotalNumberOfParticles}}
 \index{getTotalNumberOfParticles@{getTotalNumberOfParticles}!ParticleCluster@{ParticleCluster}}
@@ -119,7 +119,7 @@ The total number of particles in the cluster
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classCuboidParticleCluster_aea57abe040a9679b2cb3e0a0456dc395}{Cuboid\+Particle\+Cluster}}.
+Implemented in \mbox{\hyperlink{classCuboidParticleCluster_aea57abe040a9679b2cb3e0a0456dc395}{Cuboid\+Particle\+Cluster}}, and \mbox{\hyperlink{classSphereParticleCluster_a4682e2d2b82314708f1afccd6e6e91eb}{Sphere\+Particle\+Cluster}}.
 
 \Hypertarget{classParticleCluster_a9427aeece5cd04430ef8fc2e849010ce}\index{ParticleCluster@{ParticleCluster}!toString@{toString}}
 \index{toString@{toString}!ParticleCluster@{ParticleCluster}}
@@ -136,7 +136,7 @@ The string representation of the cluster
 \end{DoxyReturn}
 
 
-Implemented in \mbox{\hyperlink{classCuboidParticleCluster_a3d354998e031848be5d4f14c14058dec}{Cuboid\+Particle\+Cluster}}.
+Implemented in \mbox{\hyperlink{classCuboidParticleCluster_a3d354998e031848be5d4f14c14058dec}{Cuboid\+Particle\+Cluster}}, and \mbox{\hyperlink{classSphereParticleCluster_a90d1333f49add6a273c738a894edd0d6}{Sphere\+Particle\+Cluster}}.
 
 
 

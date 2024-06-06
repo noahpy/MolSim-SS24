@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['numparticlesdepth_0',['numParticlesDepth',['../classCuboidParticleCluster.html#ae2a36d7a4dd72261a36fda74291ec699',1,'CuboidParticleCluster']]],
-  ['numparticlesheight_1',['numParticlesHeight',['../classCuboidParticleCluster.html#ae1b07681bbc9410e9a2d5655f851ea06',1,'CuboidParticleCluster']]],
-  ['numparticleswidth_2',['numParticlesWidth',['../classCuboidParticleCluster.html#aeb172e19129740bda9392ec47e95cf28',1,'CuboidParticleCluster']]]
+  ['m_0',['m',['../classParticle.html#aedcc7e1bc53b0e2b1a4a07c9a1b47563',1,'Particle']]],
+  ['mass_1',['mass',['../classParticleCluster.html#a4704ae027d065f8a1911bd1976cad6c6',1,'ParticleCluster']]],
+  ['meanvelocity_2',['meanVelocity',['../classParticleCluster.html#ad9bf632dd7f50c81d075346bc13c8cc8',1,'ParticleCluster']]],
+  ['myindex_3',['myIndex',['../classCell.html#a247717ae4a44d2637ae56929700b7119',1,'Cell']]]
 ];

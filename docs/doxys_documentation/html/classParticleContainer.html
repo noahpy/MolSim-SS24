@@ -115,6 +115,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac9316f41ac4e37e5e4ac55ae4cf176de" id="r_ac9316f41ac4e37e5e4ac55ae4cf176de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9316f41ac4e37e5e4ac55ae4cf176de">addParticle</a> (const <a class="el" href="classParticle.html">Particle</a> &amp;p)</td></tr>
 <tr class="memdesc:ac9316f41ac4e37e5e4ac55ae4cf176de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a particle to the container.  <br /></td></tr>
 <tr class="separator:ac9316f41ac4e37e5e4ac55ae4cf176de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37d65d6494a60ec5268a075da98a2a0d" id="r_a37d65d6494a60ec5268a075da98a2a0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37d65d6494a60ec5268a075da98a2a0d">removeParticles</a> (std::unordered_map&lt; <a class="el" href="classParticle.html">Particle</a> *, bool &gt; &amp;particleMap)</td></tr>
+<tr class="memdesc:a37d65d6494a60ec5268a075da98a2a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the particles in the map from the container.  <br /></td></tr>
+<tr class="separator:a37d65d6494a60ec5268a075da98a2a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33a2348e19f93850e67ce59867d1e38f" id="r_a33a2348e19f93850e67ce59867d1e38f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classParticle.html">Particle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33a2348e19f93850e67ce59867d1e38f">getContainer</a> () const</td></tr>
 <tr class="memdesc:a33a2348e19f93850e67ce59867d1e38f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the particles within the container.  <br /></td></tr>
 <tr class="separator:a33a2348e19f93850e67ce59867d1e38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -310,6 +313,32 @@ Public Attributes</h2></td></tr>
 
 <p>Get the particles within the container. </p>
 <dl class="section return"><dt>Returns</dt><dd>The vector of particles </dd></dl>
+
+</div>
+</div>
+<a id="a37d65d6494a60ec5268a075da98a2a0d" name="a37d65d6494a60ec5268a075da98a2a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37d65d6494a60ec5268a075da98a2a0d">&#9670;&#160;</a></span>removeParticles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParticleContainer::removeParticles </td>
+          <td>(</td>
+          <td class="paramtype">std::unordered_map&lt; <a class="el" href="classParticle.html">Particle</a> *, bool &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>particleMap</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes the particles in the map from the container. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">particleMap</td><td>The particles to be removed (true if remove) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>

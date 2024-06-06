@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['filereader_0',['FileReader',['../classFileReader.html',1,'']]],
-  ['filewriter_1',['FileWriter',['../classFileWriter.html',1,'']]]
+  ['emptyfilereader_0',['EmptyFileReader',['../classEmptyFileReader.html',1,'']]],
+  ['emptyfilewriter_1',['EmptyFileWriter',['../classEmptyFileWriter.html',1,'']]]
 ];

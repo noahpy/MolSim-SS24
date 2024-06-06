@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type_0',['type',['../classtype.html',1,'']]]
+  ['overflowboundary_0',['OverflowBoundary',['../classOverflowBoundary.html',1,'']]]
 ];

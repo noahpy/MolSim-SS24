@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['xyzwriter_2ecpp_0',['XYZWriter.cpp',['../XYZWriter_8cpp.html',1,'']]],
-  ['xyzwriter_2eh_1',['XYZWriter.h',['../XYZWriter_8h.html',1,'']]]
+  ['writerfactory_2ecpp_0',['writerFactory.cpp',['../writerFactory_8cpp.html',1,'']]],
+  ['writerfactory_2eh_1',['writerFactory.h',['../writerFactory_8h.html',1,'']]]
 ];

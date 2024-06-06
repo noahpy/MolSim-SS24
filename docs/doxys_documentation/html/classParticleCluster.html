@@ -102,7 +102,8 @@ Inheritance diagram for ParticleCluster:</div>
  <div class="center">
   <img src="classParticleCluster.png" usemap="#ParticleCluster_map" alt=""/>
   <map id="ParticleCluster_map" name="ParticleCluster_map">
-<area href="classCuboidParticleCluster.html" title="A class to model a cluster of particles in the shape of a cuboid, see ParticleCluster." alt="CuboidParticleCluster" shape="rect" coords="0,56,135,80"/>
+<area href="classCuboidParticleCluster.html" title="A class to model a cluster of particles in the shape of a cuboid, see ParticleCluster." alt="CuboidParticleCluster" shape="rect" coords="0,56,136,80"/>
+<area href="classSphereParticleCluster.html" alt="SphereParticleCluster" shape="rect" coords="146,56,282,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -181,7 +182,7 @@ Protected Attributes</h2></td></tr>
     <tr><td class="paramname">mass</td><td>The mass of the particles </td></tr>
     <tr><td class="paramname">initialVelocity</td><td>The initial velocity of the particles </td></tr>
     <tr><td class="paramname">meanVelocity</td><td>The mean velocity of the particles </td></tr>
-    <tr><td class="paramname">dimensions</td><td>The dimensions of the cluster (2 or 3). Will be passed to <a class="el" href="MaxwellBoltzmannDistribution_8h.html#a4072527de9b13fe5fb563ef877ae78c5">maxwellBoltzmannDistributedVelocity()</a> </td></tr>
+    <tr><td class="paramname">dimensions</td><td>The dimensions of the cluster (&lt;= 3). Will be passed to <a class="el" href="MaxwellBoltzmannDistribution_8h.html#a4072527de9b13fe5fb563ef877ae78c5">maxwellBoltzmannDistributedVelocity()</a> The dimensions of the cluster (&lt;= 3) will be passed to <a class="el" href="MaxwellBoltzmannDistribution_8h.html#a4072527de9b13fe5fb563ef877ae78c5">maxwellBoltzmannDistributedVelocity()</a> if set to 0 no brownian motion will be added, if set to 1 then only on the x axis, then x+y, and finally x+y+z axis </td></tr>
   </table>
   </dd>
 </dl>
@@ -252,7 +253,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classCuboidParticleCluster.html#ac8629622c8f8ebde085fb519cfe1d343">CuboidParticleCluster</a>.</p>
+<p>Implemented in <a class="el" href="classCuboidParticleCluster.html#ac8629622c8f8ebde085fb519cfe1d343">CuboidParticleCluster</a>, and <a class="el" href="classSphereParticleCluster.html#af801fcf4faf4b7b11f3d17c8cee940f0">SphereParticleCluster</a>.</p>
 
 </div>
 </div>
@@ -282,7 +283,7 @@ Protected Attributes</h2></td></tr>
 <p>Get the total number of particles in the cluster. </p>
 <dl class="section return"><dt>Returns</dt><dd>The total number of particles in the cluster </dd></dl>
 
-<p>Implemented in <a class="el" href="classCuboidParticleCluster.html#aea57abe040a9679b2cb3e0a0456dc395">CuboidParticleCluster</a>.</p>
+<p>Implemented in <a class="el" href="classCuboidParticleCluster.html#aea57abe040a9679b2cb3e0a0456dc395">CuboidParticleCluster</a>, and <a class="el" href="classSphereParticleCluster.html#a4682e2d2b82314708f1afccd6e6e91eb">SphereParticleCluster</a>.</p>
 
 </div>
 </div>
@@ -312,7 +313,7 @@ Protected Attributes</h2></td></tr>
 <p>Get a string representation of the cluster. </p>
 <dl class="section return"><dt>Returns</dt><dd>The string representation of the cluster </dd></dl>
 
-<p>Implemented in <a class="el" href="classCuboidParticleCluster.html#a3d354998e031848be5d4f14c14058dec">CuboidParticleCluster</a>.</p>
+<p>Implemented in <a class="el" href="classCuboidParticleCluster.html#a3d354998e031848be5d4f14c14058dec">CuboidParticleCluster</a>, and <a class="el" href="classSphereParticleCluster.html#a90d1333f49add6a273c738a894edd0d6">SphereParticleCluster</a>.</p>
 
 </div>
 </div>

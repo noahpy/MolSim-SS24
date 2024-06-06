@@ -1,0 +1,77 @@
+\doxysection{src/physics/boundary\+Conditions/\+Boundary\+Config.h File Reference}
+\hypertarget{BoundaryConfig_8h}{}\label{BoundaryConfig_8h}\index{src/physics/boundaryConditions/BoundaryConfig.h@{src/physics/boundaryConditions/BoundaryConfig.h}}
+{\ttfamily \#include "{}utils/\+Position.\+h"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \{ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a07df634c8cb7e4cafe8b14c4172e3de7}{OVERFLOW}}
+, \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{SOFT\+\_\+\+REFLECTIVE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \mbox{\hyperlink{BoundaryConfig_8h_a6e1f27c74e4222ffc551b971a54684ad}{get\+Boundary\+Type}} (std\+::string str)
+\begin{DoxyCompactList}\small\item\em Get the boundary type from a string. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{BoundaryConfig_8h_ab5bfb749258840b53c996e2892a63a78}{get\+Boundary\+String}} (\mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \mbox{\hyperlink{classtype}{type}})
+\begin{DoxyCompactList}\small\item\em Get the string representation of a boundary type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}\index{BoundaryConfig.h@{BoundaryConfig.h}!BoundaryType@{BoundaryType}}
+\index{BoundaryType@{BoundaryType}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{BoundaryType}{BoundaryType}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8} 
+enum \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OVERFLOW@{OVERFLOW}!BoundaryConfig.h@{BoundaryConfig.h}}\index{BoundaryConfig.h@{BoundaryConfig.h}!OVERFLOW@{OVERFLOW}}}\Hypertarget{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a07df634c8cb7e4cafe8b14c4172e3de7}\label{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8} 
+OVERFLOW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOFT\_REFLECTIVE@{SOFT\_REFLECTIVE}!BoundaryConfig.h@{BoundaryConfig.h}}\index{BoundaryConfig.h@{BoundaryConfig.h}!SOFT\_REFLECTIVE@{SOFT\_REFLECTIVE}}}\Hypertarget{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}\label{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8} 
+SOFT\+\_\+\+REFLECTIVE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{BoundaryConfig_8h_ab5bfb749258840b53c996e2892a63a78}\index{BoundaryConfig.h@{BoundaryConfig.h}!getBoundaryString@{getBoundaryString}}
+\index{getBoundaryString@{getBoundaryString}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{getBoundaryString()}{getBoundaryString()}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_ab5bfb749258840b53c996e2892a63a78} 
+std\+::string get\+Boundary\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the string representation of a boundary type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{BoundaryConfig_8h_a6e1f27c74e4222ffc551b971a54684ad}\index{BoundaryConfig.h@{BoundaryConfig.h}!getBoundaryType@{getBoundaryType}}
+\index{getBoundaryType@{getBoundaryType}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{getBoundaryType()}{getBoundaryType()}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_a6e1f27c74e4222ffc551b971a54684ad} 
+\mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} get\+Boundary\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the boundary type from a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}

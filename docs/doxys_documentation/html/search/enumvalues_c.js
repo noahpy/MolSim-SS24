@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['soft_5freflective_0',['SOFT_REFLECTIVE',['../BoundaryConfig_8h.html#af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019',1,'BoundaryConfig.h']]],
+  ['soft_5freflective_1',['soft_reflective',['../classboundaryNames__t.html#a71c7f6f626b0417e3d82208b5085aae8a5e4772f2dac8c4385052dcef33978356',1,'boundaryNames_t']]],
+  ['standard_2',['STANDARD',['../Params_8h.html#a678aadae72e7347a5756e370a2978a15a9de934790934fe831fe946c851e8338e',1,'Params.h']]]
+];

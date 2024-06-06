@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['old_5ff_0',['old_f',['../classParticle.html#a968dfd29adaa41fb25a08d3c45903156',1,'Particle']]],
-  ['origin_1',['origin',['../classParticleCluster.html#aaa6f6aeac42f01c21dcb6aa836cb853b',1,'ParticleCluster']]],
-  ['out_5fname_2',['out_name',['../classFileWriter.html#aacc0155e82ea82d7c17268e8ce6b6f7e',1,'FileWriter']]]
+  ['neighborcounter_0',['neighborCounter',['../classCell.html#a62389842f0f34e68c35d08edb028e5d8',1,'Cell']]],
+  ['numparticlesdepth_1',['numParticlesDepth',['../classCuboidParticleCluster.html#ae2a36d7a4dd72261a36fda74291ec699',1,'CuboidParticleCluster']]],
+  ['numparticlesheight_2',['numParticlesHeight',['../classCuboidParticleCluster.html#ae1b07681bbc9410e9a2d5655f851ea06',1,'CuboidParticleCluster']]],
+  ['numparticleswidth_3',['numParticlesWidth',['../classCuboidParticleCluster.html#aeb172e19129740bda9392ec47e95cf28',1,'CuboidParticleCluster']]]
 ];

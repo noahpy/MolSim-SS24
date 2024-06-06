@@ -93,7 +93,8 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">argparse.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;getopt.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Params_8h_source.html">utils/Params.h</a>&quot;</code><br />
+<code>#include &lt;getopt.h&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;spdlog/spdlog.h&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
@@ -113,13 +114,17 @@ Functions</h2></td></tr>
 <tr class="separator:a3e97f84a295d12024e87f0657cbd1f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69eec8d6f073aeb302f5035b3c8bfeb6" id="r_a69eec8d6f073aeb302f5035b3c8bfeb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69eec8d6f073aeb302f5035b3c8bfeb6">convertToDouble</a> (char *optarg, double &amp;value)</td></tr>
 <tr class="separator:a69eec8d6f073aeb302f5035b3c8bfeb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae39942a109dec47b9c6b45d47573cee6" id="r_ae39942a109dec47b9c6b45d47573cee6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae39942a109dec47b9c6b45d47573cee6">argparse</a> (int argc, char *argsv[], double &amp;end_time, double &amp;delta_t, double &amp;epsilon, double &amp;sigma, std::string &amp;input, unsigned &amp;reader_type, unsigned &amp;writer_type, unsigned &amp;simulation_type)</td></tr>
-<tr class="memdesc:ae39942a109dec47b9c6b45d47573cee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the command line arguments.  <br /></td></tr>
-<tr class="separator:ae39942a109dec47b9c6b45d47573cee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71e3609d0f69d8a5db06276bed619ebf" id="r_a71e3609d0f69d8a5db06276bed619ebf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Params_8h.html#ad69f3cf5fdb6ef307d85180c346e7921">SimulationType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71e3609d0f69d8a5db06276bed619ebf">unsignedToSimulationType</a> (unsigned value)</td></tr>
+<tr class="separator:a71e3609d0f69d8a5db06276bed619ebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd3f25d1f14f438bc6a5b6aa63959886" id="r_acd3f25d1f14f438bc6a5b6aa63959886"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Params_8h.html#aded523d07f405f8a622d2b4247de05bf">WriterType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd3f25d1f14f438bc6a5b6aa63959886">unsignedToWriterType</a> (unsigned value)</td></tr>
+<tr class="separator:acd3f25d1f14f438bc6a5b6aa63959886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47bef499cb7b82023764c269b2594a2" id="r_ae47bef499cb7b82023764c269b2594a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae47bef499cb7b82023764c269b2594a2">argparse</a> (int argc, char *argsv[], <a class="el" href="classParams.html">Params</a> &amp;params)</td></tr>
+<tr class="memdesc:ae47bef499cb7b82023764c269b2594a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the command line arguments.  <br /></td></tr>
+<tr class="separator:ae47bef499cb7b82023764c269b2594a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae39942a109dec47b9c6b45d47573cee6" name="ae39942a109dec47b9c6b45d47573cee6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae39942a109dec47b9c6b45d47573cee6">&#9670;&#160;</a></span>argparse()</h2>
+<a id="ae47bef499cb7b82023764c269b2594a2" name="ae47bef499cb7b82023764c269b2594a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47bef499cb7b82023764c269b2594a2">&#9670;&#160;</a></span>argparse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,42 +142,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>end_time</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>delta_t</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>sigma</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>reader_type</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>writer_type</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned &amp;</td>          <td class="paramname"><span class="paramname"><em>simulation_type</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classParams.html">Params</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -182,14 +152,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">argc</td><td>Number of arguments </td></tr>
     <tr><td class="paramname">argsv</td><td>Command line arguments </td></tr>
-    <tr><td class="paramname">end_time</td><td>The end time of the simulation </td></tr>
-    <tr><td class="paramname">delta_t</td><td>The time increment of the simulation </td></tr>
-    <tr><td class="paramname">epsilon</td><td>The depth of potential well </td></tr>
-    <tr><td class="paramname">sigma</td><td>The zero-crossing of LJ potential </td></tr>
-    <tr><td class="paramname">input</td><td>The input file name to load the data from </td></tr>
-    <tr><td class="paramname">reader_type</td><td>Type specification of the <a class="el" href="classFileReader.html" title="Class for reading input files for a simulation.">FileReader</a> </td></tr>
-    <tr><td class="paramname">writer_type</td><td>Type specification of the <a class="el" href="classFileWriter.html" title="Abstract class FileWriter.">FileWriter</a> </td></tr>
-    <tr><td class="paramname">simulation_type</td><td>Type specification of the <a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a> </td></tr>
+    <tr><td class="paramname">params</td><td>Model parameters </td></tr>
   </table>
   </dd>
 </dl>
@@ -309,6 +272,40 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a71e3609d0f69d8a5db06276bed619ebf" name="a71e3609d0f69d8a5db06276bed619ebf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71e3609d0f69d8a5db06276bed619ebf">&#9670;&#160;</a></span>unsignedToSimulationType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Params_8h.html#ad69f3cf5fdb6ef307d85180c346e7921">SimulationType</a> unsignedToSimulationType </td>
+          <td>(</td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acd3f25d1f14f438bc6a5b6aa63959886" name="acd3f25d1f14f438bc6a5b6aa63959886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd3f25d1f14f438bc6a5b6aa63959886">&#9670;&#160;</a></span>unsignedToWriterType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Params_8h.html#aded523d07f405f8a622d2b4247de05bf">WriterType</a> unsignedToWriterType </td>
+          <td>(</td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
