@@ -105,8 +105,9 @@ void SoftReflectiveBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                 // set the position back into the domain
                 pos[relevantDimension] = pointOnBoundaryPlane[relevantDimension];
                 // normal is always pointing inward, thus set the particle as far into the boundary,
-                // as it previously left it
-                pos = pos + diff * normal;
+                // as it previously left it. Diff must be made abs to make sure it is place towards
+                // the right direction
+                pos = pos + std::abs(diff) * normal;
                 particle.get().setX(pos);
             }
         }

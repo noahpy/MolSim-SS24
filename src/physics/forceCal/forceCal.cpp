@@ -97,7 +97,18 @@ void force_lennard_jones_lc(const Simulation& sim)
     // for all cells in the grid
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
-            for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1; ++z) {
+            // This bool controls the 2D case, where we do need to calc the forces
+            // This will be true iff the simulation is 2D
+            // Then the condition of the loop will be true and the loop will be executed
+            // We then set it to false to not run it further. -> Remember to set z=0
+            bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
+
+            for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
+                if (doLoopFor2D) {
+                    doLoopFor2D = false; // only do it once
+                    z = 0;
+                }
+
                 // calculate the LJ forces in the cell
                 for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
