@@ -4,6 +4,9 @@
 #include "physics/boundaryConditions/BoundaryCondition.h"
 #include <spdlog/spdlog.h>
 
+// forward declare
+class LennardJonesDomainSimulation;
+
 /**
  * @brief The SoftReflectiveBoundary class is a class that represents a boundary condition where
  * particles that leave the domain are reflected back into the domain about the boundary by
@@ -23,13 +26,12 @@ public:
     void preUpdateBoundaryHandling(Simulation& simulation) override;
     /**
      * @brief The call to apply the boundary condition to the simulation after all updates are made.
-     * This does nothing (all done in pre)
+     * Checks if the particles have left the boundary cells and prevents them from beeing assigned
+     * to the halo cells
      * @param simulation The simulation to apply the boundary to
      * @return void
      */
-    void postUpdateBoundaryHandling(Simulation& simulation) override {
-        // Do nothing
-    };
+    void postUpdateBoundaryHandling(Simulation& simulation) override;
 
 private:
     /**
@@ -55,6 +57,8 @@ private:
         spdlog::error("No suitable halo neighbor found for boundary handling. This is a bug");
         return { 0, 0, 0 };
     };
+
+    std::array<double, 3> getPointOnBoundaryPlane(const LennardJonesDomainSimulation& LJDSim);
 
     std::vector<Particle>
         insertedParticles; /**< The particles that were inserted. These will be recycled */

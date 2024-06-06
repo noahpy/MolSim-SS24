@@ -2,68 +2,32 @@
 #include "SoftReflectiveBoundary.h"
 #include "simulation/LennardJonesDomainSimulation.h"
 #include "utils/ArrayUtils.h"
+#include <iostream>
 
 // forward declare
 size_t getRelevantDimension(const std::array<double, 3>& normal);
 
 void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 {
+    /*
+     * Note the particles will always be in the boundary cells, as the post update moves any that
+     * leave the domain back in to it
+     */
     const LennardJonesDomainSimulation& LGDSim =
         static_cast<const LennardJonesDomainSimulation&>(simulation);
 
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
-    // reset old halo references used previously
-    // TODO
-    // But keep in mind, that a particle could have crossed the line and is now within the halo
-    // cells Those should not be removed
-    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
-        LGDSim.getGrid()
-            .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
-            ->clearParticles();
-    }
 
+    // Get the position of the halo cell by mirroring the particle about the boundary
+    std::array<double, 3> normal = getNormalVectorOfBoundary(position);
     for (auto boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
         for (auto& particle :
              LGDSim.getGrid()
                  .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
                  ->getParticles()) {
             std::array<double, 3> pos = particle.get().getX();
-            std::array<double, 3> pointOnBoundaryPlane {};
-            switch (position) {
-            // To mirror point, we need a point on the plane to mirror it about
-            case BOTTOM:
-            case LEFT:
-            case BACK:
-                pointOnBoundaryPlane = LGDSim.getGrid().domainOrigin;
-                break;
-            case TOP:
-            case RIGHT:
-            case FRONT:
-                pointOnBoundaryPlane = LGDSim.getGrid().domainEnd;
-                break;
-            }
-
-            // Get the position of the halo cell by mirroring the particle about the boundary
-            std::array<double, 3> normal = getNormalVectorOfBoundary(position);
-
-            // We need to check, if the particle has moved beyond the boundary. If so, set it back
-            // into the domain
-            size_t relevantDimension = getRelevantDimension(normal);
-            /* pos - pointOnBoundaryPlane -> vector from pointOnBoundaryPlane to pos
-             * This vector should point inward i.e. towards the center, as long as it is inside the
-             * domain The normal vector is also always pointing inward Therefore the product will
-             * only be greater than 0, if the particle is inside the domain (same sign)
-             */
-            bool isInsideDomain =
-                (pos - pointOnBoundaryPlane)[relevantDimension] * normal[relevantDimension] > 0;
-            if (!isInsideDomain) {
-                // set the position back into the domain
-                pos[relevantDimension] = pointOnBoundaryPlane[relevantDimension];
-                // normal is always pointing inward, thus set the particle upto 0.05 to the boundary
-                pos = pos + 0.1 * normal;
-                particle.get().setX(pos);
-            }
+            std::array<double, 3> pointOnBoundaryPlane = getPointOnBoundaryPlane(LGDSim);
 
             std::array<double, 3> diff = pointOnBoundaryPlane - pos;
             double dotProd =
@@ -103,6 +67,52 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     }
 }
 
+void SoftReflectiveBoundary::postUpdateBoundaryHandling(Simulation& simulation)
+{
+    const LennardJonesDomainSimulation& LGDSim =
+        static_cast<const LennardJonesDomainSimulation&>(simulation);
+
+    // reset old halo references used previously -> needed here, as halo particles could have
+    // crossed into the domain
+    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
+        LGDSim.getGrid()
+            .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+            ->clearParticles();
+    }
+
+    // Get the position of the halo cell by mirroring the particle about the boundary
+    std::array<double, 3> normal = getNormalVectorOfBoundary(position);
+
+    for (auto boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
+        for (auto& particle :
+             LGDSim.getGrid()
+                 .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
+                 ->getParticles()) {
+            std::array<double, 3> pos = particle.get().getX();
+            std::array<double, 3> pointOnBoundaryPlane = getPointOnBoundaryPlane(LGDSim);
+
+            // We need to check, if the particle has moved beyond the boundary. If so, set it back
+            // into the domain
+            size_t relevantDimension = getRelevantDimension(normal);
+            /* pos - pointOnBoundaryPlane -> vector from pointOnBoundaryPlane to pos
+             * This vector should point inward i.e. towards the center, as long as it is inside the
+             * domain The normal vector is also always pointing inward Therefore the product will
+             * only be greater than 0, if the particle is inside the domain (same sign)
+             */
+            double diff = (pos - pointOnBoundaryPlane)[relevantDimension];
+            bool isInsideDomain = diff * normal[relevantDimension] > 0;
+            if (!isInsideDomain) {
+                // set the position back into the domain
+                pos[relevantDimension] = pointOnBoundaryPlane[relevantDimension];
+                // normal is always pointing inward, thus set the particle as far into the boundary,
+                // as it previously left it
+                pos = pos + diff * normal;
+                particle.get().setX(pos);
+            }
+        }
+    }
+}
+
 /**
  * @brief Get the dimension that is relevant to the boundary
  * @details E.g. if the point on the boundary is (1,2,3) and the normal vector to that plane is
@@ -119,4 +129,25 @@ size_t getRelevantDimension(const std::array<double, 3>& normal)
             break;
         }
     return relevantDimension;
+}
+
+std::array<double, 3> SoftReflectiveBoundary::getPointOnBoundaryPlane(
+    const LennardJonesDomainSimulation& LJDSim)
+{
+    std::array<double, 3> pointOnBoundaryPlane {};
+    switch (position) {
+    // To mirror point, we need a point on the plane to mirror it about
+    case BOTTOM:
+    case LEFT:
+    case BACK:
+        pointOnBoundaryPlane = LJDSim.getGrid().domainOrigin;
+        break;
+    case TOP:
+    case RIGHT:
+    case FRONT:
+        pointOnBoundaryPlane = LJDSim.getGrid().domainEnd;
+        break;
+    }
+
+    return pointOnBoundaryPlane;
 }
