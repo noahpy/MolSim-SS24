@@ -1,9 +1,9 @@
 
+#include "io/fileWriter/VTKWriter.h"
 #include "models/ParticleContainer.h"
 #include "models/linked_cell/CellGrid.h"
 #include "models/linked_cell/cell/Cell.h"
 #include <array>
-#include <cmath>
 #include <gtest/gtest.h>
 #include <vector>
 
@@ -267,31 +267,419 @@ TEST_F(CellGridTest, BoundaryAndHaloIterators)
 {
     std::map<CellIndex, CellType> cellMap;
 
-    // Count boundary particles
     size_t boundaryCount = 0;
-    for (auto it = grid.beginBoundaryParticles(); it != grid.endBoundaryParticles(); ++it) {
-        ++boundaryCount;
-        // check if cell is boundary
-        CellIndex i = *it;
-        EXPECT_EQ(grid.cells.at(i[0]).at(i[1]).at(i[2])->getType(), CellType::Boundary);
-        // check if cell is unique
-        EXPECT_EQ(cellMap.count(i), 0);
-        cellMap[i] = CellType::Boundary;
-    }
-
-    EXPECT_EQ(boundaryCount, 56);
-
-    // Halo cells have no particles, but the test should still be able to run
     size_t haloCount = 0;
-    for (auto it = grid.beginHaloParticles(); it != grid.endHaloParticles(); ++it) {
-        ++haloCount;
-        // check if cell is halo
-        CellIndex i = *it;
-        EXPECT_EQ(grid.cells.at(i[0]).at(i[1]).at(i[2])->getType(), CellType::Halo);
-        // check if cell is unique
-        EXPECT_EQ(cellMap.count(i), 0);
-        cellMap[i] = CellType::Halo;
+
+    for (auto position : allPositions) {
+        // Count boundary particles
+        for (auto i : grid.boundaryCellIterator(position)) {
+            ++boundaryCount;
+            // check if cell is boundary
+            EXPECT_EQ(grid.cells.at(i[0]).at(i[1]).at(i[2])->getType(), CellType::Boundary);
+            // check if cell is unique
+            // EXPECT_EQ(cellMap.count(i), 0);
+            cellMap[i] = CellType::Boundary;
+        }
+
+        // Halo cells have no particles, but the test should still be able to run
+        for (auto i : grid.haloCellIterator(position)) {
+            ++haloCount;
+            // check if cell is halo
+            EXPECT_EQ(grid.cells.at(i[0]).at(i[1]).at(i[2])->getType(), CellType::Halo);
+            // check if cell is unique
+            // EXPECT_EQ(cellMap.count(i), 0);
+            cellMap[i] = CellType::Halo;
+        }
     }
 
-    EXPECT_EQ(haloCount, 152);
+    EXPECT_EQ(boundaryCount, 4 * 4 * 6);
+    EXPECT_EQ(haloCount, 6 * 6 * 6);
+}
+
+// Check, if a particle is placed in all cells of a 2d grid, if they are mapped to the right index,
+// and type of cell
+TEST(CellGridTestDimensionaity, GridInit2D)
+{
+    std::array<double, 3> domain_origin = { -50, -50, -50 };
+    std::array<double, 3> domain_size = { 100, 100, 0 };
+    double cutoff = 5;
+    CellGrid grid { domain_origin, domain_size, cutoff };
+
+    std::vector<Particle> particles {};
+    std::vector<CellIndex> indices {};
+
+    double x = domain_origin[0] - cutoff / 2;
+    size_t indexX = 0, indexY = 0;
+    while (x < domain_origin[0] + domain_size[1] + cutoff) {
+        double y = domain_origin[1] - cutoff / 2;
+        indexY = 0;
+        while (y < domain_origin[1] + domain_size[1] + cutoff) {
+            particles.push_back(
+                Particle({ x, y, domain_origin[2] }, { 0, 0, domain_origin[2] }, 1.0));
+            indices.push_back({ indexX, indexY, 0 });
+            y += cutoff;
+            indexY++;
+        }
+        x += cutoff;
+        indexX++;
+    }
+
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    for (size_t i = 0; i < indices.size(); ++i) {
+        CellIndex index = indices[i];
+        // only one particle per cell
+        EXPECT_EQ(grid.cells.at(index[0]).at(index[1]).at(index[2])->getParticles().size(), 1);
+        // It is the one we expect it to be
+        for (size_t ind = 0; ind < 3; ind++)
+            EXPECT_EQ(
+                grid.cells.at(index[0])
+                    .at(index[1])
+                    .at(index[2])
+                    ->getParticles()
+                    .front()
+                    .get()
+                    .getX()[ind],
+                particles[i].getX()[ind]);
+    }
+    // check if all cells have received one particle
+    EXPECT_EQ(particles.size(), (domain_size[0] / cutoff + 2) * (domain_size[1] / cutoff + 2));
+
+    // check boundary iterator
+    for (auto position : allPositions) {
+        for (auto boundaryIndex : grid.boundaryCellIterator(position)) {
+            // It is a boundary cell
+            EXPECT_EQ(
+                grid.cells.at(boundaryIndex[0])
+                    .at(boundaryIndex[1])
+                    .at(boundaryIndex[2])
+                    ->getType(),
+                CellType::Boundary);
+            // Check if the particle in the cell has the expected position
+            for (size_t ind = 0; ind < 2; ind++) {
+                double expectedCoordinate =
+                    domain_origin[ind] - cutoff / 2 + cutoff * (double)boundaryIndex[ind];
+                EXPECT_EQ(
+                    grid.cells.at(boundaryIndex[0])
+                        .at(boundaryIndex[1])
+                        .at(boundaryIndex[2])
+                        ->getParticles()
+                        .front()
+                        .get()
+                        .getX()[ind],
+                    expectedCoordinate);
+            }
+
+            EXPECT_EQ(
+                grid.cells.at(boundaryIndex[0])
+                    .at(boundaryIndex[1])
+                    .at(boundaryIndex[2])
+                    ->getParticles()
+                    .front()
+                    .get()
+                    .getX()[2],
+                domain_origin[2]);
+        }
+    }
+
+    // check halo iterator
+    for (auto position : allPositions) {
+        for (auto haloIndex : grid.haloCellIterator(position)) {
+            // It is a halo cell
+            EXPECT_EQ(
+                grid.cells.at(haloIndex[0]).at(haloIndex[1]).at(haloIndex[2])->getType(),
+                CellType::Halo);
+            // Check if the particle in the cell has the expected position
+            for (size_t ind = 0; ind < 2; ind++) {
+                double expectedCoordinate =
+                    domain_origin[ind] - cutoff / 2 + cutoff * (double)haloIndex[ind];
+                EXPECT_EQ(
+                    grid.cells.at(haloIndex[0])
+                        .at(haloIndex[1])
+                        .at(haloIndex[2])
+                        ->getParticles()
+                        .front()
+                        .get()
+                        .getX()[ind],
+                    expectedCoordinate);
+            }
+
+            EXPECT_EQ(
+                grid.cells.at(haloIndex[0])
+                    .at(haloIndex[1])
+                    .at(haloIndex[2])
+                    ->getParticles()
+                    .front()
+                    .get()
+                    .getX()[2],
+                domain_origin[2]);
+        }
+    }
+}
+
+// Check, if a particle is placed in all cells of a 3d grid, if they are mapped to the right index,
+// and type of cell
+TEST(CellGridTestDimensionaity, GridInit3D)
+{
+    std::array<double, 3> domain_origin = { -50, -50, -50 };
+    std::array<double, 3> domain_size = { 15, 15, 15 };
+    double cutoff = 5;
+    CellGrid grid { domain_origin, domain_size, cutoff };
+
+    std::vector<Particle> particles {};
+    std::vector<CellIndex> indices {};
+
+    double x = domain_origin[0] - cutoff / 2;
+    size_t indexX = 0, indexY, indexZ;
+    while (x < domain_origin[0] + domain_size[1] + cutoff) {
+        double y = domain_origin[1] - cutoff / 2;
+        indexY = 0;
+        while (y < domain_origin[1] + domain_size[1] + cutoff) {
+            double z = domain_origin[2] - cutoff / 2;
+            indexZ = 0;
+            while (z < domain_origin[2] + domain_size[2] + cutoff) {
+                particles.push_back(Particle({ x, y, z }, { 0, 0, 0 }, 1.0));
+                indices.push_back({ indexX, indexY, indexZ });
+                z += cutoff;
+                indexZ++;
+            }
+            y += cutoff;
+            indexY++;
+        }
+        x += cutoff;
+        indexX++;
+    }
+
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    for (size_t i = 0; i < indices.size(); ++i) {
+        CellIndex index = indices[i];
+        // only one particle per cell
+        EXPECT_EQ(grid.cells.at(index[0]).at(index[1]).at(index[2])->getParticles().size(), 1);
+        // It is the one we expect it to be
+        for (size_t ind = 0; ind < 3; ind++)
+            EXPECT_EQ(
+                grid.cells.at(index[0])
+                    .at(index[1])
+                    .at(index[2])
+                    ->getParticles()
+                    .front()
+                    .get()
+                    .getX()[ind],
+                particles[i].getX()[ind]);
+    }
+    // check if all cells have received one particle
+    EXPECT_EQ(
+        particles.size(),
+        (domain_size[0] / cutoff + 2) * (domain_size[1] / cutoff + 2) *
+            (domain_size[2] / cutoff + 2));
+
+    // check boundary iterator
+    for (auto position : allPositions) {
+        for (auto boundaryIndex : grid.boundaryCellIterator(position)) {
+            // It is a boundary cell
+            EXPECT_EQ(
+                grid.cells.at(boundaryIndex[0])
+                    .at(boundaryIndex[1])
+                    .at(boundaryIndex[2])
+                    ->getType(),
+                CellType::Boundary);
+            // Check if the particle in the cell has the expected position
+            for (size_t ind = 0; ind < 3; ind++) {
+                double expectedCoordinate =
+                    domain_origin[ind] - cutoff / 2 + cutoff * (double)boundaryIndex[ind];
+                EXPECT_EQ(
+                    grid.cells.at(boundaryIndex[0])
+                        .at(boundaryIndex[1])
+                        .at(boundaryIndex[2])
+                        ->getParticles()
+                        .front()
+                        .get()
+                        .getX()[ind],
+                    expectedCoordinate);
+            }
+        }
+    }
+
+    // check halo iterator
+    for (auto position : allPositions) {
+        for (auto haloIndex : grid.haloCellIterator(position)) {
+            // It is a halo cell
+            EXPECT_EQ(
+                grid.cells.at(haloIndex[0]).at(haloIndex[1]).at(haloIndex[2])->getType(),
+                CellType::Halo);
+            // Check if the particle in the cell has the expected position
+            for (size_t ind = 0; ind < 3; ind++) {
+                double expectedCoordinate =
+                    domain_origin[ind] - cutoff / 2 + cutoff * (double)haloIndex[ind];
+                EXPECT_EQ(
+                    grid.cells.at(haloIndex[0])
+                        .at(haloIndex[1])
+                        .at(haloIndex[2])
+                        ->getParticles()
+                        .front()
+                        .get()
+                        .getX()[ind],
+                    expectedCoordinate);
+            }
+        }
+    }
+}
+
+// Test if particle inserted at bottom is also inserted in bottom cells and will be recognized by
+// the boundary iterator
+TEST(CellGridOrientation, BottomParticleInBoundary)
+{
+    std::array<double, 3> domain_origin = { -10, -10, 0 };
+    std::array<double, 3> domain_size = { 60, 40, 0 };
+    double cutoff = 5;
+    CellGrid grid { domain_origin, domain_size, cutoff };
+
+    // Particle on bottom (paraview)
+    std::vector<Particle> particles { Particle { { 0, -9.1, 0 }, { 0, -30, 0 }, 1 } };
+
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    size_t particleCount = 0;
+    for (auto index : grid.boundaryCellIterator(BOTTOM)) {
+        particleCount += grid.cells[index[0]][index[1]][index[2]]->getParticles().size();
+    }
+
+    EXPECT_EQ(particleCount, 1);
+}
+
+// Test if particle inserted at top is also inserted in top cells and will be recognized by
+// the boundary iterator
+TEST(CellGridOrientation, TopParticleInBoundary)
+{
+    std::array<double, 3> domain_origin = { -10, -10, 0 };
+    std::array<double, 3> domain_size = { 60, 40, 0 };
+    double cutoff = 5;
+    CellGrid grid { domain_origin, domain_size, cutoff };
+
+    // Particle on bottom (paraview)
+    std::vector<Particle> particles { Particle { { 0, 29.1, 0 }, { 0, -30, 0 }, 1 } };
+
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    size_t particleCount = 0;
+    for (auto index : grid.boundaryCellIterator(TOP)) {
+        particleCount += grid.cells[index[0]][index[1]][index[2]]->getParticles().size();
+    }
+
+    EXPECT_EQ(particleCount, 1);
+}
+
+// Test if particle inserted left is also inserted in left cells and will be recognized by the
+// boundary iterator
+TEST(CellGridOrientation, LeftParticleInBoundary)
+{
+    std::array<double, 3> domain_origin = { -10, -10, 0 };
+    std::array<double, 3> domain_size = { 60, 40, 0 };
+    double cutoff = 5;
+    CellGrid grid { domain_origin, domain_size, cutoff };
+
+    // Particle left side (paraview)
+    std::vector<Particle> particles { Particle { { -9.1, 0, 0 }, { 0, -30, 0 }, 1 } };
+
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    size_t particleCount = 0;
+    for (auto index : grid.boundaryCellIterator(LEFT)) {
+        particleCount += grid.cells[index[0]][index[1]][index[2]]->getParticles().size();
+    }
+
+    EXPECT_EQ(particleCount, 1);
+}
+
+// Test if particle inserted right is also inserted in right cells and will be recognized by the
+// boundary iterator
+TEST(CellGridOrientation, RightParticleInBoundary)
+{
+    std::array<double, 3> domain_origin = { -10, -10, 0 };
+    std::array<double, 3> domain_size = { 60, 40, 0 };
+    double cutoff = 5;
+    CellGrid grid { domain_origin, domain_size, cutoff };
+
+    // Particle left side (paraview)
+    std::vector<Particle> particles { Particle { { 49.1, 0, 0 }, { 0, -30, 0 }, 1 } };
+
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    size_t particleCount = 0;
+    for (auto index : grid.boundaryCellIterator(RIGHT)) {
+        particleCount += grid.cells[index[0]][index[1]][index[2]]->getParticles().size();
+    }
+
+    EXPECT_EQ(particleCount, 1);
+}
+
+// Test if particle inserted back is also inserted in back cells and will be recognized by the
+// boundary iterator
+TEST(CellGridOrientation, BackParticleInBoundary)
+{
+    std::array<double, 3> domain_origin = { -10, -10, -10 };
+    std::array<double, 3> domain_size = { 60, 40, 60 };
+    double cutoff = 5;
+    CellGrid grid { domain_origin, domain_size, cutoff };
+
+    // Particle left side (paraview)
+    std::vector<Particle> particles { Particle { { -9.1, -9.1, -9.1 }, { 0, -30, 0 }, 1 } };
+
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    size_t particleCount = 0;
+    for (auto index : grid.boundaryCellIterator(BACK)) {
+        particleCount += grid.cells[index[0]][index[1]][index[2]]->getParticles().size();
+    }
+
+    EXPECT_EQ(particleCount, 1);
+}
+
+// Test if particles in the corners are mapped to the right cells
+TEST(CellGridBoundCoorindates, CornerParticlesAreMappedToRightCell)
+{
+    std::array<double, 3> domain_origin = { -10, -10, -10 };
+    std::array<double, 3> domain_size = { 60, 40, 60 };
+    std::array<double, 3> vel = { 0, -30, 0 };
+    double cutoff = 5;
+
+    // Particles see paraview
+    std::vector<Particle> particles {
+        Particle { { -9.1, -9.1, -9.1 }, vel, 1 }, // left-bottom-back [val in paraview]
+        Particle { { 49.1, -9.1, -9.1 }, vel, 1 }, // right-bottom-back [val in paraview]
+        Particle { { 49.1, 29.1, -9.1 }, vel, 1 }, // right-top-back [val in paraview]
+        Particle { { -9.1, 29.1, -9.1 }, vel, 1 }, // left-top-back [val in paraview]
+        Particle { { -9.1, -9.1, 49.1 }, vel, 1 }, // left-bottom-front [val in paraview]
+        Particle { { 49.1, -9.1, 49.1 }, vel, 1 }, // right-bottom-front [val in paraview]
+        Particle { { 49.1, 29.1, 49.1 }, vel, 1 }, // right-top-front [val in paraview]
+        Particle { { -9.1, 29.1, 49.1 }, vel, 1 }, // left-top-front [val in paraview]
+    };
+
+    size_t left = 1, bottom = 1, back = 1;
+    size_t right = 12, top = 8, front = 12;
+
+    std::vector<CellIndex> expectedIndices = { { left, bottom, back },  { right, bottom, back },
+                                               { right, top, back },    { left, top, back },
+                                               { left, bottom, front }, { right, bottom, front },
+                                               { right, top, front },   { left, top, front } };
+
+    for (size_t i = 0; i < particles.size(); i++) {
+        CellGrid grid { domain_origin, domain_size, cutoff };
+
+        ParticleContainer container(std::vector<Particle> { particles[i] });
+        grid.addParticlesFromContainer(container);
+
+        CellIndex expectedIndex = expectedIndices[i];
+        EXPECT_EQ(
+            grid.cells[expectedIndex[0]][expectedIndex[1]][expectedIndex[2]]->getParticles().size(),
+            1);
+    }
 }

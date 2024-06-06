@@ -90,7 +90,6 @@ public:
      */
     double getGamma() const { return gamma; }
 
-
     virtual ~LennardJonesSimulation() = default;
 
 protected:

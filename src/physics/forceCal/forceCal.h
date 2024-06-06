@@ -26,7 +26,8 @@ void force_gravity_V2(const Simulation& sim);
 void force_lennard_jones(const Simulation& sim);
 
 /**
- * @brief Calculate the forces between particles in a linked-cell structure using the Lennard-Jones potential
+ * @brief Calculate the forces between particles in a linked-cell structure using the Lennard-Jones
+ * potential
  * @param sim The Lennard Jones simulation object to calculate the forces for
  * @return void
  */

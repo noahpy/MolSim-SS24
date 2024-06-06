@@ -1,12 +1,11 @@
 
 #include "CellGrid.h"
 #include "models/linked_cell/cell/Cell.h"
-#include "utils/ArrayUtils.h"
 #include "utils/Position.h"
 #include <cmath>
 #include <cwchar>
 #include <spdlog/spdlog.h>
-#include <sys/wait.h>
+#include "utils/ArrayUtils.h"
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
@@ -17,6 +16,8 @@ CellGrid::CellGrid(
     , cutoffRadius(cutoffRadius)
     , gridDimensions({ 0, 0, 0 })
     , cellSize({ 0.0, 0.0, 0.0 })
+    , domainEnd(domainOrigin + domainSize)
+    , gridDimensionality((domainSize[2] == 0) ? 2 : 3)
 {
     initializeGrid();
 }
@@ -39,22 +40,19 @@ void CellGrid::determineNeighbours(CellIndex cell)
                 }
                 CellIndex neighbourIndex = { cell[0] + i, cell[1] + j, cell[2] + k };
 
-                auto positions = relCoordinateToPos({ static_cast<unsigned long>(i),
-                                                      static_cast<unsigned long>(j),
-                                                      static_cast<unsigned long>(k) });
-
+                auto positions = relCoordinateToPos({ i, j, k });
                 switch (determineCellType(neighbourIndex)) {
                 case CellType::Boundary:
                     cells.at(cell[0]).at(cell[1]).at(cell[2])->boundaryNeighbours.emplace_back(
-                        std::make_pair(neighbourIndex, positions));
+                        neighbourIndex, positions);
                     break;
                 case CellType::Halo:
                     cells.at(cell[0]).at(cell[1]).at(cell[2])->haloNeighbours.emplace_back(
-                        std::make_pair(neighbourIndex, positions));
+                        neighbourIndex, positions);
                     break;
                 case CellType::Inner:
                     cells.at(cell[0]).at(cell[1]).at(cell[2])->innerNeighbours.emplace_back(
-                        std::make_pair(neighbourIndex, positions));
+                        neighbourIndex, positions);
                     break;
                 default:
                     break;
@@ -66,10 +64,16 @@ void CellGrid::determineNeighbours(CellIndex cell)
 
 void CellGrid::initializeGrid()
 {
-    for (int i = 0; i < 3; ++i) {
+    if (gridDimensionality == 2) {
+        spdlog::info("Domain is set to 0 in z-Axis. Gird will be constructed in 2D.");
+        gridDimensions[2] = 1; // a single cell
+        cellSize[2] = 0; // no depth
+    }
+
+    for (int i = 0; i < gridDimensionality; ++i) {
         // if dimension is zero
         if (domainSize[i] == 0) {
-            spdlog::error("Domain size cannot be zero!");
+            spdlog::error("Domain size of x-Axis or y-Axis cannot be zero!");
             exit(EXIT_FAILURE);
         }
         // if cutoff radius is bigger than domain size
@@ -78,7 +82,7 @@ void CellGrid::initializeGrid()
             gridDimensions[i] = 3;
             continue;
         }
-        gridDimensions[i] = static_cast<size_t>(std::floor(domainSize[i] / cutoffRadius));
+        gridDimensions[i] = static_cast<size_t>(std::floor(std::abs(domainSize[i] / cutoffRadius)));
         cellSize[i] = domainSize[i] / static_cast<double>(gridDimensions[i]);
         gridDimensions[i] += 2;
     }
@@ -96,10 +100,10 @@ void CellGrid::initializeGrid()
                 cells.at(x).at(y).at(z) = std::move(cellPointer);
                 // determine neighbours
                 determineNeighbours({ x, y, z });
-                if(type == CellType::Boundary) {
+                if (type == CellType::Boundary) {
                     boundaryCells.push_back({ x, y, z });
                 }
-                if(type == CellType::Halo) {
+                if (type == CellType::Halo) {
                     haloCells.push_back({ x, y, z });
                 }
             }
@@ -109,12 +113,12 @@ void CellGrid::initializeGrid()
 
 CellType CellGrid::determineCellType(const std::array<size_t, 3>& indices) const
 {
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < gridDimensionality; ++i) {
         if (indices[i] == 0 || indices[i] == gridDimensions[i] - 1) {
             return CellType::Halo;
         }
     }
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < gridDimensionality; ++i) {
         if (indices[i] == 1 || indices[i] == gridDimensions[i] - 2) {
             return CellType::Boundary;
         }
@@ -127,7 +131,7 @@ CellIndex CellGrid::getIndexFromPos(const std::array<double, 3>& ppos) const
     auto pos = ppos - domainOrigin;
     CellIndex indices { 0, 0, 0 };
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < gridDimensionality; ++i) {
         if (pos[i] < 0) {
             indices[i] = 0;
         } else if (pos[i] >= domainSize[i]) {
@@ -136,6 +140,8 @@ CellIndex CellGrid::getIndexFromPos(const std::array<double, 3>& ppos) const
             indices[i] = static_cast<size_t>(pos[i] / cellSize[i]) + 1;
         }
     }
+    // if gridDimensionality == 2, indices[2] will remain 0 from initialization
+
     return indices;
 }
 
@@ -146,7 +152,7 @@ void CellGrid::updateCells()
         for (size_t y = 0; y < gridDimensions[1]; ++y) {
             for (size_t z = 0; z < gridDimensions[2]; ++z) {
                 ParticleRefList& particles = cells.at(x).at(y).at(z)->getParticles();
-                ParticleRefList::iterator it = particles.begin();
+                auto it = particles.begin();
                 while (it != particles.end()) {
                     // Calculate new index
                     CellIndex indices = getIndexFromPos((*it).get().getX());
@@ -171,24 +177,14 @@ void CellGrid::updateCells()
 }
 
 // Methods to get boundary and halo particle iterators
-CellGrid::BoundaryIterator CellGrid::beginBoundaryParticles()
+CellGrid::BoundaryIterator CellGrid::boundaryCellIterator(Position position) const
 {
-    return BoundaryIterator(boundaryCells, false);
+    return { position, gridDimensions, gridDimensionality == 2 };
 }
 
-CellGrid::BoundaryIterator CellGrid::endBoundaryParticles()
+CellGrid::HaloIterator CellGrid::haloCellIterator(Position position) const
 {
-    return BoundaryIterator(boundaryCells, true);
-}
-
-CellGrid::HaloIterator CellGrid::beginHaloParticles()
-{
-    return HaloIterator(haloCells, false);
-}
-
-CellGrid::HaloIterator CellGrid::endHaloParticles()
-{
-    return HaloIterator(haloCells, true);
+    return { position, gridDimensions, gridDimensionality == 2 };
 }
 
 void CellGrid::addParticle(Particle& particle)
@@ -268,10 +264,12 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
                         // Mark as visited
                         cells.at(nx).at(ny).at(nz)->visited = true;
                         // Set OldF to F and zero F
-                        auto particleRefs = cells.at(nx).at(ny).at(nz)->getParticles();
-                        for (auto& p : particleRefs) {
-                            p.get().setOldF(p.get().getF());
-                            p.get().setF({ 0.0, 0.0, 0.0 });
+                        ParticleRefList& particleRefs = cells.at(nx).at(ny).at(nz)->getParticles();
+                        auto it = particleRefs.begin();
+                        while (it != particleRefs.end()) {
+                            (*it).get().setOldF((*it).get().getF());
+                            (*it).get().setF({ 0.0, 0.0, 0.0 });
+                            ++it;
                         }
                     }
 
@@ -290,18 +288,17 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
     return cellList;
 }
 
-
-void CellGrid::setCutoffRadius(double cutoffRadius)
+void CellGrid::setCutoffRadius(double pCutoffRadius)
 {
-    this->cutoffRadius = cutoffRadius;
+    cutoffRadius = pCutoffRadius;
 }
 
-void CellGrid::setDomainSize(const std::array<double, 3>& domainSize)
+void CellGrid::setDomainSize(const std::array<double, 3>& pDomainSize)
 {
-    this->domainSize = domainSize;
+    domainSize = pDomainSize;
 }
 
-void CellGrid::setDomainOrigin(const std::array<double, 3>& domainOrigin)
+void CellGrid::setDomainOrigin(const std::array<double, 3>& pDomainOrigin)
 {
-    this->domainOrigin = domainOrigin;
-} 
+    domainOrigin = pDomainOrigin;
+}

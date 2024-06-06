@@ -160,6 +160,91 @@ z (const z_type& x)
 //
 
 
+// boundaryNames_t
+//
+
+boundaryNames_t::
+boundaryNames_t (value v)
+: ::xml_schema::string (_xsd_boundaryNames_t_literals_[v])
+{
+}
+
+boundaryNames_t::
+boundaryNames_t (const char* v)
+: ::xml_schema::string (v)
+{
+}
+
+boundaryNames_t::
+boundaryNames_t (const ::std::string& v)
+: ::xml_schema::string (v)
+{
+}
+
+boundaryNames_t::
+boundaryNames_t (const ::xml_schema::string& v)
+: ::xml_schema::string (v)
+{
+}
+
+boundaryNames_t::
+boundaryNames_t (const boundaryNames_t& v,
+                 ::xml_schema::flags f,
+                 ::xml_schema::container* c)
+: ::xml_schema::string (v, f, c)
+{
+}
+
+boundaryNames_t& boundaryNames_t::
+operator= (value v)
+{
+  static_cast< ::xml_schema::string& > (*this) = 
+  ::xml_schema::string (_xsd_boundaryNames_t_literals_[v]);
+
+  return *this;
+}
+
+
+// boundary_t
+//
+
+const boundary_t::bound_four_sequence& boundary_t::
+bound_four () const
+{
+  return this->bound_four_;
+}
+
+boundary_t::bound_four_sequence& boundary_t::
+bound_four ()
+{
+  return this->bound_four_;
+}
+
+void boundary_t::
+bound_four (const bound_four_sequence& s)
+{
+  this->bound_four_ = s;
+}
+
+const boundary_t::bound_six_sequence& boundary_t::
+bound_six () const
+{
+  return this->bound_six_;
+}
+
+boundary_t::bound_six_sequence& boundary_t::
+bound_six ()
+{
+  return this->bound_six_;
+}
+
+void boundary_t::
+bound_six (const bound_six_sequence& s)
+{
+  this->bound_six_ = s;
+}
+
+
 // cuboid_t
 //
 
@@ -787,6 +872,36 @@ updateFreq (const updateFreq_optional& x)
   this->updateFreq_ = x;
 }
 
+const params_t::boundaries_optional& params_t::
+boundaries () const
+{
+  return this->boundaries_;
+}
+
+params_t::boundaries_optional& params_t::
+boundaries ()
+{
+  return this->boundaries_;
+}
+
+void params_t::
+boundaries (const boundaries_type& x)
+{
+  this->boundaries_.set (x);
+}
+
+void params_t::
+boundaries (const boundaries_optional& x)
+{
+  this->boundaries_ = x;
+}
+
+void params_t::
+boundaries (::std::unique_ptr< boundaries_type > x)
+{
+  this->boundaries_.set (std::move (x));
+}
+
 
 // simulation_t
 //
@@ -1163,6 +1278,173 @@ _clone (::xml_schema::flags f,
 
 dimension_t::
 ~dimension_t ()
+{
+}
+
+// boundaryNames_t
+//
+
+boundaryNames_t::
+boundaryNames_t (const ::xercesc::DOMElement& e,
+                 ::xml_schema::flags f,
+                 ::xml_schema::container* c)
+: ::xml_schema::string (e, f, c)
+{
+  _xsd_boundaryNames_t_convert ();
+}
+
+boundaryNames_t::
+boundaryNames_t (const ::xercesc::DOMAttr& a,
+                 ::xml_schema::flags f,
+                 ::xml_schema::container* c)
+: ::xml_schema::string (a, f, c)
+{
+  _xsd_boundaryNames_t_convert ();
+}
+
+boundaryNames_t::
+boundaryNames_t (const ::std::string& s,
+                 const ::xercesc::DOMElement* e,
+                 ::xml_schema::flags f,
+                 ::xml_schema::container* c)
+: ::xml_schema::string (s, e, f, c)
+{
+  _xsd_boundaryNames_t_convert ();
+}
+
+boundaryNames_t* boundaryNames_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class boundaryNames_t (*this, f, c);
+}
+
+boundaryNames_t::value boundaryNames_t::
+_xsd_boundaryNames_t_convert () const
+{
+  ::xsd::cxx::tree::enum_comparator< char > c (_xsd_boundaryNames_t_literals_);
+  const value* i (::std::lower_bound (
+                    _xsd_boundaryNames_t_indexes_,
+                    _xsd_boundaryNames_t_indexes_ + 2,
+                    *this,
+                    c));
+
+  if (i == _xsd_boundaryNames_t_indexes_ + 2 || _xsd_boundaryNames_t_literals_[*i] != *this)
+  {
+    throw ::xsd::cxx::tree::unexpected_enumerator < char > (*this);
+  }
+
+  return *i;
+}
+
+const char* const boundaryNames_t::
+_xsd_boundaryNames_t_literals_[2] =
+{
+  "overflow",
+  "soft_reflective"
+};
+
+const boundaryNames_t::value boundaryNames_t::
+_xsd_boundaryNames_t_indexes_[2] =
+{
+  ::boundaryNames_t::overflow,
+  ::boundaryNames_t::soft_reflective
+};
+
+// boundary_t
+//
+
+boundary_t::
+boundary_t ()
+: ::xml_schema::type (),
+  bound_four_ (this),
+  bound_six_ (this)
+{
+}
+
+boundary_t::
+boundary_t (const boundary_t& x,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+: ::xml_schema::type (x, f, c),
+  bound_four_ (x.bound_four_, f, this),
+  bound_six_ (x.bound_six_, f, this)
+{
+}
+
+boundary_t::
+boundary_t (const ::xercesc::DOMElement& e,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+: ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+  bound_four_ (this),
+  bound_six_ (this)
+{
+  if ((f & ::xml_schema::flags::base) == 0)
+  {
+    ::xsd::cxx::xml::dom::parser< char > p (e, true, false, false);
+    this->parse (p, f);
+  }
+}
+
+void boundary_t::
+parse (::xsd::cxx::xml::dom::parser< char >& p,
+       ::xml_schema::flags f)
+{
+  for (; p.more_content (); p.next_content (false))
+  {
+    const ::xercesc::DOMElement& i (p.cur_element ());
+    const ::xsd::cxx::xml::qualified_name< char > n (
+      ::xsd::cxx::xml::dom::name< char > (i));
+
+    // bound_four
+    //
+    if (n.name () == "bound_four" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< bound_four_type > r (
+        bound_four_traits::create (i, f, this));
+
+      this->bound_four_.push_back (::std::move (r));
+      continue;
+    }
+
+    // bound_six
+    //
+    if (n.name () == "bound_six" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< bound_six_type > r (
+        bound_six_traits::create (i, f, this));
+
+      this->bound_six_.push_back (::std::move (r));
+      continue;
+    }
+
+    break;
+  }
+}
+
+boundary_t* boundary_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class boundary_t (*this, f, c);
+}
+
+boundary_t& boundary_t::
+operator= (const boundary_t& x)
+{
+  if (this != &x)
+  {
+    static_cast< ::xml_schema::type& > (*this) = x;
+    this->bound_four_ = x.bound_four_;
+    this->bound_six_ = x.bound_six_;
+  }
+
+  return *this;
+}
+
+boundary_t::
+~boundary_t ()
 {
 }
 
@@ -1819,7 +2101,9 @@ params_t ()
   domainOrigin_ (this),
   domainSize_ (this),
   cutoff_ (this),
-  updateFreq_ (this)
+  updateFreq_ (this),
+  boundaries_ (this)
+
 {
 }
 
@@ -1837,7 +2121,8 @@ params_t (const params_t& x,
   domainOrigin_ (x.domainOrigin_, f, this),
   domainSize_ (x.domainSize_, f, this),
   cutoff_ (x.cutoff_, f, this),
-  updateFreq_ (x.updateFreq_, f, this)
+  updateFreq_ (x.updateFreq_, f, this),
+  boundaries_ (x.boundaries_, f, this)
 {
 }
 
@@ -1855,7 +2140,9 @@ params_t (const ::xercesc::DOMElement& e,
   domainOrigin_ (this),
   domainSize_ (this),
   cutoff_ (this),
-  updateFreq_ (this)
+  updateFreq_ (this),
+  boundaries_ (this)
+
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -1993,6 +2280,21 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // boundaries
+    //
+    if (n.name () == "boundaries" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< boundaries_type > r (
+        boundaries_traits::create (i, f, this));
+
+      if (!this->boundaries_)
+      {
+        this->boundaries_.set (::std::move (r));
+        continue;
+      }
+    }
+
+
     break;
   }
 }
@@ -2020,6 +2322,7 @@ operator= (const params_t& x)
     this->domainSize_ = x.domainSize_;
     this->cutoff_ = x.cutoff_;
     this->updateFreq_ = x.updateFreq_;
+    this->boundaries_ = x.boundaries_;
   }
 
   return *this;
@@ -2529,6 +2832,63 @@ operator<< (::xml_schema::list_stream& l,
 }
 
 void
+operator<< (::xercesc::DOMElement& e, const boundaryNames_t& i)
+{
+  e << static_cast< const ::xml_schema::string& > (i);
+}
+
+void
+operator<< (::xercesc::DOMAttr& a, const boundaryNames_t& i)
+{
+  a << static_cast< const ::xml_schema::string& > (i);
+}
+
+void
+operator<< (::xml_schema::list_stream& l,
+            const boundaryNames_t& i)
+{
+  l << static_cast< const ::xml_schema::string& > (i);
+}
+
+void
+operator<< (::xercesc::DOMElement& e, const boundary_t& i)
+{
+  e << static_cast< const ::xml_schema::type& > (i);
+
+  // bound_four
+  //
+  for (boundary_t::bound_four_const_iterator
+       b (i.bound_four ().begin ()), n (i.bound_four ().end ());
+       b != n; ++b)
+  {
+    const boundary_t::bound_four_type& x (*b);
+
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "bound_four",
+        e));
+
+    s << x;
+  }
+
+  // bound_six
+  //
+  for (boundary_t::bound_six_const_iterator
+       b (i.bound_six ().begin ()), n (i.bound_six ().end ());
+       b != n; ++b)
+  {
+    const boundary_t::bound_six_type& x (*b);
+
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "bound_six",
+        e));
+
+    s << x;
+  }
+}
+
+void
 operator<< (::xercesc::DOMElement& e, const cuboid_t& i)
 {
   e << static_cast< const ::xml_schema::type& > (i);
@@ -2866,6 +3226,18 @@ operator<< (::xercesc::DOMElement& e, const params_t& i)
         e));
 
     s << *i.updateFreq ();
+  }
+
+  // boundaries
+  //
+  if (i.boundaries ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "boundaries",
+        e));
+
+    s << *i.boundaries ();
   }
 }
 

@@ -1,9 +1,4 @@
 
 #pragma once
 
-enum class CellType {
-    Inner,
-    Boundary,
-    Halo
-};
-
+enum class CellType { Inner, Boundary, Halo };

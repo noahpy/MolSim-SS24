@@ -619,6 +619,8 @@ namespace xml_schema
 class doubleVec_t;
 class intVec_t;
 class dimension_t;
+class boundaryNames_t;
+class boundary_t;
 class cuboid_t;
 class sphere_t;
 class clusters_t;
@@ -1232,6 +1234,383 @@ class dimension_t: public ::xsd::cxx::tree::fundamental_base< ::xml_schema::inte
    */
   virtual 
   ~dimension_t ();
+};
+
+/**
+ * @brief Enumeration class corresponding to the %boundaryNames_t
+ * schema type.
+ *
+ * Boundary names for the simulation
+ */
+class boundaryNames_t: public ::xml_schema::string
+{
+  public:
+
+  /**
+   * @brief Underlying enum type.
+   */
+  enum value
+  {
+    overflow,
+    soft_reflective
+  };
+
+  /**
+   * @brief Create an instance from the underlying enum value.
+   *
+   * @param v A enum value.
+   */
+  boundaryNames_t (value v);
+
+  /**
+   * @brief Create an instance from a C string.
+   *
+   * @param v A string value.
+   */
+  boundaryNames_t (const char* v);
+
+  /**
+   * @brief Create an instance from a string.
+   *
+   * @param v A string value.
+   */
+  boundaryNames_t (const ::std::string& v);
+
+  /**
+   * @brief Create an instance from the base value.
+   *
+   * @param v A base value.
+   */
+  boundaryNames_t (const ::xml_schema::string& v);
+
+  /**
+   * @brief Create an instance from a DOM element.
+   *
+   * @param e A DOM element to extract the data from.
+   * @param f Flags to create the new instance with.
+   * @param c A pointer to the object that will contain the new
+   * instance.
+   */
+  boundaryNames_t (const ::xercesc::DOMElement& e,
+                   ::xml_schema::flags f = 0,
+                   ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Create an instance from a DOM attribute.
+   *
+   * @param a A DOM attribute to extract the data from.
+   * @param f Flags to create the new instance with.
+   * @param c A pointer to the object that will contain the new
+   * instance.
+   */
+  boundaryNames_t (const ::xercesc::DOMAttr& a,
+                   ::xml_schema::flags f = 0,
+                   ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Create an instance from a string fragment.
+   *
+   * @param s A string fragment to extract the data from.
+   * @param e A pointer to DOM element containing the string fragment.
+   * @param f Flags to create the new instance with.
+   * @param c A pointer to the object that will contain the new
+   * instance.
+   */
+  boundaryNames_t (const ::std::string& s,
+                   const ::xercesc::DOMElement* e,
+                   ::xml_schema::flags f = 0,
+                   ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy constructor.
+   *
+   * @param x An instance to make a copy of.
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  boundaryNames_t (const boundaryNames_t& x,
+                   ::xml_schema::flags f = 0,
+                   ::xml_schema::container* c = 0);
+
+#ifdef XSD_CXX11
+  boundaryNames_t&
+  operator= (const boundaryNames_t&) = default;
+#endif
+
+  /**
+   * @brief Copy the instance polymorphically.
+   *
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   * @return A pointer to the dynamically allocated copy.
+   *
+   * This function ensures that the dynamic type of the instance is
+   * used for copying and should be used for polymorphic object
+   * models instead of the copy constructor.
+   */
+  virtual boundaryNames_t*
+  _clone (::xml_schema::flags f = 0,
+          ::xml_schema::container* c = 0) const;
+
+  /**
+   * @brief Assign the underlying enum value.
+   *
+   * @param v A enum value.
+   * @return A refernce to the instance.
+   */
+  boundaryNames_t&
+  operator= (value v);
+
+  /**
+   * @brief Implicit conversion operator to the underlying
+   * enum value.
+   *
+   * @return A enum value.
+   */
+  virtual
+  operator value () const
+  {
+    return _xsd_boundaryNames_t_convert ();
+  }
+
+  //@cond
+
+  protected:
+  value
+  _xsd_boundaryNames_t_convert () const;
+
+  public:
+  static const char* const _xsd_boundaryNames_t_literals_[2];
+  static const value _xsd_boundaryNames_t_indexes_[2];
+
+  //@endcond
+};
+
+/**
+ * @brief Class corresponding to the %boundary_t schema type.
+ *
+ * Boundary configuration for four or six boundaries
+ *
+ * @nosubgrouping
+ */
+class boundary_t: public ::xml_schema::type
+{
+  public:
+  /**
+   * @name bound_four
+   *
+   * @brief Accessor and modifier functions for the %bound_four
+   * sequence element.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::boundaryNames_t bound_four_type;
+
+  /**
+   * @brief Element sequence container type.
+   */
+  typedef ::xsd::cxx::tree::sequence< bound_four_type > bound_four_sequence;
+
+  /**
+   * @brief Element iterator type.
+   */
+  typedef bound_four_sequence::iterator bound_four_iterator;
+
+  /**
+   * @brief Element constant iterator type.
+   */
+  typedef bound_four_sequence::const_iterator bound_four_const_iterator;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< bound_four_type, char > bound_four_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * sequence.
+   *
+   * @return A constant reference to the sequence container.
+   */
+  const bound_four_sequence&
+  bound_four () const;
+
+  /**
+   * @brief Return a read-write reference to the element sequence.
+   *
+   * @return A reference to the sequence container.
+   */
+  bound_four_sequence&
+  bound_four ();
+
+  /**
+   * @brief Copy elements from a given sequence.
+   *
+   * @param s A sequence to copy elements from.
+   *
+   * For each element in @a s this function makes a copy and adds it 
+   * to the sequence. Note that this operation completely changes the 
+   * sequence and all old elements will be lost.
+   */
+  void
+  bound_four (const bound_four_sequence& s);
+
+  //@}
+
+  /**
+   * @name bound_six
+   *
+   * @brief Accessor and modifier functions for the %bound_six
+   * sequence element.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::boundaryNames_t bound_six_type;
+
+  /**
+   * @brief Element sequence container type.
+   */
+  typedef ::xsd::cxx::tree::sequence< bound_six_type > bound_six_sequence;
+
+  /**
+   * @brief Element iterator type.
+   */
+  typedef bound_six_sequence::iterator bound_six_iterator;
+
+  /**
+   * @brief Element constant iterator type.
+   */
+  typedef bound_six_sequence::const_iterator bound_six_const_iterator;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< bound_six_type, char > bound_six_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * sequence.
+   *
+   * @return A constant reference to the sequence container.
+   */
+  const bound_six_sequence&
+  bound_six () const;
+
+  /**
+   * @brief Return a read-write reference to the element sequence.
+   *
+   * @return A reference to the sequence container.
+   */
+  bound_six_sequence&
+  bound_six ();
+
+  /**
+   * @brief Copy elements from a given sequence.
+   *
+   * @param s A sequence to copy elements from.
+   *
+   * For each element in @a s this function makes a copy and adds it 
+   * to the sequence. Note that this operation completely changes the 
+   * sequence and all old elements will be lost.
+   */
+  void
+  bound_six (const bound_six_sequence& s);
+
+  //@}
+
+  /**
+   * @name Constructors
+   */
+  //@{
+
+  /**
+   * @brief Create an instance from the ultimate base and
+   * initializers for required elements and attributes.
+   */
+  boundary_t ();
+
+  /**
+   * @brief Create an instance from a DOM element.
+   *
+   * @param e A DOM element to extract the data from.
+   * @param f Flags to create the new instance with.
+   * @param c A pointer to the object that will contain the new
+   * instance.
+   */
+  boundary_t (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy constructor.
+   *
+   * @param x An instance to make a copy of.
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  boundary_t (const boundary_t& x,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy the instance polymorphically.
+   *
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   * @return A pointer to the dynamically allocated copy.
+   *
+   * This function ensures that the dynamic type of the instance is
+   * used for copying and should be used for polymorphic object
+   * models instead of the copy constructor.
+   */
+  virtual boundary_t*
+  _clone (::xml_schema::flags f = 0,
+          ::xml_schema::container* c = 0) const;
+
+  /**
+   * @brief Copy assignment operator.
+   *
+   * @param x An instance to make a copy of.
+   * @return A reference to itself.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  boundary_t&
+  operator= (const boundary_t& x);
+
+  //@}
+
+  /**
+   * @brief Destructor.
+   */
+  virtual 
+  ~boundary_t ();
+
+  // Implementation.
+  //
+
+  //@cond
+
+  protected:
+  void
+  parse (::xsd::cxx::xml::dom::parser< char >&,
+         ::xml_schema::flags);
+
+  protected:
+  bound_four_sequence bound_four_;
+  bound_six_sequence bound_six_;
+
+  //@endcond
 };
 
 /**
@@ -3252,6 +3631,84 @@ class params_t: public ::xml_schema::type
   //@}
 
   /**
+   * @name boundaries
+   *
+   * @brief Accessor and modifier functions for the %boundaries
+   * optional element.
+   *
+   * The boundary configuration for the domain boundaries.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::boundary_t boundaries_type;
+
+  /**
+   * @brief Element optional container type.
+   */
+  typedef ::xsd::cxx::tree::optional< boundaries_type > boundaries_optional;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< boundaries_type, char > boundaries_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * container.
+   *
+   * @return A constant reference to the optional container.
+   */
+  const boundaries_optional&
+  boundaries () const;
+
+  /**
+   * @brief Return a read-write reference to the element container.
+   *
+   * @return A reference to the optional container.
+   */
+  boundaries_optional&
+  boundaries ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  boundaries (const boundaries_type& x);
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x An optional container with the new value to set.
+   *
+   * If the value is present in @a x then this function makes a copy 
+   * of this value and sets it as the new value of the element.
+   * Otherwise the element container is set the 'not present' state.
+   */
+  void
+  boundaries (const boundaries_optional& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly instead
+   * of making a copy.
+   */
+  void
+  boundaries (::std::unique_ptr< boundaries_type > p);
+
+  //@}
+
+  /**
    * @name Constructors
    */
   //@{
@@ -3342,6 +3799,7 @@ class params_t: public ::xml_schema::type
   domainSize_optional domainSize_;
   cutoff_optional cutoff_;
   updateFreq_optional updateFreq_;
+  boundaries_optional boundaries_;
 
   //@endcond
 };
@@ -3859,6 +4317,19 @@ operator<< (::xercesc::DOMAttr&, const dimension_t&);
 void
 operator<< (::xml_schema::list_stream&,
             const dimension_t&);
+
+void
+operator<< (::xercesc::DOMElement&, const boundaryNames_t&);
+
+void
+operator<< (::xercesc::DOMAttr&, const boundaryNames_t&);
+
+void
+operator<< (::xml_schema::list_stream&,
+            const boundaryNames_t&);
+
+void
+operator<< (::xercesc::DOMElement&, const boundary_t&);
 
 void
 operator<< (::xercesc::DOMElement&, const cuboid_t&);

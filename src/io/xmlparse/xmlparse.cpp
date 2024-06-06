@@ -43,6 +43,24 @@ void xmlparse(Params& sim_params, std::string& filename)
             sim_params.output_file = params.output().get();
         if (params.updateFreq().present())
             sim_params.update_frequency = params.updateFreq().get();
+        if (params.boundaries().present()) {
+            if (params.boundaries().get().bound_four().size()) {
+                sim_params.boundaryConfig = BoundaryConfig(
+                    getBoundaryType(params.boundaries().get().bound_four()[0]),
+                    getBoundaryType(params.boundaries().get().bound_four()[1]),
+                    getBoundaryType(params.boundaries().get().bound_four()[2]),
+                    getBoundaryType(params.boundaries().get().bound_four()[3]));
+            }
+            if (params.boundaries().get().bound_six().size()) {
+                sim_params.boundaryConfig = BoundaryConfig(
+                    getBoundaryType(params.boundaries().get().bound_six()[0]),
+                    getBoundaryType(params.boundaries().get().bound_six()[1]),
+                    getBoundaryType(params.boundaries().get().bound_six()[2]),
+                    getBoundaryType(params.boundaries().get().bound_six()[3]),
+                    getBoundaryType(params.boundaries().get().bound_six()[4]),
+                    getBoundaryType(params.boundaries().get().bound_six()[5]));
+            }
+        }
 
     } catch (const xml_schema::exception& e) {
         spdlog::error("Error when reading: {}", filename);

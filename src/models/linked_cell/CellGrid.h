@@ -27,15 +27,20 @@ public:
      * @param cutoffRadius The cutoff radius for particle interactions.
      */
     CellGrid(
-        const std::array<double, 3> domainOrigin,
-        const std::array<double, 3> domainSize,
-        double cutoffRadius);
+        std::array<double, 3> domainOrigin, std::array<double, 3> domainSize, double cutoffRadius);
 
     /** @brief Destructor for CellGrid. */
     ~CellGrid();
 
     /// The 3D vector storing the cells in the grid.
     CellVec cells;
+
+    // The bottom-left-back point of the domain
+    std::array<double, 3> domainOrigin;
+    // The bottom-right-back point of the domain
+    std::array<double, 3> domainEnd;
+    /// The dimensionality of the gird (either 2 or 3)
+    size_t gridDimensionality;
 
     /**
      * @brief Adds a particle to the appropriate cell in the grid.
@@ -57,7 +62,7 @@ public:
      * @param cellIndex The index of the target cell
      * @return A list of references to all particles in the target cell and its neighbors
      */
-    [[nodiscard]] std::list<CellIndex> getNeighbourCells (const CellIndex& cellIndex) const;
+    [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const;
 
     /**
      * @brief Updates the cell lists by the position of all particles.
@@ -70,29 +75,31 @@ public:
     // Forward declaration (see bottom)
     class HaloIterator;
 
-    /** @brief Returns an iterator to the beginning of boundary particles. */
-    BoundaryIterator beginBoundaryParticles();
+    /**
+     * @brief Returns an iterator to the beginning of boundary particles.
+     * @param position The position of the boundary.
+     * @return A BoundaryIterator for the given position
+     */
+    BoundaryIterator boundaryCellIterator(Position position) const;
 
-    /** @brief Returns an iterator to the end of boundary particles. */
-    BoundaryIterator endBoundaryParticles();
+    /**
+     * @brief Returns an iterator to the beginning of halo particles.
+     * @param position The position of the boundary.
+     * @return A HaloIterator for the given position
+     */
+    HaloIterator haloCellIterator(Position position) const;
 
-    /** @brief Returns an iterator to the beginning of halo particles. */
-    HaloIterator beginHaloParticles();
-
-    /** @brief Returns an iterator to the end of halo particles. */
-    HaloIterator endHaloParticles();
-
-    /* @brief Sets the domain origin. 
+    /* @brief Sets the domain origin.
      * @param domainOrigin 3D array representing the "origin" of the simulation domain.
      * */
     void setDomainOrigin(const std::array<double, 3>& domainOrigin);
 
-    /* @brief Sets the domain size. 
+    /* @brief Sets the domain size.
      * @param domainSize A 3D array representing the size of the simulation domain.
      * */
     void setDomainSize(const std::array<double, 3>& domainSize);
 
-    /* @brief Sets the cutoff radius. 
+    /* @brief Sets the cutoff radius.
      * @param cutoffRadius The cutoff radius for particle interactions.
      * */
     void setCutoffRadius(double cutoffRadius);
@@ -116,13 +123,12 @@ protected:
      */
     void determineNeighbours(CellIndex cell);
 
-
     /**
      * @brief Returns the index of the cell containing the specified position.
      * @param pos The 3D position of the cell.
      * @return The 3D index of the cell containing the specified position.
      */
-    CellIndex getIndexFromPos (const std::array<double, 3>& pos) const;
+    CellIndex getIndexFromPos(const std::array<double, 3>& pos) const;
 
 private:
     /// The size of the simulation domain in each dimension.
@@ -133,9 +139,6 @@ private:
 
     /// The cutoff radius for particle interactions.
     double cutoffRadius;
-
-    // The top-left-front point of the domain
-    std::array<double, 3> domainOrigin;
 
     /// The dimensions of the cell grid in each dimension.
     std::array<size_t, 3> gridDimensions;
@@ -158,7 +161,20 @@ public:
          * @param boundaries A reference to the vector of boundary cell indices.
          * @param end Set to true to create an end iterator.
          */
-        explicit BoundaryIterator(std::vector<CellIndex>& boundaries, bool end = false);
+        BoundaryIterator(Position position, std::array<size_t, 3> gridDimensions, bool is2D);
+
+        /**
+         * @brief Returns an iterator to the beginning of boundary cells of the given position (for
+         * range based loop)
+         * @return The beginning BoundaryIterator
+         */
+        BoundaryIterator begin();
+        /**
+         * @brief Returns an iterator to the end of boundary cells of the given position (for range
+         * based loop)
+         * @return The end BoundaryIterator
+         */
+        BoundaryIterator end();
 
         /**
          * @brief Dereferences the iterator, returning the current CellIndex.
@@ -180,11 +196,16 @@ public:
         bool operator!=(const BoundaryIterator& other) const;
 
     private:
-        /// The current index in the boundary cell vector.
+        /// The current index in the boundaries vector.
         size_t index;
 
-        /// A reference to the vector of boundary cell indices.
-        std::vector<CellIndex>& boundaries;
+        /// The relevant boundaries to consider
+        std::vector<CellIndex> boundaries;
+
+        /// The dimensions of the grid
+        std::array<size_t, 3> gridDimensions;
+
+        bool is2D; /**< True if the grid is 2D, false if 3D. */
     };
 
     /** @class HaloIterator
@@ -197,7 +218,20 @@ public:
          * @param halos A reference to the vector of halo cell indices.
          * @param end Set to true to create an end iterator.
          */
-        explicit HaloIterator(std::vector<CellIndex>& halos, bool end = false);
+        HaloIterator(Position position, std::array<size_t, 3> gridDimensions, bool is2D);
+
+        /**
+         * @brief Returns an iterator to the beginning of halo cells of the given position (for
+         * range based loop)
+         * @return The beginning HaloIterator
+         */
+        HaloIterator begin();
+        /**
+         * @brief Returns an iterator to the end of halo cells of the given position (for range
+         * based loop)
+         * @return The end HaloIterator
+         */
+        HaloIterator end();
 
         /**
          * @brief Dereferences the iterator, returning the current CellIndex.
@@ -219,10 +253,14 @@ public:
         bool operator!=(const HaloIterator& other) const;
 
     private:
-        /// A reference to the vector of halo cell indices.
-        std::vector<CellIndex>& halos;
+        /// The relevant boundaries to consider
+        std::vector<CellIndex> boundaries;
+
+        std::array<size_t, 3> gridDimensions;
 
         /// The current index in the halo cell vector.
         size_t index;
+
+        bool is2D; /**< True if the grid is 2D, false if 3D. */
     };
 };

@@ -6,6 +6,7 @@
 #define PARTICLECONTAINER_H
 
 #include "Particle.h"
+#include <unordered_map>
 #include <vector>
 
 /**
@@ -31,6 +32,13 @@ public:
      * @return void
      */
     void addParticle(const Particle& p);
+
+    /**
+     * @brief Removes the particles in the map from the container
+     * @param particleMap The particles to be removed (true if remove)
+     * @return void
+     */
+    void removeParticles(std::unordered_map<Particle*, bool>& particleMap);
 
     /**
      * @brief Get the particles within the container

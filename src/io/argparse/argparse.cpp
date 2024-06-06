@@ -114,6 +114,8 @@ SimulationType unsignedToSimulationType(unsigned value)
         return SimulationType::LJ;
     case 2:
         return SimulationType::LINKED_LJ;
+    case 3:
+        return SimulationType::DOMAIN_LJ;
     default:
         spdlog::warn("Unknown simulation type: {}", value);
         exit(EXIT_FAILURE);

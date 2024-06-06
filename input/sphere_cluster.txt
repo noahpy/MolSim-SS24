@@ -12,4 +12,4 @@
 #   - Spherical Cluster
 #     S posx posy posz radius sphereDimensions spacing mass meanVel vx vy vz dimBrownian
 
-S 0.0 0.0 0.0 8 3 1.1225 1 0.1 1 2 3 3
+S 0.0 0.0 0.0 4 2 1.1225 1 0.1 -30 0 0 2
