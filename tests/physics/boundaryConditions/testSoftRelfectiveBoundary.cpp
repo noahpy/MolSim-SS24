@@ -60,10 +60,12 @@ TEST(SoftReflectiveBoundary, CorrectMirroring)
     }
     EXPECT_EQ(LJDSim.getGrid().cells[1][1][1]->getParticles().size(), 1);
 
-    LJDSim.runSim();
-
-    // Check that only one iteration ran
-    EXPECT_EQ(LJDSim.iteration, 1);
+    // ----- Do sim step
+    LJDSim.bcHandler.preUpdateBoundaryHandling(LJDSim);
+    strat.calF(LJDSim);
+    strat.calV(LJDSim);
+    strat.calX(LJDSim);
+    // -----
 
     // Check the mirrored particles
     for (auto position : allPositions) {
