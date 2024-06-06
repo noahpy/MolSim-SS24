@@ -9,6 +9,9 @@
 #include <gtest/gtest.h>
 #include <vector>
 
+// Test if the soft reflective Boundary calculates the right position for the particles used to
+// reflect the particle in a boundary cell. Compare these coordinates with hand calculated
+// coordinates
 TEST(SoftReflectiveBoundary, CorrectMirroring)
 {
     spdlog::set_level(spdlog::level::off);
@@ -69,7 +72,8 @@ TEST(SoftReflectiveBoundary, CorrectMirroring)
                                       .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
                                       ->getParticles()) {
                 for (int i = 0; i < 3; i++) {
-                    EXPECT_NEAR(particle.get().getX()[i], expectedMirroredParticles[position][i], 1e-8);
+                    EXPECT_NEAR(
+                        particle.get().getX()[i], expectedMirroredParticles[position][i], 1e-8);
                 }
             }
         }
