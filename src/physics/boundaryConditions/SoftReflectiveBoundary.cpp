@@ -3,6 +3,9 @@
 #include "simulation/LennardJonesDomainSimulation.h"
 #include "utils/ArrayUtils.h"
 
+// forward declare
+size_t getRelevantDimension(const std::array<double, 3>& normal);
+
 void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 {
     const LennardJonesDomainSimulation& LGDSim =
@@ -11,10 +14,14 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
     // reset old halo references used previously
-    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position))
+    // TODO
+    // But keep in mind, that a particle could have crossed the line and is now within the halo
+    // cells Those should not be removed
+    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
         LGDSim.getGrid()
             .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
             ->clearParticles();
+    }
 
     for (auto boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
         for (auto& particle :
@@ -39,6 +46,25 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 
             // Get the position of the halo cell by mirroring the particle about the boundary
             std::array<double, 3> normal = getNormalVectorOfBoundary(position);
+
+            // We need to check, if the particle has moved beyond the boundary. If so, set it back
+            // into the domain
+            size_t relevantDimension = getRelevantDimension(normal);
+            /* pos - pointOnBoundaryPlane -> vector from pointOnBoundaryPlane to pos
+             * This vector should point inward i.e. towards the center, as long as it is inside the
+             * domain The normal vector is also always pointing inward Therefore the product will
+             * only be greater than 0, if the particle is inside the domain (same sign)
+             */
+            bool isInsideDomain =
+                (pos - pointOnBoundaryPlane)[relevantDimension] * normal[relevantDimension] > 0;
+            if (!isInsideDomain) {
+                // set the position back into the domain
+                pos[relevantDimension] = pointOnBoundaryPlane[relevantDimension];
+                // normal is always pointing inward, thus set the particle upto 0.05 to the boundary
+                pos = pos + 0.1 * normal;
+                particle.get().setX(pos);
+            }
+
             std::array<double, 3> diff = pointOnBoundaryPlane - pos;
             double dotProd =
                 std::inner_product(std::begin(diff), std::end(diff), std::begin(normal), 0.0);
@@ -75,4 +101,22 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
         insertedParticles.erase(
             insertedParticles.begin() + (long)insertionIndex, insertedParticles.end());
     }
+}
+
+/**
+ * @brief Get the dimension that is relevant to the boundary
+ * @details E.g. if the point on the boundary is (1,2,3) and the normal vector to that plane is
+ * (-1,0,0) (LEFT-Boundary), then return 0 as that is the index of the coordinate of interest
+ * @param normal The normal vector to the plane
+ * @return The index of the relevant dimension
+ */
+size_t getRelevantDimension(const std::array<double, 3>& normal)
+{
+    size_t relevantDimension = 0;
+    for (size_t i = 0; i < 3; i++)
+        if (normal[i] != 0) {
+            relevantDimension = i;
+            break;
+        }
+    return relevantDimension;
 }
