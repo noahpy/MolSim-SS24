@@ -1,11 +1,11 @@
 
 #include "CellGrid.h"
 #include "models/linked_cell/cell/Cell.h"
-#include "utils/ArrayUtils.h"
 #include "utils/Position.h"
 #include <cmath>
 #include <cwchar>
 #include <spdlog/spdlog.h>
+#include "utils/ArrayUtils.h"
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
@@ -41,7 +41,6 @@ void CellGrid::determineNeighbours(CellIndex cell)
                 CellIndex neighbourIndex = { cell[0] + i, cell[1] + j, cell[2] + k };
 
                 auto positions = relCoordinateToPos({ i, j, k });
-
                 switch (determineCellType(neighbourIndex)) {
                 case CellType::Boundary:
                     cells.at(cell[0]).at(cell[1]).at(cell[2])->boundaryNeighbours.emplace_back(

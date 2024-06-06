@@ -2196,6 +2196,66 @@ class sphere_t: public ::xml_schema::type
   //@}
 
   /**
+   * @name vel
+   *
+   * @brief Accessor and modifier functions for the %vel
+   * required element.
+   *
+   * The initial velocity of the sphere in 3D space.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::doubleVec_t vel_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< vel_type, char > vel_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const vel_type&
+  vel () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  vel_type&
+  vel ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  vel (const vel_type& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly
+   * instead of making a copy.
+   */
+  void
+  vel (::std::unique_ptr< vel_type > p);
+
+  //@}
+
+  /**
    * @name radius
    *
    * @brief Accessor and modifier functions for the %radius
@@ -2294,6 +2354,66 @@ class sphere_t: public ::xml_schema::type
   //@}
 
   /**
+   * @name sphereDim
+   *
+   * @brief Accessor and modifier functions for the %sphereDim
+   * required element.
+   *
+   * The dimensions of the sphere.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::dimension_t sphereDim_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< sphereDim_type, char > sphereDim_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const sphereDim_type&
+  sphereDim () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  sphereDim_type&
+  sphereDim ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  sphereDim (const sphereDim_type& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly
+   * instead of making a copy.
+   */
+  void
+  sphereDim (::std::unique_ptr< sphereDim_type > p);
+
+  //@}
+
+  /**
    * @name spacing
    *
    * @brief Accessor and modifier functions for the %spacing
@@ -2343,6 +2463,115 @@ class sphere_t: public ::xml_schema::type
   //@}
 
   /**
+   * @name brownVel
+   *
+   * @brief Accessor and modifier functions for the %brownVel
+   * required element.
+   *
+   * The Brownian motion velocity.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ brownVel_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< brownVel_type, char, ::xsd::cxx::tree::schema_type::double_ > brownVel_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const brownVel_type&
+  brownVel () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  brownVel_type&
+  brownVel ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  brownVel (const brownVel_type& x);
+
+  //@}
+
+  /**
+   * @name brownDim
+   *
+   * @brief Accessor and modifier functions for the %brownDim
+   * required element.
+   *
+   * The dimension affected by Brownian motion.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::dimension_t brownDim_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< brownDim_type, char > brownDim_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const brownDim_type&
+  brownDim () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  brownDim_type&
+  brownDim ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  brownDim (const brownDim_type& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly
+   * instead of making a copy.
+   */
+  void
+  brownDim (::std::unique_ptr< brownDim_type > p);
+
+  //@}
+
+  /**
    * @name Constructors
    */
   //@{
@@ -2352,9 +2581,13 @@ class sphere_t: public ::xml_schema::type
    * initializers for required elements and attributes.
    */
   sphere_t (const center_type&,
+            const vel_type&,
             const radius_type&,
             const mass_type&,
-            const spacing_type&);
+            const sphereDim_type&,
+            const spacing_type&,
+            const brownVel_type&,
+            const brownDim_type&);
 
   /**
    * @brief Create an instance from the ultimate base and
@@ -2365,9 +2598,13 @@ class sphere_t: public ::xml_schema::type
    * instead of making copies.
    */
   sphere_t (::std::unique_ptr< center_type >,
+            ::std::unique_ptr< vel_type >,
             const radius_type&,
             const mass_type&,
-            const spacing_type&);
+            const sphereDim_type&,
+            const spacing_type&,
+            const brownVel_type&,
+            const brownDim_type&);
 
   /**
    * @brief Create an instance from a DOM element.
@@ -2440,9 +2677,13 @@ class sphere_t: public ::xml_schema::type
 
   protected:
   ::xsd::cxx::tree::one< center_type > center_;
+  ::xsd::cxx::tree::one< vel_type > vel_;
   ::xsd::cxx::tree::one< radius_type > radius_;
   ::xsd::cxx::tree::one< mass_type > mass_;
+  ::xsd::cxx::tree::one< sphereDim_type > sphereDim_;
   ::xsd::cxx::tree::one< spacing_type > spacing_;
+  ::xsd::cxx::tree::one< brownVel_type > brownVel_;
+  ::xsd::cxx::tree::one< brownDim_type > brownDim_;
 
   //@endcond
 };
