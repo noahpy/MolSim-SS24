@@ -642,3 +642,44 @@ TEST(CellGridOrientation, BackParticleInBoundary)
 
     EXPECT_EQ(particleCount, 1);
 }
+
+// Test if particles in the corners are mapped to the right cells
+TEST(CellGridBoundCoorindates, CornerParticlesAreMappedToRightCell)
+{
+    std::array<double, 3> domain_origin = { -10, -10, -10 };
+    std::array<double, 3> domain_size = { 60, 40, 60 };
+    std::array<double, 3> vel = { 0, -30, 0 };
+    double cutoff = 5;
+
+    // Particles see paraview
+    std::vector<Particle> particles {
+        Particle { { -9.1, -9.1, -9.1 }, vel, 1 }, // left-bottom-back
+        Particle { { 49.1, -9.1, -9.1 }, vel, 1 }, // right-bottom-back
+        Particle { { 49.1, 29.1, -9.1 }, vel, 1 }, // right-top-back
+        Particle { { -9.1, 29.1, -9.1 }, vel, 1 }, // left-top-back
+        Particle { { -9.1, -9.1, 49.1 }, vel, 1 }, // left-bottom-front
+        Particle { { 49.1, -9.1, 49.1 }, vel, 1 }, // right-bottom-front
+        Particle { { 49.1, 29.1, 49.1 }, vel, 1 }, // right-top-front
+        Particle { { -9.1, 29.1, 49.1 }, vel, 1 }, // left-top-front
+    };
+
+    size_t left = 1, bottom = 1, back = 1;
+    size_t right = 12, top = 8, front = 12;
+
+    std::vector<CellIndex> expectedIndices = { { left, bottom, back },  { right, bottom, back },
+                                               { right, top, back },    { left, top, back },
+                                               { left, bottom, front }, { right, bottom, front },
+                                               { right, top, front },   { left, top, front } };
+
+    for (size_t i = 0; i < particles.size(); i++) {
+        CellGrid grid { domain_origin, domain_size, cutoff };
+
+        ParticleContainer container(std::vector<Particle> { particles[i] });
+        grid.addParticlesFromContainer(container);
+
+        CellIndex expectedIndex = expectedIndices[i];
+        EXPECT_EQ(
+            grid.cells[expectedIndex[0]][expectedIndex[1]][expectedIndex[2]]->getParticles().size(),
+            1);
+    }
+}
