@@ -29,7 +29,6 @@ void OverflowBoundary::postUpdateBoundaryHandling(Simulation& simulation)
         particle.get().setV({ 0, 0, 0 });
         particle.get().setF({ 0, 0, 0 });
         particle.get().setOldF({ 0, 0, 0 });
-        particle.get().setX({ -50, -50, -50 });
     }
 
     /*
