@@ -95,9 +95,9 @@ void force_lennard_jones_lc(const Simulation& sim)
     const CellGrid& cellGrid = len_sim.getGrid();
 
     // for all cells in the grid
-    for (size_t x = 0; x < cellGrid.cells.size(); ++x) {
-        for (size_t y = 0; y < cellGrid.cells[0].size(); ++y) {
-            for (size_t z = 0; z < cellGrid.cells[0][0].size(); ++z) {
+    for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
+        for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
+            for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1; ++z) {
                 // calculate the LJ forces in the cell
                 for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
@@ -121,3 +121,4 @@ void force_lennard_jones_lc(const Simulation& sim)
         }
     }
 }
+
