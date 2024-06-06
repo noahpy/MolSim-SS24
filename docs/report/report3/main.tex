@@ -96,10 +96,18 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
         \item If a neighboring cell's \texttt{neighborCounter} is greater than 0, its counter is decreased, and the neighbor is ignored.
         \item Otherwise, the neighbor's index is added to the return list.
         \item The usage of simple increment and decrement operations ensure an efficient way to improve cell iteration and keep calculations to a minimum. The speedup of our linked-cell implementation is showcased in section\ \ref{subsec:perflc}.
+        \item A visual representation of the neighbor algorithm is showcased here\ \ref{fig:neighbor}.
     \end{itemize}
     \item We implemented the iterators for halo and boundary cells in a separate file for clarity.
     \item We extended the UML diagram for visualization of the new project structure as seen here\ \ref{fig:uml}. The added UML section ties into our previous UML diagram through the connection seen in\ \ref{fig:uml2}.
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{res/getNeighbor.drawio}
+    \caption{The \texttt{getNeighbourCells} algorithm visualized (Dotted line for decrease of counter and straight line for adding index of cell).}
+    \label{fig:neighbor}
+\end{figure}
 
 \begin{figure}[H]
     \centering
