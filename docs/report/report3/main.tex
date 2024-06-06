@@ -6,6 +6,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{placeins}
+\usepackage{booktabs}
+\usepackage{caption}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -47,6 +49,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
         \item Domain specifications and cutoff-radius
         \item Boundary condition specifications
     \end{itemize}
+    \item The directory containing generated C++ code, enabling XML parsing, is added to the include path for our target \texttt{src}
     \item We utilized several flags in the XSD CMake module:
     \begin{itemize}
         \item \texttt{cxx-tree}: Converts XML documents to a tree-like in-memory object model, generating corresponding C++ classes.
@@ -87,31 +90,70 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
     \item This file includes most necessary functions for running a simulation and calculating forces using the linked-cell algorithm.
     \item Noteworthy is the function \texttt{std::list<CellIndex> getNeighbourCells(const CellIndex\& cellIndex) const}, which returns a list of neighboring cell indices for a given cell:
     \begin{itemize}
-        \item It checks if the \texttt{visited} boolean of parameter cell is false. If not visited, it stores the particle forces to the old forces and zeros them.
-        \item It iterates over each neighboring cell and increments \texttt{neighborCounter} for each non-halo neighbor.
-        \item If a neighboring cell's \texttt{neighborCounter} > 0, the counter is decreased, and the neighbor is ignored. If the counter reaches zero, the visited status is reset.
+        \item We needed an algorithm to utilize newton's third law on cell iteration level.
+        \item Similar to the unique pair iteration on the lists in cells, we implemented a method to distinguish between neighbor pairs, that already have been calculated.
+        \item Given an index to a cell, our function iterates over each neighboring cell and increments the parameter cell's \texttt{neighborCounter} for each non-halo neighbor.
+        \item If a neighboring cell's \texttt{neighborCounter} is greater than 0, its counter is decreased, and the neighbor is ignored.
         \item Otherwise, the neighbor's index is added to the return list.
-        \item If the neighbor hasn't been visited, the status is set to visited, and the particle forces are prepared for calculations.
+        \item The usage of simple increment and decrement operations ensure an efficient way to improve cell iteration and keep calculations to a minimum. The speedup of our linked-cell implementation is showcased in section\ \ref{subsec:perflc}.
     \end{itemize}
     \item We implemented the iterators for halo and boundary cells in a separate file for clarity.
+    \item We extended the UML diagram for visualization of the new project structure as seen here\ \ref{fig:uml}. The added UML section ties into our previous UML diagram through the connection seen in\ \ref{fig:uml2}.
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{res/UML3.drawio}
+    \caption{UML diagram extension.}
+    \label{fig:uml}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{res/UMLSimulation3.drawio}
+    \caption{Connection of the extended UML part and the overall UML diagram structure through abstract class Simulation.}
+    \label{fig:uml2}
+\end{figure}
 
 \subsection{Performance test}
 \label{subsec:perflc}
 
 \begin{itemize}
     \item We added a benchmark test for the linked-cell implementation \newline(see \texttt{bench/benchLinkedCell.cpp}).
-    \item We tested the performance of with the parameters stated in Task 2 \newline(see\ \ref{fig:timelc} and\ \ref{fig:timelclong}).
-    \item The hardware specifics for running the tests are shown here\ \ref{fig:specs}.
+    \item The performance was tested with the parameters stated in Task 2 and compared with our naive Lennard-Jones simulation.
+    \item The hardware specifics for running the tests are the same as last assignment.
+    \item The data collected can be seen below. Google benchmark provided a runtime analysis stated in Big O-notation.\newline
+    \newline
+    \begin{tabular}{|c|c|c|c|}
+        \toprule
+        Benchmark/\#Particles & Time & CPU & Iterations \\
+        \toprule
+        BM\_LJSimulation/1000 & 1.4485e+10 ns & 1.4477e+10 ns & 1 \\
+        \midrule
+        BM\_LJSimulation/2000 & 5.7983e+10 ns & 5.7959e+10 ns & 1 \\
+        \midrule
+        BM\_LJSimulation/4000 & 2.3180e+11 ns & 2.3171e+11 ns & 1 \\
+        \midrule
+        BM\_LJSimulation/8000 & 9.2722e+11 ns & 9.2686e+11 ns & 1 \\
+        \midrule
+        BM\_LJSimulation\_BigO & 14487.81 $N^2$ & 14482.20 $N^2$ & - \\
+        \midrule
+        BM\_LinkedLJSimulation/1000 & 28515871 ns & 28493193 ns & 25 \\
+        \midrule
+        BM\_LinkedLJSimulation/2000 & 54951418 ns & 54934137 ns & 13 \\
+        \midrule
+        BM\_LinkedLJSimulation/4000 & 114455900 ns & 114424760 ns & 6 \\
+        \midrule
+        BM\_LinkedLJSimulation/8000 & 236827726 ns & 236733811 ns & 3 \\
+        \midrule
+        BM\_LinkedLJSimulation\_BigO & 29304.28 $N$ & 29293.31 $N$ & - \\
+        \bottomrule
+    \end{tabular}
+    \item We can observe an improvement from squared to linear runtime!
+    \item A graphical representation with additional particle numbers are shown in\ \ref{fig:timelc} and\ \ref{fig:timelclong}.
 \end{itemize}
 
 \FloatBarrier
-
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{res/neofetch}
-    \caption{Hardware specifications for the performance tests.}
-    \label{fig:specs}
-\end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{res/lj_big_plot_linear}
@@ -121,7 +163,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{res/lj_big_plot_log}
-    \caption{linked-cell and naive simulation times with 1000 to 10000 particles and a logarithmic time scale}
+    \caption{linked-cell and naive simulation times with 1000 to 10000 particles on a logarithmic time scale}
     \label{fig:timelclong}
 \end{figure}
 
