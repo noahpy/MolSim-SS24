@@ -653,14 +653,14 @@ TEST(CellGridBoundCoorindates, CornerParticlesAreMappedToRightCell)
 
     // Particles see paraview
     std::vector<Particle> particles {
-        Particle { { -9.1, -9.1, -9.1 }, vel, 1 }, // left-bottom-back
-        Particle { { 49.1, -9.1, -9.1 }, vel, 1 }, // right-bottom-back
-        Particle { { 49.1, 29.1, -9.1 }, vel, 1 }, // right-top-back
-        Particle { { -9.1, 29.1, -9.1 }, vel, 1 }, // left-top-back
-        Particle { { -9.1, -9.1, 49.1 }, vel, 1 }, // left-bottom-front
-        Particle { { 49.1, -9.1, 49.1 }, vel, 1 }, // right-bottom-front
-        Particle { { 49.1, 29.1, 49.1 }, vel, 1 }, // right-top-front
-        Particle { { -9.1, 29.1, 49.1 }, vel, 1 }, // left-top-front
+        Particle { { -9.1, -9.1, -9.1 }, vel, 1 }, // left-bottom-back [val in paraview]
+        Particle { { 49.1, -9.1, -9.1 }, vel, 1 }, // right-bottom-back [val in paraview]
+        Particle { { 49.1, 29.1, -9.1 }, vel, 1 }, // right-top-back [val in paraview]
+        Particle { { -9.1, 29.1, -9.1 }, vel, 1 }, // left-top-back [val in paraview]
+        Particle { { -9.1, -9.1, 49.1 }, vel, 1 }, // left-bottom-front [val in paraview]
+        Particle { { 49.1, -9.1, 49.1 }, vel, 1 }, // right-bottom-front [val in paraview]
+        Particle { { 49.1, 29.1, 49.1 }, vel, 1 }, // right-top-front [val in paraview]
+        Particle { { -9.1, 29.1, 49.1 }, vel, 1 }, // left-top-front [val in paraview]
     };
 
     size_t left = 1, bottom = 1, back = 1;

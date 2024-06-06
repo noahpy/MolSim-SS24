@@ -265,10 +265,12 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
                         // Mark as visited
                         cells.at(nx).at(ny).at(nz)->visited = true;
                         // Set OldF to F and zero F
-                        auto particleRefs = cells.at(nx).at(ny).at(nz)->getParticles();
-                        for (auto& p : particleRefs) {
-                            p.get().setOldF(p.get().getF());
-                            p.get().setF({ 0.0, 0.0, 0.0 });
+                        ParticleRefList& particleRefs = cells.at(nx).at(ny).at(nz)->getParticles();
+                        auto it = particleRefs.begin();
+                        while (it != particleRefs.end()) {
+                            (*it).get().setOldF((*it).get().getF());
+                            (*it).get().setF({ 0.0, 0.0, 0.0 });
+                            ++it;
                         }
                     }
 
