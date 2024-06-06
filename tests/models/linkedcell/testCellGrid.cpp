@@ -1,9 +1,9 @@
 
+#include "io/fileWriter/VTKWriter.h"
 #include "models/ParticleContainer.h"
 #include "models/linked_cell/CellGrid.h"
 #include "models/linked_cell/cell/Cell.h"
 #include <array>
-#include <cmath>
 #include <gtest/gtest.h>
 #include <vector>
 
