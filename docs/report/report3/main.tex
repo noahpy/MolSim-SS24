@@ -188,9 +188,10 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
     \item We extended the particle generators with a class to generate sphere clusters (see \texttt{src/models/generators/SphereParticleCluster})
     \item The logic of sphere generation can be split into 2D and 3D:
     \begin{itemize}
-        \item 2D Discs: The disc is created as a collection of concentric rings of particles. \texttt{generateRing()} creates a ring of particles evenly spaced around a circumference and \texttt{generateDisc()} generates rings of particles with decreasing radii.
+        \item 2D Discs: The disc is created as a collection of concentric rings of particles. A ring is generated with particles evenly spaced around a circumference. Then rings with decreasing radii are accumulated to form a disc.
         \item 3D Sphere: The sphere is constructed as a stack of discs. Discs above and below the origin are iteratively generated with decreasing radii.
     \end{itemize}
+    \item Our generated sphere can be seen here\ \ref{fig:sphere}.
     \item Even spacing of particles in rings is achieved through the use of several trigonometric functions:
     \begin{enumerate}
         \item Angular step calculation:
@@ -212,5 +213,11 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
         \end{itemize}
     \end{enumerate}
 \end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{res/sphere}
+    \caption{A sphere created by our generation algorithm}
+    \label{fig:sphere}
+\end{figure}
 
 \end{document}
