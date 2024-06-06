@@ -176,7 +176,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
     \item The boundary condition is a virtual class, and provides functions for applying the conditions before and after updates in the cell grid.
     \item We have two implementations of boundary conditions as described in the third meeting:
     \begin{itemize}
-        \item \texttt{OverflowBoundary}: Particles are removed if they leave the domain.
+        \item \texttt{OverflowBoundary}: Particles, that would leave the domain, get stuck at boundaries and are considered removed, as they no longer take part in any calculations. We will provide a deletion of the particles from the actual particle vector in the future by changing the references to particles in cells to shared pointers.
         \item \texttt{SoftReflectiveBoundary}: Particles are reflected from the boundaries via a mirrored ghost particle in the neighboring halo cell. This required an additional function to find the relevant halo cell for creating the ghost particle.
     \end{itemize}
 \end{itemize}
@@ -192,7 +192,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
         \item 3D Sphere: The sphere is constructed as a stack of discs. Discs above and below the origin are iteratively generated with decreasing radii.
     \end{itemize}
     \item Our generated sphere can be seen here\ \ref{fig:sphere}.
-    \item Even spacing of particles in rings is achieved through the use of several trigonometric functions:
+    \item We achieve even spacing of particles in rings through the use of several trigonometric functions:
     \begin{enumerate}
         \item Angular step calculation:
         \begin{itemize}
