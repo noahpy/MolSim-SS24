@@ -15,9 +15,15 @@
     <domainSize>
       <x>180</x>
       <y>90</y>
-      <z>1</z>
+      <z>0</z>
     </domainSize>
     <cutoff>3.0</cutoff>
+    <boundaries>
+      <bound_four>overflow</bound_four>
+      <bound_four>overflow</bound_four>
+      <bound_four>overflow</bound_four>
+      <bound_four>overflow</bound_four>
+    </boundaries>
   </params>
   <clusters>
     <cuboid>

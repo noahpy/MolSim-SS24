@@ -9,4 +9,3 @@
  * @return void, will set the values of end_time, delta_t, and input
  */
 void argparse(int argc, char* argsv[], Params& params);
-

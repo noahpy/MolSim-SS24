@@ -9,7 +9,6 @@ enum BoundaryType { OVERFLOW, SOFT_REFLECTIVE };
 
 class BoundaryConfig {
 public:
-
     BoundaryConfig() = default;
 
     // 3D Config
@@ -38,13 +37,13 @@ public:
  * @brief Get the boundary type from a string
  * @param str
  */
-inline BoundaryType getBoundaryType(std::string str){
+inline BoundaryType getBoundaryType(std::string str)
+{
     if (str == "overflow") {
         return BoundaryType::OVERFLOW;
     } else if (str == "soft_reflective") {
         return BoundaryType::SOFT_REFLECTIVE;
-    }
-    else{
+    } else {
         spdlog::warn("Unknown boundary type: {}, choosing OVERFLOW", str);
         return BoundaryType::OVERFLOW;
     }
@@ -54,13 +53,13 @@ inline BoundaryType getBoundaryType(std::string str){
  * @brief Get the string representation of a boundary type
  * @param type
  */
-inline std::string getBoundaryString(BoundaryType type){
+inline std::string getBoundaryString(BoundaryType type)
+{
     if (type == BoundaryType::OVERFLOW) {
         return "overflow";
     } else if (type == BoundaryType::SOFT_REFLECTIVE) {
         return "soft_reflective";
-    }
-    else{
+    } else {
         spdlog::warn("Unknown boundary type, choosing OVERFLOW");
         return "overflow";
     }

@@ -1,11 +1,11 @@
 
 #include "CellGrid.h"
 #include "models/linked_cell/cell/Cell.h"
+#include "utils/ArrayUtils.h"
 #include "utils/Position.h"
 #include <cmath>
 #include <cwchar>
 #include <spdlog/spdlog.h>
-#include "utils/ArrayUtils.h"
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
