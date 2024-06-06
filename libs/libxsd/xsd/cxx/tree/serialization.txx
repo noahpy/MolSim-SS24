@@ -1,5 +1,4 @@
 // file      : xsd/cxx/tree/serialization.txx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #include <string>
@@ -97,10 +96,16 @@ namespace xsd
 
         if (!x.null_content () && x.dom_content ().present ())
         {
+          // Cannot use 'using namespace' because of MSXML conflict.
+          //
+          using xercesc::DOMAttr;
+          using xercesc::DOMNode;
+          using xercesc::DOMElement;
+          using xercesc::DOMDocument;
+          using xercesc::DOMNamedNodeMap;
+
           // Clone the contents of the element.
           //
-          using namespace xercesc;
-
           DOMDocument& doc (*e.getOwnerDocument ());
           const DOMElement& se (x.dom_content ().get ());
           DOMNamedNodeMap& sa (*se.getAttributes ());
@@ -642,7 +647,9 @@ namespace xsd
 
         if (x.qualified ())
         {
-          std::basic_string<C> p (xml::dom::prefix (x.namespace_ (), e));
+          // Note: prefix<C> in case uri doesn't derive from basic_string.
+          //
+          std::basic_string<C> p (xml::dom::prefix<C> (x.namespace_ (), e));
 
           if (!p.empty ())
             os << p << C (':');
@@ -660,8 +667,10 @@ namespace xsd
 
         if (x.qualified ())
         {
+          // Note: prefix<C> in case uri doesn't derive from basic_string.
+          //
           std::basic_string<C> p (
-            xml::dom::prefix (x.namespace_ (), *a.getOwnerElement ()));
+            xml::dom::prefix<C> (x.namespace_ (), *a.getOwnerElement ()));
 
           if (!p.empty ())
             os << p << C (':');
@@ -677,8 +686,10 @@ namespace xsd
       {
         if (x.qualified ())
         {
+          // Note: prefix<C> in case uri doesn't derive from basic_string.
+          //
           std::basic_string<C> p (
-            xml::dom::prefix (x.namespace_ (), ls.parent_));
+            xml::dom::prefix<C> (x.namespace_ (), ls.parent_));
 
           if (!p.empty ())
             ls.os_ << p << C (':');

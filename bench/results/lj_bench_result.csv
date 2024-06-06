@@ -1,0 +1,9 @@
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"BM_LJSimulation/1000",1,1.45081e+10,1.44988e+10,ns,,,,,
+"BM_LJSimulation/2000",1,5.81746e+10,5.81357e+10,ns,,,,,
+"BM_LJSimulation/4000",1,2.32488e+11,2.3234e+11,ns,,,,,
+"BM_LJSimulation/8000",1,9.29606e+11,9.29085e+11,ns,,,,,
+"BM_LinkedLJSimulation/1000",25,2.83776e+07,2.83673e+07,ns,,,,,
+"BM_LinkedLJSimulation/2000",13,5.54447e+07,5.54239e+07,ns,,,,,
+"BM_LinkedLJSimulation/4000",6,1.15477e+08,1.15429e+08,ns,,,,,
+"BM_LinkedLJSimulation/8000",3,2.36179e+08,2.36052e+08,ns,,,,,

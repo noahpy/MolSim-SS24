@@ -10,15 +10,20 @@ Simulation::Simulation(
     ParticleContainer& container,
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
-    std::unique_ptr<FileReader> reader)
+    std::unique_ptr<FileReader> reader,
+    unsigned frequency)
     : time(time)
     , delta_t(delta_t)
     , end_time(end_time)
+    , frequency(frequency)
     , container(container)
     , strategy(strat)
     , writer(std::move(writer))
     , reader(std::move(reader))
 {
-    // read simulation parameter from file
-    this->reader->readFile(*this);
+}
+
+void Simulation::setOutputFile(std::string output)
+{
+    this->writer->out_name = output;
 }

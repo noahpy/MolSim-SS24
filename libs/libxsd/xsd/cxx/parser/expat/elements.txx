@@ -1,5 +1,4 @@
 // file      : xsd/cxx/parser/expat/elements.txx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #include <new>     // std::bad_alloc
@@ -279,13 +278,14 @@ namespace xsd
         {
           parser_auto_ptr parser (XML_ParserCreateNS (0, XML_Char (' ')));
 
-          if (parser == 0)
+          if (parser.get () == 0)
             throw std::bad_alloc ();
 
           if (system_id || public_id)
-            parse_begin (parser, system_id ? *system_id : *public_id, eh);
+            parse_begin (
+              parser.get (), system_id ? *system_id : *public_id, eh);
           else
-            parse_begin (parser, eh);
+            parse_begin (parser.get (), eh);
 
           // Temporarily unset the exception failbit. Also clear the
           // fail bit when we reset the old state if it was caused
@@ -310,8 +310,10 @@ namespace xsd
               break;
             }
 
-            if (XML_Parse (
-                  parser, buf, is.gcount (), is.eof ()) == XML_STATUS_ERROR)
+            if (XML_Parse (parser.get (),
+                           buf,
+                           static_cast<int> (is.gcount ()),
+                           is.eof ()) == XML_STATUS_ERROR)
             {
               r = false;
               break;
@@ -335,7 +337,8 @@ namespace xsd
           //
           if (auto_xml_parser_.get () == 0)
           {
-            auto_xml_parser_ = XML_ParserCreateNS (0, XML_Char (' '));
+            auto_xml_parser_.reset (
+              XML_ParserCreateNS (0, XML_Char (' ')));
 
             if (auto_xml_parser_.get () == 0)
               throw std::bad_alloc ();

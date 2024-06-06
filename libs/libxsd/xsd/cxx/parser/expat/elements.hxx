@@ -1,5 +1,4 @@
 // file      : xsd/cxx/parser/expat/elements.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #ifndef XSD_CXX_PARSER_EXPAT_ELEMENTS_HXX
@@ -51,7 +50,9 @@ namespace xsd
           }
         };
 
-        typedef std::unique_ptr<XML_ParserStruct> parser_auto_ptr;
+        typedef
+        std::unique_ptr<XML_ParserStruct, parser_deleter>
+        parser_auto_ptr;
 #else
         // Simple auto pointer for Expat's XML_Parser object.
         //
@@ -83,6 +84,12 @@ namespace xsd
           get () const
           {
             return parser_;
+          }
+
+          void
+          reset (XML_Parser parser)
+          {
+            *this = parser;
           }
 
         private:

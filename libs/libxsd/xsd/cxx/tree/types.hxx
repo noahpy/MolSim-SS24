@@ -1,5 +1,4 @@
 // file      : xsd/cxx/tree/types.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 /**
@@ -267,6 +266,18 @@ namespace xsd
         operator= (const string& x)
         {
           base () = x;
+          return *this;
+        }
+
+      public:
+        /**
+         * @brief Explicitly "cast" to the base string type.
+         *
+         * @return A const reference to the instance as the base string type.
+         */
+        const std::basic_string<C>&
+        base_string () const
+        {
           return *this;
         }
       };
@@ -1078,6 +1089,11 @@ namespace xsd
             : B (x, f, c), base_type (x, f, this)
         {
         }
+
+#ifdef XSD_CXX11
+        nmtokens&
+        operator= (const nmtokens&) = default;
+#endif
 
         /**
          * @brief Copy the instance polymorphically.
@@ -2432,7 +2448,7 @@ namespace xsd
          * @brief Get a constant pointer to the referenced object.
          *
          * @return A constant pointer to the referenced object or 0 if
-         * the object is not found.
+         * the object of this type is not found.
          */
         const ref_type*
         get () const
@@ -2444,7 +2460,7 @@ namespace xsd
          * @brief Get a pointer to the referenced object.
          *
          * @return A pointer to the referenced object or 0 if the object
-         * is not found.
+         * of this type is not found.
          */
         ref_type*
         get ()
@@ -2559,6 +2575,11 @@ namespace xsd
             : B (x, f, c), base_type (x, f, this)
         {
         }
+
+#ifdef XSD_CXX11
+        idrefs&
+        operator= (const idrefs&) = default;
+#endif
 
         /**
          * @brief Copy the instance polymorphically.
@@ -2868,6 +2889,18 @@ namespace xsd
           return *this;
         }
 
+      public:
+        /**
+         * @brief Explicitly "cast" to the base string type.
+         *
+         * @return A const reference to the instance as the base string type.
+         */
+        const std::basic_string<C>&
+        base_string () const
+        {
+          return *this;
+        }
+
       protected:
         //@cond
 
@@ -2967,6 +3000,11 @@ namespace xsd
           // Note that ns_ and name_ have no DOM association.
           //
         }
+
+#ifdef XSD_CXX11
+        qname&
+        operator= (const qname&) = default;
+#endif
 
         /**
          * @brief Copy the instance polymorphically.
@@ -3124,7 +3162,9 @@ namespace xsd
       class base64_binary: public B, public buffer<C>
       {
       public:
+        //@cond
         typedef typename buffer<C>::size_t size_t;
+        //@endcond
 
       public:
         /**
@@ -3343,7 +3383,9 @@ namespace xsd
       class hex_binary: public B, public buffer<C>
       {
       public:
+        //@cond
         typedef typename buffer<C>::size_t size_t;
+        //@endcond
 
       public:
         /**
@@ -3845,6 +3887,11 @@ namespace xsd
             : B (x, f, c), base_type (x, f, this)
         {
         }
+
+#ifdef XSD_CXX11
+        entities&
+        operator= (const entities&) = default;
+#endif
 
         /**
          * @brief Copy the instance polymorphically.

@@ -1,5 +1,6 @@
 
 
+#include "utils/Params.h"
 #include <getopt.h>
 #include <iostream>
 #include <spdlog/spdlog.h>
@@ -29,6 +30,8 @@ void printHelp(std::string progName)
               << "  -c                     Specify that the given input file describes clusters "
               << std::endl
               << "  -a                     Specify that the given input file is of type ascii art"
+              << std::endl
+              << "  -x                     Specify that the given input file is of type XML"
               << std::endl
               << "  -s, --simtype=VALUE    Specify simulation type (default: 0)" << std::endl
               << "  -w, --writetype=VALUE  Specify writer type (default: 0)" << std::endl
@@ -102,17 +105,37 @@ void convertToDouble(char* optarg, double& value)
     }
 }
 
-void argparse(
-    int argc,
-    char* argsv[],
-    double& end_time,
-    double& delta_t,
-    double& epsilon,
-    double& sigma,
-    std::string& input,
-    unsigned& reader_type,
-    unsigned& writer_type,
-    unsigned& simulation_type)
+SimulationType unsignedToSimulationType(unsigned value)
+{
+    switch (value) {
+    case 0:
+        return SimulationType::PLANET;
+    case 1:
+        return SimulationType::LJ;
+    case 2:
+        return SimulationType::LINKED_LJ;
+    case 3:
+        return SimulationType::DOMAIN_LJ;
+    default:
+        spdlog::warn("Unknown simulation type: {}", value);
+        exit(EXIT_FAILURE);
+    }
+}
+
+WriterType unsignedToWriterType(unsigned value)
+{
+    switch (value) {
+    case 0:
+        return WriterType::VTK;
+    case 1:
+        return WriterType::XYZ;
+    default:
+        spdlog::warn("Unknown writer type: {}", value);
+        exit(EXIT_FAILURE);
+    }
+}
+
+void argparse(int argc, char* argsv[], Params& params)
 {
     // Long options definition
     static struct option long_options[] = { { "delta_t", required_argument, 0, 'd' },
@@ -125,14 +148,15 @@ void argparse(
                                             { "help", no_argument, 0, 'h' },
                                             { 0, 0, 0, 0 } };
 
+    unsigned tmp;
     int opt;
-    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:a", long_options, NULL)) != -1) {
+    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:ax", long_options, NULL)) != -1) {
         switch (opt) {
         case 'd':
-            convertToDouble(optarg, delta_t);
+            convertToDouble(optarg, params.delta_t);
             break;
         case 'e':
-            convertToDouble(optarg, end_time);
+            convertToDouble(optarg, params.end_time);
             break;
         case 'l':
             int loglevel;
@@ -140,22 +164,27 @@ void argparse(
             spdlog::set_level(getLogLevel(loglevel));
             break;
         case 'E':
-            convertToDouble(optarg, epsilon);
+            convertToDouble(optarg, params.epsilon);
             break;
         case 'S':
-            convertToDouble(optarg, sigma);
+            convertToDouble(optarg, params.sigma);
             break;
         case 's':
-            convertToUnsigned(optarg, simulation_type);
+            convertToUnsigned(optarg, tmp);
+            params.simulation_type = unsignedToSimulationType(tmp);
             break;
         case 'w':
-            convertToUnsigned(optarg, writer_type);
+            convertToUnsigned(optarg, tmp);
+            params.writer_type = unsignedToWriterType(tmp);
             break;
         case 'c':
-            reader_type = 1;
+            params.reader_type = ReaderType::CLUSTER;
             break;
         case 'a':
-            reader_type = 3;
+            params.reader_type = ReaderType::ASCII;
+            break;
+        case 'x':
+            params.reader_type = ReaderType::XML;
             break;
         case 'h':
             printHelp(argsv[0]);
@@ -173,5 +202,5 @@ void argparse(
         exit(EXIT_FAILURE);
     }
 
-    input = argsv[optind];
+    params.input_file = argsv[optind];
 }

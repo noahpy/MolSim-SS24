@@ -23,6 +23,15 @@ public:
      */
     XYZWriter();
 
+    /*
+     * @brief Initializes the XYZWriter class
+     * @param out_name the name of the output file
+     */
+    XYZWriter(std::string out_name)
+        : FileWriter(out_name)
+    {
+    }
+
     /**
      * @brief Destructor for the XYZWriter class
      * @return void

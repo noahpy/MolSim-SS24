@@ -1,0 +1,17 @@
+
+\section{Boundary Conditions}
+\label{sec:boundary}
+
+\begin{frame}
+    \frametitle{Boundary Conditions}
+    \begin{itemize}
+        \item Integration on simulation level
+        \item Initialization from XML file via Boundary condition handler and configuration file
+        \item Pre- and post-update functions: Determine particles in question and apply boundary condition
+        \item \textbf{Two implementations:}
+        \begin{itemize}
+            \item OverflowBoundary: Particles leaving boundary get stuck and permanently ignored
+            \item SoftReflectiveBoundary: Particles reflect against ghost particles
+        \end{itemize}
+    \end{itemize}
+\end{frame}

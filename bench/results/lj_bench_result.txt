@@ -1,0 +1,15 @@
+---------------------------------------------------------------------
+Benchmark                           Time             CPU   Iterations
+---------------------------------------------------------------------
+BM_LJSimulation/1000       1.4485e+10 ns   1.4477e+10 ns            1
+BM_LJSimulation/2000       5.7983e+10 ns   5.7959e+10 ns            1
+BM_LJSimulation/4000       2.3180e+11 ns   2.3171e+11 ns            1
+BM_LJSimulation/8000       9.2722e+11 ns   9.2686e+11 ns            1
+BM_LJSimulation_BigO         14487.81 N^2    14482.20 N^2  
+BM_LJSimulation_RMS                 0 %             0 %    
+BM_LinkedLJSimulation/1000   28515871 ns     28493193 ns           25
+BM_LinkedLJSimulation/2000   54951418 ns     54934137 ns           13
+BM_LinkedLJSimulation/4000  114455900 ns    114424760 ns            6
+BM_LinkedLJSimulation/8000  236827726 ns    236733811 ns            3
+BM_LinkedLJSimulation_BigO   29304.28 N      29293.31 N    
+BM_LinkedLJSimulation_RMS           2 %             2 %    

@@ -1,0 +1,20 @@
+
+\section{XML Adaptation}
+\label{sec:xml}
+
+\begin{frame}
+    \frametitle{XML Format Adaptation}
+
+    \begin{itemize}
+        \item We defined XML structure and constraints using XSD .
+        \item Key elements: Standard parameters, linked-cell grid specifications, boundary conditions
+    \end{itemize}
+
+    \textbf{XSD CMake flags}:
+    \begin{itemize}
+        \item cxx-tree
+        \item --hxx-suffix=.h, --cxx-suffix=.cpp
+        \item --std=c++11
+        \item --generate-doxygen, --generate-serialization
+    \end{itemize}
+\end{frame}

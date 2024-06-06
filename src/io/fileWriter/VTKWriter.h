@@ -8,7 +8,7 @@
 #pragma once
 
 #include "io/fileWriter/FileWriter.h"
-#include "io/fileWriter/vtk-unstructured.h"
+#include "io/xsd/vtk-unstructured.h"
 #include "models/Particle.h"
 #include "simulation/baseSimulation.h"
 
@@ -24,6 +24,15 @@ public:
      * @return A new VTKWriter object
      */
     VTKWriter();
+
+    /**
+     * @brief This function initializes the VTKWriter class
+     * @param out_name the name of the output file
+     */
+    VTKWriter(std::string out_name)
+        : FileWriter(out_name)
+    {
+    }
 
     /**
      * @brief Destructor of the VTKWriter class

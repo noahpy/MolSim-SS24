@@ -59,7 +59,6 @@ void ClusterReader::readFile(Simulation& sim)
             generator.registerCluster(std::make_unique<SphereParticleCluster>(
                 SphereParticleCluster({ ox, oy, oz }, radius, sphereDim, h, m, { vx, vy, vz }, mv, dim)));
             break;
-
         default:
             spdlog::error("Invalid clusterType: {}", clusterType);
             exit(EXIT_FAILURE);

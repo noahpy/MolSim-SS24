@@ -24,6 +24,8 @@ public:
      * @param reader The reader object to read the input from file
      * @param epsilon The epsilon parameter of the Lennard-Jones potential
      * @param sigma The sigma parameter of the Lennard-Jones potential
+     * @param frequency The frequency for writing outputs
+     * @param read_file Set to true to read the input file
      */
     LennardJonesSimulation(
         double time,
@@ -34,13 +36,27 @@ public:
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
         double epsilon,
-        double sigma);
+        double sigma,
+        unsigned frequency = 10,
+        bool read_file = true);
 
     /**
      * @brief Run the simulation
      * @return void
      */
     void runSim() override;
+
+    /**
+     * @brief Set the epsilon parameter of the Lennard-Jones potential
+     * @param eps The new epsilon value
+     */
+    void setEpsilon(double eps);
+
+    /**
+     * @brief Set the sigma parameter of the Lennard-Jones potential
+     * @param sig The new sigma value
+     */
+    void setSigma(double sig);
 
     /**
      * @brief Get the epsilon parameter of the Lennard-Jones potential
@@ -73,6 +89,8 @@ public:
      * @return The gamma parameter i.e. -2 * sigma^12
      */
     double getGamma() const { return gamma; }
+
+    virtual ~LennardJonesSimulation() = default;
 
 protected:
     double epsilon; /**< The epsilon parameter of the Lennard-Jones potential */

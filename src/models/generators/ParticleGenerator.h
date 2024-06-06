@@ -1,6 +1,7 @@
 
 #pragma once
 #include "CuboidParticleCluster.h"
+#include "SphereParticleCluster.h"
 #include "models/ParticleContainer.h"
 #include <memory>
 

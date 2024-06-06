@@ -1,5 +1,4 @@
 // file      : xsd/cxx/tree/elements.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 /**
@@ -91,7 +90,7 @@ namespace xsd
          *
          * This flag only makes sense together with the @c keep_dom
          * flag in the call to the %parsing function with the
-         * @c dom::auto_ptr/unique_ptr<DOMDocument> argument.
+         * @c dom::auto_ptr/unique_ptr\<DOMDocument> argument.
          *
          */
         static const unsigned long own_dom = 0x00000200UL;
@@ -236,6 +235,8 @@ namespace xsd
         std::size_t index;
       };
 
+      //@cond
+
       bool
       operator== (const content_order&, const content_order&);
 
@@ -244,8 +245,6 @@ namespace xsd
 
       bool
       operator< (const content_order&, const content_order&);
-
-      //@cond
 
       // DOM user data keys.
       //
@@ -348,6 +347,7 @@ namespace xsd
          * is to allow statically-initialized default values of anyType type.
          */
         template <typename C>
+        explicit
         _type (const C* s);
 
       public:
@@ -458,7 +458,9 @@ namespace xsd
         // anyType content API.
         //
       public:
+        //@cond
         typedef element_optional dom_content_optional;
+        //@endcond
 
         /**
          * @brief Return a read-only (constant) reference to the anyType
@@ -1198,9 +1200,9 @@ namespace xsd
           dom_content_optional dom;
         };
 
-        //@endcond
-
         mutable XSD_AUTO_PTR<content_type> content_;
+
+        //@endcond
 
       private:
         container* container_;
@@ -1251,6 +1253,11 @@ namespace xsd
          * For polymorphic object models use the @c _clone function instead.
          */
         simple_type (const simple_type& x, flags f = 0, container* c = 0);
+
+#ifdef XSD_CXX11
+        simple_type&
+        operator= (const simple_type&) = default;
+#endif
 
         /**
          * @brief Copy the instance polymorphically.
@@ -1344,7 +1351,7 @@ namespace xsd
         /**
          * @brief Set the anySimpleType text content.
          *
-         * @param e A new text string to set.
+         * @param t A new text string to set.
          */
         void
         text_content (const std::basic_string<C>& t);
@@ -1615,6 +1622,11 @@ namespace xsd
         {
         }
 
+#ifdef XSD_CXX11
+        fundamental_base&
+        operator= (const fundamental_base&) = default;
+#endif
+
         /**
          * @brief Copy the instance polymorphically.
          *
@@ -1837,11 +1849,18 @@ namespace xsd
           return s < table_[i];
         }
 
+        // This overload shouldn't be necessary according to the standard
+        // and removing it doesn't appear to trip any old compilers that
+        // we still support. But let's keeps preprocessed-out until we
+        // go C++11-only.
+        //
+#if 0
         bool
         operator() (std::size_t i, std::size_t j) const
         {
           return std::basic_string<C> (table_[i]) < table_[j];
         }
+#endif
 
       private:
         const C* const* table_;
