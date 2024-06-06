@@ -220,6 +220,7 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/3
             \item $x_i = \text{origin}_x + r \cos(i \theta)\newline y_i = \text{origin}_y + r \sin(i \theta)\newline z_i = \text{origin}_z + \text{z\_offset}$
         \end{itemize}
     \end{enumerate}
+    \item Letting the disc fly against the wall works as intended until higher iterations. A problem, we observed, are particles that reflect against corners of the boundary, where these particles accelerate heavily to unknown reasons.
 \end{itemize}
 
 \begin{figure}[H]
