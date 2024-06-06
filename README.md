@@ -51,8 +51,18 @@ src/MolSim ../input/eingabe-sonne.txt -e 1000
 ```
 #### Assignment 2 simulation
 ```
-src/MolSim ../input/clusters.txt -c -s 2 -d 0.0002 -e 5
+src/MolSim ../input/clusters.txt -c -s 1 -d 0.0002 -e 5
 ```
+#### Assignment 3 simulation
+Cuboid collision:
+```
+src/MolSim ../input/assign3.xml -x -s 3
+```
+Falling drop:
+```
+src/MolSim ../input/falling_drop.xml -x -s 3
+```
+
 For more information about arguments and default settings, type:
 ```
 src/MolSim -h
