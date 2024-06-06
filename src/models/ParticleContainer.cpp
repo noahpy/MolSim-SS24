@@ -6,6 +6,11 @@
 #include "Particle.h"
 #include <algorithm>
 
+ParticleContainer::ParticleContainer()
+{
+    this->particles = std::vector<Particle> {};
+}
+
 ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
 {
     this->particles = particles;
