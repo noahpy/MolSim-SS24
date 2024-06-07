@@ -1,11 +1,11 @@
 
 #include "CellGrid.h"
 #include "models/linked_cell/cell/Cell.h"
+#include "utils/ArrayUtils.h"
 #include "utils/Position.h"
 #include <cmath>
 #include <cwchar>
 #include <spdlog/spdlog.h>
-#include "utils/ArrayUtils.h"
 
 CellGrid::CellGrid(
     const std::array<double, 3> domainOrigin,
@@ -209,6 +209,13 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
 
 std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) const
 {
+    if ((cellIndex[0] == 4 && (cellIndex[1] == 5 || cellIndex[1] == 4)) ||
+        (cellIndex[0] == 5 && cellIndex[1] == 4)) {
+        int a = 0;
+    }
+    if (cellIndex[0] == 5 && cellIndex[1] == 5) {
+        int a = 0;
+    }
     std::list<CellIndex> cellList;
 
     // If not all neighbours have been paired up, return an empty list
@@ -221,6 +228,9 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
     // check if this cell was not visited
     if (!cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited) {
         // Mark this cell as visited
+        if ((cellIndex[0] == 5) && (cellIndex[1] == 5)) {
+            int a = 0;
+        }
         cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = true;
         // Set forces
         auto particleRefs =
@@ -250,6 +260,9 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
                         cells.at(nx).at(ny).at(nz)->decrementCounter();
                         // if counter reached zero, reset visited
                         if (cells.at(nx).at(ny).at(nz)->getCounter() == 0) {
+                            if (nx == 5 && ny == 5) {
+                                int a = 0;
+                            }
                             cells.at(nx).at(ny).at(nz)->visited = false;
                         }
                         // Skip this neighbour
@@ -261,6 +274,9 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
 
                     // check if not visited yet
                     if (!cells.at(nx).at(ny).at(nz)->visited) {
+                        if (nx == 5 && ny == 5) {
+                            int a = 0;
+                        }
                         // Mark as visited
                         cells.at(nx).at(ny).at(nz)->visited = true;
                         // Set OldF to F and zero F
@@ -285,6 +301,12 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
         }
     }
 
+    // If there are no relevant neighbors (i.e. all neighbors did already do their calculations)
+    // We need to set visited to false again, as the force calculation is done for the iteration
+    // This is an edge case
+    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() == 0) {
+        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = false;
+    }
     return cellList;
 }
 
