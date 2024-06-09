@@ -45,6 +45,7 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                 insertedParticles[insertionIndex].setX(haloPosition);
                 insertedParticles[insertionIndex].setV({ 0, 0, 0 });
                 insertedParticles[insertionIndex].setF({ 0, 0, 0 });
+                insertedParticles[insertionIndex].setOldF({ 0, 0, 0 });
                 insertedParticles[insertionIndex].setM(particle.get().getM());
             } else {
                 // create a new particle
