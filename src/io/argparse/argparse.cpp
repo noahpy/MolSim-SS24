@@ -129,6 +129,8 @@ WriterType unsignedToWriterType(unsigned value)
         return WriterType::VTK;
     case 1:
         return WriterType::XYZ;
+    case 2:
+        return WriterType::XML;
     default:
         spdlog::warn("Unknown writer type: {}", value);
         exit(EXIT_FAILURE);
