@@ -105,6 +105,34 @@
         </xs:choice>
 </xs:complexType>
 
+   <!-- Particle data definitions -->
+
+   <xs:simpleType name='DecimalList_t'>
+    <xs:list itemType='xs:decimal'/>
+  </xs:simpleType>
+
+
+  <xs:complexType name="DecimalArray_t">
+    <xs:simpleContent>
+      <xs:extension base="DecimalList_t">
+        <xs:attribute name="dim" type="dimension_t" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  
+  <xs:complexType name="ParticleData_t">
+      <xs:sequence>
+        <xs:element name="PointData" type="DecimalArray_t"/>
+        <xs:element name="VelData" type="DecimalArray_t"/>
+        <xs:element name="ForceData" type="DecimalArray_t"/>
+        <xs:element name="OldForceData" type="DecimalArray_t"/>
+        <xs:element name="MassData" type="DecimalArray_t"/>
+        <xs:element name="TypeData" type="DecimalArray_t"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
   <!-- Cluster definitions -->
 
   <xs:complexType name="cuboid_t">
@@ -267,6 +295,13 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
+      <xs:element name="start_time" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Start time for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="delta_t" type="xs:double" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
@@ -367,6 +402,13 @@
         <xs:annotation>
           <xs:documentation>
             The collection of clusters to be simulated.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="particles" type="ParticleData_t" minOccurs="0">
+         <xs:annotation>
+          <xs:documentation>
+            Data of unresembled particles.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
