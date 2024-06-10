@@ -6,6 +6,7 @@
 BoundaryConditionHandler::BoundaryConditionHandler(const BoundaryConfig& boundaryConfig)
     : boundaryConditions()
     , dimensionality((boundaryConfig.boundaryMap.size() == 6) ? 3 : 2)
+    , boundaryConfig(boundaryConfig)
 {
     if (boundaryConfig.boundaryMap.size() != 6 && boundaryConfig.boundaryMap.size() != 4) {
         spdlog::error("BoundaryConfig must have 4 (2D) or 6 (3D) boundaries.");

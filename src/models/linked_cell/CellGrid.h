@@ -104,6 +104,24 @@ public:
      * */
     void setCutoffRadius(double cutoffRadius);
 
+    /**
+     * @brief Returns the domain origin.
+     * @return The domain origin.
+     * */
+    inline std::array<double, 3> getDomainOrigin() const { return domainOrigin; }
+
+    /**
+     * @brief Returns the domain size.
+     * @return The domain size.
+     * */
+    inline std::array<double, 3> getDomainSize() const { return domainSize; }
+
+    /**
+     * @brief Returns the cutoff radius.
+     * @return The cutoff radius.
+     * */
+    inline double getCutoffRadius() const { return cutoffRadius; }
+
 protected:
     /**
      * @brief Initializes the grid structure based on the domain size and cutoff radius.
