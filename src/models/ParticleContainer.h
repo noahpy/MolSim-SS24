@@ -19,6 +19,8 @@ public:
      */
     std::vector<Particle> particles;
 
+    //int activeParticleCount;
+
     /**
      * @brief Construct a new Particle Container object
      * @param particles The particles to be added to the container

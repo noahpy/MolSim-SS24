@@ -22,9 +22,16 @@ VTKWriter::~VTKWriter() = default;
 
 void VTKWriter::plotParticles(const Simulation& s)
 {
-    initializeOutput(s.container.particles.size());
+    int activeParticleCount = 0;
     for (auto& p : s.container) {
-        plotParticle(p);
+        if (p.getActivity() == true) {
+            activeParticleCount++;
+        }
+    }
+    initializeOutput(activeParticleCount);
+    for (auto& p : s.container) {
+        if (p.getActivity() == true)
+            plotParticle(p);
     }
 
     writeFile(this->out_name, s.iteration);
