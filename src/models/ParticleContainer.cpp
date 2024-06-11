@@ -56,6 +56,52 @@ std::vector<Particle>::iterator ParticleContainer::end()
     return particles.end();
 }
 
+// ActiveIterator Implementation
+ParticleContainer::ActiveIterator ParticleContainer::beginActive()
+{
+    return { particles.begin(), particles.end() };
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::endActive()
+{
+    return { particles.end(), particles.end() };
+}
+
+void ParticleContainer::ActiveIterator::advanceToNextActive()
+{
+    while (current != end && !current->getActivity()) {
+        ++current;
+    }
+}
+
+ParticleContainer::ActiveIterator::ActiveIterator(std::vector<Particle>::iterator start, std::vector<Particle>::iterator end)
+    : current(start), end(end)
+{
+    advanceToNextActive();
+}
+
+Particle& ParticleContainer::ActiveIterator::operator*() const
+{
+    return *current;
+}
+
+ParticleContainer::ActiveIterator& ParticleContainer::ActiveIterator::operator++()
+{
+    ++current;
+    advanceToNextActive();
+    return *this;
+}
+
+bool ParticleContainer::ActiveIterator::operator!=(const ActiveIterator& other) const
+{
+    return current != other.current;
+}
+
+bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) const
+{
+    return current == other.current;
+}
+
 // Returns an iterator to the first pair of particles
 ParticleContainer::PairIterator ParticleContainer::beginPairs()
 {

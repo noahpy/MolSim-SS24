@@ -3,6 +3,7 @@
 #include "models/ParticleContainer.h"
 #include <gtest/gtest.h>
 #include <vector>
+#include <spdlog/spdlog.h>
 
 std::array<double, 3> zeros { 0, 0, 0 };
 std::array<double, 3> ones { 1, 1, 1 };
@@ -202,4 +203,76 @@ TEST(PContainerTests, pairItZero)
     }
 
     EXPECT_EQ(count, 0);
+}
+
+// Check if active particle iteration works
+TEST(PContainerTests, particleActiveIterate)
+{
+    Particle p1 { zeros, zeros, 5, 0 };
+    Particle p2 { zeros, zeros, 3, 0 };
+    Particle p3 { zeros, zeros, 1, 0 };
+
+    std::vector<Particle> particles { p1, p2, p3 };
+
+    ParticleContainer container { particles };
+    container.particles[1].setActivity(false);
+
+    double result = 0;
+    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
+        Particle p = *it;
+        result += p.getM();
+    }
+
+    EXPECT_EQ(result, 6);
+
+    container.particles[1].setActivity(true);
+    container.particles[0].setActivity(false);
+
+    result = 0;
+    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
+        Particle p = *it;
+        result += p.getM();
+    }
+
+    EXPECT_EQ(result, 4);
+
+    container.particles[0].setActivity(true);
+    container.particles[2].setActivity(false);
+
+    result = 0;
+    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
+        Particle p = *it;
+        result += p.getM();
+    }
+
+    EXPECT_EQ(result, 8);
+}
+
+// check if modifying F works with the active particle iteration
+TEST(PContainerTests, particleActiveItModF)
+{
+    Particle p1 { zeros, zeros, 5, 0 };
+    Particle p2 { zeros, zeros, 3, 0 };
+    Particle p3 { zeros, zeros, 1, 0 };
+
+    std::vector<Particle> particles { p1, p2, p3 };
+
+    ParticleContainer container { particles };
+    container.particles[0].setActivity(false);
+
+    double result = 0;
+    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
+        Particle& p = *it;
+        result += p.getF()[0];
+        p.setF(ones);
+    }
+
+    EXPECT_EQ(result, 0);
+
+    result = 0;
+    for (auto& p : container) {
+        result += p.getF()[0];
+    }
+
+    EXPECT_EQ(result, 2);
 }

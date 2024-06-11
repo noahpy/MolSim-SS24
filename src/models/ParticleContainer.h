@@ -69,7 +69,77 @@ public:
     std::vector<Particle>::iterator end();
 
     /**
-     * @brief Pair Iterator nested class for iterating over all pairs of particles
+     * @brief Forward declaration for iteration over active particles
+     */
+    class ActiveIterator;
+
+    /**
+     * @brief Get the iterator to the first active particle
+     * @return The iterator to the first active particle
+     */
+    ActiveIterator beginActive();
+
+    /**
+     * @brief Get the iterator to the last active particle
+     * @return The iterator to the last active particle
+     */
+    ActiveIterator endActive();
+
+    /**
+     * @brief Forward declaration for pair iteration
+     */
+    class PairIterator;
+
+    /**
+     * @brief Get the iterator to the beginning of the pairs
+     * @return The iterator to the beginning of the pairs
+     */
+    PairIterator beginPairs();
+    /**
+     * @brief Get the iterator to the end of the pairs
+     * @return The iterator to the end of the pairs
+     */
+    PairIterator endPairs();
+
+    /**
+     * @brief Iterator class for active particles
+     */
+    class ActiveIterator {
+    private:
+       /**
+        * @brief Iterator for the ActiveIterator
+        */
+        std::vector<Particle>::iterator current, end;
+
+       /**
+        * @brief Advance to the next active particle
+        */
+       void advanceToNextActive();
+
+    public:
+        /**
+         * @brief Construct a new Iterator over active particles
+         * @param start The iterator to the first active particle
+         * @param end The iterator to the last active particle
+         * @return ActiveIterator object
+         */
+        ActiveIterator(std::vector<Particle>::iterator start, std::vector<Particle>::iterator end);
+
+        /**
+         * @brief Override the * operator for range-based for loop
+         * @return The reference to the current active particle
+         */
+        Particle& operator*() const;
+
+        ActiveIterator& operator++();
+
+        bool operator!=(const ActiveIterator& other) const;
+
+        bool operator==(const ActiveIterator& other) const;
+    };
+
+    /**
+     * @brief Pair Iterator nested class for iterating over all unique pairs of particles
      * @details Iterate from one fixed particle over every possible pair and continue to the next
      * fixed particle.
      */
@@ -121,17 +191,6 @@ public:
          */
         bool operator==(const PairIterator& other) const;
     };
-
-    /**
-     * @brief Get the iterator to the beginning of the pairs
-     * @return The iterator to the beginning of the pairs
-     */
-    PairIterator beginPairs();
-    /**
-     * @brief Get the iterator to the end of the pairs
-     * @return The iterator to the end of the pairs
-     */
-    PairIterator endPairs();
 };
 
 #endif // PARTICLECONTAINER_H
