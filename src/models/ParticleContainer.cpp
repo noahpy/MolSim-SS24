@@ -75,7 +75,7 @@ void ParticleContainer::ActiveIterator::advanceToNextActive()
 }
 
 ParticleContainer::ActiveIterator::ActiveIterator(std::vector<Particle>::iterator start, std::vector<Particle>::iterator end)
-    : current(start), end(end)
+    : begin(start), current(start), end(end)
 {
     advanceToNextActive();
 }
@@ -92,6 +92,15 @@ ParticleContainer::ActiveIterator& ParticleContainer::ActiveIterator::operator++
     return *this;
 }
 
+ParticleContainer::ActiveIterator& ParticleContainer::ActiveIterator::operator--()
+{
+    do {
+        --current;
+    } while (current != begin && !current->getActivity());
+    return *this;
+}
+
+
 bool ParticleContainer::ActiveIterator::operator!=(const ActiveIterator& other) const
 {
     return current != other.current;
@@ -106,25 +115,25 @@ bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) 
 ParticleContainer::PairIterator ParticleContainer::beginPairs()
 {
     if (particles.empty()) {
-        return { particles.begin(), particles.begin(), particles.end() };
+        return { beginActive(), beginActive(), endActive() };
     }
-    return { particles.begin(), particles.begin(), particles.end() - 1 };
+    return { beginActive(), beginActive(), --endActive() };
 }
 
 // Returns an iterator indicating the end of pairs
 ParticleContainer::PairIterator ParticleContainer::endPairs()
 {
     if (particles.empty()) {
-        return { particles.begin(), particles.end(), particles.end() };
+        return { beginActive(), endActive(), endActive() };
     }
-    return { particles.begin(), particles.end() - 1, particles.end() - 1 };
+    return { beginActive(), --endActive(), --endActive() };
 }
 
 // PairIterator constructor
 ParticleContainer::PairIterator::PairIterator(
-    std::vector<Particle>::iterator start,
-    std::vector<Particle>::iterator first,
-    std::vector<Particle>::iterator last)
+    ActiveIterator start,
+    ActiveIterator first,
+    ActiveIterator last)
     : start(start)
     , first(first)
     , second(first)
@@ -154,7 +163,8 @@ ParticleContainer::PairIterator& ParticleContainer::PairIterator::operator++()
         if (first == last)
             return *this;
         ++first;
-        second = first + 1;
+        second = first;
+        ++second;
         return *this;
     }
     ++second;

@@ -109,7 +109,7 @@ public:
        /**
         * @brief Iterator for the ActiveIterator
         */
-        std::vector<Particle>::iterator current, end;
+        std::vector<Particle>::iterator begin, current, end;
 
        /**
         * @brief Advance to the next active particle
@@ -133,6 +133,8 @@ public:
 
         ActiveIterator& operator++();
 
+        ActiveIterator& operator--();
+
         bool operator!=(const ActiveIterator& other) const;
 
         bool operator==(const ActiveIterator& other) const;
@@ -148,7 +150,7 @@ public:
         /**
          * @brief The iterators need to iterate over the particle pairs
          */
-        std::vector<Particle>::iterator start, first, second, last;
+        ActiveIterator start, first, second, last;
 
     public:
         /**
@@ -159,9 +161,9 @@ public:
          * @return PairIterator object
          */
         PairIterator(
-            std::vector<Particle>::iterator start,
-            std::vector<Particle>::iterator first,
-            std::vector<Particle>::iterator last);
+            ActiveIterator start,
+            ActiveIterator first,
+            ActiveIterator last);
 
         /**
          * @brief Get the last particle

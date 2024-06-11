@@ -175,6 +175,26 @@ TEST(PContainerTests, pairIterators)
     }
 
     EXPECT_EQ(count, 10);
+
+    container.particles[2].setActivity(false);
+
+    pairs.clear();
+    count = 0;
+    for (auto it = container.beginPairs(); it != container.endPairs(); ++it) {
+        std::pair<Particle&, Particle&> pt_pair = *it;
+        for (std::pair<Particle, Particle> particle_pair : pairs) {
+            Particle pp1 = particle_pair.first;
+            Particle pp2 = particle_pair.second;
+            EXPECT_FALSE(
+                pt_pair.first.getM() == pp1.getM() && pt_pair.second.getM() == pp2.getM() ||
+                pt_pair.first.getM() == pp2.getM() && pt_pair.second.getM() == pp1.getM())
+                << "Found duplicate pair!";
+        }
+        pairs.emplace_back(pt_pair);
+        ++count;
+    }
+
+    EXPECT_EQ(count, 6);
 }
 
 // check if distinct pair iteration works with none / one particle in container
@@ -275,4 +295,19 @@ TEST(PContainerTests, particleActiveItModF)
     }
 
     EXPECT_EQ(result, 2);
+}
+
+// check if empty particle container works for the activity iteration
+TEST(PContainerTests, particleActiveItZero)
+{
+    std::vector<Particle> particles {};
+
+    ParticleContainer container { particles };
+
+    unsigned count = 0;
+    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
+        ++count;
+    }
+
+    EXPECT_EQ(count, 0);
 }
