@@ -25,38 +25,6 @@ void OverflowBoundary::postUpdateBoundaryHandling(Simulation& simulation)
     // create a map to check in O(1) if a particle is in the list
     std::unordered_map<Particle*, bool> particlesToRemoveMap {};
     for (const auto& particle : particlesToRemove) {
-        // particlesToRemoveMap.insert({ &particle.get(), true });
-        particle.get().setV({ 0, 0, 0 });
-        particle.get().setF({ 0, 0, 0 });
-        particle.get().setOldF({ 0, 0, 0 });
-        particle.get().setActivity(false);
-        simulation.container.activeParticleCount--;
+        simulation.container.removeParticle(particle);
     }
-
-    /*
-     * Problem:
-     * If we remove the particles form the particle containter, the references in the cell will be
-     * invalid thus the iterator will be invalid that is used in the force calculations.
-     * We need to change the way the particle is deleted, or we need to change the way, the
-     * grid is updated
-     */
-
-    /*
-
-    // Delete the particles, that have left the domain
-    if (particlesToRemoveMap.size() > 0)
-        std::cout << LGDSim.container.particles.size() << std::endl;
-    LGDSim.container.removeParticles(particlesToRemoveMap);
-    if (particlesToRemoveMap.size() > 0)
-        std::cout << LGDSim.container.particles.size() << std::endl;
-
-    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
-        if (LGDSim.getGrid()
-                .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
-                ->getParticles()
-                .size() > 0) {
-            int a = 0;
-        }
-    }
-     */
 }

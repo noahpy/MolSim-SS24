@@ -32,18 +32,12 @@ void ParticleContainer::addParticle(const Particle& p)
     activeParticleCount++;
 }
 
-void ParticleContainer::removeParticles(std::unordered_map<Particle*, bool>& particleMap)
+void ParticleContainer::removeParticle(Particle& p)
 {
-    // remove_if rearranged the elements in the vector, so we need to erase the elements after the
-    // last valid one
-    particles.erase(
-        std::remove_if(
-            particles.begin(),
-            particles.end(),
-            [&particleMap](const Particle& p) {
-                return particleMap.find(const_cast<Particle*>(&p)) != particleMap.end();
-            }),
-        particles.end());
+    p.setV({ 0, 0, 0 });
+    p.setOldF({ 0, 0, 0 });
+    p.setF({ 0, 0, 0 });
+    p.setActivity(false);
     activeParticleCount--;
 }
 

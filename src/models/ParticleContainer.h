@@ -45,11 +45,11 @@ public:
     void addParticle(const Particle& p);
 
     /**
-     * @brief Removes the particles in the map from the container
-     * @param particleMap The particles to be removed (true if remove)
+     * @brief Removes the particles from further calculations
+     * @param p The particle to be removed
      * @return void
      */
-    void removeParticles(std::unordered_map<Particle*, bool>& particleMap);
+    void removeParticle(Particle& p);
 
     /**
      * @brief Get the particles within the container
