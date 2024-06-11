@@ -30,6 +30,7 @@ void OverflowBoundary::postUpdateBoundaryHandling(Simulation& simulation)
         particle.get().setF({ 0, 0, 0 });
         particle.get().setOldF({ 0, 0, 0 });
         particle.get().setActivity(false);
+        simulation.container.activeParticleCount--;
     }
 
     /*

@@ -13,6 +13,7 @@
 #include <iostream>
 #include <spdlog/spdlog.h>
 #include <string>
+#include <io/xsd/simulation.h>
 
 namespace outputWriter {
 
@@ -22,13 +23,7 @@ VTKWriter::~VTKWriter() = default;
 
 void VTKWriter::plotParticles(const Simulation& s)
 {
-    int activeParticleCount = 0;
-    for (auto& p : s.container) {
-        if (p.getActivity() == true) {
-            activeParticleCount++;
-        }
-    }
-    initializeOutput(activeParticleCount);
+    initializeOutput(s.container.activeParticleCount);
     for (auto& p : s.container) {
         if (p.getActivity() == true)
             plotParticle(p);

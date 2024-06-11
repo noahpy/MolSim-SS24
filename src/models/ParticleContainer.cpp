@@ -9,27 +9,27 @@
 ParticleContainer::ParticleContainer()
 {
     this->particles = std::vector<Particle> {};
-    //activeParticleCount = 0;
+    activeParticleCount = 0;
 }
 
 ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
 {
     this->particles = particles;
-    /*
+
     activeParticleCount = 0;
     for (auto& p : particles) {
         if (p.getActivity() == true) {
             activeParticleCount++;
         }
     }
-    */
+
 }
 
 // Adds a particle to the container
 void ParticleContainer::addParticle(const Particle& p)
 {
     particles.push_back(p);
-    //activeParticleCount++;
+    activeParticleCount++;
 }
 
 void ParticleContainer::removeParticles(std::unordered_map<Particle*, bool>& particleMap)
@@ -44,6 +44,7 @@ void ParticleContainer::removeParticles(std::unordered_map<Particle*, bool>& par
                 return particleMap.find(const_cast<Particle*>(&p)) != particleMap.end();
             }),
         particles.end());
+    activeParticleCount--;
 }
 
 std::vector<Particle> ParticleContainer::getContainer() const

@@ -19,7 +19,10 @@ public:
      */
     std::vector<Particle> particles;
 
-    //int activeParticleCount;
+    /**
+     * @brief Counter for active particles
+     */
+    int activeParticleCount;
 
     /**
      * @brief Construct a new Particle Container object
