@@ -10,7 +10,7 @@ class CellGrid;
  * @brief Type to contain the shifts needed to move particles to their periodic partner and the partner cell index
  * @details The first entry is the positional shift, while the second entry is the cell index shift
  */
-typedef std::pair<std::array<double, 3>, std::array<double, 3>> PeriodicBoundShifts;
+typedef std::pair<std::array<double, 3>, std::array<int, 3>> PeriodicBoundShifts;
 /**
  * @brief Type to contain the shifts of particles that are effected by more than one periodic boundary
  * @details The std::vector<Position> is the list of sides that are effecting on the particle, while the std::vector<PeriodicBoundShifts> are the shifts to be applied
@@ -66,7 +66,7 @@ private:
      * @param grid The grid that the shifts will be performed in
      * @return The shifts
      */
-    PeriodicBoundShifts getPeriodicShiftFromPosition(Position pos, const CellGrid& grid);
+    static PeriodicBoundShifts getPeriodicShiftFromPosition(Position pos, const CellGrid& grid);
 
      /**
       * @brief Helper function to actually generate the translations needed
