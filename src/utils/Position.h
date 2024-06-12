@@ -15,29 +15,32 @@ static std::vector<Position> allPositions = { Position::LEFT,   Position::RIGHT,
  * @brief Converts a coordinate to a position. This assumes the halo cells added to the bounds i.e.
  * index 1 is the first valid cell
  * @param coordinate The coordinate to convert
- * @param domainSize The size of the domain
+ * @param gridDimensions The size of the grid
+ * @param keep3D Whether to keep the 3rd dimension
+ * @param isHalo Whether to get the sides for a halo cell
  * @return The boundary position of the coordinate
  */
 inline std::vector<Position> coordinateToPosition(
-    std::array<size_t, 3> coordinate, std::array<size_t, 3> gridDimensions, bool keep3D = true)
+    std::array<size_t, 3> coordinate, std::array<size_t, 3> gridDimensions, bool keep3D = true, bool isHalo = false)
 {
+    size_t offset = isHalo ? 0 : 1;
     std::vector<Position> positions;
-    if (coordinate[0] == 1) {
+    if (coordinate[0] == offset) {
         positions.push_back(Position::LEFT);
     }
-    if (coordinate[0] == gridDimensions[0] - 2) {
+    if (coordinate[0] == gridDimensions[0] - 1 - offset) {
         positions.push_back(Position::RIGHT);
     }
-    if (coordinate[1] == 1) {
+    if (coordinate[1] == gridDimensions[1] - 1 - offset) {
         positions.push_back(Position::TOP);
     }
-    if (coordinate[1] == gridDimensions[1] - 2) {
+    if (coordinate[1] == offset) {
         positions.push_back(Position::BOTTOM);
     }
-    if (coordinate[2] == 1 && keep3D) {
+    if (coordinate[2] == gridDimensions[2] - 1 - offset && keep3D) {
         positions.push_back(Position::FRONT);
     }
-    if (coordinate[2] == gridDimensions[2] - 2  && keep3D) {
+    if (coordinate[2] == offset && keep3D) {
         positions.push_back(Position::BACK);
     }
 

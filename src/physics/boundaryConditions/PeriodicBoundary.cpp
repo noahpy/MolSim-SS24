@@ -34,10 +34,13 @@ PeriodicBoundary::PeriodicBoundary(
         fillTranslationMap(
             boundarySides, { boundarySides[0] }, cellGrid); // Always do the single inner one
         if (boundarySides.size() >= 2) {
+            fillTranslationMap(boundarySides, { boundarySides[1] }, cellGrid);
             fillTranslationMap(boundarySides, { boundarySides[0], boundarySides[1] }, cellGrid);
-            fillTranslationMap(boundarySides, { boundarySides[0], boundarySides[2] }, cellGrid);
         }
         if (boundarySides.size() == 3) {
+            fillTranslationMap(boundarySides, { boundarySides[2] }, cellGrid);
+            fillTranslationMap(boundarySides, { boundarySides[0], boundarySides[2] }, cellGrid);
+            fillTranslationMap(boundarySides, { boundarySides[1], boundarySides[2] }, cellGrid);
             fillTranslationMap(boundarySides, boundarySides, cellGrid);
         }
         if (boundarySides.size() > 3) {
@@ -56,8 +59,12 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     insertionIndex = 0;
 
     for (CellIndex boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
-        std::vector<Position> boundarySides =
-            coordinateToPosition(boundaryCellIndex, LGDSim.getGrid().getGridDimensions(), !is2D);
+        std::vector<Position> boundarySides = coordinateToPosition(
+            boundaryCellIndex, LGDSim.getGrid().getGridDimensions(), !is2D, false);
+
+        // Only if translations need to be applied i.e. there exists an entry
+        if (translationMap.find(boundarySides) == translationMap.end())
+            continue;
 
         for (auto& particle :
              LGDSim.getGrid()
@@ -81,7 +88,7 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                     insertedParticles[insertionIndex].setM(particle.get().getM());
                 } else {
                     // create a new particle
-                    Particle haloParticle (haloPosition, { 0, 0, 0 }, particle.get().getM());
+                    Particle haloParticle(haloPosition, { 0, 0, 0 }, particle.get().getM());
                     insertedParticles.push_back(haloParticle);
                 }
 
@@ -100,7 +107,8 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     }
 }
 
-// TODO -> What if the particle is moved across the boder and then immediately back again but before a update cells. That way it will be lost
+// TODO -> What if the particle is moved across the boder and then immediately back again but before
+// a update cells. That way it will be lost
 void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
 {
     const LennardJonesDomainSimulation& LGDSim =
@@ -120,14 +128,19 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                  ->getParticles()) {
             std::array<double, 3> pos = particle.get().getX();
 
-            bool isInsideDomain = pos[0] >= LGDSim.getGrid().domainOrigin[0] &&
-                                  pos[0] <= LGDSim.getGrid().domainEnd[0];
-            isInsideDomain &= pos[1] >= LGDSim.getGrid().domainOrigin[1] &&
-                              pos[1] <= LGDSim.getGrid().domainEnd[1];
-            isInsideDomain &= pos[2] >= LGDSim.getGrid().domainOrigin[2] &&
-                              pos[2] <= LGDSim.getGrid().domainEnd[2];
+            CellIndex actualCellIndex = LGDSim.getGrid().getIndexFromPos(pos);
+            CellType actualCellType = LGDSim.getGrid().determineCellType(actualCellIndex);
 
-            if (!isInsideDomain) {
+            // Check if the particles has entered Halo-territory
+            if (actualCellType == CellType::Halo) {
+                std::vector<Position> actualSides = coordinateToPosition(
+                    actualCellIndex, LGDSim.getGrid().getGridDimensions(), !is2D, true);
+
+                // if that halo cell is also part of the side of the boundary -> e.g. edges in 2D ->
+                // Bounds are both sides, halo onlyone of them
+                if (std::find(actualSides.begin(), actualSides.end(), position) ==
+                    actualSides.end())
+                    continue;
                 // When we move the particle by the translation, it will only end up inside the
                 // domain iff all periodic bounds around it were applied
                 // The update cells will take care of assigning it to its new cell
