@@ -31,9 +31,8 @@ PeriodicBoundary::PeriodicBoundary(
             continue;
 
         // Add the necessary translations
-        if (boundarySides.size() >= 1) {
-            fillTranslationMap(boundarySides, { boundarySides[0] }, cellGrid);
-        }
+        fillTranslationMap(
+            boundarySides, { boundarySides[0] }, cellGrid); // Always do the single inner one
         if (boundarySides.size() >= 2) {
             fillTranslationMap(boundarySides, { boundarySides[0], boundarySides[1] }, cellGrid);
             fillTranslationMap(boundarySides, { boundarySides[0], boundarySides[2] }, cellGrid);
@@ -99,6 +98,47 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     if (insertionIndex < insertedParticles.size()) {
         insertedParticles.erase(
             insertedParticles.begin() + (long)insertionIndex, insertedParticles.end());
+    }
+}
+
+// TODO -> What if the particle is moved across the boder and then immediately back again but before a update cells. That way it will be lost
+void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
+{
+    const LennardJonesDomainSimulation& LGDSim =
+        static_cast<const LennardJonesDomainSimulation&>(simulation);
+
+    // reset old halo references used previously
+    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
+        LGDSim.getGrid()
+            .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+            ->clearParticles();
+    }
+
+    for (auto boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
+        for (auto& particle :
+             LGDSim.getGrid()
+                 .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
+                 ->getParticles()) {
+            std::array<double, 3> pos = particle.get().getX();
+
+            bool isInsideDomain = pos[0] >= LGDSim.getGrid().domainOrigin[0] &&
+                                  pos[0] <= LGDSim.getGrid().domainEnd[0];
+            isInsideDomain &= pos[1] >= LGDSim.getGrid().domainOrigin[1] &&
+                              pos[1] <= LGDSim.getGrid().domainEnd[1];
+            isInsideDomain &= pos[2] >= LGDSim.getGrid().domainOrigin[2] &&
+                              pos[2] <= LGDSim.getGrid().domainEnd[2];
+
+            if (!isInsideDomain) {
+                // When we move the particle by the translation, it will only end up inside the
+                // domain iff all periodic bounds around it were applied
+                // The update cells will take care of assigning it to its new cell
+                // We can do that, as the particle would have left its original cell and thus would
+                // no longer be included in any calculations of the new cell. Same for moving it
+                std::array<double, 3> newPosition = particle.get().getX();
+                newPosition = newPosition + innerTranslation.first;
+                particle.get().setX(newPosition);
+            }
+        }
     }
 }
 
