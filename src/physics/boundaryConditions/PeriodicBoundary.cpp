@@ -48,20 +48,6 @@ PeriodicBoundary::PeriodicBoundary(
     }
 }
 
-void PeriodicBoundary::fillTranslationMap(
-    const std::vector<Position>& key,
-    const std::vector<Position>& boundarySides,
-    const CellGrid& cellGrid)
-{
-    PeriodicBoundShifts shiftToAdd = { {}, {} };
-    for (Position side : boundarySides) {
-        PeriodicBoundShifts addedShift = getPeriodicShiftFromPosition(side, cellGrid);
-        shiftToAdd.first = shiftToAdd.first + addedShift.first;
-        shiftToAdd.second = shiftToAdd.second + addedShift.second;
-    }
-    translationMap[key].push_back(shiftToAdd);
-}
-
 void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 {
     const LennardJonesDomainSimulation& LGDSim =
@@ -108,6 +94,26 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             }
         }
     }
+
+    // erase all leftover particles, if there are any
+    if (insertionIndex < insertedParticles.size()) {
+        insertedParticles.erase(
+            insertedParticles.begin() + (long)insertionIndex, insertedParticles.end());
+    }
+}
+
+void PeriodicBoundary::fillTranslationMap(
+    const std::vector<Position>& key,
+    const std::vector<Position>& boundarySides,
+    const CellGrid& cellGrid)
+{
+    PeriodicBoundShifts shiftToAdd = { {}, {} };
+    for (Position side : boundarySides) {
+        PeriodicBoundShifts addedShift = getPeriodicShiftFromPosition(side, cellGrid);
+        shiftToAdd.first = shiftToAdd.first + addedShift.first;
+        shiftToAdd.second = shiftToAdd.second + addedShift.second;
+    }
+    translationMap[key].push_back(shiftToAdd);
 }
 
 PeriodicBoundShifts PeriodicBoundary::getPeriodicShiftFromPosition(
