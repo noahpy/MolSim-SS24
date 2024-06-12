@@ -107,8 +107,6 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     }
 }
 
-// TODO -> What if the particle is moved across the boder and then immediately back again but before
-// a update cells. That way it will be lost
 void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
 {
     const LennardJonesDomainSimulation& LGDSim =
@@ -122,11 +120,14 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
     }
 
     for (auto boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
-        for (auto& particle :
-             LGDSim.getGrid()
-                 .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
-                 ->getParticles()) {
-            std::array<double, 3> pos = particle.get().getX();
+        ParticleRefList& particles =
+            LGDSim.getGrid()
+                .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
+                ->getParticles();
+        auto it = particles.begin();
+        while (it != particles.end()) {
+            Particle& particle = *it;
+            std::array<double, 3> pos = particle.getX();
 
             CellIndex actualCellIndex = LGDSim.getGrid().getIndexFromPos(pos);
             CellType actualCellType = LGDSim.getGrid().determineCellType(actualCellIndex);
@@ -146,10 +147,28 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                 // The update cells will take care of assigning it to its new cell
                 // We can do that, as the particle would have left its original cell and thus would
                 // no longer be included in any calculations of the new cell. Same for moving it
-                std::array<double, 3> newPosition = particle.get().getX();
+                std::array<double, 3> newPosition = particle.getX();
                 newPosition = newPosition + innerTranslation.first;
-                particle.get().setX(newPosition);
+                particle.setX(newPosition);
+
+                // Only if the particle has been moved back into the domain, all translations are
+                // complete. Thus, the particles must be placed into its new cell
+                actualCellIndex = LGDSim.getGrid().getIndexFromPos(newPosition);
+                actualCellType = LGDSim.getGrid().determineCellType(actualCellIndex);
+                if (actualCellType != CellType::Halo) {
+                    // It was in halo before, now it is back inside the domain
+                    particles.erase(it++); // remove it from its old cell (boundary)
+                    LGDSim.getGrid()
+                        .cells.at(actualCellIndex[0])
+                        .at(actualCellIndex[1])
+                        .at(actualCellIndex[2])
+                        ->addParticle(particle); // into its new cell (inside domain)
+
+                    continue; // to not increment the iterator later again
+                }
             }
+
+            ++it;
         }
     }
 }
