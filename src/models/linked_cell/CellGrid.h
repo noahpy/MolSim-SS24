@@ -104,6 +104,18 @@ public:
      * */
     void setCutoffRadius(double cutoffRadius);
 
+    /**
+     * @brief Get the size of the domain
+     * @return The size of the domain
+     */
+    std::array<double, 3> getDomainSize() const { return domainSize; }
+
+    /**
+     * @brief Get the grids dimensions
+     * @return The grids dimensions
+     */
+    std::array<size_t, 3> getGridDimensions() const { return gridDimensions; }
+
 protected:
     /**
      * @brief Initializes the grid structure based on the domain size and cutoff radius.

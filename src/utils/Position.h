@@ -19,7 +19,7 @@ static std::vector<Position> allPositions = { Position::LEFT,   Position::RIGHT,
  * @return The boundary position of the coordinate
  */
 inline std::vector<Position> coordinateToPosition(
-    std::array<size_t, 3> coordinate, std::array<size_t, 3> gridDimensions)
+    std::array<size_t, 3> coordinate, std::array<size_t, 3> gridDimensions, bool keep3D = true)
 {
     std::vector<Position> positions;
     if (coordinate[0] == 1) {
@@ -34,10 +34,10 @@ inline std::vector<Position> coordinateToPosition(
     if (coordinate[1] == gridDimensions[1] - 2) {
         positions.push_back(Position::BOTTOM);
     }
-    if (coordinate[2] == 1) {
+    if (coordinate[2] == 1 && keep3D) {
         positions.push_back(Position::FRONT);
     }
-    if (coordinate[2] == gridDimensions[2] - 2) {
+    if (coordinate[2] == gridDimensions[2] - 2  && keep3D) {
         positions.push_back(Position::BACK);
     }
 
@@ -86,6 +86,25 @@ inline std::array<double, 3> getNormalVectorOfBoundary(Position position)
         return { 0, 0, -1 };
     case Position::BACK:
         return { 0, 0, 1 };
+    default:
+        throw std::invalid_argument("Invalid position");
+    }
+}
+
+inline Position oppositePosition(Position position) {
+    switch (position) {
+    case Position::LEFT:
+        return Position::RIGHT;
+    case Position::RIGHT:
+        return Position::LEFT;
+    case Position::TOP:
+        return Position::BOTTOM;
+    case Position::BOTTOM:
+        return Position::TOP;
+    case Position::FRONT:
+        return Position::BACK;
+    case Position::BACK:
+        return Position::FRONT;
     default:
         throw std::invalid_argument("Invalid position");
     }
