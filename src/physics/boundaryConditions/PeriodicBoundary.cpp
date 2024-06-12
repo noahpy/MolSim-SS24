@@ -125,7 +125,8 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                 .cells[boundaryCellIndex[0]][boundaryCellIndex[1]][boundaryCellIndex[2]]
                 ->getParticles();
         auto it = particles.begin();
-        while (it != particles.end()) {
+        auto end = particles.end();
+        while (it != end) {
             Particle& particle = *it;
             std::array<double, 3> pos = particle.getX();
 
@@ -138,10 +139,12 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                     actualCellIndex, LGDSim.getGrid().getGridDimensions(), !is2D, true);
 
                 // if that halo cell is also part of the side of the boundary -> e.g. edges in 2D ->
-                // Bounds are both sides, halo onlyone of them
+                // Bounds are both sides, halo only one of them
                 if (std::find(actualSides.begin(), actualSides.end(), position) ==
-                    actualSides.end())
+                    actualSides.end()) {
+                    ++it;
                     continue;
+                }
                 // When we move the particle by the translation, it will only end up inside the
                 // domain iff all periodic bounds around it were applied
                 // The update cells will take care of assigning it to its new cell
@@ -157,7 +160,7 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                 actualCellType = LGDSim.getGrid().determineCellType(actualCellIndex);
                 if (actualCellType != CellType::Halo) {
                     // It was in halo before, now it is back inside the domain
-                    particles.erase(it++); // remove it from its old cell (boundary)
+                    it = particles.erase(it); // remove it from its old cell (boundary)
                     LGDSim.getGrid()
                         .cells.at(actualCellIndex[0])
                         .at(actualCellIndex[1])
