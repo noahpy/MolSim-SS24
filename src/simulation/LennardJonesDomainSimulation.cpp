@@ -39,7 +39,7 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
           frequency,
           updateFrequency,
           false)
-    , bcHandler(boundaryConfig)
+    , bcHandler(boundaryConfig, cellGrid)
 {
     if (read_file) {
         this->reader->readFile(*this);

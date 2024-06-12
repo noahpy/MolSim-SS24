@@ -1,9 +1,10 @@
 #include "physics/boundaryConditions/BoundaryConditionHandler.h"
 #include "physics/boundaryConditions/OverflowBoundary.h"
 #include "physics/boundaryConditions/SoftReflectiveBoundary.h"
+#include "physics/boundaryConditions/PeriodicBoundary.h"
 #include <spdlog/spdlog.h>
 
-BoundaryConditionHandler::BoundaryConditionHandler(const BoundaryConfig& boundaryConfig)
+BoundaryConditionHandler::BoundaryConditionHandler(const BoundaryConfig& boundaryConfig, const CellGrid& cellGrid)
     : boundaryConditions()
     , dimensionality((boundaryConfig.boundaryMap.size() == 6) ? 3 : 2)
 {
@@ -22,6 +23,9 @@ BoundaryConditionHandler::BoundaryConditionHandler(const BoundaryConfig& boundar
             break;
         case BoundaryType::SOFT_REFLECTIVE:
             boundaryConditions.push_back(std::make_unique<SoftReflectiveBoundary>(position));
+            break;
+        case BoundaryType::PERIODIC:
+            boundaryConditions.push_back(std::make_unique<PeriodicBoundary>(position, boundaryConfig, cellGrid));
             break;
         default:
             spdlog::error("Boundary type not recognized.");

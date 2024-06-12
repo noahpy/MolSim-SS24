@@ -27,7 +27,7 @@ PeriodicBoundary::PeriodicBoundary(
         }
 
         // Check if the translations have been generated already
-        if (!translationMap.at(boundarySides).empty())
+        if (translationMap.find(boundarySides) != translationMap.end())
             continue;
 
         // Add the necessary translations
@@ -81,8 +81,7 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                     insertedParticles[insertionIndex].setM(particle.get().getM());
                 } else {
                     // create a new particle
-                    Particle haloParticle =
-                        Particle(haloPosition, { 0, 0, 0 }, particle.get().getM());
+                    Particle haloParticle (haloPosition, { 0, 0, 0 }, particle.get().getM());
                     insertedParticles.push_back(haloParticle);
                 }
 
@@ -170,9 +169,11 @@ PeriodicBoundShifts PeriodicBoundary::getPeriodicShiftFromPosition(
     // The direction to move the particles in is the same, as the direction the normal vector is
     // pointing. Thus multiplying the grid dimensions with the direction of the normal vector will
     // yield the desired shift
-    std::array<double, 3> positionalShift = (grid.getDomainSize()[relevantDimension] - 2) * normal;
+    std::array<double, 3> positionalShift = grid.getDomainSize()[relevantDimension] * normal;
+    // -1 for num to index
+    // -1 for boundary to halo
     std::array<int, 3> cellIndexShift =
-        (grid.getGridDimensions()[relevantDimension] - 2) * normalNat;
+        (grid.getGridDimensions()[relevantDimension] - 1 - 1) * normalNat;
 
     return { positionalShift, cellIndexShift };
 }
