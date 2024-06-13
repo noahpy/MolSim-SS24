@@ -58,17 +58,6 @@ public:
     std::vector<Particle> getContainer() const;
 
     /**
-     * @brief Iterator to the beginning
-     * @return An iterator to the beginning
-     */
-    std::vector<Particle>::iterator begin();
-    /**
-     * @brief Iterator to the end
-     * @return Returns an iterator to the end
-     */
-    std::vector<Particle>::iterator end();
-
-    /**
      * @brief Forward declaration for iteration over active particles
      */
     class ActiveIterator;
@@ -77,13 +66,13 @@ public:
      * @brief Get the iterator to the first active particle
      * @return The iterator to the first active particle
      */
-    ActiveIterator beginActive();
+    ActiveIterator begin();
 
     /**
      * @brief Get the iterator to the last active particle
      * @return The iterator to the last active particle
      */
-    ActiveIterator endActive();
+    ActiveIterator end();
 
     /**
      * @brief Forward declaration for pair iteration

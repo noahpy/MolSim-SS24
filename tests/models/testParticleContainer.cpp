@@ -238,8 +238,7 @@ TEST(PContainerTests, particleActiveIterate)
     container.particles[1].setActivity(false);
 
     double result = 0;
-    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
-        Particle p = *it;
+    for (auto& p : container) {
         result += p.getM();
     }
 
@@ -249,8 +248,7 @@ TEST(PContainerTests, particleActiveIterate)
     container.particles[0].setActivity(false);
 
     result = 0;
-    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
-        Particle p = *it;
+    for (auto& p : container) {
         result += p.getM();
     }
 
@@ -260,8 +258,7 @@ TEST(PContainerTests, particleActiveIterate)
     container.particles[2].setActivity(false);
 
     result = 0;
-    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
-        Particle p = *it;
+    for (auto& p : container) {
         result += p.getM();
     }
 
@@ -281,8 +278,7 @@ TEST(PContainerTests, particleActiveItModF)
     container.particles[0].setActivity(false);
 
     double result = 0;
-    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
-        Particle& p = *it;
+    for (auto& p : container) {
         result += p.getF()[0];
         p.setF(ones);
     }
@@ -305,7 +301,7 @@ TEST(PContainerTests, particleActiveItZero)
     ParticleContainer container { particles };
 
     unsigned count = 0;
-    for (auto it = container.beginActive(); it != container.endActive(); ++it) {
+    for (auto& p : container) {
         ++count;
     }
 

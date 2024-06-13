@@ -46,26 +46,17 @@ std::vector<Particle> ParticleContainer::getContainer() const
     return particles;
 }
 
-// Iterator for single particles
-std::vector<Particle>::iterator ParticleContainer::begin()
-{
-    return particles.begin();
-}
-std::vector<Particle>::iterator ParticleContainer::end()
-{
-    return particles.end();
-}
-
 // ActiveIterator Implementation
-ParticleContainer::ActiveIterator ParticleContainer::beginActive()
+ParticleContainer::ActiveIterator ParticleContainer::begin()
 {
     return { particles.begin(), particles.end() };
 }
 
-ParticleContainer::ActiveIterator ParticleContainer::endActive()
+ParticleContainer::ActiveIterator ParticleContainer::end()
 {
     return { particles.end(), particles.end() };
 }
+
 
 void ParticleContainer::ActiveIterator::advanceToNextActive()
 {
@@ -111,22 +102,23 @@ bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) 
     return current == other.current;
 }
 
+//PairIterator Implementation
 // Returns an iterator to the first pair of particles
 ParticleContainer::PairIterator ParticleContainer::beginPairs()
 {
     if (particles.empty()) {
-        return { beginActive(), beginActive(), endActive() };
+        return { begin(), begin(), end() };
     }
-    return { beginActive(), beginActive(), --endActive() };
+    return { begin(), begin(), --end() };
 }
 
 // Returns an iterator indicating the end of pairs
 ParticleContainer::PairIterator ParticleContainer::endPairs()
 {
     if (particles.empty()) {
-        return { beginActive(), endActive(), endActive() };
+        return { begin(), end(), end() };
     }
-    return { beginActive(), --endActive(), --endActive() };
+    return { begin(), --end(), --end() };
 }
 
 // PairIterator constructor
