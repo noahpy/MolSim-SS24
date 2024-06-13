@@ -285,6 +285,12 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
         }
     }
 
+    // If there are no relevant neighbors (i.e. all neighbors did already do their calculations)
+    // We need to set visited to false again, as the force calculation is done for the iteration
+    // This is an edge case
+    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() == 0) {
+        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = false;
+    }
     return cellList;
 }
 
