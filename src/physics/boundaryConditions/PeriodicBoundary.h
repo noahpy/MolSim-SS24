@@ -36,15 +36,15 @@ public:
 
     /**
      * @brief The call to apply the boundary condition to the simulation before all updates are
-     * made. This will introduce the halo particles for all boundary particles and move all halo
-     * particles to their boundary cell
+     * made. This will introduce the halo particles for all boundary particles
      * @param simulation The simulation to apply the boundary to
      * @return void
      */
     void preUpdateBoundaryHandling(Simulation& simulation) override;
     /**
      * @brief The call to apply the boundary condition to the simulation after all updates are made.
-     * Removes all inserted halo particles used for the boundary particles
+     * Removes all inserted halo particles used for the boundary particles and moves any particles,
+     * that have crossed the border
      * @param simulation The simulation to apply the boundary to
      * @return void
      */

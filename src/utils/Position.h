@@ -112,3 +112,28 @@ inline Position oppositePosition(Position position) {
         throw std::invalid_argument("Invalid position");
     }
 }
+
+/**
+ * @brief Converts a position to a string
+ * @param position The position to convert
+ * @return The string representation of the position
+ */
+inline std::string getPositionString(Position position)
+{
+    switch (position) {
+    case Position::LEFT:
+        return "LEFT";
+    case Position::RIGHT:
+        return "RIGHT";
+    case Position::TOP:
+        return "TOP";
+    case Position::BOTTOM:
+        return "BOTTOM";
+    case Position::FRONT:
+        return "FRONT";
+    case Position::BACK:
+        return "BACK";
+    default:
+        throw std::invalid_argument("Invalid position");
+    }
+}

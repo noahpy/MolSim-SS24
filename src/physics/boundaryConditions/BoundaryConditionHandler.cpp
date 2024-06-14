@@ -29,6 +29,16 @@ BoundaryConditionHandler::BoundaryConditionHandler(
         Position position = boundary.first;
         BoundaryType type = boundary.second;
 
+        if (type == PERIODIC &&
+            boundaryConfig.boundaryMap.at(oppositePosition(position)) != PERIODIC) {
+            spdlog::error(
+                "Periodic boundary conditions must be defined in pairs i.e. opposite sides must be "
+                "both periodic. Miss-match between {} and {} side",
+                getPositionString(position),
+                getPositionString(oppositePosition(position)));
+            exit(EXIT_FAILURE);
+        }
+
         switch (type) {
         case BoundaryType::OVERFLOW:
             boundaryConditions.push_back(std::make_unique<OverflowBoundary>(position));
