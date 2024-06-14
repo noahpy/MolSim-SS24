@@ -5,7 +5,7 @@
 
 // Check if the soft reflective boundary will correctly precompute the translations needed by
 // checking the calculated ones against hand calculated shifts (in a 2D case)
-TEST(SoftReflectiveBoundary, CorrectInitAndTranslation2D)
+TEST(PeriodicBoundary, CorrectInitAndTranslation2D)
 {
     BoundaryConfig config(PERIODIC, PERIODIC, PERIODIC, PERIODIC);
     std::array<double, 3> domainOrigin { 0, 0, 0 };
@@ -24,7 +24,8 @@ TEST(SoftReflectiveBoundary, CorrectInitAndTranslation2D)
     std::vector<bool> foundPositions(3, false);
 
     // Check if the calculated shifts are correct
-    for (auto shifts : boundary.getTranslationMap().at(upRight)) {
+    auto map = boundary.getTranslationMap().at(upRight);
+    for (auto shifts : map) {
         CellIndex calcIndex = { (size_t)((int)upRightIndex[0] + shifts.second[0]),
                                 (size_t)((int)upRightIndex[1] + shifts.second[1]),
                                 (size_t)((int)upRightIndex[2] + shifts.second[2]) };
@@ -42,7 +43,7 @@ TEST(SoftReflectiveBoundary, CorrectInitAndTranslation2D)
 
 // Check if the soft reflective boundary will correctly precompute the translations needed by
 // checking the calculated ones against hand calculated shifts (in a 3D case)
-TEST(SoftReflectiveBoundary, CorrectInitAndTranslation3D)
+TEST(PeriodicBoundary, CorrectInitAndTranslation3D)
 {
     BoundaryConfig config(PERIODIC, PERIODIC, PERIODIC, PERIODIC, PERIODIC, PERIODIC);
     std::array<double, 3> domainOrigin { 0, 0, 0 };
@@ -61,7 +62,8 @@ TEST(SoftReflectiveBoundary, CorrectInitAndTranslation3D)
     std::vector<bool> foundPositions(expectedPositions.size(), false);
 
     // Check if the calculated shifts are correct
-    for (auto shifts : boundary.getTranslationMap().at(upRight)) {
+    auto map = boundary.getTranslationMap().at(upRight);
+    for (auto shifts : map) {
         CellIndex calcIndex = { (size_t)((int)upRightFrontIndex[0] + shifts.second[0]),
                                 (size_t)((int)upRightFrontIndex[1] + shifts.second[1]),
                                 (size_t)((int)upRightFrontIndex[2] + shifts.second[2]) };
