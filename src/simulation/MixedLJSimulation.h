@@ -44,8 +44,8 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
-        std::vector<std::pair<int, double>> epsilons,
-        std::vector<std::pair<int, double>> sigmas,
+        const std::vector<std::pair<int, double>>& epsilons,
+        const std::vector<std::pair<int, double>>& sigmas,
         std::array<double, 3> domainOrigin,
         std::array<double, 3> domainSize,
         double cutoff,
@@ -59,6 +59,20 @@ public:
         bool read_file = true,
         unsigned n_thermostat = 1000
         );
+
+    /**
+     * @brief Run the simulation
+     * @return void
+     */
+    void runSim() override;
+
+    /**
+     * @brief Get the key to access the LJ param maps
+     * @param type1 The type of the first particle
+     * @param type2 The type of the second particle
+     * @return The pair that is used as the key in the maps
+     */
+    static std::pair<int, int> getMixKey(int type1, int type2);
 
 protected:
     MixLJParamMap epsilons; /**< The mixed epsilon parameters of the Lennard-Jones potential */
