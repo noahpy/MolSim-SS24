@@ -132,3 +132,66 @@ void force_lennard_jones_lc(const Simulation& sim)
         }
     }
 }
+
+void force_mixed_LJ_gravity_lc(const MixedLJSimulation& sim)
+{
+    const CellGrid& cellGrid = sim.getGrid();
+
+    // for all cells in the grid
+    for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
+        for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
+            // This bool controls the 2D case, where we do need to calc the forces
+            // This will be true iff the simulation is 2D
+            // Then the condition of the loop will be true and the loop will be executed
+            // We then set it to false to not run it further. -> Remember to set z=0
+            bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
+
+            for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
+                if (doLoopFor2D) {
+                    doLoopFor2D = false; // only do it once
+                    z = 0;
+                }
+
+                // calculate the LJ forces in the cell
+                // TODO -> do the forces not reset when calling the getNeighbors? -> move call to getNeighbors above these inner force calcs? (also above)
+                for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
+                     it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
+                     ++it) {
+                    auto pair = *it;
+                    double alpha = sim.getAlpha(pair.first.getType(), pair.second.getType());
+                    double beta = sim.getBeta(pair.first.getType(), pair.second.getType());
+                    double gamma = sim.getGamma(pair.first.getType(), pair.second.getType());
+                    lj_calc(pair.first, pair.second, alpha, beta, gamma);
+                }
+                // Calculate the forces gravity applies to the particles
+                double gravityConstant = sim.getGravityConstant();
+                if (gravityConstant != 0) {
+                    // Skip these calculations iff the constant = 0, as this will have no impact
+                    for (Particle& particle : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
+                        // The gravity only acts along the y-Axis
+                        std::array<double, 3> gravityForce { 0,
+                                                             gravityConstant * particle.getM(),
+                                                             0 };
+                        particle.setF(particle.getF() + gravityForce);
+                    }
+                }
+                // calculate LJ forces with the neighbours
+                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
+                for (auto i : neighbors) {
+                    // for all particles in the cell
+                    for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
+                        // go over all particles in the neighbour
+                        for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
+                            // and calculate the force
+                            // TODO active particles check
+                            double alpha = sim.getAlpha(p1.get().getType(), p2.get().getType());
+                            double beta = sim.getBeta(p1.get().getType(), p2.get().getType());
+                            double gamma = sim.getGamma(p1.get().getType(), p2.get().getType());
+                            lj_calc(p1, p2, alpha, beta, gamma);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

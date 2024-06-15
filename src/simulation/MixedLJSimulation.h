@@ -2,15 +2,18 @@
 #include "LennardJonesDomainSimulation.h"
 
 /**
- * @brief Type to store the LJ parameters in. Here the key are the types of the particles to get the param for
+ * @brief Type to store the LJ parameters in. Here the key are the types of the particles to get the
+ * param for
  */
 typedef std::map<std::pair<int, int>, double> MixLJParamMap;
 
 /**
  * @brief Simulation class for the Lennard-Jones simulation with mixed LJ parameters
- * @details This class is a subclass of the Lennard-Jones domain simulation class and is used to simulate different particles in one simulation. For that the Lorentz-Berthelot mixing rules are used
+ * @details This class is a subclass of the Lennard-Jones domain simulation class and is used to
+ * simulate different particles in one simulation. For that the Lorentz-Berthelot mixing rules are
+ * used
  */
-class MixedLJSimulation : public LennardJonesDomainSimulation{
+class MixedLJSimulation : public LennardJonesDomainSimulation {
 public:
     /**
      * @brief Construct a new Mixed Lennard Jones Domain Simulation object
@@ -57,8 +60,7 @@ public:
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
         bool read_file = true,
-        unsigned n_thermostat = 1000
-        );
+        unsigned n_thermostat = 1000);
 
     /**
      * @brief Run the simulation
@@ -74,6 +76,52 @@ public:
      */
     static std::pair<int, int> getMixKey(int type1, int type2);
 
+    /**
+     * @brief Get the epsilon of a combination of particles
+     * @param type1 Type of the first particle
+     * @param type2 Type of the second particle
+     * @return The epsilon of both particles according to mixing rules
+     */
+    double getEpsilon(int type1, int type2) const { return epsilons.at(getMixKey(type1, type2)); }
+
+    /**
+     * @brief Get the sigma of a combination of particles
+     * @param type1 Type of the first particle
+     * @param type2 Type of the second particle
+     * @return The sigma of both particles according to mixing rules
+     */
+    double getSigma(int type1, int type2) const { return sigmas.at(getMixKey(type1, type2)); }
+
+    /**
+     * @brief Get the alpha of a combination of particles
+     * @param type1 Type of the first particle
+     * @param type2 Type of the second particle
+     * @return The alpha of both particles according to mixing rules
+     */
+    double getAlpha(int type1, int type2) const { return alphas.at(getMixKey(type1, type2)); }
+
+    /**
+     * @brief Get the beta of a combination of particles
+     * @param type1 Type of the first particle
+     * @param type2 Type of the second particle
+     * @return The beta of both particles according to mixing rules
+     */
+    double getBeta(int type1, int type2) const { return betas.at(getMixKey(type1, type2)); }
+
+    /**
+     * @brief Get the gamma of a combination of particles
+     * @param type1 Type of the first particle
+     * @param type2 Type of the second particle
+     * @return The gama of both particles according to mixing rules
+     */
+    double getGamma(int type1, int type2) const { return gammas.at(getMixKey(type1, type2)); }
+
+    /**
+     * @brief get the gravity constant
+     * @return The gravity constant used in the simulation
+     */
+    double getGravityConstant() const { return gravityConstant; }
+
 protected:
     MixLJParamMap epsilons; /**< The mixed epsilon parameters of the Lennard-Jones potential */
     MixLJParamMap sigmas; /**< The mixed sigma parameters of the Lennard-Jones potential */
@@ -81,7 +129,7 @@ protected:
     MixLJParamMap betas; /**< sigma^6 */
     MixLJParamMap gammas; /**< -2 * sigma^12 */
 
-    double gravity_constant; /**< The gravity constant */
+    double gravityConstant; /**< The gravity constant */
     double T_init; /**< The initial temperature */
     double T_target; /**< The target temperature */
     double delta_T; /**< The maximal temperature change in one step */
@@ -89,13 +137,12 @@ protected:
 
 private:
     // ---- Hide singe epsilon and sigma -------//
-    using LennardJonesSimulation::getSigma;     //
-    using LennardJonesSimulation::setSigma;     //
-    using LennardJonesSimulation::getEpsilon;   //
-    using LennardJonesSimulation::setEpsilon;   //
-    using LennardJonesSimulation::getAlpha;     //
-    using LennardJonesSimulation::getBeta;      //
-    using LennardJonesSimulation::getGamma;     //
+    using LennardJonesSimulation::getAlpha; //
+    using LennardJonesSimulation::getBeta; //
+    using LennardJonesSimulation::getEpsilon; //
+    using LennardJonesSimulation::getGamma; //
+    using LennardJonesSimulation::getSigma; //
+    using LennardJonesSimulation::setEpsilon; //
+    using LennardJonesSimulation::setSigma; //
     // -----------------------------------------//
-
 };

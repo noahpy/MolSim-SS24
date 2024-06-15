@@ -18,7 +18,7 @@ MixedLJSimulation::MixedLJSimulation(
     std::array<double, 3> domainSize,
     double cutoff,
     const BoundaryConfig& boundaryConfig,
-    double gravity_constant,
+    double gravityConstant,
     double T_init,
     double T_target,
     double delta_T,
@@ -43,7 +43,7 @@ MixedLJSimulation::MixedLJSimulation(
           frequency,
           updateFrequency,
           false)
-    , gravity_constant(gravity_constant)
+    , gravityConstant(gravityConstant)
     , T_init(T_init)
     , T_target(T_target)
     , delta_T(delta_T)
