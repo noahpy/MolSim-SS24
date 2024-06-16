@@ -84,7 +84,7 @@
       </xs:documentation>
     </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="overflow"/>
+            <xs:enumeration value="outflow"/>
             <xs:enumeration value="soft_reflective"/>
         </xs:restriction>
  </xs:simpleType>

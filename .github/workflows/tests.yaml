@@ -12,6 +12,7 @@ on:
     branches:
       - 'assignment*'
       - master
+      - 'ass3-fix'
   workflow_dispatch:
 
 

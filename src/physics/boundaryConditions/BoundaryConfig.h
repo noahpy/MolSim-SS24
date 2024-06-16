@@ -39,7 +39,7 @@ public:
  */
 inline BoundaryType getBoundaryType(std::string str)
 {
-    if (str == "overflow") {
+    if (str == "outflow") {
         return BoundaryType::OVERFLOW;
     } else if (str == "soft_reflective") {
         return BoundaryType::SOFT_REFLECTIVE;
@@ -56,7 +56,7 @@ inline BoundaryType getBoundaryType(std::string str)
 inline std::string getBoundaryString(BoundaryType type)
 {
     if (type == BoundaryType::OVERFLOW) {
-        return "overflow";
+        return "outflow";
     } else if (type == BoundaryType::SOFT_REFLECTIVE) {
         return "soft_reflective";
     } else {

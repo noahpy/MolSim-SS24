@@ -24,7 +24,8 @@ TEST(SoftReflectiveBoundary, CorrectMirroring3D)
     simParams.simulation_type = SimulationType::DOMAIN_LJ;
     simParams.domain_origin = domain_origin;
     simParams.domain_size = { 5, 5, 5 };
-    simParams.boundaryConfig = BoundaryConfig { SOFT_REFLECTIVE, SOFT_REFLECTIVE, SOFT_REFLECTIVE,
+    simParams.sigma = simParams.cutoff * 5; // big enough to generate all halo particles
+        simParams.boundaryConfig = BoundaryConfig { SOFT_REFLECTIVE, SOFT_REFLECTIVE, SOFT_REFLECTIVE,
                                                 SOFT_REFLECTIVE, SOFT_REFLECTIVE, SOFT_REFLECTIVE };
 
     std::array<double, 3> pos = { -9, -8, -7 };
@@ -117,6 +118,7 @@ TEST(SoftReflectiveBoundary, CorrectMirroring2D)
     simParams.simulation_type = SimulationType::DOMAIN_LJ;
     simParams.domain_origin = domain_origin;
     simParams.domain_size = { 5, 5, 0 };
+    simParams.sigma = simParams.cutoff * 5; // big enough to generate all halo particles
     simParams.boundaryConfig = BoundaryConfig { SOFT_REFLECTIVE, SOFT_REFLECTIVE, SOFT_REFLECTIVE,
                                                 SOFT_REFLECTIVE };
 

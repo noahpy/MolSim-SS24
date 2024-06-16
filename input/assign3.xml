@@ -19,10 +19,10 @@
     </domainSize>
     <cutoff>3.0</cutoff>
     <boundaries>
-      <bound_four>overflow</bound_four>
-      <bound_four>overflow</bound_four>
-      <bound_four>overflow</bound_four>
-      <bound_four>overflow</bound_four>
+      <bound_four>outflow</bound_four>
+      <bound_four>outflow</bound_four>
+      <bound_four>outflow</bound_four>
+      <bound_four>outflow</bound_four>
     </boundaries>
   </params>
   <clusters>

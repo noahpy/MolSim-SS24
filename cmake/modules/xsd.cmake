@@ -8,7 +8,7 @@ if (XSD_EXECUTABLE)
         "${CMAKE_CURRENT_SOURCE_DIR}/src/io/xsd/*.xsd"
     )
     add_custom_target(xsd
-        COMMAND ${XSD_EXECUTABLE} cxx-tree --hxx-suffix=.h --cxx-suffix=.cpp --std c++11 --generate-doxygen --generate-serialization ${ALL_XSD}
+        COMMAND ${XSD_EXECUTABLE} cxx-tree --hxx-suffix=.h --cxx-suffix=.cpp --std c++17 --generate-doxygen --generate-serialization ${ALL_XSD}
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/io/xsd
         COMMENT "Generating xsd code"
         VERBATIM
