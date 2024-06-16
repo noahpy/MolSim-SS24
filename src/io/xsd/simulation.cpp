@@ -245,6 +245,206 @@ bound_six (const bound_six_sequence& s)
 }
 
 
+// DecimalList_t
+//
+
+DecimalList_t::
+DecimalList_t ()
+: ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal > (this)
+{
+}
+
+DecimalList_t::
+DecimalList_t (size_type n, const ::xml_schema::decimal& x)
+: ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal > (n, x, this)
+{
+}
+
+DecimalList_t::
+DecimalList_t (const DecimalList_t& o,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+: ::xml_schema::simple_type (o, f, c),
+  ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal > (o, f, this)
+{
+}
+
+// DecimalArray_t
+//
+
+const DecimalArray_t::dim_type& DecimalArray_t::
+dim () const
+{
+  return this->dim_.get ();
+}
+
+DecimalArray_t::dim_type& DecimalArray_t::
+dim ()
+{
+  return this->dim_.get ();
+}
+
+void DecimalArray_t::
+dim (const dim_type& x)
+{
+  this->dim_.set (x);
+}
+
+void DecimalArray_t::
+dim (::std::unique_ptr< dim_type > x)
+{
+  this->dim_.set (std::move (x));
+}
+
+
+// ParticleData_t
+//
+
+const ParticleData_t::PointData_type& ParticleData_t::
+PointData () const
+{
+  return this->PointData_.get ();
+}
+
+ParticleData_t::PointData_type& ParticleData_t::
+PointData ()
+{
+  return this->PointData_.get ();
+}
+
+void ParticleData_t::
+PointData (const PointData_type& x)
+{
+  this->PointData_.set (x);
+}
+
+void ParticleData_t::
+PointData (::std::unique_ptr< PointData_type > x)
+{
+  this->PointData_.set (std::move (x));
+}
+
+const ParticleData_t::VelData_type& ParticleData_t::
+VelData () const
+{
+  return this->VelData_.get ();
+}
+
+ParticleData_t::VelData_type& ParticleData_t::
+VelData ()
+{
+  return this->VelData_.get ();
+}
+
+void ParticleData_t::
+VelData (const VelData_type& x)
+{
+  this->VelData_.set (x);
+}
+
+void ParticleData_t::
+VelData (::std::unique_ptr< VelData_type > x)
+{
+  this->VelData_.set (std::move (x));
+}
+
+const ParticleData_t::ForceData_type& ParticleData_t::
+ForceData () const
+{
+  return this->ForceData_.get ();
+}
+
+ParticleData_t::ForceData_type& ParticleData_t::
+ForceData ()
+{
+  return this->ForceData_.get ();
+}
+
+void ParticleData_t::
+ForceData (const ForceData_type& x)
+{
+  this->ForceData_.set (x);
+}
+
+void ParticleData_t::
+ForceData (::std::unique_ptr< ForceData_type > x)
+{
+  this->ForceData_.set (std::move (x));
+}
+
+const ParticleData_t::OldForceData_type& ParticleData_t::
+OldForceData () const
+{
+  return this->OldForceData_.get ();
+}
+
+ParticleData_t::OldForceData_type& ParticleData_t::
+OldForceData ()
+{
+  return this->OldForceData_.get ();
+}
+
+void ParticleData_t::
+OldForceData (const OldForceData_type& x)
+{
+  this->OldForceData_.set (x);
+}
+
+void ParticleData_t::
+OldForceData (::std::unique_ptr< OldForceData_type > x)
+{
+  this->OldForceData_.set (std::move (x));
+}
+
+const ParticleData_t::MassData_type& ParticleData_t::
+MassData () const
+{
+  return this->MassData_.get ();
+}
+
+ParticleData_t::MassData_type& ParticleData_t::
+MassData ()
+{
+  return this->MassData_.get ();
+}
+
+void ParticleData_t::
+MassData (const MassData_type& x)
+{
+  this->MassData_.set (x);
+}
+
+void ParticleData_t::
+MassData (::std::unique_ptr< MassData_type > x)
+{
+  this->MassData_.set (std::move (x));
+}
+
+const ParticleData_t::TypeData_type& ParticleData_t::
+TypeData () const
+{
+  return this->TypeData_.get ();
+}
+
+ParticleData_t::TypeData_type& ParticleData_t::
+TypeData ()
+{
+  return this->TypeData_.get ();
+}
+
+void ParticleData_t::
+TypeData (const TypeData_type& x)
+{
+  this->TypeData_.set (x);
+}
+
+void ParticleData_t::
+TypeData (::std::unique_ptr< TypeData_type > x)
+{
+  this->TypeData_.set (std::move (x));
+}
+
+
 // cuboid_t
 //
 
@@ -614,6 +814,30 @@ sphere (const sphere_sequence& s)
 // params_t
 //
 
+const params_t::start_time_optional& params_t::
+start_time () const
+{
+  return this->start_time_;
+}
+
+params_t::start_time_optional& params_t::
+start_time ()
+{
+  return this->start_time_;
+}
+
+void params_t::
+start_time (const start_time_type& x)
+{
+  this->start_time_.set (x);
+}
+
+void params_t::
+start_time (const start_time_optional& x)
+{
+  this->start_time_ = x;
+}
+
 const params_t::delta_t_optional& params_t::
 delta_t () const
 {
@@ -952,6 +1176,36 @@ void simulation_t::
 clusters (::std::unique_ptr< clusters_type > x)
 {
   this->clusters_.set (std::move (x));
+}
+
+const simulation_t::particles_optional& simulation_t::
+particles () const
+{
+  return this->particles_;
+}
+
+simulation_t::particles_optional& simulation_t::
+particles ()
+{
+  return this->particles_;
+}
+
+void simulation_t::
+particles (const particles_type& x)
+{
+  this->particles_.set (x);
+}
+
+void simulation_t::
+particles (const particles_optional& x)
+{
+  this->particles_ = x;
+}
+
+void simulation_t::
+particles (::std::unique_ptr< particles_type > x)
+{
+  this->particles_.set (std::move (x));
 }
 
 
@@ -1340,7 +1594,7 @@ _xsd_boundaryNames_t_convert () const
 const char* const boundaryNames_t::
 _xsd_boundaryNames_t_literals_[3] =
 {
-  "overflow",
+  "outflow",
   "soft_reflective",
   "periodic"
 };
@@ -1348,7 +1602,7 @@ _xsd_boundaryNames_t_literals_[3] =
 const boundaryNames_t::value boundaryNames_t::
 _xsd_boundaryNames_t_indexes_[3] =
 {
-  ::boundaryNames_t::overflow,
+  ::boundaryNames_t::outflow,
   ::boundaryNames_t::periodic,
   ::boundaryNames_t::soft_reflective
 };
@@ -1447,6 +1701,378 @@ operator= (const boundary_t& x)
 
 boundary_t::
 ~boundary_t ()
+{
+}
+
+// DecimalList_t
+//
+
+DecimalList_t::
+DecimalList_t (const ::xercesc::DOMElement& e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+: ::xml_schema::simple_type (e, f, c),
+  ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal > (e, f, this)
+{
+}
+
+DecimalList_t::
+DecimalList_t (const ::xercesc::DOMAttr& a,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+: ::xml_schema::simple_type (a, f, c),
+  ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal > (a, f, this)
+{
+}
+
+DecimalList_t::
+DecimalList_t (const ::std::string& s,
+               const ::xercesc::DOMElement* e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+: ::xml_schema::simple_type (s, e, f, c),
+  ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal > (s, e, f, this)
+{
+}
+
+DecimalList_t* DecimalList_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class DecimalList_t (*this, f, c);
+}
+
+DecimalList_t::
+~DecimalList_t ()
+{
+}
+
+// DecimalArray_t
+//
+
+DecimalArray_t::
+DecimalArray_t (const dim_type& dim)
+: ::DecimalList_t (),
+  dim_ (dim, this)
+{
+}
+
+DecimalArray_t::
+DecimalArray_t (const ::DecimalList_t& _xsd_DecimalList_t_base,
+                const dim_type& dim)
+: ::DecimalList_t (_xsd_DecimalList_t_base),
+  dim_ (dim, this)
+{
+}
+
+DecimalArray_t::
+DecimalArray_t (const DecimalArray_t& x,
+                ::xml_schema::flags f,
+                ::xml_schema::container* c)
+: ::DecimalList_t (x, f, c),
+  dim_ (x.dim_, f, this)
+{
+}
+
+DecimalArray_t::
+DecimalArray_t (const ::xercesc::DOMElement& e,
+                ::xml_schema::flags f,
+                ::xml_schema::container* c)
+: ::DecimalList_t (e, f | ::xml_schema::flags::base, c),
+  dim_ (this)
+{
+  if ((f & ::xml_schema::flags::base) == 0)
+  {
+    ::xsd::cxx::xml::dom::parser< char > p (e, false, false, true);
+    this->parse (p, f);
+  }
+}
+
+void DecimalArray_t::
+parse (::xsd::cxx::xml::dom::parser< char >& p,
+       ::xml_schema::flags f)
+{
+  while (p.more_attributes ())
+  {
+    const ::xercesc::DOMAttr& i (p.next_attribute ());
+    const ::xsd::cxx::xml::qualified_name< char > n (
+      ::xsd::cxx::xml::dom::name< char > (i));
+
+    if (n.name () == "dim" && n.namespace_ ().empty ())
+    {
+      this->dim_.set (dim_traits::create (i, f, this));
+      continue;
+    }
+  }
+
+  if (!dim_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_attribute< char > (
+      "dim",
+      "");
+  }
+}
+
+DecimalArray_t* DecimalArray_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class DecimalArray_t (*this, f, c);
+}
+
+DecimalArray_t& DecimalArray_t::
+operator= (const DecimalArray_t& x)
+{
+  if (this != &x)
+  {
+    static_cast< ::DecimalList_t& > (*this) = x;
+    this->dim_ = x.dim_;
+  }
+
+  return *this;
+}
+
+DecimalArray_t::
+~DecimalArray_t ()
+{
+}
+
+// ParticleData_t
+//
+
+ParticleData_t::
+ParticleData_t (const PointData_type& PointData,
+                const VelData_type& VelData,
+                const ForceData_type& ForceData,
+                const OldForceData_type& OldForceData,
+                const MassData_type& MassData,
+                const TypeData_type& TypeData)
+: ::xml_schema::type (),
+  PointData_ (PointData, this),
+  VelData_ (VelData, this),
+  ForceData_ (ForceData, this),
+  OldForceData_ (OldForceData, this),
+  MassData_ (MassData, this),
+  TypeData_ (TypeData, this)
+{
+}
+
+ParticleData_t::
+ParticleData_t (::std::unique_ptr< PointData_type > PointData,
+                ::std::unique_ptr< VelData_type > VelData,
+                ::std::unique_ptr< ForceData_type > ForceData,
+                ::std::unique_ptr< OldForceData_type > OldForceData,
+                ::std::unique_ptr< MassData_type > MassData,
+                ::std::unique_ptr< TypeData_type > TypeData)
+: ::xml_schema::type (),
+  PointData_ (std::move (PointData), this),
+  VelData_ (std::move (VelData), this),
+  ForceData_ (std::move (ForceData), this),
+  OldForceData_ (std::move (OldForceData), this),
+  MassData_ (std::move (MassData), this),
+  TypeData_ (std::move (TypeData), this)
+{
+}
+
+ParticleData_t::
+ParticleData_t (const ParticleData_t& x,
+                ::xml_schema::flags f,
+                ::xml_schema::container* c)
+: ::xml_schema::type (x, f, c),
+  PointData_ (x.PointData_, f, this),
+  VelData_ (x.VelData_, f, this),
+  ForceData_ (x.ForceData_, f, this),
+  OldForceData_ (x.OldForceData_, f, this),
+  MassData_ (x.MassData_, f, this),
+  TypeData_ (x.TypeData_, f, this)
+{
+}
+
+ParticleData_t::
+ParticleData_t (const ::xercesc::DOMElement& e,
+                ::xml_schema::flags f,
+                ::xml_schema::container* c)
+: ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+  PointData_ (this),
+  VelData_ (this),
+  ForceData_ (this),
+  OldForceData_ (this),
+  MassData_ (this),
+  TypeData_ (this)
+{
+  if ((f & ::xml_schema::flags::base) == 0)
+  {
+    ::xsd::cxx::xml::dom::parser< char > p (e, true, false, false);
+    this->parse (p, f);
+  }
+}
+
+void ParticleData_t::
+parse (::xsd::cxx::xml::dom::parser< char >& p,
+       ::xml_schema::flags f)
+{
+  for (; p.more_content (); p.next_content (false))
+  {
+    const ::xercesc::DOMElement& i (p.cur_element ());
+    const ::xsd::cxx::xml::qualified_name< char > n (
+      ::xsd::cxx::xml::dom::name< char > (i));
+
+    // PointData
+    //
+    if (n.name () == "PointData" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< PointData_type > r (
+        PointData_traits::create (i, f, this));
+
+      if (!PointData_.present ())
+      {
+        this->PointData_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // VelData
+    //
+    if (n.name () == "VelData" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< VelData_type > r (
+        VelData_traits::create (i, f, this));
+
+      if (!VelData_.present ())
+      {
+        this->VelData_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // ForceData
+    //
+    if (n.name () == "ForceData" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< ForceData_type > r (
+        ForceData_traits::create (i, f, this));
+
+      if (!ForceData_.present ())
+      {
+        this->ForceData_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // OldForceData
+    //
+    if (n.name () == "OldForceData" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< OldForceData_type > r (
+        OldForceData_traits::create (i, f, this));
+
+      if (!OldForceData_.present ())
+      {
+        this->OldForceData_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // MassData
+    //
+    if (n.name () == "MassData" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< MassData_type > r (
+        MassData_traits::create (i, f, this));
+
+      if (!MassData_.present ())
+      {
+        this->MassData_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // TypeData
+    //
+    if (n.name () == "TypeData" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< TypeData_type > r (
+        TypeData_traits::create (i, f, this));
+
+      if (!TypeData_.present ())
+      {
+        this->TypeData_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    break;
+  }
+
+  if (!PointData_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "PointData",
+      "");
+  }
+
+  if (!VelData_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "VelData",
+      "");
+  }
+
+  if (!ForceData_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "ForceData",
+      "");
+  }
+
+  if (!OldForceData_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "OldForceData",
+      "");
+  }
+
+  if (!MassData_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "MassData",
+      "");
+  }
+
+  if (!TypeData_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "TypeData",
+      "");
+  }
+}
+
+ParticleData_t* ParticleData_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class ParticleData_t (*this, f, c);
+}
+
+ParticleData_t& ParticleData_t::
+operator= (const ParticleData_t& x)
+{
+  if (this != &x)
+  {
+    static_cast< ::xml_schema::type& > (*this) = x;
+    this->PointData_ = x.PointData_;
+    this->VelData_ = x.VelData_;
+    this->ForceData_ = x.ForceData_;
+    this->OldForceData_ = x.OldForceData_;
+    this->MassData_ = x.MassData_;
+    this->TypeData_ = x.TypeData_;
+  }
+
+  return *this;
+}
+
+ParticleData_t::
+~ParticleData_t ()
 {
 }
 
@@ -2094,6 +2720,7 @@ clusters_t::
 params_t::
 params_t ()
 : ::xml_schema::type (),
+  start_time_ (this),
   delta_t_ (this),
   end_time_ (this),
   epsilon_ (this),
@@ -2113,6 +2740,7 @@ params_t (const params_t& x,
           ::xml_schema::flags f,
           ::xml_schema::container* c)
 : ::xml_schema::type (x, f, c),
+  start_time_ (x.start_time_, f, this),
   delta_t_ (x.delta_t_, f, this),
   end_time_ (x.end_time_, f, this),
   epsilon_ (x.epsilon_, f, this),
@@ -2132,6 +2760,7 @@ params_t (const ::xercesc::DOMElement& e,
           ::xml_schema::flags f,
           ::xml_schema::container* c)
 : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+  start_time_ (this),
   delta_t_ (this),
   end_time_ (this),
   epsilon_ (this),
@@ -2160,6 +2789,17 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
     const ::xercesc::DOMElement& i (p.cur_element ());
     const ::xsd::cxx::xml::qualified_name< char > n (
       ::xsd::cxx::xml::dom::name< char > (i));
+
+    // start_time
+    //
+    if (n.name () == "start_time" && n.namespace_ ().empty ())
+    {
+      if (!this->start_time_)
+      {
+        this->start_time_.set (start_time_traits::create (i, f, this));
+        continue;
+      }
+    }
 
     // delta_t
     //
@@ -2311,6 +2951,7 @@ operator= (const params_t& x)
   if (this != &x)
   {
     static_cast< ::xml_schema::type& > (*this) = x;
+    this->start_time_ = x.start_time_;
     this->delta_t_ = x.delta_t_;
     this->end_time_ = x.end_time_;
     this->epsilon_ = x.epsilon_;
@@ -2340,7 +2981,8 @@ simulation_t (const params_type& params,
               const clusters_type& clusters)
 : ::xml_schema::type (),
   params_ (params, this),
-  clusters_ (clusters, this)
+  clusters_ (clusters, this),
+  particles_ (this)
 {
 }
 
@@ -2349,7 +2991,8 @@ simulation_t (::std::unique_ptr< params_type > params,
               ::std::unique_ptr< clusters_type > clusters)
 : ::xml_schema::type (),
   params_ (std::move (params), this),
-  clusters_ (std::move (clusters), this)
+  clusters_ (std::move (clusters), this),
+  particles_ (this)
 {
 }
 
@@ -2359,7 +3002,8 @@ simulation_t (const simulation_t& x,
               ::xml_schema::container* c)
 : ::xml_schema::type (x, f, c),
   params_ (x.params_, f, this),
-  clusters_ (x.clusters_, f, this)
+  clusters_ (x.clusters_, f, this),
+  particles_ (x.particles_, f, this)
 {
 }
 
@@ -2369,7 +3013,8 @@ simulation_t (const ::xercesc::DOMElement& e,
               ::xml_schema::container* c)
 : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
   params_ (this),
-  clusters_ (this)
+  clusters_ (this),
+  particles_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -2416,6 +3061,20 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // particles
+    //
+    if (n.name () == "particles" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< particles_type > r (
+        particles_traits::create (i, f, this));
+
+      if (!this->particles_)
+      {
+        this->particles_.set (::std::move (r));
+        continue;
+      }
+    }
+
     break;
   }
 
@@ -2449,6 +3108,7 @@ operator= (const simulation_t& x)
     static_cast< ::xml_schema::type& > (*this) = x;
     this->params_ = x.params_;
     this->clusters_ = x.clusters_;
+    this->particles_ = x.particles_;
   }
 
   return *this;
@@ -2888,6 +3548,114 @@ operator<< (::xercesc::DOMElement& e, const boundary_t& i)
 }
 
 void
+operator<< (::xercesc::DOMElement& e, const DecimalList_t& i)
+{
+  e << static_cast< const ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal >& > (i);
+}
+
+void
+operator<< (::xercesc::DOMAttr& a, const DecimalList_t& i)
+{
+  a << static_cast< const ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal >& > (i);
+}
+
+void
+operator<< (::xml_schema::list_stream& l,
+            const DecimalList_t& i)
+{
+  l << static_cast< const ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal >& > (i);
+}
+
+void
+operator<< (::xercesc::DOMElement& e, const DecimalArray_t& i)
+{
+  e << static_cast< const ::DecimalList_t& > (i);
+
+  // dim
+  //
+  {
+    ::xercesc::DOMAttr& a (
+      ::xsd::cxx::xml::dom::create_attribute (
+        "dim",
+        e));
+
+    a << i.dim ();
+  }
+}
+
+void
+operator<< (::xercesc::DOMElement& e, const ParticleData_t& i)
+{
+  e << static_cast< const ::xml_schema::type& > (i);
+
+  // PointData
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "PointData",
+        e));
+
+    s << i.PointData ();
+  }
+
+  // VelData
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "VelData",
+        e));
+
+    s << i.VelData ();
+  }
+
+  // ForceData
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "ForceData",
+        e));
+
+    s << i.ForceData ();
+  }
+
+  // OldForceData
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "OldForceData",
+        e));
+
+    s << i.OldForceData ();
+  }
+
+  // MassData
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "MassData",
+        e));
+
+    s << i.MassData ();
+  }
+
+  // TypeData
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "TypeData",
+        e));
+
+    s << i.TypeData ();
+  }
+}
+
+void
 operator<< (::xercesc::DOMElement& e, const cuboid_t& i)
 {
   e << static_cast< const ::xml_schema::type& > (i);
@@ -3107,6 +3875,18 @@ operator<< (::xercesc::DOMElement& e, const params_t& i)
 {
   e << static_cast< const ::xml_schema::type& > (i);
 
+  // start_time
+  //
+  if (i.start_time ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "start_time",
+        e));
+
+    s << ::xml_schema::as_double(*i.start_time ());
+  }
+
   // delta_t
   //
   if (i.delta_t ())
@@ -3265,6 +4045,18 @@ operator<< (::xercesc::DOMElement& e, const simulation_t& i)
         e));
 
     s << i.clusters ();
+  }
+
+  // particles
+  //
+  if (i.particles ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "particles",
+        e));
+
+    s << *i.particles ();
   }
 }
 

@@ -31,6 +31,8 @@ void ParticleGenerator::generateClusters()
 
     // Set the particles in the container
     container.particles = particles;
+    // Initialize counter for active particles
+    container.activeParticleCount = static_cast<int>(particles.size());
 
     // Clear the clusters
     clusters.clear();

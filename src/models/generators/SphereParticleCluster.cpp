@@ -176,14 +176,14 @@ size_t SphereParticleCluster::getNumberOfParticlesRing(double realRadius) const
 std::string SphereParticleCluster::toString() const
 {
     std::ostringstream oss;
-    oss << "origin: " << origin[0] << ", " << origin[1] << ", " << origin[2] << "; ";
-    oss << "mass: " << mass << "; ";
-    oss << "initialVelocity: " << initialVelocity[0] << ", " << initialVelocity[1] << ", "
-        << initialVelocity[2] << "; ";
-    oss << "meanVelocity: " << meanVelocity << "; ";
-    oss << "dimensions: " << dimensions << "; ";
-    oss << "radius: " << sphereRadius << "; ";
-    oss << "sphereDimensions: " << sphereDimensions << "; ";
-    oss << "spacing: " << spacing << "; ";
+    oss << "pos: (" << origin[0] << ", " << origin[1] << ", " << origin[2] << ") ";
+    oss << "vel: (" << initialVelocity[0] << ", " << initialVelocity[1] << ", "
+        << initialVelocity[2] << ") ";
+    oss << "radius: " << sphereRadius << " ";
+    oss << "sphereDim: " << sphereDimensions << " ";
+    oss << "mass: " << mass << " ";
+    oss << "meanVel: " << meanVelocity << " ";
+    oss << "brownDim: " << dimensions << " ";
+    oss << "spacing: " << spacing << " ";
     return oss.str();
 }

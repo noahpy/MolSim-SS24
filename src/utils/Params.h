@@ -6,7 +6,7 @@
 
 enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
 
-enum WriterType { XYZ, VTK };
+enum class WriterType { XYZ, VTK, XML };
 
 enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ };
 
@@ -42,6 +42,8 @@ public:
     unsigned plot_frequency = 10;
     // update frequency
     unsigned update_frequency = 10;
+    // checkpoint frequency
+    unsigned checkpoint_frequency = 10;
     // boundary configuration
     BoundaryConfig boundaryConfig { BoundaryType::SOFT_REFLECTIVE,
                                     BoundaryType::SOFT_REFLECTIVE,

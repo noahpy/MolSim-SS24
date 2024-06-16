@@ -63,6 +63,12 @@ public:
      * */
     void setOutputFile(std::string output);
 
+    /*
+     * @brief Get the output file name of the writer
+     * @return The basename of the output file
+     * */
+    std::string getOutputFile() const;
+
 protected:
     PhysicsStrategy& strategy; /**< The strategy which is used to calculate the physics */
     std::unique_ptr<FileWriter> writer; /**< The output writer */

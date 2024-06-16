@@ -42,6 +42,9 @@ public:
     /// The dimensionality of the gird (either 2 or 3)
     size_t gridDimensionality;
 
+    /// The cutoff radius for particle interactions.
+    double cutoffRadius;
+
     /**
      * @brief Adds a particle to the appropriate cell in the grid.
      * @param particle The particle to be added.
@@ -105,23 +108,28 @@ public:
     void setCutoffRadius(double cutoffRadius);
 
     /**
-     * @brief Get the size of the domain
-     * @return The size of the domain
-     */
-    std::array<double, 3> getDomainSize() const { return domainSize; }
+     * @brief Returns the domain origin.
+     * @return The domain origin.
+     * */
+    inline std::array<double, 3> getDomainOrigin() const { return domainOrigin; }
+
+    /**
+     * @brief Returns the domain size.
+     * @return The domain size.
+     * */
+    inline std::array<double, 3> getDomainSize() const { return domainSize; }
 
     /**
      * @brief Get the grids dimensions
      * @return The grids dimensions
      */
-    std::array<size_t, 3> getGridDimensions() const { return gridDimensions; }
+    inline std::array<size_t, 3> getGridDimensions() const { return gridDimensions; }
 
     /**
-     * @brief Determines the cell type (boundary, halo, or bulk) based on its indices.
-     * @param indices The 3D index of the cell.
-     * @return The CellType of the specified cell.
-     */
-    [[nodiscard]] CellType determineCellType(const std::array<size_t, 3>& indices) const;
+     * @brief Returns the cutoff radius.
+     * @return The cutoff radius.
+     * */
+    inline double getCutoffRadius() const { return cutoffRadius; }
 
     /**
      * @brief Returns the index of the cell containing the specified position.
@@ -129,6 +137,13 @@ public:
      * @return The 3D index of the cell containing the specified position.
      */
     CellIndex getIndexFromPos(const std::array<double, 3>& pos) const;
+
+    /**
+     * @brief Determines the cell type (boundary, halo, or bulk) based on its indices.
+     * @param indices The 3D index of the cell.
+     * @return The CellType of the specified cell.
+     */
+    [[nodiscard]] CellType determineCellType(const std::array<size_t, 3>& indices) const;
 
 protected:
     /**
@@ -148,9 +163,6 @@ private:
 
     /// The size of a cell according to the domain size.
     std::array<double, 3> cellSize;
-
-    /// The cutoff radius for particle interactions.
-    double cutoffRadius;
 
     /// The dimensions of the cell grid in each dimension.
     std::array<size_t, 3> gridDimensions;
