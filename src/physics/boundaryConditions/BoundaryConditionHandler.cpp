@@ -3,6 +3,7 @@
 #include "physics/boundaryConditions/PeriodicBoundary.h"
 #include "physics/boundaryConditions/SoftReflectiveBoundary.h"
 #include <spdlog/spdlog.h>
+#include <algorithm>
 
 BoundaryConditionHandler::BoundaryConditionHandler(
     const BoundaryConfig& boundaryConfig, const CellGrid& cellGrid)
