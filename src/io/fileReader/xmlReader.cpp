@@ -54,6 +54,40 @@ void XmlReader::readFile(Simulation& sim)
 
         generator.generateClusters();
 
+        if (sim_input->particles().present()) {
+            const auto& particles = sim_input->particles().get();
+            // check if all data arrays have the corresponding size
+            if (!(particles.MassData().size() == particles.TypeData().size() &&
+                  particles.PointData().size() / 3 == particles.VelData().size() / 3 &&
+                  particles.ForceData().size() / 3 == particles.OldForceData().size() / 3 &&
+                  particles.MassData().size() == particles.PointData().size() / 3) &&
+                particles.PointData().size() / 3 == particles.ForceData().size() / 3) {
+                spdlog::error("Error whilst reading {}: data array sizes do not match", filename);
+                exit(EXIT_FAILURE);
+            }
+
+            unsigned particle_count = particles.MassData().size();
+            sim.container.particles.reserve(sim.container.particles.size() + particle_count);
+            for (unsigned i = 0; i < particle_count; i++) {
+                Particle p { { particles.PointData()[i * 3],
+                               particles.PointData()[i * 3 + 1],
+                               particles.PointData()[i * 3 + 2] },
+                             { particles.VelData()[i * 3],
+                               particles.VelData()[i * 3 + 1],
+                               particles.VelData()[i * 3 + 2] },
+                             particles.MassData()[i],
+                             (int)particles.TypeData()[i] };
+                p.setF({ particles.ForceData()[i * 3],
+                         particles.ForceData()[i * 3 + 1],
+                         particles.ForceData()[i * 3 + 2] });
+                p.setOldF({ particles.OldForceData()[i * 3],
+                            particles.OldForceData()[i * 3 + 1],
+                            particles.OldForceData()[i * 3 + 2] });
+                sim.container.particles.emplace_back(p);
+            }
+            spdlog::info("Read {} particles indiviually from particle data.", particle_count);
+        }
+
     } catch (const xml_schema::exception& e) {
         spdlog::error("Error when reading: {}", filename);
 

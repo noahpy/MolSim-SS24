@@ -30,8 +30,10 @@ public:
      */
     void postUpdateBoundaryHandling(Simulation& simulation);
 
-    size_t
-        dimensionality; /**< The dimensionality of the simulation as by the provided boundaries */
+    /** The dimensionality of the simulation as by the provided boundaries */
+    size_t dimensionality;
+
+    BoundaryConfig boundaryConfig;
 
 protected:
     std::vector<std::unique_ptr<BoundaryCondition>>

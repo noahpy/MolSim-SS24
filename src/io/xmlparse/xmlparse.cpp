@@ -19,6 +19,8 @@ void xmlparse(Params& sim_params, std::string& filename)
 
         // read in params
         const auto& params = sim_input->params();
+        if (params.start_time().present())
+            sim_params.start_time = params.start_time().get();
         if (params.delta_t().present())
             sim_params.delta_t = params.delta_t().get();
         if (params.end_time().present())
@@ -60,6 +62,15 @@ void xmlparse(Params& sim_params, std::string& filename)
                     getBoundaryType(params.boundaries().get().bound_six()[4]),
                     getBoundaryType(params.boundaries().get().bound_six()[5]));
             }
+        }
+
+        // param checks
+        if (sim_params.start_time > sim_params.end_time) {
+            spdlog::error(
+                "Error: start time ({}) must be less than end time ({})",
+                sim_params.start_time,
+                sim_params.end_time);
+            exit(EXIT_FAILURE);
         }
 
     } catch (const xml_schema::exception& e) {
