@@ -120,16 +120,23 @@ public:
     inline std::array<double, 3> getDomainSize() const { return domainSize; }
 
     /**
+     * @brief Get the grids dimensions
+     * @return The grids dimensions
+     */
+    inline std::array<size_t, 3> getGridDimensions() const { return gridDimensions; }
+
+    /**
      * @brief Returns the cutoff radius.
      * @return The cutoff radius.
      * */
     inline double getCutoffRadius() const { return cutoffRadius; }
 
-protected:
     /**
-     * @brief Initializes the grid structure based on the domain size and cutoff radius.
+     * @brief Returns the index of the cell containing the specified position.
+     * @param pos The 3D position of the cell.
+     * @return The 3D index of the cell containing the specified position.
      */
-    void initializeGrid();
+    CellIndex getIndexFromPos(const std::array<double, 3>& pos) const;
 
     /**
      * @brief Determines the cell type (boundary, halo, or bulk) based on its indices.
@@ -138,18 +145,17 @@ protected:
      */
     [[nodiscard]] CellType determineCellType(const std::array<size_t, 3>& indices) const;
 
+protected:
+    /**
+     * @brief Initializes the grid structure based on the domain size and cutoff radius.
+     */
+    void initializeGrid();
+
     /**
      * @brief Determines the neighbours of the specified cell.
      * @param cell The index of the cell to determine the neighbours of.
      */
     void determineNeighbours(CellIndex cell);
-
-    /**
-     * @brief Returns the index of the cell containing the specified position.
-     * @param pos The 3D position of the cell.
-     * @return The 3D index of the cell containing the specified position.
-     */
-    CellIndex getIndexFromPos(const std::array<double, 3>& pos) const;
 
 private:
     /// The size of the simulation domain in each dimension.

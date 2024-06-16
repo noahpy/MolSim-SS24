@@ -86,6 +86,7 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="outflow"/>
             <xs:enumeration value="soft_reflective"/>
+            <xs:enumeration value="periodic"/>
         </xs:restriction>
  </xs:simpleType>
 

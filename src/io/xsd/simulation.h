@@ -1255,7 +1255,8 @@ class boundaryNames_t: public ::xml_schema::string
   enum value
   {
     outflow,
-    soft_reflective
+    soft_reflective,
+    periodic
   };
 
   /**
@@ -1385,8 +1386,8 @@ class boundaryNames_t: public ::xml_schema::string
   _xsd_boundaryNames_t_convert () const;
 
   public:
-  static const char* const _xsd_boundaryNames_t_literals_[2];
-  static const value _xsd_boundaryNames_t_indexes_[2];
+  static const char* const _xsd_boundaryNames_t_literals_[3];
+  static const value _xsd_boundaryNames_t_indexes_[3];
 
   //@endcond
 };

@@ -1579,11 +1579,11 @@ _xsd_boundaryNames_t_convert () const
   ::xsd::cxx::tree::enum_comparator< char > c (_xsd_boundaryNames_t_literals_);
   const value* i (::std::lower_bound (
                     _xsd_boundaryNames_t_indexes_,
-                    _xsd_boundaryNames_t_indexes_ + 2,
+                    _xsd_boundaryNames_t_indexes_ + 3,
                     *this,
                     c));
 
-  if (i == _xsd_boundaryNames_t_indexes_ + 2 || _xsd_boundaryNames_t_literals_[*i] != *this)
+  if (i == _xsd_boundaryNames_t_indexes_ + 3 || _xsd_boundaryNames_t_literals_[*i] != *this)
   {
     throw ::xsd::cxx::tree::unexpected_enumerator < char > (*this);
   }
@@ -1592,16 +1592,18 @@ _xsd_boundaryNames_t_convert () const
 }
 
 const char* const boundaryNames_t::
-_xsd_boundaryNames_t_literals_[2] =
+_xsd_boundaryNames_t_literals_[3] =
 {
   "outflow",
-  "soft_reflective"
+  "soft_reflective",
+  "periodic"
 };
 
 const boundaryNames_t::value boundaryNames_t::
-_xsd_boundaryNames_t_indexes_[2] =
+_xsd_boundaryNames_t_indexes_[3] =
 {
   ::boundaryNames_t::outflow,
+  ::boundaryNames_t::periodic,
   ::boundaryNames_t::soft_reflective
 };
 
