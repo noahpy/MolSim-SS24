@@ -15,15 +15,41 @@ LennardJonesSimulation::LennardJonesSimulation(
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
     double epsilon,
-    double sigma)
-    : Simulation(time, delta_t, end_time, container, strat, std::move(writer), std::move(reader))
+    double sigma,
+    unsigned frequency,
+    bool read_file)
+    : Simulation(
+          time,
+          delta_t,
+          end_time,
+          container,
+          strat,
+          std::move(writer),
+          std::move(reader),
+          frequency)
     , epsilon(epsilon)
     , sigma(sigma)
 {
+    if (read_file) {
+        this->reader->readFile(*this);
+    }
     this->alpha = -24 * epsilon;
     this->beta = std::pow(sigma, 6);
     this->gamma = -2 * std::pow(sigma, 12);
 }
+
+void LennardJonesSimulation::setEpsilon(double eps)
+{
+    this->epsilon = eps;
+    this->alpha = -24 * epsilon;
+};
+
+void LennardJonesSimulation::setSigma(double sig)
+{
+    this->sigma = sig;
+    this->beta = std::pow(sigma, 6);
+    this->gamma = -2 * std::pow(sigma, 12);
+};
 
 void LennardJonesSimulation::runSim()
 {
@@ -33,7 +59,7 @@ void LennardJonesSimulation::runSim()
         strategy.calX(*this);
 
         ++iteration;
-        if (iteration % 10 == 0) {
+        if (iteration % frequency == 0) {
             writer->plotParticles(*this);
         }
         spdlog::debug("Iteration {} finished.", iteration);

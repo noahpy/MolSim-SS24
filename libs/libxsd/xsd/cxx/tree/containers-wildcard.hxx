@@ -1,5 +1,4 @@
 // file      : xsd/cxx/tree/containers-wildcard.hxx
-// copyright : Copyright (c) 2005-2014 Code Synthesis Tools CC
 // license   : GNU GPL v2 + exceptions; see accompanying LICENSE file
 
 #ifndef XSD_CXX_TREE_CONTAINERS_WILDCARD_HXX
@@ -28,6 +27,8 @@ namespace xsd
       class element_one
       {
       public:
+        typedef xercesc::DOMElement value_type;
+
         ~element_one ()
         {
           if (x_)
@@ -126,6 +127,8 @@ namespace xsd
       class element_optional
       {
       public:
+        typedef xercesc::DOMElement value_type;
+
         ~element_optional ()
         {
           if (x_)

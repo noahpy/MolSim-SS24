@@ -53,6 +53,13 @@ Specify that the given input file describes ASCII art particles.
 For the format of the input file, refer to the \fBASCII Art Format\fR section.
 .br
 .TP
+\fB-x\fR
+Specify that the given input file is an XML file.
+.br
+For the format of the input file, refer to the \fBXML Format\fR section.
+.br
+.TP
+
 \fB-s, --simtype=VALUE\fR
 Specify simulation type (default: 0).
 .br
@@ -60,6 +67,12 @@ Specify simulation type (default: 0).
 .br
 .br
 1 = LennardJonesSimulation
+.br
+.br
+2 = LennardJonesSimulation with Linked Cells
+.br
+.br
+3 = LennardJonesSimulation with Linked Cells + Boundary Conditions
 .br
 .TP
 \fB-w, --writetype=VALUE\fR
@@ -134,6 +147,12 @@ An Ascii art specification has the following format:
 - One line of characters seperated with spaces which represent partciles in the art
 .br
 - Arbritrary many lines of Ascii art, ending with EOF or empty line if there is another art.
+
+\fBXML Format\fR:
+.br
+This format takes XML files as an input to parse every kind of model parameters.
+To see the required format of the XML-files, have a look at the Doxygen documentation 
+or in src/io/xsd/simulation.xsd.
 
 .SH BUGS
 No known bugs.

@@ -1,0 +1,385 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Util type definitions -->
+
+  <xs:complexType name="doubleVec_t">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a 3D vector with double precision.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="x" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The x-coordinate of the vector.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="y" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The y-coordinate of the vector.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="z" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The z-coordinate of the vector.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="intVec_t">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a 3D vector with integer precision.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="x" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>
+            The x-coordinate of the vector.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="y" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>
+            The y-coordinate of the vector.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="z" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>
+            The z-coordinate of the vector.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="dimension_t">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a dimension value, restricted between 0 and 3.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="boundaryNames_t">
+      <xs:annotation>
+      <xs:documentation>
+        Boundary names for the simulation
+      </xs:documentation>
+    </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="outflow"/>
+            <xs:enumeration value="soft_reflective"/>
+        </xs:restriction>
+ </xs:simpleType>
+
+ <xs:complexType name="boundary_t">
+     <xs:annotation>
+      <xs:documentation>
+        Boundary configuration for four or six boundaries
+      </xs:documentation>
+    </xs:annotation>
+        <xs:choice>
+            <xs:sequence>
+                <xs:element name="bound_four" type="boundaryNames_t" minOccurs="4" maxOccurs="4"/>
+            </xs:sequence>
+            <xs:sequence>
+                <xs:element name="bound_six" type="boundaryNames_t" minOccurs="6" maxOccurs="6"/>
+            </xs:sequence>
+        </xs:choice>
+</xs:complexType>
+
+  <!-- Cluster definitions -->
+
+  <xs:complexType name="cuboid_t">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the properties of a cuboid-shaped cluster.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="pos" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The initial position of the cuboid in 3D space.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vel" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The initial velocity of the cuboid in 3D space.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dim" type="intVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The dimensions of the cuboid in terms of number of particles along each axis.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mass" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The mass of the cuboid.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spacing" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The spacing between particles in the cuboid.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brownVel" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The Brownian motion velocity.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brownDim" type="dimension_t">
+        <xs:annotation>
+          <xs:documentation>
+            The dimension affected by Brownian motion.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sphere_t">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the properties of a sphere-shaped cluster.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="center" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The center position of the sphere in 3D space.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vel" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The initial velocity of the sphere in 3D space.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="radius" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The radius of the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mass" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The mass of the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sphereDim" type="dimension_t">
+        <xs:annotation>
+          <xs:documentation>
+            The dimensions of the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spacing" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The spacing between particles in the sphere.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brownVel" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The Brownian motion velocity.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brownDim" type="dimension_t">
+        <xs:annotation>
+          <xs:documentation>
+            The dimension affected by Brownian motion.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Clusters type definition -->
+
+  <xs:complexType name="clusters_t">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a collection of clusters.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="cuboid" type="cuboid_t">
+        <xs:annotation>
+          <xs:documentation>
+            A cuboid cluster within the collection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sphere" type="sphere_t">
+        <xs:annotation>
+          <xs:documentation>
+            A sphere cluster within the collection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <!-- Parameters type definition -->
+
+  <xs:complexType name="params_t">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the parameters for the simulation.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="delta_t" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The time step for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="end_time" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The end time for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="epsilon" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The depth of the potential well.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sigma" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The finite distance at which the inter-particle potential is zero.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+       <xs:element name="output" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The basename of the output files.
+          </xs:documentation>
+        </xs:annotation>
+       </xs:element>
+       <xs:element name="frequency" type="xs:unsignedInt" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The frequency of output files in respect to the time iterations.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="domainOrigin" type="doubleVec_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            3D vector specifying the origin of the simulation domain.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="domainSize" type="doubleVec_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            3D vector specifying the size of the simulation domain.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cutoff" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The cutoff radius for the linked cell algorithm.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    <xs:element name="updateFreq" type="xs:unsignedInt" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The frequency of updating the grid.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="boundaries" type="boundary_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The boundary configuration for the domain boundaries.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Simulation type definition -->
+
+  <xs:complexType name="simulation_t">
+    <xs:annotation>
+      <xs:documentation>
+        The root type for the simulation configuration.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="params" type="params_t">
+        <xs:annotation>
+          <xs:documentation>
+            The parameters for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="clusters" type="clusters_t">
+        <xs:annotation>
+          <xs:documentation>
+            The collection of clusters to be simulated.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="simulation" type="simulation_t">
+    <xs:annotation>
+      <xs:documentation>
+        The root element for the particle simulation configuration.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+</xs:schema>
+

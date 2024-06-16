@@ -149,6 +149,13 @@ public:
     void setOldF(const std::array<double, 3>& f);
 
     /**
+     * @brief Set the mass of the particle
+     * @param m_new The new mass of the particle
+     * @return void
+     */
+    void setM(double m_new);
+
+    /**
      * @brief Overload the == operator for the Particle class
      * @param other The other Particle object to compare to
      * @return true if the two Particle objects are value-wise equal, false otherwise

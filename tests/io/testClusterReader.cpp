@@ -105,7 +105,7 @@ TEST_F(clusterReaderTest, testMissingType)
 TEST_F(clusterReaderTest, testClusterGeneration)
 {
     fileReader = std::make_unique<ClusterReader>(clusterFile);
-    PlanetSimulation sim(
+    PlanetSimulation sim (
         start_time, delta_t, end_time, particles, strat, std::move(writer), std::move(fileReader));
 
     EXPECT_EQ(384, particles.particles.size());
