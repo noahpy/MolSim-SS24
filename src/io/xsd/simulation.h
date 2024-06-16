@@ -1254,7 +1254,7 @@ class boundaryNames_t: public ::xml_schema::string
    */
   enum value
   {
-    overflow,
+    outflow,
     soft_reflective
   };
 

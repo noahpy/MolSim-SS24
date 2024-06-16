@@ -42,6 +42,9 @@ public:
     /// The dimensionality of the gird (either 2 or 3)
     size_t gridDimensionality;
 
+    /// The cutoff radius for particle interactions.
+    double cutoffRadius;
+
     /**
      * @brief Adds a particle to the appropriate cell in the grid.
      * @param particle The particle to be added.
@@ -154,9 +157,6 @@ private:
 
     /// The size of a cell according to the domain size.
     std::array<double, 3> cellSize;
-
-    /// The cutoff radius for particle interactions.
-    double cutoffRadius;
 
     /// The dimensions of the cell grid in each dimension.
     std::array<size_t, 3> gridDimensions;

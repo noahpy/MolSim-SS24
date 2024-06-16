@@ -1594,14 +1594,14 @@ _xsd_boundaryNames_t_convert () const
 const char* const boundaryNames_t::
 _xsd_boundaryNames_t_literals_[2] =
 {
-  "overflow",
+  "outflow",
   "soft_reflective"
 };
 
 const boundaryNames_t::value boundaryNames_t::
 _xsd_boundaryNames_t_indexes_[2] =
 {
-  ::boundaryNames_t::overflow,
+  ::boundaryNames_t::outflow,
   ::boundaryNames_t::soft_reflective
 };
 

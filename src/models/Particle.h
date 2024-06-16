@@ -47,6 +47,11 @@ private:
      */
     int type;
 
+    /**
+     * @brief Activity status of a particle
+     */
+    bool active;
+
 public:
     /**
      * @brief Construct a new Particle object of a given type
@@ -114,6 +119,8 @@ public:
      */
     double getM() const;
 
+    bool getActivity() const;
+
     /**
      * @brief Get the type of the particle
      * @return The mass of the particle
@@ -154,6 +161,8 @@ public:
      * @return void
      */
     void setM(double m_new);
+
+    void setActivity(bool act_new);
 
     /**
      * @brief Overload the == operator for the Particle class
