@@ -5,7 +5,7 @@
 #include <iostream>
 #include <unordered_map>
 
-void OverflowBoundary::postUpdateBoundaryHandling(Simulation& simulation)
+void OverflowBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 {
     const LennardJonesDomainSimulation& LGDSim =
         static_cast<const LennardJonesDomainSimulation&>(simulation);
