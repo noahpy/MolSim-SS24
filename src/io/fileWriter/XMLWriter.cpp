@@ -89,6 +89,9 @@ void XmlWriter::plotParticles(const Simulation& s)
         spdlog::debug("When writing to XML, not a LennardJonesDomainSimulation");
     }
 
+    // TODO: Write thermostat
+    // TODO: Write gravity
+
     // Initialize particle data
     DecimalArray_t points = DecimalArray_t(3);
     DecimalArray_t vels = DecimalArray_t(3);
@@ -98,7 +101,7 @@ void XmlWriter::plotParticles(const Simulation& s)
     DecimalArray_t type = DecimalArray_t(1);
 
     // Fill particle data
-    for (auto& p: s.container){
+    for (auto& p : s.container) {
         points.push_back(p.getX().at(0));
         points.push_back(p.getX().at(1));
         points.push_back(p.getX().at(2));
@@ -120,8 +123,10 @@ void XmlWriter::plotParticles(const Simulation& s)
 
     // Initialize final simulation object
     std::unique_ptr<clusters_t> clusters = std::make_unique<clusters_t>();
+    std::unique_ptr<ParticleTypes_t> ptypes = std::make_unique<ParticleTypes_t>();
     std::unique_ptr<simulation_t> sim =
         std::make_unique<simulation_t>(std::move(params), std::move(clusters));
+    sim->ptypes(std::move(ptypes));
     sim->particles(parts);
 
     // Initialize output file
