@@ -155,4 +155,17 @@ TEST(thermostatTest, keepTemp)
         }
         ++pCount;
     }
+
+    for (auto& p : sim.container) {
+        p.setV({0.5, 0.5, 0});
+    }
+    thermo.updateT(sim);
+
+    pCount = 0;
+    for (auto& p : container) {
+        for (unsigned i = 0; i < 3; i++) {
+            EXPECT_EQ(p.getV().at(i), expectedVs.at(pCount).at(i));
+        }
+        ++pCount;
+    }
 }
