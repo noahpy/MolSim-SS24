@@ -22,7 +22,7 @@ Particle::Particle(
     f = { 0., 0., 0. };
     old_f = { 0., 0., 0. };
     active = true;
-    spdlog::trace("Particle generated!");
+    spdlog::trace("Particle generated: {}", toString());
 }
 
 Particle::Particle() {}
@@ -41,7 +41,7 @@ Particle::Particle(const Particle& other)
 
 Particle::~Particle()
 {
-    spdlog::trace("Particle destructed!");
+    spdlog::trace("Particle destructed: {}", toString());
 }
 
 const std::array<double, 3>& Particle::getX() const

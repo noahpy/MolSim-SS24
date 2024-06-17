@@ -57,6 +57,7 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
+    insertedParticles = {};
 
     for (CellIndex boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
         std::vector<Position> boundarySides = coordinateToPosition(
@@ -79,25 +80,32 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                                           (size_t)((int)boundaryCellIndex[1] + shifts.second[1]),
                                           (size_t)((int)boundaryCellIndex[2] + shifts.second[2]) };
 
-                if (insertionIndex < insertedParticles.size()) {
-                    // simply update, if there is already a particle to reuse
-                    insertedParticles[insertionIndex].setX(haloPosition);
-                    insertedParticles[insertionIndex].setV({ 0, 0, 0 });
-                    insertedParticles[insertionIndex].setF({ 0, 0, 0 });
-                    insertedParticles[insertionIndex].setOldF({ 0, 0, 0 });
-                    insertedParticles[insertionIndex].setM(particle.get().getM());
-                    insertedParticles[insertionIndex].setActivity(false);
-                } else {
-                    // create a new particle
-                    Particle haloParticle(haloPosition, { 0, 0, 0 }, particle.get().getM());
-                    haloParticle.setActivity(false);
-                    insertedParticles.push_back(haloParticle);
-                }
+                /* if (insertionIndex < insertedParticles.size()) { */
+                /*     // simply update, if there is already a particle to reuse */
+                /*     insertedParticles.at(insertionIndex).setX(haloPosition); */
+                /*     insertedParticles.at(insertionIndex).setV({ 0, 0, 0 }); */
+                /*     insertedParticles.at(insertionIndex).setF({ 0, 0, 0 }); */
+                /*     insertedParticles.at(insertionIndex).setOldF({ 0, 0, 0 }); */
+                /*     insertedParticles.at(insertionIndex).setM(particle.get().getM()); */
+                /*     insertedParticles.at(insertionIndex).setActivity(false); */
+                /* } else { */
+                // create a new particle
+                /* spdlog::info("haloPosition: {}, {}, {}", haloPosition[0], haloPosition[1],
+                 * haloPosition[2]); */
+                Particle haloParticle(haloPosition, { 0, 0, 0 }, particle.get().getM());
+                haloParticle.setActivity(false);
+                insertedParticles.push_back(haloParticle);
+                /* } */
 
                 // add the particle to the halo cell
-                LGDSim.getGrid()
-                    .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
-                    ->addParticle(insertedParticles[insertionIndex++]);
+
+                if (LGDSim.getGrid()
+                        .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+                        ->haloNeighbours.size() < 2) {
+                    LGDSim.getGrid()
+                        .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+                        ->addParticle(insertedParticles.at(insertionIndex++));
+                }
             }
         }
     }

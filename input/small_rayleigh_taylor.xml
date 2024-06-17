@@ -3,7 +3,7 @@
 
   <params>
     <delta_t>0.0005</delta_t>
-    <end_time>0.001</end_time>
+    <end_time>0.1</end_time>
     <output>rl_small</output>
     <frequency>1</frequency>
     <!-- Domain params -->
@@ -23,7 +23,7 @@
       <bound_four>periodic</bound_four>
       <bound_four>periodic</bound_four>
       <bound_four>outflow</bound_four>
-      <bound_four>soft_reflective</bound_four>
+      <bound_four>outflow</bound_four>
     </boundaries>
     <!-- Thermostat params -->
     <thermostat>
