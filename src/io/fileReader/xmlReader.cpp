@@ -25,6 +25,10 @@ void XmlReader::readFile(Simulation& sim)
         // read cuboids
         const auto& cuboids = sim_input->clusters().cuboid();
         for (auto cuboid : cuboids) {
+            unsigned ptype = 0;
+            if (cuboid.ptype().present())
+                ptype = cuboid.ptype().get();
+            // read cuboid
             generator.registerCluster(std::make_unique<CuboidParticleCluster>(CuboidParticleCluster(
                 { cuboid.pos().x(), cuboid.pos().y(), cuboid.pos().z() },
                 cuboid.dim().x(),
@@ -34,12 +38,16 @@ void XmlReader::readFile(Simulation& sim)
                 cuboid.mass(),
                 { cuboid.vel().x(), cuboid.vel().y(), cuboid.vel().z() },
                 cuboid.brownVel(),
-                cuboid.brownDim())));
+                cuboid.brownDim(),
+                ptype)));
         }
 
         // read spheres
         const auto& spheres = sim_input->clusters().sphere();
         for (auto sphere : spheres) {
+            unsigned ptype = 0;
+            if (sphere.ptype().present())
+                ptype = sphere.ptype().get();
             // read sphere
             generator.registerCluster(std::make_unique<SphereParticleCluster>(SphereParticleCluster(
                 { sphere.center().x(), sphere.center().y(), sphere.center().z() },
@@ -49,7 +57,8 @@ void XmlReader::readFile(Simulation& sim)
                 sphere.mass(),
                 { sphere.vel().x(), sphere.vel().y(), sphere.vel().z() },
                 sphere.brownVel(),
-                sphere.brownDim())));
+                sphere.brownDim(),
+                ptype)));
         }
 
         generator.generateClusters();

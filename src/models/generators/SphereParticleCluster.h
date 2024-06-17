@@ -32,7 +32,8 @@ public:
         double mass,
         std::array<double, 3> initialVelocity,
         double meanVelocity,
-        size_t brownianMotionDimensions);
+        size_t brownianMotionDimensions,
+        unsigned ptype = 0);
 
     /**
      * @brief Get the total number of particles in the cluster
