@@ -86,9 +86,11 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                     insertedParticles[insertionIndex].setF({ 0, 0, 0 });
                     insertedParticles[insertionIndex].setOldF({ 0, 0, 0 });
                     insertedParticles[insertionIndex].setM(particle.get().getM());
+                    insertedParticles[insertionIndex].setActivity(false);
                 } else {
                     // create a new particle
                     Particle haloParticle(haloPosition, { 0, 0, 0 }, particle.get().getM());
+                    haloParticle.setActivity(false);
                     insertedParticles.push_back(haloParticle);
                 }
 

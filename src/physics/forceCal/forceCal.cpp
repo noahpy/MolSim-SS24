@@ -186,12 +186,13 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                 double gravityConstant = len_sim.getGravityConstant();
                 if (gravityConstant != 0) {
                     // Skip these calculations iff the constant = 0, as this will have no impact
-                    for (Particle& particle : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
+                    ParticleRefList& particles = cellGrid.cells.at(x).at(y).at(z)->getParticles();
+                    for (auto& particle : particles) {
                         // The gravity only acts along the y-Axis
                         std::array<double, 3> gravityForce { 0,
-                                                             gravityConstant * particle.getM(),
+                                                             gravityConstant * particle.get().getM(),
                                                              0 };
-                        particle.setF(particle.getF() + gravityForce);
+                        particle.get().setF(particle.get().getF() + gravityForce);
                     }
                 }
                 // calculate LJ forces with the neighbours
