@@ -21,6 +21,7 @@ public:
      * maxwellBoltzmannDistributedVelocity() The dimensions of the cluster (<= 3) will be passed to
      * maxwellBoltzmannDistributedVelocity() if set to 0 no brownian motion will be added, if set to
      * 1 then only on the x axis, then x+y, and finally x+y+z axis
+     * @param ptype The particle type for this cluster
      */
     CuboidParticleCluster(
         std::array<double, 3> origin,
@@ -31,7 +32,8 @@ public:
         double mass,
         std::array<double, 3> initialVelocity,
         double meanVelocity,
-        size_t dimensions);
+        size_t dimensions,
+        unsigned ptype = 0);
 
     /**
      * @brief Get the total number of particles in the cluster
