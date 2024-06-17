@@ -38,4 +38,4 @@ void force_lennard_jones_lc(const Simulation& sim);
  * potential and the mixing rules to allow multiple particle types & regard gravity
  * @param sim The simulation to calculate the forces for
  */
-void force_mixed_LJ_gravity_lc(const MixedLJSimulation& sim);
+void force_mixed_LJ_gravity_lc(const Simulation& sim);

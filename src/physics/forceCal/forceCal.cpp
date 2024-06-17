@@ -145,9 +145,10 @@ void force_lennard_jones_lc(const Simulation& sim)
     }
 }
 
-void force_mixed_LJ_gravity_lc(const MixedLJSimulation& sim)
+void force_mixed_LJ_gravity_lc(const Simulation& sim)
 {
-    const CellGrid& cellGrid = sim.getGrid();
+    const MixedLJSimulation& len_sim = static_cast<const MixedLJSimulation&>(sim);
+    const CellGrid& cellGrid = len_sim.getGrid();
 
     // for all cells in the grid
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
@@ -170,13 +171,19 @@ void force_mixed_LJ_gravity_lc(const MixedLJSimulation& sim)
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
                      ++it) {
                     auto pair = *it;
-                    double alpha = sim.getAlpha(pair.first.getType(), pair.second.getType());
-                    double beta = sim.getBeta(pair.first.getType(), pair.second.getType());
-                    double gamma = sim.getGamma(pair.first.getType(), pair.second.getType());
-                    lj_calc(pair.first, pair.second, alpha, beta, gamma);
+                    std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
+                    // check if the distance is less than the cutoff
+                    if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius) {
+                        double alpha =
+                            len_sim.getAlpha(pair.first.getType(), pair.second.getType());
+                        double beta = len_sim.getBeta(pair.first.getType(), pair.second.getType());
+                        double gamma =
+                            len_sim.getGamma(pair.first.getType(), pair.second.getType());
+                        lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
+                    }
                 }
                 // Calculate the forces gravity applies to the particles
-                double gravityConstant = sim.getGravityConstant();
+                double gravityConstant = len_sim.getGravityConstant();
                 if (gravityConstant != 0) {
                     // Skip these calculations iff the constant = 0, as this will have no impact
                     for (Particle& particle : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
@@ -193,12 +200,19 @@ void force_mixed_LJ_gravity_lc(const MixedLJSimulation& sim)
                     for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
                         // go over all particles in the neighbour
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
-                            // and calculate the force
                             // TODO active particles check
-                            double alpha = sim.getAlpha(p1.get().getType(), p2.get().getType());
-                            double beta = sim.getBeta(p1.get().getType(), p2.get().getType());
-                            double gamma = sim.getGamma(p1.get().getType(), p2.get().getType());
-                            lj_calc(p1, p2, alpha, beta, gamma);
+                            // Check if the distance is less than the cutoff
+                            std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
+                            if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius) {
+                                // then calculate the force
+                                double alpha =
+                                    len_sim.getAlpha(p1.get().getType(), p2.get().getType());
+                                double beta =
+                                    len_sim.getBeta(p1.get().getType(), p2.get().getType());
+                                double gamma =
+                                    len_sim.getGamma(p1.get().getType(), p2.get().getType());
+                                lj_calc(p1, p2, alpha, beta, gamma, delta);
+                            }
                         }
                     }
                 }
