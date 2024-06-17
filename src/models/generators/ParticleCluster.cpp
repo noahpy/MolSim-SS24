@@ -6,12 +6,14 @@ ParticleCluster::ParticleCluster(
     double mass,
     std::array<double, 3> initialVelocity,
     double meanVelocity,
-    size_t dimensions)
+    size_t dimensions,
+    unsigned ptype)
     : origin(origin)
     , mass(mass)
     , initialVelocity(initialVelocity)
     , meanVelocity(meanVelocity)
     , dimensions(dimensions)
+    , ptype(ptype)
 {
     if (dimensions > 3) {
         spdlog::warn(

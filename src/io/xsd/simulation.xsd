@@ -84,7 +84,7 @@
       </xs:documentation>
     </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="overflow"/>
+            <xs:enumeration value="outflow"/>
             <xs:enumeration value="soft_reflective"/>
             <xs:enumeration value="periodic"/>
         </xs:restriction>
@@ -105,6 +105,89 @@
             </xs:sequence>
         </xs:choice>
 </xs:complexType>
+
+<xs:complexType name="tempParams_t">
+    <xs:sequence>
+        <xs:element name="initialTemp" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The initial temperature for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="targetTemp" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The target temperature for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+       <xs:element name="thermoFreq" type="xs:unsignedInt" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The frequency of the thermostat for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="maxTempDelta" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The maximum allowed change in temperature for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+   <!-- Particle data definitions -->
+
+   <xs:simpleType name='DecimalList_t'>
+    <xs:list itemType='xs:decimal'/>
+  </xs:simpleType>
+
+
+  <xs:complexType name="DecimalArray_t">
+    <xs:simpleContent>
+      <xs:extension base="DecimalList_t">
+        <xs:attribute name="dim" type="dimension_t" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  
+  <xs:complexType name="ParticleData_t">
+      <xs:sequence>
+        <xs:element name="PointData" type="DecimalArray_t"/>
+        <xs:element name="VelData" type="DecimalArray_t"/>
+        <xs:element name="ForceData" type="DecimalArray_t"/>
+        <xs:element name="OldForceData" type="DecimalArray_t"/>
+        <xs:element name="MassData" type="DecimalArray_t"/>
+        <xs:element name="TypeData" type="DecimalArray_t"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Particle type definitions -->
+  <xs:complexType name="ParticleType_t">
+    <xs:sequence>
+      <xs:element name="sigma" type="xs:double"/>
+      <xs:element name="epsilon" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ParticleTypeAttr_t">
+    <xs:complexContent>
+      <xs:extension base="ParticleType_t">
+        <xs:attribute name="type" type="xs:unsignedInt" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ParticleTypes_t">
+    <xs:sequence>
+      <xs:element name="ptype" type="ParticleTypeAttr_t" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
 
   <!-- Cluster definitions -->
 
@@ -161,6 +244,13 @@
         <xs:annotation>
           <xs:documentation>
             The dimension affected by Brownian motion.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ptype" type="xs:unsignedInt" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The particle type of the cuboid.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -230,6 +320,13 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+       <xs:element name="ptype" type="xs:unsignedInt" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The particle type of the cuboid.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -267,7 +364,14 @@
         Defines the parameters for the simulation.
       </xs:documentation>
     </xs:annotation>
-    <xs:sequence>
+    <xs:all>
+      <xs:element name="start_time" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Start time for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="delta_t" type="xs:double" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
@@ -345,7 +449,21 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-    </xs:sequence>
+      <xs:element name="thermostat" type="tempParams_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The thermostat configuration for the simulation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="gravity" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The gravitational constant for the gravitational force along the y-axis.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
   </xs:complexType>
 
   <!-- Simulation type definition -->
@@ -368,6 +486,20 @@
         <xs:annotation>
           <xs:documentation>
             The collection of clusters to be simulated.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ptypes" type="ParticleTypes_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The collection of clusters to be simulated.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="particles" type="ParticleData_t" minOccurs="0">
+         <xs:annotation>
+          <xs:documentation>
+            Data of unresembled particles.
           </xs:documentation>
         </xs:annotation>
       </xs:element>

@@ -3,11 +3,13 @@
 #include "physics/boundaryConditions/PeriodicBoundary.h"
 #include "physics/boundaryConditions/SoftReflectiveBoundary.h"
 #include <spdlog/spdlog.h>
+#include <algorithm>
 
 BoundaryConditionHandler::BoundaryConditionHandler(
     const BoundaryConfig& boundaryConfig, const CellGrid& cellGrid)
     : boundaryConditions()
     , dimensionality((boundaryConfig.boundaryMap.size() == 6) ? 3 : 2)
+    , boundaryConfig(boundaryConfig)
 {
     if (boundaryConfig.boundaryMap.size() != 6 && boundaryConfig.boundaryMap.size() != 4) {
         spdlog::error("BoundaryConfig must have 4 (2D) or 6 (3D) boundaries.");
