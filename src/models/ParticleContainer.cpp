@@ -4,7 +4,6 @@
 
 #include "ParticleContainer.h"
 #include "Particle.h"
-#include <algorithm>
 
 ParticleContainer::ParticleContainer()
 {
@@ -22,7 +21,6 @@ ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
             activeParticleCount++;
         }
     }
-
 }
 
 // Adds a particle to the container
@@ -38,7 +36,8 @@ void ParticleContainer::removeParticle(Particle& p)
     p.setOldF({ 0, 0, 0 });
     p.setF({ 0, 0, 0 });
     p.setActivity(false);
-    activeParticleCount--;
+    if (activeParticleCount)
+        activeParticleCount--;
 }
 
 std::vector<Particle> ParticleContainer::getContainer() const
@@ -57,7 +56,6 @@ ParticleContainer::ActiveIterator ParticleContainer::end()
     return { particles.end(), particles.end() };
 }
 
-
 void ParticleContainer::ActiveIterator::advanceToNextActive()
 {
     while (current != end && !current->getActivity()) {
@@ -65,8 +63,11 @@ void ParticleContainer::ActiveIterator::advanceToNextActive()
     }
 }
 
-ParticleContainer::ActiveIterator::ActiveIterator(std::vector<Particle>::iterator start, std::vector<Particle>::iterator end)
-    : begin(start), current(start), end(end)
+ParticleContainer::ActiveIterator::ActiveIterator(
+    std::vector<Particle>::iterator start, std::vector<Particle>::iterator end)
+    : begin(start)
+    , current(start)
+    , end(end)
 {
     advanceToNextActive();
 }
@@ -91,7 +92,6 @@ ParticleContainer::ActiveIterator& ParticleContainer::ActiveIterator::operator--
     return *this;
 }
 
-
 bool ParticleContainer::ActiveIterator::operator!=(const ActiveIterator& other) const
 {
     return current != other.current;
@@ -102,8 +102,8 @@ bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) 
     return current == other.current;
 }
 
-//PairIterator Implementation
-// Returns an iterator to the first pair of particles
+// PairIterator Implementation
+//  Returns an iterator to the first pair of particles
 ParticleContainer::PairIterator ParticleContainer::beginPairs()
 {
     if (particles.empty()) {
@@ -123,9 +123,7 @@ ParticleContainer::PairIterator ParticleContainer::endPairs()
 
 // PairIterator constructor
 ParticleContainer::PairIterator::PairIterator(
-    ActiveIterator start,
-    ActiveIterator first,
-    ActiveIterator last)
+    ActiveIterator start, ActiveIterator first, ActiveIterator last)
     : start(start)
     , first(first)
     , second(first)
