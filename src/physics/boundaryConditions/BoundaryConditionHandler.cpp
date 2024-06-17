@@ -17,7 +17,7 @@ BoundaryConditionHandler::BoundaryConditionHandler(
     }
 
     // Make the map into a vector of pairs that can be sorted
-    std::vector<std::pair<Position, BoundaryType>> pairs(boundaryConfig.boundaryMap.size());
+    std::vector<std::pair<Position, BoundaryType>> pairs;
     for (auto boundary : boundaryConfig.boundaryMap) {
         pairs.emplace_back(boundary);
     }
