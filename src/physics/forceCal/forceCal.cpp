@@ -33,16 +33,14 @@ void force_gravity_V2(const Simulation& sim)
 
     for (auto it = sim.container.beginPairs(); it != sim.container.endPairs(); ++it) {
         auto pair = *it;
-        Particle& p1 = pair.first;
-        Particle& p2 = pair.second;
 
-        double m_mul = p1.getM() * p2.getM();
-        double dist = std::pow(ArrayUtils::L2Norm(p1.getX() - p2.getX()), 3);
+        double m_mul = pair.first.getM() * pair.second.getM();
+        double dist = std::pow(ArrayUtils::L2Norm(pair.first.getX() - pair.second.getX()), 3);
         double coeff = m_mul / dist;
 
-        std::array<double, 3> distance = coeff * (p2.getX() - p1.getX());
-        p1.setF(p1.getF() + distance);
-        p2.setF(p2.getF() - distance);
+        std::array<double, 3> distance = coeff * (pair.second.getX() - pair.first.getX());
+        pair.first.setF(pair.first.getF() + distance);
+        pair.second.setF(pair.second.getF() - distance);
     }
 }
 

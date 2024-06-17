@@ -129,8 +129,7 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
         auto it = particles.begin();
         auto end = particles.end();
         while (it != end) {
-            Particle& particle = *it;
-            std::array<double, 3> pos = particle.getX();
+            std::array<double, 3> pos = (*it).get().getX();
 
             CellIndex actualCellIndex = LGDSim.getGrid().getIndexFromPos(pos);
             CellType actualCellType = LGDSim.getGrid().determineCellType(actualCellIndex);
@@ -152,9 +151,9 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                 // The update cells will take care of assigning it to its new cell
                 // We can do that, as the particle would have left its original cell and thus would
                 // no longer be included in any calculations of the new cell. Same for moving it
-                std::array<double, 3> newPosition = particle.getX();
+                std::array<double, 3> newPosition = (*it).get().getX();
                 newPosition = newPosition + innerTranslation.first;
-                particle.setX(newPosition);
+                (*it).get().setX(newPosition);
 
                 // Only if the particle has been moved back into the domain, all translations are
                 // complete. Thus, the particles must be placed into its new cell
@@ -167,7 +166,7 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                         .cells.at(actualCellIndex[0])
                         .at(actualCellIndex[1])
                         .at(actualCellIndex[2])
-                        ->addParticle(particle); // into its new cell (inside domain)
+                        ->addParticle(*it); // into its new cell (inside domain)
                     spdlog::info("Particle added by periodic");
 
                     continue; // to not increment the iterator later again
