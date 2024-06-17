@@ -108,6 +108,7 @@ void force_lennard_jones_lc(const Simulation& sim)
                     doLoopFor2D = false; // only do it once
                     z = 0;
                 }
+                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
 
                 // calculate the LJ forces in the cell
                 for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
@@ -117,7 +118,6 @@ void force_lennard_jones_lc(const Simulation& sim)
                     lj_calc(pair.first, pair.second, alpha, beta, gamma);
                 }
                 // calculate LJ forces with the neighbours
-                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
                 for (auto i : neighbors) {
                     // for all particles in the cell
                     for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
@@ -151,9 +151,9 @@ void force_mixed_LJ_gravity_lc(const MixedLJSimulation& sim)
                     doLoopFor2D = false; // only do it once
                     z = 0;
                 }
+                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
 
                 // calculate the LJ forces in the cell
-                // TODO -> do the forces not reset when calling the getNeighbors? -> move call to getNeighbors above these inner force calcs? (also above)
                 for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
                      ++it) {
@@ -176,7 +176,6 @@ void force_mixed_LJ_gravity_lc(const MixedLJSimulation& sim)
                     }
                 }
                 // calculate LJ forces with the neighbours
-                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
                 for (auto i : neighbors) {
                     // for all particles in the cell
                     for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
