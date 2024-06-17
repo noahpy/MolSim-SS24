@@ -113,7 +113,7 @@ std::string Particle::toString() const
 {
     std::stringstream stream;
     stream << "Particle: X:" << x << " v: " << v << " f: " << f << " old_f: " << old_f
-           << " type: " << type;
+           << " type: " << type << " active: " << active << " m: " << m;
     return stream.str();
 }
 
