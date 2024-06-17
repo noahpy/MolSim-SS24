@@ -63,6 +63,7 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             } else {
                 // create a new particle
                 Particle haloParticle = Particle(haloPosition, { 0, 0, 0 }, particle.get().getM());
+                haloParticle.setActivity(false);
                 insertedParticles.push_back(haloParticle);
             }
 
@@ -71,6 +72,7 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                 .cells[neighboringHaloCellIndex[0]][neighboringHaloCellIndex[1]]
                       [neighboringHaloCellIndex[2]]
                 ->addParticle(insertedParticles[insertionIndex++]);
+            spdlog::info("Inserted particle in soft reflective");
         }
     }
 

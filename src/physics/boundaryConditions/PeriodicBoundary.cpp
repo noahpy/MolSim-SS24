@@ -166,6 +166,7 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                         .at(actualCellIndex[1])
                         .at(actualCellIndex[2])
                         ->addParticle(particle); // into its new cell (inside domain)
+                    spdlog::info("Particle added by periodic");
 
                     continue; // to not increment the iterator later again
                 }
