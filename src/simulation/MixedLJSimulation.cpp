@@ -12,8 +12,7 @@ MixedLJSimulation::MixedLJSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
-    const std::vector<std::pair<int, double>>& epsilons,
-    const std::vector<std::pair<int, double>>& sigmas,
+    const std::map<unsigned, std::pair<double, double>>& LJParams,
     std::array<double, 3> domainOrigin,
     std::array<double, 3> domainSize,
     double cutoff,
@@ -54,42 +53,35 @@ MixedLJSimulation::MixedLJSimulation(
         cellGrid.addParticlesFromContainer(container);
     }
 
-    // Insert all combinations of epsilons into the map
-    for (auto epsilonOuter : epsilons) {
-        int type1 = epsilonOuter.first;
-        double epsilon1 = epsilonOuter.second;
-        for (auto epsilonInner : epsilons) {
-            int type2 = epsilonInner.first;
-            double epsilon2 = epsilonInner.second;
+    // Insert all combinations of epsilons and sigmas into the maps
+    for (auto LJParamInner : LJParams) {
+        unsigned type1 = LJParamInner.first;
+        double epsilon1 = LJParamInner.second.first;
+        double sigma1 = LJParamInner.second.second;
+        for (auto LJParamOuter : LJParams) {
+            unsigned type2 = LJParamOuter.first;
+            double epsilon2 = LJParamOuter.second.first;
+            double sigma2 = LJParamOuter.second.second;
 
-            if (this->epsilons.find(getMixKey(type1, type2)) == this->epsilons.end())
-                this->epsilons.insert({ getMixKey(type1, type2), std::sqrt(epsilon1 * epsilon2) });
-        }
-    }
-    // Insert all combinations of sigmas into the map
-    for (auto sigmaOuter : sigmas) {
-        int type1 = sigmaOuter.first;
-        double sigma1 = sigmaOuter.second;
-        for (auto sigmaInner : sigmas) {
-            int type2 = sigmaInner.first;
-            double sigma2 = sigmaInner.second;
+            if (epsilons.find(getMixKey(type1, type2)) == epsilons.end())
+                epsilons.insert({ getMixKey(type1, type2), std::sqrt(epsilon1 * epsilon2) });
 
-            if (this->sigmas.find(getMixKey(type1, type2)) == this->sigmas.end())
-                this->sigmas.insert({ getMixKey(type1, type2), (sigma1 + sigma2) / 2 });
+            if (sigmas.find(getMixKey(type1, type2)) == sigmas.end())
+                sigmas.insert({ getMixKey(type1, type2), (sigma1 + sigma2) / 2 });
         }
     }
     // Insert all combinations of alphas into the map -> to use in LJ force
-    for (auto epsilonPair : this->epsilons) {
+    for (auto epsilonPair : epsilons) {
         std::pair<int, int> key = epsilonPair.first;
         double eps = epsilonPair.second;
-        this->alphas.insert({ key, -24 * eps });
+        alphas.insert({ key, -24 * eps });
     }
     // Insert all combinations of betas & gammas into the map -> to use in LJ force
-    for (auto sigmaPair : this->sigmas) {
+    for (auto sigmaPair : sigmas) {
         std::pair<int, int> key = sigmaPair.first;
         double sig = sigmaPair.second;
-        this->betas.insert({ key, std::pow(sig, 6) });
-        this->gammas.insert({ key, -2 * std::pow(sig, 12) });
+        betas.insert({ key, std::pow(sig, 6) });
+        gammas.insert({ key, -2 * std::pow(sig, 12) });
     }
 }
 
@@ -129,7 +121,7 @@ void MixedLJSimulation::runSim()
     }
 }
 
-std::pair<int, int> MixedLJSimulation::getMixKey(int type1, int type2)
+std::pair<int, int> MixedLJSimulation::getMixKey(unsigned type1, unsigned type2)
 {
     if (type1 > type2) {
         std::swap(type1, type2);

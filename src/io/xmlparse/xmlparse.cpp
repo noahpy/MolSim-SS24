@@ -88,7 +88,7 @@ void xmlparse(Params& sim_params, std::string& filename)
                     spdlog::error("Particle type ID 0 is reserved, please choose another.");
                     exit(EXIT_FAILURE);
                 }
-                sim_params.particleTypes.push_back({ epsilon, sigma });
+                sim_params.particleTypes.emplace_back( epsilon, sigma );
                 sim_params.typesMap[typeID] = { epsilon, sigma };
                 spdlog::info("Registered particle type {}: sigma = {}, epsilon = {}", typeID, sigma, epsilon);
             }

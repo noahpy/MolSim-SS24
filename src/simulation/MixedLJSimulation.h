@@ -24,8 +24,7 @@ public:
      * @param strat The strategy to be used for the physics calculations
      * @param writer The writer object to write the output to file
      * @param reader The reader object to read the input from file
-     * @param epsilon The epsilon parameter of the Lennard-Jones potential
-     * @param sigma The sigma parameter of the Lennard-Jones potential
+     * @param LJParams A map that resolves particle type to their epsilon and sigma values
      * @param domainOrigin The origin of the simulation domain
      * @param domainSize The size of the simulation domain
      * @param cutoff The cutoff radius of the simulation
@@ -47,8 +46,7 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
-        const std::vector<std::pair<int, double>>& epsilons,
-        const std::vector<std::pair<int, double>>& sigmas,
+        const std::map<unsigned, std::pair<double, double>>& LJParams,
         std::array<double, 3> domainOrigin,
         std::array<double, 3> domainSize,
         double cutoff,
@@ -74,7 +72,7 @@ public:
      * @param type2 The type of the second particle
      * @return The pair that is used as the key in the maps
      */
-    static std::pair<int, int> getMixKey(int type1, int type2);
+    static std::pair<int, int> getMixKey(unsigned type1, unsigned type2);
 
     /**
      * @brief Get the epsilon of a combination of particles
