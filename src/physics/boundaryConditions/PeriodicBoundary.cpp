@@ -99,6 +99,10 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 
                 // add the particle to the halo cell
 
+                // | | | | | | | | | | | | | | | | | |
+                // v v v v v v v v v v v v v v v v v v 
+                // @Chrisitan: Mit diesen Check passiert das mit den deleten nicht mehr, doch nach einiger Zeit 
+                // entsteht ein SegFault wegen out of range. 
                 if (LGDSim.getGrid()
                         .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
                         ->haloNeighbours.size() < 2) {
@@ -106,6 +110,8 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                         .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
                         ->addParticle(insertedParticles.at(insertionIndex++));
                 }
+                // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
+                // | | | | | | | | | | | | | | | | | |
             }
         }
     }
