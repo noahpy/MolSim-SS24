@@ -22,11 +22,11 @@ void Thermostat::updateT(const Simulation& sim) const
     // Calculate kinetic energy
     double E = 0;
     for (auto& p : sim.container) {
-        E += (p.getM() * (ArrayUtils::DotProduct(p.getV()))) / 2;
+        E += p.getM() * (ArrayUtils::DotProduct(p.getV()));
     }
 
     // Calculate current Temperature
-    double T_current = (2 * E) / (static_cast<double>(sim.container.particles.size()) * static_cast<double>(dim));
+    double T_current =  E / (static_cast<double>(sim.container.particles.size()) * static_cast<double>(dim));
 
     // Calculate new Temperature
     double T_new = target - T_current;
