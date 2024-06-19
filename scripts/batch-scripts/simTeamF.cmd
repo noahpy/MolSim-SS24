@@ -1,6 +1,7 @@
 #!/bin/bash
 #SBATCH -J simTeamF
 #SBATCH -D ./MolSim-SS24/build
+#SBATCH --get-user-env
 #SBATCH --mem=1000mb
 #SBATCH --cpus-per-task=1
 #SBATCH --export=NONE
