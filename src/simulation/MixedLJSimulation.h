@@ -120,12 +120,16 @@ public:
      */
     double getGravityConstant() const { return gravityConstant; }
 
+    double getRepulsiveDistance(int type) const override;
+
 protected:
     MixLJParamMap epsilons; /**< The mixed epsilon parameters of the Lennard-Jones potential */
     MixLJParamMap sigmas; /**< The mixed sigma parameters of the Lennard-Jones potential */
     MixLJParamMap alphas; /**< -24 * epsilon */
     MixLJParamMap betas; /**< sigma^6 */
     MixLJParamMap gammas; /**< -2 * sigma^12 */
+
+    std::map<unsigned, double> repulsiveDistances; /**< The repulsive distances for every particle */
 
     double gravityConstant; /**< The gravity constant */
     double T_init; /**< The initial temperature */

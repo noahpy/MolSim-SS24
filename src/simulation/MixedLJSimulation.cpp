@@ -102,6 +102,12 @@ MixedLJSimulation::MixedLJSimulation(
                     haloCellIndex[0],
                     haloCellIndex[1],
                     haloCellIndex[2]);
+
+    for (auto params : LJParams) {
+        if (repulsiveDistances.find(params.first) == repulsiveDistances.end())
+            repulsiveDistances.insert( {params.first, params.second.second * std::pow(2, 1 / 6)} );
+    }
+
 }
 
 void MixedLJSimulation::runSim()
@@ -148,3 +154,8 @@ std::pair<int, int> MixedLJSimulation::getMixKey(unsigned type1, unsigned type2)
     // Always return the pair with the smaller type first
     return std::make_pair(type1, type2);
 }
+
+double MixedLJSimulation::getRepulsiveDistance(int type) const {
+    spdlog::trace("Got repulsive distance from Mixed LJ sim");
+    return repulsiveDistances.at(type);
+};

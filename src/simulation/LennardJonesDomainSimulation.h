@@ -58,4 +58,9 @@ public:
     void runSim() override;
 
     BoundaryConditionHandler bcHandler; /**< The boundary condition handler */
+
+    virtual double getRepulsiveDistance(int type) const;
+
+private:
+    double repulsiveDistance;
 };

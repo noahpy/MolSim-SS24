@@ -16,13 +16,6 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     const LennardJonesDomainSimulation& LGDSim =
         static_cast<const LennardJonesDomainSimulation&>(simulation);
 
-    // We initialize here, as the constructor cannot make sure, if there are not different sigmas
-    // We need to change this, as we introduce different particle types (Assignment 4) -> TODO
-    if (repulsiveDistance == -1) {
-        // Analytical solution to the Lennard-Jones potential (r for well)
-        repulsiveDistance = std::pow(2, 1/6) * LGDSim.getSigma();
-    }
-
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
 
@@ -41,7 +34,7 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                 std::inner_product(std::begin(diff), std::end(diff), std::begin(normal), 0.0);
             std::array<double, 3> haloPosition = pos + dotProd * 2 * normal;
 
-            if (ArrayUtils::L2Norm(haloPosition - pos) > repulsiveDistance) {
+            if (ArrayUtils::L2Norm(haloPosition - pos) > LGDSim.getRepulsiveDistance(particle.get().getType())) {
                 // The particle is too far away from the boundary, so we don't need to create a halo
                 // particle -> otherwise, it would attract
                 continue;
@@ -62,7 +55,8 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                 insertedParticles[insertionIndex].setM(particle.get().getM());
             } else {
                 // create a new particle
-                Particle haloParticle (haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType());
+                Particle haloParticle(
+                    haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType());
                 haloParticle.setActivity(false);
                 insertedParticles.push_back(haloParticle);
             }

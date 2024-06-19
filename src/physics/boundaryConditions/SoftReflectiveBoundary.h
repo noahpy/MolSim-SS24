@@ -2,6 +2,7 @@
 #pragma once
 #include "models/linked_cell/cell/Cell.h"
 #include "physics/boundaryConditions/BoundaryCondition.h"
+#include <map>
 #include <spdlog/spdlog.h>
 
 /**
@@ -58,6 +59,4 @@ private:
     std::vector<Particle>
         insertedParticles; /**< The particles that were inserted. These will be recycled */
     size_t insertionIndex; /**< The index of the next particle to recycle */
-
-    double repulsiveDistance = -1; /**< The distance to the boundary where the repulsion starts */
 };

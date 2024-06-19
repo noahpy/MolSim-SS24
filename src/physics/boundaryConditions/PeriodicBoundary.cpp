@@ -130,7 +130,10 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
      * We need to also delete the particles of the opposite side
      */
     for (auto pos : allPositions) {
-        for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(pos)) {
+        auto iter = LGDSim.getGrid().haloCellIterator(pos);
+        auto b = iter.begin();
+        auto e = iter.end();
+        for (auto haloCellIndex : iter) {
             LGDSim.getGrid()
                 .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
                 ->clearParticles();
