@@ -43,7 +43,7 @@ BoundaryConditionHandler::BoundaryConditionHandler(
         }
 
         switch (type) {
-        case BoundaryType::OVERFLOW:
+        case BoundaryType::OUTFLOW:
             boundaryConditions.push_back(std::make_unique<OverflowBoundary>(position));
             break;
         case BoundaryType::SOFT_REFLECTIVE:

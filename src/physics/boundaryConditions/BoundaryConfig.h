@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 #include <string>
 
-enum class BoundaryType { OVERFLOW, SOFT_REFLECTIVE, PERIODIC };
+enum class BoundaryType { OUTFLOW, SOFT_REFLECTIVE, PERIODIC };
 
 class BoundaryConfig {
 public:
@@ -40,14 +40,14 @@ public:
 inline BoundaryType getBoundaryType(const std::string& str)
 {
     if (str == "outflow") {
-        return BoundaryType::OVERFLOW;
+        return BoundaryType::OUTFLOW;
     } else if (str == "soft_reflective") {
         return BoundaryType::SOFT_REFLECTIVE;
     } else if (str == "periodic") {
         return BoundaryType::PERIODIC;
     } else {
-        spdlog::warn("Unknown boundary type: {}, choosing OVERFLOW", str);
-        return BoundaryType::OVERFLOW;
+        spdlog::warn("Unknown boundary type: {}, choosing OUTFLOW", str);
+        return BoundaryType::OUTFLOW;
     }
 }
 
@@ -57,14 +57,14 @@ inline BoundaryType getBoundaryType(const std::string& str)
  */
 inline std::string getBoundaryString(const BoundaryType type)
 {
-    if (type == BoundaryType::OVERFLOW) {
+    if (type == BoundaryType::OUTFLOW) {
         return "outflow";
     } else if (type == BoundaryType::SOFT_REFLECTIVE) {
         return "soft_reflective";
     } else if (type == BoundaryType::PERIODIC) {
         return "periodic";
     } else {
-        spdlog::warn("Unknown boundary type, choosing OVERFLOW");
+        spdlog::warn("Unknown boundary type, choosing OUTFLOW");
         return "overflow";
     }
 }
@@ -77,7 +77,7 @@ inline std::string getBoundaryString(const BoundaryType type)
 inline size_t boundaryToPriority(const BoundaryType& type)
 {
     switch (type) {
-        case BoundaryType::OVERFLOW:
+        case BoundaryType::OUTFLOW:
         return 0;
         case BoundaryType::PERIODIC:
         return 1;
