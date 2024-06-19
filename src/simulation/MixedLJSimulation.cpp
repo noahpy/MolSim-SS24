@@ -103,11 +103,11 @@ MixedLJSimulation::MixedLJSimulation(
                     haloCellIndex[1],
                     haloCellIndex[2]);
 
+    // Generate the distances needed for repulsion to occur
     for (auto params : LJParams) {
         if (repulsiveDistances.find(params.first) == repulsiveDistances.end())
             repulsiveDistances.insert( {params.first, params.second.second * std::pow(2, 1 / 6)} );
     }
-
 }
 
 void MixedLJSimulation::runSim()

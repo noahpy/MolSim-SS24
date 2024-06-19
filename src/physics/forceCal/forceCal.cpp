@@ -199,7 +199,6 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                     for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
                         // go over all particles in the neighbour
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
-                            // TODO active particles check
                             // Check if the distance is less than the cutoff
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
                             if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius) {

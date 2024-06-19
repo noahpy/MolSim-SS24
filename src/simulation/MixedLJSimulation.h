@@ -120,6 +120,11 @@ public:
      */
     double getGravityConstant() const { return gravityConstant; }
 
+    /**
+     * @brief Gets the distance for a particle where repulsion starts
+     * @param type The type of the particle
+     * @return The distance repulsion starts at
+     */
     double getRepulsiveDistance(int type) const override;
 
 protected:
