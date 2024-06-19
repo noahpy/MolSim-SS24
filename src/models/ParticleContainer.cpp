@@ -17,7 +17,7 @@ ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
 
     activeParticleCount = 0;
     for (auto& p : particles) {
-        if (p.getActivity() == true) {
+        if (p.getActivity()) {
             activeParticleCount++;
         }
     }

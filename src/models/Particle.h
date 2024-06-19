@@ -121,6 +121,12 @@ public:
     int getType() const;
 
     /**
+     * @brief Set the type of the particle
+     * @param type_new The new type of the particle
+     */
+    void setType(int type_new) { type = type_new;}
+
+    /**
      * @brief Set the position of the particle
      * @param x_new The new position of the particle
      * @return void
@@ -155,6 +161,10 @@ public:
      */
     void setM(double m_new);
 
+    /**
+     * @brief Set the new activity
+     * @param act_new The new activity
+     */
     void setActivity(bool act_new);
 
     /**

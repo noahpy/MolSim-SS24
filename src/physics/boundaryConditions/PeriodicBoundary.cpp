@@ -9,6 +9,7 @@ PeriodicBoundary::PeriodicBoundary(
     , insertionIndex(0)
     , is2D(boundaryConfig.boundaryMap.size() == 4)
     , innerTranslation(getPeriodicShift(cellGrid))
+    , insertedParticles({})
 {
     for (CellIndex boundaryCellIndex : cellGrid.boundaryCellIterator(position)) {
         std::vector<Position> boundarySides =
@@ -57,8 +58,6 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
-    insertedParticles = {};
-
     for (CellIndex boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
         std::vector<Position> boundarySides = coordinateToPosition(
             boundaryCellIndex, LGDSim.getGrid().getGridDimensions(), !is2D, false);
@@ -80,38 +79,36 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                                           (size_t)((int)boundaryCellIndex[1] + shifts.second[1]),
                                           (size_t)((int)boundaryCellIndex[2] + shifts.second[2]) };
 
-                /* if (insertionIndex < insertedParticles.size()) { */
-                /*     // simply update, if there is already a particle to reuse */
-                /*     insertedParticles.at(insertionIndex).setX(haloPosition); */
-                /*     insertedParticles.at(insertionIndex).setV({ 0, 0, 0 }); */
-                /*     insertedParticles.at(insertionIndex).setF({ 0, 0, 0 }); */
-                /*     insertedParticles.at(insertionIndex).setOldF({ 0, 0, 0 }); */
-                /*     insertedParticles.at(insertionIndex).setM(particle.get().getM()); */
-                /*     insertedParticles.at(insertionIndex).setActivity(false); */
-                /* } else { */
-                // create a new particle
-                /* spdlog::info("haloPosition: {}, {}, {}", haloPosition[0], haloPosition[1],
-                 * haloPosition[2]); */
-                Particle haloParticle(haloPosition, { 0, 0, 0 }, particle.get().getM());
-                haloParticle.setActivity(false);
-                insertedParticles.push_back(haloParticle);
-                /* } */
+                if (LGDSim.getGrid().determineCellType(haloCellIndex) != CellType::Halo) {
+                    spdlog::error("Halo cell index is not a halo cell");
+                    exit(EXIT_FAILURE);
+                }
+
+                if (insertionIndex < insertedParticles.size()) {
+                    // simply update, if there is already a particle to reuse
+                    insertedParticles.at(insertionIndex).setX(haloPosition);
+                    insertedParticles.at(insertionIndex).setV({ 0, 0, 0 });
+                    insertedParticles.at(insertionIndex).setF({ 0, 0, 0 });
+                    insertedParticles.at(insertionIndex).setOldF({ 0, 0, 0 });
+                    insertedParticles.at(insertionIndex).setM(particle.get().getM());
+                    insertedParticles.at(insertionIndex).setType(particle.get().getType());
+                    insertedParticles.at(insertionIndex).setActivity(false);
+                } else {
+                    // create a new particle
+                    spdlog::info(
+                        "Created new haloPosition: {}, {}, {}",
+                        haloPosition[0],
+                        haloPosition[1],
+                        haloPosition[2]);
+                    Particle haloParticle(haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType());
+                    haloParticle.setActivity(false);
+                    insertedParticles.push_back(haloParticle);
+                }
 
                 // add the particle to the halo cell
-
-                // | | | | | | | | | | | | | | | | | |
-                // v v v v v v v v v v v v v v v v v v 
-                // @Chrisitan: Mit diesen Check passiert das mit den deleten nicht mehr, doch nach einiger Zeit 
-                // entsteht ein SegFault wegen out of range. 
-                if (LGDSim.getGrid()
-                        .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
-                        ->haloNeighbours.size() < 2) {
-                    LGDSim.getGrid()
-                        .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
-                        ->addParticle(insertedParticles.at(insertionIndex++));
-                }
-                // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
-                // | | | | | | | | | | | | | | | | | |
+                LGDSim.getGrid()
+                    .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+                    ->addParticle(insertedParticles.at(insertionIndex++));
             }
         }
     }
@@ -129,10 +126,15 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
         static_cast<const LennardJonesDomainSimulation&>(simulation);
 
     // reset old halo references used previously
-    for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
-        LGDSim.getGrid()
-            .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
-            ->clearParticles();
+    /*
+     * We need to also delete the particles of the opposite side
+     */
+    for (auto pos : allPositions) {
+        for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(pos)) {
+            LGDSim.getGrid()
+                .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+                ->clearParticles();
+        }
     }
 
     for (auto boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
@@ -175,12 +177,12 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                 actualCellType = LGDSim.getGrid().determineCellType(actualCellIndex);
                 if (actualCellType != CellType::Halo) {
                     // It was in halo before, now it is back inside the domain
-                    it = particles.erase(it); // remove it from its old cell (boundary)
                     LGDSim.getGrid()
                         .cells.at(actualCellIndex[0])
                         .at(actualCellIndex[1])
                         .at(actualCellIndex[2])
                         ->addParticle(*it); // into its new cell (inside domain)
+                    it = particles.erase(it); // remove it from its old cell (boundary)
                     spdlog::info("Particle added by periodic");
 
                     continue; // to not increment the iterator later again

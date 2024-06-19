@@ -83,6 +83,25 @@ MixedLJSimulation::MixedLJSimulation(
         betas.insert({ key, std::pow(sig, 6) });
         gammas.insert({ key, -2 * std::pow(sig, 12) });
     }
+
+    // Warn user about particles outside the domain
+    for (auto& particle : container.particles)
+        if (cellGrid.determineCellType(cellGrid.getIndexFromPos(particle.getX())) == CellType::Halo)
+            spdlog::warn(
+                "Generated particle at [{}, {}, {}] outside domain and inside a halo cell",
+                particle.getX()[0],
+                particle.getX()[1],
+                particle.getX()[2]);
+
+    // Warn user about halo cells that contain particles in the beginning
+    for (Position pos : allPositions)
+        for (auto haloCellIndex : cellGrid.haloCellIterator(pos))
+            if (!cellGrid.cells.at(haloCellIndex[0]).at(haloCellIndex[1]).at(haloCellIndex[2])->getParticles().empty())
+                spdlog::warn(
+                    "Halo cell at [{}, {}, {}] contains a particle",
+                    haloCellIndex[0],
+                    haloCellIndex[1],
+                    haloCellIndex[2]);
 }
 
 void MixedLJSimulation::runSim()
