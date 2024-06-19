@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH -J simTeamF
-#SBATCH -o ./%x.%j.%N.out
+#SBATCH -o ./output
 #SBATCH -D ./MolSim-SS24/build
 #SBATCH --get-user-env
 #SBATCH --clusters=cm2_tiny
 #SBATCH --partition=cm2_tiny
-#SBATCH --mem=1000mb
+#SBATCH --mem=200mb
 #SBATCH --get-user-env
 #SBATCH --cpus-per-task=1
 #SBATCH --export=NONE
