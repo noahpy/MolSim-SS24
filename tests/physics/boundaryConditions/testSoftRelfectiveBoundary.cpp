@@ -25,8 +25,10 @@ TEST(SoftReflectiveBoundary, CorrectMirroring3D)
     simParams.domain_origin = domain_origin;
     simParams.domain_size = { 5, 5, 5 };
     simParams.sigma = simParams.cutoff * 5; // big enough to generate all halo particles
-        simParams.boundaryConfig = BoundaryConfig { SOFT_REFLECTIVE, SOFT_REFLECTIVE, SOFT_REFLECTIVE,
-                                                SOFT_REFLECTIVE, SOFT_REFLECTIVE, SOFT_REFLECTIVE };
+    simParams.boundaryConfig =
+        BoundaryConfig { BoundaryType::SOFT_REFLECTIVE, BoundaryType::SOFT_REFLECTIVE,
+                         BoundaryType::SOFT_REFLECTIVE, BoundaryType::SOFT_REFLECTIVE,
+                         BoundaryType::SOFT_REFLECTIVE, BoundaryType::SOFT_REFLECTIVE };
 
     std::array<double, 3> pos = { -9, -8, -7 };
     ParticleContainer container { std::vector<Particle> { Particle { pos, { 0, 0, 0 }, 1 } } };
@@ -119,8 +121,10 @@ TEST(SoftReflectiveBoundary, CorrectMirroring2D)
     simParams.domain_origin = domain_origin;
     simParams.domain_size = { 5, 5, 0 };
     simParams.sigma = simParams.cutoff * 5; // big enough to generate all halo particles
-    simParams.boundaryConfig = BoundaryConfig { SOFT_REFLECTIVE, SOFT_REFLECTIVE, SOFT_REFLECTIVE,
-                                                SOFT_REFLECTIVE };
+    simParams.boundaryConfig = BoundaryConfig { BoundaryType::SOFT_REFLECTIVE,
+                                                BoundaryType::SOFT_REFLECTIVE,
+                                                BoundaryType::SOFT_REFLECTIVE,
+                                                BoundaryType::SOFT_REFLECTIVE };
 
     std::array<double, 3> pos = { -9, -8, 0 };
     ParticleContainer container { std::vector<Particle> { Particle { pos, { 0, 0, 0 }, 1 } } };
@@ -168,7 +172,8 @@ TEST(SoftReflectiveBoundary, CorrectMirroring2D)
     // Check the mirrored particles
     size_t haloCounter = 0;
     for (auto position : allPositions) {
-        if (position == BACK || position == FRONT) continue;
+        if (position == BACK || position == FRONT)
+            continue;
 
         size_t countHaloCellsFound = 0;
         size_t particlesCountOnSide = 0;

@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 #include <string>
 
-enum BoundaryType { OVERFLOW, SOFT_REFLECTIVE, PERIODIC };
+enum class BoundaryType { OVERFLOW, SOFT_REFLECTIVE, PERIODIC };
 
 class BoundaryConfig {
 public:
@@ -77,11 +77,11 @@ inline std::string getBoundaryString(const BoundaryType type)
 inline size_t boundaryToPriority(const BoundaryType& type)
 {
     switch (type) {
-    case OVERFLOW:
+        case BoundaryType::OVERFLOW:
         return 0;
-    case PERIODIC:
+        case BoundaryType::PERIODIC:
         return 1;
-    case SOFT_REFLECTIVE:
+        case BoundaryType::SOFT_REFLECTIVE:
         return 2;
     default:
         spdlog::error("Boundary type not recognized. Its priority has not been specified.");

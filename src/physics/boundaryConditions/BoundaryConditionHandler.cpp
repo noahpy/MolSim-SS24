@@ -1,4 +1,5 @@
 #include "physics/boundaryConditions/BoundaryConditionHandler.h"
+#include "physics/boundaryConditions/BoundaryConfig.h"
 #include "physics/boundaryConditions/OverflowBoundary.h"
 #include "physics/boundaryConditions/PeriodicBoundary.h"
 #include "physics/boundaryConditions/SoftReflectiveBoundary.h"
@@ -31,8 +32,8 @@ BoundaryConditionHandler::BoundaryConditionHandler(
         Position position = boundary.first;
         BoundaryType type = boundary.second;
 
-        if (type == PERIODIC &&
-            boundaryConfig.boundaryMap.at(oppositePosition(position)) != PERIODIC) {
+        if (type == BoundaryType::PERIODIC &&
+            boundaryConfig.boundaryMap.at(oppositePosition(position)) != BoundaryType::PERIODIC) {
             spdlog::error(
                 "Periodic boundary conditions must be defined in pairs i.e. opposite sides must be "
                 "both periodic. Miss-match between {} and {} side",
