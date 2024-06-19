@@ -105,6 +105,7 @@ CellGrid::HaloIterator::HaloIterator(
     : gridDimensions(gridDimensions)
     , index(0)
     , is2D(is2D)
+    , boundaries(getNumberOfRelevantBoundaries(gridDimensions, position, CellType::Halo, is2D))
 {
     if (is2D && (position == FRONT || position == BACK)) {
         // if we are in 2D there are no front and Back halos
@@ -118,10 +119,7 @@ CellGrid::HaloIterator::HaloIterator(
     size_t coordinateIrrelevantAxis =
         getCoordinateIrrelevantAxis(position, gridDimensions, irrelevantBoundary, CellType::Halo);
 
-    std::vector<CellIndex> relevantBoundaries(
-        getNumberOfRelevantBoundaries(gridDimensions, position, CellType::Halo, is2D));
     size_t insertionIndex = 0;
-
     for (size_t i = 0; i < gridDimensions[relevantBoundaryIndices.first]; i++) {
         CellIndex boundary;
 
@@ -132,7 +130,7 @@ CellGrid::HaloIterator::HaloIterator(
                 boundary = { i, coordinateIrrelevantAxis, 0 };
             // there cannot be irrelevantBoundary == 2 in 2D
 
-            relevantBoundaries.at(insertionIndex++) = boundary;
+            boundaries.at(insertionIndex++) = boundary;
         } else {
             for (size_t j = 0; j < gridDimensions[relevantBoundaryIndices.second]; j++) {
                 if (irrelevantBoundary == 0)
@@ -142,12 +140,10 @@ CellGrid::HaloIterator::HaloIterator(
                 else
                     boundary = { i, j, coordinateIrrelevantAxis };
 
-                relevantBoundaries.at(insertionIndex++) = boundary;
+                boundaries.at(insertionIndex++) = boundary;
             }
         }
     }
-
-    boundaries = relevantBoundaries;
 }
 
 CellGrid::HaloIterator CellGrid::HaloIterator::begin()
