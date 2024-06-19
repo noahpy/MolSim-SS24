@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{placeins}
+\usepackage{booktabs}
+\usepackage{caption}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\title{Scientific Computing - Molecular dynamics \\ Group F}
+\newcommand{\subtitle}{Problem sheet 4}
+\author{
+    Jimin Kim \\
+    Christian Nix \\
+    Noah Schlenker
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \LARGE \subtitle{}
+\end{center}
+
+\section{Pull request}
+\label{sec:pr}
+The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/42}{here}.
+
+\section{Fixes for last assignment}
+\label{sec:fix}
+
+    \begin{itemize}
+        \item We addressed several issues and incorporated the missing functionalities from the previous assignment.
+        \item A check for the cutoff radius in particle calculations has been added.
+        \item We implemented the removal of particles from calculations and ParaView visualization if they move beyond the outflow boundaries (see previous report for our prior handling of outflow boundaries):
+        \begin{itemize}
+            \item Particles now possess a boolean attribute, \texttt{active}, indicating whether the particle is out of bounds.
+            \item Instead of performing costly operations and reallocations to delete particles, we manage them using simple flags.
+            \item The refactored project structure allows us to modify particle container iterators without disrupting the functionalities of previous assignments or necessitating extensive code adjustments.
+        \end{itemize}
+        \item We corrected errors affecting certain particles at the corners of reflective boundaries.
+    \end{itemize}
+
+Unit tests and XML adaptions are provided for the following sections.
+
+\section{Thermostat}
+\label{sec:thermo}
+
+    \begin{itemize}
+        \item We introduced a new class, \texttt{Thermostat}, in \texttt{src/physics} for temperature calculations to adjust the velocities of all particles in the container.
+        \item The temperature update process follows the calculation steps outlined in the assignment sheet.
+        \item To optimize temperature calculations, we excluded the divisions by 2 in the calculation of $E_{kin}$, as the energy is multiplied by 2 in the current temperature calculation:
+        \begin{itemize}
+            \item $T_{current} = \frac{2 \cdot \left(\sum_{i=1}^{\#particles} \frac{m_i \langle v_i, v_i \rangle}{2}\right)}{\#dimensions\ \cdot\ \#particles}$
+            \item $T_{current} = \frac{2 \cdot \frac{1}{2}\ \left(\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle\right)}{\#dimensions\ \cdot\ \#particles}$
+            \item $T_{current} = \frac{\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle}{\#dimensions\ \cdot\ \#particles}$
+        \end{itemize}
+        \item Temperature initialization occurs during particle generation and is not handled within this class.
+        \item The step counter for the frequency of temperature updates is managed within the simulation layer, as it controls the frequency of update operations in our project structure.
+    \end{itemize}
+    
+    
+\section{Rayleigh-Taylor instability Simulation}
+\label{sec:rayleigh}
+
+    \begin{itemize}
+        \item Periodic Boundary:
+        \begin{itemize}
+            \item The periodic boundary is realized via duplication of the particle about to leave the particle to a halo cell.
+            \item We map particles from one side to the opposite side by generating a translation map.
+        \end{itemize}
+    \end{itemize}
+
+\end{document}
