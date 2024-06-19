@@ -148,10 +148,6 @@ CellGrid::HaloIterator::HaloIterator(
     }
 
     boundaries = relevantBoundaries;
-
-    // TODO check in 2D case
-    // std::cout << "Correct Number (Halo) " << (insertionIndex == relevantBoundaries.size()) <<
-    // std::endl;
 }
 
 CellGrid::HaloIterator CellGrid::HaloIterator::begin()
