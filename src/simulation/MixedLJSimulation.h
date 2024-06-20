@@ -130,6 +130,30 @@ public:
     double getRepulsiveDistance(int type) const override;
 
     /**
+     * @brief Get the initial temperature
+     * @return The initial temperature
+     */
+    double getT_init() const { return T_init; }
+
+    /**
+     * @brief Get the target temperature
+     * @return The target temperature
+     */
+    double getT_target() const { return T_target; }
+
+    /**
+     * @brief Get the delta_T
+     * @return The delta_T
+     */
+    double getDelta_T() const { return delta_T; }
+
+    /**
+     * @brief Get the number of thermostat updates
+     * @return The number of thermostat updates
+     */
+    unsigned getN_thermostat() const { return n_thermostat; }
+
+    /**
      * @brief map that stores the different particle types
      */
     const std::map<unsigned, std::pair<double, double>> ljparams;

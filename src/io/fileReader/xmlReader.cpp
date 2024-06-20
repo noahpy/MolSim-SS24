@@ -92,7 +92,7 @@ void XmlReader::readFile(Simulation& sim)
                 p.setOldF({ particles.OldForceData()[i * 3],
                             particles.OldForceData()[i * 3 + 1],
                             particles.OldForceData()[i * 3 + 2] });
-                sim.container.particles.emplace_back(p);
+                sim.container.addParticle(p);
             }
             spdlog::info("Read {} particles indiviually from particle data.", particle_count);
         }

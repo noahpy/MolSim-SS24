@@ -101,6 +101,12 @@ void XmlWriter::plotParticles(const Simulation& s)
         // save gravity
         params->gravity(ljs.getGravityConstant());
 
+        // save thermostat
+        params->thermostat()->initialTemp(ljs.getT_init());
+        params->thermostat()->targetTemp(ljs.getT_target());
+        params->thermostat()->maxTempDelta(ljs.getDelta_T());
+        params->thermostat()->thermoFreq(ljs.getN_thermostat());
+
     } catch (const std::bad_cast& e) {
         spdlog::debug("When writing to XML, not a LennardJonesSimulation");
     }
