@@ -52,11 +52,6 @@ void Cell::clearParticles()
     particles.clear();
 }
 
-[[nodiscard]] ParticleRefList& Cell::getParticles()
-{
-    return particles;
-}
-
 CellType Cell::getType() const
 {
     return type;
@@ -70,11 +65,6 @@ ParticleRefList::iterator Cell::begin()
 ParticleRefList::iterator Cell::end()
 {
     return particles.end();
-}
-
-int Cell::getCounter() const
-{
-    return neighborCounter;
 }
 
 void Cell::setCounter(int count)

@@ -190,7 +190,8 @@ std::unique_ptr<Simulation> simFactory(
             params.plot_frequency,
             params.update_frequency,
             true,
-            params.thermo_freq);
+            params.thermo_freq,
+            params.doPerformanceMeasurements);
     }
 
     spdlog::error("Invalid simulation type.");
