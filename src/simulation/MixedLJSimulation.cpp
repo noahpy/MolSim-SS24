@@ -134,11 +134,11 @@ MixedLJSimulation::MixedLJSimulation(
             T_target,
             delta_T,
             n_thermostat);
-        themostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
+        thermostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
 
         // Intialize temperature
         spdlog::info("Setting initial temperature to {} K", T_init);
-        themostat.initializeBrownianMotion(this->container);
+        thermostat.initializeBrownianMotion(this->container);
     }
     else{
         spdlog::info("Themostat is turned off.");
@@ -166,7 +166,7 @@ void MixedLJSimulation::runSim()
             cellGrid.updateCells();
         }
         if (n_thermostat && iteration % n_thermostat == 0) {
-            themostat.updateT(this->container);
+            thermostat.updateT(this->container);
         }
         if (doProfile) {
             particleUpdates += container.activeParticleCount;
