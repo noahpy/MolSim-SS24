@@ -132,7 +132,8 @@ void force_lennard_jones_lc(const Simulation& sim)
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
                             // and check if the distance is less than the cutoff
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
-                            if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared)
+                            if (ArrayUtils::DotProduct(delta) <=
+                                len_sim.getGrid().cutoffRadiusSquared)
                                 // then calculate the force
                                 lj_calc(p1, p2, alpha, beta, gamma, delta);
                         }
@@ -180,19 +181,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                         lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
                     }
                 }
-                // Calculate the forces gravity applies to the particles
-                double gravityConstant = len_sim.getGravityConstant();
-                if (gravityConstant != 0) {
-                    // Skip these calculations iff the constant = 0, as this will have no impact
-                    ParticleRefList& particles = cellGrid.cells.at(x).at(y).at(z)->getParticles();
-                    for (auto& particle : particles) {
-                        // The gravity only acts along the y-Axis
-                        std::array<double, 3> gravityForce {
-                            0, gravityConstant * particle.get().getM(), 0
-                        };
-                        particle.get().setF(particle.get().getF() + gravityForce);
-                    }
-                }
+
                 // calculate LJ forces with the neighbours
                 for (auto i : neighbors) {
                     // for all particles in the cell
@@ -201,7 +190,8 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
                             // Check if the distance is less than the cutoff
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
-                            if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared) {
+                            if (ArrayUtils::DotProduct(delta) <=
+                                len_sim.getGrid().cutoffRadiusSquared) {
                                 // then calculate the force
                                 double alpha =
                                     len_sim.getAlpha(p1.get().getType(), p2.get().getType());
@@ -215,6 +205,17 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                     }
                 }
             }
+        }
+    }
+
+    // Calculate the forces gravity applies to the particles
+    double gravityConstant = len_sim.getGravityConstant();
+    if (gravityConstant != 0) {
+        // Skip these calculations iff the constant = 0, as this will have no impact
+        for (auto& particle : len_sim.container) {
+            // The gravity only acts along the y-Axis
+            std::array<double, 3> gravityForce { 0, gravityConstant * particle.getM(), 0 };
+            particle.setF(particle.getF() + gravityForce);
         }
     }
 }
