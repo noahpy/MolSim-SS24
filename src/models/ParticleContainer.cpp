@@ -32,13 +32,12 @@ void ParticleContainer::addParticle(const Particle& p)
 
 void ParticleContainer::removeParticle(Particle& p)
 {
-    if (activeParticleCount && p.getActivity()) {
-        p.setV({ 0, 0, 0 });
-        p.setOldF({ 0, 0, 0 });
-        p.setF({ 0, 0, 0 });
-        p.setActivity(false);
+    p.setV({ 0, 0, 0 });
+    p.setOldF({ 0, 0, 0 });
+    p.setF({ 0, 0, 0 });
+    p.setActivity(false);
+    if (activeParticleCount)
         activeParticleCount--;
-    }
 }
 
 std::vector<Particle> ParticleContainer::getContainer() const
