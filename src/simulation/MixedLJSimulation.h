@@ -75,7 +75,14 @@ public:
      * @param type2 The type of the second particle
      * @return The pair that is used as the key in the maps
      */
-    static std::pair<int, int> getMixKey(unsigned type1, unsigned type2);
+    inline static std::pair<int, int> getMixKey(unsigned type1, unsigned type2)
+    {
+        if (type1 > type2) {
+            std::swap(type1, type2);
+        }
+        // Always return the pair with the smaller type first
+        return std::make_pair(type1, type2);
+    }
 
     /**
      * @brief Get the epsilon of a combination of particles

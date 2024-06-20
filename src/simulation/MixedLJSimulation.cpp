@@ -187,15 +187,6 @@ void MixedLJSimulation::runSim()
     }
 }
 
-std::pair<int, int> MixedLJSimulation::getMixKey(unsigned type1, unsigned type2)
-{
-    if (type1 > type2) {
-        std::swap(type1, type2);
-    }
-    // Always return the pair with the smaller type first
-    return std::make_pair(type1, type2);
-}
-
 double MixedLJSimulation::getRepulsiveDistance(int type) const
 {
     spdlog::trace("Got repulsive distance from Mixed LJ sim");
