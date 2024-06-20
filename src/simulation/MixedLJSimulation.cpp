@@ -155,7 +155,8 @@ void MixedLJSimulation::runSim()
         if (iteration % updateFrequency == 0) {
             cellGrid.updateCells();
         }
-        if (iteration % n_thermostat == 0) {
+        // Update thermostat if frequency is positive
+        if (iteration % n_thermostat == 0 && n_thermostat) {
             themostat.updateT(this->container);
         }
         spdlog::trace("Iteration {} finished.", iteration);
