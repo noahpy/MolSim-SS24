@@ -22,8 +22,8 @@
     <boundaries>
       <bound_four>periodic</bound_four>
       <bound_four>periodic</bound_four>
-      <bound_four>outflow</bound_four>
-      <bound_four>outflow</bound_four>
+      <bound_four>soft_reflective</bound_four>
+      <bound_four>soft_reflective</bound_four>
     </boundaries>
     <!-- Thermostat params -->
     <thermostat>
