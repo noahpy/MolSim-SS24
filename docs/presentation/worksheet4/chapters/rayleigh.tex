@@ -4,8 +4,34 @@
 
 \begin{frame}
     \frametitle{Rayleigh-Taylor simulation}
+
+    Boundary interface specifies \texttt{preUpdateBoundaryHandling} and \texttt{postUpdateBoundaryHandling} function
+
+    \vspace{7pt}
+    \begin{columns}
+        \begin{column}{.5\textwidth}
+            \centering{\textbf{preUpdateBoundaryHandling}}
+            \begin{itemize}
+                \item Executed before any forces are calculated
+                \item[] \!\!\!\!\!\!\!\!\! \textcolor{orange}{$\Rightarrow$} Add all required halo particles
+                \item Map from \texttt{CellIndex} to manipulations of the cell index and particle position $\rightarrow$ particle position + shift = halo particle position
+                \item If multiple periodic boundaries affect a cell, only one will perform all shifts
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{.5\textwidth}
+            \centering{\textbf{postUpdateBoundaryHandling}}
+            \begin{itemize}
+                \item Called after all updates to the particles
+                \item All inserted halo particles will be removed
+                \item Only after all bounds have been applied the particle is within the domain (known end)
+                \item[] \!\!\!\!\!\!\!\!\! \textcolor{orange}{$\Rightarrow$} Only then do update
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    \vspace{7pt}
+
     \begin{itemize}
-        \item Periodic boundary by duplicating halo cells via translation map for boundary crossing
         \item New force calculation including gravitational force
         \item Simulation class \texttt{MixedLJSimulation} for multiple particle types:
         \begin{itemize}
