@@ -123,6 +123,12 @@ MixedLJSimulation::MixedLJSimulation(
     }
 
     // Initialize thermostat
+    spdlog::info(
+        "Initializing thermostat with T_init={}K, T_target={}K, delta_T={}K with a frequency of {}",
+        T_init,
+        T_target,
+        delta_T,
+        n_thermostat);
     themostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
 
     // Intialize temperature
