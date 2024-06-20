@@ -96,7 +96,11 @@ MixedLJSimulation::MixedLJSimulation(
     // Warn user about halo cells that contain particles in the beginning
     for (Position pos : allPositions)
         for (auto haloCellIndex : cellGrid.haloCellIterator(pos))
-            if (!cellGrid.cells.at(haloCellIndex[0]).at(haloCellIndex[1]).at(haloCellIndex[2])->getParticles().empty())
+            if (!cellGrid.cells.at(haloCellIndex[0])
+                     .at(haloCellIndex[1])
+                     .at(haloCellIndex[2])
+                     ->getParticles()
+                     .empty())
                 spdlog::warn(
                     "Halo cell at [{}, {}, {}] contains a particle",
                     haloCellIndex[0],
@@ -106,8 +110,14 @@ MixedLJSimulation::MixedLJSimulation(
     // Generate the distances needed for repulsion to occur
     for (auto params : LJParams) {
         if (repulsiveDistances.find(params.first) == repulsiveDistances.end())
-            repulsiveDistances.insert( {params.first, params.second.second * std::pow(2, 1 / 6)} );
+            repulsiveDistances.insert({ params.first, params.second.second * std::pow(2, 1 / 6) });
     }
+
+    // Initialize thermostat
+    themostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
+
+    // Intialize temperature
+    themostat.initializeBrownianMotion(this->container);
 }
 
 void MixedLJSimulation::runSim()
@@ -138,7 +148,7 @@ void MixedLJSimulation::runSim()
             cellGrid.updateCells();
         }
         if (iteration % n_thermostat == 0) {
-            // thermostat();
+            themostat.updateT(this->container);
         }
         spdlog::trace("Iteration {} finished.", iteration);
 
@@ -155,7 +165,8 @@ std::pair<int, int> MixedLJSimulation::getMixKey(unsigned type1, unsigned type2)
     return std::make_pair(type1, type2);
 }
 
-double MixedLJSimulation::getRepulsiveDistance(int type) const {
+double MixedLJSimulation::getRepulsiveDistance(int type) const
+{
     spdlog::trace("Got repulsive distance from Mixed LJ sim");
     return repulsiveDistances.at(type);
 };

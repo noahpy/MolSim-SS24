@@ -1,5 +1,6 @@
 
 #include "LennardJonesDomainSimulation.h"
+#include "physics/thermostat/Thermostat.h"
 
 /**
  * @brief Type to store the LJ parameters in. Here the key are the types of the particles to get the
@@ -141,6 +142,7 @@ protected:
     double T_target; /**< The target temperature */
     double delta_T; /**< The maximal temperature change in one step */
     unsigned n_thermostat; /**< The number of steps between thermostat updates */
+    Thermostat themostat; /**< The thermostat */
 
 private:
     // ---- Hide singe epsilon and sigma -------//
