@@ -145,7 +145,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
 \label{sec:perf}
 
 \begin{itemize}
-    \item We modified our project as suggested to measure the runtime of the main loop.
+    \item We modified our project as suggested to measure the runtime of the main loop, the time per iteration, and the MUP/S (Molecule update per second) where we define a molecule update as the molecule receiving its new position at the end of an iteration i.e. after one iteration \textit{\#active particles} molecule updates have been performed.
     \item The measurements were conducted on a large scenario ($\geq 10000\ molecules$) with I/O operations disabled.
     \item Data for profiling is presented in Tab.\ \ref{table:data}.
     \item This data indicates that the force calculation routine is the most time-consuming section, accounting for 77.07\% of the total runtime (\texttt{lj\_calc(...)} is part of force calculation).
