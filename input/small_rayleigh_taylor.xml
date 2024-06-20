@@ -3,7 +3,7 @@
 
   <params>
     <delta_t>0.0005</delta_t>
-    <end_time>0.1</end_time>
+    <end_time>25</end_time>
     <output>rl_small</output>
     <frequency>1</frequency>
     <!-- Domain params -->
