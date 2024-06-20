@@ -65,11 +65,11 @@ All new features have been tested with their according Unit tests (see \texttt{t
         \item We introduced a new class, \texttt{Thermostat}, in \texttt{src/physics} for temperature calculations to adjust the velocities of all particles in the container.
         \item The temperature update process follows the calculation steps outlined in the assignment sheet.
         \item To optimize temperature calculations, we excluded the divisions by 2 in the calculation of $E_{kin}$, as the energy is multiplied by 2 in the current temperature calculation:
-        \begin{itemize}
-            \item $T_{current} = \frac{2 \cdot \left(\sum_{i=1}^{\#particles} \frac{m_i \langle v_i, v_i \rangle}{2}\right)}{\#dimensions\ \cdot\ \#particles}$
-            \item $T_{current} = \frac{2 \cdot \frac{1}{2}\ \left(\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle\right)}{\#dimensions\ \cdot\ \#particles}$
-            \item $T_{current} = \frac{\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle}{\#dimensions\ \cdot\ \#particles}$
-        \end{itemize}
+        \begin{align}
+            T_{current} &= \frac{2 \cdot \left(\sum_{i=1}^{\#particles} \frac{m_i \langle v_i, v_i \rangle}{2}\right)}{\#dimensions\ \cdot\ \#particles} \\
+            &= \frac{2 \cdot \frac{1}{2}\ \left(\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle\right)}{\#dimensions\ \cdot\ \#particles} \\
+            &= \frac{\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle}{\#dimensions\ \cdot\ \#particles}
+        \end{align}
         \item This class also provides a function for temperature initialization utilizing the \texttt{maxwellBoltzmannDistributedVelocity} function.
         \item The step counter for the frequency of temperature updates is managed within the simulation layer, as it controls the frequency of update operations in our project structure.
     \end{itemize}
