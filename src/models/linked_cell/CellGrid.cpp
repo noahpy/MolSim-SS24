@@ -154,6 +154,8 @@ void CellGrid::updateCells()
                 ParticleRefList& particles = cells.at(x).at(y).at(z)->getParticles();
                 auto it = particles.begin();
                 while (it != particles.end()) {
+                    if (!(*it).get().getActivity())
+                        spdlog::info("Inactive");
                     // Calculate new index
                     CellIndex indices = getIndexFromPos((*it).get().getX());
                     // Add the particle to different cell if particle moved
@@ -192,12 +194,6 @@ void CellGrid::addParticle(Particle& particle)
     CellIndex indices = getIndexFromPos(particle.getX());
 
     cells.at(indices[0]).at(indices[1]).at(indices[2])->addParticle(particle);
-    spdlog::debug(
-        "Particle {} added to cell ({}, {}, {})",
-        particle.toString(),
-        indices[0],
-        indices[1],
-        indices[2]);
 }
 
 void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)

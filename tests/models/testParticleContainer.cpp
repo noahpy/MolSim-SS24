@@ -141,12 +141,10 @@ TEST(PContainerTests, pairIterators)
     unsigned count = 0;
     for (auto it = container.beginPairs(); it != container.endPairs(); ++it) {
         std::pair<Particle&, Particle&> pt_pair = *it;
-        for (std::pair<Particle, Particle> particle_pair : pairs) {
-            Particle pp1 = particle_pair.first;
-            Particle pp2 = particle_pair.second;
+        for (const std::pair<Particle, Particle>& particle_pair : pairs) {
             EXPECT_FALSE(
-                pt_pair.first.getM() == pp1.getM() && pt_pair.second.getM() == pp2.getM() ||
-                pt_pair.first.getM() == pp2.getM() && pt_pair.second.getM() == pp1.getM())
+                pt_pair.first.getM() == particle_pair.first.getM() && pt_pair.second.getM() == particle_pair.second.getM() ||
+                pt_pair.first.getM() == particle_pair.second.getM() && pt_pair.second.getM() == particle_pair.first.getM())
                 << "Found duplicate pair!";
         }
         pairs.emplace_back(pt_pair);
@@ -162,12 +160,10 @@ TEST(PContainerTests, pairIterators)
     count = 0;
     for (auto it = container.beginPairs(); it != container.endPairs(); ++it) {
         std::pair<Particle&, Particle&> pt_pair = *it;
-        for (std::pair<Particle, Particle> particle_pair : pairs) {
-            Particle pp1 = particle_pair.first;
-            Particle pp2 = particle_pair.second;
+        for (const std::pair<Particle, Particle>& particle_pair : pairs) {
             EXPECT_FALSE(
-                pt_pair.first.getM() == pp1.getM() && pt_pair.second.getM() == pp2.getM() ||
-                pt_pair.first.getM() == pp2.getM() && pt_pair.second.getM() == pp1.getM())
+                pt_pair.first.getM() == particle_pair.first.getM() && pt_pair.second.getM() == particle_pair.second.getM() ||
+                pt_pair.first.getM() == particle_pair.second.getM() && pt_pair.second.getM() == particle_pair.first.getM())
                 << "Found duplicate pair!";
         }
         pairs.emplace_back(pt_pair);
@@ -182,12 +178,10 @@ TEST(PContainerTests, pairIterators)
     count = 0;
     for (auto it = container.beginPairs(); it != container.endPairs(); ++it) {
         std::pair<Particle&, Particle&> pt_pair = *it;
-        for (std::pair<Particle, Particle> particle_pair : pairs) {
-            Particle pp1 = particle_pair.first;
-            Particle pp2 = particle_pair.second;
+        for (const std::pair<Particle, Particle>& particle_pair : pairs) {
             EXPECT_FALSE(
-                pt_pair.first.getM() == pp1.getM() && pt_pair.second.getM() == pp2.getM() ||
-                pt_pair.first.getM() == pp2.getM() && pt_pair.second.getM() == pp1.getM())
+                pt_pair.first.getM() == particle_pair.first.getM() && pt_pair.second.getM() == particle_pair.second.getM() ||
+                pt_pair.first.getM() == particle_pair.second.getM() && pt_pair.second.getM() == particle_pair.first.getM())
                 << "Found duplicate pair!";
         }
         pairs.emplace_back(pt_pair);

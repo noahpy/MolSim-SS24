@@ -67,10 +67,14 @@ void xmlparse(Params& sim_params, std::string& filename)
         }
         if (params.thermostat().present()) {
             auto thermo_config = params.thermostat().get();
-            if (thermo_config.initialTemp().present())
+            if (thermo_config.initialTemp().present()) {
                 sim_params.init_temp = thermo_config.initialTemp().get();
-            if (thermo_config.targetTemp().present())
-                sim_params.target_temp = thermo_config.targetTemp().get();
+                // if no target temp, use init temp
+                if (thermo_config.targetTemp().present())
+                    sim_params.target_temp = thermo_config.targetTemp().get();
+                else
+                    sim_params.target_temp = sim_params.init_temp;
+            }
             if (thermo_config.thermoFreq().present())
                 sim_params.thermo_freq = thermo_config.thermoFreq().get();
             if (thermo_config.maxTempDelta().present())
@@ -84,13 +88,17 @@ void xmlparse(Params& sim_params, std::string& filename)
                 unsigned typeID = type.type();
                 double epsilon = type.epsilon();
                 double sigma = type.sigma();
-                if(!typeID){
+                if (!typeID) {
                     spdlog::error("Particle type ID 0 is reserved, please choose another.");
                     exit(EXIT_FAILURE);
                 }
-                sim_params.particleTypes.push_back({ epsilon, sigma });
+                sim_params.particleTypes.emplace_back(epsilon, sigma);
                 sim_params.typesMap[typeID] = { epsilon, sigma };
-                spdlog::info("Registered particle type {}: sigma = {}, epsilon = {}", typeID, sigma, epsilon);
+                spdlog::info(
+                    "Registered particle type {}: sigma = {}, epsilon = {}",
+                    typeID,
+                    sigma,
+                    epsilon);
             }
         }
 

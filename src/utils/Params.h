@@ -8,7 +8,7 @@ enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
 
 enum class WriterType { XYZ, VTK, XML };
 
-enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ };
+enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ };
 
 class Params {
 public:
@@ -54,9 +54,9 @@ public:
     // target temperature
     double target_temp = 0;
     // frequency of thermostat updates
-    unsigned thermo_freq = 0;
+    unsigned thermo_freq = 20;
     // maximum temperature delta
-    double max_temp_delta = 0.01;
+    double max_temp_delta = 10;
     // gravitational constant
     double gravity = 0.0;
     // particle types 

@@ -58,4 +58,14 @@ public:
     void runSim() override;
 
     BoundaryConditionHandler bcHandler; /**< The boundary condition handler */
+
+    /**
+     * @brief Gets the distance for a particle where repulsion starts
+     * @param type The type of the particle
+     * @return The distance repulsion starts at
+     */
+    virtual double getRepulsiveDistance(int type) const;
+
+private:
+    double repulsiveDistance;
 };

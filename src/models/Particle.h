@@ -54,20 +54,6 @@ private:
 
 public:
     /**
-     * @brief Construct a new Particle object of a given type
-     * @param type The type of the particle
-     * @return Particle object
-     */
-    explicit Particle(int type = 0);
-
-    /**
-     * @brief Construct a new Particle object by copying another Particle object
-     * @param other The Particle object to copy
-     * @return Particle object
-     */
-    Particle(const Particle& other);
-
-    /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
      * @param x_arg The position of the particle
      * @param v_arg The velocity of the particle
@@ -82,6 +68,13 @@ public:
         std::array<double, 3> v_arg,
         double m_arg,
         int type = 0);
+
+    /**
+     * @brief Construct a new Particle object by copying another Particle object -> do not use
+     * @param other The Particle object to copy
+     * @return Particle object
+     */
+    Particle(const Particle& other);
 
     /**
      * @brief Destroy the Particle object
@@ -128,6 +121,12 @@ public:
     int getType() const;
 
     /**
+     * @brief Set the type of the particle
+     * @param type_new The new type of the particle
+     */
+    void setType(int type_new) { type = type_new;}
+
+    /**
      * @brief Set the position of the particle
      * @param x_new The new position of the particle
      * @return void
@@ -162,6 +161,10 @@ public:
      */
     void setM(double m_new);
 
+    /**
+     * @brief Set the new activity
+     * @param act_new The new activity
+     */
     void setActivity(bool act_new);
 
     /**
@@ -176,6 +179,7 @@ public:
      * @return The string representation of the Particle object
      */
     std::string toString() const;
+    Particle();
 };
 
 /**

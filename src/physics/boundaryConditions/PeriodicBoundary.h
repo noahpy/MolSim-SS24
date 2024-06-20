@@ -57,7 +57,7 @@ public:
     MultiDimPeriodicBoundShiftsMap getTranslationMap() const { return translationMap; }
 
 private:
-    std::vector<Particle>
+    std::vector<std::unique_ptr<Particle>>
         insertedParticles; /**< The particles that were inserted. These will be recycled */
     size_t insertionIndex; /**< The index of the next particle to recycle */
 

@@ -40,6 +40,7 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
           updateFrequency,
           false)
     , bcHandler(boundaryConfig, cellGrid)
+    , repulsiveDistance(std::pow(2, 1 / 6) * sigma)
 {
     if (read_file) {
         this->reader->readFile(*this);
@@ -79,3 +80,8 @@ void LennardJonesDomainSimulation::runSim()
         time += delta_t;
     }
 }
+
+double LennardJonesDomainSimulation::getRepulsiveDistance(int type) const {
+    spdlog::trace("Got repulsive distance from Domain sim");
+    return repulsiveDistance;
+};

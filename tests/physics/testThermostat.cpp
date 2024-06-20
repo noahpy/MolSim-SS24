@@ -2,8 +2,6 @@
 #include "io/fileReader/emptyReader.h"
 #include "io/fileWriter/VTKWriter.h"
 #include "models/Particle.h"
-#include "physics/strategy.h"
-#include "simulation/baseSimulation.h"
 #include "physics/thermostat/Thermostat.h"
 #include "physics/stratFactory.h"
 #include <cmath>
@@ -44,7 +42,7 @@ TEST(thermostatTest, updateTemp)
         std::move(readPointer));
 
     Thermostat thermo( 1, 2, 1, 2 );
-    thermo.updateT(sim);
+    thermo.updateT(sim.container);
 
     unsigned pCount = 0;
     for (auto& p : container) {
@@ -86,7 +84,7 @@ TEST(thermostatTest, updateTempNeg)
         std::move(readPointer));
 
     Thermostat thermo( 2, 1, 1, 2 );
-    thermo.updateT(sim);
+    thermo.updateT(sim.container);
 
     double PRESICION = 10e-5;
     unsigned pCount = 0;
@@ -131,7 +129,7 @@ TEST(thermostatTest, keepTemp)
         std::move(readPointer));
 
     Thermostat thermo( 1, 1, 1, 2 );
-    thermo.updateT(sim);
+    thermo.updateT(sim.container);
 
     unsigned pCount = 0;
     for (auto& p : container) {
@@ -145,7 +143,7 @@ TEST(thermostatTest, keepTemp)
         expectedVs.at(pCount) = {1, 1, 0};
         ++pCount;
     }
-    thermo.updateT(sim);
+    thermo.updateT(sim.container);
 
     double PRESICION = 10e-5;
     pCount = 0;
@@ -159,7 +157,7 @@ TEST(thermostatTest, keepTemp)
     for (auto& p : sim.container) {
         p.setV({0.5, 0.5, 0});
     }
-    thermo.updateT(sim);
+    thermo.updateT(sim.container);
 
     pCount = 0;
     for (auto& p : container) {

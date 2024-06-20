@@ -1,5 +1,6 @@
 
 #include "ParticleGenerator.h"
+#include "models/linked_cell/CellGrid.h"
 #include <spdlog/spdlog.h>
 
 ParticleGenerator::ParticleGenerator(ParticleContainer& container)

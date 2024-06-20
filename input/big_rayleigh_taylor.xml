@@ -3,8 +3,8 @@
 
   <params>
     <delta_t>0.0005</delta_t>
-    <end_time>25</end_time>
-    <output>rl_small</output>
+    <end_time>50</end_time>
+    <output>rl_big</output>
     <frequency>10</frequency>
     <!-- Domain params -->
     <domainOrigin>
@@ -13,11 +13,11 @@
       <z>0</z>
     </domainOrigin>
     <domainSize>
-      <x>63</x>
-      <y>36</y>
+      <x>300</x>
+      <y>54</y>
       <z>0</z>
     </domainSize>
-    <cutoff>2.5</cutoff>
+    <cutoff>3</cutoff>
     <!-- Boundary params -->
     <boundaries>
       <bound_four>periodic</bound_four>
@@ -49,8 +49,8 @@
         <z>0</z>
       </vel>
       <dim>
-        <x>50</x>
-        <y>14</y>
+        <x>250</x>
+        <y>20</y>
         <z>1</z>
       </dim>
       <mass>1.0</mass>
@@ -62,7 +62,7 @@
     <cuboid>
       <pos>
         <x>0.6</x>
-        <y>19</y>
+        <y>27</y>
         <z>0</z>
       </pos>
       <vel>
@@ -71,8 +71,8 @@
         <z>0</z>
       </vel>
       <dim>
-        <x>50</x>
-        <y>14</y>
+        <x>250</x>
+        <y>20</y>
         <z>1</z>
       </dim>
       <mass>2.0</mass>
@@ -86,11 +86,11 @@
   <!-- Particle types -->
   <ptypes>
       <ptype type="1">
-          <sigma>1.0</sigma>
+          <sigma>1.2</sigma>
           <epsilon>1.0</epsilon>
       </ptype>
       <ptype type="2">
-          <sigma>0.9412</sigma>
+          <sigma>1.1</sigma>
           <epsilon>1.0</epsilon>
       </ptype>
   </ptypes>

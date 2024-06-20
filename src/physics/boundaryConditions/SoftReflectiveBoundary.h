@@ -55,9 +55,7 @@ private:
         return { 0, 0, 0 };
     };
 
-    std::vector<Particle>
+    std::vector<std::unique_ptr<Particle>>
         insertedParticles; /**< The particles that were inserted. These will be recycled */
     size_t insertionIndex; /**< The index of the next particle to recycle */
-
-    double repulsiveDistance = -1; /**< The distance to the boundary where the repulsion starts */
 };

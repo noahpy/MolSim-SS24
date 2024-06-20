@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "simulation/baseSimulation.h"
+#include "models/ParticleContainer.h"
 
 /**
  * @class Thermostat
@@ -12,6 +12,11 @@
  */
 class Thermostat {
 public:
+    /**
+     * @brief Default constructor for Thermostat.
+     */
+    Thermostat() = default;
+
     /**
      * @brief Constructor for Thermostat.
      * @param init Initial temperature.
@@ -25,7 +30,7 @@ public:
      * @brief Initialization with Brownian Motion using the Maxwell-Boltzmann distribution.
      * @param sim The simulation to initialize.
      */
-    void initializeBrownianMotion(const Simulation& sim) const;
+    void initializeBrownianMotion(ParticleContainer& sim) const;
 
     /**
      * @brief Updates the temperature in our simulation.
@@ -34,7 +39,7 @@ public:
      *        are scaled with the scaling factor beta.
      * @param sim The simulation to apply the temperature update to.
      */
-    void updateT(const Simulation& sim) const;
+    void updateT(ParticleContainer& sim) const;
 
 private:
     // Initial temperature

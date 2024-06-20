@@ -3,9 +3,9 @@
 
   <params>
     <delta_t>0.0005</delta_t>
-    <end_time>25</end_time>
+    <end_time>15</end_time>
     <output>rl_small</output>
-    <frequency>10</frequency>
+    <frequency>1000</frequency>
     <!-- Domain params -->
     <domainOrigin>
       <x>0</x>
@@ -13,21 +13,21 @@
       <z>0</z>
     </domainOrigin>
     <domainSize>
-      <x>63</x>
-      <y>36</y>
+      <x>303</x>
+      <y>180</y>
       <z>0</z>
     </domainSize>
-    <cutoff>2.5</cutoff>
+    <cutoff>3</cutoff>
     <!-- Boundary params -->
     <boundaries>
-      <bound_four>periodic</bound_four>
-      <bound_four>periodic</bound_four>
+      <bound_four>soft_reflective</bound_four>
+      <bound_four>soft_reflective</bound_four>
       <bound_four>soft_reflective</bound_four>
       <bound_four>soft_reflective</bound_four>
     </boundaries>
     <!-- Thermostat params -->
     <thermostat>
-        <initialTemp>40</initialTemp>
+        <initialTemp>0.5</initialTemp>
         <thermoFreq>1000</thermoFreq>
         <maxTempDelta>20</maxTempDelta>
     </thermostat>
@@ -39,7 +39,7 @@
   <clusters>
     <cuboid>
       <pos>
-        <x>0.6</x>
+        <x>1.5</x>
         <y>2</y>
         <z>0</z>
       </pos>
@@ -49,8 +49,8 @@
         <z>0</z>
       </vel>
       <dim>
-        <x>50</x>
-        <y>14</y>
+        <x>250</x>
+        <y>50</y>
         <z>1</z>
       </dim>
       <mass>1.0</mass>
@@ -59,38 +59,12 @@
       <brownDim>2</brownDim>
       <ptype>1</ptype>
     </cuboid> 
-    <cuboid>
-      <pos>
-        <x>0.6</x>
-        <y>19</y>
-        <z>0</z>
-      </pos>
-      <vel>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </vel>
-      <dim>
-        <x>50</x>
-        <y>14</y>
-        <z>1</z>
-      </dim>
-      <mass>2.0</mass>
-      <spacing>1.2</spacing>
-      <brownVel>0</brownVel>
-      <brownDim>2</brownDim>
-      <ptype>2</ptype>
-    </cuboid>
   </clusters>
 
   <!-- Particle types -->
   <ptypes>
       <ptype type="1">
-          <sigma>1.0</sigma>
-          <epsilon>1.0</epsilon>
-      </ptype>
-      <ptype type="2">
-          <sigma>0.9412</sigma>
+          <sigma>1.2</sigma>
           <epsilon>1.0</epsilon>
       </ptype>
   </ptypes>
