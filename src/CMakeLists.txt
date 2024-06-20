@@ -25,7 +25,7 @@ target_include_directories(
 target_link_libraries(
         src
         PUBLIC
-        xerces-c
+        XercesC::XercesC
         spdlog::spdlog
 )
 
