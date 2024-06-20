@@ -29,6 +29,7 @@
     <thermostat>
         <initialTemp>40</initialTemp>
         <thermoFreq>1000</thermoFreq>
+        <maxTempDelta>20</maxTempDelta>
     </thermostat>
     <!-- Gravity params -->
     <gravity>-12.44</gravity>

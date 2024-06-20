@@ -56,7 +56,7 @@ public:
     // frequency of thermostat updates
     unsigned thermo_freq = 20;
     // maximum temperature delta
-    double max_temp_delta = 1;
+    double max_temp_delta = 10;
     // gravitational constant
     double gravity = 0.0;
     // particle types 
