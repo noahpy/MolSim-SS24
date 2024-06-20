@@ -38,7 +38,7 @@
 \label{sec:pr}
 The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/42}{here}.
 
-\section{Fixes for last assignment}
+\section{Bug Fixes and Implementation of missing features}
 \label{sec:fix}
 
     \begin{itemize}
@@ -51,9 +51,10 @@ The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/4
             \item The refactored project structure allows us to modify particle container iterators without disrupting the functionalities of previous assignments or necessitating extensive code adjustments.
         \end{itemize}
         \item We corrected errors affecting certain particles at the corners of reflective boundaries.
+        \item The simulation refactoring to allow selection between different simulation options without creating a new simulation class will be implemented in the next assignment. This decision was made to prioritize the new tasks and due to time constraints.
     \end{itemize}
 
-Unit tests and XML adaptions are provided for the following sections.
+All new features have been tested with their according Unit tests (see \texttt{tests}).
 
 \section{Thermostat}
 \label{sec:thermo}
@@ -67,7 +68,7 @@ Unit tests and XML adaptions are provided for the following sections.
             \item $T_{current} = \frac{2 \cdot \frac{1}{2}\ \left(\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle\right)}{\#dimensions\ \cdot\ \#particles}$
             \item $T_{current} = \frac{\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle}{\#dimensions\ \cdot\ \#particles}$
         \end{itemize}
-        \item Temperature initialization occurs during particle generation and is not handled within this class.
+        \item This class also provides a function for temperature initialization utilizing the \texttt{maxwellBoltzmannDistributedVelocity} function.
         \item The step counter for the frequency of temperature updates is managed within the simulation layer, as it controls the frequency of update operations in our project structure.
     \end{itemize}
     
@@ -78,9 +79,45 @@ Unit tests and XML adaptions are provided for the following sections.
     \begin{itemize}
         \item Periodic Boundary:
         \begin{itemize}
-            \item The periodic boundary is realized via duplication of the particle about to leave the particle to a halo cell.
+            \item The periodic boundary is realized by duplicating the particle about to leave the boundary into a halo cell.
             \item We map particles from one side to the opposite side by generating a translation map.
         \end{itemize}
+        \item XML related parser and reader have been adjusted to accommodate new parameters, such as particle types in clusters.
+        \item A new force calculation function, \texttt{force\_mixed\_LJ\_gravity\_lc}, incorporating an additional gravitational force, has been implemented.
+        \item We introduced a new simulation class, \texttt{MixedLJSimulation}, for simulating different particle types simultaneously:
+        \begin{itemize}
+            \item The Lennard-Jones parameters, following to the Lorentz-Berthelot mixing rule, are determined in the constructor of the class.
+            \item $\epsilon$ and $\sigma$ values of all type combinations, along with alphas, betas and gammas, are computed and inserted upon simulation initialization.
+            \item The simulation checks if particles are outside the domain during initialization.
+            \item We included the thermostat, so that the temperature initialization is handled during simulation setup.
+        \end{itemize}
+        \item The added section of the project UML diagram can be seen here\ \ref{fig:uml}.
+        \item Running the simulation revealed a couple observations:
+        \begin{itemize}
+            \item The falling particles bounce noticeably, when the two particle layers collide.
+            \item Initially, the top liquid doesn't mix into the bottom layer evenly, but forms several drops as it sinks.
+        \end{itemize}
+    \end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=1.25\textwidth]{res/UML4v2.drawio}
+    \caption{UML diagram extension.}
+    \label{fig:uml}
+\end{figure}
+
+\section{Falling drop - Liquid}
+\label{sec:drop}
+
+    \begin{itemize}
+        \item Checkpoints were implemented to acquire the equilibrated fluid:
+        \begin{itemize}
+            \item Checkpointing is realized through saving a simulation state in an XML file.
+            \item For that we had to change the XSD-format, to allow saving particle information and specify the starting time in the XML files.
+            \item We implemented a \texttt{XmlWriter} for writing the formatted files (see \texttt{src/io/fileWriter}), which can be activated via the command line argument \texttt{-w 2}.
+        \end{itemize}
+        \item We first applied the thermostat to the simulation, which showed a slow descend of the drop and a calm assimilation into the fluid below due to velocity adjustments.
+        \item The drop falls rapidly and splashes violently into liquid without temperature regulation.
+        \item Running the simulation with periodic boundaries showed us the following differences:
     \end{itemize}
 
 \end{document}
