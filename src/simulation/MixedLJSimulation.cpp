@@ -113,15 +113,6 @@ MixedLJSimulation::MixedLJSimulation(
             repulsiveDistances.insert({ params.first, params.second.second * std::pow(2, 1 / 6) });
     }
 
-    // Initialize thermostat
-    themostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
-
-    // Intialize temperature
-    themostat.initializeBrownianMotion(this->container);
-}
-
-void MixedLJSimulation::runSim()
-{
     if (bcHandler.dimensionality != cellGrid.gridDimensionality) {
         spdlog::error(
             "Dimensionality mismatch between boundary conditions and cell grid.",
@@ -131,6 +122,16 @@ void MixedLJSimulation::runSim()
         exit(EXIT_FAILURE);
     }
 
+    // Initialize thermostat
+    themostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
+
+    // Intialize temperature
+    spdlog::info("Setting initial temperature to {} K", T_init);
+    themostat.initializeBrownianMotion(this->container);
+}
+
+void MixedLJSimulation::runSim()
+{
     while (time < end_time) {
         bcHandler.preUpdateBoundaryHandling(*this);
 

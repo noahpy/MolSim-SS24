@@ -138,7 +138,7 @@ std::unique_ptr<Simulation> simFactory(
             params.plot_frequency,
             params.update_frequency);
     case SimulationType::MIXED_LJ:
-        spdlog::info("Initializing Linked and domain bound LJ Simulation with:");
+        spdlog::info("Initializing Mixed LJ + Gravity Simulation with:");
         spdlog::info(
             "delta_t: {}, end_time: {}, epsilon: {}, sigma: {}, plot_frequency: {}",
             params.delta_t,

@@ -54,7 +54,7 @@ public:
     // target temperature
     double target_temp = 0;
     // frequency of thermostat updates
-    unsigned thermo_freq = 0;
+    unsigned thermo_freq = 20;
     // maximum temperature delta
     double max_temp_delta = 0.01;
     // gravitational constant
