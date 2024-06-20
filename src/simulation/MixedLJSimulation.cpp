@@ -47,6 +47,7 @@ MixedLJSimulation::MixedLJSimulation(
     , T_target(T_target)
     , delta_T(delta_T)
     , n_thermostat(n_thermostat)
+    , ljparams(LJParams)
 {
     if (read_file) {
         this->reader->readFile(*this);

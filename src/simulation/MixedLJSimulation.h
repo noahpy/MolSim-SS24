@@ -1,4 +1,5 @@
 
+#pragma once
 #include "LennardJonesDomainSimulation.h"
 #include "physics/thermostat/Thermostat.h"
 
@@ -128,6 +129,11 @@ public:
      */
     double getRepulsiveDistance(int type) const override;
 
+    /**
+     * @brief map that stores the different particle types
+     */
+    const std::map<unsigned, std::pair<double, double>> ljparams;
+
 protected:
     MixLJParamMap epsilons; /**< The mixed epsilon parameters of the Lennard-Jones potential */
     MixLJParamMap sigmas; /**< The mixed sigma parameters of the Lennard-Jones potential */
@@ -135,7 +141,8 @@ protected:
     MixLJParamMap betas; /**< sigma^6 */
     MixLJParamMap gammas; /**< -2 * sigma^12 */
 
-    std::map<unsigned, double> repulsiveDistances; /**< The repulsive distances for every particle */
+    std::map<unsigned, double>
+        repulsiveDistances; /**< The repulsive distances for every particle */
 
     double gravityConstant; /**< The gravity constant */
     double T_init; /**< The initial temperature */

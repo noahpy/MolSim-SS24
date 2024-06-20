@@ -1,5 +1,5 @@
 
-#include "simulation/LennardJonesDomainSimulation.h"
+#include "simulation/MixedLJSimulation.h"
 #include "utils/Position.h"
 #include <fstream>
 #include <io/fileWriter/XMLWriter.h>
@@ -89,8 +89,21 @@ void XmlWriter::plotParticles(const Simulation& s)
         spdlog::debug("When writing to XML, not a LennardJonesDomainSimulation");
     }
 
-    // TODO: Write thermostat
-    // TODO: Write gravity
+    std::unique_ptr<ParticleTypes_t> ptypes = std::make_unique<ParticleTypes_t>();
+    // try MixedLJSim
+    try {
+        auto& ljs = dynamic_cast<const MixedLJSimulation&>(s);
+        // save ptypes
+        for (auto& ptype : ljs.ljparams) {
+            ParticleTypeAttr_t attr(ptype.second.second, ptype.second.first, ptype.first);
+            ptypes->ptype().push_back(attr);
+        }
+        // save gravity
+        params->gravity(ljs.getGravityConstant());
+
+    } catch (const std::bad_cast& e) {
+        spdlog::debug("When writing to XML, not a LennardJonesSimulation");
+    }
 
     // Initialize particle data
     DecimalArray_t points = DecimalArray_t(3);
@@ -123,7 +136,6 @@ void XmlWriter::plotParticles(const Simulation& s)
 
     // Initialize final simulation object
     std::unique_ptr<clusters_t> clusters = std::make_unique<clusters_t>();
-    std::unique_ptr<ParticleTypes_t> ptypes = std::make_unique<ParticleTypes_t>();
     std::unique_ptr<simulation_t> sim =
         std::make_unique<simulation_t>(std::move(params), std::move(clusters));
     sim->ptypes(std::move(ptypes));
