@@ -149,7 +149,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \item The measurements were conducted on a large scenario ($\geq 10000\ molecules$) with I/O operations disabled. For this we used the big Rayleigh with $t_{end} = 25$. 
     \item We profiled the code using \texttt{gprof} on the small Rayleigh. The data for profiling is presented in Tab.\ \ref{table:data}.
     \item This data indicates that the force calculation routine is the most time-consuming section, accounting for 77.07\% of the total runtime (\texttt{lj\_calc(...)} is part of force calculation).
-    \item The runtime of the small Rayleigh-Taylor simulation on the cluster can be viewed here Tab.\ \ref{table:small_raileigh}. Unfortunately, cluster scheduling did not leave us the time to run the bigger experiments on the cluster to get measurements from there.
+    \item The runtime of the small Rayleigh-Taylor simulation on the cluster (cm2\_tiny) can be viewed here Tab.\ \ref{table:small_raileigh}. Unfortunately, cluster scheduling did not leave us the time to run the bigger experiments on the cluster to get measurements from there.
 \end{itemize}
 
 \begin{table}[h!]
@@ -195,7 +195,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
         Average time per iteration & 2 ms \\ \hline
         MUP/S & 479,461 \\ \hline
     \end{tabular}
-    \caption{Runtime for small scale raileigh-taylor simulation (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
+    \caption{Runtime on cluster (cm2\_tiny) for small scale Rayleigh-Taylor simulation (MUP = force+vel+pos calc i.e. one update per particle per iteration). }
     \label{table:small_raileigh}
 \end{table}
 
