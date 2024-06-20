@@ -1,6 +1,5 @@
 
 #include "Thermostat.h"
-#include <valarray>
 #include "../../utils/MaxwellBoltzmannDistribution.h"
 #include "../../utils/ArrayUtils.h"
 
@@ -17,16 +16,16 @@ void Thermostat::initializeBrownianMotion(const Simulation& sim) const
 }
 
 
-void Thermostat::updateT(const Simulation& sim) const
+void Thermostat::updateT(ParticleContainer& container) const
 {
     // Calculate kinetic energy
     double E = 0;
-    for (auto& p : sim.container) {
+    for (auto& p : container) {
         E += p.getM() * (ArrayUtils::DotProduct(p.getV()));
     }
 
     // Calculate current Temperature
-    double T_current =  E / (static_cast<double>(sim.container.particles.size()) * static_cast<double>(dim));
+    double T_current =  E / (static_cast<double>(container.particles.size()) * static_cast<double>(dim));
 
     // Calculate new Temperature
     double T_new = target - T_current;
@@ -35,7 +34,7 @@ void Thermostat::updateT(const Simulation& sim) const
 
     // Update velocities with scaling factor beta
     double beta = std::sqrt(T_new / T_current);
-    for (auto& p : sim.container) {
+    for (auto& p : container) {
         p.setV(beta * p.getV());
     }
 }

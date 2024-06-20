@@ -13,6 +13,11 @@
 class Thermostat {
 public:
     /**
+     * @brief Default constructor for Thermostat.
+     */
+    Thermostat() = default;
+
+    /**
      * @brief Constructor for Thermostat.
      * @param init Initial temperature.
      * @param target Target temperature.
@@ -34,7 +39,7 @@ public:
      *        are scaled with the scaling factor beta.
      * @param sim The simulation to apply the temperature update to.
      */
-    void updateT(const Simulation& sim) const;
+    void updateT(ParticleContainer& sim) const;
 
 private:
     // Initial temperature
