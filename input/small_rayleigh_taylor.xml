@@ -54,7 +54,7 @@
       </dim>
       <mass>1.0</mass>
       <spacing>1.2</spacing>
-      <brownVel>6.324555</brownVel>
+      <brownVel>0</brownVel>
       <brownDim>2</brownDim>
       <ptype>1</ptype>
     </cuboid> 
@@ -76,7 +76,7 @@
       </dim>
       <mass>2.0</mass>
       <spacing>1.2</spacing>
-      <brownVel>4.472135</brownVel>
+      <brownVel>0</brownVel>
       <brownDim>2</brownDim>
       <ptype>2</ptype>
     </cuboid>
