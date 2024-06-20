@@ -150,19 +150,8 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \item We profiled the code using \texttt{gprof} on the small Rayleigh. The data for profiling is presented in Tab.\ \ref{table:data}.
     \item This data indicates that the force calculation routine is the most time-consuming section, accounting for 77.07\% of the total runtime (\texttt{lj\_calc(...)} is part of force calculation).
     \item The runtime of the small Rayleigh-Taylor simulation on the cluster (cm2\_tiny) can be viewed here Tab.\ \ref{table:small_raileigh}. Unfortunately, cluster scheduling did not leave us the time to run the bigger experiments on the cluster to get measurements from there.
+    \item We ran the full Rayleigh-Taylor simulation locally with the following specs\ \ref{table:specs} and the runtime seen here\ \ref{table:rayleigh_base}.
 \end{itemize}
-
-\begin{table}[h!]
-    \centering
-    \begin{tabular}{|l|r|}
-        \hline
-        OS & Ubuntu 20.04.6 LTS x86\_64 \\ \hline
-        Host & NUC12SNKi72 M82271-501 \\ \hline
-        CPU & 12th Gen Intel i7-12700H (20) @ 5.900GHz \\ \hline
-    \end{tabular}
-    \caption{Hardware specifications.}
-    \label{table:specs}
-\end{table}
 
 \begin{table}[h!]
     \centering
@@ -199,11 +188,36 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \label{table:small_raileigh}
 \end{table}
 
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|r|}
+        \hline
+        OS & Ubuntu 20.04.6 LTS x86\_64 \\ \hline
+        Host & NUC12SNKi72 M82271-501 \\ \hline
+        CPU & 12th Gen Intel i7-12700H (20) @ 5.900GHz \\ \hline
+    \end{tabular}
+    \caption{Hardware specifications.}
+    \label{table:specs}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|r|}
+        \hline
+        \textbf{Description} & \textbf{Value} \\ \hline
+        Simulation ran for & 519 seconds (50,000 iterations) \\ \hline
+        Average time per iteration & 10 ms \\ \hline
+        MUP/S & 963,410 \\ \hline
+    \end{tabular}
+    \caption{Runtime for Rayleigh-Taylor simulation (MUP = force+vel+pos calc i.e. one update per particle per iteration). }
+    \label{table:rayleigh_base}
+\end{table}
+
 \section{Optimization}
 \label{sec:opt}
 
     \begin{itemize}
-        \item We obtained noticeable speedups through inlining Getter and Setter in \texttt{Particle}, \texttt{getMixKey} in \texttt{MixedLJSimulation} and \texttt{getCounter/getParticles} in \texttt{Cell}.
+        \item We obtained noticeable speedups through inlining Getter and Setter in \texttt{Particle}, \texttt{getMixKey} in \texttt{MixedLJSimulation} and \texttt{getCounter/getParticles} in \texttt{Cell} (see\ \ref{table:raileigh_inline}).
         \item Reasons for speedup through inlining:
         \begin{itemize}
             \item The costs of jumping to and from functions is reduced
@@ -213,6 +227,33 @@ All new features have been tested with their according Unit tests (see \texttt{t
         \end{itemize}
         \item Another optimization was realized through a more efficient check for cutoff radii by saving root calculations. We replaced the L2-Norm with a Dot product and use the squared cutoff radius.
         \item We restructured the force calculation function by applying the gravity force updates on container level instead of cell iterations.
+        \item The runtime with the force calculation optimizations can be seen here\ \ref{table:raileigh_calc}.
     \end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|r|}
+        \hline
+        \textbf{Description} & \textbf{Value} \\ \hline
+        Simulation ran for & 454 seconds (50,000 iterations) \\ \hline
+        Average time per iteration & 9 ms \\ \hline
+        MUP/S & 1,101,343 \\ \hline
+    \end{tabular}
+    \caption{Runtime for raileigh-taylor simulation with inlining optimizations (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
+    \label{table:raileigh_inline}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|r|}
+        \hline
+        \textbf{Description} & \textbf{Value} \\ \hline
+        Simulation ran for & 440 seconds (50,000 iterations) \\ \hline
+        Average time per iteration & 8 ms \\ \hline
+        MUP/S & 1,136,386 \\ \hline
+    \end{tabular}
+    \caption{Runtime for raileigh-taylor simulation with force calculation optimizations (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
+    \label{table:raileigh_calc}
+\end{table}
 
 \end{document}
