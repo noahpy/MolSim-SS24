@@ -60,7 +60,8 @@ public:
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
         bool read_file = true,
-        unsigned n_thermostat = 1000);
+        unsigned n_thermostat = 1000,
+        bool doProfile = false);
 
     /**
      * @brief Run the simulation
@@ -173,7 +174,7 @@ protected:
     double T_target; /**< The target temperature */
     double delta_T; /**< The maximal temperature change in one step */
     unsigned n_thermostat; /**< The number of steps between thermostat updates */
-    Thermostat themostat; /**< The thermostat */
+    Thermostat thermostat; /**< The thermostat */
 
 private:
     // ---- Hide singe epsilon and sigma -------//
@@ -185,4 +186,6 @@ private:
     using LennardJonesSimulation::setEpsilon; //
     using LennardJonesSimulation::setSigma; //
     // -----------------------------------------//
+
+    bool doProfile;
 };

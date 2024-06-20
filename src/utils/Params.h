@@ -6,7 +6,7 @@
 
 enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
 
-enum class WriterType { XYZ, VTK, XML };
+enum class WriterType { XYZ, VTK, XML, EMPTY };
 
 enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ };
 
@@ -63,4 +63,6 @@ public:
     std::vector<std::pair<double, double>> particleTypes;
     // map to particle types
     std::map<unsigned, std::pair<double, double>> typesMap;
+    // Flag for measuring performance -> will not use any io and time the simulation
+    bool doPerformanceMeasurements = false;
 };

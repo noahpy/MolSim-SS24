@@ -24,7 +24,8 @@ MixedLJSimulation::MixedLJSimulation(
     unsigned int frequency,
     unsigned int updateFrequency,
     bool read_file,
-    unsigned int n_thermostat)
+    unsigned int n_thermostat,
+    bool doProfile)
     : LennardJonesDomainSimulation(
           time,
           delta_t,
@@ -48,6 +49,7 @@ MixedLJSimulation::MixedLJSimulation(
     , delta_T(delta_T)
     , n_thermostat(n_thermostat)
     , ljparams(LJParams)
+    , doProfile(doProfile)
 {
     if (read_file) {
         this->reader->readFile(*this);
@@ -130,15 +132,17 @@ MixedLJSimulation::MixedLJSimulation(
         T_target,
         delta_T,
         n_thermostat);
-    themostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
+    thermostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
 
     // Intialize temperature
     spdlog::info("Setting initial temperature to {} K", T_init);
-    themostat.initializeBrownianMotion(this->container);
+    thermostat.initializeBrownianMotion(this->container);
 }
 
 void MixedLJSimulation::runSim()
 {
+    auto startTime = std::chrono::steady_clock::now();
+    unsigned long long particleUpdates = 0;
     while (time < end_time) {
         bcHandler.preUpdateBoundaryHandling(*this);
 
@@ -156,11 +160,30 @@ void MixedLJSimulation::runSim()
             cellGrid.updateCells();
         }
         if (iteration % n_thermostat == 0) {
-            themostat.updateT(this->container);
+            thermostat.updateT(this->container);
+        }
+        if (doProfile) {
+            particleUpdates += container.activeParticleCount;
         }
         spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;
+    }
+    auto endTime = std::chrono::steady_clock::now();
+    long elapsedTimeInMS =
+        std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
+    long elapsedTimeInS =
+        std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
+
+    if (doProfile) {
+        // Set log level to info, as it was off for the measurements
+        spdlog::set_level(spdlog::level::info);
+        spdlog::info(
+            "Simulation ran for {} seconds ({} iterations)", elapsedTimeInS, iteration - 1);
+        spdlog::info("Average time per iteration: {} ms", elapsedTimeInMS / (iteration - 1));
+        spdlog::info(
+            "MUP/S = {} (MUP = force+vel+pos calc i.e. one update per particle per iteration)",
+            particleUpdates / elapsedTimeInS);
     }
 }
 
