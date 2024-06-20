@@ -16,6 +16,13 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     const LennardJonesDomainSimulation& LGDSim =
         static_cast<const LennardJonesDomainSimulation&>(simulation);
 
+    if (LGDSim.iteration == 109) {
+        std::cout << "Preupdate start(" << getPositionString(position)
+                  << "): " << LGDSim.getGrid().cells[0][1][0]->getParticles().size() << std::endl;
+        auto pos = LGDSim.getGrid().cells[0][1][0]->getParticles().back().get().getX();
+        std::cout << "pos: " << pos[0] << ", " << pos[1] << ", " << pos[2] << std::endl;
+    }
+
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
 
@@ -34,7 +41,8 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                 std::inner_product(std::begin(diff), std::end(diff), std::begin(normal), 0.0);
             std::array<double, 3> haloPosition = pos + dotProd * 2 * normal;
 
-            if (ArrayUtils::L2Norm(haloPosition - pos) > LGDSim.getRepulsiveDistance(particle.get().getType())) {
+            if (ArrayUtils::L2Norm(haloPosition - pos) >
+                LGDSim.getRepulsiveDistance(particle.get().getType())) {
                 // The particle is too far away from the boundary, so we don't need to create a halo
                 // particle -> otherwise, it would attract
                 continue;
@@ -48,25 +56,25 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 
             if (insertionIndex < insertedParticles.size()) {
                 // simply update, if there is already a particle to reuse
-                insertedParticles[insertionIndex].setX(haloPosition);
-                insertedParticles[insertionIndex].setV({ 0, 0, 0 });
-                insertedParticles[insertionIndex].setF({ 0, 0, 0 });
-                insertedParticles[insertionIndex].setOldF({ 0, 0, 0 });
-                insertedParticles[insertionIndex].setM(particle.get().getM());
+                insertedParticles[insertionIndex]->setX(haloPosition);
+                insertedParticles[insertionIndex]->setV({ 0, 0, 0 });
+                insertedParticles[insertionIndex]->setF({ 0, 0, 0 });
+                insertedParticles[insertionIndex]->setOldF({ 0, 0, 0 });
+                insertedParticles[insertionIndex]->setM(particle.get().getM());
             } else {
                 // create a new particle
                 Particle haloParticle(
                     haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType());
                 haloParticle.setActivity(false);
-                insertedParticles.push_back(haloParticle);
+                insertedParticles.push_back(std::make_unique<Particle>(haloParticle));
             }
 
             // add the particle to the halo cell
             LGDSim.getGrid()
                 .cells[neighboringHaloCellIndex[0]][neighboringHaloCellIndex[1]]
                       [neighboringHaloCellIndex[2]]
-                ->addParticle(insertedParticles[insertionIndex++]);
-            spdlog::info("Inserted particle in soft reflective");
+                ->addParticle(*insertedParticles[insertionIndex++].get());
+            /* spdlog::info("Inserted particle in soft reflective"); */
         }
     }
 

@@ -3,6 +3,7 @@
 #include "models/linked_cell/CellGrid.h"
 #include "simulation/baseSimulation.h"
 #include "utils/ArrayUtils.h"
+#include <iostream>
 
 void force_gravity(const Simulation& sim)
 {
@@ -170,6 +171,9 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                      ++it) {
                     auto pair = *it;
                     std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
+                    if (delta.at(2)) {
+                        std::cout << "!" << x << " " << y << " " << z << std::endl;
+                    }
                     // check if the distance is less than the cutoff
                     if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius) {
                         double alpha =
@@ -187,9 +191,9 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                     ParticleRefList& particles = cellGrid.cells.at(x).at(y).at(z)->getParticles();
                     for (auto& particle : particles) {
                         // The gravity only acts along the y-Axis
-                        std::array<double, 3> gravityForce { 0,
-                                                             gravityConstant * particle.get().getM(),
-                                                             0 };
+                        std::array<double, 3> gravityForce {
+                            0, gravityConstant * particle.get().getM(), 0
+                        };
                         particle.get().setF(particle.get().getF() + gravityForce);
                     }
                 }
@@ -198,9 +202,22 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                     // for all particles in the cell
                     for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
                         // go over all particles in the neighbour
+                        int c = 0;
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
                             // Check if the distance is less than the cutoff
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
+                            if (p2.get().getX().at(2)) {
+                                std::cout << "!!" << i[0] << " " << i[1] << " " << i[2]
+                                          << std::endl;
+                                std::cout << sim.iteration << std::endl;
+                                std::cout << c << " : "
+                                          << cellGrid.cells[i[0]][i[1]][i[2]]->getParticles().size()
+                                          << std::endl;
+                                auto pos = p2.get().getX();
+                                std::cout << pos[0] << " " << pos[1] << " " << pos[2]
+                                          << std::endl;
+                                exit(1);
+                            }
                             if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius) {
                                 // then calculate the force
                                 double alpha =
@@ -211,6 +228,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                                     len_sim.getGamma(p1.get().getType(), p2.get().getType());
                                 lj_calc(p1, p2, alpha, beta, gamma, delta);
                             }
+                            c++;
                         }
                     }
                 }
