@@ -149,8 +149,20 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \item The measurements were conducted on a large scenario ($\geq 10000\ molecules$) with I/O operations disabled.
     \item Data for profiling is presented in Tab.\ \ref{table:data}.
     \item This data indicates that the force calculation routine is the most time-consuming section, accounting for 77.07\% of the total runtime (\texttt{lj\_calc(...)} is part of force calculation).
-    \item The runtime of the small rayleigh-taylor simulation on the cluster can be viewed here Tab.\ \ref{table:small_raileigh}.
+    \item We measured the runtime of the rayleigh-taylor simulation locally. The cluster scheduling didn't allow us to test it on time. The specs of the local environment can be viewed here Tab.\ \ref{table:specs} and the measured data here Tab.\ \ref{table:small_raileigh}.
 \end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|r|}
+        \hline
+        OS & Ubuntu 20.04.6 LTS x86\_64 \\ \hline
+        Host & NUC12SNKi72 M82271-501 \\ \hline
+        CPU & 12th Gen Intel i7-12700H (20) @ 5.900GHz \\ \hline
+    \end{tabular}
+    \caption{Hardware specifications.}
+    \label{table:specs}
+\end{table}
 
 \begin{table}[h!]
     \centering
@@ -170,7 +182,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
             1.54 & 93.26 & 1.50 & 1,892,631,351 & 0.00 & 0.00 & \makecell[l]{MixedLJSimulation::getMixKey\\(unsigned int, unsigned int)} \\ \hline
         \end{tabular}
     }
-    \caption{Performance measurements. Each sample counts as 0.01 seconds.}
+    \caption{Profiling measurements.}
     \label{table:data}
 \end{table}
 
@@ -186,5 +198,21 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \caption{Runtime for small scale raileigh-taylor simulation (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
     \label{table:small_raileigh}
 \end{table}
+
+\section{Optimization}
+\label{sec:opt}
+
+    \begin{itemize}
+        \item We obtained noticeable speedups through inlining Getter and Setter in \texttt{Particle}, \texttt{getMixKey} in \texttt{MixedLJSimulation} and \texttt{getCounter/getParticles} in \texttt{Cell}.
+        \item Reasons for speedup through inlining:
+        \begin{itemize}
+            \item The costs of jumping to and from functions is reduced
+            \item Function call overheads are eliminated, such as stack operations, parameter passing.
+            \item There are further possible reasons (Code locality, enabling further compiler optimizations ect.), that could explain the speedup.
+            \item We speculate, that various small cost and time reductions accumulate and lead to the observed speedup.
+        \end{itemize}
+        \item Another optimization was realized through a more efficient check for cutoff radii by saving root calculations. We replaced the L2-Norm with a Dot product and use the squared cutoff radius.
+        \item We restructured the force calculation function by applying the gravity force updates on container level instead of cell iterations.
+    \end{itemize}
 
 \end{document}
