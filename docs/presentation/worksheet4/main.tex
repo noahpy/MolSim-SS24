@@ -10,6 +10,9 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{makecell}
+\usepackage{wasysym}
 \graphicspath{{images}}
 
 % Configure template
@@ -22,9 +25,9 @@
 
 % Title page details:
 \title{Scientific Computing: Molecular dynamics}
-\subtitle{Problemsheet 3}
+\subtitle{Problemsheet 4}
 \author{Jimin Kim, Christian Nix, Noah Schlenker}
-\date{7. June 2024}
+\date{21. June 2024}
 \institute{Technical University of Munich}
 
 \begin{document}
@@ -43,6 +46,9 @@
     \end{frame}
 
 % Slides
-
+    \include{chapters/thermostat}
+    \include{chapters/rayleigh}
+    \include{chapters/falling}
+    \include{chapters/performance}
 
 \end{document}
