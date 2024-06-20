@@ -153,7 +153,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \item We ran the full Rayleigh-Taylor simulation locally with the following specs\ \ref{table:specs} and the runtime seen here\ \ref{table:rayleigh_base}.
 \end{itemize}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \resizebox{1.2\textwidth}{!}{
         \begin{tabular}{|c|c|c|c|c|c|l|}
@@ -175,7 +175,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \label{table:data}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \begin{tabular}{|l|r|}
         \hline
@@ -184,11 +184,11 @@ All new features have been tested with their according Unit tests (see \texttt{t
         Average time per iteration & 2 ms \\ \hline
         MUP/S & 479,461 \\ \hline
     \end{tabular}
-    \caption{Runtime on cluster (cm2\_tiny) for small scale Rayleigh-Taylor simulation (MUP = force+vel+pos calc i.e. one update per particle per iteration). }
+    \caption{Runtime on cluster (cm2\_tiny) for small scale Rayleigh-Taylor simulation without additional optimizations as in \ref{sec:opt} (MUP = force+vel+pos calc i.e. one update per particle per iteration). }
     \label{table:small_raileigh}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \begin{tabular}{|l|r|}
         \hline
@@ -196,11 +196,11 @@ All new features have been tested with their according Unit tests (see \texttt{t
         Host & NUC12SNKi72 M82271-501 \\ \hline
         CPU & 12th Gen Intel i7-12700H (20) @ 5.900GHz \\ \hline
     \end{tabular}
-    \caption{Hardware specifications.}
+    \caption{Hardware specifications for all experiments with big Rayleigh-Taylor.}
     \label{table:specs}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \begin{tabular}{|l|r|}
         \hline
@@ -209,7 +209,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
         Average time per iteration & 10 ms \\ \hline
         MUP/S & 963,410 \\ \hline
     \end{tabular}
-    \caption{Runtime for Rayleigh-Taylor simulation (MUP = force+vel+pos calc i.e. one update per particle per iteration). }
+    \caption{Runtime for big Rayleigh-Taylor simulation without additional optimizations as in \ref{sec:opt} (MUP = force+vel+pos calc i.e. one update per particle per iteration). }
     \label{table:rayleigh_base}
 \end{table}
 
@@ -230,7 +230,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
         \item The runtime with the force calculation optimizations can be seen here\ \ref{table:raileigh_calc}.
     \end{itemize}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \begin{tabular}{|l|r|}
         \hline
@@ -239,11 +239,11 @@ All new features have been tested with their according Unit tests (see \texttt{t
         Average time per iteration & 9 ms \\ \hline
         MUP/S & 1,101,343 \\ \hline
     \end{tabular}
-    \caption{Runtime for raileigh-taylor simulation with inlining optimizations (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
+    \caption{Runtime for Rayleigh-Taylor simulation with inlining optimizations (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
     \label{table:raileigh_inline}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \begin{tabular}{|l|r|}
         \hline
@@ -252,7 +252,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
         Average time per iteration & 8 ms \\ \hline
         MUP/S & 1,136,386 \\ \hline
     \end{tabular}
-    \caption{Runtime for raileigh-taylor simulation with force calculation optimizations (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
+    \caption{Runtime for Rayleigh-Taylor simulation with force calculation and inlining optimizations (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
     \label{table:raileigh_calc}
 \end{table}
 
