@@ -2,7 +2,6 @@
 #include "PeriodicBoundary.h"
 #include "simulation/LennardJonesDomainSimulation.h"
 #include "utils/ArrayUtils.h"
-#include <iostream>
 
 PeriodicBoundary::PeriodicBoundary(
     Position position, const BoundaryConfig& boundaryConfig, const CellGrid& cellGrid)
@@ -57,23 +56,11 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     const LennardJonesDomainSimulation& LGDSim =
         static_cast<const LennardJonesDomainSimulation&>(simulation);
 
-    if (LGDSim.iteration == 109) {
-        std::cout << "Preupdate start(" << getPositionString(position)
-                  << "): " << LGDSim.getGrid().cells[0][1][0]->getParticles().size() << std::endl;
-    }
-    bool inserted = false;
-
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
     for (CellIndex boundaryCellIndex : LGDSim.getGrid().boundaryCellIterator(position)) {
         std::vector<Position> boundarySides = coordinateToPosition(
             boundaryCellIndex, LGDSim.getGrid().getGridDimensions(), !is2D, false);
-
-        if (inserted) {
-            std::cout << "Loopback" << std::endl;
-            auto pos = LGDSim.getGrid().cells[0][1][0]->getParticles().back().get().getX();
-            std::cout << "pos: " << pos[0] << ", " << pos[1] << ", " << pos[2] << std::endl;
-        }
 
         // Only if translations need to be applied i.e. there exists an entry
         if (translationMap.find(boundarySides) == translationMap.end())
@@ -107,69 +94,24 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                     insertedParticles.at(insertionIndex)->setType(particle.get().getType());
                     insertedParticles.at(insertionIndex)->setActivity(false);
                 } else {
-                    // create a new particle
-                    /* spdlog::info( */
-                    /*     "Created new haloPosition: {}, {}, {}", */
-                    /*     haloPosition[0], */
-                    /*     haloPosition[1], */
-                    /*     haloPosition[2]); */
-                    if (inserted) {
-                        std::cout << "Push back!" << std::endl;
-                        std::cout << "Capacity: " << insertedParticles.capacity();
-                        std::cout << "Size: " << insertedParticles.size() << std::endl;
-                        std::cout << "Insertion index: " << insertionIndex << std::endl;
-                    }
                     Particle haloParticle(
                         haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType());
                     haloParticle.setActivity(false);
                     insertedParticles.push_back(std::make_unique<Particle>(haloParticle));
                 }
 
-                if (inserted) {
-                    std::cout << "Shift loopback at index " << insertionIndex << std::endl;
-                    auto pos = LGDSim.getGrid().cells[0][1][0]->getParticles().back().get().getX();
-                    std::cout << "pos: " << pos[0] << ", " << pos[1] << ", " << pos[2] << std::endl;
-                    inserted = false;
-                    break;
-                }
-
-                if (LGDSim.iteration == 109 && haloCellIndex[0] == 0 && haloCellIndex[1] == 1 &&
-                    haloCellIndex[2] == 0) {
-                    std::cout << "inserted at: " << insertionIndex << std::endl;
-                    auto pos = insertedParticles.at(insertionIndex)->getX();
-                    std::cout << "pos: " << pos[0] << ", " << pos[1] << ", " << pos[2] << std::endl;
-                }
-
                 // add the particle to the halo cell
                 LGDSim.getGrid()
                     .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
                     ->addParticle(*insertedParticles.at(insertionIndex++).get());
-
-                if (LGDSim.iteration == 109 && haloCellIndex[0] == 0 && haloCellIndex[1] == 1 &&
-                    haloCellIndex[2] == 0) {
-                    std::cout << "index now at: " << insertionIndex << std::endl;
-                    inserted = true;
-                    auto pos = LGDSim.getGrid().cells[0][1][0]->getParticles().back().get().getX();
-                    std::cout << "pos: " << pos[0] << ", " << pos[1] << ", " << pos[2] << std::endl;
-                }
             }
         }
     }
 
     // erase all leftover particles, if there are any
     if (insertionIndex < insertedParticles.size()) {
-        if (LGDSim.iteration == 109) {
-            std::cout << "Erasing" << std::endl;
-        }
         insertedParticles.erase(
             insertedParticles.begin() + (long)insertionIndex, insertedParticles.end());
-    }
-
-    if (LGDSim.iteration == 109) {
-        std::cout << "Preupdate end (" << getPositionString(position)
-                  << "): " << LGDSim.getGrid().cells[0][1][0]->getParticles().size() << std::endl;
-        /* auto pos = LGDSim.getGrid().cells[0][1][0]->getParticles().back().get().getX(); */
-        /* std::cout << "pos: " << pos[0] << ", " << pos[1] << ", " << pos[2] << std::endl; */
     }
 }
 

@@ -2,7 +2,6 @@
 #include "SoftReflectiveBoundary.h"
 #include "simulation/LennardJonesDomainSimulation.h"
 #include "utils/ArrayUtils.h"
-#include <iostream>
 
 // forward declare
 size_t getRelevantDimension(const std::array<double, 3>& normal);
@@ -15,13 +14,6 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
      */
     const LennardJonesDomainSimulation& LGDSim =
         static_cast<const LennardJonesDomainSimulation&>(simulation);
-
-    if (LGDSim.iteration == 109) {
-        std::cout << "Preupdate start(" << getPositionString(position)
-                  << "): " << LGDSim.getGrid().cells[0][1][0]->getParticles().size() << std::endl;
-        auto pos = LGDSim.getGrid().cells[0][1][0]->getParticles().back().get().getX();
-        std::cout << "pos: " << pos[0] << ", " << pos[1] << ", " << pos[2] << std::endl;
-    }
 
     // reset the insertion index, to reuse already created particles
     insertionIndex = 0;
@@ -74,7 +66,6 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                 .cells[neighboringHaloCellIndex[0]][neighboringHaloCellIndex[1]]
                       [neighboringHaloCellIndex[2]]
                 ->addParticle(*insertedParticles[insertionIndex++].get());
-            /* spdlog::info("Inserted particle in soft reflective"); */
         }
     }
 
