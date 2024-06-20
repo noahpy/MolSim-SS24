@@ -121,7 +121,7 @@ void force_lennard_jones_lc(const Simulation& sim)
                     auto pair = *it;
                     std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
                     // check if the distance is less than the cutoff
-                    if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius)
+                    if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared)
                         lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
                 }
                 // calculate LJ forces with the neighbours
@@ -132,7 +132,7 @@ void force_lennard_jones_lc(const Simulation& sim)
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
                             // and check if the distance is less than the cutoff
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
-                            if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius)
+                            if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared)
                                 // then calculate the force
                                 lj_calc(p1, p2, alpha, beta, gamma, delta);
                         }
@@ -171,7 +171,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                     auto pair = *it;
                     std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
                     // check if the distance is less than the cutoff
-                    if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius) {
+                    if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared) {
                         double alpha =
                             len_sim.getAlpha(pair.first.getType(), pair.second.getType());
                         double beta = len_sim.getBeta(pair.first.getType(), pair.second.getType());
@@ -201,7 +201,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
                             // Check if the distance is less than the cutoff
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
-                            if (ArrayUtils::L2Norm(delta) <= len_sim.getGrid().cutoffRadius) {
+                            if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared) {
                                 // then calculate the force
                                 double alpha =
                                     len_sim.getAlpha(p1.get().getType(), p2.get().getType());

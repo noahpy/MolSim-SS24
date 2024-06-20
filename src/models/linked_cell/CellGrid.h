@@ -45,6 +45,9 @@ public:
     /// The cutoff radius for particle interactions.
     double cutoffRadius;
 
+    /// The square of the cutoff radius
+    double cutoffRadiusSquared;
+
     /**
      * @brief Adds a particle to the appropriate cell in the grid.
      * @param particle The particle to be added.
