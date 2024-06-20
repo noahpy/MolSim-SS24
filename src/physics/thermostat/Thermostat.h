@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "simulation/baseSimulation.h"
+#include "models/ParticleContainer.h"
 
 /**
  * @class Thermostat
@@ -30,7 +30,7 @@ public:
      * @brief Initialization with Brownian Motion using the Maxwell-Boltzmann distribution.
      * @param sim The simulation to initialize.
      */
-    void initializeBrownianMotion(const Simulation& sim) const;
+    void initializeBrownianMotion(ParticleContainer& sim) const;
 
     /**
      * @brief Updates the temperature in our simulation.

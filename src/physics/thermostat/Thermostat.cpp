@@ -1,16 +1,19 @@
 
 #include "Thermostat.h"
-#include "../../utils/MaxwellBoltzmannDistribution.h"
-#include "../../utils/ArrayUtils.h"
+#include "utils/ArrayUtils.h"
+#include "utils/MaxwellBoltzmannDistribution.h"
+#include <cmath>
+#include <spdlog/spdlog.h>
+
 
 Thermostat::Thermostat(double init, double target, double delta, size_t dim)
     : init(init), target(target), delta(delta), dim(dim)
 {
 }
 
-void Thermostat::initializeBrownianMotion(const Simulation& sim) const
+void Thermostat::initializeBrownianMotion(ParticleContainer& container) const
 {
-    for (auto& p: sim.container) {
+    for (auto& p: container) {
         p.setV(maxwellBoltzmannDistributedVelocity(std::sqrt(init / p.getM()), dim));
     }
 }
@@ -26,6 +29,8 @@ void Thermostat::updateT(ParticleContainer& container) const
 
     // Calculate current Temperature
     double T_current =  E / (static_cast<double>(container.particles.size()) * static_cast<double>(dim));
+
+    spdlog::debug("Current Temperature: {}", T_current);
 
     // Calculate new Temperature
     double T_new = target - T_current;
