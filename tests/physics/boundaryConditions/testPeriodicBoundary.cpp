@@ -1,5 +1,6 @@
 
 #include "models/linked_cell/CellGrid.h"
+#include "physics/boundaryConditions/BoundaryConfig.h"
 #include "physics/boundaryConditions/PeriodicBoundary.h"
 #include <gtest/gtest.h>
 
@@ -7,7 +8,11 @@
 // checking the calculated ones against hand calculated shifts (in a 2D case)
 TEST(PeriodicBoundary, CorrectInitAndTranslation2D)
 {
-    BoundaryConfig config(PERIODIC, PERIODIC, PERIODIC, PERIODIC);
+    BoundaryConfig config(
+        BoundaryType::PERIODIC,
+        BoundaryType::PERIODIC,
+        BoundaryType::PERIODIC,
+        BoundaryType::PERIODIC);
     std::array<double, 3> domainOrigin { 0, 0, 0 };
     std::array<double, 3> domainSize { 10, 10, 0 };
     double cutoffRadius = 5;
@@ -45,7 +50,13 @@ TEST(PeriodicBoundary, CorrectInitAndTranslation2D)
 // checking the calculated ones against hand calculated shifts (in a 3D case)
 TEST(PeriodicBoundary, CorrectInitAndTranslation3D)
 {
-    BoundaryConfig config(PERIODIC, PERIODIC, PERIODIC, PERIODIC, PERIODIC, PERIODIC);
+    BoundaryConfig config(
+        BoundaryType::PERIODIC,
+        BoundaryType::PERIODIC,
+        BoundaryType::PERIODIC,
+        BoundaryType::PERIODIC,
+        BoundaryType::PERIODIC,
+        BoundaryType::PERIODIC);
     std::array<double, 3> domainOrigin { 0, 0, 0 };
     std::array<double, 3> domainSize { 10, 10, 10 };
     double cutoffRadius = 5;
@@ -58,7 +69,8 @@ TEST(PeriodicBoundary, CorrectInitAndTranslation3D)
     EXPECT_EQ(boundary.getTranslationMap().at(upRight).size(), 3 + 3 + 1);
 
     // Indices we expect to be found
-    std::vector<CellIndex> expectedPositions { { 0, 2, 2 }, { 2, 0, 2 }, { 2, 2, 0 }, { 0, 0, 2 }, { 2, 0, 0 }, { 0, 2, 0}, { 0, 0, 0 }};
+    std::vector<CellIndex> expectedPositions { { 0, 2, 2 }, { 2, 0, 2 }, { 2, 2, 0 }, { 0, 0, 2 },
+                                               { 2, 0, 0 }, { 0, 2, 0 }, { 0, 0, 0 } };
     std::vector<bool> foundPositions(expectedPositions.size(), false);
 
     // Check if the calculated shifts are correct
