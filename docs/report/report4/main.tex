@@ -89,7 +89,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
         \item We introduced a new simulation class, \texttt{MixedLJSimulation}, for simulating different particle types simultaneously:
         \begin{itemize}
             \item The Lennard-Jones parameters, following to the Lorentz-Berthelot mixing rule, are determined in the constructor of the class.
-            \item $\epsilon$ and $\sigma$ values of all type combinations, along with alphas, betas and gammas, are computed and inserted upon simulation initialization.
+            \item $\epsilon$ and $\sigma$ values of all type combinations, along with alphas, betas and gammas, are computed and inserted upon simulation initialization for optimization purposes (see last report).
             \item The simulation checks if particles are outside the domain during initialization.
             \item We included the thermostat, so that the temperature initialization is handled during simulation setup.
         \end{itemize}
@@ -113,12 +113,11 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \begin{itemize}
         \item Checkpoints were implemented to acquire the equilibrated fluid:
         \begin{itemize}
-            \item Checkpointing is realized through saving a simulation state in an XML file.
-            \item For that we had to change the XSD-format, to allow saving particle information and specify the starting time in the XML files.
+            \item Checkpointing is realized through saving a simulation state in the same XML format as the input files. This allows us to easily add clusters / modify parameters after equilibration. To save individual particles, we decided to save their mass, velocity, force and type respectively in a list format. Additionally, we introduced a format which maps types to sigma and epsilon.
             \item We implemented a \texttt{XmlWriter} for writing the formatted files (see \texttt{src/io/fileWriter}), which can be activated via the command line argument \texttt{-w 2}.
         \end{itemize}
-        \item We first applied the thermostat to the simulation, which showed a slow descend of the drop and a calm assimilation into the fluid below due to velocity adjustments.
-        \item The drop falls rapidly and splashes violently into the liquid without temperature regulation.
+    \item We first applied the thermostat to the simulation, which showed a slow descend of the drop and a calm assimilation into the fluid below due to velocity adjustments. Due to the calm impact, one can observe interesting wave patterns reflecting from the boundaries! :)
+        \item Without temperature regulation, the drop falls rapidly and splashes violently into the liquid. One can still obsevere a big wave of particles reflecting from the side boundaries, which was a great sight!
         \item Running the simulation with periodic boundaries showed negligible differences. This is likely because particles at the edges collided similarly to reflecting boundaries, given that the drop falls into the liquid center.    \end{itemize}
 
 
