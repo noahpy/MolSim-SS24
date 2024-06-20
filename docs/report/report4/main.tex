@@ -143,13 +143,13 @@ All new features have been tested with their according Unit tests (see \texttt{t
 
 \section{Performance Measurment}
 \label{sec:perf}
-
+    
 \begin{itemize}
     \item We modified our project as suggested to measure the runtime of the main loop, the time per iteration, and the MUP/S (Molecule update per second) where we define a molecule update as the molecule receiving its new position at the end of an iteration i.e. after one iteration \textit{\#active particles} molecule updates have been performed.
-    \item The measurements were conducted on a large scenario ($\geq 10000\ molecules$) with I/O operations disabled.
-    \item Data for profiling is presented in Tab.\ \ref{table:data}.
+    \item The measurements were conducted on a large scenario ($\geq 10000\ molecules$) with I/O operations disabled. For this we used the big Rayleigh with $t_{end} = 25$. 
+    \item We profiled the code using \texttt{gprof} on the small Rayleigh. The data for profiling is presented in Tab.\ \ref{table:data}.
     \item This data indicates that the force calculation routine is the most time-consuming section, accounting for 77.07\% of the total runtime (\texttt{lj\_calc(...)} is part of force calculation).
-    \item We measured the runtime of the rayleigh-taylor simulation locally. The cluster scheduling didn't allow us to test it on time. The specs of the local environment can be viewed here Tab.\ \ref{table:specs} and the measured data here Tab.\ \ref{table:small_raileigh}.
+    \item The runtime of the small Rayleigh-Taylor simulation on the cluster can be viewed here Tab.\ \ref{table:small_raileigh}. Unfortunately, cluster scheduling did not leave us the time to run the bigger experiments on the cluster to get measurements from there.
 \end{itemize}
 
 \begin{table}[h!]
