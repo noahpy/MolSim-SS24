@@ -27,9 +27,7 @@
       <bound_four>soft_reflective</bound_four>
     </boundaries>
     <thermostat>
-        <initialTemp>0.5</initialTemp>
-        <thermoFreq>1000</thermoFreq>
-        <maxTempDelta>20</maxTempDelta>
+        <thermoFreq>0</thermoFreq>
     </thermostat>
     <gravity>-12.44</gravity>
   </params>

@@ -125,18 +125,24 @@ MixedLJSimulation::MixedLJSimulation(
         exit(EXIT_FAILURE);
     }
 
-    // Initialize thermostat
-    spdlog::info(
-        "Initializing thermostat with T_init={}K, T_target={}K, delta_T={}K with a frequency of {}",
-        T_init,
-        T_target,
-        delta_T,
-        n_thermostat);
-    thermostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
+    if (n_thermostat) {
+        // Initialize thermostat
+        spdlog::info(
+            "Initializing thermostat with T_init={}K, T_target={}K, delta_T={}K with a frequency "
+            "of {}",
+            T_init,
+            T_target,
+            delta_T,
+            n_thermostat);
+        themostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
 
-    // Intialize temperature
-    spdlog::info("Setting initial temperature to {} K", T_init);
-    thermostat.initializeBrownianMotion(this->container);
+        // Intialize temperature
+        spdlog::info("Setting initial temperature to {} K", T_init);
+        themostat.initializeBrownianMotion(this->container);
+    }
+    else{
+        spdlog::info("Themostat is turned off.");
+    }
 }
 
 void MixedLJSimulation::runSim()
@@ -159,12 +165,13 @@ void MixedLJSimulation::runSim()
         if (iteration % updateFrequency == 0) {
             cellGrid.updateCells();
         }
-        if (iteration % n_thermostat == 0) {
-            thermostat.updateT(this->container);
+        if (n_thermostat && iteration % n_thermostat == 0) {
+            themostat.updateT(this->container);
         }
         if (doProfile) {
             particleUpdates += container.activeParticleCount;
         }
+        // Update thermostat if frequency is positive
         spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;
