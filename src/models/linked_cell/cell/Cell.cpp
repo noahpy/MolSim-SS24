@@ -50,16 +50,6 @@ void Cell::removeParticle(Particle& particle)
 void Cell::clearParticles()
 {
     particles.clear();
-    spdlog::debug(
-        "Cleared all particles from cell at {}, {}, {}",
-        myIndex.at(0),
-        myIndex.at(1),
-        myIndex.at(2));
-}
-
-[[nodiscard]] ParticleRefList& Cell::getParticles()
-{
-    return particles;
 }
 
 CellType Cell::getType() const
@@ -75,11 +65,6 @@ ParticleRefList::iterator Cell::begin()
 ParticleRefList::iterator Cell::end()
 {
     return particles.end();
-}
-
-int Cell::getCounter() const
-{
-    return neighborCounter;
 }
 
 void Cell::setCounter(int count)

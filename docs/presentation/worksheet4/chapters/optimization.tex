@@ -1,0 +1,61 @@
+
+\section{Optimization}
+\label{sec:opt}
+
+\begin{frame}
+    \frametitle{Base}
+    \begin{itemize}
+        \item Full Rayleigh-Taylor instability simulation run locally
+    \end{itemize}
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|r|}
+        \hline
+        \textbf{Description} & \textbf{Value} \\ \hline
+        Simulation ran for & 519 seconds (50,000 iterations) \\ \hline
+        Average time per iteration & 10 ms \\ \hline
+        MUP/S & 963,410 \\ \hline
+    \end{tabular}
+    \caption{Runtime for Rayleigh-Taylor simulation (MUP = force+vel+pos calc i.e. one update per particle per iteration). }
+    \label{table:rayleigh_base}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Inlining}
+    \begin{itemize}
+        \item Optimizations through inlining: Costs of function calls reduced
+    \end{itemize}
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|r|}
+        \hline
+        \textbf{Description} & \textbf{Value} \\ \hline
+        Simulation ran for & 454 seconds (50,000 iterations) \\ \hline
+        Average time per iteration & 9 ms \\ \hline
+        MUP/S & 1,101,343 \\ \hline
+    \end{tabular}
+    \caption{Runtime for raileigh-taylor simulation with inlining optimizations (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
+    \label{table:raileigh_inline}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Calc optimizations}
+    \begin{itemize}
+        \item Reducing root operations with the usage of squared cutoff radii
+        \item Applying gravity forces on container level instead of cell iteration level.
+    \end{itemize}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|l|r|}
+            \hline
+            \textbf{Description} & \textbf{Value} \\ \hline
+            Simulation ran for & 440 seconds (50,000 iterations) \\ \hline
+            Average time per iteration & 8 ms \\ \hline
+            MUP/S & 1,136,386 \\ \hline
+        \end{tabular}
+        \caption{Runtime for raileigh-taylor simulation with force calculation optimizations (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
+        \label{table:raileigh_calc}
+    \end{table}
+\end{frame}

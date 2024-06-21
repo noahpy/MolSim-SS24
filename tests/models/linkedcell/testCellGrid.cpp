@@ -83,7 +83,7 @@ TEST_F(CellGridTest, Initialization)
 // Test Particle Addition (Single)
 TEST_F(CellGridTest, AddSingleParticle)
 {
-    for (Particle& p : particles) {
+    for (auto& p : particles) {
         grid.addParticle(p);
     }
 
@@ -188,7 +188,7 @@ TEST_F(CellGridTest, CellGridUpdateTest)
     EXPECT_EQ(grid.cells[5][5][5]->getType(), CellType::Halo);
 
     // Update particle position
-    for (Particle& p : container) {
+    for (auto& p : container) {
         p.setX({ p.getX().at(0) + 0.5, p.getX().at(1) + 0.5, p.getX().at(2) + 0.5 });
     }
 
@@ -219,7 +219,7 @@ int sumNeighboringCells(CellGrid& grid, std::list<CellIndex>& indices)
 // Test Get Neighboring Particles
 TEST_F(CellGridTest, GetNeighboringParticles)
 {
-    for (Particle& p : particles) {
+    for (auto& p : particles) {
         grid.addParticle(p);
     }
 

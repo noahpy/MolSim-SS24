@@ -47,6 +47,10 @@ bool AsciiReader::readAscii(Simulation& sim, std::ifstream& input_file)
         exit(EXIT_FAILURE);
     }
 
+    // Read optional type
+    int type = 0;
+    parameter_stream >> type;
+
     // Read characters representing particles
     std::vector<char> particle_chars;
     std::string particle_chars_line;
@@ -62,7 +66,7 @@ bool AsciiReader::readAscii(Simulation& sim, std::ifstream& input_file)
 
     spdlog::info(
         "Read Ascii cluster: Origin ({}, {}, {}); Velocity ({}, {}, {}); Mass({}); Particles({}); "
-        "Spacing({}); meanVel({})",
+        "Spacing({}); meanVel({}); type({})",
         ox,
         oy,
         oz,
@@ -72,7 +76,8 @@ bool AsciiReader::readAscii(Simulation& sim, std::ifstream& input_file)
         mass,
         particle_chars_line,
         spacing,
-        meanVel);
+        meanVel,
+        type);
 
     // Read ASCII art
     std::vector<std::string> ascii_art;
@@ -99,7 +104,7 @@ bool AsciiReader::readAscii(Simulation& sim, std::ifstream& input_file)
                 std::array<double, 3> initialVel { vx, vy, vz };
                 std::array<double, 3> velocity =
                     initialVel + maxwellBoltzmannDistributedVelocity(meanVel, 2);
-                sim.container.addParticle({ { x, y, z }, velocity, mass });
+                sim.container.addParticle({ { x, y, z }, velocity, mass, type });
             }
         }
     }

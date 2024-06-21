@@ -57,7 +57,7 @@ public:
      * @brief Returns a list of references to all particles in the cell.
      * @return A list of references to the particles in the cell.
      */
-    [[nodiscard]] ParticleRefList& getParticles();
+    [[nodiscard]] inline ParticleRefList& getParticles() { return particles; }
 
     /**
      * @brief Returns the type of the cell.
@@ -81,7 +81,10 @@ public:
      * @brief Gets the current value of the neighbor counter.
      * @return The current value of the neighbor counter.
      */
-    [[nodiscard]] int getCounter() const;
+    [[nodiscard]] inline int getCounter() const
+    {
+        return neighborCounter;
+    }
 
     /**
      * @brief Sets the value of the neighbor counter.

@@ -70,6 +70,30 @@ public:
      */
     void setCutoff(double cutoff);
 
+    /**
+     * @brief Get the origin of the simulation domain
+     * @return The origin of the simulation domain
+     */
+    inline std::array<double, 3> getDomainOrigin() const { return cellGrid.getDomainOrigin(); }
+
+    /**
+     * @brief Get the size of the simulation domain
+     * @return The size of the simulation domain
+     */
+    inline std::array<double, 3> getDomainSize() const { return cellGrid.getDomainSize(); }
+
+    /**
+     * @brief Get the cutoff radius of the simulation
+     * @return The cutoff radius of the simulation
+     */
+    inline double getCutoff() const { return cellGrid.getCutoffRadius(); }
+
+    /*
+     * @brief Get the update frequency of the simulation
+     * @return The update frequency of the simulation
+     * */
+    inline unsigned getUpdateFrequency() const { return updateFrequency; }
+
 protected:
     CellGrid cellGrid;
     unsigned updateFrequency;

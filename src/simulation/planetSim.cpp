@@ -39,7 +39,7 @@ void PlanetSimulation::runSim()
         if (iteration % frequency == 0) {
             writer->plotParticles(*this);
         }
-        spdlog::debug("Iteration: {}", iteration);
+        spdlog::trace("Iteration: {}", iteration);
 
         time += delta_t;
     }
