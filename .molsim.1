@@ -74,6 +74,9 @@ Specify simulation type (default: 0).
 .br
 3 = LennardJonesSimulation with Linked Cells + Boundary Conditions
 .br
+.br
+4 = Lennard Jones simulation with Linked Cells + Boundary Conditions + Different Particle types + Gravity
+.br
 .TP
 \fB-w, --writetype=VALUE\fR
 Specify writer type (default: 0).
@@ -83,16 +86,18 @@ Specify writer type (default: 0).
 .br
 1 = XYZWriter
 .br
-.TP
-\fB-p\fR
-Flag signaling to do performance measurements. This will set the log level to off and not write any output files.
+.br
+2 = XMLWriter
+.br
+.br
+3 = Empty i.e. no output
 .br
 .TP
 \fB-h, --help\fR
 Display help message.
 
 .SH INPUT FILE
-MolSim supports two types of input file formats:
+MolSim supports different types of input file formats:
 
 \fBParticle Input Format\fR:
 .br
