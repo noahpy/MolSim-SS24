@@ -13,4 +13,4 @@
  * @param out_name The name of the output file.
  * @return A unique pointer to a FileWriter object or nullptr if the file type is not supported.
  */
-std::unique_ptr<FileWriter> writerFactory(WriterType type, std::string out_name);
+std::unique_ptr<FileWriter> writerFactory(WriterType type, const std::string& out_name);

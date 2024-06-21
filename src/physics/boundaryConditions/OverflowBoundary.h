@@ -17,14 +17,14 @@ public:
      * @param simulation The simulation to apply the boundary to
      * @return void
      */
-    void preUpdateBoundaryHandling(Simulation& simulation) override {
-        // Do nothing
-    };
+    void preUpdateBoundaryHandling(Simulation& simulation) override;
     /**
      * @brief The call to apply the boundary condition to the simulation after all updates are made.
      * This will remove the particles that left the domain
      * @param simulation The simulation to apply the boundary to
      * @return void
      */
-    void postUpdateBoundaryHandling(Simulation& simulation) override;
+    void postUpdateBoundaryHandling(Simulation& simulation) override {
+        // Do nothing
+    };
 };

@@ -1,7 +1,7 @@
 
 #pragma once
 #include "simulation/baseSimulation.h"
-#include "simulation/linkedLennardJonesSim.h"
+#include "simulation/MixedLJSimulation.h"
 
 /**
  * @brief Calculate the forces between particles using the Stroemer-Verlet algorithm
@@ -32,3 +32,10 @@ void force_lennard_jones(const Simulation& sim);
  * @return void
  */
 void force_lennard_jones_lc(const Simulation& sim);
+
+/**
+ * @brief Calculate the forces between particles in a linked-cell structure using the Lennard-Jones
+ * potential and the mixing rules to allow multiple particle types & regard gravity
+ * @param sim The simulation to calculate the forces for
+ */
+void force_mixed_LJ_gravity_lc(const Simulation& sim);

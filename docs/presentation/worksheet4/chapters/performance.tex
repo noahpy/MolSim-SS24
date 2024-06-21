@@ -1,0 +1,45 @@
+
+\section{Performance Measurement and Profiling}
+\label{sec:perf}
+
+\begin{frame}
+    \frametitle{Profiling}
+    \begin{table}[h!]
+        \centering
+        \resizebox{0.7\textwidth}{!}{
+            \begin{tabular}{|c|c|c|c|c|c|l|}
+                \hline
+                \% Time & Cumulative Seconds & Self Seconds & Calls & ms/call Self & ms/call Total & Name \\ \hline
+                67.12 & 65.33 & 65.33 & 50,001 & 1.31 & 1.79 & \makecell[l]{force\_mixed\_LJ\_gravity\_lc\\(Simulation const\&)} \\ \hline
+                9.95 & 75.01 & 9.68 & 630,877,117 & 0.00 & 0.00 & \makecell[l]{lj\_calc(Particle\&, Particle\&,\\double, double, double,\\std::array\textlangle double, 3ul\textrangle)} \\ \hline
+                2.82 & 77.75 & 2.74 & 50,001 & 0.05 & 0.07 & \makecell[l]{location\_stroemer\_verlet\\(Simulation const\&)} \\ \hline
+                2.61 & 80.30 & 2.55 & 3,802,545,182 & 0.00 & 0.00 & Particle::getType() const \\ \hline
+                2.59 & 82.82 & 2.52 & 1,411,016,399 & 0.00 & 0.00 & \makecell[l]{Particle::setF(std::array\textlangle double,\\3ul\textrangle const\&)} \\ \hline
+                2.59 & 85.34 & 2.52 & 50,001 & 0.05 & 0.06 & \makecell[l]{velocity\_stroemer\_verlet\\(Simulation const\&)} \\ \hline
+                2.57 & 87.84 & 2.50 & 3,885,359,388 & 0.00 & 0.00 & Particle::getX() const \\ \hline
+                2.37 & 90.15 & 2.31 & 1,541,759,898 & 0.00 & 0.00 & Particle::getF() const \\ \hline
+                1.65 & 91.76 & 1.61 & 17,500,350 & 0.00 & 0.00 & \makecell[l]{CellGrid::getNeighbourCells\\{[abi:cxx11]}(std::array\textlangle unsigned long,\\3ul\textrangle const\&) const} \\ \hline
+                1.54 & 93.26 & 1.50 & 1,892,631,351 & 0.00 & 0.00 & \makecell[l]{MixedLJSimulation::getMixKey\\(unsigned int, unsigned int)} \\ \hline
+            \end{tabular}
+        }
+        \caption{Performance measurements}
+        \label{table:data}
+    \end{table}
+    \RIGHTarrow Force calculation most time-consuming (77.07\%)
+\end{frame}
+
+\begin{frame}
+    \frametitle{Runtime}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|l|r|}
+            \hline
+            \textbf{Description} & \textbf{Value} \\ \hline
+            Simulation ran for & 146 seconds (50,000 iterations) \\ \hline
+            Average time per iteration & 2 ms \\ \hline
+            MUP/S & 479,461 \\ \hline
+        \end{tabular}
+        \caption{Runtime for small scale raileigh-taylor simulation (MUP = force+vel+pos calc i.e. one update per particle per iteration).}
+        \label{table:small_raileigh}
+    \end{table}
+\end{frame}
