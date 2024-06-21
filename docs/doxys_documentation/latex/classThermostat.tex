@@ -1,0 +1,138 @@
+\doxysection{Thermostat Class Reference}
+\hypertarget{classThermostat}{}\label{classThermostat}\index{Thermostat@{Thermostat}}
+
+
+Class to apply a thermostat to particles.  
+
+
+
+
+{\ttfamily \#include $<$Thermostat.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classThermostat_a277a57c01ed56b68ff32c2d00e3bb164}{Thermostat}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{classThermostat}{Thermostat}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classThermostat_ac0a3ba485fde2a2a0fe0bf3ffc384eb1}{Thermostat}} (double \mbox{\hyperlink{classThermostat_a17c39daa8962c39be528ec92901c69ac}{init}}, double \mbox{\hyperlink{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}{target}}, double \mbox{\hyperlink{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}{delta}}, size\+\_\+t \mbox{\hyperlink{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}{dim}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classThermostat}{Thermostat}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classThermostat_aa621780fa47ce3fc6467873a094db0a7}{initialize\+Brownian\+Motion}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&sim) const
+\begin{DoxyCompactList}\small\item\em Initialization with Brownian Motion using the Maxwell-\/\+Boltzmann distribution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classThermostat_a45afae0c49d668d625b8e19a23b01ef6}{updateT}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&sim) const
+\begin{DoxyCompactList}\small\item\em Updates the temperature in our simulation. After caldulating the kinetic energy, current temperature and new temperature, the velocities of all particles are scaled with the scaling factor beta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classThermostat_a17c39daa8962c39be528ec92901c69ac}{init}}
+\item 
+double \mbox{\hyperlink{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}{target}}
+\item 
+double \mbox{\hyperlink{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}{delta}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}{dim}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to apply a thermostat to particles. 
+
+This class provides methods for initialization and updating of temperature on all particles, according to given initial and target temperatures. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classThermostat_a277a57c01ed56b68ff32c2d00e3bb164}\index{Thermostat@{Thermostat}!Thermostat@{Thermostat}}
+\index{Thermostat@{Thermostat}!Thermostat@{Thermostat}}
+\doxysubsubsection{\texorpdfstring{Thermostat()}{Thermostat()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classThermostat_a277a57c01ed56b68ff32c2d00e3bb164} 
+Thermostat\+::\+Thermostat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor for \doxylink{classThermostat}{Thermostat}. 
+
+\Hypertarget{classThermostat_ac0a3ba485fde2a2a0fe0bf3ffc384eb1}\index{Thermostat@{Thermostat}!Thermostat@{Thermostat}}
+\index{Thermostat@{Thermostat}!Thermostat@{Thermostat}}
+\doxysubsubsection{\texorpdfstring{Thermostat()}{Thermostat()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classThermostat_ac0a3ba485fde2a2a0fe0bf3ffc384eb1} 
+Thermostat\+::\+Thermostat (\begin{DoxyParamCaption}\item[{double}]{init}{, }\item[{double}]{target}{, }\item[{double}]{delta}{, }\item[{size\+\_\+t}]{dim}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{classThermostat}{Thermostat}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em init} & Initial temperature. \\
+\hline
+{\em target} & Target temperature. \\
+\hline
+{\em delta} & Maximum temperature change. \\
+\hline
+{\em dim} & The dimension used. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classThermostat_aa621780fa47ce3fc6467873a094db0a7}\index{Thermostat@{Thermostat}!initializeBrownianMotion@{initializeBrownianMotion}}
+\index{initializeBrownianMotion@{initializeBrownianMotion}!Thermostat@{Thermostat}}
+\doxysubsubsection{\texorpdfstring{initializeBrownianMotion()}{initializeBrownianMotion()}}
+{\footnotesize\ttfamily \label{classThermostat_aa621780fa47ce3fc6467873a094db0a7} 
+void Thermostat\+::initialize\+Brownian\+Motion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{sim}{}\end{DoxyParamCaption}) const}
+
+
+
+Initialization with Brownian Motion using the Maxwell-\/\+Boltzmann distribution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classThermostat_a45afae0c49d668d625b8e19a23b01ef6}\index{Thermostat@{Thermostat}!updateT@{updateT}}
+\index{updateT@{updateT}!Thermostat@{Thermostat}}
+\doxysubsubsection{\texorpdfstring{updateT()}{updateT()}}
+{\footnotesize\ttfamily \label{classThermostat_a45afae0c49d668d625b8e19a23b01ef6} 
+void Thermostat\+::updateT (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{sim}{}\end{DoxyParamCaption}) const}
+
+
+
+Updates the temperature in our simulation. After caldulating the kinetic energy, current temperature and new temperature, the velocities of all particles are scaled with the scaling factor beta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to apply the temperature update to. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}\index{Thermostat@{Thermostat}!delta@{delta}}
+\index{delta@{delta}!Thermostat@{Thermostat}}
+\doxysubsubsection{\texorpdfstring{delta}{delta}}
+{\footnotesize\ttfamily \label{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9} 
+double Thermostat\+::delta\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}\index{Thermostat@{Thermostat}!dim@{dim}}
+\index{dim@{dim}!Thermostat@{Thermostat}}
+\doxysubsubsection{\texorpdfstring{dim}{dim}}
+{\footnotesize\ttfamily \label{classThermostat_ab62bef4123b1f497e25debb3cbe319e7} 
+size\+\_\+t Thermostat\+::dim\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classThermostat_a17c39daa8962c39be528ec92901c69ac}\index{Thermostat@{Thermostat}!init@{init}}
+\index{init@{init}!Thermostat@{Thermostat}}
+\doxysubsubsection{\texorpdfstring{init}{init}}
+{\footnotesize\ttfamily \label{classThermostat_a17c39daa8962c39be528ec92901c69ac} 
+double Thermostat\+::init\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}\index{Thermostat@{Thermostat}!target@{target}}
+\index{target@{target}!Thermostat@{Thermostat}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3} 
+double Thermostat\+::target\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/physics/thermostat/\mbox{\hyperlink{Thermostat_8h}{Thermostat.\+h}}\item 
+src/physics/thermostat/\mbox{\hyperlink{Thermostat_8cpp}{Thermostat.\+cpp}}\end{DoxyCompactItemize}

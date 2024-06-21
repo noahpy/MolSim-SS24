@@ -40,7 +40,19 @@ void \mbox{\hyperlink{classCellGrid_a3ce09af42fabee9c2eb0a22f995babd9}{set\+Doma
 void \mbox{\hyperlink{classCellGrid_acb35ad05a6888da0d7e5a7a5b5dca94f}{set\+Domain\+Size}} (const std\+::array$<$ double, 3 $>$ \&\mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}{domain\+Size}})
 \item 
 void \mbox{\hyperlink{classCellGrid_a129d490f24645a97b87976df2c517c65}{set\+Cutoff\+Radius}} (double \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoff\+Radius}})
-\end{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a6dbd50183f898783686e0ee9405e3384}{get\+Domain\+Origin}} () const
+\begin{DoxyCompactList}\small\item\em Returns the domain origin. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c}{get\+Domain\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Returns the domain size. \end{DoxyCompactList}\item 
+std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{classCellGrid_a0f078998bfca495dcbd72f5df7da29d6}{get\+Grid\+Dimensions}} () const
+\begin{DoxyCompactList}\small\item\em Get the grids dimensions. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd}{get\+Cutoff\+Radius}} () const
+\begin{DoxyCompactList}\small\item\em Returns the cutoff radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \mbox{\hyperlink{classCellGrid_a9fb16506dd14691dcfdd433baf63592c}{get\+Index\+From\+Pos}} (const std\+::array$<$ double, 3 $>$ \&pos) const
+\begin{DoxyCompactList}\small\item\em Returns the index of the cell containing the specified position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} \mbox{\hyperlink{classCellGrid_a449b70606acd2967e7bf6ab51b04e5f7}{determine\+Cell\+Type}} (const std\+::array$<$ size\+\_\+t, 3 $>$ \&indices) const
+\begin{DoxyCompactList}\small\item\em Determines the cell type (boundary, halo, or bulk) based on its indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,18 +63,18 @@ std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_ac673b141d52addf9b8
 std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a16a519b0a9aa4be26dcd545e1a0d2592}{domain\+End}}
 \item 
 size\+\_\+t \mbox{\hyperlink{classCellGrid_afee2831c8dff53421e2d3f95f3a9aac9}{grid\+Dimensionality}}
-\begin{DoxyCompactList}\small\item\em The dimensionality of the gird (either 2 or 3) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The dimensionality of the gird (either 2 or 3) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoff\+Radius}}
+\begin{DoxyCompactList}\small\item\em The cutoff radius for particle interactions. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCellGrid_a4d3ccac54a64195ca1b7f8a90fea302f}{cutoff\+Radius\+Squared}}
+\begin{DoxyCompactList}\small\item\em The square of the cutoff radius. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classCellGrid_ab23ab61399f7b451f77f5e89b8085677}{initialize\+Grid}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the grid structure based on the domain size and cutoff radius. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} \mbox{\hyperlink{classCellGrid_a449b70606acd2967e7bf6ab51b04e5f7}{determine\+Cell\+Type}} (const std\+::array$<$ size\+\_\+t, 3 $>$ \&indices) const
-\begin{DoxyCompactList}\small\item\em Determines the cell type (boundary, halo, or bulk) based on its indices. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCellGrid_a779ac84cd99605c955ae53ab298d80d6}{determine\+Neighbours}} (\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} cell)
-\begin{DoxyCompactList}\small\item\em Determines the neighbours of the specified cell. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \mbox{\hyperlink{classCellGrid_a9fb16506dd14691dcfdd433baf63592c}{get\+Index\+From\+Pos}} (const std\+::array$<$ double, 3 $>$ \&pos) const
-\begin{DoxyCompactList}\small\item\em Returns the index of the cell containing the specified position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Determines the neighbours of the specified cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,8 +82,6 @@ std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd
 \begin{DoxyCompactList}\small\item\em The size of the simulation domain in each dimension. \end{DoxyCompactList}\item 
 std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_ab017516be508e9e366dcf2cc09244404}{cell\+Size}}
 \begin{DoxyCompactList}\small\item\em The size of a cell according to the domain size. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoff\+Radius}}
-\begin{DoxyCompactList}\small\item\em The cutoff radius for particle interactions. \end{DoxyCompactList}\item 
 std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{classCellGrid_ae97c8fcf7cf23b2194ea6c7f0446e37e}{grid\+Dimensions}}
 \begin{DoxyCompactList}\small\item\em The dimensions of the cell grid in each dimension. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ \mbox{\hyperlink{classCellGrid_a69266ad6ff3f1aa79a8552bede00d5e9}{boundary\+Cells}}
@@ -170,7 +180,7 @@ A \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator} for the given
 \index{determineCellType@{determineCellType}!CellGrid@{CellGrid}}
 \doxysubsubsection{\texorpdfstring{determineCellType()}{determineCellType()}}
 {\footnotesize\ttfamily \label{classCellGrid_a449b70606acd2967e7bf6ab51b04e5f7} 
-\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} Cell\+Grid\+::determine\+Cell\+Type (\begin{DoxyParamCaption}\item[{const std\+::array$<$ size\+\_\+t, 3 $>$ \&}]{indices}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [protected]}}
+\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} Cell\+Grid\+::determine\+Cell\+Type (\begin{DoxyParamCaption}\item[{const std\+::array$<$ size\+\_\+t, 3 $>$ \&}]{indices}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
 
 
 
@@ -199,11 +209,63 @@ Determines the neighbours of the specified cell.
 {\em cell} & The index of the cell to determine the neighbours of. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd}\index{CellGrid@{CellGrid}!getCutoffRadius@{getCutoffRadius}}
+\index{getCutoffRadius@{getCutoffRadius}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getCutoffRadius()}{getCutoffRadius()}}
+{\footnotesize\ttfamily \label{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd} 
+double Cell\+Grid\+::get\+Cutoff\+Radius (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the cutoff radius. 
+
+\begin{DoxyReturn}{Returns}
+The cutoff radius. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a6dbd50183f898783686e0ee9405e3384}\index{CellGrid@{CellGrid}!getDomainOrigin@{getDomainOrigin}}
+\index{getDomainOrigin@{getDomainOrigin}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getDomainOrigin()}{getDomainOrigin()}}
+{\footnotesize\ttfamily \label{classCellGrid_a6dbd50183f898783686e0ee9405e3384} 
+std\+::array$<$ double, 3 $>$ Cell\+Grid\+::get\+Domain\+Origin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the domain origin. 
+
+\begin{DoxyReturn}{Returns}
+The domain origin. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c}\index{CellGrid@{CellGrid}!getDomainSize@{getDomainSize}}
+\index{getDomainSize@{getDomainSize}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getDomainSize()}{getDomainSize()}}
+{\footnotesize\ttfamily \label{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c} 
+std\+::array$<$ double, 3 $>$ Cell\+Grid\+::get\+Domain\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the domain size. 
+
+\begin{DoxyReturn}{Returns}
+The domain size. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a0f078998bfca495dcbd72f5df7da29d6}\index{CellGrid@{CellGrid}!getGridDimensions@{getGridDimensions}}
+\index{getGridDimensions@{getGridDimensions}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getGridDimensions()}{getGridDimensions()}}
+{\footnotesize\ttfamily \label{classCellGrid_a0f078998bfca495dcbd72f5df7da29d6} 
+std\+::array$<$ size\+\_\+t, 3 $>$ Cell\+Grid\+::get\+Grid\+Dimensions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the grids dimensions. 
+
+\begin{DoxyReturn}{Returns}
+The grids dimensions 
+\end{DoxyReturn}
 \Hypertarget{classCellGrid_a9fb16506dd14691dcfdd433baf63592c}\index{CellGrid@{CellGrid}!getIndexFromPos@{getIndexFromPos}}
 \index{getIndexFromPos@{getIndexFromPos}!CellGrid@{CellGrid}}
 \doxysubsubsection{\texorpdfstring{getIndexFromPos()}{getIndexFromPos()}}
 {\footnotesize\ttfamily \label{classCellGrid_a9fb16506dd14691dcfdd433baf63592c} 
-\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} Cell\+Grid\+::get\+Index\+From\+Pos (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} Cell\+Grid\+::get\+Index\+From\+Pos (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{pos}{}\end{DoxyParamCaption}) const}
 
 
 
@@ -328,11 +390,21 @@ The size of a cell according to the domain size.
 \index{cutoffRadius@{cutoffRadius}!CellGrid@{CellGrid}}
 \doxysubsubsection{\texorpdfstring{cutoffRadius}{cutoffRadius}}
 {\footnotesize\ttfamily \label{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae} 
-double Cell\+Grid\+::cutoff\+Radius\hspace{0.3cm}{\ttfamily [private]}}
+double Cell\+Grid\+::cutoff\+Radius}
 
 
 
 The cutoff radius for particle interactions. 
+
+\Hypertarget{classCellGrid_a4d3ccac54a64195ca1b7f8a90fea302f}\index{CellGrid@{CellGrid}!cutoffRadiusSquared@{cutoffRadiusSquared}}
+\index{cutoffRadiusSquared@{cutoffRadiusSquared}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{cutoffRadiusSquared}{cutoffRadiusSquared}}
+{\footnotesize\ttfamily \label{classCellGrid_a4d3ccac54a64195ca1b7f8a90fea302f} 
+double Cell\+Grid\+::cutoff\+Radius\+Squared}
+
+
+
+The square of the cutoff radius. 
 
 \Hypertarget{classCellGrid_a16a519b0a9aa4be26dcd545e1a0d2592}\index{CellGrid@{CellGrid}!domainEnd@{domainEnd}}
 \index{domainEnd@{domainEnd}!CellGrid@{CellGrid}}

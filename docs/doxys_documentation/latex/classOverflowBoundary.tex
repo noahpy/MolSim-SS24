@@ -30,8 +30,15 @@ void \mbox{\hyperlink{classOverflowBoundary_ac8b37cefd3cbed1c5278ef29e02723f5}{p
 \mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{Boundary\+Condition}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})
 \begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
-\end{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa}{get\+Point\+On\+Boundary\+Plane}} (const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&LJDSim)
+\begin{DoxyCompactList}\small\item\em Returns a point on the boundary-\/plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85}{get\+Relevant\+Dimension}} (const std\+::array$<$ double, 3 $>$ \&normal)
+\begin{DoxyCompactList}\small\item\em Get the dimension that is relevant to the boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -62,7 +69,7 @@ Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class
 \index{postUpdateBoundaryHandling@{postUpdateBoundaryHandling}!OverflowBoundary@{OverflowBoundary}}
 \doxysubsubsection{\texorpdfstring{postUpdateBoundaryHandling()}{postUpdateBoundaryHandling()}}
 {\footnotesize\ttfamily \label{classOverflowBoundary_ac8b37cefd3cbed1c5278ef29e02723f5} 
-void Overflow\+Boundary\+::post\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+void Overflow\+Boundary\+::post\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -84,7 +91,7 @@ Implements \mbox{\hyperlink{classBoundaryCondition_ac515c5d031e15483b6959dbef91a
 \index{preUpdateBoundaryHandling@{preUpdateBoundaryHandling}!OverflowBoundary@{OverflowBoundary}}
 \doxysubsubsection{\texorpdfstring{preUpdateBoundaryHandling()}{preUpdateBoundaryHandling()}}
 {\footnotesize\ttfamily \label{classOverflowBoundary_a17d4a582d50f5bb8d285be9de82c2c5a} 
-void Overflow\+Boundary\+::pre\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+void Overflow\+Boundary\+::pre\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 

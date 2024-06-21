@@ -12,77 +12,117 @@
 \DoxyCodeLine{00011\ \textcolor{keyword}{static}\ std::vector<Position>\ \mbox{\hyperlink{Position_8h_a119913fa54ebaf779539a6e9154789d6}{allPositions}}\ =\ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}},\ \ \ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}},\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}},}
 \DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}},\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}},\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}}\ \};}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{inline}\ std::vector<Position>\ \mbox{\hyperlink{Position_8h_a482f0a5466071b81729318d98f380c20}{coordinateToPosition}}(}
-\DoxyCodeLine{00022\ \ \ \ \ std::array<size\_t,\ 3>\ coordinate,\ std::array<size\_t,\ 3>\ gridDimensions)}
-\DoxyCodeLine{00023\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ std::vector<Position>\ positions;}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[0]\ ==\ 1)\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}});}
-\DoxyCodeLine{00027\ \ \ \ \ \}}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[0]\ ==\ gridDimensions[0]\ -\/\ 2)\ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}});}
+\DoxyCodeLine{00023\ \textcolor{keyword}{inline}\ std::vector<Position>\ \mbox{\hyperlink{Position_8h_ab1d898660ab2152fe48aed22b488ed6f}{coordinateToPosition}}(}
+\DoxyCodeLine{00024\ \ \ \ \ std::array<size\_t,\ 3>\ coordinate,\ std::array<size\_t,\ 3>\ gridDimensions,\ \textcolor{keywordtype}{bool}\ keep3D\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ isHalo\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ offset\ =\ isHalo\ ?\ 0\ :\ 1;}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<Position>\ positions;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[0]\ ==\ offset)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}});}
 \DoxyCodeLine{00030\ \ \ \ \ \}}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[1]\ ==\ 1)\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[0]\ ==\ gridDimensions[0]\ -\/\ 1\ -\/\ offset)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}});}
 \DoxyCodeLine{00033\ \ \ \ \ \}}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[1]\ ==\ gridDimensions[1]\ -\/\ 2)\ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}});}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[1]\ ==\ gridDimensions[1]\ -\/\ 1\ -\/\ offset)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}});}
 \DoxyCodeLine{00036\ \ \ \ \ \}}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[2]\ ==\ 1)\ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[1]\ ==\ offset)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}});}
 \DoxyCodeLine{00039\ \ \ \ \ \}}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[2]\ ==\ gridDimensions[2]\ -\/\ 2)\ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}});}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[2]\ ==\ gridDimensions[2]\ -\/\ 1\ -\/\ offset\ \&\&\ keep3D)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}});}
 \DoxyCodeLine{00042\ \ \ \ \ \}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (positions.empty())}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Coordinate\ is\ not\ on\ the\ boundary"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[2]\ ==\ offset\ \&\&\ keep3D)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}});}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ positions;}
-\DoxyCodeLine{00048\ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (positions.empty())}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Coordinate\ is\ not\ on\ the\ boundary"{}});}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{keyword}{inline}\ std::vector<Position>\ \mbox{\hyperlink{Position_8h_a7d4b686015ea3864bd0f2e46b8ab10f4}{relCoordinateToPos}}(std::array<int,\ 3>\ coordinate)}
-\DoxyCodeLine{00051\ \{}
-\DoxyCodeLine{00052\ \ \ \ \ std::vector<Position>\ positions;}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[0]\ ==\ -\/1)\ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}});}
-\DoxyCodeLine{00055\ \ \ \ \ \}}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[0]\ ==\ 1)\ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}});}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ positions;}
+\DoxyCodeLine{00051\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{inline}\ std::vector<Position>\ \mbox{\hyperlink{Position_8h_a7d4b686015ea3864bd0f2e46b8ab10f4}{relCoordinateToPos}}(std::array<int,\ 3>\ coordinate)}
+\DoxyCodeLine{00054\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<Position>\ positions;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[0]\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}});}
 \DoxyCodeLine{00058\ \ \ \ \ \}}
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[1]\ ==\ 1)\ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[0]\ ==\ 1)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}});}
 \DoxyCodeLine{00061\ \ \ \ \ \}}
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[1]\ ==\ -\/1)\ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}});}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[1]\ ==\ 1)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}});}
 \DoxyCodeLine{00064\ \ \ \ \ \}}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[2]\ ==\ 1)\ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}});}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[1]\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}});}
 \DoxyCodeLine{00067\ \ \ \ \ \}}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[2]\ ==\ -\/1)\ \{}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}});}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[2]\ ==\ 1)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}});}
 \DoxyCodeLine{00070\ \ \ \ \ \}}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{return}\ positions;}
-\DoxyCodeLine{00072\ \}}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{Position_8h_a6e87ad75733947bcb25d3da2d44593ef}{getNormalVectorOfBoundary}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ position)}
-\DoxyCodeLine{00075\ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{switch}\ (position)\ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}}:}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 1,\ 0,\ 0\ \};}
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}}:}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ -\/1,\ 0,\ 0\ \};}
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}}:}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ -\/1,\ 0\ \};}
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}}:}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ 1,\ 0\ \};}
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}}:}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ 0,\ -\/1\ \};}
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}}:}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ 0,\ 1\ \};}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ position"{}});}
-\DoxyCodeLine{00091\ \ \ \ \ \}}
-\DoxyCodeLine{00092\ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (coordinate[2]\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ positions.push\_back(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}});}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{return}\ positions;}
+\DoxyCodeLine{00075\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{Position_8h_a6e87ad75733947bcb25d3da2d44593ef}{getNormalVectorOfBoundary}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ position)}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{switch}\ (position)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}}:}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 1,\ 0,\ 0\ \};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}}:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ -\/1,\ 0,\ 0\ \};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}}:}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ -\/1,\ 0\ \};}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}}:}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ 1,\ 0\ \};}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}}:}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ 0,\ -\/1\ \};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}}:}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ 0,\ 1\ \};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ position"{}});}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ \mbox{\hyperlink{Position_8h_a36e48ad99e9cae63fa8604043b932bf8}{oppositePosition}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ position)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{switch}\ (position)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}}:}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}};}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}}:}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}};}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}}:}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}};}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}}:}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}};}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}}:}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}};}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}}:}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}};}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ position"{}});}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{Position_8h_a705bf2598ddb67a355e90284ef979f69}{getPositionString}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ position)}
+\DoxyCodeLine{00122\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{switch}\ (position)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}}:}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}LEFT"{}};}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}}:}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}RIGHT"{}};}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}}:}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TOP"{}};}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}}:}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}BOTTOM"{}};}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}}:}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}FRONT"{}};}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}}:}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}BACK"{}};}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ position"{}});}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \}}
 
 \end{DoxyCode}

@@ -12,7 +12,7 @@
 Inheritance diagram for Linked\+Lennard\+Jones\+Simulation\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{classLinkedLennardJonesSimulation}
+\includegraphics[height=5.000000cm]{classLinkedLennardJonesSimulation}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -29,7 +29,15 @@ void \mbox{\hyperlink{classLinkedLennardJonesSimulation_a9682407f0e0ebb304761847
 void \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac02835357b8355afe540b3788c4f5579}{set\+Domain\+Size}} (const std\+::array$<$ double, 3 $>$ \&domain\+Size)
 \begin{DoxyCompactList}\small\item\em Set the size of the simulation domain. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad91c1524037aecc193a2fb43fe5786f6}{set\+Cutoff}} (double cutoff)
-\begin{DoxyCompactList}\small\item\em Set the cutoff radius of the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set the cutoff radius of the simulation. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a5ae6ddb827ae3f33910048338a197646}{get\+Domain\+Origin}} () const
+\begin{DoxyCompactList}\small\item\em Get the origin of the simulation domain. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classLinkedLennardJonesSimulation_aceebb5a0bce20b3cd52f5eb4e92015c3}{get\+Domain\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the size of the simulation domain. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLinkedLennardJonesSimulation_aec5131d8e80d154378041fb0bc802544}{get\+Cutoff}} () const
+\begin{DoxyCompactList}\small\item\em Get the cutoff radius of the simulation. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a16772a2392ac33187a25a7f0008e54aa}{get\+Update\+Frequency}} () const
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLennardJonesSimulation}{Lennard\+Jones\+Simulation}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -61,6 +69,8 @@ virtual \mbox{\hyperlink{classLennardJonesSimulation_a09afdfe50f109b6626e3fdfd8c
 virtual \mbox{\hyperlink{classSimulation_a85781a859dbdf089b4c807ac11646e18}{\texorpdfstring{$\sim$}{\string~}\+Simulation}} ()=default
 \item 
 void \mbox{\hyperlink{classSimulation_ace2a60993f57c241c081ffea6ea14e99}{set\+Output\+File}} (std\+::string output)
+\item 
+std\+::string \mbox{\hyperlink{classSimulation_aded0641608524c4f1fb5a85dd91d387f}{get\+Output\+File}} () const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -159,11 +169,56 @@ Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object.
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classLinkedLennardJonesSimulation_aec5131d8e80d154378041fb0bc802544}\index{LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}!getCutoff@{getCutoff}}
+\index{getCutoff@{getCutoff}!LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getCutoff()}{getCutoff()}}
+{\footnotesize\ttfamily \label{classLinkedLennardJonesSimulation_aec5131d8e80d154378041fb0bc802544} 
+double Linked\+Lennard\+Jones\+Simulation\+::get\+Cutoff (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the cutoff radius of the simulation. 
+
+\begin{DoxyReturn}{Returns}
+The cutoff radius of the simulation 
+\end{DoxyReturn}
+\Hypertarget{classLinkedLennardJonesSimulation_a5ae6ddb827ae3f33910048338a197646}\index{LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}!getDomainOrigin@{getDomainOrigin}}
+\index{getDomainOrigin@{getDomainOrigin}!LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getDomainOrigin()}{getDomainOrigin()}}
+{\footnotesize\ttfamily \label{classLinkedLennardJonesSimulation_a5ae6ddb827ae3f33910048338a197646} 
+std\+::array$<$ double, 3 $>$ Linked\+Lennard\+Jones\+Simulation\+::get\+Domain\+Origin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the origin of the simulation domain. 
+
+\begin{DoxyReturn}{Returns}
+The origin of the simulation domain 
+\end{DoxyReturn}
+\Hypertarget{classLinkedLennardJonesSimulation_aceebb5a0bce20b3cd52f5eb4e92015c3}\index{LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}!getDomainSize@{getDomainSize}}
+\index{getDomainSize@{getDomainSize}!LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getDomainSize()}{getDomainSize()}}
+{\footnotesize\ttfamily \label{classLinkedLennardJonesSimulation_aceebb5a0bce20b3cd52f5eb4e92015c3} 
+std\+::array$<$ double, 3 $>$ Linked\+Lennard\+Jones\+Simulation\+::get\+Domain\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the size of the simulation domain. 
+
+\begin{DoxyReturn}{Returns}
+The size of the simulation domain 
+\end{DoxyReturn}
 \Hypertarget{classLinkedLennardJonesSimulation_ad022bd88e8f58fda708eb34c30353617}\index{LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}!getGrid@{getGrid}}
 \index{getGrid@{getGrid}!LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}}
 \doxysubsubsection{\texorpdfstring{getGrid()}{getGrid()}}
 {\footnotesize\ttfamily \label{classLinkedLennardJonesSimulation_ad022bd88e8f58fda708eb34c30353617} 
 const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \& Linked\+Lennard\+Jones\+Simulation\+::get\+Grid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+\Hypertarget{classLinkedLennardJonesSimulation_a16772a2392ac33187a25a7f0008e54aa}\index{LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}!getUpdateFrequency@{getUpdateFrequency}}
+\index{getUpdateFrequency@{getUpdateFrequency}!LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}}
+\doxysubsubsection{\texorpdfstring{getUpdateFrequency()}{getUpdateFrequency()}}
+{\footnotesize\ttfamily \label{classLinkedLennardJonesSimulation_a16772a2392ac33187a25a7f0008e54aa} 
+unsigned Linked\+Lennard\+Jones\+Simulation\+::get\+Update\+Frequency (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classLinkedLennardJonesSimulation_ac6a4414b99279f5653eae86f9c513114}\index{LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}!runSim@{runSim}}
 \index{runSim@{runSim}!LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}}
@@ -181,6 +236,10 @@ void
 
 
 Reimplemented from \mbox{\hyperlink{classLennardJonesSimulation_aa7b28b4c292473bc44481a5a988e4735}{Lennard\+Jones\+Simulation}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5}{Mixed\+LJSimulation}}.
 
 \Hypertarget{classLinkedLennardJonesSimulation_ad91c1524037aecc193a2fb43fe5786f6}\index{LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}!setCutoff@{setCutoff}}
 \index{setCutoff@{setCutoff}!LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}}

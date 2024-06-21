@@ -23,7 +23,7 @@ std\+::string \mbox{\hyperlink{classParams_afa18c57156c85a592764d81b5449abd2}{ou
 \item 
 \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{Reader\+Type}} \mbox{\hyperlink{classParams_a7ab4f4dc5bbea9600eaa2e9eb2a24433}{reader\+\_\+type}} = \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a9de934790934fe831fe946c851e8338e}{Reader\+Type\+::\+STANDARD}}
 \item 
-\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} \mbox{\hyperlink{classParams_ac63ad1625179ff75dfde8ce796f0d8bd}{writer\+\_\+type}} = \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67}{Writer\+Type\+::\+VTK}}
+\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} \mbox{\hyperlink{classParams_ac63ad1625179ff75dfde8ce796f0d8bd}{writer\+\_\+type}} = \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220}{Writer\+Type\+::\+VTK}}
 \item 
 \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} \mbox{\hyperlink{classParams_a1f6919d2ee4956a96a8443e31bd25a20}{simulation\+\_\+type}} = \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}{Simulation\+Type\+::\+PLANET}}
 \item 
@@ -37,7 +37,25 @@ unsigned \mbox{\hyperlink{classParams_a7e38512ce3c13c4a586cca338d93c5bf}{plot\+\
 \item 
 unsigned \mbox{\hyperlink{classParams_a1509dd331913613b268f1fa9bcb5f0bc}{update\+\_\+frequency}} = 10
 \item 
+unsigned \mbox{\hyperlink{classParams_a2f47c838a6ab85b924ac34e99e81afa7}{checkpoint\+\_\+frequency}} = 10
+\item 
 \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \mbox{\hyperlink{classParams_a54cd212690ea669e546586ff5a1b3e6b}{boundary\+Config}}
+\item 
+double \mbox{\hyperlink{classParams_a97e80f5a5e1ae63e7b51ae58ae27029d}{init\+\_\+temp}} = 0
+\item 
+double \mbox{\hyperlink{classParams_adf65773ecaf2cb26c735bdaf58df60b4}{target\+\_\+temp}} = 0
+\item 
+unsigned \mbox{\hyperlink{classParams_a792bf746bbfa7d47018fedd8885285eb}{thermo\+\_\+freq}} = 20
+\item 
+double \mbox{\hyperlink{classParams_addac5bb18acdfbdba43525cb2076ddee}{max\+\_\+temp\+\_\+delta}} = 10
+\item 
+double \mbox{\hyperlink{classParams_a920c09e664050dcec2a9521ccd761b9e}{gravity}} = 0.\+0
+\item 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classParams_a9bdf0f0d81a7ba5d6796ccdc71cc7d9e}{particle\+Types}}
+\item 
+std\+::map$<$ unsigned, std\+::pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classParams_a274613c8ec46ae8d09785ee45bf1642b}{types\+Map}}
+\item 
+bool \mbox{\hyperlink{classParams_ae72d78c77b2856871b83b8d4002a4a8d}{do\+Performance\+Measurements}} = false
 \end{DoxyCompactItemize}
 
 
@@ -50,10 +68,18 @@ unsigned \mbox{\hyperlink{classParams_a1509dd331913613b268f1fa9bcb5f0bc}{update\
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\{\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{BoundaryType::SOFT\_REFLECTIVE}},\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{BoundaryType::SOFT\_REFLECTIVE}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{BoundaryType::SOFT\_REFLECTIVE}},\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a7455348803e4a6064482bc244284c019}{BoundaryType::SOFT\_REFLECTIVE}}\ \}}
+\DoxyCodeLine{\{\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}}\ \}}
 
 \end{DoxyCode}
+\Hypertarget{classParams_a2f47c838a6ab85b924ac34e99e81afa7}\index{Params@{Params}!checkpoint\_frequency@{checkpoint\_frequency}}
+\index{checkpoint\_frequency@{checkpoint\_frequency}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{checkpoint\_frequency}{checkpoint\_frequency}}
+{\footnotesize\ttfamily \label{classParams_a2f47c838a6ab85b924ac34e99e81afa7} 
+unsigned Params\+::checkpoint\+\_\+frequency = 10}
+
 \Hypertarget{classParams_aff59d573933a5dbf3615086e5656070e}\index{Params@{Params}!cutoff@{cutoff}}
 \index{cutoff@{cutoff}!Params@{Params}}
 \doxysubsubsection{\texorpdfstring{cutoff}{cutoff}}
@@ -78,6 +104,12 @@ std\+::array$<$double, 3$>$ Params\+::domain\+\_\+origin = \{ -\/10.\+0, -\/10.\
 {\footnotesize\ttfamily \label{classParams_a342ca27a4b747d4fa08eb07f0e9948c1} 
 std\+::array$<$double, 3$>$ Params\+::domain\+\_\+size = \{ 20.\+0, 20.\+0, 0 \}}
 
+\Hypertarget{classParams_ae72d78c77b2856871b83b8d4002a4a8d}\index{Params@{Params}!doPerformanceMeasurements@{doPerformanceMeasurements}}
+\index{doPerformanceMeasurements@{doPerformanceMeasurements}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{doPerformanceMeasurements}{doPerformanceMeasurements}}
+{\footnotesize\ttfamily \label{classParams_ae72d78c77b2856871b83b8d4002a4a8d} 
+bool Params\+::do\+Performance\+Measurements = false}
+
 \Hypertarget{classParams_a1503e9313bf34014d9f42d0fa55ae79b}\index{Params@{Params}!end\_time@{end\_time}}
 \index{end\_time@{end\_time}!Params@{Params}}
 \doxysubsubsection{\texorpdfstring{end\_time}{end\_time}}
@@ -90,17 +122,41 @@ double Params\+::end\+\_\+time = 0.\+014 \texorpdfstring{$\ast$}{*} 10 \texorpdf
 {\footnotesize\ttfamily \label{classParams_ae67589d7140634b05eedcfe5a26d72be} 
 double Params\+::epsilon = 5}
 
+\Hypertarget{classParams_a920c09e664050dcec2a9521ccd761b9e}\index{Params@{Params}!gravity@{gravity}}
+\index{gravity@{gravity}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{gravity}{gravity}}
+{\footnotesize\ttfamily \label{classParams_a920c09e664050dcec2a9521ccd761b9e} 
+double Params\+::gravity = 0.\+0}
+
+\Hypertarget{classParams_a97e80f5a5e1ae63e7b51ae58ae27029d}\index{Params@{Params}!init\_temp@{init\_temp}}
+\index{init\_temp@{init\_temp}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{init\_temp}{init\_temp}}
+{\footnotesize\ttfamily \label{classParams_a97e80f5a5e1ae63e7b51ae58ae27029d} 
+double Params\+::init\+\_\+temp = 0}
+
 \Hypertarget{classParams_aa90b56aa82f503da0c9bba09d8f61f48}\index{Params@{Params}!input\_file@{input\_file}}
 \index{input\_file@{input\_file}!Params@{Params}}
 \doxysubsubsection{\texorpdfstring{input\_file}{input\_file}}
 {\footnotesize\ttfamily \label{classParams_aa90b56aa82f503da0c9bba09d8f61f48} 
 std\+::string Params\+::input\+\_\+file}
 
+\Hypertarget{classParams_addac5bb18acdfbdba43525cb2076ddee}\index{Params@{Params}!max\_temp\_delta@{max\_temp\_delta}}
+\index{max\_temp\_delta@{max\_temp\_delta}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{max\_temp\_delta}{max\_temp\_delta}}
+{\footnotesize\ttfamily \label{classParams_addac5bb18acdfbdba43525cb2076ddee} 
+double Params\+::max\+\_\+temp\+\_\+delta = 10}
+
 \Hypertarget{classParams_afa18c57156c85a592764d81b5449abd2}\index{Params@{Params}!output\_file@{output\_file}}
 \index{output\_file@{output\_file}!Params@{Params}}
 \doxysubsubsection{\texorpdfstring{output\_file}{output\_file}}
 {\footnotesize\ttfamily \label{classParams_afa18c57156c85a592764d81b5449abd2} 
 std\+::string Params\+::output\+\_\+file = "{}sim"{}}
+
+\Hypertarget{classParams_a9bdf0f0d81a7ba5d6796ccdc71cc7d9e}\index{Params@{Params}!particleTypes@{particleTypes}}
+\index{particleTypes@{particleTypes}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{particleTypes}{particleTypes}}
+{\footnotesize\ttfamily \label{classParams_a9bdf0f0d81a7ba5d6796ccdc71cc7d9e} 
+std\+::vector$<$std\+::pair$<$double, double$>$ $>$ Params\+::particle\+Types}
 
 \Hypertarget{classParams_a7e38512ce3c13c4a586cca338d93c5bf}\index{Params@{Params}!plot\_frequency@{plot\_frequency}}
 \index{plot\_frequency@{plot\_frequency}!Params@{Params}}
@@ -132,6 +188,24 @@ double Params\+::sigma = 1}
 {\footnotesize\ttfamily \label{classParams_a58aa8f184d4751b83e992ef610158743} 
 double Params\+::start\+\_\+time = 0}
 
+\Hypertarget{classParams_adf65773ecaf2cb26c735bdaf58df60b4}\index{Params@{Params}!target\_temp@{target\_temp}}
+\index{target\_temp@{target\_temp}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{target\_temp}{target\_temp}}
+{\footnotesize\ttfamily \label{classParams_adf65773ecaf2cb26c735bdaf58df60b4} 
+double Params\+::target\+\_\+temp = 0}
+
+\Hypertarget{classParams_a792bf746bbfa7d47018fedd8885285eb}\index{Params@{Params}!thermo\_freq@{thermo\_freq}}
+\index{thermo\_freq@{thermo\_freq}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{thermo\_freq}{thermo\_freq}}
+{\footnotesize\ttfamily \label{classParams_a792bf746bbfa7d47018fedd8885285eb} 
+unsigned Params\+::thermo\+\_\+freq = 20}
+
+\Hypertarget{classParams_a274613c8ec46ae8d09785ee45bf1642b}\index{Params@{Params}!typesMap@{typesMap}}
+\index{typesMap@{typesMap}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{typesMap}{typesMap}}
+{\footnotesize\ttfamily \label{classParams_a274613c8ec46ae8d09785ee45bf1642b} 
+std\+::map$<$unsigned, std\+::pair$<$double, double$>$ $>$ Params\+::types\+Map}
+
 \Hypertarget{classParams_a1509dd331913613b268f1fa9bcb5f0bc}\index{Params@{Params}!update\_frequency@{update\_frequency}}
 \index{update\_frequency@{update\_frequency}!Params@{Params}}
 \doxysubsubsection{\texorpdfstring{update\_frequency}{update\_frequency}}
@@ -142,7 +216,7 @@ unsigned Params\+::update\+\_\+frequency = 10}
 \index{writer\_type@{writer\_type}!Params@{Params}}
 \doxysubsubsection{\texorpdfstring{writer\_type}{writer\_type}}
 {\footnotesize\ttfamily \label{classParams_ac63ad1625179ff75dfde8ce796f0d8bd} 
-\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} Params\+::writer\+\_\+type = \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67}{Writer\+Type\+::\+VTK}}}
+\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} Params\+::writer\+\_\+type = \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220}{Writer\+Type\+::\+VTK}}}
 
 
 

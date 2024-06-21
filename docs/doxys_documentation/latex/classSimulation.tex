@@ -12,7 +12,7 @@ Abstract base class for all simulations.
 Inheritance diagram for Simulation\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{classSimulation}
+\includegraphics[height=5.000000cm]{classSimulation}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -25,6 +25,8 @@ virtual void \mbox{\hyperlink{classSimulation_ada940a3e4924c796b043a062950e3c49}
 virtual \mbox{\hyperlink{classSimulation_a85781a859dbdf089b4c807ac11646e18}{\texorpdfstring{$\sim$}{\string~}\+Simulation}} ()=default
 \item 
 void \mbox{\hyperlink{classSimulation_ace2a60993f57c241c081ffea6ea14e99}{set\+Output\+File}} (std\+::string output)
+\item 
+std\+::string \mbox{\hyperlink{classSimulation_aded0641608524c4f1fb5a85dd91d387f}{get\+Output\+File}} () const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -99,6 +101,12 @@ virtual Simulation\+::\texorpdfstring{$\sim$}{\string~}\+Simulation (\begin{Doxy
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classSimulation_aded0641608524c4f1fb5a85dd91d387f}\index{Simulation@{Simulation}!getOutputFile@{getOutputFile}}
+\index{getOutputFile@{getOutputFile}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{getOutputFile()}{getOutputFile()}}
+{\footnotesize\ttfamily \label{classSimulation_aded0641608524c4f1fb5a85dd91d387f} 
+std\+::string Simulation\+::get\+Output\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
 \Hypertarget{classSimulation_ada940a3e4924c796b043a062950e3c49}\index{Simulation@{Simulation}!runSim@{runSim}}
 \index{runSim@{runSim}!Simulation@{Simulation}}
 \doxysubsubsection{\texorpdfstring{runSim()}{runSim()}}
@@ -111,7 +119,7 @@ Run the simulation.
 
 
 
-Implemented in \mbox{\hyperlink{classLennardJonesDomainSimulation_a15d018ced2b94487a881b1224af7d405}{Lennard\+Jones\+Domain\+Simulation}}, \mbox{\hyperlink{classLennardJonesSimulation_aa7b28b4c292473bc44481a5a988e4735}{Lennard\+Jones\+Simulation}}, \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac6a4414b99279f5653eae86f9c513114}{Linked\+Lennard\+Jones\+Simulation}}, and \mbox{\hyperlink{classPlanetSimulation_a9e9abcf4d8960f3bc22644e29411f928}{Planet\+Simulation}}.
+Implemented in \mbox{\hyperlink{classLennardJonesDomainSimulation_a15d018ced2b94487a881b1224af7d405}{Lennard\+Jones\+Domain\+Simulation}}, \mbox{\hyperlink{classLennardJonesSimulation_aa7b28b4c292473bc44481a5a988e4735}{Lennard\+Jones\+Simulation}}, \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac6a4414b99279f5653eae86f9c513114}{Linked\+Lennard\+Jones\+Simulation}}, \mbox{\hyperlink{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5}{Mixed\+LJSimulation}}, and \mbox{\hyperlink{classPlanetSimulation_a9e9abcf4d8960f3bc22644e29411f928}{Planet\+Simulation}}.
 
 \Hypertarget{classSimulation_ace2a60993f57c241c081ffea6ea14e99}\index{Simulation@{Simulation}!setOutputFile@{setOutputFile}}
 \index{setOutputFile@{setOutputFile}!Simulation@{Simulation}}

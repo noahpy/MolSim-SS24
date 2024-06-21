@@ -64,18 +64,40 @@ To run the project (in general), run the following command\+:
 \DoxyCodeLine{src/MolSim\ ../input/clusters.txt\ -\/c\ -\/s\ 1\ -\/d\ 0.0002\ -\/e\ 5}
 
 \end{DoxyCode}
+ \hypertarget{index_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Assignment 3 simulation}{Assignment 3 simulation}}\label{index_autotoc_md7}
+Cuboid collision\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/assign3.xml\ -\/x\ -\/s\ 3}
+
+\end{DoxyCode}
+ Falling drop\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/falling\_drop.xml\ -\/x\ -\/s\ 3}
+
+\end{DoxyCode}
+ \hypertarget{index_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Assignment 4 simulation}{Assignment 4 simulation}}\label{index_autotoc_md8}
+Rayleigh-\/\+Taylor instability\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/big\_rayleigh\_taylor.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
+ Falling drop\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/falling\_drop\_after\_equi.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
  For more information about arguments and default settings, type\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{src/MolSim\ -\/h}
 
 \end{DoxyCode}
- or read the man page \hypertarget{index_autotoc_md7}{}\doxysubsection{\texorpdfstring{Generate Doxygen documentation}{Generate Doxygen documentation}}\label{index_autotoc_md7}
+ or read the man page \hypertarget{index_autotoc_md9}{}\doxysubsection{\texorpdfstring{Generate Doxygen documentation}{Generate Doxygen documentation}}\label{index_autotoc_md9}
 To generate the Doxygen documentation, run the following command\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{make\ doc\_doxygen}
 
 \end{DoxyCode}
- This will generate the documentation into the folder {\ttfamily doxys\+\_\+documentation}.\hypertarget{index_autotoc_md8}{}\doxysubsection{\texorpdfstring{Run tests}{Run tests}}\label{index_autotoc_md8}
+ This will generate the documentation into the folder {\ttfamily doxys\+\_\+documentation}.\hypertarget{index_autotoc_md10}{}\doxysubsection{\texorpdfstring{Run tests}{Run tests}}\label{index_autotoc_md10}
 To build the tests run\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{cd\ build}
@@ -92,7 +114,7 @@ To build the tests run\+:
 \DoxyCodeLine{ctest\ -\/-\/test-\/dir\ tests}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md9}{}\doxysubsection{\texorpdfstring{Run benchmarks}{Run benchmarks}}\label{index_autotoc_md9}
+\hypertarget{index_autotoc_md11}{}\doxysubsection{\texorpdfstring{Run benchmarks}{Run benchmarks}}\label{index_autotoc_md11}
 The benchmarks are run using \href{https://github.com/google/benchmark}{\texttt{ Google benchmark}}. Build\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{cd\ build}
@@ -104,20 +126,20 @@ The benchmarks are run using \href{https://github.com/google/benchmark}{\texttt{
 \DoxyCodeLine{bench/benchmarks}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md10}{}\doxysubsection{\texorpdfstring{Format code}{Format code}}\label{index_autotoc_md10}
+\hypertarget{index_autotoc_md12}{}\doxysubsection{\texorpdfstring{Format code}{Format code}}\label{index_autotoc_md12}
 If your system has clang-\/format installed, the target {\ttfamily clangformat} will be created. You can then run\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{make\ clangformat}
 
 \end{DoxyCode}
- to format the code.\hypertarget{index_autotoc_md11}{}\doxysubsection{\texorpdfstring{Open man page}{Open man page}}\label{index_autotoc_md11}
+ to format the code.\hypertarget{index_autotoc_md13}{}\doxysubsection{\texorpdfstring{Open man page}{Open man page}}\label{index_autotoc_md13}
 To see more details on how to use the program, you can look at our man page. Enter the project root and then run\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{man\ ./.molsim.1}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md12}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{index_autotoc_md12}
-\hypertarget{index_autotoc_md13}{}\doxysubsection{\texorpdfstring{Project structure}{Project structure}}\label{index_autotoc_md13}
+\hypertarget{index_autotoc_md14}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{index_autotoc_md14}
+\hypertarget{index_autotoc_md15}{}\doxysubsection{\texorpdfstring{Project structure}{Project structure}}\label{index_autotoc_md15}
 The project is structured as follows\+:  
 \begin{DoxyInlineImage}
 \includegraphics[height=\baselineskip,keepaspectratio=true]{UML.png}%Project structure UML
@@ -153,7 +175,7 @@ The project is structured as follows\+:
 \item Represents a cluster of particles that can be used to initialize the simulation
 \item Based on an abstract {\ttfamily \doxylink{classParticleCluster}{Particle\+Cluster}} class
 \item Child classes include e.\+g. {\ttfamily \doxylink{classCuboidParticleCluster}{Cuboid\+Particle\+Cluster}} used in problem sheet 2
-\end{DoxyItemize}\hypertarget{index_autotoc_md14}{}\doxysubsection{\texorpdfstring{Folder structure}{Folder structure}}\label{index_autotoc_md14}
+\end{DoxyItemize}\hypertarget{index_autotoc_md16}{}\doxysubsection{\texorpdfstring{Folder structure}{Folder structure}}\label{index_autotoc_md16}
 This section describes the folder strcuture of this project\+:
 \begin{DoxyItemize}
 \item {\ttfamily tests}\+: tests of the project

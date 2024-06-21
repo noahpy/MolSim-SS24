@@ -94,7 +94,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="baseSimulation_8h_source.html">simulation/baseSimulation.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="linkedLennardJonesSim_8h_source.html">simulation/linkedLennardJonesSim.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MixedLJSimulation_8h_source.html">simulation/MixedLJSimulation.h</a>&quot;</code><br />
 </div>
 <p><a href="forceCal_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -112,6 +112,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a62f0707a7a91c14d35537fd069ddc924" id="r_a62f0707a7a91c14d35537fd069ddc924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62f0707a7a91c14d35537fd069ddc924">force_lennard_jones_lc</a> (const <a class="el" href="classSimulation.html">Simulation</a> &amp;sim)</td></tr>
 <tr class="memdesc:a62f0707a7a91c14d35537fd069ddc924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the forces between particles in a linked-cell structure using the Lennard-Jones potential.  <br /></td></tr>
 <tr class="separator:a62f0707a7a91c14d35537fd069ddc924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30d7b8850b340fe52a39eb2fe1087619" id="r_a30d7b8850b340fe52a39eb2fe1087619"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30d7b8850b340fe52a39eb2fe1087619">force_mixed_LJ_gravity_lc</a> (const <a class="el" href="classSimulation.html">Simulation</a> &amp;sim)</td></tr>
+<tr class="memdesc:a30d7b8850b340fe52a39eb2fe1087619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the forces between particles in a linked-cell structure using the Lennard-Jones potential and the mixing rules to allow multiple particle types &amp; regard gravity.  <br /></td></tr>
+<tr class="separator:a30d7b8850b340fe52a39eb2fe1087619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a684f8d139798e74b987af1df9902e439" name="a684f8d139798e74b987af1df9902e439"></a>
@@ -215,6 +218,31 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a30d7b8850b340fe52a39eb2fe1087619" name="a30d7b8850b340fe52a39eb2fe1087619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d7b8850b340fe52a39eb2fe1087619">&#9670;&#160;</a></span>force_mixed_LJ_gravity_lc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void force_mixed_LJ_gravity_lc </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSimulation.html">Simulation</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>sim</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate the forces between particles in a linked-cell structure using the Lennard-Jones potential and the mixing rules to allow multiple particle types &amp; regard gravity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sim</td><td>The simulation to calculate the forces for </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

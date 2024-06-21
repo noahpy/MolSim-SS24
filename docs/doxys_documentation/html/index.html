@@ -136,33 +136,41 @@ Assignment 1 simulation</h3>
 </div><!-- fragment --> <h3><a class="anchor" id="autotoc_md6"></a>
 Assignment 2 simulation</h3>
 <div class="fragment"><div class="line">src/MolSim ../input/clusters.txt -c -s 1 -d 0.0002 -e 5</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md7"></a>
+Assignment 3 simulation</h3>
+<p>Cuboid collision: </p><div class="fragment"><div class="line">src/MolSim ../input/assign3.xml -x -s 3</div>
+</div><!-- fragment --><p> Falling drop: </p><div class="fragment"><div class="line">src/MolSim ../input/falling_drop.xml -x -s 3</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md8"></a>
+Assignment 4 simulation</h3>
+<p>Rayleigh-Taylor instability: </p><div class="fragment"><div class="line">src/MolSim ../input/big_rayleigh_taylor.xml -x -s 4</div>
+</div><!-- fragment --><p> Falling drop: </p><div class="fragment"><div class="line">src/MolSim ../input/falling_drop_after_equi.xml -x -s 4</div>
 </div><!-- fragment --><p> For more information about arguments and default settings, type: </p><div class="fragment"><div class="line">src/MolSim -h</div>
 </div><!-- fragment --><p> or read the man page </p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Generate Doxygen documentation</h2>
 <p>To generate the Doxygen documentation, run the following command: </p><div class="fragment"><div class="line">make doc_doxygen</div>
 </div><!-- fragment --><p> This will generate the documentation into the folder <code>doxys_documentation</code>.</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Run tests</h2>
 <p>To build the tests run: </p><div class="fragment"><div class="line">cd build</div>
 <div class="line">make tests</div>
 </div><!-- fragment --><p> To run the tests, run the following command: </p><div class="fragment"><div class="line">tests/tests</div>
 </div><!-- fragment --><p> Or alternatively with ctest: </p><div class="fragment"><div class="line">ctest --test-dir tests</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
 Run benchmarks</h2>
 <p>The benchmarks are run using <a href="https://github.com/google/benchmark">Google benchmark</a>. Build: </p><div class="fragment"><div class="line">cd build</div>
 <div class="line">make benchmarks</div>
 </div><!-- fragment --><p> Run: </p><div class="fragment"><div class="line">bench/benchmarks</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
 Format code</h2>
 <p>If your system has clang-format installed, the target <code>clangformat</code> will be created. You can then run: </p><div class="fragment"><div class="line">make clangformat</div>
 </div><!-- fragment --><p> to format the code.</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Open man page</h2>
 <p>To see more details on how to use the program, you can look at our man page. Enter the project root and then run: </p><div class="fragment"><div class="line">man ./.molsim.1</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
 Documentation</h1>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Project structure</h2>
 <p>The project is structured as follows: <img src="UML.png" alt="" class="inline" title="Project structure UML"/>     Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.</p>
 <p>**<code><a class="el" href="classSimulation.html" title="Abstract base class for all simulations.">Simulation</a></code>**</p><ul>
@@ -186,7 +194,7 @@ Project structure</h2>
 <li>Based on an abstract <code><a class="el" href="classParticleCluster.html" title="An abstract class to model a cluster of particles.">ParticleCluster</a></code> class</li>
 <li>Child classes include e.g. <code><a class="el" href="classCuboidParticleCluster.html" title="A class to model a cluster of particles in the shape of a cuboid, see ParticleCluster.">CuboidParticleCluster</a></code> used in problem sheet 2</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Folder structure</h2>
 <p>This section describes the folder strcuture of this project:</p><ul>
 <li><code>tests</code>: tests of the project</li>

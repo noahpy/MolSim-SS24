@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['overflowboundary_0',['OverflowBoundary',['../classOverflowBoundary.html',1,'']]]
+  ['mixedljsimulation_0',['MixedLJSimulation',['../classMixedLJSimulation.html',1,'']]]
 ];

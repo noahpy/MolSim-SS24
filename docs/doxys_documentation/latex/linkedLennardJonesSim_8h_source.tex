@@ -36,9 +36,21 @@
 \DoxyCodeLine{00066\ }
 \DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad91c1524037aecc193a2fb43fe5786f6}{setCutoff}}(\textcolor{keywordtype}{double}\ cutoff);}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classCellGrid}{CellGrid}}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}};}
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}};}
-\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a5ae6ddb827ae3f33910048338a197646}{getDomainOrigin}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}}.\mbox{\hyperlink{classCellGrid_a6dbd50183f898783686e0ee9405e3384}{getDomainOrigin}}();\ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_aceebb5a0bce20b3cd52f5eb4e92015c3}{getDomainSize}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}}.\mbox{\hyperlink{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c}{getDomainSize}}();\ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_aec5131d8e80d154378041fb0bc802544}{getCutoff}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}}.\mbox{\hyperlink{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd}{getCutoffRadius}}();\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Get\ the\ update\ frequency\ of\ the\ simulation}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ \ \ *\ @return\ The\ update\ frequency\ of\ the\ simulation}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a16772a2392ac33187a25a7f0008e54aa}{getUpdateFrequency}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}};\ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{classCellGrid}{CellGrid}}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}};}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}};}
+\DoxyCodeLine{00100\ \};}
 
 \end{DoxyCode}

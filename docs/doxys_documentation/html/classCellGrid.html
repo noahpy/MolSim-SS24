@@ -141,6 +141,24 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acb35ad05a6888da0d7e5a7a5b5dca94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a129d490f24645a97b87976df2c517c65" id="r_a129d490f24645a97b87976df2c517c65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a129d490f24645a97b87976df2c517c65">setCutoffRadius</a> (double <a class="el" href="#a63c291bdf88eb00ac679d5bf4a31edae">cutoffRadius</a>)</td></tr>
 <tr class="separator:a129d490f24645a97b87976df2c517c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dbd50183f898783686e0ee9405e3384" id="r_a6dbd50183f898783686e0ee9405e3384"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dbd50183f898783686e0ee9405e3384">getDomainOrigin</a> () const</td></tr>
+<tr class="memdesc:a6dbd50183f898783686e0ee9405e3384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the domain origin.  <br /></td></tr>
+<tr class="separator:a6dbd50183f898783686e0ee9405e3384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a719e2d28c55961d355d8fbe2b8b0386c" id="r_a719e2d28c55961d355d8fbe2b8b0386c"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a719e2d28c55961d355d8fbe2b8b0386c">getDomainSize</a> () const</td></tr>
+<tr class="memdesc:a719e2d28c55961d355d8fbe2b8b0386c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the domain size.  <br /></td></tr>
+<tr class="separator:a719e2d28c55961d355d8fbe2b8b0386c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f078998bfca495dcbd72f5df7da29d6" id="r_a0f078998bfca495dcbd72f5df7da29d6"><td class="memItemLeft" align="right" valign="top">std::array&lt; size_t, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f078998bfca495dcbd72f5df7da29d6">getGridDimensions</a> () const</td></tr>
+<tr class="memdesc:a0f078998bfca495dcbd72f5df7da29d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the grids dimensions.  <br /></td></tr>
+<tr class="separator:a0f078998bfca495dcbd72f5df7da29d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a162dc50ff5d9984f804e8931846a8ffd" id="r_a162dc50ff5d9984f804e8931846a8ffd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a162dc50ff5d9984f804e8931846a8ffd">getCutoffRadius</a> () const</td></tr>
+<tr class="memdesc:a162dc50ff5d9984f804e8931846a8ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cutoff radius.  <br /></td></tr>
+<tr class="separator:a162dc50ff5d9984f804e8931846a8ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fb16506dd14691dcfdd433baf63592c" id="r_a9fb16506dd14691dcfdd433baf63592c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Cell_8h.html#a91ad28c9020cc0a834fd764e67105995">CellIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fb16506dd14691dcfdd433baf63592c">getIndexFromPos</a> (const std::array&lt; double, 3 &gt; &amp;pos) const</td></tr>
+<tr class="memdesc:a9fb16506dd14691dcfdd433baf63592c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the cell containing the specified position.  <br /></td></tr>
+<tr class="separator:a9fb16506dd14691dcfdd433baf63592c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a449b70606acd2967e7bf6ab51b04e5f7" id="r_a449b70606acd2967e7bf6ab51b04e5f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="CellType_8h.html#a268ae74e98bc01a0e35f5e215580bcb4">CellType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a449b70606acd2967e7bf6ab51b04e5f7">determineCellType</a> (const std::array&lt; size_t, 3 &gt; &amp;indices) const</td></tr>
+<tr class="memdesc:a449b70606acd2967e7bf6ab51b04e5f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the cell type (boundary, halo, or bulk) based on its indices.  <br /></td></tr>
+<tr class="separator:a449b70606acd2967e7bf6ab51b04e5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -154,21 +172,21 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:afee2831c8dff53421e2d3f95f3a9aac9" id="r_afee2831c8dff53421e2d3f95f3a9aac9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afee2831c8dff53421e2d3f95f3a9aac9">gridDimensionality</a></td></tr>
 <tr class="memdesc:afee2831c8dff53421e2d3f95f3a9aac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dimensionality of the gird (either 2 or 3)  <br /></td></tr>
 <tr class="separator:afee2831c8dff53421e2d3f95f3a9aac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63c291bdf88eb00ac679d5bf4a31edae" id="r_a63c291bdf88eb00ac679d5bf4a31edae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63c291bdf88eb00ac679d5bf4a31edae">cutoffRadius</a></td></tr>
+<tr class="memdesc:a63c291bdf88eb00ac679d5bf4a31edae"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cutoff radius for particle interactions.  <br /></td></tr>
+<tr class="separator:a63c291bdf88eb00ac679d5bf4a31edae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d3ccac54a64195ca1b7f8a90fea302f" id="r_a4d3ccac54a64195ca1b7f8a90fea302f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d3ccac54a64195ca1b7f8a90fea302f">cutoffRadiusSquared</a></td></tr>
+<tr class="memdesc:a4d3ccac54a64195ca1b7f8a90fea302f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The square of the cutoff radius.  <br /></td></tr>
+<tr class="separator:a4d3ccac54a64195ca1b7f8a90fea302f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ab23ab61399f7b451f77f5e89b8085677" id="r_ab23ab61399f7b451f77f5e89b8085677"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab23ab61399f7b451f77f5e89b8085677">initializeGrid</a> ()</td></tr>
 <tr class="memdesc:ab23ab61399f7b451f77f5e89b8085677"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the grid structure based on the domain size and cutoff radius.  <br /></td></tr>
 <tr class="separator:ab23ab61399f7b451f77f5e89b8085677"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a449b70606acd2967e7bf6ab51b04e5f7" id="r_a449b70606acd2967e7bf6ab51b04e5f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="CellType_8h.html#a268ae74e98bc01a0e35f5e215580bcb4">CellType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a449b70606acd2967e7bf6ab51b04e5f7">determineCellType</a> (const std::array&lt; size_t, 3 &gt; &amp;indices) const</td></tr>
-<tr class="memdesc:a449b70606acd2967e7bf6ab51b04e5f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the cell type (boundary, halo, or bulk) based on its indices.  <br /></td></tr>
-<tr class="separator:a449b70606acd2967e7bf6ab51b04e5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a779ac84cd99605c955ae53ab298d80d6" id="r_a779ac84cd99605c955ae53ab298d80d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a779ac84cd99605c955ae53ab298d80d6">determineNeighbours</a> (<a class="el" href="Cell_8h.html#a91ad28c9020cc0a834fd764e67105995">CellIndex</a> cell)</td></tr>
 <tr class="memdesc:a779ac84cd99605c955ae53ab298d80d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the neighbours of the specified cell.  <br /></td></tr>
 <tr class="separator:a779ac84cd99605c955ae53ab298d80d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fb16506dd14691dcfdd433baf63592c" id="r_a9fb16506dd14691dcfdd433baf63592c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Cell_8h.html#a91ad28c9020cc0a834fd764e67105995">CellIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fb16506dd14691dcfdd433baf63592c">getIndexFromPos</a> (const std::array&lt; double, 3 &gt; &amp;pos) const</td></tr>
-<tr class="memdesc:a9fb16506dd14691dcfdd433baf63592c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the cell containing the specified position.  <br /></td></tr>
-<tr class="separator:a9fb16506dd14691dcfdd433baf63592c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -178,9 +196,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ab017516be508e9e366dcf2cc09244404" id="r_ab017516be508e9e366dcf2cc09244404"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab017516be508e9e366dcf2cc09244404">cellSize</a></td></tr>
 <tr class="memdesc:ab017516be508e9e366dcf2cc09244404"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of a cell according to the domain size.  <br /></td></tr>
 <tr class="separator:ab017516be508e9e366dcf2cc09244404"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63c291bdf88eb00ac679d5bf4a31edae" id="r_a63c291bdf88eb00ac679d5bf4a31edae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63c291bdf88eb00ac679d5bf4a31edae">cutoffRadius</a></td></tr>
-<tr class="memdesc:a63c291bdf88eb00ac679d5bf4a31edae"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cutoff radius for particle interactions.  <br /></td></tr>
-<tr class="separator:a63c291bdf88eb00ac679d5bf4a31edae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae97c8fcf7cf23b2194ea6c7f0446e37e" id="r_ae97c8fcf7cf23b2194ea6c7f0446e37e"><td class="memItemLeft" align="right" valign="top">std::array&lt; size_t, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae97c8fcf7cf23b2194ea6c7f0446e37e">gridDimensions</a></td></tr>
 <tr class="memdesc:ae97c8fcf7cf23b2194ea6c7f0446e37e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dimensions of the cell grid in each dimension.  <br /></td></tr>
 <tr class="separator:ae97c8fcf7cf23b2194ea6c7f0446e37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -353,7 +368,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -402,8 +417,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9fb16506dd14691dcfdd433baf63592c" name="a9fb16506dd14691dcfdd433baf63592c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fb16506dd14691dcfdd433baf63592c">&#9670;&#160;</a></span>getIndexFromPos()</h2>
+<a id="a162dc50ff5d9984f804e8931846a8ffd" name="a162dc50ff5d9984f804e8931846a8ffd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a162dc50ff5d9984f804e8931846a8ffd">&#9670;&#160;</a></span>getCutoffRadius()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,17 +427,121 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
+          <td class="memname">double CellGrid::getCutoffRadius </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the cutoff radius. </p>
+<dl class="section return"><dt>Returns</dt><dd>The cutoff radius. </dd></dl>
+
+</div>
+</div>
+<a id="a6dbd50183f898783686e0ee9405e3384" name="a6dbd50183f898783686e0ee9405e3384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dbd50183f898783686e0ee9405e3384">&#9670;&#160;</a></span>getDomainOrigin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; double, 3 &gt; CellGrid::getDomainOrigin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the domain origin. </p>
+<dl class="section return"><dt>Returns</dt><dd>The domain origin. </dd></dl>
+
+</div>
+</div>
+<a id="a719e2d28c55961d355d8fbe2b8b0386c" name="a719e2d28c55961d355d8fbe2b8b0386c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a719e2d28c55961d355d8fbe2b8b0386c">&#9670;&#160;</a></span>getDomainSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; double, 3 &gt; CellGrid::getDomainSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the domain size. </p>
+<dl class="section return"><dt>Returns</dt><dd>The domain size. </dd></dl>
+
+</div>
+</div>
+<a id="a0f078998bfca495dcbd72f5df7da29d6" name="a0f078998bfca495dcbd72f5df7da29d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f078998bfca495dcbd72f5df7da29d6">&#9670;&#160;</a></span>getGridDimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; size_t, 3 &gt; CellGrid::getGridDimensions </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the grids dimensions. </p>
+<dl class="section return"><dt>Returns</dt><dd>The grids dimensions </dd></dl>
+
+</div>
+</div>
+<a id="a9fb16506dd14691dcfdd433baf63592c" name="a9fb16506dd14691dcfdd433baf63592c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fb16506dd14691dcfdd433baf63592c">&#9670;&#160;</a></span>getIndexFromPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
           <td class="memname"><a class="el" href="Cell_8h.html#a91ad28c9020cc0a834fd764e67105995">CellIndex</a> CellGrid::getIndexFromPos </td>
           <td>(</td>
           <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Returns the index of the cell containing the specified position. </p>
@@ -663,22 +782,30 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">double CellGrid::cutoffRadius</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>The cutoff radius for particle interactions. </p>
+
+</div>
+</div>
+<a id="a4d3ccac54a64195ca1b7f8a90fea302f" name="a4d3ccac54a64195ca1b7f8a90fea302f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d3ccac54a64195ca1b7f8a90fea302f">&#9670;&#160;</a></span>cutoffRadiusSquared</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CellGrid::cutoffRadiusSquared</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The square of the cutoff radius. </p>
 
 </div>
 </div>

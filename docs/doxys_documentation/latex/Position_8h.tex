@@ -19,12 +19,16 @@ enum \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} 
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \mbox{\hyperlink{Position_8h_a482f0a5466071b81729318d98f380c20}{coordinate\+To\+Position}} (std\+::array$<$ size\+\_\+t, 3 $>$ coordinate, std\+::array$<$ size\+\_\+t, 3 $>$ grid\+Dimensions)
+std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \mbox{\hyperlink{Position_8h_ab1d898660ab2152fe48aed22b488ed6f}{coordinate\+To\+Position}} (std\+::array$<$ size\+\_\+t, 3 $>$ coordinate, std\+::array$<$ size\+\_\+t, 3 $>$ grid\+Dimensions, bool keep3D=true, bool is\+Halo=false)
 \begin{DoxyCompactList}\small\item\em Converts a coordinate to a position. This assumes the halo cells added to the bounds i.\+e. index 1 is the first valid cell. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \mbox{\hyperlink{Position_8h_a7d4b686015ea3864bd0f2e46b8ab10f4}{rel\+Coordinate\+To\+Pos}} (std\+::array$<$ int, 3 $>$ coordinate)
 \item 
 std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{Position_8h_a6e87ad75733947bcb25d3da2d44593ef}{get\+Normal\+Vector\+Of\+Boundary}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position)
-\end{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{Position_8h_a36e48ad99e9cae63fa8604043b932bf8}{opposite\+Position}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position)
+\item 
+std\+::string \mbox{\hyperlink{Position_8h_a705bf2598ddb67a355e90284ef979f69}{get\+Position\+String}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position)
+\begin{DoxyCompactList}\small\item\em Converts a position to a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -72,11 +76,11 @@ BACK&\\
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{Position_8h_a482f0a5466071b81729318d98f380c20}\index{Position.h@{Position.h}!coordinateToPosition@{coordinateToPosition}}
+\Hypertarget{Position_8h_ab1d898660ab2152fe48aed22b488ed6f}\index{Position.h@{Position.h}!coordinateToPosition@{coordinateToPosition}}
 \index{coordinateToPosition@{coordinateToPosition}!Position.h@{Position.h}}
 \doxysubsubsection{\texorpdfstring{coordinateToPosition()}{coordinateToPosition()}}
-{\footnotesize\ttfamily \label{Position_8h_a482f0a5466071b81729318d98f380c20} 
-std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ coordinate\+To\+Position (\begin{DoxyParamCaption}\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{coordinate}{, }\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{grid\+Dimensions}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{Position_8h_ab1d898660ab2152fe48aed22b488ed6f} 
+std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ coordinate\+To\+Position (\begin{DoxyParamCaption}\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{coordinate}{, }\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{grid\+Dimensions}{, }\item[{bool}]{keep3D}{ = {\ttfamily true}, }\item[{bool}]{is\+Halo}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -86,7 +90,11 @@ Converts a coordinate to a position. This assumes the halo cells added to the bo
 \begin{DoxyParams}{Parameters}
 {\em coordinate} & The coordinate to convert \\
 \hline
-{\em domain\+Size} & The size of the domain \\
+{\em grid\+Dimensions} & The size of the grid \\
+\hline
+{\em keep3D} & Whether to keep the 3rd dimension \\
+\hline
+{\em is\+Halo} & Whether to get the sides for a halo cell \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -97,6 +105,30 @@ The boundary position of the coordinate
 \doxysubsubsection{\texorpdfstring{getNormalVectorOfBoundary()}{getNormalVectorOfBoundary()}}
 {\footnotesize\ttfamily \label{Position_8h_a6e87ad75733947bcb25d3da2d44593ef} 
 std\+::array$<$ double, 3 $>$ get\+Normal\+Vector\+Of\+Boundary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{Position_8h_a705bf2598ddb67a355e90284ef979f69}\index{Position.h@{Position.h}!getPositionString@{getPositionString}}
+\index{getPositionString@{getPositionString}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{getPositionString()}{getPositionString()}}
+{\footnotesize\ttfamily \label{Position_8h_a705bf2598ddb67a355e90284ef979f69} 
+std\+::string get\+Position\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a position to a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string representation of the position 
+\end{DoxyReturn}
+\Hypertarget{Position_8h_a36e48ad99e9cae63fa8604043b932bf8}\index{Position.h@{Position.h}!oppositePosition@{oppositePosition}}
+\index{oppositePosition@{oppositePosition}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{oppositePosition()}{oppositePosition()}}
+{\footnotesize\ttfamily \label{Position_8h_a36e48ad99e9cae63fa8604043b932bf8} 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} opposite\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{Position_8h_a7d4b686015ea3864bd0f2e46b8ab10f4}\index{Position.h@{Position.h}!relCoordinateToPos@{relCoordinateToPos}}
 \index{relCoordinateToPos@{relCoordinateToPos}!Position.h@{Position.h}}

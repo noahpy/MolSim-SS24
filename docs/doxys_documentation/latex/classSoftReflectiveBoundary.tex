@@ -30,22 +30,27 @@ void \mbox{\hyperlink{classSoftReflectiveBoundary_ae0add0182fda0ee1c9ab23161b02c
 \mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{Boundary\+Condition}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})
 \begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
-\end{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa}{get\+Point\+On\+Boundary\+Plane}} (const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&LJDSim)
+\begin{DoxyCompactList}\small\item\em Returns a point on the boundary-\/plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \mbox{\hyperlink{classSoftReflectiveBoundary_a158bba0562942c9d4a969ab3c4530ca7}{filter\+Halo\+Neighbors}} (const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ $>$ $>$ \&halo\+Neighbors)
-\begin{DoxyCompactList}\small\item\em Filter the halo neighbors to find the one that is at the side we want. This should ignore diagonals. \end{DoxyCompactList}\item 
-std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classSoftReflectiveBoundary_a4b103094d292c5084dd548a4fbf3c8e1}{get\+Point\+On\+Boundary\+Plane}} (const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&LJDSim)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Filter the halo neighbors to find the one that is at the side we want. This should ignore diagonals. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \mbox{\hyperlink{classSoftReflectiveBoundary_a4f5b7cdcaf187d578babe80b10b11d71}{inserted\+Particles}}
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ $>$ \mbox{\hyperlink{classSoftReflectiveBoundary_a5ce1b37f83ab23d0d39dee42e0863380}{inserted\+Particles}}
 \item 
 size\+\_\+t \mbox{\hyperlink{classSoftReflectiveBoundary_ab00f3005456f8839ac58dd79cdac2e9d}{insertion\+Index}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85}{get\+Relevant\+Dimension}} (const std\+::array$<$ double, 3 $>$ \&normal)
+\begin{DoxyCompactList}\small\item\em Get the dimension that is relevant to the boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -90,12 +95,6 @@ Filter the halo neighbors to find the one that is at the side we want. This shou
 \begin{DoxyReturn}{Returns}
 The relevant halo neighbor 
 \end{DoxyReturn}
-\Hypertarget{classSoftReflectiveBoundary_a4b103094d292c5084dd548a4fbf3c8e1}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!getPointOnBoundaryPlane@{getPointOnBoundaryPlane}}
-\index{getPointOnBoundaryPlane@{getPointOnBoundaryPlane}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
-\doxysubsubsection{\texorpdfstring{getPointOnBoundaryPlane()}{getPointOnBoundaryPlane()}}
-{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_a4b103094d292c5084dd548a4fbf3c8e1} 
-std\+::array$<$ double, 3 $>$ Soft\+Reflective\+Boundary\+::get\+Point\+On\+Boundary\+Plane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&}]{LJDSim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
 \Hypertarget{classSoftReflectiveBoundary_ae0add0182fda0ee1c9ab23161b02c47f}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!postUpdateBoundaryHandling@{postUpdateBoundaryHandling}}
 \index{postUpdateBoundaryHandling@{postUpdateBoundaryHandling}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
 \doxysubsubsection{\texorpdfstring{postUpdateBoundaryHandling()}{postUpdateBoundaryHandling()}}
@@ -143,11 +142,11 @@ Implements \mbox{\hyperlink{classBoundaryCondition_a7806aa116ba9779d164b53411dc0
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classSoftReflectiveBoundary_a4f5b7cdcaf187d578babe80b10b11d71}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!insertedParticles@{insertedParticles}}
+\Hypertarget{classSoftReflectiveBoundary_a5ce1b37f83ab23d0d39dee42e0863380}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!insertedParticles@{insertedParticles}}
 \index{insertedParticles@{insertedParticles}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
 \doxysubsubsection{\texorpdfstring{insertedParticles}{insertedParticles}}
-{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_a4f5b7cdcaf187d578babe80b10b11d71} 
-std\+::vector$<$\mbox{\hyperlink{classParticle}{Particle}}$>$ Soft\+Reflective\+Boundary\+::inserted\+Particles\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_a5ce1b37f83ab23d0d39dee42e0863380} 
+std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classParticle}{Particle}}$>$ $>$ Soft\+Reflective\+Boundary\+::inserted\+Particles\hspace{0.3cm}{\ttfamily [private]}}
 
 The particles that were inserted. These will be recycled \Hypertarget{classSoftReflectiveBoundary_ab00f3005456f8839ac58dd79cdac2e9d}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!insertionIndex@{insertionIndex}}
 \index{insertionIndex@{insertionIndex}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}

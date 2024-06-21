@@ -12,7 +12,7 @@
 Inheritance diagram for Lennard\+Jones\+Domain\+Simulation\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{classLennardJonesDomainSimulation}
+\includegraphics[height=5.000000cm]{classLennardJonesDomainSimulation}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -22,6 +22,8 @@ Inheritance diagram for Lennard\+Jones\+Domain\+Simulation\+:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones Domain \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLennardJonesDomainSimulation_a15d018ced2b94487a881b1224af7d405}{run\+Sim}} () override
 \begin{DoxyCompactList}\small\item\em Run the simulation. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classLennardJonesDomainSimulation_aaf0118c1352dcce015a1a08a29be4f69}{get\+Repulsive\+Distance}} (int \mbox{\hyperlink{classtype}{type}}) const
+\begin{DoxyCompactList}\small\item\em Gets the distance for a particle where repulsion starts. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classLennardJonesDomainSimulation_aad249a85b5222e41942f4d0b92656b4f}{Linked\+Lennard\+Jones\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, bool read\+\_\+file=true)
 \begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLinkedLennardJonesSimulation}{Linked\+Lennard\+Jones\+Simulation}}}
@@ -38,7 +40,15 @@ void \mbox{\hyperlink{classLinkedLennardJonesSimulation_a9682407f0e0ebb304761847
 void \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac02835357b8355afe540b3788c4f5579}{set\+Domain\+Size}} (const std\+::array$<$ double, 3 $>$ \&domain\+Size)
 \begin{DoxyCompactList}\small\item\em Set the size of the simulation domain. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad91c1524037aecc193a2fb43fe5786f6}{set\+Cutoff}} (double cutoff)
-\begin{DoxyCompactList}\small\item\em Set the cutoff radius of the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set the cutoff radius of the simulation. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a5ae6ddb827ae3f33910048338a197646}{get\+Domain\+Origin}} () const
+\begin{DoxyCompactList}\small\item\em Get the origin of the simulation domain. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classLinkedLennardJonesSimulation_aceebb5a0bce20b3cd52f5eb4e92015c3}{get\+Domain\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the size of the simulation domain. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLinkedLennardJonesSimulation_aec5131d8e80d154378041fb0bc802544}{get\+Cutoff}} () const
+\begin{DoxyCompactList}\small\item\em Get the cutoff radius of the simulation. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a16772a2392ac33187a25a7f0008e54aa}{get\+Update\+Frequency}} () const
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLennardJonesSimulation}{Lennard\+Jones\+Simulation}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,6 +80,8 @@ virtual \mbox{\hyperlink{classLennardJonesSimulation_a09afdfe50f109b6626e3fdfd8c
 virtual \mbox{\hyperlink{classSimulation_a85781a859dbdf089b4c807ac11646e18}{\texorpdfstring{$\sim$}{\string~}\+Simulation}} ()=default
 \item 
 void \mbox{\hyperlink{classSimulation_ace2a60993f57c241c081ffea6ea14e99}{set\+Output\+File}} (std\+::string output)
+\item 
+std\+::string \mbox{\hyperlink{classSimulation_aded0641608524c4f1fb5a85dd91d387f}{get\+Output\+File}} () const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -90,6 +102,11 @@ unsigned \mbox{\hyperlink{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1}{ite
 unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}} = 10
 \item 
 \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \& \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classLennardJonesDomainSimulation_ad668bb463b4ae5b5a719bf833b5fa53c}{repulsive\+Distance}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classLinkedLennardJonesSimulation}{Linked\+Lennard\+Jones\+Simulation}}}
@@ -177,6 +194,28 @@ Construct a new Lennard Jones Domain \doxylink{classSimulation}{Simulation} obje
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classLennardJonesDomainSimulation_aaf0118c1352dcce015a1a08a29be4f69}\index{LennardJonesDomainSimulation@{LennardJonesDomainSimulation}!getRepulsiveDistance@{getRepulsiveDistance}}
+\index{getRepulsiveDistance@{getRepulsiveDistance}!LennardJonesDomainSimulation@{LennardJonesDomainSimulation}}
+\doxysubsubsection{\texorpdfstring{getRepulsiveDistance()}{getRepulsiveDistance()}}
+{\footnotesize\ttfamily \label{classLennardJonesDomainSimulation_aaf0118c1352dcce015a1a08a29be4f69} 
+double Lennard\+Jones\+Domain\+Simulation\+::get\+Repulsive\+Distance (\begin{DoxyParamCaption}\item[{int}]{type}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the distance for a particle where repulsion starts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance repulsion starts at 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classMixedLJSimulation_aa6519b46f5ff67a4e0564d05d3bd9060}{Mixed\+LJSimulation}}.
+
 \Hypertarget{classLennardJonesDomainSimulation_aad249a85b5222e41942f4d0b92656b4f}\index{LennardJonesDomainSimulation@{LennardJonesDomainSimulation}!LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}}
 \index{LinkedLennardJonesSimulation@{LinkedLennardJonesSimulation}!LennardJonesDomainSimulation@{LennardJonesDomainSimulation}}
 \doxysubsubsection{\texorpdfstring{LinkedLennardJonesSimulation()}{LinkedLennardJonesSimulation()}}
@@ -237,6 +276,10 @@ Implements \mbox{\hyperlink{classSimulation_ada940a3e4924c796b043a062950e3c49}{S
 
 
 
+Reimplemented in \mbox{\hyperlink{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5}{Mixed\+LJSimulation}}.
+
+
+
 \doxysubsection{Member Data Documentation}
 \Hypertarget{classLennardJonesDomainSimulation_a3af863607123c29438029baea218198b}\index{LennardJonesDomainSimulation@{LennardJonesDomainSimulation}!bcHandler@{bcHandler}}
 \index{bcHandler@{bcHandler}!LennardJonesDomainSimulation@{LennardJonesDomainSimulation}}
@@ -244,7 +287,13 @@ Implements \mbox{\hyperlink{classSimulation_ada940a3e4924c796b043a062950e3c49}{S
 {\footnotesize\ttfamily \label{classLennardJonesDomainSimulation_a3af863607123c29438029baea218198b} 
 \mbox{\hyperlink{classBoundaryConditionHandler}{Boundary\+Condition\+Handler}} Lennard\+Jones\+Domain\+Simulation\+::bc\+Handler}
 
-The boundary condition handler 
+The boundary condition handler \Hypertarget{classLennardJonesDomainSimulation_ad668bb463b4ae5b5a719bf833b5fa53c}\index{LennardJonesDomainSimulation@{LennardJonesDomainSimulation}!repulsiveDistance@{repulsiveDistance}}
+\index{repulsiveDistance@{repulsiveDistance}!LennardJonesDomainSimulation@{LennardJonesDomainSimulation}}
+\doxysubsubsection{\texorpdfstring{repulsiveDistance}{repulsiveDistance}}
+{\footnotesize\ttfamily \label{classLennardJonesDomainSimulation_ad668bb463b4ae5b5a719bf833b5fa53c} 
+double Lennard\+Jones\+Domain\+Simulation\+::repulsive\+Distance\hspace{0.3cm}{\ttfamily [private]}}
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

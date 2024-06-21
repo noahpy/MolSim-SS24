@@ -118,13 +118,18 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a482f0a5466071b81729318d98f380c20" id="r_a482f0a5466071b81729318d98f380c20"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a482f0a5466071b81729318d98f380c20">coordinateToPosition</a> (std::array&lt; size_t, 3 &gt; coordinate, std::array&lt; size_t, 3 &gt; gridDimensions)</td></tr>
-<tr class="memdesc:a482f0a5466071b81729318d98f380c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a coordinate to a position. This assumes the halo cells added to the bounds i.e. index 1 is the first valid cell.  <br /></td></tr>
-<tr class="separator:a482f0a5466071b81729318d98f380c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d898660ab2152fe48aed22b488ed6f" id="r_ab1d898660ab2152fe48aed22b488ed6f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1d898660ab2152fe48aed22b488ed6f">coordinateToPosition</a> (std::array&lt; size_t, 3 &gt; coordinate, std::array&lt; size_t, 3 &gt; gridDimensions, bool keep3D=true, bool isHalo=false)</td></tr>
+<tr class="memdesc:ab1d898660ab2152fe48aed22b488ed6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a coordinate to a position. This assumes the halo cells added to the bounds i.e. index 1 is the first valid cell.  <br /></td></tr>
+<tr class="separator:ab1d898660ab2152fe48aed22b488ed6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d4b686015ea3864bd0f2e46b8ab10f4" id="r_a7d4b686015ea3864bd0f2e46b8ab10f4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d4b686015ea3864bd0f2e46b8ab10f4">relCoordinateToPos</a> (std::array&lt; int, 3 &gt; coordinate)</td></tr>
 <tr class="separator:a7d4b686015ea3864bd0f2e46b8ab10f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e87ad75733947bcb25d3da2d44593ef" id="r_a6e87ad75733947bcb25d3da2d44593ef"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e87ad75733947bcb25d3da2d44593ef">getNormalVectorOfBoundary</a> (<a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a> position)</td></tr>
 <tr class="separator:a6e87ad75733947bcb25d3da2d44593ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36e48ad99e9cae63fa8604043b932bf8" id="r_a36e48ad99e9cae63fa8604043b932bf8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36e48ad99e9cae63fa8604043b932bf8">oppositePosition</a> (<a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a> position)</td></tr>
+<tr class="separator:a36e48ad99e9cae63fa8604043b932bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a705bf2598ddb67a355e90284ef979f69" id="r_a705bf2598ddb67a355e90284ef979f69"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a705bf2598ddb67a355e90284ef979f69">getPositionString</a> (<a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a> position)</td></tr>
+<tr class="memdesc:a705bf2598ddb67a355e90284ef979f69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a position to a string.  <br /></td></tr>
+<tr class="separator:a705bf2598ddb67a355e90284ef979f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -157,8 +162,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a482f0a5466071b81729318d98f380c20" name="a482f0a5466071b81729318d98f380c20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a482f0a5466071b81729318d98f380c20">&#9670;&#160;</a></span>coordinateToPosition()</h2>
+<a id="ab1d898660ab2152fe48aed22b488ed6f" name="ab1d898660ab2152fe48aed22b488ed6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d898660ab2152fe48aed22b488ed6f">&#9670;&#160;</a></span>coordinateToPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +179,17 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::array&lt; size_t, 3 &gt;</td>          <td class="paramname"><span class="paramname"><em>gridDimensions</em></span>&#160;)</td>
+          <td class="paramtype">std::array&lt; size_t, 3 &gt;</td>          <td class="paramname"><span class="paramname"><em>gridDimensions</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>keep3D</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isHalo</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -188,7 +203,9 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">coordinate</td><td>The coordinate to convert </td></tr>
-    <tr><td class="paramname">domainSize</td><td>The size of the domain </td></tr>
+    <tr><td class="paramname">gridDimensions</td><td>The size of the grid </td></tr>
+    <tr><td class="paramname">keep3D</td><td>Whether to keep the 3rd dimension </td></tr>
+    <tr><td class="paramname">isHalo</td><td>Whether to get the sides for a halo cell </td></tr>
   </table>
   </dd>
 </dl>
@@ -207,6 +224,65 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::array&lt; double, 3 &gt; getNormalVectorOfBoundary </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a705bf2598ddb67a355e90284ef979f69" name="a705bf2598ddb67a355e90284ef979f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a705bf2598ddb67a355e90284ef979f69">&#9670;&#160;</a></span>getPositionString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string getPositionString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts a position to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>The position to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string representation of the position </dd></dl>
+
+</div>
+</div>
+<a id="a36e48ad99e9cae63fa8604043b932bf8" name="a36e48ad99e9cae63fa8604043b932bf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36e48ad99e9cae63fa8604043b932bf8">&#9670;&#160;</a></span>oppositePosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a> oppositePosition </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#ab91b34ae619fcdfcba4522b4f335bf83">Position</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
           <td></td>

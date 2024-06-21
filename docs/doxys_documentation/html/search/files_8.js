@@ -9,7 +9,9 @@ var searchData=
   ['particlecontainer_2eh_6',['ParticleContainer.h',['../ParticleContainer_8h.html',1,'']]],
   ['particlegenerator_2ecpp_7',['ParticleGenerator.cpp',['../ParticleGenerator_8cpp.html',1,'']]],
   ['particlegenerator_2eh_8',['ParticleGenerator.h',['../ParticleGenerator_8h.html',1,'']]],
-  ['planetsim_2ecpp_9',['planetSim.cpp',['../planetSim_8cpp.html',1,'']]],
-  ['planetsim_2eh_10',['planetSim.h',['../planetSim_8h.html',1,'']]],
-  ['position_2eh_11',['Position.h',['../Position_8h.html',1,'']]]
+  ['periodicboundary_2ecpp_9',['PeriodicBoundary.cpp',['../PeriodicBoundary_8cpp.html',1,'']]],
+  ['periodicboundary_2eh_10',['PeriodicBoundary.h',['../PeriodicBoundary_8h.html',1,'']]],
+  ['planetsim_2ecpp_11',['planetSim.cpp',['../planetSim_8cpp.html',1,'']]],
+  ['planetsim_2eh_12',['planetSim.h',['../planetSim_8h.html',1,'']]],
+  ['position_2eh_13',['Position.h',['../Position_8h.html',1,'']]]
 ];

@@ -20,14 +20,19 @@ enum \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{Reader\+Type}
 \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a60018cf01f907998778170cb8db31c99}{XML}}
  \}
 \item 
-enum \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} \{ \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfac3906aa83f2e1601606b5297cd4508a2}{XYZ}}
-, \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67}{VTK}}
+enum class \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} \{ \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfae65075d550f9b5bf9992fa1d71a131be}{XYZ}}
+, \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220}{VTK}}
+, \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa3501bb093d363810b671059b9cfed3f8}{XML}}
+, \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfaba2b45bdc11e2a4a6e86aab2ac693cbb}{EMPTY}}
  \}
 \item 
-enum \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} \{ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}{PLANET}}
+enum \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} \{ \newline
+\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}{PLANET}}
 , \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921adbc379cd18c02c6bd1da47a5fe97fa8d}{LJ}}
 , \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921ab1f50159aa4dde397044a0de1c4f9639}{LINKED\+\_\+\+LJ}}
 , \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921adeedf7e8791a00af6b7148a0f8818011}{DOMAIN\+\_\+\+LJ}}
+, \newline
+\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921abc63c281ce061d557897a9822bd61b8c}{MIXED\+\_\+\+LJ}}
  \}
 \end{DoxyCompactItemize}
 
@@ -84,20 +89,32 @@ LINKED\+\_\+\+LJ&\\
 DOMAIN\+\_\+\+LJ&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIXED\_LJ@{MIXED\_LJ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!MIXED\_LJ@{MIXED\_LJ}}}\Hypertarget{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921abc63c281ce061d557897a9822bd61b8c}\label{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921} 
+MIXED\+\_\+\+LJ&\\
+\hline
+
 \end{DoxyEnumFields}
 \Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bf}\index{Params.h@{Params.h}!WriterType@{WriterType}}
 \index{WriterType@{WriterType}!Params.h@{Params.h}}
 \doxysubsubsection{\texorpdfstring{WriterType}{WriterType}}
 {\footnotesize\ttfamily \label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
-enum \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}}}
+enum class \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{XYZ@{XYZ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!XYZ@{XYZ}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfac3906aa83f2e1601606b5297cd4508a2}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{XYZ@{XYZ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!XYZ@{XYZ}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfae65075d550f9b5bf9992fa1d71a131be}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
 XYZ&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VTK@{VTK}!Params.h@{Params.h}}\index{Params.h@{Params.h}!VTK@{VTK}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VTK@{VTK}!Params.h@{Params.h}}\index{Params.h@{Params.h}!VTK@{VTK}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
 VTK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{XML@{XML}!Params.h@{Params.h}}\index{Params.h@{Params.h}!XML@{XML}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfa3501bb093d363810b671059b9cfed3f8}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+XML&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EMPTY@{EMPTY}!Params.h@{Params.h}}\index{Params.h@{Params.h}!EMPTY@{EMPTY}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfaba2b45bdc11e2a4a6e86aab2ac693cbb}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+EMPTY&\\
 \hline
 
 \end{DoxyEnumFields}

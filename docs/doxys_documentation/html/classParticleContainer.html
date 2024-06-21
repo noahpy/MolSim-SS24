@@ -100,8 +100,11 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticleContainer_1_1ActiveIterator.html">ActiveIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator class for active particles.  <a href="classParticleContainer_1_1ActiveIterator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParticleContainer_1_1PairIterator.html">PairIterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pair Iterator nested class for iterating over all pairs of particles.  <a href="classParticleContainer_1_1PairIterator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pair Iterator nested class for iterating over all unique pairs of particles.  <a href="classParticleContainer_1_1PairIterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -115,18 +118,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac9316f41ac4e37e5e4ac55ae4cf176de" id="r_ac9316f41ac4e37e5e4ac55ae4cf176de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9316f41ac4e37e5e4ac55ae4cf176de">addParticle</a> (const <a class="el" href="classParticle.html">Particle</a> &amp;p)</td></tr>
 <tr class="memdesc:ac9316f41ac4e37e5e4ac55ae4cf176de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a particle to the container.  <br /></td></tr>
 <tr class="separator:ac9316f41ac4e37e5e4ac55ae4cf176de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37d65d6494a60ec5268a075da98a2a0d" id="r_a37d65d6494a60ec5268a075da98a2a0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37d65d6494a60ec5268a075da98a2a0d">removeParticles</a> (std::unordered_map&lt; <a class="el" href="classParticle.html">Particle</a> *, bool &gt; &amp;particleMap)</td></tr>
-<tr class="memdesc:a37d65d6494a60ec5268a075da98a2a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the particles in the map from the container.  <br /></td></tr>
-<tr class="separator:a37d65d6494a60ec5268a075da98a2a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa70bb015688c449289564656c6391095" id="r_aa70bb015688c449289564656c6391095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa70bb015688c449289564656c6391095">removeParticle</a> (<a class="el" href="classParticle.html">Particle</a> &amp;p)</td></tr>
+<tr class="memdesc:aa70bb015688c449289564656c6391095"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the particles from further calculations.  <br /></td></tr>
+<tr class="separator:aa70bb015688c449289564656c6391095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33a2348e19f93850e67ce59867d1e38f" id="r_a33a2348e19f93850e67ce59867d1e38f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classParticle.html">Particle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33a2348e19f93850e67ce59867d1e38f">getContainer</a> () const</td></tr>
 <tr class="memdesc:a33a2348e19f93850e67ce59867d1e38f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the particles within the container.  <br /></td></tr>
 <tr class="separator:a33a2348e19f93850e67ce59867d1e38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c6e5afbd08a15591cfc867f85eb146b" id="r_a9c6e5afbd08a15591cfc867f85eb146b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classParticle.html">Particle</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c6e5afbd08a15591cfc867f85eb146b">begin</a> ()</td></tr>
-<tr class="memdesc:a9c6e5afbd08a15591cfc867f85eb146b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator to the beginning.  <br /></td></tr>
-<tr class="separator:a9c6e5afbd08a15591cfc867f85eb146b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf3fd557a98aad6565b1f114825bfa59" id="r_abf3fd557a98aad6565b1f114825bfa59"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classParticle.html">Particle</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf3fd557a98aad6565b1f114825bfa59">end</a> ()</td></tr>
-<tr class="memdesc:abf3fd557a98aad6565b1f114825bfa59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator to the end.  <br /></td></tr>
-<tr class="separator:abf3fd557a98aad6565b1f114825bfa59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad050ec922143d33356ea8b3d195c6423" id="r_ad050ec922143d33356ea8b3d195c6423"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classParticleContainer_1_1ActiveIterator.html">ActiveIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad050ec922143d33356ea8b3d195c6423">begin</a> ()</td></tr>
+<tr class="memdesc:ad050ec922143d33356ea8b3d195c6423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the iterator to the first active particle.  <br /></td></tr>
+<tr class="separator:ad050ec922143d33356ea8b3d195c6423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7619c5b38a50eb55272d41d6255b86b6" id="r_a7619c5b38a50eb55272d41d6255b86b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classParticleContainer_1_1ActiveIterator.html">ActiveIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7619c5b38a50eb55272d41d6255b86b6">end</a> ()</td></tr>
+<tr class="memdesc:a7619c5b38a50eb55272d41d6255b86b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the iterator to the last active particle.  <br /></td></tr>
+<tr class="separator:a7619c5b38a50eb55272d41d6255b86b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ad5de2a6c97452ecf68222fa78cbbab" id="r_a8ad5de2a6c97452ecf68222fa78cbbab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classParticleContainer_1_1PairIterator.html">PairIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ad5de2a6c97452ecf68222fa78cbbab">beginPairs</a> ()</td></tr>
 <tr class="memdesc:a8ad5de2a6c97452ecf68222fa78cbbab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the iterator to the beginning of the pairs.  <br /></td></tr>
 <tr class="separator:a8ad5de2a6c97452ecf68222fa78cbbab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +142,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a837d29fec29694cf90572fe943303776" id="r_a837d29fec29694cf90572fe943303776"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classParticle.html">Particle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a837d29fec29694cf90572fe943303776">particles</a></td></tr>
 <tr class="memdesc:a837d29fec29694cf90572fe943303776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector that contains all the particles.  <br /></td></tr>
 <tr class="separator:a837d29fec29694cf90572fe943303776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affd6551cdebeb57aac9e03f6d2299572" id="r_affd6551cdebeb57aac9e03f6d2299572"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affd6551cdebeb57aac9e03f6d2299572">activeParticleCount</a></td></tr>
+<tr class="memdesc:affd6551cdebeb57aac9e03f6d2299572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counter for active particles.  <br /></td></tr>
+<tr class="separator:affd6551cdebeb57aac9e03f6d2299572"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classParticleContainer.html" title="The ParticleContainer class is a data structure that holds the collection of particles.">ParticleContainer</a> class is a data structure that holds the collection of particles. </p>
@@ -216,14 +222,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9c6e5afbd08a15591cfc867f85eb146b" name="a9c6e5afbd08a15591cfc867f85eb146b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c6e5afbd08a15591cfc867f85eb146b">&#9670;&#160;</a></span>begin()</h2>
+<a id="ad050ec922143d33356ea8b3d195c6423" name="ad050ec922143d33356ea8b3d195c6423"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad050ec922143d33356ea8b3d195c6423">&#9670;&#160;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="classParticle.html">Particle</a> &gt;::iterator ParticleContainer::begin </td>
+          <td class="memname"><a class="el" href="classParticleContainer_1_1ActiveIterator.html">ParticleContainer::ActiveIterator</a> ParticleContainer::begin </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -231,8 +237,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Iterator to the beginning. </p>
-<dl class="section return"><dt>Returns</dt><dd>An iterator to the beginning </dd></dl>
+<p>Get the iterator to the first active particle. </p>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the first active particle </dd></dl>
 
 </div>
 </div>
@@ -256,14 +262,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abf3fd557a98aad6565b1f114825bfa59" name="abf3fd557a98aad6565b1f114825bfa59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf3fd557a98aad6565b1f114825bfa59">&#9670;&#160;</a></span>end()</h2>
+<a id="a7619c5b38a50eb55272d41d6255b86b6" name="a7619c5b38a50eb55272d41d6255b86b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7619c5b38a50eb55272d41d6255b86b6">&#9670;&#160;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="classParticle.html">Particle</a> &gt;::iterator ParticleContainer::end </td>
+          <td class="memname"><a class="el" href="classParticleContainer_1_1ActiveIterator.html">ParticleContainer::ActiveIterator</a> ParticleContainer::end </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -271,8 +277,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Iterator to the end. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns an iterator to the end </dd></dl>
+<p>Get the iterator to the last active particle. </p>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the last active particle </dd></dl>
 
 </div>
 </div>
@@ -316,25 +322,25 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a37d65d6494a60ec5268a075da98a2a0d" name="a37d65d6494a60ec5268a075da98a2a0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37d65d6494a60ec5268a075da98a2a0d">&#9670;&#160;</a></span>removeParticles()</h2>
+<a id="aa70bb015688c449289564656c6391095" name="aa70bb015688c449289564656c6391095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa70bb015688c449289564656c6391095">&#9670;&#160;</a></span>removeParticle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ParticleContainer::removeParticles </td>
+          <td class="memname">void ParticleContainer::removeParticle </td>
           <td>(</td>
-          <td class="paramtype">std::unordered_map&lt; <a class="el" href="classParticle.html">Particle</a> *, bool &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>particleMap</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classParticle.html">Particle</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Removes the particles in the map from the container. </p>
+<p>Removes the particles from further calculations. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">particleMap</td><td>The particles to be removed (true if remove) </td></tr>
+    <tr><td class="paramname">p</td><td>The particle to be removed </td></tr>
   </table>
   </dd>
 </dl>
@@ -343,6 +349,22 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="affd6551cdebeb57aac9e03f6d2299572" name="affd6551cdebeb57aac9e03f6d2299572"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affd6551cdebeb57aac9e03f6d2299572">&#9670;&#160;</a></span>activeParticleCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ParticleContainer::activeParticleCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Counter for active particles. </p>
+
+</div>
+</div>
 <a id="a837d29fec29694cf90572fe943303776" name="a837d29fec29694cf90572fe943303776"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a837d29fec29694cf90572fe943303776">&#9670;&#160;</a></span>particles</h2>
 

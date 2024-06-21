@@ -12,7 +12,7 @@ The \doxylink{classBoundaryConditionHandler}{Boundary\+Condition\+Handler} class
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classBoundaryConditionHandler_ab36edb827a68e4de945a06bbcbe3b031}{Boundary\+Condition\+Handler}} (const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&boundary\+Config)
+\mbox{\hyperlink{classBoundaryConditionHandler_ab38704e462d30815dfaf5ce9e11696e1}{Boundary\+Condition\+Handler}} (const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&\mbox{\hyperlink{classBoundaryConditionHandler_a550a232544fc997d5fa76b7a60832bdf}{boundary\+Config}}, const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&cell\+Grid)
 \begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryConditionHandler}{Boundary\+Condition\+Handler} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classBoundaryConditionHandler_a6b5d810602cac0fa2a30dbe3ff9c0d68}{pre\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})
 \begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation before any updates are made. \end{DoxyCompactList}\item 
@@ -22,6 +22,8 @@ void \mbox{\hyperlink{classBoundaryConditionHandler_a0e78ffad239ed92305d73ccc404
 \begin{DoxyCompactItemize}
 \item 
 size\+\_\+t \mbox{\hyperlink{classBoundaryConditionHandler_aceff5e2b9b566a060ecb7db2b6d9cd55}{dimensionality}}
+\item 
+\mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \mbox{\hyperlink{classBoundaryConditionHandler_a550a232544fc997d5fa76b7a60832bdf}{boundary\+Config}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -34,11 +36,11 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classBoundaryConditi
 The \doxylink{classBoundaryConditionHandler}{Boundary\+Condition\+Handler} class is a class that handles the application of boundary conditions to a simulation. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classBoundaryConditionHandler_ab36edb827a68e4de945a06bbcbe3b031}\index{BoundaryConditionHandler@{BoundaryConditionHandler}!BoundaryConditionHandler@{BoundaryConditionHandler}}
+\Hypertarget{classBoundaryConditionHandler_ab38704e462d30815dfaf5ce9e11696e1}\index{BoundaryConditionHandler@{BoundaryConditionHandler}!BoundaryConditionHandler@{BoundaryConditionHandler}}
 \index{BoundaryConditionHandler@{BoundaryConditionHandler}!BoundaryConditionHandler@{BoundaryConditionHandler}}
 \doxysubsubsection{\texorpdfstring{BoundaryConditionHandler()}{BoundaryConditionHandler()}}
-{\footnotesize\ttfamily \label{classBoundaryConditionHandler_ab36edb827a68e4de945a06bbcbe3b031} 
-Boundary\+Condition\+Handler\+::\+Boundary\+Condition\+Handler (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&}]{boundary\+Config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily \label{classBoundaryConditionHandler_ab38704e462d30815dfaf5ce9e11696e1} 
+Boundary\+Condition\+Handler\+::\+Boundary\+Condition\+Handler (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&}]{boundary\+Config}{, }\item[{const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&}]{cell\+Grid}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -97,7 +99,13 @@ void
 {\footnotesize\ttfamily \label{classBoundaryConditionHandler_ac2adf67d070ada1da3b1373d8728755f} 
 std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}$>$ $>$ Boundary\+Condition\+Handler\+::boundary\+Conditions\hspace{0.3cm}{\ttfamily [protected]}}
 
-The boundary conditions to apply \Hypertarget{classBoundaryConditionHandler_aceff5e2b9b566a060ecb7db2b6d9cd55}\index{BoundaryConditionHandler@{BoundaryConditionHandler}!dimensionality@{dimensionality}}
+The boundary conditions to apply \Hypertarget{classBoundaryConditionHandler_a550a232544fc997d5fa76b7a60832bdf}\index{BoundaryConditionHandler@{BoundaryConditionHandler}!boundaryConfig@{boundaryConfig}}
+\index{boundaryConfig@{boundaryConfig}!BoundaryConditionHandler@{BoundaryConditionHandler}}
+\doxysubsubsection{\texorpdfstring{boundaryConfig}{boundaryConfig}}
+{\footnotesize\ttfamily \label{classBoundaryConditionHandler_a550a232544fc997d5fa76b7a60832bdf} 
+\mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} Boundary\+Condition\+Handler\+::boundary\+Config}
+
+\Hypertarget{classBoundaryConditionHandler_aceff5e2b9b566a060ecb7db2b6d9cd55}\index{BoundaryConditionHandler@{BoundaryConditionHandler}!dimensionality@{dimensionality}}
 \index{dimensionality@{dimensionality}!BoundaryConditionHandler@{BoundaryConditionHandler}}
 \doxysubsubsection{\texorpdfstring{dimensionality}{dimensionality}}
 {\footnotesize\ttfamily \label{classBoundaryConditionHandler_aceff5e2b9b566a060ecb7db2b6d9cd55} 

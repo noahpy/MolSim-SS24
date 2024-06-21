@@ -1,0 +1,104 @@
+\doxysection{output\+Writer\+::Xml\+Writer Class Reference}
+\hypertarget{classoutputWriter_1_1XmlWriter}{}\label{classoutputWriter_1_1XmlWriter}\index{outputWriter::XmlWriter@{outputWriter::XmlWriter}}
+
+
+{\ttfamily \#include $<$XMLWriter.\+h$>$}
+
+Inheritance diagram for output\+Writer\+::Xml\+Writer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoutputWriter_1_1XmlWriter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoutputWriter_1_1XmlWriter_abf1d58f380d9c85b47c81f8588fffb77}{Xml\+Writer}} ()
+\begin{DoxyCompactList}\small\item\em Constructor of the \doxylink{classoutputWriter_1_1XmlWriter}{Xml\+Writer} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoutputWriter_1_1XmlWriter_ae7aa7b256763224ae57e19f6cb1bc53f}{Xml\+Writer}} (std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}})
+\begin{DoxyCompactList}\small\item\em This function initializes the \doxylink{classoutputWriter_1_1XmlWriter}{Xml\+Writer} class. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoutputWriter_1_1XmlWriter_a89b8e883cef74635b3e5e92d54702558}{\texorpdfstring{$\sim$}{\string~}\+Xml\+Writer}} ()
+\begin{DoxyCompactList}\small\item\em Destructor of the \doxylink{classoutputWriter_1_1XmlWriter}{Xml\+Writer} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoutputWriter_1_1XmlWriter_a341b6d5aa6ef5a6822c9adf94f053e9d}{plot\+Particles}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&s) override
+\begin{DoxyCompactList}\small\item\em Writes the simulation data to a file for one iteration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFileWriter}{File\+Writer}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileWriter_ae4dd90b95298451fc84d753b987ddc82}{File\+Writer}} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{classFileWriter}{File\+Writer}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFileWriter_a09798489903156b2438525fc687d3651}{File\+Writer}} (std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}})
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{classFileWriter}{File\+Writer}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classFileWriter_a004bf2acbdc1a2f72015cd71f17aa2e2}{\texorpdfstring{$\sim$}{\string~}\+File\+Writer}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classFileWriter}{File\+Writer}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}} = "{}MD\+\_\+vtk"{}
+\begin{DoxyCompactList}\small\item\em The name of the output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classoutputWriter_1_1XmlWriter_abf1d58f380d9c85b47c81f8588fffb77}\index{outputWriter::XmlWriter@{outputWriter::XmlWriter}!XmlWriter@{XmlWriter}}
+\index{XmlWriter@{XmlWriter}!outputWriter::XmlWriter@{outputWriter::XmlWriter}}
+\doxysubsubsection{\texorpdfstring{XmlWriter()}{XmlWriter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XmlWriter_abf1d58f380d9c85b47c81f8588fffb77} 
+output\+Writer\+::\+Xml\+Writer\+::\+Xml\+Writer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Constructor of the \doxylink{classoutputWriter_1_1XmlWriter}{Xml\+Writer} class. 
+
+\Hypertarget{classoutputWriter_1_1XmlWriter_ae7aa7b256763224ae57e19f6cb1bc53f}\index{outputWriter::XmlWriter@{outputWriter::XmlWriter}!XmlWriter@{XmlWriter}}
+\index{XmlWriter@{XmlWriter}!outputWriter::XmlWriter@{outputWriter::XmlWriter}}
+\doxysubsubsection{\texorpdfstring{XmlWriter()}{XmlWriter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XmlWriter_ae7aa7b256763224ae57e19f6cb1bc53f} 
+output\+Writer\+::\+Xml\+Writer\+::\+Xml\+Writer (\begin{DoxyParamCaption}\item[{std\+::string}]{out\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function initializes the \doxylink{classoutputWriter_1_1XmlWriter}{Xml\+Writer} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+\_\+name} & the name of the output file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classoutputWriter_1_1XmlWriter_a89b8e883cef74635b3e5e92d54702558}\index{outputWriter::XmlWriter@{outputWriter::XmlWriter}!````~XmlWriter@{\texorpdfstring{$\sim$}{\string~}XmlWriter}}
+\index{````~XmlWriter@{\texorpdfstring{$\sim$}{\string~}XmlWriter}!outputWriter::XmlWriter@{outputWriter::XmlWriter}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}XmlWriter()}{\string~XmlWriter()}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XmlWriter_a89b8e883cef74635b3e5e92d54702558} 
+output\+Writer\+::\+Xml\+Writer\+::\texorpdfstring{$\sim$}{\string~}\+Xml\+Writer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destructor of the \doxylink{classoutputWriter_1_1XmlWriter}{Xml\+Writer} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classoutputWriter_1_1XmlWriter_a341b6d5aa6ef5a6822c9adf94f053e9d}\index{outputWriter::XmlWriter@{outputWriter::XmlWriter}!plotParticles@{plotParticles}}
+\index{plotParticles@{plotParticles}!outputWriter::XmlWriter@{outputWriter::XmlWriter}}
+\doxysubsubsection{\texorpdfstring{plotParticles()}{plotParticles()}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XmlWriter_a341b6d5aa6ef5a6822c9adf94f053e9d} 
+void output\+Writer\+::\+Xml\+Writer\+::plot\+Particles (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Writes the simulation data to a file for one iteration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \doxylink{classSimulation}{Simulation} object \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classFileWriter_a30e2074c246bae28cb0af971c76609ed}{File\+Writer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/file\+Writer/\mbox{\hyperlink{XMLWriter_8h}{XMLWriter.\+h}}\item 
+src/io/file\+Writer/\mbox{\hyperlink{XMLWriter_8cpp}{XMLWriter.\+cpp}}\end{DoxyCompactItemize}

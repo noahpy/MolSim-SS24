@@ -117,14 +117,20 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a678aadae72e7347a5756e370a2978a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aded523d07f405f8a622d2b4247de05bf" id="r_aded523d07f405f8a622d2b4247de05bf"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aded523d07f405f8a622d2b4247de05bf">WriterType</a> { <a class="el" href="#aded523d07f405f8a622d2b4247de05bfac3906aa83f2e1601606b5297cd4508a2">XYZ</a>
-, <a class="el" href="#aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67">VTK</a>
+<tr class="memitem:aded523d07f405f8a622d2b4247de05bf" id="r_aded523d07f405f8a622d2b4247de05bf"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aded523d07f405f8a622d2b4247de05bf">WriterType</a> { <a class="el" href="#aded523d07f405f8a622d2b4247de05bfae65075d550f9b5bf9992fa1d71a131be">XYZ</a>
+, <a class="el" href="#aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220">VTK</a>
+, <a class="el" href="#aded523d07f405f8a622d2b4247de05bfa3501bb093d363810b671059b9cfed3f8">XML</a>
+, <a class="el" href="#aded523d07f405f8a622d2b4247de05bfaba2b45bdc11e2a4a6e86aab2ac693cbb">EMPTY</a>
  }</td></tr>
 <tr class="separator:aded523d07f405f8a622d2b4247de05bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad69f3cf5fdb6ef307d85180c346e7921" id="r_ad69f3cf5fdb6ef307d85180c346e7921"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad69f3cf5fdb6ef307d85180c346e7921">SimulationType</a> { <a class="el" href="#ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8">PLANET</a>
+<tr class="memitem:ad69f3cf5fdb6ef307d85180c346e7921" id="r_ad69f3cf5fdb6ef307d85180c346e7921"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad69f3cf5fdb6ef307d85180c346e7921">SimulationType</a> { <br />
+&#160;&#160;<a class="el" href="#ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8">PLANET</a>
 , <a class="el" href="#ad69f3cf5fdb6ef307d85180c346e7921adbc379cd18c02c6bd1da47a5fe97fa8d">LJ</a>
 , <a class="el" href="#ad69f3cf5fdb6ef307d85180c346e7921ab1f50159aa4dde397044a0de1c4f9639">LINKED_LJ</a>
 , <a class="el" href="#ad69f3cf5fdb6ef307d85180c346e7921adeedf7e8791a00af6b7148a0f8818011">DOMAIN_LJ</a>
+, <br />
+&#160;&#160;<a class="el" href="#ad69f3cf5fdb6ef307d85180c346e7921abc63c281ce061d557897a9822bd61b8c">MIXED_LJ</a>
+<br />
  }</td></tr>
 <tr class="separator:ad69f3cf5fdb6ef307d85180c346e7921"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -166,6 +172,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="ad69f3cf5fdb6ef307d85180c346e7921adbc379cd18c02c6bd1da47a5fe97fa8d" name="ad69f3cf5fdb6ef307d85180c346e7921adbc379cd18c02c6bd1da47a5fe97fa8d"></a>LJ&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad69f3cf5fdb6ef307d85180c346e7921ab1f50159aa4dde397044a0de1c4f9639" name="ad69f3cf5fdb6ef307d85180c346e7921ab1f50159aa4dde397044a0de1c4f9639"></a>LINKED_LJ&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad69f3cf5fdb6ef307d85180c346e7921adeedf7e8791a00af6b7148a0f8818011" name="ad69f3cf5fdb6ef307d85180c346e7921adeedf7e8791a00af6b7148a0f8818011"></a>DOMAIN_LJ&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad69f3cf5fdb6ef307d85180c346e7921abc63c281ce061d557897a9822bd61b8c" name="ad69f3cf5fdb6ef307d85180c346e7921abc63c281ce061d557897a9822bd61b8c"></a>MIXED_LJ&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -175,15 +182,25 @@ Enumerations</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#aded523d07f405f8a622d2b4247de05bf">WriterType</a></td>
+          <td class="memname">enum class <a class="el" href="#aded523d07f405f8a622d2b4247de05bf">WriterType</a></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aded523d07f405f8a622d2b4247de05bfac3906aa83f2e1601606b5297cd4508a2" name="aded523d07f405f8a622d2b4247de05bfac3906aa83f2e1601606b5297cd4508a2"></a>XYZ&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67" name="aded523d07f405f8a622d2b4247de05bfa37fb55ddbbe1465cec5f3d154db73e67"></a>VTK&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aded523d07f405f8a622d2b4247de05bfae65075d550f9b5bf9992fa1d71a131be" name="aded523d07f405f8a622d2b4247de05bfae65075d550f9b5bf9992fa1d71a131be"></a>XYZ&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220" name="aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220"></a>VTK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aded523d07f405f8a622d2b4247de05bfa3501bb093d363810b671059b9cfed3f8" name="aded523d07f405f8a622d2b4247de05bfa3501bb093d363810b671059b9cfed3f8"></a>XML&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aded523d07f405f8a622d2b4247de05bfaba2b45bdc11e2a4a6e86aab2ac693cbb" name="aded523d07f405f8a622d2b4247de05bfaba2b45bdc11e2a4a6e86aab2ac693cbb"></a>EMPTY&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

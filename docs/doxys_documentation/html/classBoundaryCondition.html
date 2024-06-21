@@ -86,6 +86,7 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classBoundaryCondition-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BoundaryCondition Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -103,7 +104,8 @@ Inheritance diagram for BoundaryCondition:</div>
   <img src="classBoundaryCondition.png" usemap="#BoundaryCondition_map" alt=""/>
   <map id="BoundaryCondition_map" name="BoundaryCondition_map">
 <area href="classOverflowBoundary.html" title="The OverflowBoundary class is a class that represents a boundary condition where particles that leave..." alt="OverflowBoundary" shape="rect" coords="0,56,145,80"/>
-<area href="classSoftReflectiveBoundary.html" title="The SoftReflectiveBoundary class is a class that represents a boundary condition where particles that..." alt="SoftReflectiveBoundary" shape="rect" coords="155,56,300,80"/>
+<area href="classPeriodicBoundary.html" alt="PeriodicBoundary" shape="rect" coords="155,56,300,80"/>
+<area href="classSoftReflectiveBoundary.html" title="The SoftReflectiveBoundary class is a class that represents a boundary condition where particles that..." alt="SoftReflectiveBoundary" shape="rect" coords="310,56,455,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -120,6 +122,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac515c5d031e15483b6959dbef91aa898" id="r_ac515c5d031e15483b6959dbef91aa898"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac515c5d031e15483b6959dbef91aa898">postUpdateBoundaryHandling</a> (<a class="el" href="classSimulation.html">Simulation</a> &amp;<a class="el" href="simulation_8cpp.html#a86509cc339f194b4fce8baf3af848430">simulation</a>)=0</td></tr>
 <tr class="memdesc:ac515c5d031e15483b6959dbef91aa898"><td class="mdescLeft">&#160;</td><td class="mdescRight">The call to apply the boundary condition to the simulation after all updates are made.  <br /></td></tr>
 <tr class="separator:ac515c5d031e15483b6959dbef91aa898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae33169b3da03ac79e65b56f6570dc8aa" id="r_ae33169b3da03ac79e65b56f6570dc8aa"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae33169b3da03ac79e65b56f6570dc8aa">getPointOnBoundaryPlane</a> (const <a class="el" href="classLennardJonesDomainSimulation.html">LennardJonesDomainSimulation</a> &amp;LJDSim)</td></tr>
+<tr class="memdesc:ae33169b3da03ac79e65b56f6570dc8aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a point on the boundary-plane.  <br /></td></tr>
+<tr class="separator:ae33169b3da03ac79e65b56f6570dc8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ab13a8f0ebb3d53eba2a540925702ec85" id="r_ab13a8f0ebb3d53eba2a540925702ec85"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab13a8f0ebb3d53eba2a540925702ec85">getRelevantDimension</a> (const std::array&lt; double, 3 &gt; &amp;normal)</td></tr>
+<tr class="memdesc:ab13a8f0ebb3d53eba2a540925702ec85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimension that is relevant to the boundary.  <br /></td></tr>
+<tr class="separator:ab13a8f0ebb3d53eba2a540925702ec85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -188,6 +199,66 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae33169b3da03ac79e65b56f6570dc8aa" name="ae33169b3da03ac79e65b56f6570dc8aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33169b3da03ac79e65b56f6570dc8aa">&#9670;&#160;</a></span>getPointOnBoundaryPlane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; double, 3 &gt; BoundaryCondition::getPointOnBoundaryPlane </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLennardJonesDomainSimulation.html">LennardJonesDomainSimulation</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>LJDSim</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a point on the boundary-plane. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">LJDSim</td><td>The simulation for wich to get the point for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A point on the boundary-plane </dd></dl>
+
+</div>
+</div>
+<a id="ab13a8f0ebb3d53eba2a540925702ec85" name="ab13a8f0ebb3d53eba2a540925702ec85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab13a8f0ebb3d53eba2a540925702ec85">&#9670;&#160;</a></span>getRelevantDimension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static size_t BoundaryCondition::getRelevantDimension </td>
+          <td>(</td>
+          <td class="paramtype">const std::array&lt; double, 3 &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>normal</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the dimension that is relevant to the boundary. </p>
+<p>E.g. if the point on the boundary is (1,2,3) and the normal vector to that plane is (-1,0,0) (LEFT-Boundary), then return 0 as that is the index of the coordinate of interest </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">normal</td><td>The normal vector to the plane </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the relevant dimension </dd></dl>
+
+</div>
+</div>
 <a id="ac515c5d031e15483b6959dbef91aa898" name="ac515c5d031e15483b6959dbef91aa898"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac515c5d031e15483b6959dbef91aa898">&#9670;&#160;</a></span>postUpdateBoundaryHandling()</h2>
 
@@ -220,7 +291,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Implemented in <a class="el" href="classOverflowBoundary.html#ac8b37cefd3cbed1c5278ef29e02723f5">OverflowBoundary</a>, and <a class="el" href="classSoftReflectiveBoundary.html#ae0add0182fda0ee1c9ab23161b02c47f">SoftReflectiveBoundary</a>.</p>
+<p>Implemented in <a class="el" href="classOverflowBoundary.html#ac8b37cefd3cbed1c5278ef29e02723f5">OverflowBoundary</a>, <a class="el" href="classPeriodicBoundary.html#a7115c8f3b01940ef54718f1c7c13dabb">PeriodicBoundary</a>, and <a class="el" href="classSoftReflectiveBoundary.html#ae0add0182fda0ee1c9ab23161b02c47f">SoftReflectiveBoundary</a>.</p>
 
 </div>
 </div>
@@ -256,7 +327,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Implemented in <a class="el" href="classOverflowBoundary.html#a17d4a582d50f5bb8d285be9de82c2c5a">OverflowBoundary</a>, and <a class="el" href="classSoftReflectiveBoundary.html#a00be82115bb5bcce7a3efafff7475407">SoftReflectiveBoundary</a>.</p>
+<p>Implemented in <a class="el" href="classOverflowBoundary.html#a17d4a582d50f5bb8d285be9de82c2c5a">OverflowBoundary</a>, <a class="el" href="classPeriodicBoundary.html#a82cafd61cbf2438a28b825a6a6133e9e">PeriodicBoundary</a>, and <a class="el" href="classSoftReflectiveBoundary.html#a00be82115bb5bcce7a3efafff7475407">SoftReflectiveBoundary</a>.</p>
 
 </div>
 </div>
@@ -284,8 +355,9 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/physics/boundaryConditions/<a class="el" href="BoundaryCondition_8h_source.html">BoundaryCondition.h</a></li>
+<li>src/physics/boundaryConditions/<a class="el" href="BoundaryCondition_8cpp.html">BoundaryCondition.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

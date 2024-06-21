@@ -46,10 +46,16 @@
 \DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ \ \ *\ */}}
 \DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSimulation_ace2a60993f57c241c081ffea6ea14e99}{setOutputFile}}(std::string\ output);}
 \DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ \mbox{\hyperlink{classSimulation_abdb48771e24ba63a3db95b27d153b629}{strategy}};\ }
-\DoxyCodeLine{00068\ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}};\ }
-\DoxyCodeLine{00069\ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}};\ }
-\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Get\ the\ output\ file\ name\ of\ the\ writer}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ \ *\ @return\ The\ basename\ of\ the\ output\ file}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00070\ \ \ \ \ std::string\ \mbox{\hyperlink{classSimulation_aded0641608524c4f1fb5a85dd91d387f}{getOutputFile}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ \mbox{\hyperlink{classSimulation_abdb48771e24ba63a3db95b27d153b629}{strategy}};\ }
+\DoxyCodeLine{00074\ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}};\ }
+\DoxyCodeLine{00075\ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}};\ }
+\DoxyCodeLine{00076\ \};}
 
 \end{DoxyCode}

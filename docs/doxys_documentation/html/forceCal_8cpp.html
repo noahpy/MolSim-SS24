@@ -106,14 +106,17 @@ Functions</h2></td></tr>
 <tr class="memitem:af832ee8c3785fcfd06487030f3ab7860" id="r_af832ee8c3785fcfd06487030f3ab7860"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af832ee8c3785fcfd06487030f3ab7860">force_gravity_V2</a> (const <a class="el" href="classSimulation.html">Simulation</a> &amp;sim)</td></tr>
 <tr class="memdesc:af832ee8c3785fcfd06487030f3ab7860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the forces between particles using the Stroemer-Verlet algorithm, while exploiting F_12 = -F_21 and iterating over distinct pairs.  <br /></td></tr>
 <tr class="separator:af832ee8c3785fcfd06487030f3ab7860"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ff8f94991ec7c6c400b1564012ef0bd" id="r_a3ff8f94991ec7c6c400b1564012ef0bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ff8f94991ec7c6c400b1564012ef0bd">lj_calc</a> (<a class="el" href="classParticle.html">Particle</a> &amp;p1, <a class="el" href="classParticle.html">Particle</a> &amp;p2, double alpha, double beta, double gamma)</td></tr>
-<tr class="separator:a3ff8f94991ec7c6c400b1564012ef0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dea65bc58f892ea6f9c5c58fcf3ef1c" id="r_a3dea65bc58f892ea6f9c5c58fcf3ef1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dea65bc58f892ea6f9c5c58fcf3ef1c">lj_calc</a> (<a class="el" href="classParticle.html">Particle</a> &amp;p1, <a class="el" href="classParticle.html">Particle</a> &amp;p2, double alpha, double beta, double gamma, std::array&lt; double, 3 &gt; delta)</td></tr>
+<tr class="separator:a3dea65bc58f892ea6f9c5c58fcf3ef1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae14c2cd283291bf9db0b7b73e74e56e0" id="r_ae14c2cd283291bf9db0b7b73e74e56e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae14c2cd283291bf9db0b7b73e74e56e0">force_lennard_jones</a> (const <a class="el" href="classSimulation.html">Simulation</a> &amp;sim)</td></tr>
 <tr class="memdesc:ae14c2cd283291bf9db0b7b73e74e56e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the forces between particles using the Lennard-Jones potential.  <br /></td></tr>
 <tr class="separator:ae14c2cd283291bf9db0b7b73e74e56e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f0707a7a91c14d35537fd069ddc924" id="r_a62f0707a7a91c14d35537fd069ddc924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62f0707a7a91c14d35537fd069ddc924">force_lennard_jones_lc</a> (const <a class="el" href="classSimulation.html">Simulation</a> &amp;sim)</td></tr>
 <tr class="memdesc:a62f0707a7a91c14d35537fd069ddc924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the forces between particles in a linked-cell structure using the Lennard-Jones potential.  <br /></td></tr>
 <tr class="separator:a62f0707a7a91c14d35537fd069ddc924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30d7b8850b340fe52a39eb2fe1087619" id="r_a30d7b8850b340fe52a39eb2fe1087619"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30d7b8850b340fe52a39eb2fe1087619">force_mixed_LJ_gravity_lc</a> (const <a class="el" href="classSimulation.html">Simulation</a> &amp;sim)</td></tr>
+<tr class="memdesc:a30d7b8850b340fe52a39eb2fe1087619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the forces between particles in a linked-cell structure using the Lennard-Jones potential and the mixing rules to allow multiple particle types &amp; regard gravity.  <br /></td></tr>
+<tr class="separator:a30d7b8850b340fe52a39eb2fe1087619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a684f8d139798e74b987af1df9902e439" name="a684f8d139798e74b987af1df9902e439"></a>
@@ -220,8 +223,33 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3ff8f94991ec7c6c400b1564012ef0bd" name="a3ff8f94991ec7c6c400b1564012ef0bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ff8f94991ec7c6c400b1564012ef0bd">&#9670;&#160;</a></span>lj_calc()</h2>
+<a id="a30d7b8850b340fe52a39eb2fe1087619" name="a30d7b8850b340fe52a39eb2fe1087619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d7b8850b340fe52a39eb2fe1087619">&#9670;&#160;</a></span>force_mixed_LJ_gravity_lc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void force_mixed_LJ_gravity_lc </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSimulation.html">Simulation</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>sim</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate the forces between particles in a linked-cell structure using the Lennard-Jones potential and the mixing rules to allow multiple particle types &amp; regard gravity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sim</td><td>The simulation to calculate the forces for </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3dea65bc58f892ea6f9c5c58fcf3ef1c" name="a3dea65bc58f892ea6f9c5c58fcf3ef1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dea65bc58f892ea6f9c5c58fcf3ef1c">&#9670;&#160;</a></span>lj_calc()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,7 +277,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>gamma</em></span>&#160;)</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>gamma</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::array&lt; double, 3 &gt;</td>          <td class="paramname"><span class="paramname"><em>delta</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

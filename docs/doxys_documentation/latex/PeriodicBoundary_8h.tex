@@ -1,0 +1,40 @@
+\doxysection{src/physics/boundary\+Conditions/\+Periodic\+Boundary.h File Reference}
+\hypertarget{PeriodicBoundary_8h}{}\label{PeriodicBoundary_8h}\index{src/physics/boundaryConditions/PeriodicBoundary.h@{src/physics/boundaryConditions/PeriodicBoundary.h}}
+{\ttfamily \#include "{}physics/boundary\+Conditions/\+Boundary\+Condition.\+h"{}}\newline
+{\ttfamily \#include "{}physics/boundary\+Conditions/\+Boundary\+Config.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPeriodicBoundary}{Periodic\+Boundary}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::pair$<$ std\+::array$<$ double, 3 $>$, std\+::array$<$ int, 3 $>$ $>$ \mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}}
+\begin{DoxyCompactList}\small\item\em Type to contain the shifts needed to move particles to their periodic partner and the partner cell index. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$, std\+::vector$<$ \mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}} $>$ $>$ \mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{Multi\+Dim\+Periodic\+Bound\+Shifts\+Map}}
+\begin{DoxyCompactList}\small\item\em Type to contain the shifts of particles that are effected by more than one periodic boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}\index{PeriodicBoundary.h@{PeriodicBoundary.h}!MultiDimPeriodicBoundShiftsMap@{MultiDimPeriodicBoundShiftsMap}}
+\index{MultiDimPeriodicBoundShiftsMap@{MultiDimPeriodicBoundShiftsMap}!PeriodicBoundary.h@{PeriodicBoundary.h}}
+\doxysubsubsection{\texorpdfstring{MultiDimPeriodicBoundShiftsMap}{MultiDimPeriodicBoundShiftsMap}}
+{\footnotesize\ttfamily \label{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51} 
+typedef std\+::map$<$std\+::vector$<$\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}$>$, std\+::vector$<$\mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}}$>$ $>$ \mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{Multi\+Dim\+Periodic\+Bound\+Shifts\+Map}}}
+
+
+
+Type to contain the shifts of particles that are effected by more than one periodic boundary. 
+
+The std\+::vector$<$\+Position$>$ is the list of sides that are effecting on the particle, while the std\+::vector$<$\+Periodic\+Bound\+Shifts$>$ are the shifts to be applied \Hypertarget{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}\index{PeriodicBoundary.h@{PeriodicBoundary.h}!PeriodicBoundShifts@{PeriodicBoundShifts}}
+\index{PeriodicBoundShifts@{PeriodicBoundShifts}!PeriodicBoundary.h@{PeriodicBoundary.h}}
+\doxysubsubsection{\texorpdfstring{PeriodicBoundShifts}{PeriodicBoundShifts}}
+{\footnotesize\ttfamily \label{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598} 
+typedef std\+::pair$<$std\+::array$<$double, 3$>$, std\+::array$<$int, 3$>$ $>$ \mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}}}
+
+
+
+Type to contain the shifts needed to move particles to their periodic partner and the partner cell index. 
+
+The first entry is the positional shift, while the second entry is the cell index shift 

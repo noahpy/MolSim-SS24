@@ -11,12 +11,14 @@ void \mbox{\hyperlink{forceCal_8cpp_a684f8d139798e74b987af1df9902e439}{force\+\_
 \begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{forceCal_8cpp_af832ee8c3785fcfd06487030f3ab7860}{force\+\_\+gravity\+\_\+\+V2}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
 \begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm, while exploiting F\+\_\+12 = -\/F\+\_\+21 and iterating over distinct pairs. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{forceCal_8cpp_a3ff8f94991ec7c6c400b1564012ef0bd}{lj\+\_\+calc}} (\mbox{\hyperlink{classParticle}{Particle}} \&p1, \mbox{\hyperlink{classParticle}{Particle}} \&p2, double alpha, double beta, double gamma)
+void \mbox{\hyperlink{forceCal_8cpp_a3dea65bc58f892ea6f9c5c58fcf3ef1c}{lj\+\_\+calc}} (\mbox{\hyperlink{classParticle}{Particle}} \&p1, \mbox{\hyperlink{classParticle}{Particle}} \&p2, double alpha, double beta, double gamma, std\+::array$<$ double, 3 $>$ delta)
 \item 
 void \mbox{\hyperlink{forceCal_8cpp_ae14c2cd283291bf9db0b7b73e74e56e0}{force\+\_\+lennard\+\_\+jones}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
 \begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{forceCal_8cpp_a62f0707a7a91c14d35537fd069ddc924}{force\+\_\+lennard\+\_\+jones\+\_\+lc}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
-\begin{DoxyCompactList}\small\item\em Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8cpp_a30d7b8850b340fe52a39eb2fe1087619}{force\+\_\+mixed\+\_\+\+LJ\+\_\+gravity\+\_\+lc}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential and the mixing rules to allow multiple particle types \& regard gravity. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -92,9 +94,24 @@ Calculate the forces between particles in a linked-\/cell structure using the Le
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\Hypertarget{forceCal_8cpp_a3ff8f94991ec7c6c400b1564012ef0bd}\index{forceCal.cpp@{forceCal.cpp}!lj\_calc@{lj\_calc}}
+\Hypertarget{forceCal_8cpp_a30d7b8850b340fe52a39eb2fe1087619}\index{forceCal.cpp@{forceCal.cpp}!force\_mixed\_LJ\_gravity\_lc@{force\_mixed\_LJ\_gravity\_lc}}
+\index{force\_mixed\_LJ\_gravity\_lc@{force\_mixed\_LJ\_gravity\_lc}!forceCal.cpp@{forceCal.cpp}}
+\doxysubsubsection{\texorpdfstring{force\_mixed\_LJ\_gravity\_lc()}{force\_mixed\_LJ\_gravity\_lc()}}
+{\footnotesize\ttfamily \label{forceCal_8cpp_a30d7b8850b340fe52a39eb2fe1087619} 
+void force\+\_\+mixed\+\_\+\+LJ\+\_\+gravity\+\_\+lc (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential and the mixing rules to allow multiple particle types \& regard gravity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\Hypertarget{forceCal_8cpp_a3dea65bc58f892ea6f9c5c58fcf3ef1c}\index{forceCal.cpp@{forceCal.cpp}!lj\_calc@{lj\_calc}}
 \index{lj\_calc@{lj\_calc}!forceCal.cpp@{forceCal.cpp}}
 \doxysubsubsection{\texorpdfstring{lj\_calc()}{lj\_calc()}}
-{\footnotesize\ttfamily \label{forceCal_8cpp_a3ff8f94991ec7c6c400b1564012ef0bd} 
-void lj\+\_\+calc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p1}{, }\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p2}{, }\item[{double}]{alpha}{, }\item[{double}]{beta}{, }\item[{double}]{gamma}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{forceCal_8cpp_a3dea65bc58f892ea6f9c5c58fcf3ef1c} 
+void lj\+\_\+calc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p1}{, }\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p2}{, }\item[{double}]{alpha}{, }\item[{double}]{beta}{, }\item[{double}]{gamma}{, }\item[{std\+::array$<$ double, 3 $>$}]{delta}{}\end{DoxyParamCaption})}
 
