@@ -62,7 +62,15 @@ Falling drop:
 ```
 src/MolSim ../input/falling_drop.xml -x -s 3
 ```
-
+#### Assignment 4 simulation
+Rayleigh-Taylor instability:
+```
+src/MolSim ../input/big_rayleigh_taylor.xml -x -s 4
+```
+Falling drop:
+```
+src/MolSim ../input/falling_drop_after_equi.xml -x -s 4
+```
 For more information about arguments and default settings, type:
 ```
 src/MolSim -h
@@ -120,7 +128,7 @@ man ./.molsim.1
 
 ### Project structure
 The project is structured as follows:
-![Project structure UML](docs/report/report2/res/UML.png)
+![Project structure UML](docs/res/UML.png)
 Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project.
 
 **`Simulation`**

@@ -20,6 +20,11 @@ public:
     std::vector<Particle> particles;
 
     /**
+     * @brief Counter for active particles
+     */
+    int activeParticleCount;
+
+    /**
      * @brief Construct a new Particle Container object
      * @param particles The particles to be added to the container
      * @return ParticleContainer object
@@ -40,11 +45,11 @@ public:
     void addParticle(const Particle& p);
 
     /**
-     * @brief Removes the particles in the map from the container
-     * @param particleMap The particles to be removed (true if remove)
+     * @brief Removes the particles from further calculations
+     * @param p The particle to be removed
      * @return void
      */
-    void removeParticles(std::unordered_map<Particle*, bool>& particleMap);
+    void removeParticle(Particle& p);
 
     /**
      * @brief Get the particles within the container
@@ -53,18 +58,79 @@ public:
     std::vector<Particle> getContainer() const;
 
     /**
-     * @brief Iterator to the beginning
-     * @return An iterator to the beginning
+     * @brief Forward declaration for iteration over active particles
      */
-    std::vector<Particle>::iterator begin();
-    /**
-     * @brief Iterator to the end
-     * @return Returns an iterator to the end
-     */
-    std::vector<Particle>::iterator end();
+    class ActiveIterator;
 
     /**
-     * @brief Pair Iterator nested class for iterating over all pairs of particles
+     * @brief Get the iterator to the first active particle
+     * @return The iterator to the first active particle
+     */
+    ActiveIterator begin();
+
+    /**
+     * @brief Get the iterator to the last active particle
+     * @return The iterator to the last active particle
+     */
+    ActiveIterator end();
+
+    /**
+     * @brief Forward declaration for pair iteration
+     */
+    class PairIterator;
+
+    /**
+     * @brief Get the iterator to the beginning of the pairs
+     * @return The iterator to the beginning of the pairs
+     */
+    PairIterator beginPairs();
+    /**
+     * @brief Get the iterator to the end of the pairs
+     * @return The iterator to the end of the pairs
+     */
+    PairIterator endPairs();
+
+    /**
+     * @brief Iterator class for active particles
+     */
+    class ActiveIterator {
+    private:
+       /**
+        * @brief Iterator for the ActiveIterator
+        */
+        std::vector<Particle>::iterator begin, current, end;
+
+       /**
+        * @brief Advance to the next active particle
+        */
+       void advanceToNextActive();
+
+    public:
+        /**
+         * @brief Construct a new Iterator over active particles
+         * @param start The iterator to the first active particle
+         * @param end The iterator to the last active particle
+         * @return ActiveIterator object
+         */
+        ActiveIterator(std::vector<Particle>::iterator start, std::vector<Particle>::iterator end);
+
+        /**
+         * @brief Override the * operator for range-based for loop
+         * @return The reference to the current active particle
+         */
+        Particle& operator*() const;
+
+        ActiveIterator& operator++();
+
+        ActiveIterator& operator--();
+
+        bool operator!=(const ActiveIterator& other) const;
+
+        bool operator==(const ActiveIterator& other) const;
+    };
+
+    /**
+     * @brief Pair Iterator nested class for iterating over all unique pairs of particles
      * @details Iterate from one fixed particle over every possible pair and continue to the next
      * fixed particle.
      */
@@ -73,7 +139,7 @@ public:
         /**
          * @brief The iterators need to iterate over the particle pairs
          */
-        std::vector<Particle>::iterator start, first, second, last;
+        ActiveIterator start, first, second, last;
 
     public:
         /**
@@ -84,9 +150,9 @@ public:
          * @return PairIterator object
          */
         PairIterator(
-            std::vector<Particle>::iterator start,
-            std::vector<Particle>::iterator first,
-            std::vector<Particle>::iterator last);
+            ActiveIterator start,
+            ActiveIterator first,
+            ActiveIterator last);
 
         /**
          * @brief Get the last particle
@@ -116,17 +182,6 @@ public:
          */
         bool operator==(const PairIterator& other) const;
     };
-
-    /**
-     * @brief Get the iterator to the beginning of the pairs
-     * @return The iterator to the beginning of the pairs
-     */
-    PairIterator beginPairs();
-    /**
-     * @brief Get the iterator to the end of the pairs
-     * @return The iterator to the end of the pairs
-     */
-    PairIterator endPairs();
 };
 
 #endif // PARTICLECONTAINER_H

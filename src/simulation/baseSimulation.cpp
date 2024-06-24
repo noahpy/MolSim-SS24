@@ -27,3 +27,8 @@ void Simulation::setOutputFile(std::string output)
 {
     this->writer->out_name = output;
 }
+
+std::string Simulation::getOutputFile() const
+{
+    return this->writer->out_name;
+}

@@ -4,6 +4,9 @@
 #include "physics/boundaryConditions/BoundaryConfig.h"
 #include "simulation/baseSimulation.h"
 
+// forward declare
+class CellGrid;
+
 /**
  * @brief The BoundaryConditionHandler class is a class that handles the application of boundary
  * conditions to a simulation
@@ -14,7 +17,7 @@ public:
      * @brief Constructor for the BoundaryConditionHandler class
      * @param boundaryConfig The boundary conditions to apply described in the object
      */
-    explicit BoundaryConditionHandler(const BoundaryConfig& boundaryConfig);
+    explicit BoundaryConditionHandler(const BoundaryConfig& boundaryConfig, const CellGrid& cellGrid);
 
     /**
      * @brief The call to apply the boundary condition to the simulation before any updates are made
@@ -30,8 +33,10 @@ public:
      */
     void postUpdateBoundaryHandling(Simulation& simulation);
 
-    size_t
-        dimensionality; /**< The dimensionality of the simulation as by the provided boundaries */
+    /** The dimensionality of the simulation as by the provided boundaries */
+    size_t dimensionality;
+
+    BoundaryConfig boundaryConfig;
 
 protected:
     std::vector<std::unique_ptr<BoundaryCondition>>

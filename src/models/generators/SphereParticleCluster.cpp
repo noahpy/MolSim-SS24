@@ -10,8 +10,9 @@ SphereParticleCluster::SphereParticleCluster(
     double mass,
     std::array<double, 3> initialVelocity,
     double meanVelocity,
-    size_t brownianMotionDimensions)
-    : ParticleCluster(origin, mass, initialVelocity, meanVelocity, brownianMotionDimensions)
+    size_t brownianMotionDimensions,
+    unsigned ptype)
+    : ParticleCluster(origin, mass, initialVelocity, meanVelocity, brownianMotionDimensions, ptype)
     , sphereRadius(radius)
     , sphereDimensions(sphereDimensions)
     , spacing(spacing)
@@ -58,7 +59,7 @@ void SphereParticleCluster::generateRing(
         std::array<double, 3> position { origin[0], origin[1], origin[2] + z_offset };
         std::array<double, 3> velocity =
             initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
-        Particle particle = Particle(position, velocity, mass);
+        Particle particle (position, velocity, mass, ptype);
 
         particles[insertionIndex++] = particle;
     } else if (realRadius >= spacing) {
@@ -80,7 +81,7 @@ void SphereParticleCluster::generateRing(
 
             std::array<double, 3> velocity =
                 initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
-            Particle particle = Particle(position, velocity, mass);
+            Particle particle (position, velocity, mass, ptype);
 
             particles[insertionIndex++] = particle;
 
@@ -176,14 +177,15 @@ size_t SphereParticleCluster::getNumberOfParticlesRing(double realRadius) const
 std::string SphereParticleCluster::toString() const
 {
     std::ostringstream oss;
-    oss << "origin: " << origin[0] << ", " << origin[1] << ", " << origin[2] << "; ";
-    oss << "mass: " << mass << "; ";
-    oss << "initialVelocity: " << initialVelocity[0] << ", " << initialVelocity[1] << ", "
-        << initialVelocity[2] << "; ";
-    oss << "meanVelocity: " << meanVelocity << "; ";
-    oss << "dimensions: " << dimensions << "; ";
-    oss << "radius: " << sphereRadius << "; ";
-    oss << "sphereDimensions: " << sphereDimensions << "; ";
-    oss << "spacing: " << spacing << "; ";
+    oss << "pos: (" << origin[0] << ", " << origin[1] << ", " << origin[2] << ") ";
+    oss << "vel: (" << initialVelocity[0] << ", " << initialVelocity[1] << ", "
+        << initialVelocity[2] << ") ";
+    oss << "radius: " << sphereRadius << " ";
+    oss << "sphereDim: " << sphereDimensions << " ";
+    oss << "mass: " << mass << " ";
+    oss << "ptype: " << ptype << " ";
+    oss << "meanVel: " << meanVelocity << " ";
+    oss << "brownDim: " << dimensions << " ";
+    oss << "spacing: " << spacing << " ";
     return oss.str();
 }
