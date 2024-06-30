@@ -54,6 +54,12 @@ public:
     void clearParticles();
 
     /**
+     * @brief Sets the particles in the cell
+     * @param p_particles The list of particles to set
+     */
+    void setParticles(ParticleRefList& p_particles);
+
+    /**
      * @brief Returns a list of references to all particles in the cell.
      * @return A list of references to the particles in the cell.
      */

@@ -52,6 +52,18 @@ void Cell::clearParticles()
     particles.clear();
 }
 
+void Cell::setParticles(ParticleRefList& p_particles)
+{
+    if (!particles.empty())
+        spdlog::warn(
+            "Set particles is overwriting particles in cell {}, {}, {}",
+            myIndex[0],
+            myIndex[1],
+            myIndex[2]);
+
+    particles = p_particles;
+}
+
 CellType Cell::getType() const
 {
     return type;

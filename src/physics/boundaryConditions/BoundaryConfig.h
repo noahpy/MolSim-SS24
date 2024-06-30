@@ -5,13 +5,28 @@
 #include <spdlog/spdlog.h>
 #include <string>
 
-enum class BoundaryType { OUTFLOW, SOFT_REFLECTIVE, PERIODIC };
+enum class BoundaryType { OUTFLOW, SOFT_REFLECTIVE, PERIODIC, WALL };
 
+/**
+ * @brief The BoundaryConfig class is a class that holds the configuration for the boundaries of a
+ * simulation
+ */
 class BoundaryConfig {
 public:
+    /**
+     * @brief Construct a new Boundary Config object
+     */
     BoundaryConfig() = default;
 
-    // 3D Config
+    /**
+     * @brief Construct a new Boundary Config object for 3D
+     * @param left The boundary type for the left side
+     * @param right The boundary type for the right side
+     * @param top The boundary type for the top side
+     * @param bottom The boundary type for the bottom side
+     * @param front The boundary type for the front side
+     * @param back The boundary type for the back side
+     */
     BoundaryConfig(
         BoundaryType left,
         BoundaryType right,
@@ -23,14 +38,20 @@ public:
                         { Position::TOP, top },     { Position::BOTTOM, bottom },
                         { Position::FRONT, front }, { Position::BACK, back } } {};
 
-    // 2D Config
+    /**
+     * @brief Construct a new Boundary Config object for 2D
+     * @param left The boundary type for the left side
+     * @param right The boundary type for the right side
+     * @param top The boundary type for the top side
+     * @param bottom The boundary type for the bottom side
+     */
     BoundaryConfig(BoundaryType left, BoundaryType right, BoundaryType top, BoundaryType bottom)
         : boundaryMap { { Position::LEFT, left },
                         { Position::RIGHT, right },
                         { Position::TOP, top },
                         { Position::BOTTOM, bottom } } {};
 
-    std::map<Position, BoundaryType> boundaryMap;
+    std::map<Position, BoundaryType> boundaryMap; /**< The map of boundaries */
 };
 
 /**
@@ -45,6 +66,8 @@ inline BoundaryType getBoundaryType(const std::string& str)
         return BoundaryType::SOFT_REFLECTIVE;
     } else if (str == "periodic") {
         return BoundaryType::PERIODIC;
+    } else if (str == "wall") {
+        return BoundaryType::WALL;
     } else {
         spdlog::warn("Unknown boundary type: {}, choosing OUTFLOW", str);
         return BoundaryType::OUTFLOW;
@@ -63,6 +86,8 @@ inline std::string getBoundaryString(const BoundaryType type)
         return "soft_reflective";
     } else if (type == BoundaryType::PERIODIC) {
         return "periodic";
+    } else if (type == BoundaryType::WALL) {
+        return "wall";
     } else {
         spdlog::warn("Unknown boundary type, choosing OUTFLOW");
         return "overflow";
@@ -77,12 +102,14 @@ inline std::string getBoundaryString(const BoundaryType type)
 inline size_t boundaryToPriority(const BoundaryType& type)
 {
     switch (type) {
-        case BoundaryType::OUTFLOW:
+    case BoundaryType::OUTFLOW:
         return 0;
-        case BoundaryType::PERIODIC:
+    case BoundaryType::WALL:
         return 1;
-        case BoundaryType::SOFT_REFLECTIVE:
+    case BoundaryType::PERIODIC:
         return 2;
+    case BoundaryType::SOFT_REFLECTIVE:
+        return 3;
     default:
         spdlog::error("Boundary type not recognized. Its priority has not been specified.");
         throw std::invalid_argument("Boundary type not recognized");
@@ -90,22 +117,28 @@ inline size_t boundaryToPriority(const BoundaryType& type)
 }
 
 /**
- * @brief A comparison function that compares two boundaries by their priority. Returns true, if first < second i.e. the first one is higher priority than the second
+ * @brief A comparison function that compares two boundaries by their priority. Returns true, if
+ * first < second i.e. the first one is higher priority than the second
  * @param first The first boundary type
  * @param second The second boundary type
  * @return If first < second i.e. the first one is higher priority than the second
  */
-inline bool compareBoundaryTypeByPriority(const BoundaryType& first, const BoundaryType& second) {
+inline bool compareBoundaryTypeByPriority(const BoundaryType& first, const BoundaryType& second)
+{
     return boundaryToPriority(first) < boundaryToPriority(second);
 }
 
 /**
- * @brief A comparison function that compares two boundary config map entries by their boundary's priority. Returns true, if a < b i.e. the first one is higher priority than the second
+ * @brief A comparison function that compares two boundary config map entries by their boundary's
+ * priority. Returns true, if a < b i.e. the first one is higher priority than the second
  * @param a The first map entry
  * @param b The second map entry
- * @return a < b w.r.t their boundary type i.e. if a's boundary has higher priority than b's boundary
+ * @return a < b w.r.t their boundary type i.e. if a's boundary has higher priority than b's
+ * boundary
  */
-inline bool compareBoundaryConfigMap(const std::pair<Position, BoundaryType>& a, const std::pair<Position, BoundaryType>& b) {
+inline bool compareBoundaryConfigMap(
+    const std::pair<Position, BoundaryType>& a, const std::pair<Position, BoundaryType>& b)
+{
     BoundaryType typeA = a.second;
     BoundaryType typeB = b.second;
     return compareBoundaryTypeByPriority(typeA, typeB);
