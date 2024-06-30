@@ -5,37 +5,35 @@
 #include <map>
 
 /**
- * @brief The WallBoundary class is a class that represents a boundary condition where the boundary
+ * @brief The StaticBoundary class is a class that represents a boundary condition where the boundary
  * is a wall consisting of particles
  */
-class WallBoundary : public BoundaryCondition {
+class StaticBoundary : public BoundaryCondition {
 public:
     /**
-     *  @brief The constructor of the WallBoundary
+     *  @brief The constructor of the StaticBoundary
      * @param p_position The position of the boundary
-     * @param cellGrid The cell grid to perform the wall boundaries in
+     * @param cellGrid The cell grid to perform the static boundaries in
      */
-    WallBoundary(Position p_position, const CellGrid& cellGrid);
+    StaticBoundary(Position p_position, const CellGrid& cellGrid);
 
     /**
-     * @brief Initialize the wall boundary with a thickness and a particle
-     * @details This is necessary, as we only get the information the the size and type ot the wall
+     * @brief Initialize the static boundary
+     * @details This is necessary, as we only get the information the the size and type ot the side
      * once the simulation is initialized
-     * @param thickness The thickness of the wall in particles
-     * @param particle The particle to use as the wall
      */
-    void init(size_t thickness, const Particle& particle);
+    void init();
 
     /**
      * @brief The call to apply the boundary condition to the simulation before all updates are
-     * made. This will insert all particles of the walls into the halo cells
+     * made. This will insert all particles of the static particles into the halo cells
      * @param simulation The simulation to apply the boundary to
      * @return void
      */
     void preUpdateBoundaryHandling(Simulation& simulation) override;
     /**
      * @brief The call to apply the boundary condition to the simulation after all updates are made.
-     * This will remove all particles of the walls from the halo cells
+     * This will remove all particles of the static side from the halo cells
      * @param simulation The simulation to apply the boundary to
      * @return void
      */

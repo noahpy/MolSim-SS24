@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 #include <string>
 
-enum class BoundaryType { OUTFLOW, SOFT_REFLECTIVE, PERIODIC, WALL };
+enum class BoundaryType { OUTFLOW, SOFT_REFLECTIVE, PERIODIC, STATIC };
 
 /**
  * @brief The BoundaryConfig class is a class that holds the configuration for the boundaries of a
@@ -66,8 +66,8 @@ inline BoundaryType getBoundaryType(const std::string& str)
         return BoundaryType::SOFT_REFLECTIVE;
     } else if (str == "periodic") {
         return BoundaryType::PERIODIC;
-    } else if (str == "wall") {
-        return BoundaryType::WALL;
+    } else if (str == "static") {
+        return BoundaryType::STATIC;
     } else {
         spdlog::warn("Unknown boundary type: {}, choosing OUTFLOW", str);
         return BoundaryType::OUTFLOW;
@@ -86,8 +86,8 @@ inline std::string getBoundaryString(const BoundaryType type)
         return "soft_reflective";
     } else if (type == BoundaryType::PERIODIC) {
         return "periodic";
-    } else if (type == BoundaryType::WALL) {
-        return "wall";
+    } else if (type == BoundaryType::STATIC) {
+        return "static";
     } else {
         spdlog::warn("Unknown boundary type, choosing OUTFLOW");
         return "overflow";
@@ -104,7 +104,7 @@ inline size_t boundaryToPriority(const BoundaryType& type)
     switch (type) {
     case BoundaryType::OUTFLOW:
         return 0;
-    case BoundaryType::WALL:
+    case BoundaryType::STATIC:
         return 1;
     case BoundaryType::PERIODIC:
         return 2;

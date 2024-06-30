@@ -1,20 +1,23 @@
 
-#include "WallBoundary.h"
+#include "StaticBoundary.h"
 #include <spdlog/spdlog.h>
 
-WallBoundary::WallBoundary(Position p_position, const CellGrid& cellGrid)
+StaticBoundary::StaticBoundary(Position p_position, const CellGrid& cellGrid)
     : BoundaryCondition(p_position)
     , cellGrid(cellGrid)
 {
 }
 
-void WallBoundary::init(size_t thickness, const Particle& particle)
+void StaticBoundary::init()
 {
     isInitialized = true;
     // TODO create wall and store in particles
+    // Idea: Take partilces from the halo cell to the position of the wall
+    // Store the ref list
+    // That will then be reused. But! Keep overflow in mind
 }
 
-void WallBoundary::preUpdateBoundaryHandling(Simulation& simulation)
+void StaticBoundary::preUpdateBoundaryHandling(Simulation& simulation)
 {
     checkInitialized();
     for (CellIndex haloCellIndex : cellGrid.haloCellIterator(position)) {
@@ -22,7 +25,7 @@ void WallBoundary::preUpdateBoundaryHandling(Simulation& simulation)
     }
 }
 
-void WallBoundary::postUpdateBoundaryHandling(Simulation& simulation)
+void StaticBoundary::postUpdateBoundaryHandling(Simulation& simulation)
 {
     checkInitialized();
     for (CellIndex haloCellIndex : cellGrid.haloCellIterator(position)) {
@@ -30,10 +33,10 @@ void WallBoundary::postUpdateBoundaryHandling(Simulation& simulation)
     }
 }
 
-void WallBoundary::checkInitialized() const
+void StaticBoundary::checkInitialized() const
 {
     if (!isInitialized) {
-        spdlog::error("WallBoundary at {} is not initialized", position);
+        spdlog::error("StaticBoundary at {} is not initialized", position);
         exit(EXIT_FAILURE);
     }
 }
