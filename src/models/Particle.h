@@ -8,6 +8,7 @@
 #pragma once
 
 #include <array>
+#include <mutex>
 #include <string>
 
 /**
@@ -19,6 +20,7 @@ private:
      * @brief Position of the particle
      */
     std::array<double, 3> x;
+
 
     /**
      * @brief Velocity of the particle
@@ -39,6 +41,11 @@ private:
      * @brief Mass of this particle
      */
     double m;
+
+    /**
+     * @brief Mutex for the particle
+     */
+    std::mutex mutex;
 
     /**
      * @brief Type of the particle.
@@ -81,6 +88,15 @@ public:
      * @return void
      */
     virtual ~Particle();
+
+
+    /**
+     * @brief Copy assignment operator
+     * @param other The Particle object to copy
+     * @return The copied Particle object
+     */
+    Particle& operator=(const Particle& other);
+
 
     /**
      * @brief Get the position of the particle
