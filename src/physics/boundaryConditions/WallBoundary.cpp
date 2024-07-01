@@ -54,6 +54,17 @@ void WallBoundary::preUpdateBoundaryHandling(Simulation& simulation)
         static_cast<const LennardJonesDomainSimulation&>(simulation);
 
     for (CellIndex haloCellIndex : LGDSim.getGrid().haloCellIterator(position)) {
+        if (!LGDSim.getGrid()
+                 .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+                 ->getParticles()
+                 .empty())
+            spdlog::warn(
+                "Wall at side {} would overwrite {} particles",
+                getPositionString(position),
+                LGDSim.getGrid()
+                    .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
+                    ->getParticles()
+                    .size());
         LGDSim.getGrid().cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]->setParticles(
             particles[haloCellIndex]);
     }
