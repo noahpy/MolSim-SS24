@@ -14,7 +14,7 @@ MixedLJSimulation::MixedLJSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
-    std::vector<unsigned> stationaryParticleTypes,
+    std::map<unsigned , bool> stationaryParticleTypes,
     const std::map<unsigned, std::pair<double, double>>& LJParams,
     std::array<double, 3> domainOrigin,
     std::array<double, 3> domainSize,

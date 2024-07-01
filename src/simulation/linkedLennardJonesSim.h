@@ -36,7 +36,7 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
-        std::vector<unsigned> stationaryParticleTypes,
+        std::map<unsigned , bool> stationaryParticleTypes,
         double epsilon,
         double sigma,
         std::array<double, 3> domainOrigin,

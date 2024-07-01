@@ -15,7 +15,7 @@ PlanetSimulation::PlanetSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
-    std::vector<unsigned> stationaryParticleTypes,
+    std::map<unsigned , bool> stationaryParticleTypes,
     unsigned frequency)
     : Simulation(
           time,
