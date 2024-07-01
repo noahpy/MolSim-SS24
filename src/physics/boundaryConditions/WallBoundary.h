@@ -1,5 +1,6 @@
 
 #pragma once
+#include "models/generators/CuboidParticleCluster.h"
 #include "models/linked_cell/CellGrid.h"
 #include "physics/boundaryConditions/BoundaryCondition.h"
 #include <map>
@@ -14,10 +15,9 @@ public:
      *  @brief The constructor of the WallBoundary
      * @param p_position The position of the boundary
      * @param cellGrid The cell grid to perform the wall boundaries in
-     * @param thickness The thickness of the wall in particles
-     * @param particle A demo particle which is going to be copied as wall particles
+     * @param wall The CuboidParticleCluster that makes up the wall
      */
-    WallBoundary(Position p_position, const CellGrid& cellGrid, size_t thickness, const Particle& particle);
+    WallBoundary(Position p_position, const CellGrid& cellGrid, const CuboidParticleCluster& wall);
 
     /**
      * @brief The call to apply the boundary condition to the simulation before all updates are
@@ -35,7 +35,7 @@ public:
     void postUpdateBoundaryHandling(Simulation& simulation) override;
 
 private:
-    const CellGrid& cellGrid; /**< The cell grid to perform the wall boundaries in */
     std::map<CellIndex, ParticleRefList>
         particles; /**< Map to store the particles for all halo cells */
+    ParticleContainer wall;
 };
