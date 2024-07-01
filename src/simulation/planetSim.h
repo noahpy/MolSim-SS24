@@ -23,6 +23,7 @@ public:
      * @param strat The strategy to be used for the physics calculations
      * @param writer The writer object to write the output to file
      * @param reader The reader object to read the input from file
+     * @param stationaryParticleTypes The types of particles which are stationary
      * @param frequency The frequency for writing outputs
      * @return A new Planet Simulation object
      */
@@ -34,6 +35,7 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
+        std::vector<unsigned> stationaryParticleTypes,
         unsigned frequency = 10);
 
     /**

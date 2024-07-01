@@ -26,6 +26,7 @@ public:
      * @param strat The strategy to be used for the physics calculations
      * @param writer The writer object to write the output to file
      * @param reader The reader object to read the input from file
+     * @param stationaryParticleTypes The types of particles which are stationary
      * @param LJParams A map that resolves particle type to their epsilon and sigma values
      * @param domainOrigin The origin of the simulation domain
      * @param domainSize The size of the simulation domain
@@ -48,6 +49,7 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
+        std::vector<unsigned> stationaryParticleTypes,
         const std::map<unsigned, std::pair<double, double>>& LJParams,
         std::array<double, 3> domainOrigin,
         std::array<double, 3> domainSize,

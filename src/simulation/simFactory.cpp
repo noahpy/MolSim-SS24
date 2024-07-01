@@ -31,6 +31,7 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.plot_frequency);
 
     case SimulationType::LJ:
@@ -50,6 +51,7 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.epsilon,
             params.sigma,
             params.plot_frequency);
@@ -81,6 +83,7 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.epsilon,
             params.sigma,
             params.domain_origin,
@@ -129,6 +132,7 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.epsilon,
             params.sigma,
             params.domain_origin,
@@ -178,6 +182,7 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.typesMap,
             params.domain_origin,
             params.domain_size,

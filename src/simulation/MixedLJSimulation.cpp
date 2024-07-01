@@ -1,5 +1,7 @@
 
 #include "MixedLJSimulation.h"
+
+#include <utility>
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
@@ -12,6 +14,7 @@ MixedLJSimulation::MixedLJSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
+    std::vector<unsigned> stationaryParticleTypes,
     const std::map<unsigned, std::pair<double, double>>& LJParams,
     std::array<double, 3> domainOrigin,
     std::array<double, 3> domainSize,
@@ -34,6 +37,7 @@ MixedLJSimulation::MixedLJSimulation(
           strat,
           std::move(writer),
           std::move(reader),
+          std::move(stationaryParticleTypes),
           0,
           0,
           domainOrigin,
