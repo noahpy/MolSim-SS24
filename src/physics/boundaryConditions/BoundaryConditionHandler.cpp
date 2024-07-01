@@ -3,7 +3,7 @@
 #include "physics/boundaryConditions/OverflowBoundary.h"
 #include "physics/boundaryConditions/PeriodicBoundary.h"
 #include "physics/boundaryConditions/SoftReflectiveBoundary.h"
-#include "physics/boundaryConditions/StaticBoundary.h"
+#include "physics/boundaryConditions/WallBoundary.h"
 #include <algorithm>
 #include <spdlog/spdlog.h>
 
@@ -56,7 +56,7 @@ BoundaryConditionHandler::BoundaryConditionHandler(
             break;
         case BoundaryType::WALL:
             boundaryConditions.push_back(
-                std::make_unique<StaticBoundary>(position, cellGrid));
+                std::make_unique<WallBoundary>(position, cellGrid));
             break;
         default:
             spdlog::error("Boundary type not recognized.");
