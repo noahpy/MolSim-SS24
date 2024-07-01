@@ -6,6 +6,7 @@ WallBoundary::WallBoundary(
     Position p_position, const CellGrid& cellGrid, const CuboidParticleCluster& wallCluster)
     : BoundaryCondition(p_position)
     , wall()
+    , particles()
 {
     std::vector<Particle> generatedWall(wallCluster.getTotalNumberOfParticles());
     size_t insertIndex = 0;
@@ -42,6 +43,10 @@ WallBoundary::WallBoundary(
                 haloIndexOfParticle[0],
                 haloIndexOfParticle[1],
                 haloIndexOfParticle[2]);
+
+        // init map if no list has been assigned yet
+        if (particles.find(haloIndexOfParticle) == particles.end())
+            particles[haloIndexOfParticle] = {};
 
         std::reference_wrapper<Particle> particleRef(particle);
         particles.at(haloIndexOfParticle).emplace_back(particleRef);
