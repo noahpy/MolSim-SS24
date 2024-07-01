@@ -42,6 +42,8 @@ BoundaryConditionHandler::BoundaryConditionHandler(
                 getPositionString(oppositePosition(position)));
             exit(EXIT_FAILURE);
         }
+        CuboidParticleCluster wallL ({0.99, 0.5, 0.5}, 2,30,12,1.0,1,{0,0,0},0,3,1);
+        CuboidParticleCluster wallR ({27.21, 0.5, 0.5}, 2,30,12,1.0,1,{0,0,0},0,3,1);
 
         switch (type) {
         case BoundaryType::OUTFLOW:
@@ -56,7 +58,7 @@ BoundaryConditionHandler::BoundaryConditionHandler(
             break;
         case BoundaryType::WALL:
             boundaryConditions.push_back(
-                std::make_unique<WallBoundary>(position, cellGrid));
+                std::make_unique<WallBoundary>(position, cellGrid, position == LEFT ? wallL : wallR));
             break;
         default:
             spdlog::error("Boundary type not recognized.");
