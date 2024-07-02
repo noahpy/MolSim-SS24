@@ -68,7 +68,8 @@ public:
      * @param cellIndex The index of the target cell
      * @return A list of references to all particles in the target cell and its neighbors
      */
-    [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const;
+    [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const
+        THREAD_SAFE;
 
     /**
      * @brief Updates the cell lists by the position of all particles.

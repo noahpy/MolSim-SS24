@@ -204,7 +204,7 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
     }
 }
 
-std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) const
+std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) const THREAD_SAFE
 {
     std::list<CellIndex> cellList;
 
@@ -216,17 +216,7 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
     }
 
     // check if this cell was not visited
-    if (!cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited) {
-        // Mark this cell as visited
-        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = true;
-        // Set forces
-        auto particleRefs =
-            cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getParticles();
-        for (auto& p : particleRefs) {
-            p.get().setOldF(p.get().getF());
-            p.get().setF({ 0.0, 0.0, 0.0 });
-        }
-    }
+    cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->checkVisitedReset();
 
     // Iterate over all neighbors including the cell itself
     for (int dx = -1; dx <= 1; ++dx) {
@@ -242,33 +232,15 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
                 }
 
                 if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
-                    if (cells.at(nx).at(ny).at(nz)->getCounter() > 0) {
-                        // Decrease counter
-                        cells.at(nx).at(ny).at(nz)->decrementCounter();
-                        // if counter reached zero, reset visited
-                        if (cells.at(nx).at(ny).at(nz)->getCounter() == 0) {
-                            cells.at(nx).at(ny).at(nz)->visited = false;
-                        }
-                        // Skip this neighbour
+                    // skip neighbour is already visited
+                    if (cells.at(nx).at(ny).at(nz)->checkNeighbourCounter())
                         continue;
-                    }
 
                     // Insert all particles into particleList
                     cellList.emplace_back(CellIndex { nx, ny, nz });
 
-                    // check if not visited yet
-                    if (!cells.at(nx).at(ny).at(nz)->visited) {
-                        // Mark as visited
-                        cells.at(nx).at(ny).at(nz)->visited = true;
-                        // Set OldF to F and zero F
-                        ParticleRefList& particleRefs = cells.at(nx).at(ny).at(nz)->getParticles();
-                        auto it = particleRefs.begin();
-                        while (it != particleRefs.end()) {
-                            (*it).get().setOldF((*it).get().getF());
-                            (*it).get().setF({ 0.0, 0.0, 0.0 });
-                            ++it;
-                        }
-                    }
+                    // reset forces if not visited yet
+                    cells.at(nx).at(ny).at(nz)->checkVisitedReset();
 
                     if (cells.at(nx).at(ny).at(nz)->getType() != CellType::Halo) {
                         // Increment neighborCounter if not a halo cell
