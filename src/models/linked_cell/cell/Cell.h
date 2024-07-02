@@ -29,6 +29,9 @@ public:
      */
     explicit Cell(CellType type, const CellIndex index);
 
+    /** @brief Copy constructor for Cell. */
+    Cell(const Cell& other);
+
     /** @brief Destructor for Cell. */
     virtual ~Cell();
 
@@ -81,8 +84,9 @@ public:
      * @brief Gets the current value of the neighbor counter.
      * @return The current value of the neighbor counter.
      */
-    [[nodiscard]] inline int getCounter() const
+    [[nodiscard]] inline int getCounter() const THREAD_SAFE
     {
+        std::lock_guard<std::mutex> lock(mutex);
         return neighborCounter;
     }
 
@@ -95,12 +99,28 @@ public:
     /**
      * @brief Decrements the neighbor counter.
      */
-    void decrementCounter() { neighborCounter--; };
+    inline void decrementCounter() THREAD_SAFE
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        neighborCounter--;
+    };
 
     /**
      * @brief Increments the neighbor counter.
      */
-    void incrementCounter() { neighborCounter++; };
+    inline void incrementCounter() THREAD_SAFE
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        neighborCounter++;
+    };
+
+    /**
+     * @brief Restes particles for the next timestep if it was not visited yet
+     * @return void
+     */
+    void checkVisitedReset() THREAD_SAFE;
+
+    bool checkNeighbourCounter() THREAD_SAFE;
 
     /** @brief Index of the cell. */
     CellIndex myIndex;
@@ -135,6 +155,9 @@ private:
     /// A list storing references to particles within the cell.
     ParticleRefList particles;
 
+    /// mutex
+    mutable std::mutex mutex;
+
 public:
     class PairListIterator {
     public:
@@ -149,7 +172,8 @@ public:
          * @brief Dereferences the iterator, returning a pair of particle pointers.
          * @return A pair of pointers to the current particle pair.
          */
-        std::pair<Particle&, Particle&> operator*() const;
+        std::pair<std::reference_wrapper<Particle>, std::reference_wrapper<Particle>> operator*()
+            const;
 
         /**
          * @brief Increments the iterator to the next particle pair.

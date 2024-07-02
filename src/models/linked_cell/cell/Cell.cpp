@@ -23,6 +23,17 @@ Cell::Cell(const CellType type, const CellIndex index)
 {
 }
 
+Cell::Cell(const Cell& other)
+    : type(other.type)
+    , neighborCounter(other.neighborCounter)
+    , myIndex(other.myIndex)
+    , boundaryNeighbours(other.boundaryNeighbours)
+    , haloNeighbours(other.haloNeighbours)
+    , innerNeighbours(other.innerNeighbours)
+    , mutex()
+{
+}
+
 Cell::~Cell() = default;
 
 void Cell::addParticle(Particle& particle)
@@ -87,7 +98,33 @@ Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
     }
 }
 
-std::pair<Particle&, Particle&> Cell::PairListIterator::operator*() const
+void Cell::checkVisitedReset() THREAD_SAFE
+{
+    std::lock_guard<std::mutex> lock(mutex);
+    if (!visited) {
+        visited = true;
+        // reset particles
+        for (auto& p : particles) {
+            p.get().resetF();
+        }
+    }
+}
+
+bool Cell::checkNeighbourCounter() THREAD_SAFE
+{
+    std::lock_guard<std::mutex> lock(mutex);
+    if (neighborCounter > 0){
+        --neighborCounter;
+        if(!neighborCounter){
+            visited = false;
+        }
+        return true;
+    }
+    return false;
+}
+
+std::pair<std::reference_wrapper<Particle>, std::reference_wrapper<Particle>> Cell::
+    PairListIterator::operator*() const
 {
     return { (*firstIt).get(), (*secondIt).get() };
 }
