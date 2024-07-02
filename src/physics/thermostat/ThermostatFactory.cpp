@@ -7,9 +7,9 @@ std::unique_ptr<Thermostat> thermostatFactory(
 {
     switch (type) {
     case ThermostatType::CLASSICAL:
-        return std::make_unique<Thermostat>(Thermostat(init, target, delta, dim));
+        return std::make_unique<Thermostat>(init, target, delta, dim);
     case ThermostatType::INDIVIDUAL:
-        return std::make_unique<Thermostat>(IndividualThermostat(init, target, delta, dim));
+        return std::make_unique<IndividualThermostat>(init, target, delta, dim);
     default:
         throw std::invalid_argument("Invalid thermostat type");
     }

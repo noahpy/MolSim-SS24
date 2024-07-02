@@ -21,7 +21,7 @@ MixedLJSimulation::MixedLJSimulation(
     double cutoff,
     const BoundaryConfig& boundaryConfig,
     double gravityConstant,
-    std::unique_ptr<Thermostat> thermostat,
+    std::unique_ptr<Thermostat> p_thermostat,
     unsigned int frequency,
     unsigned int updateFrequency,
     bool read_file,
@@ -46,10 +46,10 @@ MixedLJSimulation::MixedLJSimulation(
           updateFrequency,
           false)
     , gravityConstant(gravityConstant)
-    , thermostat(std::move(thermostat))
-    , T_init(thermostat->getInit())
-    , T_target(thermostat->getTarget())
-    , delta_T(thermostat->getDelta())
+    , thermostat(std::move(p_thermostat))
+    , T_init(p_thermostat->getInit())
+    , T_target(p_thermostat->getTarget())
+    , delta_T(p_thermostat->getDelta())
     , n_thermostat(n_thermostat)
     , ljparams(LJParams)
     , doProfile(doProfile)
