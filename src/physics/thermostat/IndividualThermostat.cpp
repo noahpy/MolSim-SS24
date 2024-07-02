@@ -45,3 +45,7 @@ std::array<double, 3> IndividualThermostat::getMeanVelocity(ParticleContainer& c
     meanVelocity = (1/container.activeParticleCount) * meanVelocity;
     return meanVelocity;
 }
+
+std::string IndividualThermostat::getName() const {
+    return "IndividualThermostat";
+}

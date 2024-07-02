@@ -61,3 +61,8 @@ double Thermostat::getBeta(double T_current) const
     // calculate scaling factor beta
     return std::sqrt(T_new / T_current);
 }
+
+std::string Thermostat::getName() const
+{
+    return "Thermostat";
+}

@@ -33,9 +33,7 @@ public:
      * @param cutoff The cutoff radius of the simulation
      * @param boundaryConfig The boundary condition configuration specification
      * @param gravity_constant The gravity constant to be used
-     * @param T_init The initial temperature
-     * @param T_target The target temperature
-     * @param delta_T The maximal temperature change in one step
+     * @param thermostat The thermostat to be used
      * @param frequency The frequency for writing outputs (default = 10)
      * @param updateFrequency The frequency for updating the grid (default = 10)
      * @param read_file Whether to read the input file (default = true)
@@ -56,9 +54,7 @@ public:
         double cutoff,
         const BoundaryConfig& boundaryConfig,
         double gravity_constant,
-        double T_init,
-        double T_target,
-        double delta_T,
+        Thermostat thermostat,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
         bool read_file = true,

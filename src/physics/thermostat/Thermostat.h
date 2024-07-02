@@ -49,11 +49,38 @@ public:
     virtual double getTotalKineticEnergy(ParticleContainer& container) const;
 
     /**
+     * @brief Get the name of the thermostat.
+     * @return The name of the thermostat.
+     */
+    [[nodiscard]] virtual std::string getName() const;
+
+    /**
      * @brief Calculates the scaling factor beta.
      * @param T_current The current temperature.
      * @return The scaling factor beta.
      */
     [[nodiscard]] double getBeta(double T_current) const;
+
+    /**
+     * @brief Get the initial temperature.
+     * @return The initial temperature.
+     */
+    [[nodiscard]] double getInit() const { return init; }
+    /**
+     * @brief Get the target temperature.
+     * @return The target temperature.
+     */
+    [[nodiscard]] double getTarget() const { return target; }
+    /**
+     * @brief Get the maximum temperature change.
+     * @return The maximum temperature change.
+     */
+    [[nodiscard]] double getDelta() const { return delta; }
+    /**
+     * @brief Get the dimension used.
+     * @return The dimension used.
+     */
+    [[nodiscard]] size_t getDim() const { return dim; }
 
 protected:
     // Initial temperature

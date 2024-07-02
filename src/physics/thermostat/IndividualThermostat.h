@@ -21,6 +21,12 @@ public:
      */
     double getTotalKineticEnergy(ParticleContainer& container) const override;
 
+    /**
+     * @brief Get the name of the thermostat.
+     * @return The name of the thermostat.
+     */
+    [[nodiscard]] std::string getName() const override;
+
 protected:
     /**
      * @brief Calculates the mean velocity of the particles in the simulation.
