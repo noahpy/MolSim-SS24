@@ -66,5 +66,5 @@ public:
     // Flag for measuring performance -> will not use any io and time the simulation
     bool doPerformanceMeasurements = false;
     // List of all types which should be immobile
-    std::map<unsigned , bool> immobileParticleTypes {};
+    std::map<unsigned , bool> immobileParticleTypes { {2, true} };
 };
