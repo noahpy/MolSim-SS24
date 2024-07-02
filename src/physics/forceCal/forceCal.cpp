@@ -60,8 +60,8 @@ void lj_calc(
     // for more details
     std::array<double, 3> force =
         (alpha / dotDelta) * (beta / dotDelta3 + gamma / dotDelta6) * delta;
-    p1.setF(p1.getF() + force);
-    p2.setF(p2.getF() - force);
+    p1.addForce(force);
+    p2.addForce(-1 * force);
 }
 
 void force_lennard_jones(const Simulation& sim)
@@ -119,7 +119,8 @@ void force_lennard_jones_lc(const Simulation& sim)
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
                      ++it) {
                     auto pair = *it;
-                    std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
+                    std::array<double, 3> delta =
+                        pair.first.get().getX() - pair.second.get().getX();
                     // check if the distance is less than the cutoff
                     if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared)
                         lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
@@ -150,6 +151,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
     const CellGrid& cellGrid = len_sim.getGrid();
 
     // for all cells in the grid
+#pragma omp parallel for
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
             // This bool controls the 2D case, where we do need to calc the forces
@@ -170,14 +172,16 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
                      ++it) {
                     auto pair = *it;
-                    std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
+                    std::array<double, 3> delta =
+                        pair.first.get().getX() - pair.second.get().getX();
                     // check if the distance is less than the cutoff
                     if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared) {
-                        double alpha =
-                            len_sim.getAlpha(pair.first.getType(), pair.second.getType());
-                        double beta = len_sim.getBeta(pair.first.getType(), pair.second.getType());
-                        double gamma =
-                            len_sim.getGamma(pair.first.getType(), pair.second.getType());
+                        double alpha = len_sim.getAlpha(
+                            pair.first.get().getType(), pair.second.get().getType());
+                        double beta = len_sim.getBeta(
+                            pair.first.get().getType(), pair.second.get().getType());
+                        double gamma = len_sim.getGamma(
+                            pair.first.get().getType(), pair.second.get().getType());
                         lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
                     }
                 }
