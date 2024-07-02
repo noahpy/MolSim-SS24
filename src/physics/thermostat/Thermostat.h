@@ -39,9 +39,23 @@ public:
      *        are scaled with the scaling factor beta.
      * @param sim The simulation to apply the temperature update to.
      */
-    void updateT(ParticleContainer& sim) const;
+    virtual void updateT(ParticleContainer& sim) const;
 
-private:
+    /**
+     * @brief Calculates the total kinetic energy of the particles in the simulation.
+     * @param container The container of particles in the simulation.
+     * @return The total kinetic energy of the particles in the simulation.
+     */
+    virtual double getTotalKineticEnergy(ParticleContainer& container) const;
+
+    /**
+     * @brief Calculates the scaling factor beta.
+     * @param T_current The current temperature.
+     * @return The scaling factor beta.
+     */
+    [[nodiscard]] double getBeta(double T_current) const;
+
+protected:
     // Initial temperature
     double init;
     // Target temperature
