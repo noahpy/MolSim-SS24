@@ -29,6 +29,7 @@ include(clang-format)
 include(spdlog)
 include(gbench)
 include(xsd)
+include(openmp)
 
 # add subdirectory
 add_subdirectory(src)
