@@ -10,6 +10,8 @@ enum class WriterType { XYZ, VTK, XML, EMPTY };
 
 enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ };
 
+enum ThermostatType { CLASSICAL, INDIVIDUAL };
+
 class Params {
 public:
     // start time
@@ -49,6 +51,8 @@ public:
                                     BoundaryType::SOFT_REFLECTIVE,
                                     BoundaryType::SOFT_REFLECTIVE,
                                     BoundaryType::SOFT_REFLECTIVE };
+    // Thermostat type
+    ThermostatType thermostat_type = ThermostatType::INDIVIDUAL;
     // initial temperature
     double init_temp = 0;
     // target temperature
@@ -67,4 +71,8 @@ public:
     bool doPerformanceMeasurements = false;
     // List of all types which should be immobile
     std::map<unsigned , bool> immobileParticleTypes { {2, true} };
+
+    // TODO
+    // [ ] Read ThermostatType from input file
+    // [ ] Read immobileParticleTypes from input file
 };

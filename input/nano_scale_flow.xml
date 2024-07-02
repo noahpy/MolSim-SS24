@@ -29,7 +29,7 @@
         <!-- Thermostat params -->
         <thermostat>
             <initialTemp>40</initialTemp>
-            <thermoFreq>10000</thermoFreq>
+            <thermoFreq>10</thermoFreq>
         </thermostat>
         <!-- Gravity params -->
         <gravity>−0.8</gravity>
