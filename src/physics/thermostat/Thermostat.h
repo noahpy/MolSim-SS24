@@ -18,6 +18,11 @@ public:
     Thermostat() = default;
 
     /**
+     * @brief Default destructor for Thermostat.
+     */
+    virtual ~Thermostat() = default;
+
+    /**
      * @brief Constructor for Thermostat.
      * @param init Initial temperature.
      * @param target Target temperature.

@@ -21,7 +21,7 @@ MixedLJSimulation::MixedLJSimulation(
     double cutoff,
     const BoundaryConfig& boundaryConfig,
     double gravityConstant,
-    Thermostat thermostat,
+    std::unique_ptr<Thermostat> thermostat,
     unsigned int frequency,
     unsigned int updateFrequency,
     bool read_file,
@@ -47,9 +47,9 @@ MixedLJSimulation::MixedLJSimulation(
           false)
     , gravityConstant(gravityConstant)
     , thermostat(std::move(thermostat))
-    , T_init(thermostat.getInit())
-    , T_target(thermostat.getTarget())
-    , delta_T(thermostat.getDelta())
+    , T_init(thermostat->getInit())
+    , T_target(thermostat->getTarget())
+    , delta_T(thermostat->getDelta())
     , n_thermostat(n_thermostat)
     , ljparams(LJParams)
     , doProfile(doProfile)
@@ -133,7 +133,7 @@ MixedLJSimulation::MixedLJSimulation(
         spdlog::info(
             "Initializing thermostat of type={} with T_init={}K, T_target={}K, delta_T={}K with"
             " a frequency of {}",
-            thermostat.getName(),
+            thermostat->getName(),
             T_init,
             T_target,
             delta_T,
@@ -141,7 +141,7 @@ MixedLJSimulation::MixedLJSimulation(
 
         // Intialize temperature
         spdlog::info("Setting initial temperature to {} K", T_init);
-        thermostat.initializeBrownianMotion(this->container);
+        thermostat->initializeBrownianMotion(this->container);
     } else {
         spdlog::info("Themostat is turned off.");
     }
@@ -168,7 +168,7 @@ void MixedLJSimulation::runSim()
             cellGrid.updateCells();
         }
         if (n_thermostat && iteration % n_thermostat == 0) {
-            thermostat.updateT(this->container);
+            thermostat->updateT(this->container);
         }
         if (doProfile) {
             particleUpdates += container.activeParticleCount;
@@ -200,4 +200,4 @@ double MixedLJSimulation::getRepulsiveDistance(int type) const
 {
     spdlog::trace("Got repulsive distance from Mixed LJ sim");
     return repulsiveDistances.at(type);
-};
+}

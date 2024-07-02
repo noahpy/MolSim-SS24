@@ -54,7 +54,7 @@ public:
         double cutoff,
         const BoundaryConfig& boundaryConfig,
         double gravity_constant,
-        Thermostat thermostat,
+        std::unique_ptr<Thermostat> thermostat,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
         bool read_file = true,
@@ -179,7 +179,7 @@ protected:
     double T_target; /**< The target temperature */
     double delta_T; /**< The maximal temperature change in one step */
     unsigned n_thermostat; /**< The number of steps between thermostat updates */
-    Thermostat thermostat; /**< The thermostat */
+    std::unique_ptr<Thermostat> thermostat; /**< The thermostat */
 
 private:
     // ---- Hide singe epsilon and sigma -------//

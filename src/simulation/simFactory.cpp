@@ -12,7 +12,8 @@ std::unique_ptr<Simulation> simFactory(
     ParticleContainer& particles,
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writePointer,
-    std::unique_ptr<FileReader> readPointer)
+    std::unique_ptr<FileReader> readPointer,
+    std::unique_ptr<Thermostat> thermostat)
 {
     bool is2DTmp;
     switch (params.simulation_type) {
@@ -189,9 +190,7 @@ std::unique_ptr<Simulation> simFactory(
             params.cutoff,
             params.boundaryConfig,
             params.gravity,
-            params.init_temp,
-            params.target_temp,
-            params.max_temp_delta,
+            std::move(thermostat),
             params.plot_frequency,
             params.update_frequency,
             true,
