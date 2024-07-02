@@ -11,6 +11,8 @@
 #include <mutex>
 #include <string>
 
+#define THREAD_SAFE
+
 /**
  * @brief Class representing a particle in the simulation
  */
@@ -20,7 +22,6 @@ private:
      * @brief Position of the particle
      */
     std::array<double, 3> x;
-
 
     /**
      * @brief Velocity of the particle
@@ -45,7 +46,7 @@ private:
     /**
      * @brief Mutex for the particle
      */
-    std::mutex mutex;
+    mutable std::mutex mutex;
 
     /**
      * @brief Type of the particle.
@@ -89,7 +90,6 @@ public:
      */
     virtual ~Particle();
 
-
     /**
      * @brief Copy assignment operator
      * @param other The Particle object to copy
@@ -97,13 +97,13 @@ public:
      */
     Particle& operator=(const Particle& other);
 
-
     /**
      * @brief Get the position of the particle
      * @return The position of the particle
      */
-    [[nodiscard]] inline const std::array<double, 3>& getX() const
+    [[nodiscard]] inline const std::array<double, 3>& getX() const THREAD_SAFE
     {
+        std::lock_guard<std::mutex> lock(mutex);
         return x;
     }
 
@@ -111,8 +111,9 @@ public:
      * @brief Get the velocity of the particle
      * @return The velocity of the particle
      */
-    [[nodiscard]] inline const std::array<double, 3>& getV() const
+    [[nodiscard]] inline const std::array<double, 3>& getV() const THREAD_SAFE
     {
+        std::lock_guard<std::mutex> lock(mutex);
         return v;
     }
 
@@ -120,8 +121,9 @@ public:
      * @brief Get the force effective on the particle
      * @return The force effective on the particle
      */
-    [[nodiscard]] inline const std::array<double, 3>& getF() const
+    [[nodiscard]] inline const std::array<double, 3>& getF() const THREAD_SAFE
     {
+        std::lock_guard<std::mutex> lock(mutex);
         return f;
     }
 
@@ -129,8 +131,10 @@ public:
      * @brief Get the force which was effective on the particle
      * @return The force which was effective on the particle
      */
-    [[nodiscard]] inline const std::array<double, 3>& getOldF() const
+    [[nodiscard]] inline const std::array<double, 3>& getOldF() const THREAD_SAFE
+
     {
+        std::lock_guard<std::mutex> lock(mutex);
         return old_f;
     }
 
@@ -138,8 +142,10 @@ public:
      * @brief Get the mass of the particle
      * @return The mass of the particle
      */
-    [[nodiscard]] inline double getM() const
+    [[nodiscard]] inline double getM() const THREAD_SAFE
+
     {
+        std::lock_guard<std::mutex> lock(mutex);
         return m;
     }
 
@@ -147,34 +153,45 @@ public:
      * @brief Get the activity status of the particle
      * @return The activity status of the particle
      */
-    [[nodiscard]] inline bool getActivity() const
+    [[nodiscard]] inline bool getActivity() const THREAD_SAFE
+
     {
-            return active;
+        std::lock_guard<std::mutex> lock(mutex);
+        return active;
     }
 
     /**
      * @brief Get the type of the particle
      * @return The mass of the particle
      */
-    [[nodiscard]] inline int getType() const
+    [[nodiscard]] inline int getType() const THREAD_SAFE
+
     {
-            return type;
+        std::lock_guard<std::mutex> lock(mutex);
+        return type;
     }
 
     /**
      * @brief Set the type of the particle
      * @param type_new The new type of the particle
      */
-    inline void setType(const int type_new) { type = type_new;}
+    inline void setType(const int type_new) THREAD_SAFE
+
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        type = type_new;
+    }
 
     /**
      * @brief Set the position of the particle
      * @param x_new The new position of the particle
      * @return void
      */
-    inline void setX(const std::array<double, 3>& x_new)
+    inline void setX(const std::array<double, 3>& x_new) THREAD_SAFE
+
     {
-            x = x_new;
+        std::lock_guard<std::mutex> lock(mutex);
+        x = x_new;
     }
 
     /**
@@ -182,8 +199,10 @@ public:
      * @param v_new The new velocity of the particle
      * @return void
      */
-    inline void setV(const std::array<double, 3>& v_new)
+    inline void setV(const std::array<double, 3>& v_new) THREAD_SAFE
+
     {
+        std::lock_guard<std::mutex> lock(mutex);
         v = v_new;
     }
 
@@ -192,8 +211,10 @@ public:
      * @param f_new The new force effective on the particle
      * @return void
      */
-    inline void setF(const std::array<double, 3>& f_new)
+    inline void setF(const std::array<double, 3>& f_new) THREAD_SAFE
+
     {
+        std::lock_guard<std::mutex> lock(mutex);
         f = f_new;
     }
 
@@ -202,8 +223,10 @@ public:
      * @param f_new The previous force effective on the particle
      * @return void
      */
-    inline void setOldF(const std::array<double, 3>& f_new)
+    inline void setOldF(const std::array<double, 3>& f_new) THREAD_SAFE
+
     {
+        std::lock_guard<std::mutex> lock(mutex);
         old_f = f;
     }
 
@@ -212,8 +235,10 @@ public:
      * @param m_new The new mass of the particle
      * @return void
      */
-    inline void setM(double m_new)
+    inline void setM(double m_new) THREAD_SAFE
+
     {
+        std::lock_guard<std::mutex> lock(mutex);
         m = m_new;
     }
 
@@ -221,9 +246,37 @@ public:
      * @brief Set the new activity
      * @param act_new The new activity
      */
-    inline void setActivity(bool act_new)
+    inline void setActivity(bool act_new) THREAD_SAFE
+
     {
+        std::lock_guard<std::mutex> lock(mutex);
         active = act_new;
+    }
+
+    /**
+     * @brief Reset the force for the next timestep
+     * @return void
+     */
+    inline void resetF() THREAD_SAFE
+
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        old_f = f;
+        f = { 0., 0., 0. };
+    }
+
+    /**
+     * @brief Add a force to the particle
+     * @param force The force to add
+     * @return void
+     */
+    inline void addForce(const std::array<double, 3>& force) THREAD_SAFE
+
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        f[0] += force[0];
+        f[1] += force[1];
+        f[2] += force[2];
     }
 
     /**
