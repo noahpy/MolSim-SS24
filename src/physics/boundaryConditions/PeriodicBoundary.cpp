@@ -16,7 +16,7 @@ PeriodicBoundary::PeriodicBoundary(
             coordinateToPosition(boundaryCellIndex, cellGrid.getGridDimensions(), !is2D);
         // Only if the first position is the bound itself, then we want to consider it
         // -> That way we make sure to only transform cells on edges or corners once
-        if (boundarySides[0] != position)
+        if (!isThisSideResponsibleForShifts(boundaryConfig, boundarySides))
             continue;
 
         // Only look at cells that are affected only by periodic bounds -> otherwise the other bound
@@ -141,7 +141,8 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
         auto end = particles.end();
         while (it != end) {
             // If the particle is stationary, we do not need to do anything, as it cannot move
-            if (simulation.stationaryParticleTypes.find((*it).get().getType()) != simulation.stationaryParticleTypes.end()) {
+            if (simulation.stationaryParticleTypes.find((*it).get().getType()) !=
+                simulation.stationaryParticleTypes.end()) {
                 ++it;
                 continue;
             }
@@ -171,12 +172,6 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                 std::array<double, 3> newPosition = (*it).get().getX();
                 newPosition = newPosition + innerTranslation.first;
                 (*it).get().setX(newPosition);
-                if (newPosition[0]/LGDSim.getCutoff() > LGDSim.getGrid().getGridDimensions()[0] + 1 ||
-                    newPosition[1]/LGDSim.getCutoff() > LGDSim.getGrid().getGridDimensions()[1] + 1 ||
-                    newPosition[2]/LGDSim.getCutoff() > LGDSim.getGrid().getGridDimensions()[2] + 1 ||
-                    newPosition[0] < -3 || newPosition[1] < -3 || newPosition[2] < -3) {
-                    int a = 0;
-                }
 
                 // Only if the particle has been moved back into the domain, all translations are
                 // complete. Thus, the particles must be placed into its new cell
@@ -236,4 +231,16 @@ PeriodicBoundShifts PeriodicBoundary::getPeriodicShiftFromPosition(
         (grid.getGridDimensions()[relevantDimension] - 1 - 1) * normalNat;
 
     return { positionalShift, cellIndexShift };
+}
+
+bool PeriodicBoundary::isThisSideResponsibleForShifts(
+    const BoundaryConfig& boundaryConfig, const std::vector<Position>& boundarySides) const
+{
+    size_t i = 0;
+    // Skip all non periodic sides
+    while (boundaryConfig.boundaryMap.at(boundarySides[i]) != BoundaryType::PERIODIC && i < (boundarySides.size()-1)) {
+        i++;
+    }
+    // This side is responsible, if it is the first periodic side
+    return boundarySides[i] == position;
 }

@@ -158,7 +158,7 @@ public:
      */
     inline void setX(const std::array<double, 3>& x_new)
     {
-            x = x_new;
+        x = x_new;
     }
 
     /**

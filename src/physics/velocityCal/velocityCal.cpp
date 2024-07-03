@@ -6,7 +6,8 @@
 void velocity_stroemer_verlet(const Simulation& sim)
 {
     for (auto& p : sim.container) {
-        // v = v + Δt * (F + F_old) / (2 * m)
-        p.setV(p.getV() + (sim.delta_t / (2 * p.getM())) * (p.getOldF() + p.getF()));
+        if (sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+            // v = v + Δt * (F + F_old) / (2 * m)
+            p.setV(p.getV() + (sim.delta_t / (2 * p.getM())) * (p.getOldF() + p.getF()));
     }
 }
