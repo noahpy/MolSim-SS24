@@ -1,9 +1,11 @@
 
 #include "models/Particle.h"
 #include "models/ParticleContainer.h"
+#include "models/generators/CuboidParticleCluster.h"
+#include "models/generators/ParticleGenerator.h"
 #include <gtest/gtest.h>
-#include <vector>
 #include <spdlog/spdlog.h>
+#include <vector>
 
 std::array<double, 3> zeros { 0, 0, 0 };
 std::array<double, 3> ones { 1, 1, 1 };
@@ -143,8 +145,10 @@ TEST(PContainerTests, pairIterators)
         std::pair<Particle&, Particle&> pt_pair = *it;
         for (const std::pair<Particle, Particle>& particle_pair : pairs) {
             EXPECT_FALSE(
-                pt_pair.first.getM() == particle_pair.first.getM() && pt_pair.second.getM() == particle_pair.second.getM() ||
-                pt_pair.first.getM() == particle_pair.second.getM() && pt_pair.second.getM() == particle_pair.first.getM())
+                pt_pair.first.getM() == particle_pair.first.getM() &&
+                    pt_pair.second.getM() == particle_pair.second.getM() ||
+                pt_pair.first.getM() == particle_pair.second.getM() &&
+                    pt_pair.second.getM() == particle_pair.first.getM())
                 << "Found duplicate pair!";
         }
         pairs.emplace_back(pt_pair);
@@ -162,8 +166,10 @@ TEST(PContainerTests, pairIterators)
         std::pair<Particle&, Particle&> pt_pair = *it;
         for (const std::pair<Particle, Particle>& particle_pair : pairs) {
             EXPECT_FALSE(
-                pt_pair.first.getM() == particle_pair.first.getM() && pt_pair.second.getM() == particle_pair.second.getM() ||
-                pt_pair.first.getM() == particle_pair.second.getM() && pt_pair.second.getM() == particle_pair.first.getM())
+                pt_pair.first.getM() == particle_pair.first.getM() &&
+                    pt_pair.second.getM() == particle_pair.second.getM() ||
+                pt_pair.first.getM() == particle_pair.second.getM() &&
+                    pt_pair.second.getM() == particle_pair.first.getM())
                 << "Found duplicate pair!";
         }
         pairs.emplace_back(pt_pair);
@@ -180,8 +186,10 @@ TEST(PContainerTests, pairIterators)
         std::pair<Particle&, Particle&> pt_pair = *it;
         for (const std::pair<Particle, Particle>& particle_pair : pairs) {
             EXPECT_FALSE(
-                pt_pair.first.getM() == particle_pair.first.getM() && pt_pair.second.getM() == particle_pair.second.getM() ||
-                pt_pair.first.getM() == particle_pair.second.getM() && pt_pair.second.getM() == particle_pair.first.getM())
+                pt_pair.first.getM() == particle_pair.first.getM() &&
+                    pt_pair.second.getM() == particle_pair.second.getM() ||
+                pt_pair.first.getM() == particle_pair.second.getM() &&
+                    pt_pair.second.getM() == particle_pair.first.getM())
                 << "Found duplicate pair!";
         }
         pairs.emplace_back(pt_pair);
@@ -300,4 +308,34 @@ TEST(PContainerTests, particleActiveItZero)
     }
 
     EXPECT_EQ(count, 0);
+}
+
+// check if particle ids are set coorectly
+TEST(PContainerTests, particleIdTest)
+{
+    std::vector<Particle> particles {};
+
+    ParticleContainer container { particles }; 
+
+    // add per clusters
+    ParticleGenerator generator(container);
+    generator.registerCluster(std::make_unique<CuboidParticleCluster>(
+        CuboidParticleCluster({ 2, 2, 4 }, 2, 3, 2, 0.4, 4, { 0, 0, 0 }, 0, 0, 0)));
+
+    generator.registerCluster(std::make_unique<SphereParticleCluster>(
+        SphereParticleCluster({ 2, 2, 4 }, 4, 2, 0.3, 7, zeros, 0, 0)));
+
+    generator.generateClusters();
+
+     // add Particles manually
+    container.addParticle({ zeros, zeros, 5 });
+    container.addParticle({ zeros, zeros, 3 });
+    container.addParticle({ zeros, zeros, 1 });
+
+    for(size_t i=0; i < container.particles.size(); i++){
+        EXPECT_EQ(container.particles[i].getID(), i) << "Mass : " << container.particles[i].getM();
+    }
+
+
+
 }

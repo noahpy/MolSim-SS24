@@ -6,6 +6,7 @@
 #define PARTICLECONTAINER_H
 
 #include "Particle.h"
+#include <map>
 #include <vector>
 
 /**
@@ -22,6 +23,11 @@ public:
      * @brief Counter for active particles
      */
     int activeParticleCount;
+
+    /**
+     * @brief Map that contains all the inactive particles
+     */
+    std::map<size_t, size_t> inactiveParticleMap;
 
     /**
      * @brief Construct a new Particle Container object
@@ -94,17 +100,18 @@ public:
      */
     class ActiveIterator {
     private:
-       /**
-        * @brief Iterator for the ActiveIterator
-        */
+        /**
+         * @brief Iterator for the ActiveIterator
+         */
         std::vector<Particle>::iterator begin, current, end;
 
-       /**
-        * @brief Advance to the next active particle
-        */
-       void advanceToNextActive();
+        /**
+         * @brief Advance to the next active particle
+         */
+        void advanceToNextActive();
 
     public:
+        using difference_type = std::ptrdiff_t;
         /**
          * @brief Construct a new Iterator over active particles
          * @param start The iterator to the first active particle
@@ -126,6 +133,16 @@ public:
         bool operator!=(const ActiveIterator& other) const;
 
         bool operator==(const ActiveIterator& other) const;
+
+        ActiveIterator operator+=(difference_type n);
+
+        ActiveIterator operator-=(difference_type n);
+
+        ActiveIterator operator+(difference_type n);
+
+        ActiveIterator operator-(difference_type n);
+
+        difference_type operator-(const ActiveIterator& other) const;
     };
 
     /**
@@ -148,10 +165,7 @@ public:
          * @param last The iterator to the last particle
          * @return PairIterator object
          */
-        PairIterator(
-            ActiveIterator start,
-            ActiveIterator first,
-            ActiveIterator last);
+        PairIterator(ActiveIterator start, ActiveIterator first, ActiveIterator last);
 
         /**
          * @brief Get the last particle

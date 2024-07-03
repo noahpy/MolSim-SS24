@@ -27,17 +27,17 @@ ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
 void ParticleContainer::addParticle(const Particle& p)
 {
     particles.push_back(p);
+    particles.back().setID(particles.size() - 1);
     activeParticleCount++;
 }
 
 void ParticleContainer::removeParticle(Particle& p)
 {
-    p.setV({ 0, 0, 0 });
-    p.setOldF({ 0, 0, 0 });
-    p.setF({ 0, 0, 0 });
     p.setActivity(false);
-    if (activeParticleCount)
+    if (activeParticleCount) {
         activeParticleCount--;
+        inactiveParticleMap.insert_or_assign(p.getID(), p.getID());
+    }
 }
 
 std::vector<Particle> ParticleContainer::getContainer() const
@@ -100,6 +100,40 @@ bool ParticleContainer::ActiveIterator::operator!=(const ActiveIterator& other) 
 bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) const
 {
     return current == other.current;
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+=(difference_type n)
+{
+    while (n--) {
+        ++(*this);
+    }
+    return *this;
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-=(difference_type n)
+{
+    while (n--) {
+        --(*this);
+    }
+    return *this;
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+(difference_type n)
+{
+    this->operator+=(n);
+    return *this;
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-(difference_type n)
+{
+    this->operator-=(n);
+    return *this;
+}
+
+ParticleContainer::ActiveIterator::difference_type ParticleContainer::ActiveIterator::operator-(
+    const ActiveIterator& other) const
+{
+    return std::distance(current, other.current);
 }
 
 // PairIterator Implementation

@@ -59,7 +59,7 @@ void SphereParticleCluster::generateRing(
         std::array<double, 3> position { origin[0], origin[1], origin[2] + z_offset };
         std::array<double, 3> velocity =
             initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
-        Particle particle (position, velocity, mass, ptype);
+        Particle particle (position, velocity, mass, ptype, insertionIndex);
 
         particles[insertionIndex++] = particle;
     } else if (realRadius >= spacing) {
@@ -81,7 +81,7 @@ void SphereParticleCluster::generateRing(
 
             std::array<double, 3> velocity =
                 initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
-            Particle particle (position, velocity, mass, ptype);
+            Particle particle (position, velocity, mass, ptype, insertionIndex);
 
             particles[insertionIndex++] = particle;
 

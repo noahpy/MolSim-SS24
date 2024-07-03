@@ -60,6 +60,11 @@ private:
      */
     bool active;
 
+    /**
+     * @brief Id of the particle
+     */
+    size_t id;
+
 public:
     /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
@@ -67,6 +72,7 @@ public:
      * @param v_arg The velocity of the particle
      * @param m_arg The mass of the particle
      * @param type The type of the particle
+     * @param id The id of the particle
      * @return Particle object
      */
     Particle(
@@ -75,7 +81,8 @@ public:
         std::array<double, 3> x_arg,
         std::array<double, 3> v_arg,
         double m_arg,
-        int type = 0);
+        int type = 0, 
+        size_t id = 0);
 
     /**
      * @brief Construct a new Particle object by copying another Particle object -> do not use
@@ -251,6 +258,18 @@ public:
     {
         std::lock_guard<std::mutex> lock(mutex);
         active = act_new;
+    }
+
+    inline size_t getID() const THREAD_SAFE
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        return id;
+    }
+
+    inline void setID(size_t id_new) THREAD_SAFE
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        id = id_new;
     }
 
     /**
