@@ -125,10 +125,7 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
      * We need to also delete the particles of the opposite side
      */
     for (auto pos : allPositions) {
-        auto iter = LGDSim.getGrid().haloCellIterator(pos);
-        auto b = iter.begin();
-        auto e = iter.end();
-        for (auto haloCellIndex : iter) {
+        for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(pos)) {
             LGDSim.getGrid()
                 .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
                 ->clearParticles();
@@ -168,6 +165,12 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
                 std::array<double, 3> newPosition = (*it).get().getX();
                 newPosition = newPosition + innerTranslation.first;
                 (*it).get().setX(newPosition);
+                if (newPosition[0]/LGDSim.getCutoff() > LGDSim.getGrid().getGridDimensions()[0] + 1 ||
+                    newPosition[1]/LGDSim.getCutoff() > LGDSim.getGrid().getGridDimensions()[1] + 1 ||
+                    newPosition[2]/LGDSim.getCutoff() > LGDSim.getGrid().getGridDimensions()[2] + 1 ||
+                    newPosition[0] < -3 || newPosition[1] < -3 || newPosition[2] < -3) {
+                    int a = 0;
+                }
 
                 // Only if the particle has been moved back into the domain, all translations are
                 // complete. Thus, the particles must be placed into its new cell

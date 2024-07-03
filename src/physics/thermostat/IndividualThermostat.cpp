@@ -5,47 +5,66 @@
 
 IndividualThermostat::IndividualThermostat(double init, double target, double delta, size_t dim)
     : Thermostat(init, target, delta, dim)
+    , numFixParticles(0)
+    , isInitialized(false)
 {
 }
 
-void IndividualThermostat::updateT(ParticleContainer& container) const {
+void IndividualThermostat::updateT(Simulation& sim)
+{
+    if (!isInitialized)
+        initialize(sim);
+
     // Calculate current Temperature
-    double T_current =
-        getTotalKineticEnergy(container) / (double)(container.activeParticleCount * dim);
+    double T_current = getTotalKineticEnergy(sim) /
+                       (double)((sim.container.activeParticleCount - numFixParticles) * dim);
 
     double beta = getBeta(T_current);
 
-    spdlog::debug(
-        "Current Temperature: {}, Target: {}, beta: {}",
-        T_current,
-        target,
-        beta);
+    spdlog::debug("Current Temperature: {}, Target: {}, beta: {}", T_current, target, beta);
 
-    std::array<double, 3> meanVelocity = getMeanVelocity(container);
-    for (auto& p : container) {
-        p.setV(beta * (p.getV()-meanVelocity) + meanVelocity);
+    std::array<double, 3> meanVelocity = getMeanVelocity(sim);
+    for (auto& p : sim.container) {
+        p.setV(beta * (p.getV() - meanVelocity) + meanVelocity);
     }
 }
 
-double IndividualThermostat::getTotalKineticEnergy(ParticleContainer& container) const {
+double IndividualThermostat::getTotalKineticEnergy(Simulation& sim)
+{
     double E = 0;
-    std::array<double, 3> meanVelocity = getMeanVelocity(container);
-    for (auto& p : container)
-        if (p.getActivity())
+    std::array<double, 3> meanVelocity = getMeanVelocity(sim);
+    for (auto& p : sim.container)
+        if (p.getActivity() &&
+            sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
             E += p.getM() * (ArrayUtils::DotProduct(p.getV() - meanVelocity));
     return E;
 }
 
-std::array<double, 3> IndividualThermostat::getMeanVelocity(ParticleContainer& container) {
-    std::array<double, 3> meanVelocity = {0, 0, 0};
-    for (auto& p : container)
-        if (p.getActivity())
-            meanVelocity =  meanVelocity + p.getV();
+std::array<double, 3> IndividualThermostat::getMeanVelocity(Simulation& sim) const
+{
+    std::array<double, 3> meanVelocity = { 0, 0, 0 };
+    for (auto& p : sim.container)
+        if (p.getActivity() &&
+            sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+            meanVelocity = meanVelocity + p.getV();
 
-    meanVelocity = (1/container.activeParticleCount) * meanVelocity;
+    meanVelocity = (1 / (sim.container.activeParticleCount - numFixParticles)) * meanVelocity;
     return meanVelocity;
 }
 
-std::string IndividualThermostat::getName() const {
+void IndividualThermostat::initialize(Simulation& sim)
+{
+    if (isInitialized)
+        return;
+
+    for (auto& p : sim.container)
+        if (sim.stationaryParticleTypes.find(p.getType()) != sim.stationaryParticleTypes.end())
+            numFixParticles++;
+
+    isInitialized = true;
+}
+
+std::string IndividualThermostat::getName() const
+{
     return "IndividualThermostat";
 }

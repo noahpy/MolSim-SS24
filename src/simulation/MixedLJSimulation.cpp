@@ -168,7 +168,7 @@ void MixedLJSimulation::runSim()
             cellGrid.updateCells();
         }
         if (n_thermostat && iteration % n_thermostat == 0) {
-            thermostat->updateT(this->container);
+            thermostat->updateT(*this);
         }
         if (doProfile) {
             particleUpdates += container.activeParticleCount;

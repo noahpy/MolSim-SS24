@@ -20,11 +20,11 @@ void Thermostat::initializeBrownianMotion(ParticleContainer& container) const
     }
 }
 
-void Thermostat::updateT(ParticleContainer& container) const
+void Thermostat::updateT(Simulation& sim)
 {
     // Calculate current Temperature
     double T_current =
-        getTotalKineticEnergy(container) / (double)(container.activeParticleCount * dim);
+        getTotalKineticEnergy(sim) / (double)(sim.container.activeParticleCount * dim);
 
     double beta = getBeta(T_current);
 
@@ -34,16 +34,16 @@ void Thermostat::updateT(ParticleContainer& container) const
         target,
         beta);
 
-    for (auto& p : container) {
+    for (auto& p : sim.container) {
         p.setV(beta * p.getV());
     }
 }
 
-double Thermostat::getTotalKineticEnergy(ParticleContainer& container) const
+double Thermostat::getTotalKineticEnergy(Simulation& sim)
 {
     // Calculate kinetic energy
     double E = 0;
-    for (auto& p : container)
+    for (auto& p : sim.container)
         if (p.getActivity())
             E += p.getM() * (ArrayUtils::DotProduct(p.getV()));
 

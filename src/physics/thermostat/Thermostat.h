@@ -2,6 +2,7 @@
 #pragma once
 
 #include "models/ParticleContainer.h"
+#include "simulation/baseSimulation.h"
 
 /**
  * @class Thermostat
@@ -33,9 +34,9 @@ public:
 
     /**
      * @brief Initialization with Brownian Motion using the Maxwell-Boltzmann distribution.
-     * @param sim The simulation to initialize.
+     * @param container The container of the simulation to initialize.
      */
-    void initializeBrownianMotion(ParticleContainer& sim) const;
+    void initializeBrownianMotion(ParticleContainer& container) const;
 
     /**
      * @brief Updates the temperature in our simulation.
@@ -44,14 +45,14 @@ public:
      *        are scaled with the scaling factor beta.
      * @param sim The simulation to apply the temperature update to.
      */
-    virtual void updateT(ParticleContainer& sim) const;
+    virtual void updateT(Simulation& sim);
 
     /**
      * @brief Calculates the total kinetic energy of the particles in the simulation.
-     * @param container The container of particles in the simulation.
+     * @param sim The simulation to get the total kinetic energy for.
      * @return The total kinetic energy of the particles in the simulation.
      */
-    virtual double getTotalKineticEnergy(ParticleContainer& container) const;
+    virtual double getTotalKineticEnergy(Simulation& sim);
 
     /**
      * @brief Get the name of the thermostat.
