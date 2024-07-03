@@ -1,10 +1,11 @@
 
-#include "io/fileWriter/VTKWriter.h"
 #include "models/ParticleContainer.h"
 #include "models/linked_cell/CellGrid.h"
 #include "models/linked_cell/cell/Cell.h"
 #include <array>
 #include <gtest/gtest.h>
+#include <omp.h>
+#include <spdlog/spdlog.h>
 #include <vector>
 
 class CellGridTest : public ::testing::Test {
@@ -262,6 +263,37 @@ TEST_F(CellGridTest, GetNeighboringParticles)
     EXPECT_THROW({ auto _ = grid.getNeighbourCells({ 6, 2, 3 }); }, std::out_of_range);
 }
 
+TEST_F(CellGridTest, getNeighbourThreadSafety)
+{
+#pragma omp parallel for
+    for (size_t x = 1; x < grid.cells.size() - 1; ++x) {
+        for (size_t y = 1; y < grid.cells[0].size() - 1; ++y) {
+            for (size_t z = 1; z < grid.cells[0][0].size() - 1; ++z) {
+                std::list<CellIndex> neighbors = grid.getNeighbourCells({ x, y, z });
+            }
+        }
+    }
+    // Check state of all cells
+    for (size_t x = 1; x < grid.cells.size() - 1; ++x) {
+        for (size_t y = 1; y < grid.cells[0].size() - 1; ++y) {
+            for (size_t z = 1; z < grid.cells[0][0].size() - 1; ++z) {
+                EXPECT_EQ(grid.cells[x][y][z]->getCounter(), 0)
+                    << "Cell " << x << " " << y << " " << z;
+                EXPECT_FALSE(grid.cells[x][y][z]->visited)
+                    << "Cell " << x << " " << y << " " << z << " with count "
+                    << grid.cells[x][y][z]->getCounter();
+                auto particles = grid.cells[x][y][z]->getParticles();
+                // check if particles are reset
+                for (auto& p : particles) {
+                    for (size_t i = 0; i < 3; ++i) {
+                        EXPECT_EQ(p.get().getF()[i], 0.0);
+                    }
+                }
+            }
+        }
+    }
+}
+
 // Test 5: Boundary and Halo Iterators
 TEST_F(CellGridTest, BoundaryAndHaloIterators)
 {
@@ -296,8 +328,8 @@ TEST_F(CellGridTest, BoundaryAndHaloIterators)
     EXPECT_EQ(haloCount, 6 * 6 * 6);
 }
 
-// Check, if a particle is placed in all cells of a 2d grid, if they are mapped to the right index,
-// and type of cell
+// Check, if a particle is placed in all cells of a 2d grid, if they are mapped to the right
+// index, and type of cell
 TEST(CellGridTestDimensionaity, GridInit2D)
 {
     std::array<double, 3> domain_origin = { -50, -50, -50 };
@@ -418,8 +450,8 @@ TEST(CellGridTestDimensionaity, GridInit2D)
     }
 }
 
-// Check, if a particle is placed in all cells of a 3d grid, if they are mapped to the right index,
-// and type of cell
+// Check, if a particle is placed in all cells of a 3d grid, if they are mapped to the right
+// index, and type of cell
 TEST(CellGridTestDimensionaity, GridInit3D)
 {
     std::array<double, 3> domain_origin = { -50, -50, -50 };
@@ -528,8 +560,8 @@ TEST(CellGridTestDimensionaity, GridInit3D)
     }
 }
 
-// Test if particle inserted at bottom is also inserted in bottom cells and will be recognized by
-// the boundary iterator
+// Test if particle inserted at bottom is also inserted in bottom cells and will be
+// recognized by the boundary iterator
 TEST(CellGridOrientation, BottomParticleInBoundary)
 {
     std::array<double, 3> domain_origin = { -10, -10, 0 };
@@ -574,8 +606,8 @@ TEST(CellGridOrientation, TopParticleInBoundary)
     EXPECT_EQ(particleCount, 1);
 }
 
-// Test if particle inserted left is also inserted in left cells and will be recognized by the
-// boundary iterator
+// Test if particle inserted left is also inserted in left cells and will be recognized by
+// the boundary iterator
 TEST(CellGridOrientation, LeftParticleInBoundary)
 {
     std::array<double, 3> domain_origin = { -10, -10, 0 };
@@ -597,8 +629,8 @@ TEST(CellGridOrientation, LeftParticleInBoundary)
     EXPECT_EQ(particleCount, 1);
 }
 
-// Test if particle inserted right is also inserted in right cells and will be recognized by the
-// boundary iterator
+// Test if particle inserted right is also inserted in right cells and will be recognized by
+// the boundary iterator
 TEST(CellGridOrientation, RightParticleInBoundary)
 {
     std::array<double, 3> domain_origin = { -10, -10, 0 };
@@ -620,8 +652,8 @@ TEST(CellGridOrientation, RightParticleInBoundary)
     EXPECT_EQ(particleCount, 1);
 }
 
-// Test if particle inserted back is also inserted in back cells and will be recognized by the
-// boundary iterator
+// Test if particle inserted back is also inserted in back cells and will be recognized by
+// the boundary iterator
 TEST(CellGridOrientation, BackParticleInBoundary)
 {
     std::array<double, 3> domain_origin = { -10, -10, -10 };

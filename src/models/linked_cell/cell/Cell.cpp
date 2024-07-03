@@ -98,9 +98,8 @@ Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
     }
 }
 
-void Cell::checkVisitedReset() THREAD_SAFE
+void Cell::checkVisitedReset() 
 {
-    std::lock_guard<std::mutex> lock(mutex);
     if (!visited) {
         visited = true;
         // reset particles
@@ -110,9 +109,13 @@ void Cell::checkVisitedReset() THREAD_SAFE
     }
 }
 
-bool Cell::checkNeighbourCounter() THREAD_SAFE
-{
+void Cell::checkVisitedResetSafe(){
     std::lock_guard<std::mutex> lock(mutex);
+    checkVisitedReset();
+}
+
+bool Cell::checkNeighbourCounter() 
+{
     if (neighborCounter > 0){
         --neighborCounter;
         if(!neighborCounter){
@@ -121,6 +124,16 @@ bool Cell::checkNeighbourCounter() THREAD_SAFE
         return true;
     }
     return false;
+}
+
+bool Cell::visit() THREAD_SAFE
+{
+    std::lock_guard<std::mutex> lock(mutex);
+    if (checkNeighbourCounter()){
+        return false;
+    }
+    checkVisitedReset();
+    return true;
 }
 
 std::pair<std::reference_wrapper<Particle>, std::reference_wrapper<Particle>> Cell::

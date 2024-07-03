@@ -118,9 +118,13 @@ public:
      * @brief Restes particles for the next timestep if it was not visited yet
      * @return void
      */
-    void checkVisitedReset() THREAD_SAFE;
+    void checkVisitedReset();
 
-    bool checkNeighbourCounter() THREAD_SAFE;
+    void checkVisitedResetSafe() THREAD_SAFE;
+
+    bool checkNeighbourCounter();
+
+    bool visit() THREAD_SAFE;
 
     /** @brief Index of the cell. */
     CellIndex myIndex;

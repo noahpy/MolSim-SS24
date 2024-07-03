@@ -6,7 +6,6 @@
 #define PARTICLECONTAINER_H
 
 #include "Particle.h"
-#include <unordered_map>
 #include <vector>
 
 /**

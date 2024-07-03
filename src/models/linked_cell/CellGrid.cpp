@@ -216,31 +216,26 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
     }
 
     // check if this cell was not visited
-    cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->checkVisitedReset();
+    cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->checkVisitedResetSafe();
 
     // Iterate over all neighbors including the cell itself
     for (int dx = -1; dx <= 1; ++dx) {
         for (int dy = -1; dy <= 1; ++dy) {
             for (int dz = -1; dz <= 1; ++dz) {
-                size_t nx = cellIndex[0] + dx;
-                size_t ny = cellIndex[1] + dy;
-                size_t nz = cellIndex[2] + dz;
-
                 // Skip if it is the original cell
                 if (dx == 0 && dy == 0 && dz == 0) {
                     continue;
                 }
 
+                size_t nx = cellIndex[0] + dx;
+                size_t ny = cellIndex[1] + dy;
+                size_t nz = cellIndex[2] + dz;
+
+                // Continue if the neighbor is in bounds
                 if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
-                    // skip neighbour is already visited
-                    if (cells.at(nx).at(ny).at(nz)->checkNeighbourCounter())
+                    if (!cells.at(nx).at(ny).at(nz)->visit()) {
                         continue;
-
-                    // Insert all particles into particleList
-                    cellList.emplace_back(CellIndex { nx, ny, nz });
-
-                    // reset forces if not visited yet
-                    cells.at(nx).at(ny).at(nz)->checkVisitedReset();
+                    }
 
                     if (cells.at(nx).at(ny).at(nz)->getType() != CellType::Halo) {
                         // Increment neighborCounter if not a halo cell
@@ -249,6 +244,9 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
                             .at(cellIndex[2])
                             ->incrementCounter();
                     }
+
+                    // Insert all particles into particleList
+                    cellList.emplace_back(CellIndex { nx, ny, nz });
                 }
             }
         }
