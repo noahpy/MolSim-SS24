@@ -22,6 +22,7 @@ Particle::Particle(
     , old_f({ 0., 0., 0. })
     , active(true)
 {
+    molecular = false;
     spdlog::trace("Particle generated: {} (by args)", toString());
 }
 

@@ -52,6 +52,11 @@ private:
      */
     bool active;
 
+    /**
+     * @brief Shows if particle is part of the membrane
+     */
+    bool molecular;
+
 public:
     /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
@@ -146,6 +151,15 @@ public:
     }
 
     /**
+     * @brief Get the molecule status of the particle
+     * @return Molecule status of the particle
+     */
+    [[nodiscard]] inline bool getMolecular() const
+    {
+            return molecular;
+    }
+
+    /**
      * @brief Set the type of the particle
      * @param type_new The new type of the particle
      */
@@ -208,6 +222,11 @@ public:
     inline void setActivity(bool act_new)
     {
         active = act_new;
+    }
+
+    inline void setMolecular(bool mol_new)
+    {
+        molecular = mol_new;
     }
 
     /**
