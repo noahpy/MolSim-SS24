@@ -207,6 +207,7 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
 
 void CellGrid::preCalcSetup(ParticleContainer& container) const
 {
+/* #pragma omp parallel for */
     for (auto& particle : container) {
         particle.resetF();
     }
@@ -214,6 +215,7 @@ void CellGrid::preCalcSetup(ParticleContainer& container) const
 
 void CellGrid::postCalcSetup() const
 {
+#pragma omp parallel for
     for (auto& cell : cells) {
         for (auto& row : cell) {
             for (auto& col : row) {
