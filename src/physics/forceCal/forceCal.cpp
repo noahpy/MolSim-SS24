@@ -221,7 +221,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
     double gravityConstant = len_sim.getGravityConstant();
     if (gravityConstant != 0) {
         // Skip these calculations iff the constant = 0, as this will have no impact
-/* #pragma omp parallel for */
+#pragma omp parallel for
         for (auto& particle : len_sim.container) {
             // The gravity only acts along the y-Axis
             std::array<double, 3> gravityForce { 0, gravityConstant * particle.getM(), 0 };
