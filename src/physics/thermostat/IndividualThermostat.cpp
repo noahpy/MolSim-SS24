@@ -25,7 +25,9 @@ void IndividualThermostat::updateT(Simulation& sim)
 
     std::array<double, 3> meanVelocity = getMeanVelocity(sim);
     for (auto& p : sim.container) {
-        p.setV(beta * (p.getV() - meanVelocity) + meanVelocity);
+        if (p.getActivity() &&
+            sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+            p.setV(beta * (p.getV() - meanVelocity) + meanVelocity);
     }
 }
 

@@ -141,7 +141,7 @@ MixedLJSimulation::MixedLJSimulation(
 
         // Intialize temperature
         spdlog::info("Setting initial temperature to {} K", T_init);
-        thermostat->initializeBrownianMotion(this->container);
+        thermostat->initializeBrownianMotion(*this);
     } else {
         spdlog::info("Themostat is turned off.");
     }

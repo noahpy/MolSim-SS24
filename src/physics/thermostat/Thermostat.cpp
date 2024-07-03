@@ -13,11 +13,11 @@ Thermostat::Thermostat(double init, double target, double delta, size_t dim)
 {
 }
 
-void Thermostat::initializeBrownianMotion(ParticleContainer& container) const
+void Thermostat::initializeBrownianMotion(Simulation& sim) const
 {
-    for (auto& p : container) {
-        p.setV(maxwellBoltzmannDistributedVelocity(std::sqrt(init / p.getM()), dim));
-    }
+    for (auto& p : sim.container)
+        if (sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+            p.setV(maxwellBoltzmannDistributedVelocity(std::sqrt(init / p.getM()), dim));
 }
 
 void Thermostat::updateT(Simulation& sim)
@@ -28,11 +28,7 @@ void Thermostat::updateT(Simulation& sim)
 
     double beta = getBeta(T_current);
 
-    spdlog::debug(
-        "Current Temperature: {}, Target: {}, beta: {}",
-        T_current,
-        target,
-        beta);
+    spdlog::debug("Current Temperature: {}, Target: {}, beta: {}", T_current, target, beta);
 
     for (auto& p : sim.container) {
         p.setV(beta * p.getV());
@@ -52,6 +48,10 @@ double Thermostat::getTotalKineticEnergy(Simulation& sim)
 
 double Thermostat::getBeta(double T_current) const
 {
+    // if T_current is 0, then beta would become nan -> to continue simulation, return 1
+    if (T_current == 0)
+        return 1;
+
     // Calculate new Temperature
     double diff = target - T_current;
     if (std::abs(diff) > delta)

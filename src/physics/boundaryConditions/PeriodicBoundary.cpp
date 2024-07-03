@@ -140,6 +140,12 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
         auto it = particles.begin();
         auto end = particles.end();
         while (it != end) {
+            // If the particle is stationary, we do not need to do anything, as it cannot move
+            if (simulation.stationaryParticleTypes.find((*it).get().getType()) != simulation.stationaryParticleTypes.end()) {
+                ++it;
+                continue;
+            }
+
             std::array<double, 3> pos = (*it).get().getX();
 
             CellIndex actualCellIndex = LGDSim.getGrid().getIndexFromPos(pos);

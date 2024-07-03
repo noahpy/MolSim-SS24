@@ -34,9 +34,9 @@ public:
 
     /**
      * @brief Initialization with Brownian Motion using the Maxwell-Boltzmann distribution.
-     * @param container The container of the simulation to initialize.
+     * @param sim The simulation to initialize.
      */
-    void initializeBrownianMotion(ParticleContainer& container) const;
+    void initializeBrownianMotion(Simulation& sim) const;
 
     /**
      * @brief Updates the temperature in our simulation.
