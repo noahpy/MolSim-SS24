@@ -48,12 +48,12 @@ std::vector<Particle> ParticleContainer::getContainer() const
 // ActiveIterator Implementation
 ParticleContainer::ActiveIterator ParticleContainer::begin()
 {
-    return { particles.begin(), particles.end() };
+    return { particles.begin(), particles.end(), inactiveParticleMap };
 }
 
 ParticleContainer::ActiveIterator ParticleContainer::end()
 {
-    return { particles.end(), particles.end() };
+    return { particles.end(), particles.end(), inactiveParticleMap };
 }
 
 void ParticleContainer::ActiveIterator::advanceToNextActive()
@@ -64,10 +64,13 @@ void ParticleContainer::ActiveIterator::advanceToNextActive()
 }
 
 ParticleContainer::ActiveIterator::ActiveIterator(
-    std::vector<Particle>::iterator start, std::vector<Particle>::iterator end)
+    std::vector<Particle>::iterator start,
+    std::vector<Particle>::iterator end,
+    std::reference_wrapper<std::map<size_t, size_t>> mapRef)
     : begin(start)
     , current(start)
     , end(end)
+    , inactiveMapRef(mapRef)
 {
     advanceToNextActive();
 }
@@ -104,17 +107,23 @@ bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) 
 
 ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+=(difference_type n)
 {
-    while (n--) {
-        ++(*this);
+    if(n < 0) {
+        this->operator-=(-n);
+        return *this;
     }
+    for (difference_type i = 0; i < n; ++i)
+        ++(*this);
     return *this;
 }
 
 ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-=(difference_type n)
 {
-    while (n--) {
-        --(*this);
+    if(n < 0) {
+        this->operator+=(-n);
+        return *this;
     }
+    for (difference_type i = 0; i < n; ++i)
+        --(*this);
     return *this;
 }
 
@@ -133,7 +142,17 @@ ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-(d
 ParticleContainer::ActiveIterator::difference_type ParticleContainer::ActiveIterator::operator-(
     const ActiveIterator& other) const
 {
-    return std::distance(current, other.current);
+    auto smaller = current;
+    auto larger = other.current;
+    int factor = -1;
+    if (smaller > larger) {
+        std::swap(smaller, larger);
+        factor = 1;
+    }
+    auto lower_bound = inactiveMapRef.get().upper_bound(smaller->getID());
+    auto upper_bound = inactiveMapRef.get().lower_bound(larger->getID());
+    auto delted_dist = std::distance(lower_bound, upper_bound);
+    return factor * (std::distance(smaller, larger) - delted_dist);
 }
 
 // PairIterator Implementation

@@ -22,6 +22,7 @@ Particle::Particle(
     , f({ 0., 0., 0. })
     , old_f({ 0., 0., 0. })
     , active(true)
+    , mutex()
 {
     spdlog::trace("Particle generated: {} (by args)", toString());
 }

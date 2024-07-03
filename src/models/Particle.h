@@ -260,9 +260,8 @@ public:
         active = act_new;
     }
 
-    inline size_t getID() const THREAD_SAFE
+    inline size_t getID() const 
     {
-        std::lock_guard<std::mutex> lock(mutex);
         return id;
     }
 

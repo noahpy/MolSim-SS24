@@ -106,6 +106,11 @@ public:
         std::vector<Particle>::iterator begin, current, end;
 
         /**
+         * @brief Map for the inactive particles
+         */
+        std::reference_wrapper<std::map<size_t, size_t>> inactiveMapRef;
+
+        /**
          * @brief Advance to the next active particle
          */
         void advanceToNextActive();
@@ -118,7 +123,10 @@ public:
          * @param end The iterator to the last active particle
          * @return ActiveIterator object
          */
-        ActiveIterator(std::vector<Particle>::iterator start, std::vector<Particle>::iterator end);
+        ActiveIterator(
+            std::vector<Particle>::iterator start,
+            std::vector<Particle>::iterator end,
+            std::reference_wrapper<std::map<size_t, size_t>> inactiveMapRef);
 
         /**
          * @brief Override the * operator for range-based for loop
