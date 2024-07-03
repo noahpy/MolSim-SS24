@@ -220,17 +220,17 @@ int sumNeighboringCells(CellGrid& grid, std::list<CellIndex>& indices)
 // Test Get Neighboring Particles
 TEST_F(CellGridTest, GetNeighboringParticles)
 {
-    for (auto& p : particles) {
-        grid.addParticle(p);
-    }
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    grid.preCalcSetup(container);
 
     // 1 from {0, 0, 0}, 1 from {1, 1, 2}
     auto indices = grid.getNeighbourCells({ 1, 1, 1 });
     EXPECT_EQ(indices.size(), 26);
     EXPECT_EQ(sumNeighboringCells(grid, indices), 2);
-    EXPECT_EQ(grid.cells.at(1).at(1).at(1)->getCounter(), 7);
     // check effetcs on neighbour
-    EXPECT_TRUE(grid.cells.at(1).at(1).at(1)->visited);
+    EXPECT_TRUE(grid.cells.at(1).at(1).at(1)->getVisited());
     for (auto parRef : grid.cells.at(1).at(1).at(1)->getParticles()) {
         for (auto& f : parRef.get().getF()) {
             EXPECT_EQ(f, 0.0);
@@ -244,13 +244,11 @@ TEST_F(CellGridTest, GetNeighboringParticles)
     indices = grid.getNeighbourCells({ 2, 2, 3 });
     EXPECT_EQ(indices.size(), 26);
     EXPECT_EQ(sumNeighboringCells(grid, indices), 2);
-    EXPECT_EQ(grid.cells.at(2).at(2).at(3)->getCounter(), 26);
 
     // 1 from {3, 3, 3}, 1 from {5, 5, 5}
     indices = grid.getNeighbourCells({ 4, 4, 4 });
     EXPECT_EQ(indices.size(), 26);
     EXPECT_EQ(sumNeighboringCells(grid, indices), 2);
-    EXPECT_EQ(grid.cells.at(4).at(4).at(4)->getCounter(), 7);
 
     // 1 from {5, 5, 5} , but is a halo cell*/
     indices = grid.getNeighbourCells({ 5, 4, 4 });
@@ -265,6 +263,10 @@ TEST_F(CellGridTest, GetNeighboringParticles)
 
 TEST_F(CellGridTest, getNeighbourThreadSafety)
 {
+    ParticleContainer container(particles);
+    grid.addParticlesFromContainer(container);
+
+    grid.preCalcSetup(container);
 #pragma omp parallel for
     for (size_t x = 1; x < grid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < grid.cells[0].size() - 1; ++y) {
@@ -273,15 +275,13 @@ TEST_F(CellGridTest, getNeighbourThreadSafety)
             }
         }
     }
+    grid.postCalcSetup();
     // Check state of all cells
     for (size_t x = 1; x < grid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < grid.cells[0].size() - 1; ++y) {
             for (size_t z = 1; z < grid.cells[0][0].size() - 1; ++z) {
-                EXPECT_EQ(grid.cells[x][y][z]->getCounter(), 0)
+                EXPECT_FALSE(grid.cells[x][y][z]->getVisited())
                     << "Cell " << x << " " << y << " " << z;
-                EXPECT_FALSE(grid.cells[x][y][z]->visited)
-                    << "Cell " << x << " " << y << " " << z << " with count "
-                    << grid.cells[x][y][z]->getCounter();
                 auto particles = grid.cells[x][y][z]->getParticles();
                 // check if particles are reset
                 for (auto& p : particles) {

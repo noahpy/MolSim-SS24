@@ -98,6 +98,8 @@ void force_lennard_jones_lc(const Simulation& sim)
 
     const CellGrid& cellGrid = len_sim.getGrid();
 
+    cellGrid.preCalcSetup(len_sim.container);
+
     // for all cells in the grid
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
@@ -143,6 +145,8 @@ void force_lennard_jones_lc(const Simulation& sim)
             }
         }
     }
+
+    cellGrid.postCalcSetup();
 }
 
 void force_mixed_LJ_gravity_lc(const Simulation& sim)
@@ -150,6 +154,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
     const MixedLJSimulation& len_sim = static_cast<const MixedLJSimulation&>(sim);
     const CellGrid& cellGrid = len_sim.getGrid();
 
+    cellGrid.preCalcSetup(len_sim.container);
     // for all cells in the grid
 #pragma omp parallel for
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
@@ -222,4 +227,6 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
             particle.setF(particle.getF() + gravityForce);
         }
     }
+
+    cellGrid.postCalcSetup();
 }
