@@ -40,6 +40,13 @@ void ParticleContainer::removeParticle(Particle& p)
     }
 }
 
+size_t ParticleContainer::getIndex(size_t id)
+{
+    auto lowerBound = inactiveParticleMap.lower_bound(0);
+    auto upperBound = inactiveParticleMap.upper_bound(id);
+    return id - std::distance(lowerBound, upperBound);
+}
+
 std::vector<Particle> ParticleContainer::getContainer() const
 {
     return particles;
@@ -107,7 +114,7 @@ bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) 
 
 ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+=(difference_type n)
 {
-    if(n < 0) {
+    if (n < 0) {
         this->operator-=(-n);
         return *this;
     }
@@ -118,7 +125,7 @@ ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+=(
 
 ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-=(difference_type n)
 {
-    if(n < 0) {
+    if (n < 0) {
         this->operator+=(-n);
         return *this;
     }

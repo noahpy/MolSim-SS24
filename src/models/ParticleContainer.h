@@ -57,6 +57,13 @@ public:
     void removeParticle(Particle& p);
 
     /**
+     * @brief Get the true index of the particle, ignoring the inactive particles
+     * @param id The id of the particle
+     * @return The index of the particle
+     */
+    size_t getIndex(size_t id);
+
+    /**
      * @brief Get the particles within the container
      * @return The vector of particles
      */

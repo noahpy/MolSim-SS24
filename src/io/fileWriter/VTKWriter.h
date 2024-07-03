@@ -57,9 +57,10 @@ public:
      * @brief plot type, mass, position, velocity and force of a particle.
      * @note: initializeOutput() must have been called before.
      * @param p the particle to be plotted
+     * @param index the index of the particle
      * @return void
      */
-    void plotParticle(Particle& p);
+    void plotParticle(Particle& p, size_t index);
 
     /**
      * @brief writes the final output file.

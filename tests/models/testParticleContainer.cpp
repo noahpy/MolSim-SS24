@@ -353,6 +353,9 @@ TEST(PContainerTests, activeParticleDiff)
     container.addParticle({ zeros, zeros, 6 });
     container.addParticle({ zeros, zeros, 7 });
 
+    size_t index = container.getIndex(5);
+    EXPECT_EQ(index, 5);
+
     auto it = container.begin();
     auto it2 = container.begin() + 5;
     auto it3 = container.begin() + 7;
@@ -360,6 +363,12 @@ TEST(PContainerTests, activeParticleDiff)
     container.removeParticle(container.particles.at(2));
     container.removeParticle(container.particles.at(4));
     container.removeParticle(container.particles.at(6));
+
+    index = container.getIndex(5);
+    EXPECT_EQ(index, 3);
+
+    index = container.getIndex(7);
+    EXPECT_EQ(index, 4);
 
     auto diff = it2 - it;
     EXPECT_EQ(diff, 3);

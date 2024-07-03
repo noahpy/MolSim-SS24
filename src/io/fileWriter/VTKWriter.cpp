@@ -11,7 +11,6 @@
 #include <fstream>
 #include <io/xsd/simulation.h>
 #include <iomanip>
-#include <iostream>
 #include <spdlog/spdlog.h>
 #include <string>
 
@@ -24,8 +23,9 @@ VTKWriter::~VTKWriter() = default;
 void VTKWriter::plotParticles(const Simulation& s)
 {
     initializeOutput(s.container.activeParticleCount);
+#pragma omp parallel for
     for (auto& p : s.container) {
-        plotParticle(p);
+        plotParticle(p, s.container.getIndex(p.getID()));
     }
 
     writeFile(this->out_name, s.iteration);
@@ -41,6 +41,12 @@ void VTKWriter::initializeOutput(int numParticles)
     DataArray_t velocity(type::Float32, "velocity", 3);
     DataArray_t forces(type::Float32, "force", 3);
     DataArray_t type(type::Int32, "type", 1);
+
+    mass.resize(numParticles);
+    velocity.resize(numParticles * 3);
+    forces.resize(numParticles * 3);
+    type.resize(numParticles);
+
     pointData.DataArray().push_back(mass);
     pointData.DataArray().push_back(velocity);
     pointData.DataArray().push_back(forces);
@@ -51,6 +57,7 @@ void VTKWriter::initializeOutput(int numParticles)
     // 3 coordinates
     Points points;
     DataArray_t pointCoordinates(type::Float32, "points", 3);
+    pointCoordinates.resize(numParticles * 3);
     points.DataArray().push_back(pointCoordinates);
 
     Cells cells; // we don't have cells, => leave it empty
@@ -73,7 +80,7 @@ void VTKWriter::writeFile(const std::string& filename, int iteration)
     delete vtkFile;
 }
 
-void VTKWriter::plotParticle(Particle& p)
+void VTKWriter::plotParticle(Particle& p, size_t index)
 {
     if (vtkFile->UnstructuredGrid().present()) {
         spdlog::trace("UnstructuredGrid is present");
@@ -85,27 +92,29 @@ void VTKWriter::plotParticle(Particle& p)
         vtkFile->UnstructuredGrid()->Piece().PointData().DataArray();
     PointData::DataArray_iterator dataIterator = pointDataSequence.begin();
 
-    dataIterator->push_back(p.getM());
+
+    dataIterator->at(index) = p.getM();
 
     dataIterator++;
-    dataIterator->push_back(p.getV()[0]);
-    dataIterator->push_back(p.getV()[1]);
-    dataIterator->push_back(p.getV()[2]);
+    dataIterator->at(3 * index) = p.getV()[0];
+    dataIterator->at(3 * index + 1) = p.getV()[1];
+    dataIterator->at(3 * index + 2) = p.getV()[2];
 
     dataIterator++;
-    dataIterator->push_back(p.getOldF()[0]);
-    dataIterator->push_back(p.getOldF()[1]);
-    dataIterator->push_back(p.getOldF()[2]);
+
+    dataIterator->at(3 * index) = p.getF()[0];
+    dataIterator->at(3 * index + 1) = p.getF()[1];
+    dataIterator->at(3 * index + 2) = p.getF()[2];
 
     dataIterator++;
-    dataIterator->push_back(p.getType());
+    dataIterator->at(index) = p.getType();
 
     Points::DataArray_sequence& pointsSequence =
         vtkFile->UnstructuredGrid()->Piece().Points().DataArray();
     Points::DataArray_iterator pointsIterator = pointsSequence.begin();
-    pointsIterator->push_back(p.getX()[0]);
-    pointsIterator->push_back(p.getX()[1]);
-    pointsIterator->push_back(p.getX()[2]);
+    pointsIterator->at(3 * index) = p.getX()[0];
+    pointsIterator->at(3 * index + 1) = p.getX()[1];
+    pointsIterator->at(3 * index + 2) = p.getX()[2];
 }
 
 } // namespace outputWriter
