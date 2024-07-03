@@ -4,6 +4,7 @@
 
 void location_stroemer_verlet(const Simulation& sim)
 {
+#pragma omp parallel for
     for (auto& p : sim.container) {
         // x = x + Δt * v + (Δt)^2 * F / (2 * m)
         p.setX(
