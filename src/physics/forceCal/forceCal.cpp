@@ -156,7 +156,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
 
     cellGrid.preCalcSetup(len_sim.container);
     // for all cells in the grid
-#pragma omp parallel for
+#pragma omp parallel for collapse(2)
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
             // This bool controls the 2D case, where we do need to calc the forces
