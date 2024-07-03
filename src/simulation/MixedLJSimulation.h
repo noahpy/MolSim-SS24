@@ -32,10 +32,12 @@ public:
      * @param domainSize The size of the simulation domain
      * @param cutoff The cutoff radius of the simulation
      * @param boundaryConfig The boundary condition configuration specification
+     * @param analyzer The analyzer object to analyze the simulation
      * @param gravity_constant The gravity constant to be used
      * @param thermostat The thermostat to be used
      * @param frequency The frequency for writing outputs (default = 10)
      * @param updateFrequency The frequency for updating the grid (default = 10)
+     * @param analysisFrequency The frequency for analyzing the simulation (default = 10000)
      * @param read_file Whether to read the input file (default = true)
      * @param n_thermostat The number of steps between thermostat updates (default = 1000
      */
@@ -53,10 +55,12 @@ public:
         std::array<double, 3> domainSize,
         double cutoff,
         const BoundaryConfig& boundaryConfig,
+        std::unique_ptr<Analyzer> analyzer,
         double gravity_constant,
         std::unique_ptr<Thermostat> thermostat,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
+        size_t analysisFrequency = 10000,
         bool read_file = true,
         unsigned n_thermostat = 1000,
         bool doProfile = false);

@@ -1,6 +1,7 @@
 
 #include "MixedLJSimulation.h"
 
+#include "analytics/Analyzer.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
@@ -20,10 +21,12 @@ MixedLJSimulation::MixedLJSimulation(
     std::array<double, 3> domainSize,
     double cutoff,
     const BoundaryConfig& boundaryConfig,
+    std::unique_ptr<Analyzer> analyzer,
     double gravityConstant,
     std::unique_ptr<Thermostat> p_thermostat,
     unsigned int frequency,
     unsigned int updateFrequency,
+    size_t analysisFrequency,
     bool read_file,
     unsigned int n_thermostat,
     bool doProfile)
@@ -42,8 +45,10 @@ MixedLJSimulation::MixedLJSimulation(
           domainSize,
           cutoff,
           boundaryConfig,
+          std::move(analyzer),
           frequency,
           updateFrequency,
+          analysisFrequency,
           false)
     , gravityConstant(gravityConstant)
     , thermostat(std::move(p_thermostat))
@@ -166,6 +171,9 @@ void MixedLJSimulation::runSim()
         }
         if (iteration % updateFrequency == 0) {
             cellGrid.updateCells();
+        }
+        if (iteration % analysisFrequency == 0) {
+            analyzer->analyze(*this);
         }
         if (n_thermostat && iteration % n_thermostat == 0) {
             thermostat->updateT(*this);

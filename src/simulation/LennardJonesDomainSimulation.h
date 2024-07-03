@@ -1,6 +1,13 @@
 
+#pragma once
+
 #include "physics/boundaryConditions/BoundaryConditionHandler.h"
 #include "simulation/linkedLennardJonesSim.h"
+
+/**
+ * @brief Forward declaration of the Analyzer class
+ */
+class Analyzer;
 
 /**
  * @brief Simulation class for the Lennard-Jones simulation within a restricted domain and linked
@@ -30,8 +37,10 @@ public:
      * @param domainSize The size of the simulation domain
      * @param cutoff The cutoff radius of the simulation
      * @param boundaryConfig The boundary condition configuration specification
+     * @param analyzer The analyzer object to analyze the simulation
      * @param frequency The frequency for writing outputs (default = 10)
      * @param updateFrequency The frequency for updating the grid (default = 10)
+     * @param analysisFrequency The frequency for analyzing the simulation (default = 10000)
      * @param read_file Whether to read the input file (default = true)
      */
     LennardJonesDomainSimulation(
@@ -49,8 +58,10 @@ public:
         std::array<double, 3> domainSize,
         double cutoff,
         const BoundaryConfig& boundaryConfig,
+        std::unique_ptr<Analyzer> analyzer,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
+        size_t analysisFrequency = 10000,
         bool read_file = true);
 
     /**
@@ -67,6 +78,10 @@ public:
      * @return The distance repulsion starts at
      */
     virtual double getRepulsiveDistance(int type) const;
+
+protected:
+    size_t analysisFrequency; /**< The frequency for analyzing the simulation */
+    std::unique_ptr<Analyzer> analyzer; /**< The analyzer object */
 
 private:
     double repulsiveDistance;

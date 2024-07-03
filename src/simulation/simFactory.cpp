@@ -6,6 +6,7 @@
 #include "simulation/MixedLJSimulation.h"
 #include "simulation/planetSim.h"
 #include <spdlog/spdlog.h>
+#include "analytics/Analyzer.h"
 
 std::unique_ptr<Simulation> simFactory(
     Params& params,
@@ -140,7 +141,9 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_size,
             params.cutoff,
             params.boundaryConfig,
+            std::make_unique<Analyzer> (params.bins, params.outName),
             params.plot_frequency,
+            params.analysisInterval,
             params.update_frequency);
     case SimulationType::MIXED_LJ:
         spdlog::info("Initializing Mixed LJ + Gravity Simulation with:");
@@ -189,10 +192,12 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_size,
             params.cutoff,
             params.boundaryConfig,
+            std::make_unique<Analyzer> (params.bins, params.outName),
             params.gravity,
             std::move(thermostat),
             params.plot_frequency,
             params.update_frequency,
+            params.analysisInterval,
             true,
             params.thermo_freq,
             params.doPerformanceMeasurements);
