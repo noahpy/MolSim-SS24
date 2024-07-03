@@ -315,7 +315,7 @@ TEST(PContainerTests, particleIdTest)
 {
     std::vector<Particle> particles {};
 
-    ParticleContainer container { particles }; 
+    ParticleContainer container { particles };
 
     // add per clusters
     ParticleGenerator generator(container);
@@ -327,15 +327,53 @@ TEST(PContainerTests, particleIdTest)
 
     generator.generateClusters();
 
-     // add Particles manually
+    // add Particles manually
     container.addParticle({ zeros, zeros, 5 });
     container.addParticle({ zeros, zeros, 3 });
     container.addParticle({ zeros, zeros, 1 });
 
-    for(size_t i=0; i < container.particles.size(); i++){
+    for (size_t i = 0; i < container.particles.size(); i++) {
         EXPECT_EQ(container.particles[i].getID(), i) << "Mass : " << container.particles[i].getM();
     }
+}
 
+// check if the - difference operater works
+TEST(PContainerTests, activeParticleDiff)
+{
+    std::vector<Particle> particles {};
 
+    ParticleContainer container { particles };
 
+    container.addParticle({ zeros, zeros, 0 });
+    container.addParticle({ zeros, zeros, 1 });
+    container.addParticle({ zeros, zeros, 2 });
+    container.addParticle({ zeros, zeros, 3 });
+    container.addParticle({ zeros, zeros, 4 });
+    container.addParticle({ zeros, zeros, 5 });
+    container.addParticle({ zeros, zeros, 6 });
+    container.addParticle({ zeros, zeros, 7 });
+
+    auto it = container.begin();
+    auto it2 = container.begin() + 5;
+    auto it3 = container.begin() + 7;
+
+    container.removeParticle(container.particles.at(2));
+    container.removeParticle(container.particles.at(4));
+    container.removeParticle(container.particles.at(6));
+
+    auto diff = it2 - it;
+    EXPECT_EQ(diff, 3);
+
+    diff = it - it2;
+    EXPECT_EQ(diff, -3);
+
+    diff = it3 - it2;
+    EXPECT_EQ(diff, 1);
+
+    diff = it3 - it;
+    EXPECT_EQ(diff, 4);
+
+    it2 += -3;
+    diff = it - it2;
+    EXPECT_EQ(diff, 0);
 }
