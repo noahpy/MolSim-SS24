@@ -35,9 +35,6 @@ public:
     /** @brief Destructor for Cell. */
     virtual ~Cell();
 
-    /** @brief Flag to check if this cell has been visited. */
-    bool visited = false;
-
     /**
      * @brief Adds a particle to the cell.
      * @param particle A reference to the particle to be added.
@@ -80,51 +77,29 @@ public:
      */
     ParticleRefList::iterator end();
 
-    /**
-     * @brief Gets the current value of the neighbor counter.
-     * @return The current value of the neighbor counter.
-     */
-    [[nodiscard]] inline int getCounter() const THREAD_SAFE
+    inline bool getVisited() const THREAD_SAFE
     {
         std::lock_guard<std::mutex> lock(mutex);
-        return neighborCounter;
+        return visited;
     }
 
     /**
-     * @brief Sets the value of the neighbor counter.
-     * @param value The new value for the neighbor counter.
+     * @brief Returns the current state of the visited flag and sets to false if true.
+     * @return The current state of the visited flag.
      */
-    void setCounter(int value);
-
-    /**
-     * @brief Decrements the neighbor counter.
-     */
-    inline void decrementCounter() THREAD_SAFE
+    inline bool visit() THREAD_SAFE
     {
         std::lock_guard<std::mutex> lock(mutex);
-        neighborCounter--;
-    };
+        bool tmp = visited;
+        visited = true;
+        return tmp;
+    }
 
-    /**
-     * @brief Increments the neighbor counter.
-     */
-    inline void incrementCounter() THREAD_SAFE
+    inline void unvisit() THREAD_SAFE
     {
         std::lock_guard<std::mutex> lock(mutex);
-        neighborCounter++;
-    };
-
-    /**
-     * @brief Restes particles for the next timestep if it was not visited yet
-     * @return void
-     */
-    void checkVisitedReset();
-
-    void checkVisitedResetSafe() THREAD_SAFE;
-
-    bool checkNeighbourCounter();
-
-    bool visit() THREAD_SAFE;
+        visited = false;
+    }
 
     /** @brief Index of the cell. */
     CellIndex myIndex;
@@ -153,8 +128,8 @@ private:
     /// The type of the cell (boundary, halo, or bulk).
     CellType type;
 
-    /// A counter used for tracking processed neighbors (e.g., during force calculations).
-    int neighborCounter;
+    /** @brief Flag to check if this cell has been visited. */
+    bool visited = false;
 
     /// A list storing references to particles within the cell.
     ParticleRefList particles;

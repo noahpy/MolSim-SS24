@@ -72,6 +72,19 @@ public:
         THREAD_SAFE;
 
     /**
+     * @brief Resets the forces for all particles for the next force calculation
+     * @param particleContainer The container holding the particles
+     * @return void
+     */
+    void preCalcSetup(ParticleContainer& particleContainer) const;
+    
+    /**
+     * @brief Resets the visited flag of all cells to false
+     * @return void
+     */
+    void postCalcSetup() const;
+
+    /**
      * @brief Updates the cell lists by the position of all particles.
      */
     void updateCells();

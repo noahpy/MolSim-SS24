@@ -4,7 +4,6 @@
 
 Cell::Cell(const CellIndex index)
     : type(CellType::Inner)
-    , neighborCounter(0)
     , myIndex(index)
     , boundaryNeighbours()
     , haloNeighbours()
@@ -14,7 +13,6 @@ Cell::Cell(const CellIndex index)
 
 Cell::Cell(const CellType type, const CellIndex index)
     : type(type)
-    , neighborCounter(0)
     , myIndex(index)
     , boundaryNeighbours()
     , haloNeighbours()
@@ -25,7 +23,6 @@ Cell::Cell(const CellType type, const CellIndex index)
 
 Cell::Cell(const Cell& other)
     : type(other.type)
-    , neighborCounter(other.neighborCounter)
     , myIndex(other.myIndex)
     , boundaryNeighbours(other.boundaryNeighbours)
     , haloNeighbours(other.haloNeighbours)
@@ -78,10 +75,6 @@ ParticleRefList::iterator Cell::end()
     return particles.end();
 }
 
-void Cell::setCounter(int count)
-{
-    neighborCounter = count;
-}
 
 Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
     : particles(particles)
@@ -98,43 +91,6 @@ Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
     }
 }
 
-void Cell::checkVisitedReset() 
-{
-    if (!visited) {
-        visited = true;
-        // reset particles
-        for (auto& p : particles) {
-            p.get().resetF();
-        }
-    }
-}
-
-void Cell::checkVisitedResetSafe(){
-    std::lock_guard<std::mutex> lock(mutex);
-    checkVisitedReset();
-}
-
-bool Cell::checkNeighbourCounter() 
-{
-    if (neighborCounter > 0){
-        --neighborCounter;
-        if(!neighborCounter){
-            visited = false;
-        }
-        return true;
-    }
-    return false;
-}
-
-bool Cell::visit() THREAD_SAFE
-{
-    std::lock_guard<std::mutex> lock(mutex);
-    if (checkNeighbourCounter()){
-        return false;
-    }
-    checkVisitedReset();
-    return true;
-}
 
 std::pair<std::reference_wrapper<Particle>, std::reference_wrapper<Particle>> Cell::
     PairListIterator::operator*() const

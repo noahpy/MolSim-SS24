@@ -1,5 +1,6 @@
 
 #include "CellGrid.h"
+#include "models/ParticleContainer.h"
 #include "models/linked_cell/cell/Cell.h"
 #include "utils/ArrayUtils.h"
 #include "utils/Position.h"
@@ -204,21 +205,40 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
     }
 }
 
-std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) const THREAD_SAFE
+void CellGrid::preCalcSetup(ParticleContainer& container) const
+{
+    for (auto& particle : container) {
+        particle.resetF();
+    }
+}
+
+void CellGrid::postCalcSetup() const
+{
+    for (auto& cell : cells) {
+        for (auto& row : cell) {
+            for (auto& col : row) {
+                col->unvisit();
+            }
+        }
+    }
+}
+
+std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& index) const THREAD_SAFE
 {
     std::list<CellIndex> cellList;
 
-    // If not all neighbours have been paired up, return an empty list
     // If the cell is a halo, return an empty list
-    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() > 0 ||
-        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getType() == CellType::Halo) {
+    if (cells.at(index[0]).at(index[1]).at(index[2])->getType() == CellType::Halo) {
         return cellList;
     }
 
-    // check if this cell was not visited
-    cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->checkVisitedResetSafe();
+    // If the cell has already been visited, return an empty list
+    // and if not, flip the visit flag
+    if (cells.at(index[0]).at(index[1]).at(index[2])->visit()) {
+        return cellList;
+    }
 
-    // Iterate over all neighbors including the cell itself
+    // Iterate over all neighbors
     for (int dx = -1; dx <= 1; ++dx) {
         for (int dy = -1; dy <= 1; ++dy) {
             for (int dz = -1; dz <= 1; ++dz) {
@@ -227,22 +247,15 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
                     continue;
                 }
 
-                size_t nx = cellIndex[0] + dx;
-                size_t ny = cellIndex[1] + dy;
-                size_t nz = cellIndex[2] + dz;
+                size_t nx = index[0] + dx;
+                size_t ny = index[1] + dy;
+                size_t nz = index[2] + dz;
 
                 // Continue if the neighbor is in bounds
                 if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
-                    if (!cells.at(nx).at(ny).at(nz)->visit()) {
+                    // if the neighbour is already visited, continue
+                    if (cells.at(nx).at(ny).at(nz)->getVisited()) {
                         continue;
-                    }
-
-                    if (cells.at(nx).at(ny).at(nz)->getType() != CellType::Halo) {
-                        // Increment neighborCounter if not a halo cell
-                        cells.at(cellIndex[0])
-                            .at(cellIndex[1])
-                            .at(cellIndex[2])
-                            ->incrementCounter();
                     }
 
                     // Insert all particles into particleList
@@ -250,13 +263,6 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) con
                 }
             }
         }
-    }
-
-    // If there are no relevant neighbors (i.e. all neighbors did already do their calculations)
-    // We need to set visited to false again, as the force calculation is done for the iteration
-    // This is an edge case
-    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() == 0) {
-        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = false;
     }
     return cellList;
 }
