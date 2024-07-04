@@ -3,15 +3,17 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 # Dims as defined in the Analyzer
-dims = (51, 1, 1)
+dims = (50, 1, 1)
 # Select the two axis to keep (index)
-whichAxis = (0,1)
+whichAxis = (0,2)
+axisNames = ['x-Axis', '']
+plotTitle = 'Velocity Profile along x axis'
 
-density = np.loadtxt('/Users/christianmacbook/Documents/MolDyn/cmake-build-debug/src/analysis_density.csv', delimiter=',')
-density = density.reshape((len(density),dims[whichAxis[0]],dims[whichAxis[1]]))
+density = np.loadtxt('./results/analysis_density_1D.csv', delimiter=',')
+density = density.reshape((len(density),dims[whichAxis[1]],dims[whichAxis[0]]))
 
-velocity = np.loadtxt('/Users/christianmacbook/Documents/MolDyn/cmake-build-debug/src/analysis_velocity.csv', delimiter=',')
-velocity = velocity.reshape((len(velocity),dims[whichAxis[0]],dims[whichAxis[1]]))
+velocity = np.loadtxt('./results/analysis_velocity_1D.csv', delimiter=',')
+velocity = velocity.reshape((len(velocity),dims[whichAxis[1]],dims[whichAxis[0]]))
 
 numPlots = len(density)
 assert len(density) == len(velocity)
@@ -30,9 +32,10 @@ maxVal = np.max(data)
 
 def plot(idx):
     ax.clear()
-    ax.set_xlabel('x')
-    ax.set_title('Density Profile along x axis')
-    heatmap = ax.pcolor(data[idx].T, vmin=minVal, vmax=maxVal)
+    ax.set_xlabel(axisNames[0])
+    ax.set_ylabel(axisNames[1])
+    ax.set_title(plotTitle)
+    heatmap = ax.pcolor(data[idx], vmin=minVal, vmax=maxVal)
     return heatmap
 
 # Animate
