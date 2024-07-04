@@ -65,7 +65,7 @@ void Analyzer::writeVectorToCSVFile(const std::vector<double>& data, const std::
         return;
 
     std::ofstream outfile;
-    outfile.open(filename);
+    outfile.open(filename, std::ios_base::app);
     if (!outfile.is_open()) {
         spdlog::error("Failed to open file: {}", filename);
         return;
