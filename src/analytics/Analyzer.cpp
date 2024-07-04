@@ -71,8 +71,8 @@ void Analyzer::writeVectorToCSVFile(const std::vector<double>& data, const std::
         return;
     }
     outfile << data [0];
-    for (auto d : data) {
-        outfile << "," << d;
+    for (size_t i = 1; i < data.size(); i++) {
+        outfile << "," << data[i];
     }
     outfile << std::endl;
     outfile.close();
