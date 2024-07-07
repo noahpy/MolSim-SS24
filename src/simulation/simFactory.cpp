@@ -3,8 +3,10 @@
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/boundaryConditions/BoundaryConfig.h"
+#include "simulation/MembraneSimulation.h"
 #include "simulation/MixedLJSimulation.h"
 #include "simulation/planetSim.h"
+
 #include <spdlog/spdlog.h>
 
 std::unique_ptr<Simulation> simFactory(
@@ -182,6 +184,73 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_origin,
             params.domain_size,
             params.cutoff,
+            params.boundaryConfig,
+            params.gravity,
+            params.init_temp,
+            params.target_temp,
+            params.max_temp_delta,
+            params.plot_frequency,
+            params.update_frequency,
+            true,
+            params.thermo_freq,
+            params.doPerformanceMeasurements);
+    case SimulationType::MEMBRANE:
+        spdlog::info("Initializing Membrane Simulation with:");
+        spdlog::info(
+            "delta_t: {}, end_time: {}, epsilon: {}, sigma: {}, plot_frequency: {}",
+            params.delta_t,
+            params.end_time,
+            params.epsilon,
+            params.sigma,
+            params.plot_frequency);
+        spdlog::info(
+            "domain_origin: ({}, {}, {}), domain_size: ({}, {}, {}), cutoff: {}, update_frequency: "
+            "{}",
+            params.domain_origin[0],
+            params.domain_origin[1],
+            params.domain_origin[2],
+            params.domain_size[0],
+            params.domain_size[1],
+            params.domain_size[2],
+            params.cutoff,
+            params.update_frequency);
+        is2DTmp = params.boundaryConfig.boundaryMap.size() == 4;
+        spdlog::info(
+            "left boundary: {}, right boundary: {}, top boundary: {}, bottom boundary: {}, front "
+            "boundary: {}, back boundary: {}",
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::LEFT)),
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::RIGHT)),
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::TOP)),
+            getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::BOTTOM)),
+            is2DTmp ? "None (2D)"
+                    : getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::FRONT)),
+            is2DTmp ? "None (2D)"
+                    : getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::BACK)));
+        spdlog::info(
+            "membraneOrigin: ({}, {}, {}), numParticlesWidth: {}, numParticlesHeight: {}",
+            params.membraneOrigin[0],
+            params.membraneOrigin[1],
+            params.membraneOrigin[2],
+            params.numParticlesWidth,
+            params.numParticlesHeight);
+
+        return std::make_unique<MembraneSimulation>(
+            params.start_time,
+            params.delta_t,
+            params.end_time,
+            particles,
+            strat,
+            std::move(writePointer),
+            std::move(readPointer),
+            params.typesMap,
+            params.domain_origin,
+            params.domain_size,
+            params.cutoff,
+            params.membraneOrigin,
+            params.numParticlesWidth,
+            params.numParticlesHeight,
+            params.k,
+            params.r_0,
             params.boundaryConfig,
             params.gravity,
             params.init_temp,

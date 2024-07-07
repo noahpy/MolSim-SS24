@@ -8,7 +8,7 @@ enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
 
 enum class WriterType { XYZ, VTK, XML, EMPTY };
 
-enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ };
+enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ, MEMBRANE };
 
 class Params {
 public:
@@ -65,4 +65,14 @@ public:
     std::map<unsigned, std::pair<double, double>> typesMap;
     // Flag for measuring performance -> will not use any io and time the simulation
     bool doPerformanceMeasurements = false;
+    // origin of the membrane
+    std::array<double, 3> membraneOrigin;
+    // number particles in width for the membrane
+    int numParticlesWidth;
+    // number particles in height for the membrane
+    int numParticlesHeight;
+    // stiffness constant
+    double k;
+    // average bond length in the molecule
+    double r_0;
 };
