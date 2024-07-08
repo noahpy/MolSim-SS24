@@ -10,6 +10,8 @@ enum class WriterType { XYZ, VTK, XML, EMPTY };
 
 enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ };
 
+enum ThermostatType { CLASSICAL, INDIVIDUAL, NONE };
+
 class Params {
 public:
     // start time
@@ -49,6 +51,8 @@ public:
                                     BoundaryType::SOFT_REFLECTIVE,
                                     BoundaryType::SOFT_REFLECTIVE,
                                     BoundaryType::SOFT_REFLECTIVE };
+    // Thermostat type
+    ThermostatType thermostat_type = ThermostatType::INDIVIDUAL;
     // initial temperature
     double init_temp = 0;
     // target temperature
@@ -65,4 +69,17 @@ public:
     std::map<unsigned, std::pair<double, double>> typesMap;
     // Flag for measuring performance -> will not use any io and time the simulation
     bool doPerformanceMeasurements = false;
+    // List of all types which should be immobile
+    std::map<unsigned , bool> immobileParticleTypes { {2, true} };
+    // The number of bins to use in the analyzer - 1 for ignoring a given axis
+    std::array<size_t, 3> bins = { 50, 1, 12 };
+    // The file name to write the analyzer results to
+    std::string outName = "analysis";
+    // The interval to run the analyzer
+    size_t analysisInterval = 100000;
+
+    // TODO
+    // [ ] Read ThermostatType from input file -> also none
+    // [ ] Read immobileParticleTypes from input file
+    // [ ] Read analysis params from xml
 };

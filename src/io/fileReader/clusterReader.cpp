@@ -45,7 +45,7 @@ void ClusterReader::readFile(Simulation& sim)
                 exit(EXIT_FAILURE);
             }
             generator.registerCluster(std::make_unique<CuboidParticleCluster>(
-                CuboidParticleCluster({ ox, oy, oz }, nx, ny, nz, h, m, { vx, vy, vz }, mv, dim)));
+                CuboidParticleCluster({ ox, oy, oz }, nx, ny, nz, h, m, { vx, vy, vz }, mv, dim, sim.stationaryParticleTypes)));
             break;
         case 'S':
             double osx, osy, osz;
@@ -67,7 +67,8 @@ void ClusterReader::readFile(Simulation& sim)
                 mass,
                 { ivx, ivy, ivz },
                 brownianMotion,
-                dimBrow)));
+                dimBrow,
+                sim.stationaryParticleTypes)));
             break;
         default:
             spdlog::error("Invalid clusterType: {}", clusterType);
