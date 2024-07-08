@@ -6,7 +6,6 @@
 #include <vector>
 #include <algorithm>
 
-
 /**
  * @brief A class to model a membrane of particles, managing molecular attributes and neighbors
  */
@@ -68,5 +67,5 @@ private:
     std::array<double, 3> origin; /**< The origin of the membrane */
     int numParticlesWidth; /**< The number of particles in the width of the membrane (x) */
     int numParticlesHeight; /**< The number of particles in the height of the membrane (y) */
-    std::unordered_map<int, std::vector<int>> membraneMap; /**< Map storing neighbor relationships via membrane id's*/
+    std::unordered_map<int, std::vector<int>> membraneMap; /**< Map storing neighbor relationships via particle id's*/
 };

@@ -286,19 +286,19 @@ void force_membrane(const Simulation& sim)
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
                      ++it) {
                     auto pair = *it;
-
-                    // calculate harmonic potential if it is a neighbor in the molecule
-                    if (membrane.isDiagonalNeighbor(pair.first, pair.second)) {
-                        if (membrane.isCalcNeighbor(pair.first, pair.second))
-                            harmonic_calc(pair.first, pair.second, k, r_0_diag);
-                        continue;
+                    if (pair.first.getMembraneId() != -1 && pair.second.getMembraneId() != -1) {
+                        // calculate harmonic potential if it is a neighbor in the molecule
+                        if (membrane.isDiagonalNeighbor(pair.first, pair.second)) {
+                            if (membrane.isCalcNeighbor(pair.first, pair.second))
+                                harmonic_calc(pair.first, pair.second, k, r_0_diag);
+                            continue;
+                        }
+                        if (membrane.isNeighbor(pair.first, pair.second)) {
+                            if (membrane.isCalcNeighbor(pair.first, pair.second))
+                                harmonic_calc(pair.first, pair.second, k, r_0);
+                            continue;
+                        }
                     }
-                    if (membrane.isNeighbor(pair.first, pair.second)) {
-                        if (membrane.isCalcNeighbor(pair.first, pair.second))
-                            harmonic_calc(pair.first, pair.second, k, r_0);
-                        continue;
-                    }
-
                     std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
                     // check if the distance is less than the cutoff
                     if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared) {
@@ -308,7 +308,7 @@ void force_membrane(const Simulation& sim)
                         double gamma =
                             len_sim.getGamma(pair.first.getType(), pair.second.getType());
                         // check if both particles are molecular for truncated lj calculation
-                        if (pair.first.getMolecular() && pair.second.getMolecular()) {
+                        if (pair.first.getMembraneId() != -1 && pair.second.getMembraneId() != -1) {
                             double sigma = len_sim.getSigma(pair.first.getType(), pair.second.getType());
                             lj_calc_truncated(pair.first, pair.second, alpha, beta, gamma, sigma, delta);
                         }
@@ -323,18 +323,19 @@ void force_membrane(const Simulation& sim)
                         // go over all particles in the neighbour
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
 
-                            // calculate harmonic potential if it is a neighbor in the molecule
-                            if (membrane.isDiagonalNeighbor(p1, p2)) {
-                                if (membrane.isCalcNeighbor(p1, p2))
-                                    harmonic_calc(p1, p2, k, r_0_diag);
-                                continue;
+                            if (p1.get().getMembraneId() != -1 && p2.get().getMembraneId() != -1) {
+                                // calculate harmonic potential if it is a neighbor in the molecule
+                                if (membrane.isDiagonalNeighbor(p1, p2)) {
+                                    if (membrane.isCalcNeighbor(p1, p2))
+                                        harmonic_calc(p1, p2, k, r_0_diag);
+                                    continue;
+                                }
+                                if (membrane.isNeighbor(p1, p2)) {
+                                    if (membrane.isCalcNeighbor(p1, p2))
+                                        harmonic_calc(p1, p2, k, r_0);
+                                    continue;
+                                }
                             }
-                            if (membrane.isNeighbor(p1, p2)) {
-                                if (membrane.isCalcNeighbor(p1, p2))
-                                    harmonic_calc(p1, p2, k, r_0);
-                                continue;
-                            }
-
                             // Check if the distance is less than the cutoff
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
                             if (ArrayUtils::DotProduct(delta) <=
@@ -347,7 +348,7 @@ void force_membrane(const Simulation& sim)
                                 double gamma =
                                     len_sim.getGamma(p1.get().getType(), p2.get().getType());
                                 // check if both particles are molecular for truncated lj calculation
-                                if (p1.get().getMolecular() && p2.get().getMolecular()) {
+                                if (p1.get().getMembraneId() != -1 && p2.get().getMembraneId() != -1) {
                                     double sigma = len_sim.getSigma(p1.get().getType(), p2.get().getType());
                                     lj_calc_truncated(p1, p2, alpha, beta, gamma, sigma, delta);
                                 }

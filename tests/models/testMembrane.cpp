@@ -19,7 +19,7 @@ TEST(MembraneTests, initMembraneTests)
     membrane.initMembrane(container, 1);
 
     for (auto& p : container.particles) {
-        EXPECT_EQ(p.getMolecular(), true);
+        EXPECT_EQ(p.getMembraneId() != -1, true);
     }
 
     Particle p4 = {{0, 1, 0}, z, 1, 0};
@@ -34,7 +34,7 @@ TEST(MembraneTests, initMembraneTests)
     membrane2.initMembrane(container, 1);
 
     for (auto& p : container.particles) {
-        EXPECT_EQ(p.getMolecular(), true);
+        EXPECT_EQ(p.getMembraneId() != -1, true);
     }
 }
 
@@ -82,9 +82,40 @@ TEST(MembraneTests, membraneMapTests)
     EXPECT_EQ(membrane2.isCalcNeighbor(container.particles[1], container.particles[4]), true);
     EXPECT_EQ(membrane2.isCalcNeighbor(container.particles[1], container.particles[3]), true);
 
-    std::vector<int> neighbors = membrane2.getNeighbors(container.particles[1]);
-    std::vector check{2, 5, 4, 3, 0, -1, -1 , -1};
+
+    std::vector<int> neighbors = membrane2.getNeighbors(container.particles[0]);
+    std::vector check{1, 4, 3, -1, -1, -1, -1 , -1};
     for (int id = 0; id < 8; ++id) {
         EXPECT_EQ(neighbors[id] == check[id], true);
+    }
+
+    std::vector<int> neighbors2 = membrane2.getNeighbors(container.particles[1]);
+    std::vector check2{2, 5, 4, 3, 0, -1, -1 , -1};
+    for (int id = 0; id < 8; ++id) {
+        EXPECT_EQ(neighbors2[id] == check2[id], true);
+    }
+
+    std::vector<int> neighbors3 = membrane2.getNeighbors(container.particles[2]);
+    std::vector check3{-1, -1, 5, 4, 1, -1, -1 , -1};
+    for (int id = 0; id < 8; ++id) {
+        EXPECT_EQ(neighbors3[id] == check3[id], true);
+    }
+
+    std::vector<int> neighbors4 = membrane2.getNeighbors(container.particles[3]);
+    std::vector check4{4, -1, -1, -1, -1, -1, 0 , 1};
+    for (int id = 0; id < 8; ++id) {
+        EXPECT_EQ(neighbors4[id] == check4[id], true);
+    }
+
+    std::vector<int> neighbors5 = membrane2.getNeighbors(container.particles[4]);
+    std::vector check5{5, -1, -1, -1, 3, 0, 1 , 2};
+    for (int id = 0; id < 8; ++id) {
+        EXPECT_EQ(neighbors5[id] == check5[id], true);
+    }
+
+    std::vector<int> neighbors6 = membrane2.getNeighbors(container.particles[5]);
+    std::vector check6{-1, -1, -1, -1, 4, 1, 2 , -1};
+    for (int id = 0; id < 8; ++id) {
+        EXPECT_EQ(neighbors6[id] == check6[id], true);
     }
 }

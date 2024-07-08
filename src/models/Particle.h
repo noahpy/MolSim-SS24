@@ -53,10 +53,8 @@ private:
     bool active;
 
     /**
-     * @brief Shows if particle is part of the membrane
+     * @brief id in the membrane, if particle is not part of a membrane then id = -1
      */
-    bool molecular;
-
     int membraneId;
 
 public:
@@ -153,14 +151,9 @@ public:
     }
 
     /**
-     * @brief Get the molecule status of the particle
-     * @return Molecule status of the particle
+     * @brief Get the membrane id
+     * @return id for the membrane
      */
-    [[nodiscard]] inline bool getMolecular() const
-    {
-            return molecular;
-    }
-
     [[nodiscard]] inline int getMembraneId() const
     {
             return membraneId;
@@ -231,11 +224,10 @@ public:
         active = act_new;
     }
 
-    inline void setMolecular(bool mol_new)
-    {
-        molecular = mol_new;
-    }
-
+    /**
+     * @brief Set the membrane id
+     * @param id_new The new id value
+     */
     inline void setMembraneId(int id_new)
     {
         membraneId = id_new;

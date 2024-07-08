@@ -34,7 +34,6 @@ void Membrane::initMembrane(ParticleContainer& container, double spacing) {
             int j = static_cast<int>((y - origin[1]) / spacing);
 
             // Set the molecular attribute and store the particle reference in the grid
-            p.setMolecular(true);
             p.setMembraneId(membraneId);
             grid[i][j] = &p;
             ++membraneId;
