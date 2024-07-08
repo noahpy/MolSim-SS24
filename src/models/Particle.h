@@ -52,6 +52,8 @@ private:
      */
     bool active;
 
+    bool isNotStationary; /**< Whether the particle is stationary or not */
+
 public:
     /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
@@ -59,6 +61,7 @@ public:
      * @param v_arg The velocity of the particle
      * @param m_arg The mass of the particle
      * @param type The type of the particle
+     * @param isNotStationary_arg Whether the particle is stationary or not
      * @return Particle object
      */
     Particle(
@@ -67,7 +70,8 @@ public:
         std::array<double, 3> x_arg,
         std::array<double, 3> v_arg,
         double m_arg,
-        int type = 0);
+        int type = 0,
+        bool isNotStationary_arg = true);
 
     /**
      * @brief Construct a new Particle object by copying another Particle object -> do not use
@@ -133,7 +137,7 @@ public:
      */
     [[nodiscard]] inline bool getActivity() const
     {
-            return active;
+        return active;
     }
 
     /**
@@ -142,7 +146,15 @@ public:
      */
     [[nodiscard]] inline int getType() const
     {
-            return type;
+        return type;
+    }
+
+    /**
+     * @brief Get whether the particle is stationary or not
+     * @return The value of isNotStationary
+     */
+    [[nodiscard]] inline bool getIsNotStationary() const {
+        return isNotStationary;
     }
 
     /**

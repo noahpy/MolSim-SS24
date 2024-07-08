@@ -5,7 +5,7 @@
 void location_stroemer_verlet(const Simulation& sim)
 {
     for (auto& p : sim.container) {
-        if (sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+        if (p.getIsNotStationary())
             // x = x + Δt * v + (Δt)^2 * F / (2 * m)
             p.setX(
                 p.getX() + sim.delta_t * p.getV() +

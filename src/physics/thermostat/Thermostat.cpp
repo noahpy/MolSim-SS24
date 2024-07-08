@@ -16,7 +16,7 @@ Thermostat::Thermostat(double init, double target, double delta, size_t dim)
 void Thermostat::initializeBrownianMotion(Simulation& sim) const
 {
     for (auto& p : sim.container)
-        if (sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+        if (p.getIsNotStationary())
             p.setV(maxwellBoltzmannDistributedVelocity(std::sqrt(init / p.getM()), dim));
 }
 

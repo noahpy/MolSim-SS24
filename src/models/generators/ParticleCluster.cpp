@@ -7,6 +7,7 @@ ParticleCluster::ParticleCluster(
     std::array<double, 3> initialVelocity,
     double meanVelocity,
     size_t dimensions,
+    const std::map<unsigned , bool>& stationaryParticleTypes,
     unsigned ptype)
     : origin(origin)
     , mass(mass)
@@ -14,6 +15,7 @@ ParticleCluster::ParticleCluster(
     , meanVelocity(meanVelocity)
     , dimensions(dimensions)
     , ptype(ptype)
+    , isNotStationary(stationaryParticleTypes.find(ptype) == stationaryParticleTypes.end())
 {
     if (dimensions > 3) {
         spdlog::warn(

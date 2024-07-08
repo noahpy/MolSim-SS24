@@ -25,8 +25,7 @@ void IndividualThermostat::updateT(Simulation& sim)
 
     std::array<double, 3> meanVelocity = getMeanVelocity(sim);
     for (auto& p : sim.container) {
-        if (p.getActivity() &&
-            sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+        if (p.getActivity() && p.getIsNotStationary())
             p.setV(beta * (p.getV() - meanVelocity) + meanVelocity);
     }
 }
@@ -36,8 +35,7 @@ double IndividualThermostat::getTotalKineticEnergy(Simulation& sim)
     double E = 0;
     std::array<double, 3> meanVelocity = getMeanVelocity(sim);
     for (auto& p : sim.container)
-        if (p.getActivity() &&
-            sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+        if (p.getActivity() && p.getIsNotStationary())
             E += p.getM() * (ArrayUtils::DotProduct(p.getV() - meanVelocity));
     return E;
 }
@@ -46,8 +44,7 @@ std::array<double, 3> IndividualThermostat::getMeanVelocity(Simulation& sim) con
 {
     std::array<double, 3> meanVelocity = { 0, 0, 0 };
     for (auto& p : sim.container)
-        if (p.getActivity() &&
-            sim.stationaryParticleTypes.find(p.getType()) == sim.stationaryParticleTypes.end())
+        if (p.getActivity() && p.getIsNotStationary())
             meanVelocity = meanVelocity + p.getV();
 
     meanVelocity = (1 / (sim.container.activeParticleCount - numFixParticles)) * meanVelocity;
@@ -60,7 +57,7 @@ void IndividualThermostat::initialize(Simulation& sim)
         return;
 
     for (auto& p : sim.container)
-        if (sim.stationaryParticleTypes.find(p.getType()) != sim.stationaryParticleTypes.end())
+        if (!p.getIsNotStationary())
             numFixParticles++;
 
     isInitialized = true;

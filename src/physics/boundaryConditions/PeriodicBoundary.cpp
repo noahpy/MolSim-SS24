@@ -95,7 +95,7 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                     insertedParticles.at(insertionIndex)->setActivity(false);
                 } else {
                     Particle haloParticle(
-                        haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType());
+                        haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType(), false);
                     haloParticle.setActivity(false);
                     insertedParticles.push_back(std::make_unique<Particle>(haloParticle));
                 }
@@ -141,8 +141,7 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
         auto end = particles.end();
         while (it != end) {
             // If the particle is stationary, we do not need to do anything, as it cannot move
-            if (simulation.stationaryParticleTypes.find((*it).get().getType()) !=
-                simulation.stationaryParticleTypes.end()) {
+            if (!(*it).get().getIsNotStationary()) {
                 ++it;
                 continue;
             }
