@@ -22,7 +22,7 @@ protected:
     std::array<double, 3> domainOrigin = { 0, 0, 0 };
     std::array<double, 3> domainSize = { 10, 10, 10 };
     const double cutoff = 2.5;
-    std::map<unsigned, std::pair<double, double>> LJParams { { 0, { 1, 2 } } };
+    std::map<unsigned, std::pair<double, double>> LJParams { { 3, { 1, 2 } } };
     double gravityConst = 0;
     Particle p1 { { 1, 5, 1 }, { 3, 0, 4 }, 1, 3 };
     Particle p2 { { 7, 5, 1 }, { 9, 0, 0 }, 2, 3 };
