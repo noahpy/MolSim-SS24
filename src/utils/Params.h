@@ -10,7 +10,7 @@ enum class WriterType { XYZ, VTK, XML, EMPTY };
 
 enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ };
 
-enum ThermostatType { CLASSICAL, INDIVIDUAL };
+enum ThermostatType { CLASSICAL, INDIVIDUAL, NONE };
 
 class Params {
 public:
@@ -79,7 +79,7 @@ public:
     size_t analysisInterval = 100000;
 
     // TODO
-    // [ ] Read ThermostatType from input file
+    // [ ] Read ThermostatType from input file -> also none
     // [ ] Read immobileParticleTypes from input file
     // [ ] Read analysis params from xml
 };

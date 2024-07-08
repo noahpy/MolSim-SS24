@@ -36,7 +36,7 @@ public:
      * @brief Initialization with Brownian Motion using the Maxwell-Boltzmann distribution.
      * @param sim The simulation to initialize.
      */
-    void initializeBrownianMotion(Simulation& sim) const;
+    virtual void initializeBrownianMotion(Simulation& sim) const;
 
     /**
      * @brief Updates the temperature in our simulation.
