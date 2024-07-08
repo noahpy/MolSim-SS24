@@ -27,6 +27,9 @@ Analyzer::Analyzer(std::array<size_t, 3> binCounts, std::string outName)
 
 void Analyzer::analyze(LennardJonesDomainSimulation& sim)
 {
+    if (nBins == 0)
+        return;
+
     if (!initialized) {
         binSize[0] = sim.getDomainSize()[0] / (double)binCounts[0];
         binSize[1] = sim.getDomainSize()[1] / (double)binCounts[1];

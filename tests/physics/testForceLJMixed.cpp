@@ -11,6 +11,8 @@
 #include "simulation/baseSimulation.h"
 #include <cmath>
 #include <gtest/gtest.h>
+#include "physics/thermostat/ThermostatFactory.h"
+#include "analytics/Analyzer.h"
 
 class calcMixedForceLJ : public ::testing::Test {
 protected:
@@ -62,6 +64,9 @@ TEST_F(calcMixedForceLJ, calcForceLJUnNormed)
         { 1, { epsilon, sigma }}, { 2, { epsilon, sigma }}, { 3, { epsilon, sigma } }
     };
 
+    Analyzer analyzer ({0,0,0}, "");
+    std::unique_ptr<Analyzer> analyzerPtr = std::make_unique<Analyzer>(analyzer);
+
     MixedLJSimulation sim(
         start_time,
         delta_t,
@@ -70,6 +75,7 @@ TEST_F(calcMixedForceLJ, calcForceLJUnNormed)
         strat,
         std::move(writer),
         std::move(fileReader),
+        {},
         LJParams,
         domainOrigin,
         domainSize,
@@ -81,7 +87,9 @@ TEST_F(calcMixedForceLJ, calcForceLJUnNormed)
             BoundaryType::OUTFLOW,
             BoundaryType::OUTFLOW,
             BoundaryType::OUTFLOW),
+        std::move(analyzerPtr),
         gravityConst,
+        thermostatFactory(ThermostatType::CLASSICAL, 0, 0, 0, 0),
         0,
         0,
         0);

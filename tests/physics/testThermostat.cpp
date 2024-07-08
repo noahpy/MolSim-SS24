@@ -39,10 +39,11 @@ TEST(thermostatTest, updateTemp)
         container,
         strat,
         std::move(writePointer),
-        std::move(readPointer));
+        std::move(readPointer),
+        {});
 
     Thermostat thermo( 1, 2, 1, 2 );
-    thermo.updateT(sim.container);
+    thermo.updateT(sim);
 
     unsigned pCount = 0;
     for (auto& p : container) {
@@ -81,10 +82,11 @@ TEST(thermostatTest, updateTempNeg)
         container,
         strat,
         std::move(writePointer),
-        std::move(readPointer));
+        std::move(readPointer),
+        {});
 
     Thermostat thermo( 2, 1, 1, 2 );
-    thermo.updateT(sim.container);
+    thermo.updateT(sim);
 
     double PRESICION = 10e-5;
     unsigned pCount = 0;
@@ -126,10 +128,11 @@ TEST(thermostatTest, keepTemp)
         container,
         strat,
         std::move(writePointer),
-        std::move(readPointer));
+        std::move(readPointer),
+        {});
 
     Thermostat thermo( 1, 1, 1, 2 );
-    thermo.updateT(sim.container);
+    thermo.updateT(sim);
 
     unsigned pCount = 0;
     for (auto& p : container) {
@@ -143,7 +146,7 @@ TEST(thermostatTest, keepTemp)
         expectedVs.at(pCount) = {1, 1, 0};
         ++pCount;
     }
-    thermo.updateT(sim.container);
+    thermo.updateT(sim);
 
     double PRESICION = 10e-5;
     pCount = 0;
@@ -157,7 +160,7 @@ TEST(thermostatTest, keepTemp)
     for (auto& p : sim.container) {
         p.setV({0.5, 0.5, 0});
     }
-    thermo.updateT(sim.container);
+    thermo.updateT(sim);
 
     pCount = 0;
     for (auto& p : container) {

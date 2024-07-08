@@ -58,6 +58,7 @@ TEST_F(calcForceLJTest, calcForceLJNormed)
         strat,
         std::move(writer),
         std::move(fileReader),
+        {},
         epsilon,
         sigma);
 
@@ -101,6 +102,7 @@ TEST_F(calcForceLJTest, calcForceLJEquilibrium)
         strat,
         std::move(writer),
         std::move(fileReader),
+        {},
         epsilon,
         sigma);
 
@@ -144,6 +146,7 @@ TEST_F(calcForceLJTest, calcForceLJUnNormed)
         strat,
         std::move(writer),
         std::move(fileReader),
+        {},
         epsilon,
         sigma);
 
