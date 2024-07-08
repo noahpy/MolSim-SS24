@@ -21,6 +21,7 @@ MembraneSimulation::MembraneSimulation(
     int numParticlesHeight,
     double k,
     double r_0,
+    double spacing,
     const BoundaryConfig& boundaryConfig,
     double gravity_constant,
     double T_init,
@@ -58,9 +59,10 @@ MembraneSimulation::MembraneSimulation(
       numParticlesHeight(numParticlesHeight),
       k(k),
       r_0(r_0),
+      spacing(spacing),
       membrane(membraneOrigin, numParticlesWidth, numParticlesHeight)
 {
-    membrane.initMembrane(container);
+    membrane.initMembrane(container, spacing);
 }
 
 void MembraneSimulation::runSim()

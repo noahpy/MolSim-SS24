@@ -57,6 +57,8 @@ private:
      */
     bool molecular;
 
+    int membraneId;
+
 public:
     /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
@@ -159,6 +161,11 @@ public:
             return molecular;
     }
 
+    [[nodiscard]] inline int getMembraneId() const
+    {
+            return membraneId;
+    }
+
     /**
      * @brief Set the type of the particle
      * @param type_new The new type of the particle
@@ -227,6 +234,11 @@ public:
     inline void setMolecular(bool mol_new)
     {
         molecular = mol_new;
+    }
+
+    inline void setMembraneId(int id_new)
+    {
+        membraneId = id_new;
     }
 
     /**

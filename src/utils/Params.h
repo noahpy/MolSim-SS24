@@ -75,4 +75,6 @@ public:
     double k;
     // average bond length in the molecule
     double r_0;
+    // spacing between particles for the membrane
+    double spacing;
 };

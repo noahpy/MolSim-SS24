@@ -3,21 +3,9 @@
 #include <array>
 #include <models/ParticleContainer.h>
 #include <unordered_map>
-#include <functional>
 #include <vector>
+#include <algorithm>
 
-// custom hash and equality functions to enable maps with reference wrapper
-struct ParticleHash {
- std::size_t operator()(const std::reference_wrapper<Particle>& particle) const {
-  return std::hash<Particle*>()(&particle.get());
- }
-};
-
-struct ParticleEqual {
- bool operator()(const std::reference_wrapper<Particle>& lhs, const std::reference_wrapper<Particle>& rhs) const {
-  return &lhs.get() == &rhs.get();
- }
-};
 
 /**
  * @brief A class to model a membrane of particles, managing molecular attributes and neighbors
@@ -35,22 +23,22 @@ public:
     /**
      * @brief Add a neighbor relationship
      * @param particle The reference to the particle
-     * @param neighbor The reference to the neighboring particle
+     * @param neighborId The Id to the neighboring particle
      */
-    void addNeighbor(Particle& particle, Particle& neighbor);
+    void addNeighbor(Particle& particle, int neighborId);
 
     /**
-     * @brief Get the neighbors of a particle
+     * @brief Get the membrane id's of neighbors of a particle
      * @param particle The reference to the particle
      * @return A vector of references to neighboring particles
      */
-    [[nodiscard]] const std::vector<std::reference_wrapper<Particle>>& getNeighbors(Particle& particle) const;
+    [[nodiscard]] const std::vector<int>& getNeighbors(Particle& particle) const;
 
     /**
      * @brief Initialize the membrane by setting molecular attributes and filling the neighbor map for particles
      * @param container The container with particles
      */
-    void initMembrane(ParticleContainer& container);
+    void initMembrane(ParticleContainer& container, double spacing);
 
     /**
      * @brief Checks if particle2 is a neighbor to particle1 in the membrane
@@ -67,11 +55,18 @@ public:
      */
     bool isDiagonalNeighbor( Particle& particle1, Particle& particle2) const;
 
+    /**
+     * @brief Checks for half of the neighbors (Right, Top-right, Top, Top-left) to enable iteration
+     * inside the force calculation using newton's third law
+     * @param particle1 Particle for which the neighbor is checked
+     * @param particle2 Particle for neighbor check
+     * @return Ture if particle2 is one of the neighbors from the upper half
+     */
     bool isCalcNeighbor(Particle& particle1, Particle& particle2) const;
 
 private:
     std::array<double, 3> origin; /**< The origin of the membrane */
     int numParticlesWidth; /**< The number of particles in the width of the membrane (x) */
     int numParticlesHeight; /**< The number of particles in the height of the membrane (y) */
-    std::unordered_map<std::reference_wrapper<Particle>, std::vector<std::reference_wrapper<Particle>>, ParticleHash, ParticleEqual> membraneMap; /**< Map storing neighbor relationships */
+    std::unordered_map<int, std::vector<int>> membraneMap; /**< Map storing neighbor relationships via membrane id's*/
 };

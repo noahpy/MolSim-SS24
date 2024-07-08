@@ -251,6 +251,7 @@ std::unique_ptr<Simulation> simFactory(
             params.numParticlesHeight,
             params.k,
             params.r_0,
+            params.spacing,
             params.boundaryConfig,
             params.gravity,
             params.init_temp,

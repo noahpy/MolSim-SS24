@@ -51,6 +51,7 @@ public:
         int numParticlesHeight,
         double k,
         double r_0,
+        double spacing,
         const BoundaryConfig& boundaryConfig,
         double gravity_constant,
         double T_init,
@@ -88,5 +89,6 @@ protected:
     int numParticlesHeight;
     double k;
     double r_0;
+    double spacing;
     Membrane membrane; /**< The membrane used in the simulation */
 };
