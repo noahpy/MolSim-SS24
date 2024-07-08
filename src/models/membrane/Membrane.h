@@ -67,6 +67,8 @@ public:
      */
     bool isDiagonalNeighbor( Particle& particle1, Particle& particle2) const;
 
+    bool isCalcNeighbor(Particle& particle1, Particle& particle2) const;
+
 private:
     std::array<double, 3> origin; /**< The origin of the membrane */
     int numParticlesWidth; /**< The number of particles in the width of the membrane (x) */

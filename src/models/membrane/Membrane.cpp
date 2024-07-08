@@ -86,3 +86,22 @@ bool Membrane::isDiagonalNeighbor( Particle& particle1, Particle& particle2) con
     }
     return false;
 }
+
+bool Membrane::isCalcNeighbor(Particle& particle1, Particle& particle2) const
+{
+    auto it = membraneMap.find(std::ref(particle1));
+    if (it != membraneMap.end()) {
+        const auto& neighbors = it->second;
+        // The neighbors are stored in the order:
+        // Right, Top-Right, Top, Top-Left, Left, Bottom-Left, Bottom, Bottom-Right
+        // Neighbors for calculation are at positions: 0 (Right), 1 (Top-Right), 2 (Top), 3 (Top-Left)
+        static const std::vector<int> diagonalPositions = {0, 1, 2, 3};
+
+        for (int pos : diagonalPositions) {
+            if (pos < neighbors.size() && &neighbors[pos].get() == &particle2) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
