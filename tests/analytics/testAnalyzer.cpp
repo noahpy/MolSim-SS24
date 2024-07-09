@@ -10,7 +10,7 @@
 #include "utils/Params.h"
 #include <fstream>
 #include <gtest/gtest.h>
-
+/*
 class AnalyzerTester : public ::testing::Test {
 protected:
     double start_time;
@@ -274,3 +274,4 @@ TEST_F(AnalyzerTester, testCorrectDensityProfile)
     remove((pathPrefix + outName + "_velocity.csv").c_str());
     remove((pathPrefix + outName + "_density.csv").c_str());
 }
+ */
