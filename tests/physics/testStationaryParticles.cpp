@@ -51,9 +51,9 @@ protected:
         generator.registerCluster(std::make_unique<SphereParticleCluster>(sCluster));
         generator.generateClusters();
 
-        particles.particles.emplace_back(p1);
-        particles.particles.emplace_back(p2);
-        particles.particles.emplace_back(p3);
+        particles.addParticle(p1);
+        particles.addParticle(p2);
+        particles.addParticle(p3);
     }
 };
 
