@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include "analytics/ProgressLogger.h"
 #include "models/ParticleContainer.h"
 #include <memory>
 
@@ -73,4 +74,5 @@ protected:
     PhysicsStrategy& strategy; /**< The strategy which is used to calculate the physics */
     std::unique_ptr<FileWriter> writer; /**< The output writer */
     std::unique_ptr<FileReader> reader; /**< The input reader */
+    ProgressLogger progressLogger; /**< The progress logger */
 };

@@ -165,13 +165,14 @@ void MixedLJSimulation::runSim()
         if (iteration % updateFrequency == 0) {
             cellGrid.updateCells();
         }
+        // Update thermostat if frequency is positive
         if (n_thermostat && iteration % n_thermostat == 0) {
             thermostat.updateT(this->container);
         }
         if (doProfile) {
             particleUpdates += container.activeParticleCount;
         }
-        // Update thermostat if frequency is positive
+        progressLogger.logProgress(iteration);
         spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;
