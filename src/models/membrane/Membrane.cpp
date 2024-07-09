@@ -4,8 +4,8 @@
 Membrane::Membrane(std::array<double, 3> origin, int numParticlesWidth, int numParticlesHeight)
     : origin(origin), numParticlesWidth(numParticlesWidth), numParticlesHeight(numParticlesHeight) {}
 
-void Membrane::addNeighbor(Particle& particle, int neighborId) {
-    membraneMap[particle.getMembraneId()].emplace_back(neighborId);
+void Membrane::addNeighbor(int particleId, int neighborId) {
+    membraneMap[particleId].emplace_back(neighborId);
 }
 
 const std::vector<int>& Membrane::getNeighbors(Particle& particle) const {
@@ -19,7 +19,7 @@ const std::vector<int>& Membrane::getNeighbors(Particle& particle) const {
 
 void Membrane::initMembrane(ParticleContainer& container, double spacing) {
     // Create a 2D grid of particle references
-    std::vector<std::vector<Particle*>> grid(numParticlesWidth, std::vector<Particle*>(numParticlesHeight, nullptr));
+    std::vector<std::vector<int>> grid(numParticlesWidth, std::vector<int>(numParticlesHeight, -1));
     int membraneId = 0;
 
     // Iterate through all particles to find those that belong to the membrane
@@ -35,39 +35,39 @@ void Membrane::initMembrane(ParticleContainer& container, double spacing) {
 
             // Set the molecular attribute and store the particle reference in the grid
             p.setMembraneId(membraneId);
-            grid[i][j] = &p;
+            grid[i][j] = membraneId;
             ++membraneId;
         }
     }
 
+    const std::vector<std::pair<int, int>> offsets = {
+        {1, 0}, {1, 1}, {0, 1}, {-1, 1},
+        {-1, 0}, {-1, -1}, {0, -1}, {1, -1}
+    };
+
     // Populate the membraneMap with neighbor relationships
     for (int i = 0; i < numParticlesWidth; i++) {
         for (int j = 0; j < numParticlesHeight; j++) {
-            Particle* currentParticle = grid[i][j];
+            int currentId = grid[i][j];
 
-            if (currentParticle) {
-                if (i < numParticlesWidth - 1 && grid[i + 1][j]) addNeighbor(*currentParticle, grid[i + 1][j]->getMembraneId()); // Right neighbor
-                else addNeighbor(*currentParticle, -1);
-                if (i < numParticlesWidth - 1 && j < numParticlesHeight - 1 && grid[i + 1][j + 1]) addNeighbor(*currentParticle, grid[i + 1][j + 1]->getMembraneId()); // Top-Right neighbor
-                else addNeighbor(*currentParticle, -1);
-                if (j < numParticlesHeight - 1 && grid[i][j + 1]) addNeighbor(*currentParticle, grid[i][j + 1]->getMembraneId()); // Top neighbor
-                else addNeighbor(*currentParticle, -1);
-                if (i > 0 && j < numParticlesHeight - 1 && grid[i - 1][j + 1]) addNeighbor(*currentParticle, grid[i - 1][j + 1]->getMembraneId()); // Top-Left neighbor
-                else addNeighbor(*currentParticle, -1);
-                if (i > 0 && grid[i - 1][j]) addNeighbor(*currentParticle, grid[i - 1][j]->getMembraneId()); // Left neighbor
-                else addNeighbor(*currentParticle, -1);
-                if (i > 0 && j > 0 && grid[i - 1][j - 1]) addNeighbor(*currentParticle, grid[i - 1][j - 1]->getMembraneId()); // Bottom-Left neighbor
-                else addNeighbor(*currentParticle, -1);
-                if (j > 0 && grid[i][j - 1]) addNeighbor(*currentParticle, grid[i][j - 1]->getMembraneId()); // Bottom neighbor
-                else addNeighbor(*currentParticle, -1);
-                if (i < numParticlesWidth - 1 && j > 0 && grid[i + 1][j - 1]) addNeighbor(*currentParticle, grid[i + 1][j - 1]->getMembraneId()); // Bottom-Right neighbor
-                else addNeighbor(*currentParticle, -1);
+            if (currentId != -1) {
+
+                for (const auto& offset : offsets) {
+                    int ni = i + offset.first;
+                    int nj = j + offset.second;
+
+                    if (ni >= 0 && ni < numParticlesWidth && nj >= 0 && nj < numParticlesHeight && grid[ni][nj] != -1) {
+                        addNeighbor(currentId, grid[ni][nj]);
+                    } else {
+                        addNeighbor(currentId, -1);
+                    }
+                }
             }
         }
     }
 }
 
-bool Membrane::isNeighbor( Particle& particle1, Particle& particle2) const {
+bool Membrane::isNeighbor(Particle& particle1, Particle& particle2) const {
     auto it = membraneMap.find(particle1.getMembraneId());
     if (it != membraneMap.end()) {
         const auto& neighbors = it->second;
@@ -78,7 +78,7 @@ bool Membrane::isNeighbor( Particle& particle1, Particle& particle2) const {
     return false;
 }
 
-bool Membrane::isDiagonalNeighbor( Particle& particle1, Particle& particle2) const {
+bool Membrane::isDiagonalNeighbor(Particle& particle1, Particle& particle2) const {
     auto it = membraneMap.find(particle1.getMembraneId());
     if (it != membraneMap.end()) {
         const auto& neighbors = it->second;

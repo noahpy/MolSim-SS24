@@ -21,10 +21,10 @@ public:
 
     /**
      * @brief Add a neighbor relationship
-     * @param particle The reference to the particle
+     * @param particleId The Id of the particle
      * @param neighborId The Id to the neighboring particle
      */
-    void addNeighbor(Particle& particle, int neighborId);
+    void addNeighbor(int particleId, int neighborId);
 
     /**
      * @brief Get the membrane id's of neighbors of a particle
