@@ -31,7 +31,7 @@ public:
     inline void logProgress(unsigned currentIteration)
     {
         // only log, if new percentage is reached -> 100 updates
-        if (currentIteration < nextLoggingIteration)
+        if (currentIteration < nextLoggingIteration || spdlog::level::info < spdlog::default_logger()->level())
             return;
 
         auto currentTime = std::chrono::steady_clock::now();
