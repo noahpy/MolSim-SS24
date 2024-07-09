@@ -320,10 +320,10 @@ TEST(PContainerTests, particleIdTest)
     // add per clusters
     ParticleGenerator generator(container);
     generator.registerCluster(std::make_unique<CuboidParticleCluster>(
-        CuboidParticleCluster({ 2, 2, 4 }, 2, 3, 2, 0.4, 4, { 0, 0, 0 }, 0, 0, 0)));
+        CuboidParticleCluster({ 2, 2, 4 }, 2, 3, 2, 0.4, 4, { 0, 0, 0 }, 0, 0, {})));
 
     generator.registerCluster(std::make_unique<SphereParticleCluster>(
-        SphereParticleCluster({ 2, 2, 4 }, 4, 2, 0.3, 7, zeros, 0, 0)));
+        SphereParticleCluster({ 2, 2, 4 }, 4, 2, 0.3, 7, zeros, 0, 0, {})));
 
     generator.generateClusters();
 
