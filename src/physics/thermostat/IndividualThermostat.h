@@ -22,6 +22,7 @@ public:
     /**
      * @brief Calculates the total kinetic energy of the particles in the simulation while ignoring
      * the mean velocity. This is used in problem sheet 5
+     * @attention This is not the total kinetic energy of the system, but actually double of it. This is because the temperature calculations also divide by 2.
      * @param sim The simulation to get the total kinetic energy for.
      * @return The total kinetic energy of the particles in the simulation (ignoring mean velocity).
      */
@@ -33,7 +34,12 @@ public:
      */
     [[nodiscard]] std::string getName() const override;
 
-protected:
+    /**
+     * @brief Initializes the thermostat.
+     * @param sim The simulation to initialize the thermostat for.
+     */
+    void initialize(Simulation& sim);
+
     /**
      * @brief Calculates the mean velocity of the particles in the simulation.
      * @param container The container of particles in the simulation.
@@ -41,12 +47,7 @@ protected:
      */
     std::array<double, 3> getMeanVelocity(Simulation& sim) const;
 
+protected:
     size_t numFixParticles; /**< The number of fixed particles in the simulation. */
     bool isInitialized = false; /**< Whether the thermostat has been initialized. */
-
-    /**
-     * @brief Initializes the thermostat.
-     * @param sim The simulation to initialize the thermostat for.
-     */
-    void initialize(Simulation& sim);
 };

@@ -49,6 +49,7 @@ public:
 
     /**
      * @brief Calculates the total kinetic energy of the particles in the simulation.
+     * @attention This is not the total kinetic energy of the system, but actually double of it. This is because the temperature calculations also divide by 2.
      * @param sim The simulation to get the total kinetic energy for.
      * @return The total kinetic energy of the particles in the simulation.
      */
