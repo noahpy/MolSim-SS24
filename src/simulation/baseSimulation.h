@@ -3,6 +3,7 @@
 
 #include "models/ParticleContainer.h"
 #include <memory>
+#include <map>
 
 // forward-declare PhysicsStrategy
 class PhysicsStrategy;
@@ -27,6 +28,7 @@ public:
      * @param strat The strategy which is used to calculate the physics
      * @param writer The output writer
      * @param reader The input reader
+     * @param stationaryParticleTypes The types of particles which are stationary
      * @param frequency The frequency for writing outputs
      * @return A new Simulation object
      */
@@ -38,6 +40,7 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
+        std::map<unsigned , bool> stationaryParticleTypes,
         unsigned frequency = 10);
 
     /**
@@ -51,6 +54,7 @@ public:
     unsigned iteration = 0; /**< The current iteration of the simulation */
     unsigned frequency = 10; /**< The frequency for writing outputs */
     ParticleContainer& container; /**< The particle container which holds all particles */
+    std::map<unsigned, bool> stationaryParticleTypes; /**< The types of particles which are stationary */
 
     /*
      * @brief Destructor of Simulation

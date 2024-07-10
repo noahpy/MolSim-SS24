@@ -1,4 +1,5 @@
 
+#include "analytics/Analyzer.h"
 #include "io/fileReader/emptyReader.h"
 #include "io/fileWriter/VTKWriter.h"
 #include "models/ParticleContainer.h"
@@ -42,6 +43,9 @@ TEST(SoftReflectiveBoundary, CorrectMirroring3D)
     auto readPointer = std::make_unique<EmptyFileReader>(simParams.input_file);
     auto writePointer = std::make_unique<outputWriter::VTKWriter>(simParams.output_file);
 
+    Analyzer analyzer ({0,0,0}, "");
+    std::unique_ptr<Analyzer> analyzerPtr = std::make_unique<Analyzer>(analyzer);
+
     LennardJonesDomainSimulation LJDSim(
         simParams.start_time,
         simParams.delta_t,
@@ -50,12 +54,14 @@ TEST(SoftReflectiveBoundary, CorrectMirroring3D)
         strat,
         std::move(writePointer),
         std::move(readPointer),
+        {},
         simParams.epsilon,
         simParams.sigma,
         simParams.domain_origin,
         simParams.domain_size,
         simParams.cutoff,
         simParams.boundaryConfig,
+        std::move(analyzerPtr),
         simParams.plot_frequency,
         simParams.update_frequency);
 
@@ -139,6 +145,9 @@ TEST(SoftReflectiveBoundary, CorrectMirroring2D)
     auto readPointer = std::make_unique<EmptyFileReader>(simParams.input_file);
     auto writePointer = std::make_unique<outputWriter::VTKWriter>(simParams.output_file);
 
+    Analyzer analyzer ({0,0,0}, "");
+    std::unique_ptr<Analyzer> analyzerPtr = std::make_unique<Analyzer>(analyzer);
+
     LennardJonesDomainSimulation LJDSim(
         simParams.start_time,
         simParams.delta_t,
@@ -147,12 +156,14 @@ TEST(SoftReflectiveBoundary, CorrectMirroring2D)
         strat,
         std::move(writePointer),
         std::move(readPointer),
+        {},
         simParams.epsilon,
         simParams.sigma,
         simParams.domain_origin,
         simParams.domain_size,
         simParams.cutoff,
         simParams.boundaryConfig,
+        std::move(analyzerPtr),
         simParams.plot_frequency,
         simParams.update_frequency);
 

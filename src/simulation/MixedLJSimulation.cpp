@@ -1,8 +1,11 @@
 
 #include "MixedLJSimulation.h"
+
+#include "analytics/Analyzer.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
+#include <utility>
 
 MixedLJSimulation::MixedLJSimulation(
     double time,
@@ -12,17 +15,18 @@ MixedLJSimulation::MixedLJSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
+    std::map<unsigned, bool> stationaryParticleTypes,
     const std::map<unsigned, std::pair<double, double>>& LJParams,
     std::array<double, 3> domainOrigin,
     std::array<double, 3> domainSize,
     double cutoff,
     const BoundaryConfig& boundaryConfig,
+    std::unique_ptr<Analyzer> analyzer,
     double gravityConstant,
-    double T_init,
-    double T_target,
-    double delta_T,
+    std::unique_ptr<Thermostat> p_thermostat,
     unsigned int frequency,
     unsigned int updateFrequency,
+    size_t analysisFrequency,
     bool read_file,
     unsigned int n_thermostat,
     bool doProfile)
@@ -34,19 +38,23 @@ MixedLJSimulation::MixedLJSimulation(
           strat,
           std::move(writer),
           std::move(reader),
+          std::move(stationaryParticleTypes),
           0,
           0,
           domainOrigin,
           domainSize,
           cutoff,
           boundaryConfig,
+          std::move(analyzer),
           frequency,
           updateFrequency,
+          analysisFrequency,
           false)
     , gravityConstant(gravityConstant)
-    , T_init(T_init)
-    , T_target(T_target)
-    , delta_T(delta_T)
+    , thermostat(std::move(p_thermostat))
+    , T_init(p_thermostat->getInit())
+    , T_target(p_thermostat->getTarget())
+    , delta_T(p_thermostat->getDelta())
     , n_thermostat(n_thermostat)
     , ljparams(LJParams)
     , doProfile(doProfile)
@@ -128,19 +136,18 @@ MixedLJSimulation::MixedLJSimulation(
     if (n_thermostat) {
         // Initialize thermostat
         spdlog::info(
-            "Initializing thermostat with T_init={}K, T_target={}K, delta_T={}K with a frequency "
-            "of {}",
+            "Initializing thermostat of type={} with T_init={}K, T_target={}K, delta_T={}K with"
+            " a frequency of {}",
+            thermostat->getName(),
             T_init,
             T_target,
             delta_T,
             n_thermostat);
-        thermostat = Thermostat(T_init, T_target, delta_T, cellGrid.gridDimensionality);
 
         // Intialize temperature
         spdlog::info("Setting initial temperature to {} K", T_init);
-        thermostat.initializeBrownianMotion(this->container);
-    }
-    else{
+        thermostat->initializeBrownianMotion(*this);
+    } else {
         spdlog::info("Themostat is turned off.");
     }
 }
@@ -165,8 +172,11 @@ void MixedLJSimulation::runSim()
         if (iteration % updateFrequency == 0) {
             cellGrid.updateCells();
         }
+        if (iteration % analysisFrequency == 0) {
+            analyzer->analyze(*this);
+        }
         if (n_thermostat && iteration % n_thermostat == 0) {
-            thermostat.updateT(this->container);
+            thermostat->updateT(*this);
         }
         if (doProfile) {
             particleUpdates += container.activeParticleCount;
@@ -198,4 +208,4 @@ double MixedLJSimulation::getRepulsiveDistance(int type) const
 {
     spdlog::trace("Got repulsive distance from Mixed LJ sim");
     return repulsiveDistances.at(type);
-};
+}

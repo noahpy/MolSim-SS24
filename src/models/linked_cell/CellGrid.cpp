@@ -165,7 +165,7 @@ void CellGrid::updateCells()
                         // Save addition for later
                         addList.emplace_back(indices, *it);
                         // Remove particle from old cell
-                        particles.erase(it++);
+                        it = particles.erase(it);
                     } else {
                         ++it;
                     }

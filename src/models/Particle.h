@@ -65,6 +65,8 @@ private:
      */
     size_t id;
 
+    bool isNotStationary; /**< Whether the particle is stationary or not */
+
 public:
     /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
@@ -73,6 +75,7 @@ public:
      * @param m_arg The mass of the particle
      * @param type The type of the particle
      * @param id The id of the particle
+     * @param isNotStationary_arg Whether the particle is stationary or not
      * @return Particle object
      */
     Particle(
@@ -82,7 +85,8 @@ public:
         std::array<double, 3> v_arg,
         double m_arg,
         int type = 0, 
-        size_t id = 0);
+        size_t id = 0,
+        bool isNotStationary_arg = true);
 
     /**
      * @brief Construct a new Particle object by copying another Particle object -> do not use
@@ -176,6 +180,14 @@ public:
     {
         std::lock_guard<std::mutex> lock(mutex);
         return type;
+    }
+
+    /**
+     * @brief Get whether the particle is stationary or not
+     * @return The value of isNotStationary
+     */
+    [[nodiscard]] inline bool getIsNotStationary() const {
+        return isNotStationary;
     }
 
     /**

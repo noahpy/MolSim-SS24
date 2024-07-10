@@ -4,6 +4,7 @@
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
 #include <memory>
+#include <utility>
 #include <spdlog/spdlog.h>
 
 PlanetSimulation::PlanetSimulation(
@@ -14,6 +15,7 @@ PlanetSimulation::PlanetSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
+    std::map<unsigned , bool> stationaryParticleTypes,
     unsigned frequency)
     : Simulation(
           time,
@@ -23,6 +25,7 @@ PlanetSimulation::PlanetSimulation(
           strat,
           std::move(writer),
           std::move(reader),
+          std::move(stationaryParticleTypes),
           frequency)
 {
     this->reader->readFile(*this);
