@@ -62,6 +62,7 @@ BoundaryConditionHandler::BoundaryConditionHandler(
 
 void BoundaryConditionHandler::preUpdateBoundaryHandling(Simulation& simulation)
 {
+    spdlog::debug("preUpdateBoundaryHandling...");
     for (auto& bc : boundaryConditions) {
         bc->preUpdateBoundaryHandling(simulation);
     }
@@ -69,6 +70,7 @@ void BoundaryConditionHandler::preUpdateBoundaryHandling(Simulation& simulation)
 
 void BoundaryConditionHandler::postUpdateBoundaryHandling(Simulation& simulation)
 {
+    spdlog::debug("postUpdateBoundaryHandling...");
     for (auto& bc : boundaryConditions) {
         bc->postUpdateBoundaryHandling(simulation);
     }
