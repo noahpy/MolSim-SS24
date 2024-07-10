@@ -21,6 +21,8 @@ void Membrane::initMembrane(ParticleContainer& container, double spacing) {
     // Create a 2D grid of particle references
     std::vector<std::vector<int>> grid(numParticlesWidth, std::vector<int>(numParticlesHeight, -1));
     int membraneId = 0;
+    double gridSpaceX = (numParticlesWidth - 1) * spacing;
+    double gridSpaceY = (numParticlesHeight - 1) * spacing;
 
     // Iterate through all particles to find those that belong to the membrane
     for (auto& p : container.particles) {
@@ -28,7 +30,7 @@ void Membrane::initMembrane(ParticleContainer& container, double spacing) {
         // Check if the particle is within the bounds of the membrane
         double x = p.getX()[0];
         double y = p.getX()[1];
-        if (x >= origin[0] && x < origin[0] + numParticlesWidth && y >= origin[1] && y < origin[1] + numParticlesHeight) {
+        if (x >= origin[0] && x <= origin[0] + gridSpaceX && y >= origin[1] && y <= origin[1] + gridSpaceY) {
             // Calculate the grid position of the particle
             int i = static_cast<int>((x - origin[0]) / spacing);
             int j = static_cast<int>((y - origin[1]) / spacing);
@@ -103,8 +105,8 @@ bool Membrane::isCalcNeighbor(Particle& particle1, Particle& particle2) const
         const auto& neighbors = it->second;
         // The neighbors are stored in the order:
         // Right, Top-Right, Top, Top-Left, Left, Bottom-Left, Bottom, Bottom-Right
-        // Neighbors for calculation are at positions: 0 (Right), 1 (Top-Right), 2 (Top), 3 (Top-Left)
-        static const std::vector<int> diagonalPositions = {0, 1, 2, 3};
+        // Neighbors for calculation are at positions: 7 (Bottom-Right), 0 (Right), 1 (Top-Right), 2 (Top)
+        static const std::vector<int> diagonalPositions = {7, 0, 1, 2};
 
         for (int pos : diagonalPositions) {
             if (pos < neighbors.size() && neighbors[pos] == particle2.getMembraneId()) {

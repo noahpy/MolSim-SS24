@@ -55,7 +55,7 @@ public:
     bool isDiagonalNeighbor( Particle& particle1, Particle& particle2) const;
 
     /**
-     * @brief Checks for half of the neighbors (Right, Top-right, Top, Top-left) to enable iteration
+     * @brief Checks for half of the neighbors (Bottom-Right, Right, Top-right, Top) to enable iteration
      * inside the force calculation using newton's third law
      * @param particle1 Particle for which the neighbor is checked
      * @param particle2 Particle for neighbor check
