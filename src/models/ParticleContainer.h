@@ -8,6 +8,7 @@
 #include "Particle.h"
 #include <map>
 #include <vector>
+#include <functional>
 
 /**
  * @brief The ParticleContainer class is a data structure that holds the collection of particles

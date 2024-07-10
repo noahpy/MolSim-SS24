@@ -44,7 +44,7 @@ void force_gravity_V2(const Simulation& sim)
     }
 }
 
-void lj_calc(
+inline void lj_calc(
     Particle& p1,
     Particle& p2,
     double alpha,
@@ -161,6 +161,11 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
             // Then the condition of the loop will be true and the loop will be executed
             // We then set it to false to not run it further. -> Remember to set z=0
             bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
+
+            // TODO move doLoopFor2D above parallel (firstprivate) -> then move loops together and collaps (3)
+            // Inside third loop:
+            // if z == 0 and !doLoopFor2D -> continue
+            // if z == cellGrid.cells[0][0].size() - 1 and !doLoopFor2D -> break
 
             for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
                 if (doLoopFor2D) {
