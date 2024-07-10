@@ -6,9 +6,9 @@
 
 enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
 
-enum WriterType { XYZ, VTK };
+enum class WriterType { XYZ, VTK, XML, EMPTY };
 
-enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ };
+enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ };
 
 class Params {
 public:
@@ -42,9 +42,27 @@ public:
     unsigned plot_frequency = 10;
     // update frequency
     unsigned update_frequency = 10;
+    // checkpoint frequency
+    unsigned checkpoint_frequency = 10;
     // boundary configuration
     BoundaryConfig boundaryConfig { BoundaryType::SOFT_REFLECTIVE,
                                     BoundaryType::SOFT_REFLECTIVE,
                                     BoundaryType::SOFT_REFLECTIVE,
                                     BoundaryType::SOFT_REFLECTIVE };
+    // initial temperature
+    double init_temp = 0;
+    // target temperature
+    double target_temp = 0;
+    // frequency of thermostat updates
+    unsigned thermo_freq = 20;
+    // maximum temperature delta
+    double max_temp_delta = 10;
+    // gravitational constant
+    double gravity = 0.0;
+    // particle types 
+    std::vector<std::pair<double, double>> particleTypes;
+    // map to particle types
+    std::map<unsigned, std::pair<double, double>> typesMap;
+    // Flag for measuring performance -> will not use any io and time the simulation
+    bool doPerformanceMeasurements = false;
 };

@@ -1,0 +1,15 @@
+
+\section{Thermostat}
+\label{sec:thermo}
+
+\begin{frame}
+    \frametitle{Thermostat}
+    \begin{itemize}
+        \item Adjusts particle velocities for temperature control
+        \item Frequency control for temperature updates on simulation level
+        \item Optimized by excluding divisions by 2 in $E_{kin}$
+        \item $T_{current} = \frac{2 \cdot \left(\sum_{i=1}^{\#particles} \frac{m_i \langle v_i, v_i \rangle}{2}\right)}{\#dimensions\ \cdot\ \#particles}$
+        \item $T_{current} = \frac{2 \cdot \frac{1}{2}\ \left(\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle\right)}{\#dimensions\ \cdot\ \#particles}$
+        \item $T_{current} = \frac{\sum_{i=1}^{\#particles} m_i \langle v_i, v_i \rangle}{\#dimensions\ \cdot\ \#particles}$
+    \end{itemize}
+\end{frame}

@@ -4,9 +4,6 @@
 #include "physics/boundaryConditions/BoundaryCondition.h"
 #include <spdlog/spdlog.h>
 
-// forward declare
-class LennardJonesDomainSimulation;
-
 /**
  * @brief The SoftReflectiveBoundary class is a class that represents a boundary condition where
  * particles that leave the domain are reflected back into the domain about the boundary by
@@ -58,11 +55,7 @@ private:
         return { 0, 0, 0 };
     };
 
-    std::array<double, 3> getPointOnBoundaryPlane(const LennardJonesDomainSimulation& LJDSim);
-
-    std::vector<Particle>
+    std::vector<std::unique_ptr<Particle>>
         insertedParticles; /**< The particles that were inserted. These will be recycled */
     size_t insertionIndex; /**< The index of the next particle to recycle */
-
-    double repulsiveDistance = -1; /**< The distance to the boundary where the repulsion starts */
 };

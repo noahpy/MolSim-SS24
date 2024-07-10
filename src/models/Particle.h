@@ -47,21 +47,12 @@ private:
      */
     int type;
 
+    /**
+     * @brief Activity status of a particle
+     */
+    bool active;
+
 public:
-    /**
-     * @brief Construct a new Particle object of a given type
-     * @param type The type of the particle
-     * @return Particle object
-     */
-    explicit Particle(int type = 0);
-
-    /**
-     * @brief Construct a new Particle object by copying another Particle object
-     * @param other The Particle object to copy
-     * @return Particle object
-     */
-    Particle(const Particle& other);
-
     /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
      * @param x_arg The position of the particle
@@ -79,6 +70,13 @@ public:
         int type = 0);
 
     /**
+     * @brief Construct a new Particle object by copying another Particle object -> do not use
+     * @param other The Particle object to copy
+     * @return Particle object
+     */
+    Particle(const Particle& other);
+
+    /**
      * @brief Destroy the Particle object
      * @return void
      */
@@ -88,72 +86,129 @@ public:
      * @brief Get the position of the particle
      * @return The position of the particle
      */
-    const std::array<double, 3>& getX() const;
+    [[nodiscard]] inline const std::array<double, 3>& getX() const
+    {
+        return x;
+    }
 
     /**
      * @brief Get the velocity of the particle
      * @return The velocity of the particle
      */
-    const std::array<double, 3>& getV() const;
+    [[nodiscard]] inline const std::array<double, 3>& getV() const
+    {
+        return v;
+    }
 
     /**
      * @brief Get the force effective on the particle
      * @return The force effective on the particle
      */
-    const std::array<double, 3>& getF() const;
+    [[nodiscard]] inline const std::array<double, 3>& getF() const
+    {
+        return f;
+    }
 
     /**
      * @brief Get the force which was effective on the particle
      * @return The force which was effective on the particle
      */
-    const std::array<double, 3>& getOldF() const;
+    [[nodiscard]] inline const std::array<double, 3>& getOldF() const
+    {
+        return old_f;
+    }
 
     /**
      * @brief Get the mass of the particle
      * @return The mass of the particle
      */
-    double getM() const;
+    [[nodiscard]] inline double getM() const
+    {
+        return m;
+    }
+
+    /**
+     * @brief Get the activity status of the particle
+     * @return The activity status of the particle
+     */
+    [[nodiscard]] inline bool getActivity() const
+    {
+            return active;
+    }
 
     /**
      * @brief Get the type of the particle
      * @return The mass of the particle
      */
-    int getType() const;
+    [[nodiscard]] inline int getType() const
+    {
+            return type;
+    }
+
+    /**
+     * @brief Set the type of the particle
+     * @param type_new The new type of the particle
+     */
+    inline void setType(const int type_new) { type = type_new;}
 
     /**
      * @brief Set the position of the particle
      * @param x_new The new position of the particle
      * @return void
      */
-    void setX(const std::array<double, 3>& x_new);
+    inline void setX(const std::array<double, 3>& x_new)
+    {
+            x = x_new;
+    }
 
     /**
      * @brief Set the velocity of the particle
      * @param v_new The new velocity of the particle
      * @return void
      */
-    void setV(const std::array<double, 3>& v_new);
+    inline void setV(const std::array<double, 3>& v_new)
+    {
+        v = v_new;
+    }
 
     /**
      * @brief Set the force effective on the particle
      * @param f_new The new force effective on the particle
      * @return void
      */
-    void setF(const std::array<double, 3>& f_new);
+    inline void setF(const std::array<double, 3>& f_new)
+    {
+        f = f_new;
+    }
 
     /**
      * @brief Set the previous force effective on the particle
-     * @param f The previous force effective on the particle
+     * @param f_new The previous force effective on the particle
      * @return void
      */
-    void setOldF(const std::array<double, 3>& f);
+    inline void setOldF(const std::array<double, 3>& f_new)
+    {
+        old_f = f;
+    }
 
     /**
      * @brief Set the mass of the particle
      * @param m_new The new mass of the particle
      * @return void
      */
-    void setM(double m_new);
+    inline void setM(double m_new)
+    {
+        m = m_new;
+    }
+
+    /**
+     * @brief Set the new activity
+     * @param act_new The new activity
+     */
+    inline void setActivity(bool act_new)
+    {
+        active = act_new;
+    }
 
     /**
      * @brief Overload the == operator for the Particle class
@@ -166,7 +221,8 @@ public:
      * @brief Get the string representation of the Particle object
      * @return The string representation of the Particle object
      */
-    std::string toString() const;
+    [[nodiscard]] std::string toString() const;
+    Particle();
 };
 
 /**
