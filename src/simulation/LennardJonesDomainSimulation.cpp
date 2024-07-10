@@ -75,6 +75,7 @@ void LennardJonesDomainSimulation::runSim()
         if (iteration % updateFrequency == 0) {
             cellGrid.updateCells();
         }
+        progressLogger.logProgress(iteration);
         spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;

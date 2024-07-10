@@ -20,6 +20,7 @@ Simulation::Simulation(
     , strategy(strat)
     , writer(std::move(writer))
     , reader(std::move(reader))
+    , progressLogger(time, end_time, delta_t)
 {
 }
 
