@@ -30,9 +30,11 @@
         <thermostat>
             <initialTemp>40</initialTemp>
             <thermoFreq>10</thermoFreq>
+            <type>individual</type>
         </thermostat>
         <!-- Gravity params -->
         <gravity>−0.8</gravity>
+        <analysisFreq>1000</analysisFreq>
     </params>
 
     <!-- Cluster specifications -->
@@ -114,6 +116,7 @@
         <ptype type="2">
             <sigma>1.1</sigma>
             <epsilon>2.0</epsilon>
+            <immobile>true</immobile>
         </ptype>
         <ptype type="1">
             <sigma>1.0</sigma>
