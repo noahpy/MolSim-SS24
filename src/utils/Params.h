@@ -72,11 +72,11 @@ public:
     // List of all types which should be immobile
     std::map<unsigned , bool> immobileParticleTypes {};
     // The number of bins to use in the analyzer - 1 for ignoring a given axis
-    std::array<size_t, 3> bins = { 50, 1, 12 };
+    std::array<size_t, 3> bins = { 50, 1, 20 };
     // The file name to write the analyzer results to
-    std::string outName = "analysis";
+    std::string outName = "nano_flow_standard_50x_1y_20z";
     // The interval to run the analyzer
-    size_t analysisInterval = 100000;
+    size_t analysisInterval = 100;
 
     // TODO
     // [ ] Read ThermostatType from input file -> also none
