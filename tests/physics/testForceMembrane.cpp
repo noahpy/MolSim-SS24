@@ -112,7 +112,7 @@ TEST_F(calcForceMembrane, calcForceMembrane)
 // Test forces for diagonal membrane particles
 TEST_F(calcForceMembrane, calcForceMembraneDiagonal)
 {
-    // Form equilateral triangle
+    // Align particles in a diagonal manner inside the membrane
     Particle p1 { { 0, 0, 0 }, { 0, 0, 0 }, 1, 3 };
     Particle p2 { { 2, 2, 0 }, { 0, 0, 0 }, 1, 3 };
     Particle p3 { { 4, 0, 0 }, { 0, 0, 0 }, 1, 3 };
@@ -164,6 +164,75 @@ TEST_F(calcForceMembrane, calcForceMembraneDiagonal)
 
     force_membrane(sim);
 
+    unsigned pCount = 0;
+    for (auto p : particles) {
+        for (unsigned i = 0; i < 3; i++) {
+            EXPECT_NEAR(p.getF().at(i), expectedFs.at(pCount).at(i), PRESICION)
+                << "Particle " << pCount << " Dimension " << i << ": Expected "
+                << expectedFs.at(pCount).at(i) << " but got: " << p.getF().at(i);
+        }
+        ++pCount;
+    }
+}
+
+// Test forces between membrane particle and non-membrane particles
+TEST_F(calcForceMembrane, calcForceMembraneLJ)
+{
+    // Particles with normed distance and sigma should be calculated correctly
+    double c = std::sqrt(3) / 4;
+    // Form equilateral triangle
+    Particle p1 { { 0, 0, c }, { 0, 0, 0 }, 1, 3 };
+    Particle p2 { { 0, 0.5, -c }, { 0, 0, 0 }, 2, 3 };
+    Particle p3 { { 0, -0.5, -c }, { 0, 0, 0 }, 3, 3 };
+
+    particles = std::vector<Particle> { p1, p2, p3 };
+
+    double epsilon = 3.14159;
+    double sigma = 1;
+    double gravityConst = 9;
+
+    std::array<double, 3> p1F { 0, 0 + 1 * gravityConst, epsilon * 24 * 4 * c };
+    std::array<double, 3> p2F { 0, epsilon * 24 * 1.5 + 2 * gravityConst, epsilon * 24 * -2 * c };
+    std::array<double, 3> p3F { 0, epsilon * 24 * -1.5 + 3 * gravityConst, epsilon * 24 * -2 * c };
+    std::array<std::array<double, 3>, 3> expectedFs = { p1F, p2F, p3F };
+
+    std::map<unsigned, std::pair<double, double>> LJParams {
+                { 1, { epsilon, sigma }}, { 2, { epsilon, sigma }}, { 3, { epsilon, sigma } }
+    };
+
+    MembraneSimulation sim(
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        LJParams,
+        domainOrigin,
+        domainSize,
+        cutoff,
+        { 0, 0, c },
+        1,
+        numParticlesHeight,
+        k,
+        r_0,
+        1,
+        BoundaryConfig(
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW),
+        gravityConst,
+        0,
+        0,
+        0);
+
+    force_membrane(sim);
+
+    EXPECT_EQ(sim.container.particles[0].getMembraneId() != -1, true);
     unsigned pCount = 0;
     for (auto p : particles) {
         for (unsigned i = 0; i < 3; i++) {
