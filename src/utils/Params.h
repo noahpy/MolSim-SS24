@@ -66,15 +66,15 @@ public:
     // Flag for measuring performance -> will not use any io and time the simulation
     bool doPerformanceMeasurements = false;
     // origin of the membrane
-    std::array<double, 3> membraneOrigin;
+    std::array<double, 3> membraneOrigin {15,15,1.5};
     // number particles in width for the membrane
-    int numParticlesWidth;
+    int numParticlesWidth = 50;
     // number particles in height for the membrane
-    int numParticlesHeight;
+    int numParticlesHeight = 50;
     // stiffness constant
-    double k;
+    double k = 300;
     // average bond length in the molecule
-    double r_0;
+    double r_0 = 2.2;
     // spacing between particles for the membrane
-    double spacing;
+    double spacing = 2.2;
 };
