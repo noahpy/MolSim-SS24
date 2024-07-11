@@ -23,7 +23,6 @@ VTKWriter::~VTKWriter() = default;
 void VTKWriter::plotParticles(const Simulation& s)
 {
     initializeOutput(s.container.activeParticleCount);
-#pragma omp parallel for
     for (auto& p : s.container) {
         plotParticle(p, s.container.getIndex(p.getID()));
     }
@@ -91,7 +90,6 @@ void VTKWriter::plotParticle(Particle& p, size_t index)
     PointData::DataArray_sequence& pointDataSequence =
         vtkFile->UnstructuredGrid()->Piece().PointData().DataArray();
     PointData::DataArray_iterator dataIterator = pointDataSequence.begin();
-
 
     dataIterator->at(index) = p.getM();
 

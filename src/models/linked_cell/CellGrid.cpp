@@ -6,6 +6,7 @@
 #include "utils/Position.h"
 #include <cmath>
 #include <cwchar>
+#include <iostream>
 #include <spdlog/spdlog.h>
 
 CellGrid::CellGrid(
@@ -67,7 +68,7 @@ void CellGrid::determineNeighbours(CellIndex cell)
 void CellGrid::initializeGrid()
 {
     if (gridDimensionality == 2) {
-        spdlog::info("Domain is set to 0 in z-Axis. Gird will be constructed in 2D.");
+        spdlog::info("Domain is set to 0 in z-Axis. Grid will be constructed in 2D.");
         gridDimensions[2] = 1; // a single cell
         cellSize[2] = 0; // no depth
     }
@@ -206,7 +207,8 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
 
 void CellGrid::preCalcSetup(ParticleContainer& container) const
 {
-#pragma omp parallel for
+    spdlog::debug("Pre-calc setup...");
+/* #pragma omp parallel for */
     for (auto& particle : container) {
         particle.resetF();
     }
@@ -214,6 +216,7 @@ void CellGrid::preCalcSetup(ParticleContainer& container) const
 
 void CellGrid::postCalcSetup() const
 {
+    spdlog::debug("Post-calc setup...");
 #pragma omp parallel for
     for (auto& cell : cells) {
         for (auto& row : cell) {
