@@ -64,6 +64,7 @@ Particle& Particle::operator=(const Particle& other)
         old_f = other.old_f;
         active = other.active;
         id = other.id;
+        isNotStationary = other.isNotStationary;
     }
     return *this;
 }
