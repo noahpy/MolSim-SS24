@@ -65,6 +65,7 @@ void LennardJonesSimulation::runSim()
         if (iteration % frequency == 0) {
             writer->plotParticles(*this);
         }
+        progressLogger.logProgress(iteration);
         spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;
