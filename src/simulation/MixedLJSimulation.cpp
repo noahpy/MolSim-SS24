@@ -159,20 +159,24 @@ void MixedLJSimulation::runSim()
     while (time < end_time) {
         bcHandler.preUpdateBoundaryHandling(*this);
 
+
+        spdlog::debug("Force calculation...");
         strategy.calF(*this);
+        spdlog::debug("Velocity calculation...");
         strategy.calV(*this);
+        spdlog::debug("Position calculation...");
         strategy.calX(*this);
 
         bcHandler.postUpdateBoundaryHandling(*this);
 
         ++iteration;
-        if (iteration % frequency == 0) {
+        if (frequency && iteration % frequency == 0) {
             writer->plotParticles(*this);
         }
-        if (iteration % updateFrequency == 0) {
+        if (updateFrequency && iteration % updateFrequency == 0) {
             cellGrid.updateCells();
         }
-        if (iteration % analysisFrequency == 0) {
+        if (analysisFrequency && iteration % analysisFrequency == 0) {
             analyzer->analyze(*this);
         }
         if (n_thermostat && iteration % n_thermostat == 0) {
@@ -182,7 +186,7 @@ void MixedLJSimulation::runSim()
             particleUpdates += container.activeParticleCount;
         }
         // Update thermostat if frequency is positive
-        spdlog::trace("Iteration {} finished.", iteration);
+        spdlog::debug("Iteration {} finished.", iteration);
 
         time += delta_t;
     }

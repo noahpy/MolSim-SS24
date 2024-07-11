@@ -26,7 +26,7 @@ protected:
     ParticleContainer particles {};
     Particle p1 { { 1, 1, 7 }, { 3, 0, 4 }, 1, 3 };
     Particle p2 { { 7, 1, 7 }, { 9, 0, 0 }, 2, 3 };
-    Particle p3 { { 1, 1, 7 }, { 0, 0, 76 }, 3, 3 };
+    Particle p3 { { 1, 2, 7 }, { 0, 0, 76 }, 3, 3 };
     size_t expectedStationary;
 
     StationaryTester()
@@ -51,9 +51,9 @@ protected:
         generator.registerCluster(std::make_unique<SphereParticleCluster>(sCluster));
         generator.generateClusters();
 
-        particles.particles.emplace_back(p1);
-        particles.particles.emplace_back(p2);
-        particles.particles.emplace_back(p3);
+        particles.addParticle(p1);
+        particles.addParticle(p2);
+        particles.addParticle(p3);
     }
 };
 

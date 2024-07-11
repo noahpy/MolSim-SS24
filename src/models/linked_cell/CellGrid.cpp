@@ -149,6 +149,7 @@ CellIndex CellGrid::getIndexFromPos(const std::array<double, 3>& ppos) const
 
 void CellGrid::updateCells()
 {
+    spdlog::debug("Updating cells...");
     std::list<std::pair<CellIndex, std::reference_wrapper<Particle>>> addList;
     for (size_t x = 0; x < gridDimensions[0]; ++x) {
         for (size_t y = 0; y < gridDimensions[1]; ++y) {
@@ -156,8 +157,6 @@ void CellGrid::updateCells()
                 ParticleRefList& particles = cells.at(x).at(y).at(z)->getParticles();
                 auto it = particles.begin();
                 while (it != particles.end()) {
-                    if (!(*it).get().getActivity())
-                        spdlog::info("Inactive");
                     // Calculate new index
                     CellIndex indices = getIndexFromPos((*it).get().getX());
                     // Add the particle to different cell if particle moved
