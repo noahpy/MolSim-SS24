@@ -38,7 +38,7 @@ int main(int argc, char* argsv[])
         params.thermostat_type,
         params.init_temp,
         params.target_temp,
-        params.delta_t,
+        params.max_temp_delta,
         params.domain_size[2] > 1 ? 3 : 2);
 
     // Intialize physics strategy
