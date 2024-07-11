@@ -26,7 +26,7 @@ protected:
     ParticleContainer particles {};
     Particle p1 { { 1, 1, 7 }, { 3, 0, 4 }, 1, 3 };
     Particle p2 { { 7, 1, 7 }, { 9, 0, 0 }, 2, 3 };
-    Particle p3 { { 1, 1, 7 }, { 0, 0, 76 }, 3, 3 };
+    Particle p3 { { 1, 2, 7 }, { 0, 0, 76 }, 3, 3 };
     size_t expectedStationary;
 
     StationaryTester()
