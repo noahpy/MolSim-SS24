@@ -29,11 +29,11 @@
         <!-- Thermostat params -->
         <thermostat>
             <initialTemp>40</initialTemp>
-            <thermoFreq>10</thermoFreq>
+            <thermoFreq>100</thermoFreq>
             <type>individual</type>
         </thermostat>
         <!-- Gravity params -->
-        <gravity>−0.8</gravity>
+        <gravity>-9.81</gravity>
         <analysisFreq>100</analysisFreq>
         <analysisName>nano_scale_stronger_walls_50x_1y_20z</analysisName>
     </params>
@@ -115,8 +115,8 @@
     <!-- Particle types -->
     <ptypes>
         <ptype type="2">
-            <sigma>1.1</sigma>
-            <epsilon>2.0</epsilon>
+            <sigma>0.8</sigma>
+            <epsilon>5.0</epsilon>
             <immobile>true</immobile>
         </ptype>
         <ptype type="1">
