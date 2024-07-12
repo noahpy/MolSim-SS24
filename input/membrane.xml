@@ -20,12 +20,12 @@
         <cutoff>4</cutoff>
         <!-- Boundary params -->
         <boundaries>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
         </boundaries>
         <!-- Thermostat params -->
         <thermostat>
@@ -34,7 +34,8 @@
             <maxTempDelta>20</maxTempDelta>
         </thermostat>
         <!-- Gravity params -->
-        <gravity>-0.001</gravity>
+        <gravity>-12</gravity>
+        <!-- Membrane params -->
         <membrane>
             <origin>
                 <x>15</x>
@@ -42,7 +43,7 @@
                 <z>1.5</z>
             </origin>
             <width>50</width>
-            <height>5</height>
+            <height>50</height>
             <stiffness>2.2</stiffness>
             <bond_length>3.0</bond_length>
             <spacing>2.2</spacing>
