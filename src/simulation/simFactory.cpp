@@ -231,8 +231,8 @@ std::unique_ptr<Simulation> simFactory(
             params.membraneOrigin[0],
             params.membraneOrigin[1],
             params.membraneOrigin[2],
-            params.numParticlesWidth,
-            params.numParticlesHeight);
+            params.membraneWidth,
+            params.membraneHeight);
 
         return std::make_unique<MembraneSimulation>(
             params.start_time,
@@ -247,11 +247,11 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_size,
             params.cutoff,
             params.membraneOrigin,
-            params.numParticlesWidth,
-            params.numParticlesHeight,
-            params.k,
-            params.r_0,
-            params.spacing,
+            params.membraneWidth,
+            params.membraneHeight,
+            params.membraneStiffness,
+            params.membraneBondLength,
+            params.membraneSpacing,
             params.boundaryConfig,
             params.gravity,
             params.init_temp,
