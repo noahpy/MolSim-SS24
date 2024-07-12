@@ -50,6 +50,8 @@ void xmlparse(Params& sim_params, std::string& filename)
             sim_params.gravity = params.gravity().get();
         if (params.analysisFreq().present())
             sim_params.analysisInterval = params.analysisFreq().get();
+        if (params.analysisName().present())
+            sim_params.outName = params.analysisName().get();
         if (params.boundaries().present()) {
             if (params.boundaries().get().bound_four().size()) {
                 sim_params.boundaryConfig = BoundaryConfig(
