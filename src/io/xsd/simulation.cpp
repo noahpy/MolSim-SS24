@@ -345,6 +345,124 @@ maxTempDelta (const maxTempDelta_optional& x)
 }
 
 
+// memParams_t
+//
+
+const memParams_t::origin_type& memParams_t::
+origin () const
+{
+  return this->origin_.get ();
+}
+
+memParams_t::origin_type& memParams_t::
+origin ()
+{
+  return this->origin_.get ();
+}
+
+void memParams_t::
+origin (const origin_type& x)
+{
+  this->origin_.set (x);
+}
+
+void memParams_t::
+origin (::std::unique_ptr< origin_type > x)
+{
+  this->origin_.set (std::move (x));
+}
+
+const memParams_t::width_type& memParams_t::
+width () const
+{
+  return this->width_.get ();
+}
+
+memParams_t::width_type& memParams_t::
+width ()
+{
+  return this->width_.get ();
+}
+
+void memParams_t::
+width (const width_type& x)
+{
+  this->width_.set (x);
+}
+
+const memParams_t::height_type& memParams_t::
+height () const
+{
+  return this->height_.get ();
+}
+
+memParams_t::height_type& memParams_t::
+height ()
+{
+  return this->height_.get ();
+}
+
+void memParams_t::
+height (const height_type& x)
+{
+  this->height_.set (x);
+}
+
+const memParams_t::stiffness_type& memParams_t::
+stiffness () const
+{
+  return this->stiffness_.get ();
+}
+
+memParams_t::stiffness_type& memParams_t::
+stiffness ()
+{
+  return this->stiffness_.get ();
+}
+
+void memParams_t::
+stiffness (const stiffness_type& x)
+{
+  this->stiffness_.set (x);
+}
+
+const memParams_t::bond_length_type& memParams_t::
+bond_length () const
+{
+  return this->bond_length_.get ();
+}
+
+memParams_t::bond_length_type& memParams_t::
+bond_length ()
+{
+  return this->bond_length_.get ();
+}
+
+void memParams_t::
+bond_length (const bond_length_type& x)
+{
+  this->bond_length_.set (x);
+}
+
+const memParams_t::spacing_type& memParams_t::
+spacing () const
+{
+  return this->spacing_.get ();
+}
+
+memParams_t::spacing_type& memParams_t::
+spacing ()
+{
+  return this->spacing_.get ();
+}
+
+void memParams_t::
+spacing (const spacing_type& x)
+{
+  this->spacing_.set (x);
+}
+
+
 // DecimalList_t
 //
 
@@ -1412,6 +1530,36 @@ gravity (const gravity_optional& x)
   this->gravity_ = x;
 }
 
+const params_t::membrane_optional& params_t::
+membrane () const
+{
+  return this->membrane_;
+}
+
+params_t::membrane_optional& params_t::
+membrane ()
+{
+  return this->membrane_;
+}
+
+void params_t::
+membrane (const membrane_type& x)
+{
+  this->membrane_.set (x);
+}
+
+void params_t::
+membrane (const membrane_optional& x)
+{
+  this->membrane_ = x;
+}
+
+void params_t::
+membrane (::std::unique_ptr< membrane_type > x)
+{
+  this->membrane_.set (std::move (x));
+}
+
 
 // simulation_t
 //
@@ -2144,6 +2292,230 @@ operator= (const tempParams_t& x)
 
 tempParams_t::
 ~tempParams_t ()
+{
+}
+
+// memParams_t
+//
+
+memParams_t::
+memParams_t (const origin_type& origin,
+             const width_type& width,
+             const height_type& height,
+             const stiffness_type& stiffness,
+             const bond_length_type& bond_length,
+             const spacing_type& spacing)
+: ::xml_schema::type (),
+  origin_ (origin, this),
+  width_ (width, this),
+  height_ (height, this),
+  stiffness_ (stiffness, this),
+  bond_length_ (bond_length, this),
+  spacing_ (spacing, this)
+{
+}
+
+memParams_t::
+memParams_t (::std::unique_ptr< origin_type > origin,
+             const width_type& width,
+             const height_type& height,
+             const stiffness_type& stiffness,
+             const bond_length_type& bond_length,
+             const spacing_type& spacing)
+: ::xml_schema::type (),
+  origin_ (std::move (origin), this),
+  width_ (width, this),
+  height_ (height, this),
+  stiffness_ (stiffness, this),
+  bond_length_ (bond_length, this),
+  spacing_ (spacing, this)
+{
+}
+
+memParams_t::
+memParams_t (const memParams_t& x,
+             ::xml_schema::flags f,
+             ::xml_schema::container* c)
+: ::xml_schema::type (x, f, c),
+  origin_ (x.origin_, f, this),
+  width_ (x.width_, f, this),
+  height_ (x.height_, f, this),
+  stiffness_ (x.stiffness_, f, this),
+  bond_length_ (x.bond_length_, f, this),
+  spacing_ (x.spacing_, f, this)
+{
+}
+
+memParams_t::
+memParams_t (const ::xercesc::DOMElement& e,
+             ::xml_schema::flags f,
+             ::xml_schema::container* c)
+: ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+  origin_ (this),
+  width_ (this),
+  height_ (this),
+  stiffness_ (this),
+  bond_length_ (this),
+  spacing_ (this)
+{
+  if ((f & ::xml_schema::flags::base) == 0)
+  {
+    ::xsd::cxx::xml::dom::parser< char > p (e, true, false, false);
+    this->parse (p, f);
+  }
+}
+
+void memParams_t::
+parse (::xsd::cxx::xml::dom::parser< char >& p,
+       ::xml_schema::flags f)
+{
+  for (; p.more_content (); p.next_content (false))
+  {
+    const ::xercesc::DOMElement& i (p.cur_element ());
+    const ::xsd::cxx::xml::qualified_name< char > n (
+      ::xsd::cxx::xml::dom::name< char > (i));
+
+    // origin
+    //
+    if (n.name () == "origin" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< origin_type > r (
+        origin_traits::create (i, f, this));
+
+      if (!origin_.present ())
+      {
+        this->origin_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // width
+    //
+    if (n.name () == "width" && n.namespace_ ().empty ())
+    {
+      if (!width_.present ())
+      {
+        this->width_.set (width_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // height
+    //
+    if (n.name () == "height" && n.namespace_ ().empty ())
+    {
+      if (!height_.present ())
+      {
+        this->height_.set (height_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // stiffness
+    //
+    if (n.name () == "stiffness" && n.namespace_ ().empty ())
+    {
+      if (!stiffness_.present ())
+      {
+        this->stiffness_.set (stiffness_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // bond_length
+    //
+    if (n.name () == "bond_length" && n.namespace_ ().empty ())
+    {
+      if (!bond_length_.present ())
+      {
+        this->bond_length_.set (bond_length_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // spacing
+    //
+    if (n.name () == "spacing" && n.namespace_ ().empty ())
+    {
+      if (!spacing_.present ())
+      {
+        this->spacing_.set (spacing_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    break;
+  }
+
+  if (!origin_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "origin",
+      "");
+  }
+
+  if (!width_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "width",
+      "");
+  }
+
+  if (!height_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "height",
+      "");
+  }
+
+  if (!stiffness_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "stiffness",
+      "");
+  }
+
+  if (!bond_length_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "bond_length",
+      "");
+  }
+
+  if (!spacing_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "spacing",
+      "");
+  }
+}
+
+memParams_t* memParams_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class memParams_t (*this, f, c);
+}
+
+memParams_t& memParams_t::
+operator= (const memParams_t& x)
+{
+  if (this != &x)
+  {
+    static_cast< ::xml_schema::type& > (*this) = x;
+    this->origin_ = x.origin_;
+    this->width_ = x.width_;
+    this->height_ = x.height_;
+    this->stiffness_ = x.stiffness_;
+    this->bond_length_ = x.bond_length_;
+    this->spacing_ = x.spacing_;
+  }
+
+  return *this;
+}
+
+memParams_t::
+~memParams_t ()
 {
 }
 
@@ -3489,7 +3861,8 @@ params_t ()
   updateFreq_ (this),
   boundaries_ (this),
   thermostat_ (this),
-  gravity_ (this)
+  gravity_ (this),
+  membrane_ (this)
 {
 }
 
@@ -3511,7 +3884,8 @@ params_t (const params_t& x,
   updateFreq_ (x.updateFreq_, f, this),
   boundaries_ (x.boundaries_, f, this),
   thermostat_ (x.thermostat_, f, this),
-  gravity_ (x.gravity_, f, this)
+  gravity_ (x.gravity_, f, this),
+  membrane_ (x.membrane_, f, this)
 {
 }
 
@@ -3533,7 +3907,8 @@ params_t (const ::xercesc::DOMElement& e,
   updateFreq_ (this),
   boundaries_ (this),
   thermostat_ (this),
-  gravity_ (this)
+  gravity_ (this),
+  membrane_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -3721,6 +4096,20 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // membrane
+    //
+    if (n.name () == "membrane" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< membrane_type > r (
+        membrane_traits::create (i, f, this));
+
+      if (!this->membrane_)
+      {
+        this->membrane_.set (::std::move (r));
+        continue;
+      }
+    }
+
     break;
   }
 }
@@ -3752,6 +4141,7 @@ operator= (const params_t& x)
     this->boundaries_ = x.boundaries_;
     this->thermostat_ = x.thermostat_;
     this->gravity_ = x.gravity_;
+    this->membrane_ = x.membrane_;
   }
 
   return *this;
@@ -4410,6 +4800,78 @@ operator<< (::xercesc::DOMElement& e, const tempParams_t& i)
 }
 
 void
+operator<< (::xercesc::DOMElement& e, const memParams_t& i)
+{
+  e << static_cast< const ::xml_schema::type& > (i);
+
+  // origin
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "origin",
+        e));
+
+    s << i.origin ();
+  }
+
+  // width
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "width",
+        e));
+
+    s << i.width ();
+  }
+
+  // height
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "height",
+        e));
+
+    s << i.height ();
+  }
+
+  // stiffness
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "stiffness",
+        e));
+
+    s << ::xml_schema::as_double(i.stiffness ());
+  }
+
+  // bond_length
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "bond_length",
+        e));
+
+    s << ::xml_schema::as_double(i.bond_length ());
+  }
+
+  // spacing
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "spacing",
+        e));
+
+    s << ::xml_schema::as_double(i.spacing ());
+  }
+}
+
+void
 operator<< (::xercesc::DOMElement& e, const DecimalList_t& i)
 {
   e << static_cast< const ::xsd::cxx::tree::list< ::xml_schema::decimal, char, ::xsd::cxx::tree::schema_type::decimal >& > (i);
@@ -4994,6 +5456,18 @@ operator<< (::xercesc::DOMElement& e, const params_t& i)
         e));
 
     s << ::xml_schema::as_double(*i.gravity ());
+  }
+
+  // membrane
+  //
+  if (i.membrane ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "membrane",
+        e));
+
+    s << *i.membrane ();
   }
 }
 

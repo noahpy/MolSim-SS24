@@ -35,6 +35,18 @@
         </thermostat>
         <!-- Gravity params -->
         <gravity>-0.001</gravity>
+        <membrane>
+            <origin>
+                <x>15</x>
+                <y>15</y>
+                <z>1.5</z>
+            </origin>
+            <width>50</width>
+            <height>5</height>
+            <stiffness>2.2</stiffness>
+            <bond_length>3.0</bond_length>
+            <spacing>2.2</spacing>
+        </membrane>
     </params>
 
     <!-- Membrane -->

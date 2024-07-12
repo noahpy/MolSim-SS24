@@ -139,6 +139,54 @@
     </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="memParams_t">
+    <xs:sequence>
+        <xs:element name="origin" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+              The origin of the membrane.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="width" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation>
+              The width of the membrane.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="height" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation>
+              The width of the membrane.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="stiffness" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+              The stiffness of the membrane.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bond_length" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+              The average bond length of the membrane.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spacing" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+              The spacing of the membrane.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+    </xs:sequence>
+</xs:complexType>
+
    <!-- Particle data definitions -->
 
    <xs:simpleType name='DecimalList_t'>
@@ -460,6 +508,13 @@
         <xs:annotation>
           <xs:documentation>
               The gravitational constant for the gravitational force along the y-axis.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="membrane" type="memParams_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+              The membrane configuration.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
