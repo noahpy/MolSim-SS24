@@ -22,6 +22,7 @@ public:
      * maxwellBoltzmannDistributedVelocity() if set to 0 no brownian motion will be added, if set to
      * 1 then only on the x axis, then x+y, and finally x+y+z axis
      * @param ptype The particle type for this cluster
+     * @param
      */
     CuboidParticleCluster(
         std::array<double, 3> origin,

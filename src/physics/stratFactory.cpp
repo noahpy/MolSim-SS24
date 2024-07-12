@@ -24,7 +24,7 @@ PhysicsStrategy stratFactory(SimulationType simulation_type)
     case SimulationType::MIXED_LJ:
         spdlog::info("Initializing Force LJ Mixed Strat...");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_mixed_LJ_gravity_lc };
-    case SimulationType::MEMBRANE:
+    case SimulationType::MEMBRANE_LJ:
         spdlog::info("Initializing Force Membrane Strat...");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_membrane };
     default:

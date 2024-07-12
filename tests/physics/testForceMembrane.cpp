@@ -44,7 +44,7 @@ protected:
     }
 };
 
-// Test force calculations for linear membrane
+// Test force calculations for linear molecules
 TEST_F(calcForceMembrane, calcForceMembrane)
 {
     Particle p1 { { 0, 0, 0 }, { 0, 0, 0 }, 1, 3 };
@@ -109,10 +109,10 @@ TEST_F(calcForceMembrane, calcForceMembrane)
     }
 }
 
-// Test forces for diagonal membrane particles
+// Test forces for diagonal molecules particles
 TEST_F(calcForceMembrane, calcForceMembraneDiagonal)
 {
-    // Align particles in a diagonal manner inside the membrane
+    // Align particles in a diagonal manner inside the molecules
     Particle p1 { { 0, 0, 0 }, { 0, 0, 0 }, 1, 3 };
     Particle p2 { { 2, 2, 0 }, { 0, 0, 0 }, 1, 3 };
     Particle p3 { { 4, 0, 0 }, { 0, 0, 0 }, 1, 3 };
@@ -175,7 +175,7 @@ TEST_F(calcForceMembrane, calcForceMembraneDiagonal)
     }
 }
 
-// Test forces between membrane particle and non-membrane particles
+// Test forces between molecules particle and non-molecules particles
 TEST_F(calcForceMembrane, calcForceMembraneLJ)
 {
     // Particles with normed distance and sigma should be calculated correctly

@@ -53,7 +53,7 @@ private:
     bool active;
 
     /**
-     * @brief id in the membrane, if particle is not part of a membrane then id = -1
+     * @brief id in the molecules, if particle is not part of a molecules then id = -1
      */
     int membraneId;
 
@@ -151,8 +151,8 @@ public:
     }
 
     /**
-     * @brief Get the membrane id
-     * @return id for the membrane
+     * @brief Get the molecules id
+     * @return id for the molecules
      */
     [[nodiscard]] inline int getMembraneId() const
     {
@@ -225,7 +225,7 @@ public:
     }
 
     /**
-     * @brief Set the membrane id
+     * @brief Set the molecules id
      * @param id_new The new id value
      */
     inline void setMembraneId(int id_new)

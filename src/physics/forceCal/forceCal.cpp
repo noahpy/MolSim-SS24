@@ -371,4 +371,14 @@ void force_membrane(const Simulation& sim)
             particle.setF(particle.getF() + gravityForce);
         }
     }
+
+    // Move the marked particles upward
+    /*
+    for (auto& p : len_sim.container.particles) {
+        if (p.getType() == 2) {
+            std::array<double, 3> upward { 0, p.getF()[1], 0 };
+            p.setF(p.getF() + upward);
+        }
+    }
+     */
 }

@@ -63,6 +63,15 @@ MembraneSimulation::MembraneSimulation(
       membrane(membraneOrigin, numParticlesWidth, numParticlesHeight)
 {
     membrane.initMembrane(container, spacing);
+
+    // TODO only for molecules simulation
+    for (auto& particle : container.particles) {
+        // The gravity only acts along the y-Axis
+        bool isXValid = std::abs(particle.getX()[0] - 50.2) < 1e-8 || std::abs(particle.getX()[0] - 52.4) < 1e-8;
+        bool isYValid = std::abs(particle.getX()[1] - 65.6) < 1e-8 || std::abs(particle.getX()[1] - 67.8) < 1e-8;
+        if (isXValid && isYValid)
+            particle.setType(2);
+    }
 }
 
 void MembraneSimulation::runSim()
@@ -70,8 +79,7 @@ void MembraneSimulation::runSim()
     while (time < end_time) {
         bcHandler.preUpdateBoundaryHandling(*this);
 
-        //force_membrane(*this, membrane.getMembraneMap());
-
+        strategy.calF(*this);
         strategy.calV(*this);
         strategy.calX(*this);
 

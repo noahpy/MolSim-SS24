@@ -194,7 +194,7 @@ std::unique_ptr<Simulation> simFactory(
             true,
             params.thermo_freq,
             params.doPerformanceMeasurements);
-    case SimulationType::MEMBRANE:
+    case SimulationType::MEMBRANE_LJ:
         spdlog::info("Initializing Membrane Simulation with:");
         spdlog::info(
             "delta_t: {}, end_time: {}, epsilon: {}, sigma: {}, plot_frequency: {}",

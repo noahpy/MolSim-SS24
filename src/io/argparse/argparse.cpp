@@ -120,7 +120,7 @@ SimulationType unsignedToSimulationType(unsigned value)
     case 4:
         return SimulationType::MIXED_LJ;
     case 5:
-        return SimulationType::MEMBRANE;
+        return SimulationType::MEMBRANE_LJ;
     default:
         spdlog::warn("Unknown simulation type: {}", value);
         exit(EXIT_FAILURE);

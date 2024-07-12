@@ -5,9 +5,9 @@
 #include "../models/membrane/Membrane.h"
 
 /**
- * @brief Simulation class for the Lennard-Jones simulation with a membrane
+ * @brief Simulation class for the Lennard-Jones simulation with a molecules
  * @details This class is a subclass of the MixedLJSimulation and is used to simulate
- * different particles in one simulation, with an additional membrane.
+ * different particles in one simulation, with an additional molecules.
  */
 class MembraneSimulation : public MixedLJSimulation {
 public:
@@ -90,5 +90,5 @@ protected:
     double k;
     double r_0;
     double spacing;
-    Membrane membrane; /**< The membrane used in the simulation */
+    Membrane membrane; /**< The molecules used in the simulation */
 };
