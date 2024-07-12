@@ -4,6 +4,8 @@
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
 
+#include <physics/forceCal/forceCal.h>
+
 MembraneSimulation::MembraneSimulation(
     double time,
     double delta_t,
@@ -70,8 +72,7 @@ void MembraneSimulation::runSim()
     while (time < end_time) {
         bcHandler.preUpdateBoundaryHandling(*this);
 
-        //force_membrane(*this, membrane.getMembraneMap());
-
+        strategy.calF(*this);
         strategy.calV(*this);
         strategy.calX(*this);
 
