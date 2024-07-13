@@ -29,11 +29,11 @@
         <!-- Thermostat params -->
         <thermostat>
             <initialTemp>40</initialTemp>
-            <thermoFreq>100</thermoFreq>
+            <thermoFreq>10</thermoFreq>
             <type>individual</type>
         </thermostat>
         <!-- Gravity params -->
-        <gravity>-9.81</gravity>
+        <gravity>-0.8</gravity>
         <analysisFreq>100</analysisFreq>
         <analysisName>nano_scale_stronger_walls_50x_1y_20z</analysisName>
     </params>

@@ -35,6 +35,7 @@
         <!-- Gravity params -->
         <gravity>−0.8</gravity>
         <analysisFreq>100</analysisFreq>
+        <analysisName>nano_scale_base_50x_1y_20z</analysisName>
     </params>
 
     <!-- Cluster specifications -->
