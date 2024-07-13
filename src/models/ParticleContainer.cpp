@@ -73,18 +73,6 @@ ParticleContainer::ActiveIterator ParticleContainer::end()
     return { particles.end(), particles.begin(), particles.end(), inactiveParticleMap };
 }
 
-// ActiveIterator Implementation
-/* std::vector<Particle>::iterator ParticleContainer::begin() */
-/* { */
-/*     return particles.begin(); */
-
-/* } */
-
-/* std::vector<Particle>::iterator ParticleContainer::end() */
-/* { */
-/*     return particles.end(); */
-/* } */
-
 void ParticleContainer::ActiveIterator::advanceToNextActive()
 {
     while (current != end && !current->getActivity()) {
@@ -105,7 +93,6 @@ ParticleContainer::ActiveIterator::ActiveIterator(
     advanceToNextActive();
 }
 
-#include <iostream>
 Particle& ParticleContainer::ActiveIterator::operator*() const
 {
     return *current;
@@ -138,11 +125,6 @@ bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) 
 
 ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+=(difference_type n)
 {
-/* #pragma omp critical */
-/*     { */
-/*         std::cout << "thread " << omp_get_thread_num() << ": " << current->getID() << " += " << n */
-/*                   << std::endl; */
-/*     } */
     if (n < 0) {
         this->operator-=(-n);
         return *this;
@@ -154,12 +136,6 @@ ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+=(
 
 ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-=(difference_type n)
 {
-/* #pragma omp critical */
-/*     { */
-/*         std::cout << "thread " << omp_get_thread_num() << ": " << current->getID() << " -= " << n */
-/*                   << std::endl; */
-/*     } */
-
     if (n < 0) {
         this->operator+=(-n);
         return *this;
@@ -171,11 +147,6 @@ ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-=(
 
 ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+(difference_type n)
 {
-/* #pragma omp critical */
-/*     { */
-/*         std::cout << "thread " << omp_get_thread_num() << ": " << current->getID() << " + " << n */
-/*                   << std::endl; */
-/*     } */
     auto copy = *this;
     copy += n;
     return copy;
@@ -183,11 +154,6 @@ ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+(d
 
 ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-(difference_type n)
 {
-/* #pragma omp critical */
-/*     { */
-/*         std::cout << "thread " << omp_get_thread_num() << ": " << current->getID() << " -- " << n */
-/*                   << std::endl; */
-/*     } */
     auto copy = *this;
     copy -= n;
     return copy;
@@ -216,11 +182,6 @@ ParticleContainer::ActiveIterator::difference_type ParticleContainer::ActiveIter
     auto upper_bound = inactiveMapRef.get().lower_bound(largerID);
     auto delted_dist = std::distance(lower_bound, upper_bound);
     auto result = factor * (std::distance(smaller, larger) - delted_dist);
-/* #pragma omp critical */
-/*     { */
-/*         std::cout << "thread " << omp_get_thread_num() << ": " << smallerID << " - " << largerID */
-/*                   << " = " << result << std::endl; */
-/*     } */
     return result;
 }
 
