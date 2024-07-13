@@ -50,8 +50,7 @@ void Analyzer::analyze(LennardJonesDomainSimulation& sim)
                                            static_cast<size_t>(particle.getX()[2] / binSize[2]) };
         size_t index = getVectorIndexFromBinIndex(binIndex);
         densityProfile[index] += 1.0;
-        velocityProfile[getVectorIndexFromBinIndex(binIndex)] +=
-            ArrayUtils::L2Norm(particle.getV());
+        velocityProfile[getVectorIndexFromBinIndex(binIndex)] += particle.getV()[1];
     }
     for (size_t i = 0; i < nBins; i++)
         if (densityProfile[i] > 0.0)
