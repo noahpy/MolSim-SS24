@@ -3,7 +3,7 @@
 
     <params>
         <delta_t>0.01</delta_t>
-        <end_time>1</end_time>
+        <end_time>20</end_time>
         <output>membrane</output>
         <frequency>1</frequency>
         <!-- Domain params -->
