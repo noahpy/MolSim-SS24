@@ -6,7 +6,7 @@
 
 void velocity_stroemer_verlet(const Simulation& sim)
 {
-    /* #pragma omp parallel for */
+    #pragma omp parallel for
     for (auto& p : sim.container) {
         if (p.getIsNotStationary()) {
             // v = v + Δt * (F + F_old) / (2 * m)

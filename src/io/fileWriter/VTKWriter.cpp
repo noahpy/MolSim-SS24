@@ -23,6 +23,7 @@ VTKWriter::~VTKWriter() = default;
 void VTKWriter::plotParticles(const Simulation& s)
 {
     initializeOutput(s.container.activeParticleCount);
+#pragma omp parallel for
     for (auto& p : s.container) {
         plotParticle(p, s.container.getIndex(p.getID()));
     }
