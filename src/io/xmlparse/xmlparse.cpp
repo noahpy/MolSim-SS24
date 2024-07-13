@@ -80,6 +80,15 @@ void xmlparse(Params& sim_params, std::string& filename)
             if (thermo_config.maxTempDelta().present())
                 sim_params.max_temp_delta = thermo_config.maxTempDelta().get();
         }
+        if (params.membrane().present()){
+            auto membrane_config = params.membrane().get();
+            sim_params.membraneOrigin = {membrane_config.origin().x(), membrane_config.origin().y(), membrane_config.origin().z()};
+            sim_params.membraneWidth = membrane_config.width();
+            sim_params.membraneHeight = membrane_config.height();
+            sim_params.membraneSpacing = membrane_config.spacing();
+            sim_params.membraneStiffness = membrane_config.stiffness();
+            sim_params.membraneBondLength = membrane_config.bond_length();
+        }
 
         // read particle types
         if (sim_input->ptypes().present()) {
