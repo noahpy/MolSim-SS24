@@ -6,7 +6,6 @@
 #include "utils/Position.h"
 #include <cmath>
 #include <cwchar>
-#include <iostream>
 #include <spdlog/spdlog.h>
 
 CellGrid::CellGrid(
@@ -208,7 +207,7 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
 void CellGrid::preCalcSetup(ParticleContainer& container) const
 {
     spdlog::debug("Pre-calc setup...");
-/* #pragma omp parallel for */
+#pragma omp parallel for
     for (auto& particle : container) {
         particle.resetF();
     }

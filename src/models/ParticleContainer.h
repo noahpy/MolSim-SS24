@@ -6,9 +6,9 @@
 #define PARTICLECONTAINER_H
 
 #include "Particle.h"
+#include <functional>
 #include <map>
 #include <vector>
-#include <functional>
 
 /**
  * @brief The ParticleContainer class is a data structure that holds the collection of particles
@@ -75,17 +75,20 @@ public:
      */
     class ActiveIterator;
 
+
     /**
      * @brief Get the iterator to the first active particle
      * @return The iterator to the first active particle
      */
     ActiveIterator begin();
+    /* std::vector<Particle>::iterator begin(); */
 
     /**
      * @brief Get the iterator to the last active particle
      * @return The iterator to the last active particle
      */
     ActiveIterator end();
+    /* std::vector<Particle>::iterator end(); */
 
     /**
      * @brief Forward declaration for pair iteration
@@ -102,6 +105,11 @@ public:
      * @return The iterator to the end of the pairs
      */
     PairIterator endPairs();
+
+    ActiveIterator beginActive();
+
+    ActiveIterator endActive();
+
 
     /**
      * @brief Iterator class for active particles
@@ -133,6 +141,7 @@ public:
          */
         ActiveIterator(
             std::vector<Particle>::iterator start,
+            std::vector<Particle>::iterator begin,
             std::vector<Particle>::iterator end,
             std::reference_wrapper<std::map<size_t, size_t>> inactiveMapRef);
 
@@ -167,13 +176,12 @@ public:
      * fixed particle.
      */
     class PairIterator {
-    private:
+    public:
         /**
          * @brief The iterators need to iterate over the particle pairs
          */
         ActiveIterator start, first, second, last;
 
-    public:
         /**
          * @brief Construct a new Pair Iterator object
          * @param start The iterator to the first particle
