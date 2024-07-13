@@ -10,6 +10,6 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --export=NONE
 #SBATCH --mail-user=ge42joq@mytum.de
-#SBATCH --time=30:00:00
+#SBATCH --time=48:00:00
 
 src/MolSim ../input/nano_scale_flow.xml -x -s 4
