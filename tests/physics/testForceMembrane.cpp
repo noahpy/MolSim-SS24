@@ -99,7 +99,7 @@ TEST_F(calcForceMembrane, calcForceMembrane)
     force_membrane(sim);
 
     unsigned pCount = 0;
-    for (auto p : particles) {
+    for (auto& p : particles) {
         for (unsigned i = 0; i < 3; i++) {
             EXPECT_NEAR(p.getF().at(i), expectedFs.at(pCount).at(i), PRESICION)
                 << "Particle " << pCount << " Dimension " << i << ": Expected "
@@ -165,7 +165,7 @@ TEST_F(calcForceMembrane, calcForceMembraneDiagonal)
     force_membrane(sim);
 
     unsigned pCount = 0;
-    for (auto p : particles) {
+    for (auto& p : particles) {
         for (unsigned i = 0; i < 3; i++) {
             EXPECT_NEAR(p.getF().at(i), expectedFs.at(pCount).at(i), PRESICION)
                 << "Particle " << pCount << " Dimension " << i << ": Expected "
@@ -234,7 +234,7 @@ TEST_F(calcForceMembrane, calcForceMembraneLJ)
 
     EXPECT_EQ(sim.container.particles[0].getMembraneId() != -1, true);
     unsigned pCount = 0;
-    for (auto p : particles) {
+    for (auto& p : particles) {
         for (unsigned i = 0; i < 3; i++) {
             EXPECT_NEAR(p.getF().at(i), expectedFs.at(pCount).at(i), PRESICION)
                 << "Particle " << pCount << " Dimension " << i << ": Expected "
