@@ -3,7 +3,7 @@
 
     <params>
         <delta_t>0.01</delta_t>
-        <end_time>20</end_time>
+        <end_time>5</end_time>
         <output>membrane</output>
         <frequency>1</frequency>
         <!-- Domain params -->
@@ -34,7 +34,7 @@
             <maxTempDelta>20</maxTempDelta>
         </thermostat>
         <!-- Gravity params -->
-        <gravity>-12</gravity>
+        <gravity>-0.001</gravity>
         <!-- Membrane params -->
         <membrane>
             <origin>
