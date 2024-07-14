@@ -2,7 +2,6 @@
 #include "physics/forceCal/forceCal.h"
 #include "models/linked_cell/CellGrid.h"
 #include "simulation/MembraneSimulation.h"
-#include "models/membrane/Membrane.h"
 #include "simulation/baseSimulation.h"
 #include "utils/ArrayUtils.h"
 
@@ -62,6 +61,15 @@ void lj_calc(
     // for more details
     std::array<double, 3> force =
         (alpha / dotDelta) * (beta / dotDelta3 + gamma / dotDelta6) * delta;
+    p1.setF(p1.getF() + force);
+    p2.setF(p2.getF() - force);
+}
+
+void harmonic_calc(Particle& p1, Particle& p2, double k, double r_0)
+{
+    double dist = ArrayUtils::L2Norm(p1.getX() - p2.getX());
+    std::array<double, 3> force = (k * (dist - r_0) / dist) * (p2.getX() - p1.getX());
+
     p1.setF(p1.getF() + force);
     p2.setF(p2.getF() - force);
 }
@@ -222,48 +230,17 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
     }
 }
 
-void harmonic_calc(Particle& p1, Particle& p2, double k, double r_0)
-{
-    double dist = ArrayUtils::L2Norm(p1.getX() - p2.getX());
-    std::array<double, 3> force = (k * (dist - r_0) / dist) * (p2.getX() - p1.getX());
-
-    p1.setF(p1.getF() + force);
-    p2.setF(p2.getF() - force);
-}
-
-void lj_calc_truncated(
-    Particle& p1,
-    Particle& p2,
-    double alpha,
-    double beta,
-    double gamma,
-    double sigma,
-    const std::array<double, 3>& delta)
-{
-    double dotDelta = ArrayUtils::DotProduct(delta);
-    double distance = std::sqrt(dotDelta);
-
-    if (distance < std::pow(2.0, 1.0 / 6.0) * sigma) {
-        double dotDelta3 = std::pow(dotDelta, 3);
-        double dotDelta6 = std::pow(dotDelta3, 2);
-
-        // The formula has been rearranged to avoid unnecessary calculations; please see the report
-        // for more details
-        std::array<double, 3> force =
-            (alpha / dotDelta) * (beta / dotDelta3 + gamma / dotDelta6) * delta;
-        p1.setF(p1.getF() + force);
-        p2.setF(p2.getF() - force);
-    }
-}
-
 void force_membrane(const Simulation& sim)
 {
     const MembraneSimulation& len_sim = static_cast<const MembraneSimulation&>(sim);
     const CellGrid& cellGrid = len_sim.getGrid();
-    const Membrane& membrane = len_sim.getMembrane();
-    double k = len_sim.getK();
-    double r_0 = len_sim.getR_0();
-    double r_0_diag = sqrt(2) * r_0;
+
+    // TODO precalc stuff
+
+    // loop over all molecules and call calculateIntraMolecularForces()
+    for (auto& membrane : len_sim.getMolecules()) {
+        membrane->calculateIntraMolecularForces(cellGrid);
+    }
 
     // for all cells in the grid
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
@@ -286,33 +263,20 @@ void force_membrane(const Simulation& sim)
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
                      ++it) {
                     auto pair = *it;
-                    if (pair.first.getMembraneId() != -1 && pair.second.getMembraneId() != -1) {
-                        // calculate harmonic potential if it is a neighbor in the molecule
-                        if (membrane.isDiagonalNeighbor(pair.first, pair.second)) {
-                            if (membrane.isCalcNeighbor(pair.first, pair.second))
-                                harmonic_calc(pair.first, pair.second, k, r_0_diag);
-                            continue;
-                        }
-                        if (membrane.isNeighbor(pair.first, pair.second)) {
-                            if (membrane.isCalcNeighbor(pair.first, pair.second))
-                                harmonic_calc(pair.first, pair.second, k, r_0);
-                            continue;
-                        }
-                    }
+
                     std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
-                    // check if the distance is less than the cutoff
-                    if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared) {
+                    // Check if the distance is less than the cutoff
+                    // AND only calculate the force if the particles are not of the same
+                    // molecule
+                    if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared &&
+                        pair.first.getMoleculeId() != pair.second.getMoleculeId()) {
                         double alpha =
                             len_sim.getAlpha(pair.first.getType(), pair.second.getType());
                         double beta = len_sim.getBeta(pair.first.getType(), pair.second.getType());
                         double gamma =
                             len_sim.getGamma(pair.first.getType(), pair.second.getType());
-                        // check if both particles are molecular for truncated lj calculation
-                        if (pair.first.getMembraneId() != -1 && pair.second.getMembraneId() != -1) {
-                            double sigma = len_sim.getSigma(pair.first.getType(), pair.second.getType());
-                            lj_calc_truncated(pair.first, pair.second, alpha, beta, gamma, sigma, delta);
-                        }
-                        else lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
+
+                        lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
                     }
                 }
 
@@ -322,37 +286,21 @@ void force_membrane(const Simulation& sim)
                     for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
                         // go over all particles in the neighbour
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
-
-                            if (p1.get().getMembraneId() != -1 && p2.get().getMembraneId() != -1) {
-                                // calculate harmonic potential if it is a neighbor in the molecule
-                                if (membrane.isDiagonalNeighbor(p1, p2)) {
-                                    if (membrane.isCalcNeighbor(p1, p2))
-                                        harmonic_calc(p1, p2, k, r_0_diag);
-                                    continue;
-                                }
-                                if (membrane.isNeighbor(p1, p2)) {
-                                    if (membrane.isCalcNeighbor(p1, p2))
-                                        harmonic_calc(p1, p2, k, r_0);
-                                    continue;
-                                }
-                            }
                             // Check if the distance is less than the cutoff
+                            // AND only calculate the force if the particles are not of the same
+                            // molecule
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
                             if (ArrayUtils::DotProduct(delta) <=
-                                len_sim.getGrid().cutoffRadiusSquared) {
-                                // then calculate the force
+                                    len_sim.getGrid().cutoffRadiusSquared &&
+                                p1.get().getMoleculeId() != p2.get().getMoleculeId()) {
                                 double alpha =
                                     len_sim.getAlpha(p1.get().getType(), p2.get().getType());
                                 double beta =
                                     len_sim.getBeta(p1.get().getType(), p2.get().getType());
                                 double gamma =
                                     len_sim.getGamma(p1.get().getType(), p2.get().getType());
-                                // check if both particles are molecular for truncated lj calculation
-                                if (p1.get().getMembraneId() != -1 && p2.get().getMembraneId() != -1) {
-                                    double sigma = len_sim.getSigma(p1.get().getType(), p2.get().getType());
-                                    lj_calc_truncated(p1, p2, alpha, beta, gamma, sigma, delta);
-                                }
-                                else lj_calc(p1, p2, alpha, beta, gamma, delta);
+
+                                lj_calc(p1, p2, alpha, beta, gamma, delta);
                             }
                         }
                     }

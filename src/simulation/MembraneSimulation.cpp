@@ -59,6 +59,8 @@ MembraneSimulation::MembraneSimulation(
     size_t molCount = 1;
     for (auto& molecule : molecules) {
         molecule->generateMolecule(container, molCount++);
+        unsigned ptype = molecule->getPtype();
+        molecule->initLJParams(epsilons[{ptype, ptype}], sigmas[{ptype, ptype}]);
     }
 }
 

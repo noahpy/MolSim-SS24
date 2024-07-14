@@ -56,3 +56,20 @@ void force_membrane(const Simulation& sim);
  * @param r_0 The equilibrium distance
  */
 void harmonic_calc(Particle& p1, Particle& p2, double k, double r_0);
+
+/**
+ * @brief Calculate the forces between 2 particles using the Lennard-Jones potential
+ * @param p1 The first particle
+ * @param p2 The second particle
+ * @param alpha The alpha value for the LJ potential
+ * @param beta The beta value for the LJ potential
+ * @param gamma The gamma value for the LJ potential
+ * @param delta The difference between the two particle positions
+ */
+void lj_calc(
+    Particle& p1,
+    Particle& p2,
+    double alpha,
+    double beta,
+    double gamma,
+    std::array<double, 3> delta);

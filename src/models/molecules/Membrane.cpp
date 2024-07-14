@@ -20,7 +20,8 @@ Membrane::Membrane(
     double r0,
     double k,
     Particle& root_arg)
-    : origin(origin)
+    : Molecule(ptype)
+    , origin(origin)
     , numParticlesWidth(numParticlesWidth)
     , numParticlesHeight(numParticlesHeight)
     , numParticlesDepth(numParticlesDepth)
@@ -29,7 +30,6 @@ Membrane::Membrane(
     , initialVelocity(initialVelocity)
     , meanVelocity(meanVelocity)
     , dimensions(dimensions)
-    , ptype(ptype)
     , r0(r0)
     , diagR0(sqrt(2) * r0)
     , k(k)
@@ -141,10 +141,56 @@ void Membrane::initNeighbors(ParticleGrid& particleGrid)
         }
 }
 
-void Membrane::calculateIntraMolecularForces()
+void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
 {
     // Calculate harmonic forces
     calculateHarmonicForces(root);
+
+    // Calculate repulsive-LJ forces for the membrane particles to avoid self-penetration
+    // See forceCal.h for the same structure
+    for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x)
+        for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
+            bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
+            for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
+                if (doLoopFor2D) {
+                    doLoopFor2D = false; // only do it once
+                    z = 0;
+                }
+                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
+
+                // calculate the LJ forces in the cell
+                for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
+                     it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
+                     ++it) {
+                    auto pair = *it;
+                    // Skip iteration if not both particles are part of this membrane
+                    if (pair.first.getMoleculeId() != root.get().getMoleculeId() ||
+                        pair.first.getMoleculeId() != pair.second.getMoleculeId())
+                        continue;
+
+                    std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
+                    // Check if the distance is less than the cutoff to only have repulsive forces
+                    if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
+                        lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
+                    }
+                }
+
+                for (auto i : neighbors)
+                    for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles())
+                        for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
+                            // Skip iteration if not both particles are part of this membrane
+                            if (p1.get().getMoleculeId() != root.get().getMoleculeId() ||
+                                p1.get().getMoleculeId() != p2.get().getMoleculeId())
+                                continue;
+
+                            // Check if the distance is less than the cutoff to only have repulsive forces
+                            std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
+                            if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
+                                lj_calc(p1, p2, alpha, beta, gamma, delta);
+                            }
+                        }
+            }
+        }
 }
 
 void Membrane::calculateHarmonicForces(std::reference_wrapper<Particle>& particle)

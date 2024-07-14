@@ -65,6 +65,12 @@ public:
      */
     void runSim() override;
 
+    /**
+     * @brief Get the molecules in the simulation
+     * @return The molecules in the simulation
+     */
+    [[nodiscard]] const std::vector<std::unique_ptr<Molecule>>& getMolecules() const { return molecules; }
+
 protected:
     std::vector<std::unique_ptr<Molecule>> molecules; /**< The molecules in the simulation */
 };

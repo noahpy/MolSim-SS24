@@ -64,8 +64,9 @@ public:
 
     /**
      * @brief Calculate the membrane specific intra-molecular forces using the harmonic potential
+     * @param cellGrid The cell simulation grid to calculate the forces
      */
-    void calculateIntraMolecularForces() override;
+    void calculateIntraMolecularForces(const CellGrid& cellGrid) override;
 
     /**
      * @brief Get the string representation of the membrane
@@ -92,7 +93,6 @@ protected:
     std::array<double, 3> initialVelocity; /**< The initial velocity of the particles */
     double meanVelocity; /**< The mean velocity of the particles */
     size_t dimensions; /**< The dimensions of the particles */
-    unsigned ptype; /**< The particle type */
     double r0; /**< The equilibrium distance */
     double diagR0; /**< The equilibrium distance for diagonal neighbors */
     double k; /**< The spring constant */
