@@ -214,30 +214,26 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
 
             // calculate LJ forces with the neighbours
             for (auto i : neighbors) {
-                if (cellGrid.cells.at(i[0]).at(i[1]).at(i[2])->getType() != CellType::Halo) {
-                    // for all particles in the cell
-                    for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
-                        // go over all particles in the neighbour
-                        for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
-                            // Check if the distance is less than the cutoff
-                            std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
-                            if (ArrayUtils::DotProduct(delta) <=
-                                len_sim.getGrid().cutoffRadiusSquared) {
-                                // then calculate the force
-                                double alpha =
-                                    len_sim.getAlpha(p1.get().getType(), p2.get().getType());
-                                double beta =
-                                    len_sim.getBeta(p1.get().getType(), p2.get().getType());
-                                double gamma =
-                                    len_sim.getGamma(p1.get().getType(), p2.get().getType());
-                                lj_calc(p1, p2, alpha, beta, gamma, delta);
-                            }
+                // for all particles in the cell
+                for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
+                    // go over all particles in the neighbour
+                    for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
+                        // Check if the distance is less than the cutoff
+                        std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
+                        if (ArrayUtils::DotProduct(delta) <=
+                            len_sim.getGrid().cutoffRadiusSquared) {
+                            // then calculate the force
+                            double alpha = len_sim.getAlpha(p1.get().getType(), p2.get().getType());
+                            double beta = len_sim.getBeta(p1.get().getType(), p2.get().getType());
+                            double gamma = len_sim.getGamma(p1.get().getType(), p2.get().getType());
+                            lj_calc(p1, p2, alpha, beta, gamma, delta);
                         }
                     }
                 }
             }
         }
     }
+
 
     // Calculate the forces gravity applies to the particles
     double gravityConstant = len_sim.getGravityConstant();
