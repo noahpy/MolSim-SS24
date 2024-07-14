@@ -243,3 +243,138 @@ TEST_F(calcForceMembrane, calcForceMembraneLJ)
         ++pCount;
     }
 }
+
+// Test forces between membrane particle and non-membrane particles
+TEST_F(calcForceMembrane, calcForceMembraneTruncatedLJ)
+{
+    Particle p1 { { 0, 0, 0 }, { 0, 0, 0 }, 1, 1 };
+    Particle p2 { { 1, 0, 0 }, { 0, 0, 0 }, 1, 1 };
+
+    particles = std::vector<Particle> { p1, p2 };
+
+    double epsilon = 1;
+    double sigma = 1;
+    double gravityConst = 0;
+
+    std::array<double, 3> p1F { -24, 0, 0 };
+    std::array<double, 3> p2F { 24, 0, 0 };
+
+    std::array<std::array<double, 3>, 3> expectedFs = { p1F, p2F };
+
+    std::map<unsigned, std::pair<double, double>> LJParams {
+                { 1, { epsilon, sigma }}, { 2, { epsilon, sigma }}, { 3, { epsilon, sigma } }
+    };
+
+    MembraneSimulation sim(
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        LJParams,
+        domainOrigin,
+        domainSize,
+        cutoff,
+        { 0, 0, 0 },
+        1,
+        numParticlesHeight,
+        k,
+        r_0,
+        1,
+        BoundaryConfig(
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW),
+        gravityConst,
+        0,
+        0,
+        0);
+
+    sim.container.particles[1].setMembraneId(2);
+
+    force_membrane(sim);
+
+    EXPECT_EQ(sim.container.particles[0].getMembraneId() != -1, true);
+    unsigned pCount = 0;
+    for (auto& p : particles) {
+        for (unsigned i = 0; i < 3; i++) {
+            EXPECT_NEAR(p.getF().at(i), expectedFs.at(pCount).at(i), PRESICION)
+                << "Particle " << pCount << " Dimension " << i << ": Expected "
+                << expectedFs.at(pCount).at(i) << " but got: " << p.getF().at(i);
+        }
+        ++pCount;
+    }
+}
+
+
+// Test forces between membrane particle and non-membrane particles
+TEST_F(calcForceMembrane, calcForceMembraneTruncatedLJ2)
+{
+    Particle p1 { { 0, 0, 0 }, { 0, 0, 0 }, 1, 1 };
+    Particle p2 { { 2, 0, 0 }, { 0, 0, 0 }, 1, 1 };
+
+    particles = std::vector<Particle> { p1, p2 };
+
+    double epsilon = 1;
+    double sigma = 1;
+    double gravityConst = 0;
+
+    std::array<double, 3> p1F { 0, 0, 0 };
+    std::array<double, 3> p2F { 0, 0, 0 };
+
+    std::array<std::array<double, 3>, 3> expectedFs = { p1F, p2F };
+
+    std::map<unsigned, std::pair<double, double>> LJParams {
+                    { 1, { epsilon, sigma }}, { 2, { epsilon, sigma }}, { 3, { epsilon, sigma } }
+    };
+
+    MembraneSimulation sim(
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        LJParams,
+        domainOrigin,
+        domainSize,
+        cutoff,
+        { 0, 0, 0 },
+        1,
+        numParticlesHeight,
+        k,
+        r_0,
+        1,
+        BoundaryConfig(
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW),
+        gravityConst,
+        0,
+        0,
+        0);
+
+    sim.container.particles[1].setMembraneId(2);
+
+    force_membrane(sim);
+
+    EXPECT_EQ(sim.container.particles[0].getMembraneId() != -1, true);
+    unsigned pCount = 0;
+    for (auto& p : particles) {
+        for (unsigned i = 0; i < 3; i++) {
+            EXPECT_NEAR(p.getF().at(i), expectedFs.at(pCount).at(i), PRESICION)
+                << "Particle " << pCount << " Dimension " << i << ": Expected "
+                << expectedFs.at(pCount).at(i) << " but got: " << p.getF().at(i);
+        }
+        ++pCount;
+    }
+}
