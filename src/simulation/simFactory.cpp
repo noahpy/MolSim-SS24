@@ -143,8 +143,9 @@ std::unique_ptr<Simulation> simFactory(
             params.boundaryConfig,
             std::make_unique<Analyzer> (params.bins, params.outName),
             params.plot_frequency,
+            params.update_frequency,
             params.analysisInterval,
-            params.update_frequency);
+            true);
     case SimulationType::MIXED_LJ:
         spdlog::info("Initializing Mixed LJ + Gravity Simulation with:");
         spdlog::info(
