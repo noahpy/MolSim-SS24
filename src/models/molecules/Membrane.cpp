@@ -129,6 +129,8 @@ void Membrane::initNeighbors(ParticleGrid& particleGrid)
 
     for (int x = 0; x < particleGrid.size(); x++) { // x
         for (int y = 0; y < particleGrid[0].size(); y++) { // z
+            directNeighbors[particleGrid[x][y]] = {};
+            diagNeighbors[particleGrid[x][y]] = {};
 
             for (auto& offset : offsetKernelsDirect) {
                 int i = offset[0] + x;
