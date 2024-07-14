@@ -50,6 +50,8 @@ void xmlparse(Params& sim_params, std::string& filename)
             sim_params.gravity = params.gravity().get();
         if (params.analysisFreq().present())
             sim_params.analysisInterval = params.analysisFreq().get();
+        else
+            sim_params.analysisInterval = 0;
         if (params.analysisName().present())
             sim_params.outName = params.analysisName().get();
         if (params.boundaries().present()) {
@@ -86,8 +88,7 @@ void xmlparse(Params& sim_params, std::string& filename)
                 sim_params.max_temp_delta = thermo_config.maxTempDelta().get();
             if (thermo_config.type().present())
                 sim_params.thermostat_type = getThermostatType(thermo_config.type().get());
-        }
-        else {
+        } else {
             sim_params.thermo_freq = 0;
         }
 
