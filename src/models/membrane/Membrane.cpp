@@ -1,6 +1,8 @@
 
 #include "Membrane.h"
 
+#include <cmath>
+
 Membrane::Membrane(std::array<double, 3> origin, int numParticlesWidth, int numParticlesHeight)
     : origin(origin), numParticlesWidth(numParticlesWidth), numParticlesHeight(numParticlesHeight) {}
 
@@ -32,8 +34,8 @@ void Membrane::initMembrane(ParticleContainer& container, double spacing) {
         double y = p.getX()[1];
         if (x >= origin[0] && x <= origin[0] + gridSpaceX && y >= origin[1] && y <= origin[1] + gridSpaceY) {
             // Calculate the grid position of the particle
-            int i = static_cast<int>((x - origin[0]) / spacing);
-            int j = static_cast<int>((y - origin[1]) / spacing);
+            int i = static_cast<int>(round((x-origin[0]) / spacing));
+            int j = static_cast<int>(round((y - origin[1]) / spacing));
 
             // Set the molecular attribute and store the particle reference in the grid
             p.setMembraneId(membraneId);

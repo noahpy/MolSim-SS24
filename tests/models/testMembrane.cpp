@@ -117,14 +117,14 @@ TEST(MembraneTests, membraneMapTests)
 
 TEST(MembraneTests, membraneMapTests2)
 {
-    Particle p1 = {z, z, 1, 0};
-    Particle p2 = {{2, 0, 0}, z, 1, 0};
-    Particle p3 = {{4, 0, 0}, z, 1, 0};
+    Particle p1 = {{15, 15, 1.5}, z, 1, 0};
+    Particle p2 = {{17.2, 15, 1.5}, z, 1, 0};
+    Particle p3 = {{19.4, 15, 1.5}, z, 1, 0};
     std::vector<Particle> particles = {p1, p2, p3};
 
     ParticleContainer container(particles);
-    Membrane membrane({0,0,0}, 3, 1);
-    membrane.initMembrane(container, 2);
+    Membrane membrane({15,15,1.5}, 3, 1);
+    membrane.initMembrane(container, 2.2);
 
     EXPECT_EQ(membrane.isNeighbor(container.particles[0], container.particles[1]), true);
     EXPECT_EQ(membrane.isNeighbor(container.particles[1], container.particles[2]), true);
@@ -132,16 +132,16 @@ TEST(MembraneTests, membraneMapTests2)
     EXPECT_EQ(membrane.isNeighbor(container.particles[2], container.particles[1]), true);
     EXPECT_EQ(membrane.isNeighbor(container.particles[0], container.particles[2]), false);
 
-    Particle p4 = {{0, 2, 0}, z, 1, 0};
-    Particle p5 = {{2, 2, 0}, z, 1, 0};
-    Particle p6 = {{4, 2, 0}, z, 1, 0};
+    Particle p4 = {{15, 17.2, 1.5}, z, 1, 0};
+    Particle p5 = {{17.2, 17.2, 1.5}, z, 1, 0};
+    Particle p6 = {{19.4, 17.2, 1.5}, z, 1, 0};
 
     container.addParticle(p4);
     container.addParticle(p5);
     container.addParticle(p6);
 
-    Membrane membrane2({0,0,0}, 3, 2);
-    membrane2.initMembrane(container, 2);
+    Membrane membrane2({15,15,1.5}, 3, 2);
+    membrane2.initMembrane(container, 2.2);
 
     EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[0], container.particles[4]), true);
     EXPECT_EQ(membrane2.isNeighbor(container.particles[0], container.particles[3]), true);
