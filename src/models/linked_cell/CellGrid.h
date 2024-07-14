@@ -71,13 +71,17 @@ public:
     [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const
         THREAD_SAFE;
 
+    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile2D(const CellIndex& cellIndex) const;
+
+    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile3D(const CellIndex& cellIndex) const;
+
     /**
      * @brief Resets the forces for all particles for the next force calculation
      * @param particleContainer The container holding the particles
      * @return void
      */
     void preCalcSetup(ParticleContainer& particleContainer) const;
-    
+
     /**
      * @brief Resets the visited flag of all cells to false
      * @return void

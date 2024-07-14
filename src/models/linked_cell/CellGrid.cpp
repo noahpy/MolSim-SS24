@@ -270,6 +270,104 @@ std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& index) const T
     return cellList;
 }
 
+std::list<CellIndex> CellGrid::getNeighbourCellsStencile2D(const CellIndex& index) const
+{
+    // If the cell is a halo, return an empty list
+    if (cells.at(index[0]).at(index[1]).at(index[2])->getType() == CellType::Halo) {
+        return {};
+    }
+
+    // Get following 13 neighbours (half of the neighbours):
+    std::list<CellIndex> cellList = {
+
+        //  - right, bottom
+        CellIndex { index[0] + 1, index[1] - 1, index[2] },
+        //  - right, even
+        CellIndex { index[0] + 1, index[1], index[2] },
+        //  - right, top
+        CellIndex { index[0] + 1, index[1] + 1, index[2] },
+        //  - even, bottom
+        CellIndex { index[0], index[1] - 1, index[2] },
+
+    };
+
+    // add halo cells if needed
+    for (auto haloInfo : cells.at(index[0]).at(index[1]).at(index[2])->haloNeighbours) {
+        CellIndex haloIndex = haloInfo.first;
+        bool insert = true;
+        for (CellIndex index : cellList) {
+            if (haloIndex.at(0) == index.at(0) && haloIndex.at(1) == index.at(1) &&
+                haloIndex.at(2) == index.at(2)) {
+                insert = false;
+                break;
+            }
+        }
+        if (insert) {
+            cellList.emplace_back(haloIndex);
+        }
+    }
+
+    return cellList;
+}
+
+std::list<CellIndex> CellGrid::getNeighbourCellsStencile3D(const CellIndex& index) const
+{
+    // If the cell is a halo, return an empty list
+    if (cells.at(index[0]).at(index[1]).at(index[2])->getType() == CellType::Halo) {
+        return {};
+    }
+
+    // Get following 13 neighbours (half of the neighbours):
+    std::list<CellIndex> cellList = {
+
+        //  - right, bottom, back
+        CellIndex { index[0] + 1, index[1] - 1, index[2] - 1 },
+        //  - right, even, even
+        CellIndex { index[0] + 1, index[1], index[2] },
+        //  - right, bottom, even
+        CellIndex { index[0] + 1, index[1] - 1, index[2] },
+        //  - right, even, front
+        CellIndex { index[0] + 1, index[1], index[2] + 1 },
+        //  - right, bottom, front
+        CellIndex { index[0] + 1, index[1] - 1, index[2] + 1 },
+        //  - right, top, front
+        CellIndex { index[0] + 1, index[1] + 1, index[2] + 1 },
+        //  - even, even, front
+        CellIndex { index[0], index[1], index[2] + 1 },
+        //  - even, bottom, front
+        CellIndex { index[0], index[1] - 1, index[2] + 1 },
+        //  - left, bottom, front
+        CellIndex { index[0] - 1, index[1] - 1, index[2] + 1 },
+        //  - even, bottom, even
+        CellIndex { index[0], index[1] - 1, index[2] },
+        //  - even, bottom, back
+        CellIndex { index[0], index[1] - 1, index[2] - 1 },
+        //  - left, bottom, even
+        CellIndex { index[0] - 1, index[1] - 1, index[2] },
+        //  - left, bottom, back
+        CellIndex { index[0] - 1, index[1] - 1, index[2] - 1 }
+
+    };
+
+    // add halo cells if needed
+    for (auto haloInfo : cells.at(index[0]).at(index[1]).at(index[2])->haloNeighbours) {
+        CellIndex haloIndex = haloInfo.first;
+        bool insert = true;
+        for (CellIndex index : cellList) {
+            if (haloIndex.at(0) == index.at(0) && haloIndex.at(1) == index.at(1) &&
+                haloIndex.at(2) == index.at(2)) {
+                insert = false;
+                break;
+            }
+        }
+        if (insert) {
+            cellList.emplace_back(haloIndex);
+        }
+    }
+
+    return cellList;
+}
+
 void CellGrid::setCutoffRadius(double pCutoffRadius)
 {
     cutoffRadius = pCutoffRadius;

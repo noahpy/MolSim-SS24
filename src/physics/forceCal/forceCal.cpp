@@ -106,7 +106,7 @@ void force_lennard_jones_lc(const Simulation& sim)
     cellGrid.preCalcSetup(len_sim.container);
 
     // for all cells in the grid
-#pragma omp parallel for collapse(2) schedule(dynamic, 15)
+#pragma omp parallel for collapse(2)
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
             // This bool controls the 2D case, where we do need to calc the forces
@@ -120,6 +120,7 @@ void force_lennard_jones_lc(const Simulation& sim)
                     z = 0;
                 }
                 std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
+
 
                 // calculate the LJ forces in the cell
                 for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
@@ -160,73 +161,81 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
     const CellGrid& cellGrid = len_sim.getGrid();
 
     cellGrid.preCalcSetup(len_sim.container);
-    // for all cells in the grid
     spdlog::debug("Calculating forces...");
-#pragma omp parallel for collapse(2) schedule(dynamic)
-    for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
-        for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
-            // This bool controls the 2D case, where we do need to calc the forces
-            // This will be true iff the simulation is 2D
-            // Then the condition of the loop will be true and the loop will be executed
-            // We then set it to false to not run it further. -> Remember to set z=0
-            bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
 
-            // TODO move doLoopFor2D above parallel (firstprivate) -> then move loops together and collaps (3)
-            // Inside third loop:
-            // if z == 0 and !doLoopFor2D -> continue
-            // if z == cellGrid.cells[0][0].size() - 1 and !doLoopFor2D -> break
+    /* size_t count = 0; */
 
-            for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
-                if (doLoopFor2D) {
-                    doLoopFor2D = false; // only do it once
-                    z = 0;
+    size_t xSize = cellGrid.cells.size();
+    size_t ySize = cellGrid.cells[0].size();
+
+#pragma omp parallel for
+    // for all cells in the grid
+    for (size_t index = 0; index < (xSize - 2) * (ySize - 2); ++index) {
+        size_t x = index / (ySize - 2) + 1;
+        size_t y = index % (ySize - 2) + 1;
+        // This bool controls the 2D case, where we do need to calc the forces
+        // This will be true iff the simulation is 2D
+        // Then the condition of the loop will be true and the loop will be executed
+        // We then set it to false to not run it further. -> Remember to set z=0
+        bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
+
+        // TODO move doLoopFor2D above parallel (firstprivate) -> then move loops together and
+        // collaps (3) Inside third loop: if z == 0 and !doLoopFor2D -> continue if z ==
+        // cellGrid.cells[0][0].size() - 1 and !doLoopFor2D -> break
+
+        for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
+            if (doLoopFor2D) {
+                doLoopFor2D = false; // only do it once
+                z = 0;
+            }
+            std::list<CellIndex> neighbors = cellGrid.getNeighbourCellsStencile2D({ x, y, z });
+
+            /* #pragma omp critical */
+            /*                 { */
+            /*                     count += neighbors.size(); */
+            /*                 } */
+
+            // calculate the LJ forces in the cell
+            for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
+                 it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
+                 ++it) {
+                auto pair = *it;
+                std::array<double, 3> delta = pair.first.get().getX() - pair.second.get().getX();
+                // check if the distance is less than the cutoff
+                if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared) {
+                    double alpha =
+                        len_sim.getAlpha(pair.first.get().getType(), pair.second.get().getType());
+                    double beta =
+                        len_sim.getBeta(pair.first.get().getType(), pair.second.get().getType());
+                    double gamma =
+                        len_sim.getGamma(pair.first.get().getType(), pair.second.get().getType());
+                    lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
                 }
-                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
+            }
 
-                // calculate the LJ forces in the cell
-                for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
-                     it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
-                     ++it) {
-                    auto pair = *it;
-                    std::array<double, 3> delta =
-                        pair.first.get().getX() - pair.second.get().getX();
-                    // check if the distance is less than the cutoff
-                    if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared) {
-                        double alpha = len_sim.getAlpha(
-                            pair.first.get().getType(), pair.second.get().getType());
-                        double beta = len_sim.getBeta(
-                            pair.first.get().getType(), pair.second.get().getType());
-                        double gamma = len_sim.getGamma(
-                            pair.first.get().getType(), pair.second.get().getType());
-                        lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
-                    }
-                }
-
-                // calculate LJ forces with the neighbours
-                for (auto i : neighbors) {
-                    // for all particles in the cell
-                    for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
-                        // go over all particles in the neighbour
-                        for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
-                            // Check if the distance is less than the cutoff
-                            std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
-                            if (ArrayUtils::DotProduct(delta) <=
-                                len_sim.getGrid().cutoffRadiusSquared) {
-                                // then calculate the force
-                                double alpha =
-                                    len_sim.getAlpha(p1.get().getType(), p2.get().getType());
-                                double beta =
-                                    len_sim.getBeta(p1.get().getType(), p2.get().getType());
-                                double gamma =
-                                    len_sim.getGamma(p1.get().getType(), p2.get().getType());
-                                lj_calc(p1, p2, alpha, beta, gamma, delta);
-                            }
+            // calculate LJ forces with the neighbours
+            for (auto i : neighbors) {
+                // for all particles in the cell
+                for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
+                    // go over all particles in the neighbour
+                    for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
+                        // Check if the distance is less than the cutoff
+                        std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
+                        if (ArrayUtils::DotProduct(delta) <=
+                            len_sim.getGrid().cutoffRadiusSquared) {
+                            // then calculate the force
+                            double alpha = len_sim.getAlpha(p1.get().getType(), p2.get().getType());
+                            double beta = len_sim.getBeta(p1.get().getType(), p2.get().getType());
+                            double gamma = len_sim.getGamma(p1.get().getType(), p2.get().getType());
+                            lj_calc(p1, p2, alpha, beta, gamma, delta);
                         }
                     }
                 }
             }
         }
     }
+
+    /* spdlog::info("Forces calculated in {} neighbour cells", count); */
 
     // Calculate the forces gravity applies to the particles
     double gravityConstant = len_sim.getGravityConstant();
