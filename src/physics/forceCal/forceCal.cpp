@@ -106,16 +106,19 @@ void force_lennard_jones_lc(const Simulation& sim)
     cellGrid.preCalcSetup(len_sim.container);
 
     // for all cells in the grid
-#pragma omp parallel for collapse(3) schedule(dynamic, 15)
+#pragma omp parallel for collapse(2) schedule(dynamic, 15)
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
             // This bool controls the 2D case, where we do need to calc the forces
             // This will be true iff the simulation is 2D
             // Then the condition of the loop will be true and the loop will be executed
             // We then set it to false to not run it further. -> Remember to set z=0
-            for (size_t z = (cellGrid.cells[0][0].size() == 1) ? 0 : 1;
-                 z < ((cellGrid.cells[0][0].size() == 1) ? 1 : cellGrid.cells[0][0].size() - 1);
-                 ++z) {
+            bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
+            for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
+                if (doLoopFor2D) {
+                    doLoopFor2D = false; // only do it once
+                    z = 0;
+                }
                 std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
 
                 // calculate the LJ forces in the cell
@@ -159,7 +162,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
     cellGrid.preCalcSetup(len_sim.container);
     // for all cells in the grid
     spdlog::debug("Calculating forces...");
-#pragma omp parallel for collapse(2) schedule(dynamic, 15)
+#pragma omp parallel for collapse(2) schedule(dynamic)
     for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x) {
         for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
             // This bool controls the 2D case, where we do need to calc the forces
