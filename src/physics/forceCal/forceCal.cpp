@@ -164,12 +164,8 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
     cellGrid.preCalcSetup(len_sim.container);
     spdlog::debug("Calculating forces...");
 
-    size_t count = 0;
-
     size_t xSize = cellGrid.cells.size();
     size_t ySize = cellGrid.cells[0].size();
-
-    std::map<CellIndex, std::vector<CellIndex>> indexMap;
 
 #pragma omp parallel for
     // for all cells in the grid
@@ -198,13 +194,6 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
             else
                 neighbors = cellGrid.getNeighbourCellsStencile3D({ x, y, z });
 
-#pragma omp critical
-            {
-                /* count += neighbors.size(); */
-                indexMap[{ x, y, z }].insert(
-                    indexMap[{ x, y, z }].end(), neighbors.begin(), neighbors.end());
-            }
-
             // calculate the LJ forces in the cell
             for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
                  it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
@@ -226,76 +215,29 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
             // calculate LJ forces with the neighbours
             for (auto i : neighbors) {
                 if (cellGrid.cells.at(i[0]).at(i[1]).at(i[2])->getType() != CellType::Halo) {
-#pragma omp critical
-                    {
-                        indexMap[{ i[0], i[1], i[2] }].push_back({ x, y, z });
-                    }
-                }
-                // for all particles in the cell
-                for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
-                    // go over all particles in the neighbour
-                    for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
-                        // Check if the distance is less than the cutoff
-                        std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
-                        if (ArrayUtils::DotProduct(delta) <=
-                            len_sim.getGrid().cutoffRadiusSquared) {
-                            // then calculate the force
-                            double alpha = len_sim.getAlpha(p1.get().getType(), p2.get().getType());
-                            double beta = len_sim.getBeta(p1.get().getType(), p2.get().getType());
-                            double gamma = len_sim.getGamma(p1.get().getType(), p2.get().getType());
-                            lj_calc(p1, p2, alpha, beta, gamma, delta);
+                    // for all particles in the cell
+                    for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
+                        // go over all particles in the neighbour
+                        for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
+                            // Check if the distance is less than the cutoff
+                            std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
+                            if (ArrayUtils::DotProduct(delta) <=
+                                len_sim.getGrid().cutoffRadiusSquared) {
+                                // then calculate the force
+                                double alpha =
+                                    len_sim.getAlpha(p1.get().getType(), p2.get().getType());
+                                double beta =
+                                    len_sim.getBeta(p1.get().getType(), p2.get().getType());
+                                double gamma =
+                                    len_sim.getGamma(p1.get().getType(), p2.get().getType());
+                                lj_calc(p1, p2, alpha, beta, gamma, delta);
+                            }
                         }
                     }
                 }
             }
         }
     }
-
-    for (auto& it : indexMap) {
-        if (it.second.size() != 26) {
-            std::list<CellIndex> valids;
-            std::list<CellIndex> overlaps;
-            for (int dx = -1; dx <= 1; ++dx) {
-                for (int dy = -1; dy <= 1; ++dy) {
-                    for (int dz = -1; dz <= 1; ++dz) {
-                        if (dx == 0 && dy == 0 && dz == 0)
-                            continue;
-                        valids.push_back(
-                            { it.first.at(0) + dx, it.first.at(1) + dy, it.first.at(2) + dz });
-                    }
-                }
-            }
-            spdlog::info(
-                "Cell {}, {}, {} has {} neighbours",
-                it.first.at(0),
-                it.first.at(1),
-                it.first.at(2),
-                it.second.size());
-            for (auto i : it.second) {
-                spdlog::info("Neighbour: {}, {}, {}", i[0], i[1], i[2]);
-                bool found = false;
-                for (auto it = valids.begin(); it != valids.end(); ++it) {
-                    if (it->at(0) == i[0] && it->at(1) == i[1] && it->at(2) == i[2]) {
-                        valids.erase(it);
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found)
-                    overlaps.push_back(i);
-            }
-
-            // Results
-            for (auto k : overlaps) {
-                spdlog::info("Overlap: {}, {}, {}", k[0], k[1], k[2]);
-            }
-            for (auto k : valids) {
-                spdlog::info("Missing: {}, {}, {}", k[0], k[1], k[2]);
-            }
-        }
-    }
-
-    /* spdlog::info("Forces calculated in {} neighbour cells", count); */
 
     // Calculate the forces gravity applies to the particles
     double gravityConstant = len_sim.getGravityConstant();
