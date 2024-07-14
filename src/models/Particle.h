@@ -55,7 +55,9 @@ private:
     /**
      * @brief id in the molecules, if particle is not part of a molecules then id = -1
      */
-    int membraneId;
+    size_t moleculeId;
+
+    bool isMoleculeRoot; /**< True if this particle is the root of a molecule */
 
 public:
     /**
@@ -72,7 +74,8 @@ public:
         std::array<double, 3> x_arg,
         std::array<double, 3> v_arg,
         double m_arg,
-        int type = 0);
+        int type = 0,
+        size_t moleculeId = 0);
 
     /**
      * @brief Construct a new Particle object by copying another Particle object -> do not use
@@ -154,9 +157,9 @@ public:
      * @brief Get the molecules id
      * @return id for the molecules
      */
-    [[nodiscard]] inline int getMembraneId() const
+    [[nodiscard]] inline size_t getMoleculeId() const
     {
-            return membraneId;
+        return moleculeId;
     }
 
     /**
@@ -228,9 +231,18 @@ public:
      * @brief Set the molecules id
      * @param id_new The new id value
      */
-    inline void setMembraneId(int id_new)
+    inline void setMoleculeId(size_t id_new)
     {
-        membraneId = id_new;
+        moleculeId = id_new;
+    }
+
+    /**
+     * @brief Set the isMoleculeRoot flag
+     * @param isRoot The new value of the isMoleculeRoot flag
+     */
+    inline void setIsMoleculeRoot(bool isRoot)
+    {
+        isMoleculeRoot = isRoot;
     }
 
     /**

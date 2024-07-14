@@ -3,6 +3,11 @@
 #include "Molecule.h"
 #include <map>
 
+/**
+ * @brief A 2D grid of particles (Membranes will be represented as 2D grids)
+ */
+typedef std::vector<std::vector<std::reference_wrapper<Particle>>> ParticleGrid;
+
 struct ParticleComparator {
     bool operator()(const std::reference_wrapper<Particle>& lhs, const std::reference_wrapper<Particle>& rhs) const {
         return &lhs.get() < &rhs.get();
@@ -53,8 +58,9 @@ public:
     /**
      * @brief Generate the membrane
      * @param container The container to generate the membrane in
+     * @param moleculeID The molecule ID (unique identifier for the molecule)
      */
-    void generateMolecule(ParticleContainer& container) override;
+    void generateMolecule(ParticleContainer& container, size_t moleculeID) override;
 
     /**
      * @brief Calculate the membrane specific intra-molecular forces using the harmonic potential
@@ -62,10 +68,10 @@ public:
     void calculateIntraMolecularForces() override;
 
     /**
-     * @brief Calculate the harmonic forces for a particle and its neighbors (will be called recursively)
-     * @param Particle The root particle
+     * @brief Get the string representation of the membrane
+     * @return The string representation of the membrane
      */
-    void calculateHarmonicForces(std::reference_wrapper<Particle>& membraneRoot);
+    std::string toString();
 
 protected:
     std::reference_wrapper<Particle> root; /**< The root particle of the molecule */
@@ -75,7 +81,7 @@ protected:
      * Then use newton's third law -> this way we only loop over all particles but get all forces
      */
     NeighborParticleMap directNeighbors; /**< The direct neighbors of the particles (only the ones that are required to calculate the forces) */
-    NeighborParticleMap verticalNeighbors; /**< The vertical neighbors of the particles (only the ones that are required to calculate the forces) */
+    NeighborParticleMap diagNeighbors; /**< The vertical neighbors of the particles (only the ones that are required to calculate the forces) */
 
     std::array<double, 3> origin; /**< The origin of the membrane */
     int numParticlesWidth; /**< The number of particles in width */
@@ -88,5 +94,18 @@ protected:
     size_t dimensions; /**< The dimensions of the particles */
     unsigned ptype; /**< The particle type */
     double r0; /**< The equilibrium distance */
+    double diagR0; /**< The equilibrium distance for diagonal neighbors */
     double k; /**< The spring constant */
+
+    /**
+     * @brief Initialize the neighbors of the particles after the gird has been generated
+     * @param particleGrid The particle grid of the membrane (flattend to 2D grid)
+     */
+    void initNeighbors(ParticleGrid& particleGrid);
+
+    /**
+     * @brief Calculate the harmonic forces for a particle and its neighbors (will be called recursively)
+     * @param Particle The root particle
+     */
+    void calculateHarmonicForces(std::reference_wrapper<Particle>& particle);
 };

@@ -25,8 +25,9 @@ public:
     /**
      * @brief Create the necessary particles in the molecule
      * @param container The particle container to insert into
+     * @param moleculeID The molecule ID (unique identifier for the molecule)
      */
-    virtual void generateMolecule(ParticleContainer& container) = 0;
+    virtual void generateMolecule(ParticleContainer& container, size_t moleculeID) = 0;
 
     /**
      * @brief Calculate the molecular specific intra-molecular forces

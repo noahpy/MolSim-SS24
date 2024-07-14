@@ -47,3 +47,12 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim);
  * @param sim The simulation to calculate the forces for
  */
 void force_membrane(const Simulation& sim);
+
+/**
+ * @brief Calculate the forces between 2 particles in a molecule using the harmonic potential
+ * @param p1 The first particle
+ * @param p2 The second particle
+ * @param k The spring constant
+ * @param r_0 The equilibrium distance
+ */
+void harmonic_calc(Particle& p1, Particle& p2, double k, double r_0);
