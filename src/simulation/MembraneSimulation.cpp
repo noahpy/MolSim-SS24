@@ -3,6 +3,7 @@
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
+#include "utils/ArrayUtils.h"
 
 #include <physics/forceCal/forceCal.h>
 
@@ -69,10 +70,26 @@ MembraneSimulation::MembraneSimulation(
 
 void MembraneSimulation::runSim()
 {
+    std::array<double, 3> Fz_up = {0, 0, 0.8};
+
     while (time < end_time) {
         bcHandler.preUpdateBoundaryHandling(*this);
 
         strategy.calF(*this);
+        if (container.particles.size() == 2500) {
+            Particle& p1 = container.particles[874];
+            Particle& p2 = container.particles[875];
+            Particle& p3 = container.particles[924];
+            Particle& p4 = container.particles[925];
+            p1.setOldF(p1.getF());
+            p1.setF(p1.getF() + Fz_up);
+            p2.setOldF(p2.getF());
+            p2.setF(p2.getF() + Fz_up);
+            p3.setOldF(p3.getF());
+            p3.setF(p3.getF() + Fz_up);
+            p4.setOldF(p4.getF());
+            p4.setF(p4.getF() + Fz_up);
+        }
         strategy.calV(*this);
         strategy.calX(*this);
 
