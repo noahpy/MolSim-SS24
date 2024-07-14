@@ -3,14 +3,15 @@
 #include "physics/boundaryConditions/BoundaryConfig.h"
 #include <array>
 #include <string>
+#include "models/molecules/Molecule.h"
+#include "models/molecules/Membrane.h"
+#include <memory>
 
 enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
 
 enum class WriterType { XYZ, VTK, XML, EMPTY };
 
 enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ, MEMBRANE_LJ };
-
-enum MoleculeType { MEMBRANE };
 
 class Params {
 public:
@@ -67,16 +68,11 @@ public:
     std::map<unsigned, std::pair<double, double>> typesMap;
     // Flag for measuring performance -> will not use any io and time the simulation
     bool doPerformanceMeasurements = false;
-    // origin of the membrane
-    std::array<double, 3> membraneOrigin {15,15,1.5};
-    // number particles in width for the membrane
-    int numParticlesWidth = 50;
-    // number particles in height for the membrane
-    int numParticlesHeight = 50;
-    // stiffness constant
-    double k = 300;
-    // average bond length in the molecule
-    double r_0 = 2.2;
-    // spacing between particles for the membrane
-    double spacing = 2.2;
+    // Molecules in the simulation
+    Particle p {};
+    std::vector<std::unique_ptr<Molecule>> molecules {
+        std::make_unique<Membrane>(Membrane({15,15,1.5}, 50, 50, 1, 2.2, 1, {0,0,0}, 0, 3, 1, 2.2, 300, p))
+    };
+
+    // TODO read the molecules from the input file (set any particle as root, will be overwritten)
 };

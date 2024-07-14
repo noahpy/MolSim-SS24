@@ -16,17 +16,12 @@ MembraneSimulation::MembraneSimulation(
     std::array<double, 3> domainOrigin,
     std::array<double, 3> domainSize,
     double cutoff,
-    std::array<double, 3> membraneOrigin,
-    int numParticlesWidth,
-    int numParticlesHeight,
-    double k,
-    double r_0,
-    double spacing,
     const BoundaryConfig& boundaryConfig,
     double gravity_constant,
     double T_init,
     double T_target,
     double delta_T,
+    std::vector<std::unique_ptr<Molecule>> molecules,
     unsigned frequency,
     unsigned updateFrequency,
     bool read_file,
@@ -51,53 +46,24 @@ MembraneSimulation::MembraneSimulation(
           delta_T,
           frequency,
           updateFrequency,
-          read_file,
+          false,
           n_thermostat,
-          doProfile),
-      membraneOrigin(membraneOrigin),
-      numParticlesWidth(numParticlesWidth),
-      numParticlesHeight(numParticlesHeight),
-      k(k),
-      r_0(r_0),
-      spacing(spacing),
-      membrane(membraneOrigin, numParticlesWidth, numParticlesHeight)
+          doProfile)
+    , molecules(std::move(molecules))
 {
-    membrane.initMembrane(container, spacing);
+    if (read_file) {
+        this->reader->readFile(*this);
+        cellGrid.addParticlesFromContainer(container);
+    }
 
-    // TODO only for molecules simulation
-    for (auto& particle : container.particles) {
-        // The gravity only acts along the y-Axis
-        bool isXValid = std::abs(particle.getX()[0] - 50.2) < 1e-8 || std::abs(particle.getX()[0] - 52.4) < 1e-8;
-        bool isYValid = std::abs(particle.getX()[1] - 65.6) < 1e-8 || std::abs(particle.getX()[1] - 67.8) < 1e-8;
-        if (isXValid && isYValid)
-            particle.setType(2);
+    size_t molCount = 1;
+    for (auto& molecule : molecules) {
+        molecule->generateMolecule(container, molCount++);
     }
 }
 
 void MembraneSimulation::runSim()
 {
-    while (time < end_time) {
-        bcHandler.preUpdateBoundaryHandling(*this);
-
-        strategy.calF(*this);
-        strategy.calV(*this);
-        strategy.calX(*this);
-
-        bcHandler.postUpdateBoundaryHandling(*this);
-
-        ++iteration;
-        if (iteration % frequency == 0) {
-            writer->plotParticles(*this);
-        }
-        if (iteration % updateFrequency == 0) {
-            cellGrid.updateCells();
-        }
-        if (n_thermostat && iteration % n_thermostat == 0) {
-            thermostat.updateT(this->container);
-        }
-
-        spdlog::trace("Iteration {} finished.", iteration);
-
-        time += delta_t;
-    }
+    // Simply run parent simulation
+    MixedLJSimulation::runSim();
 }

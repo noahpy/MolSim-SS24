@@ -2,7 +2,7 @@
 #pragma once
 
 #include "MixedLJSimulation.h"
-#include "../models/membrane/Membrane.h"
+#include "models/molecules/Molecule.h"
 
 /**
  * @brief Simulation class for the Lennard-Jones simulation with a molecules
@@ -29,6 +29,7 @@ public:
      * @param T_init The initial temperature
      * @param T_target The target temperature
      * @param delta_T The maximal temperature change in one step
+     * @param molecules The molecules to be used in the simulation
      * @param frequency The frequency for writing outputs (default = 10)
      * @param updateFrequency The frequency for updating the grid (default = 10)
      * @param read_file Whether to read the input file (default = true)
@@ -46,17 +47,12 @@ public:
         std::array<double, 3> domainOrigin,
         std::array<double, 3> domainSize,
         double cutoff,
-        std::array<double, 3> membraneOrigin,
-        int numParticlesWidth,
-        int numParticlesHeight,
-        double k,
-        double r_0,
-        double spacing,
         const BoundaryConfig& boundaryConfig,
         double gravity_constant,
         double T_init,
         double T_target,
         double delta_T,
+        std::vector<std::unique_ptr<Molecule>> molecules,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
         bool read_file = true,
@@ -69,26 +65,6 @@ public:
      */
     void runSim() override;
 
-    /**
-     * @brief Get Stiffness constant
-     * @return k
-     */
-    double getK() const { return k; }
-
-    /**
-     * @brief Get average bond length inside molecule
-     * @return r_0
-     */
-    double getR_0() const { return r_0; }
-
-    const Membrane& getMembrane() const { return membrane; }
-
 protected:
-    std::array<double, 3> membraneOrigin;
-    int numParticlesWidth;
-    int numParticlesHeight;
-    double k;
-    double r_0;
-    double spacing;
-    Membrane membrane; /**< The molecules used in the simulation */
+    std::vector<std::unique_ptr<Molecule>> molecules; /**< The molecules in the simulation */
 };
