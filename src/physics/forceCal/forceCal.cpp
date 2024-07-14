@@ -269,7 +269,8 @@ void force_membrane(const Simulation& sim)
                     // AND only calculate the force if the particles are not of the same
                     // molecule
                     if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared &&
-                        pair.first.getMoleculeId() != pair.second.getMoleculeId()) {
+                        (pair.first.getMoleculeId() != pair.second.getMoleculeId() ||
+                         pair.first.getMoleculeId() == 0)) {
                         double alpha =
                             len_sim.getAlpha(pair.first.getType(), pair.second.getType());
                         double beta = len_sim.getBeta(pair.first.getType(), pair.second.getType());
@@ -292,7 +293,8 @@ void force_membrane(const Simulation& sim)
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
                             if (ArrayUtils::DotProduct(delta) <=
                                     len_sim.getGrid().cutoffRadiusSquared &&
-                                p1.get().getMoleculeId() != p2.get().getMoleculeId()) {
+                                (p1.get().getMoleculeId() != p2.get().getMoleculeId() ||
+                                p1.get().getMoleculeId() == 0)) {
                                 double alpha =
                                     len_sim.getAlpha(p1.get().getType(), p2.get().getType());
                                 double beta =
