@@ -5,6 +5,7 @@
 #include "utils/Position.h"
 #include <functional>
 #include <list>
+#include <mutex>
 
 /** @brief A 3D index representing a cell's position within the grid. */
 typedef std::array<size_t, 3> CellIndex;
@@ -101,6 +102,27 @@ public:
      * @brief Increments the neighbor counter.
      */
     void incrementCounter() { neighborCounter++; };
+
+    inline bool getVisited() const
+    {
+        return visited;
+    }
+
+    /**
+     * @brief Returns the current state of the visited flag and sets to false if true.
+     * @return The current state of the visited flag.
+     */
+    inline bool visit()
+    {
+        bool tmp = visited;
+        visited = true;
+        return tmp;
+    }
+
+    inline void unvisit()
+    {
+        visited = false;
+    }
 
     /** @brief Index of the cell. */
     CellIndex myIndex;

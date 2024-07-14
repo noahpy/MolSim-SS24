@@ -235,7 +235,7 @@ void force_membrane(const Simulation& sim)
     const MembraneSimulation& len_sim = static_cast<const MembraneSimulation&>(sim);
     const CellGrid& cellGrid = len_sim.getGrid();
 
-    // TODO precalc stuff
+    cellGrid.preCalcSetup(len_sim.container);
 
     // loop over all molecules and call calculateIntraMolecularForces()
     for (auto& membrane : len_sim.getMolecules()) {
@@ -331,4 +331,6 @@ void force_membrane(const Simulation& sim)
         }
     }
      */
+
+    cellGrid.postCalcSetup();
 }

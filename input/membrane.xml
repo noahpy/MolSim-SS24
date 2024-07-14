@@ -35,53 +35,11 @@
         </thermostat>
         <!-- Gravity params -->
         <gravity>-0.001</gravity>
-        <membrane>
-            <origin>
-                <x>15</x>
-                <y>15</y>
-                <z>1.5</z>
-            </origin>
-            <width>50</width>
-            <height>5</height>
-            <stiffness>2.2</stiffness>
-            <bond_length>3.0</bond_length>
-            <spacing>2.2</spacing>
-        </membrane>
     </params>
-
-    <!-- Membrane -->
-    <clusters>
-        <cuboid>
-            <pos>
-                <x>15</x>
-                <y>15</y>
-                <z>1.5</z>
-            </pos>
-            <vel>
-                <x>0</x>
-                <y>0</y>
-                <z>0</z>
-            </vel>
-            <dim>
-                <x>50</x>
-                <y>50</y>
-                <z>1</z>
-            </dim>
-            <mass>1.0</mass>
-            <spacing>2.2</spacing>
-            <brownVel>0</brownVel>
-            <brownDim>2</brownDim>
-            <ptype>1</ptype>
-        </cuboid>
-    </clusters>
 
     <!-- Particle types -->
     <ptypes>
         <ptype type="1">
-            <sigma>1.0</sigma>
-            <epsilon>1.0</epsilon>
-        </ptype>
-        <ptype type="2">
             <sigma>1.0</sigma>
             <epsilon>1.0</epsilon>
         </ptype>
