@@ -277,7 +277,7 @@ std::list<CellIndex> CellGrid::getNeighbourCellsStencile2D(const CellIndex& inde
         return {};
     }
 
-    // Get following 13 neighbours (half of the neighbours):
+    // Get following 4 neighbours (half of the neighbours):
     std::list<CellIndex> cellList = {
 
         //  - right, bottom
@@ -330,8 +330,8 @@ std::list<CellIndex> CellGrid::getNeighbourCellsStencile3D(const CellIndex& inde
         CellIndex { index[0] + 1, index[1], index[2] + 1 },
         //  - right, bottom, front
         CellIndex { index[0] + 1, index[1] - 1, index[2] + 1 },
-        //  - right, top, front
-        CellIndex { index[0] + 1, index[1] + 1, index[2] + 1 },
+        //  - right, even, back 
+        CellIndex { index[0] + 1, index[1], index[2] - 1 },
         //  - even, even, front
         CellIndex { index[0], index[1], index[2] + 1 },
         //  - even, bottom, front

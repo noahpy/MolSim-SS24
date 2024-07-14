@@ -1,8 +1,10 @@
 
 #include "physics/forceCal/forceCal.h"
 #include "models/linked_cell/CellGrid.h"
+#include "models/linked_cell/cell/CellType.h"
 #include "simulation/baseSimulation.h"
 #include "utils/ArrayUtils.h"
+#include <algorithm>
 #include <sys/wait.h>
 
 void force_gravity(const Simulation& sim)
@@ -121,7 +123,6 @@ void force_lennard_jones_lc(const Simulation& sim)
                 }
                 std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
 
-
                 // calculate the LJ forces in the cell
                 for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
                      it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
@@ -163,10 +164,12 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
     cellGrid.preCalcSetup(len_sim.container);
     spdlog::debug("Calculating forces...");
 
-    /* size_t count = 0; */
+    size_t count = 0;
 
     size_t xSize = cellGrid.cells.size();
     size_t ySize = cellGrid.cells[0].size();
+
+    std::map<CellIndex, std::vector<CellIndex>> indexMap;
 
 #pragma omp parallel for
     // for all cells in the grid
@@ -188,12 +191,19 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                 doLoopFor2D = false; // only do it once
                 z = 0;
             }
-            std::list<CellIndex> neighbors = cellGrid.getNeighbourCellsStencile2D({ x, y, z });
+            std::list<CellIndex> neighbors;
 
-            /* #pragma omp critical */
-            /*                 { */
-            /*                     count += neighbors.size(); */
-            /*                 } */
+            if (cellGrid.cells[0][0].size() == 1)
+                neighbors = cellGrid.getNeighbourCellsStencile2D({ x, y, z });
+            else
+                neighbors = cellGrid.getNeighbourCellsStencile3D({ x, y, z });
+
+#pragma omp critical
+            {
+                /* count += neighbors.size(); */
+                indexMap[{ x, y, z }].insert(
+                    indexMap[{ x, y, z }].end(), neighbors.begin(), neighbors.end());
+            }
 
             // calculate the LJ forces in the cell
             for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
@@ -215,6 +225,12 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
 
             // calculate LJ forces with the neighbours
             for (auto i : neighbors) {
+                if (cellGrid.cells.at(i[0]).at(i[1]).at(i[2])->getType() != CellType::Halo) {
+#pragma omp critical
+                    {
+                        indexMap[{ i[0], i[1], i[2] }].push_back({ x, y, z });
+                    }
+                }
                 // for all particles in the cell
                 for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
                     // go over all particles in the neighbour
@@ -231,6 +247,50 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                         }
                     }
                 }
+            }
+        }
+    }
+
+    for (auto& it : indexMap) {
+        if (it.second.size() != 26) {
+            std::list<CellIndex> valids;
+            std::list<CellIndex> overlaps;
+            for (int dx = -1; dx <= 1; ++dx) {
+                for (int dy = -1; dy <= 1; ++dy) {
+                    for (int dz = -1; dz <= 1; ++dz) {
+                        if (dx == 0 && dy == 0 && dz == 0)
+                            continue;
+                        valids.push_back(
+                            { it.first.at(0) + dx, it.first.at(1) + dy, it.first.at(2) + dz });
+                    }
+                }
+            }
+            spdlog::info(
+                "Cell {}, {}, {} has {} neighbours",
+                it.first.at(0),
+                it.first.at(1),
+                it.first.at(2),
+                it.second.size());
+            for (auto i : it.second) {
+                spdlog::info("Neighbour: {}, {}, {}", i[0], i[1], i[2]);
+                bool found = false;
+                for (auto it = valids.begin(); it != valids.end(); ++it) {
+                    if (it->at(0) == i[0] && it->at(1) == i[1] && it->at(2) == i[2]) {
+                        valids.erase(it);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                    overlaps.push_back(i);
+            }
+
+            // Results
+            for (auto k : overlaps) {
+                spdlog::info("Overlap: {}, {}, {}", k[0], k[1], k[2]);
+            }
+            for (auto k : valids) {
+                spdlog::info("Missing: {}, {}, {}", k[0], k[1], k[2]);
             }
         }
     }
