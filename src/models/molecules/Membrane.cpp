@@ -33,7 +33,7 @@ Membrane::Membrane(
     , r0(r0)
     , diagR0(sqrt(2) * r0)
     , k(k)
-    , root(root_arg)
+    , root(std::reference_wrapper<Particle>(root_arg))
 {
 }
 
@@ -64,6 +64,10 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
         std::vector<std::reference_wrapper<Particle>>(
             numParticles[secondRelevantDimension], std::reference_wrapper<Particle>(root)));
 
+    // TODO TMP!!!! FIXME LATER -> Problem: The container will resize and thus make the references invalid
+    container.particles = std::vector<Particle>(numParticlesWidth * numParticlesHeight * numParticlesDepth);
+    int index = 0;
+
     // Same as in CuboidParticleCluster but add neighbors
     for (int i = 0; i < numParticlesWidth; i++) { // x
         for (int j = 0; j < numParticlesHeight; j++) { // y
@@ -84,11 +88,12 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
                 Particle particle(position, velocity, mass, static_cast<int>(ptype), moleculeID);
 
                 // Add particle to container
-                container.particles.push_back(particle);
+                container.particles[index++] = particle;
+                container.activeParticleCount++;
 
                 // Add particle to grid
                 particleGrid[indices[firstRelevantDimension]][indices[secondRelevantDimension]] =
-                    std::reference_wrapper<Particle>(particle);
+                    std::reference_wrapper<Particle>(container.particles[index - 1]);
             }
         }
     }
@@ -122,7 +127,7 @@ void Membrane::initNeighbors(ParticleGrid& particleGrid)
         { 1, -1 } // Bottom-Right
     };
 
-    for (int x = 0; x < particleGrid.size(); x++) // x
+    for (int x = 0; x < particleGrid.size(); x++) { // x
         for (int y = 0; y < particleGrid[0].size(); y++) { // z
 
             for (auto& offset : offsetKernelsDirect) {
@@ -139,6 +144,7 @@ void Membrane::initNeighbors(ParticleGrid& particleGrid)
                     diagNeighbors[particleGrid[x][y]].push_back(particleGrid[i][j]);
             }
         }
+    }
 }
 
 void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)

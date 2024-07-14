@@ -37,6 +37,10 @@
         <gravity>-0.001</gravity>
     </params>
 
+    <clusters>
+        <!-- No Clusters -->
+    </clusters>
+
     <!-- Particle types -->
     <ptypes>
         <ptype type="1">

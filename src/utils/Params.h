@@ -69,10 +69,7 @@ public:
     // Flag for measuring performance -> will not use any io and time the simulation
     bool doPerformanceMeasurements = false;
     // Molecules in the simulation
-    Particle p {};
-    std::vector<std::unique_ptr<Molecule>> molecules {
-        std::make_unique<Membrane>(Membrane({15,15,1.5}, 50, 50, 1, 2.2, 1, {0,0,0}, 0, 3, 1, 2.2, 300, p))
-    };
+    std::vector<std::unique_ptr<Molecule>> molecules {};
 
     // TODO read the molecules from the input file (set any particle as root, will be overwritten)
 };

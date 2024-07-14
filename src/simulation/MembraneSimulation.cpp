@@ -21,7 +21,7 @@ MembraneSimulation::MembraneSimulation(
     double T_init,
     double T_target,
     double delta_T,
-    std::vector<std::unique_ptr<Molecule>> molecules,
+    std::vector<std::unique_ptr<Molecule>> molecules_arg,
     unsigned frequency,
     unsigned updateFrequency,
     bool read_file,
@@ -49,11 +49,10 @@ MembraneSimulation::MembraneSimulation(
           false,
           n_thermostat,
           doProfile)
-    , molecules(std::move(molecules))
+    , molecules(std::move(molecules_arg))
 {
     if (read_file) {
         this->reader->readFile(*this);
-        cellGrid.addParticlesFromContainer(container);
     }
 
     size_t molCount = 1;
@@ -62,6 +61,8 @@ MembraneSimulation::MembraneSimulation(
         unsigned ptype = molecule->getPtype();
         molecule->initLJParams(epsilons[{ptype, ptype}], sigmas[{ptype, ptype}]);
     }
+
+    cellGrid.addParticlesFromContainer(container);
 }
 
 void MembraneSimulation::runSim()

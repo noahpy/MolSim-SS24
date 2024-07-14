@@ -226,13 +226,6 @@ std::unique_ptr<Simulation> simFactory(
                     : getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::FRONT)),
             is2DTmp ? "None (2D)"
                     : getBoundaryString(params.boundaryConfig.boundaryMap.at(Position::BACK)));
-        spdlog::info(
-            "membraneOrigin: ({}, {}, {}), numParticlesWidth: {}, numParticlesHeight: {}",
-            params.membraneOrigin[0],
-            params.membraneOrigin[1],
-            params.membraneOrigin[2],
-            params.membraneWidth,
-            params.membraneHeight);
 
         return std::make_unique<MembraneSimulation>(
             params.start_time,
@@ -246,17 +239,12 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_origin,
             params.domain_size,
             params.cutoff,
-            params.membraneOrigin,
-            params.membraneWidth,
-            params.membraneHeight,
-            params.membraneStiffness,
-            params.membraneBondLength,
-            params.membraneSpacing,
             params.boundaryConfig,
             params.gravity,
             params.init_temp,
             params.target_temp,
             params.max_temp_delta,
+            std::move(params.molecules),
             params.plot_frequency,
             params.update_frequency,
             true,
