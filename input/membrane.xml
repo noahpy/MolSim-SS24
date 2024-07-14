@@ -44,9 +44,9 @@
             </origin>
             <width>50</width>
             <height>50</height>
-            <stiffness>2.2</stiffness>
-            <bond_length>3.0</bond_length>
-            <spacing>2.2</spacing>
+            <stiffness>300</stiffness>
+            <bond_length>2.2</bond_length>
+            <spacing>2.5</spacing>
         </membrane>
     </params>
 
@@ -69,7 +69,7 @@
                 <z>1</z>
             </dim>
             <mass>1.0</mass>
-            <spacing>2.2</spacing>
+            <spacing>2.5</spacing>
             <brownVel>0</brownVel>
             <brownDim>2</brownDim>
             <ptype>1</ptype>
