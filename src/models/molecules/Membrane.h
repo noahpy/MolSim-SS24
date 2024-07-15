@@ -104,8 +104,7 @@ protected:
     void initNeighbors(ParticleGrid& particleGrid);
 
     /**
-     * @brief Calculate the harmonic forces for a particle and its neighbors (will be called recursively)
-     * @param Particle The root particle
+     * @brief Calculate the harmonic forces for all particles of the membrane
      */
-    void calculateHarmonicForces(std::reference_wrapper<Particle>& particle);
+    void calculateHarmonicForces();
 };

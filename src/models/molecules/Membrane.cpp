@@ -64,8 +64,10 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
         std::vector<std::reference_wrapper<Particle>>(
             numParticles[secondRelevantDimension], std::reference_wrapper<Particle>(root)));
 
-    // TODO TMP!!!! FIXME LATER -> Problem: The container will resize and thus make the references invalid
-    container.particles = std::vector<Particle>(numParticlesWidth * numParticlesHeight * numParticlesDepth);
+    // TODO TMP!!!! FIXME LATER -> Problem: The container will resize and thus make the references
+    // invalid
+    container.particles =
+        std::vector<Particle>(numParticlesWidth * numParticlesHeight * numParticlesDepth);
     int index = 0;
 
     // Same as in CuboidParticleCluster but add neighbors
@@ -152,7 +154,7 @@ void Membrane::initNeighbors(ParticleGrid& particleGrid)
 void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
 {
     // Calculate harmonic forces
-    calculateHarmonicForces(root);
+    calculateHarmonicForces();
 
     // Calculate repulsive-LJ forces for the membrane particles to avoid self-penetration
     // See forceCal.h for the same structure
@@ -191,7 +193,8 @@ void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
                                 p1.get().getMoleculeId() != p2.get().getMoleculeId())
                                 continue;
 
-                            // Check if the distance is less than the cutoff to only have repulsive forces
+                            // Check if the distance is less than the cutoff to only have repulsive
+                            // forces
                             std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
                             if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
                                 lj_calc(p1, p2, alpha, beta, gamma, delta);
@@ -201,17 +204,16 @@ void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
         }
 }
 
-void Membrane::calculateHarmonicForces(std::reference_wrapper<Particle>& particle)
+void Membrane::calculateHarmonicForces()
 {
     // Calculate harmonic forces recursively
-    for (auto& neighbor : directNeighbors.at(particle)) {
-        calculateHarmonicForces(neighbor);
-        harmonic_calc(particle.get(), neighbor.get(), k, r0);
-    }
-    for (auto& neighbor : diagNeighbors.at(particle)) {
-        calculateHarmonicForces(neighbor);
-        harmonic_calc(particle.get(), neighbor.get(), k, diagR0);
-    }
+    for (auto& pair : directNeighbors)
+        for (auto& neighbor : pair.second)
+            harmonic_calc(pair.first.get(), neighbor.get(), k, r0);
+
+    for (auto& pair : diagNeighbors)
+        for (auto& neighbor : pair.second)
+            harmonic_calc(pair.first.get(), neighbor.get(), k, diagR0);
 }
 
 std::string Membrane::toString()

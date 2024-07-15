@@ -240,6 +240,7 @@ void force_membrane(const Simulation& sim)
     // loop over all molecules and call calculateIntraMolecularForces()
     for (auto& membrane : len_sim.getMolecules()) {
         membrane->calculateIntraMolecularForces(cellGrid);
+        cellGrid.postCalcSetup(); // each time, the grid must be seen as non visited
     }
 
     // for all cells in the grid
@@ -321,16 +322,6 @@ void force_membrane(const Simulation& sim)
             particle.setF(particle.getF() + gravityForce);
         }
     }
-
-    // Move the marked particles upward
-    /*
-    for (auto& p : len_sim.container.particles) {
-        if (p.getType() == 2) {
-            std::array<double, 3> upward { 0, p.getF()[1], 0 };
-            p.setF(p.getF() + upward);
-        }
-    }
-     */
 
     cellGrid.postCalcSetup();
 }
