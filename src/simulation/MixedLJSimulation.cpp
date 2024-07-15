@@ -179,14 +179,15 @@ void MixedLJSimulation::runSim()
         if (analysisFrequency && iteration % analysisFrequency == 0) {
             analyzer->analyze(*this);
         }
+        // Update thermostat if frequency is positive
         if (n_thermostat && iteration % n_thermostat == 0) {
             thermostat->updateT(*this);
         }
         if (doProfile) {
             particleUpdates += container.activeParticleCount;
         }
-        // Update thermostat if frequency is positive
-        spdlog::debug("Iteration {} finished.", iteration);
+        progressLogger.logProgress(iteration);
+        spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;
     }

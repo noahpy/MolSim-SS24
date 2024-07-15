@@ -24,6 +24,7 @@ Simulation::Simulation(
     , writer(std::move(writer))
     , reader(std::move(reader))
     , stationaryParticleTypes(std::move(stationaryParticleTypes))
+    , progressLogger(time, end_time, delta_t)
 {
 }
 

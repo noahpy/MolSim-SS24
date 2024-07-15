@@ -87,6 +87,7 @@ void LennardJonesDomainSimulation::runSim()
         if (iteration % analysisFrequency == 0) {
             analyzer->analyze(*this);
         }
+        progressLogger.logProgress(iteration);
         spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;
