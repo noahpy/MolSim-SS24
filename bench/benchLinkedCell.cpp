@@ -46,6 +46,7 @@ static void BM_LinkedLJSimulation(benchmark::State& state)
         strat,
         std::move(writerPointer),
         std::move(readerPointer),
+        {},
         5,
         1,
         { -(double)width / 5, -(double)height / 5, 0 },
@@ -61,7 +62,8 @@ static void BM_LinkedLJSimulation(benchmark::State& state)
         1,
         std::array<double, 3> { 0, 0, 0 },
         0.1,
-        2);
+        2,
+        {});
 
     ParticleGenerator p = ParticleGenerator(sim.container);
     p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster));
@@ -77,4 +79,3 @@ static void BM_LinkedLJSimulation(benchmark::State& state)
 /* BENCHMARK(BM_LinkedLJSimulation)->Arg(1000)->Arg(2000)->Arg(4000)->Arg(8000)->Complexity(); */
 
 BENCHMARK(BM_LinkedLJSimulation)->DenseRange(1000, 10000, 1000);
-

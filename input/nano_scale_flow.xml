@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simulation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <params>
+        <delta_t>0.0005</delta_t>
+        <end_time>5</end_time>
+        <output>nano_scale</output>
+        <frequency>10</frequency>
+        <!-- Domain params -->
+        <domainOrigin>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+        </domainOrigin>
+        <domainSize>
+            <x>30</x>
+            <y>30</y>
+            <z>12</z>
+        </domainSize>
+        <cutoff>2.75</cutoff>
+        <!-- Boundary params -->
+        <boundaries>
+            <bound_six>outflow</bound_six>
+            <bound_six>outflow</bound_six>
+            <bound_six>periodic</bound_six>
+            <bound_six>periodic</bound_six>
+            <bound_six>periodic</bound_six>
+            <bound_six>periodic</bound_six>
+        </boundaries>
+        <!-- Thermostat params -->
+        <thermostat>
+            <initialTemp>40</initialTemp>
+            <thermoFreq>10</thermoFreq>
+            <type>individual</type>
+        </thermostat>
+        <!-- Gravity params -->
+        <gravity>−0.8</gravity>
+        <analysisFreq>1000</analysisFreq>
+    </params>
+
+    <!-- Cluster specifications -->
+    <clusters>
+        <!-- Left Wall -->
+        <cuboid>
+            <pos>
+                <x>1.0</x>
+                <y>0.5</y>
+                <z>0.5</z>
+            </pos>
+            <vel>
+                <x>0</x>
+                <y>0</y>
+                <z>0</z>
+            </vel>
+            <dim>
+                <x>2</x>
+                <y>30</y>
+                <z>12</z>
+            </dim>
+            <mass>1.0</mass>
+            <spacing>1.0</spacing>
+            <brownVel>0</brownVel>
+            <brownDim>3</brownDim>
+            <ptype>2</ptype>
+        </cuboid>
+        <!-- Right Wall -->
+        <cuboid>
+            <pos>
+                <x>27.2</x>
+                <y>0.5</y>
+                <z>0.5</z>
+            </pos>
+            <vel>
+                <x>0</x>
+                <y>0</y>
+                <z>0</z>
+            </vel>
+            <dim>
+                <x>2</x>
+                <y>30</y>
+                <z>12</z>
+            </dim>
+            <mass>1.0</mass>
+            <spacing>1.0</spacing>
+            <brownVel>0</brownVel>
+            <brownDim>3</brownDim>
+            <ptype>2</ptype>
+        </cuboid>
+
+        <!-- Fluid -->
+        <cuboid>
+            <pos>
+                <x>3.2</x>
+                <y>0.6</y>
+                <z>0.6</z>
+            </pos>
+            <vel>
+                <x>0</x>
+                <y>0</y>
+                <z>0</z>
+            </vel>
+            <dim>
+                <x>20</x>
+                <y>25</y>
+                <z>10</z>
+            </dim>
+            <mass>1.0</mass>
+            <spacing>1.2</spacing>
+            <brownVel>0</brownVel>
+            <brownDim>3</brownDim>
+            <ptype>1</ptype>
+        </cuboid>
+    </clusters>
+
+    <!-- Particle types -->
+    <ptypes>
+        <ptype type="2">
+            <sigma>1.1</sigma>
+            <epsilon>2.0</epsilon>
+            <immobile>true</immobile>
+        </ptype>
+        <ptype type="1">
+            <sigma>1.0</sigma>
+            <epsilon>1.0</epsilon>
+        </ptype>
+    </ptypes>
+</simulation>

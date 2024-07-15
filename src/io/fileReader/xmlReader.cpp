@@ -39,6 +39,7 @@ void XmlReader::readFile(Simulation& sim)
                 { cuboid.vel().x(), cuboid.vel().y(), cuboid.vel().z() },
                 cuboid.brownVel(),
                 cuboid.brownDim(),
+                sim.stationaryParticleTypes,
                 ptype)));
         }
 
@@ -58,6 +59,7 @@ void XmlReader::readFile(Simulation& sim)
                 { sphere.vel().x(), sphere.vel().y(), sphere.vel().z() },
                 sphere.brownVel(),
                 sphere.brownDim(),
+                sim.stationaryParticleTypes,
                 ptype)));
         }
 
@@ -85,7 +87,9 @@ void XmlReader::readFile(Simulation& sim)
                                particles.VelData()[i * 3 + 1],
                                particles.VelData()[i * 3 + 2] },
                              particles.MassData()[i],
-                             (int)particles.TypeData()[i] };
+                             (int)particles.TypeData()[i],
+                             sim.stationaryParticleTypes.find((int)particles.TypeData()[i]) !=
+                                 sim.stationaryParticleTypes.end() };
                 p.setF({ particles.ForceData()[i * 3],
                          particles.ForceData()[i * 3 + 1],
                          particles.ForceData()[i * 3 + 2] });

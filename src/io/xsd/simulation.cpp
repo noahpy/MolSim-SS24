@@ -205,6 +205,51 @@ operator= (value v)
 }
 
 
+// thermoNames_t
+//
+
+thermoNames_t::
+thermoNames_t (value v)
+: ::xml_schema::string (_xsd_thermoNames_t_literals_[v])
+{
+}
+
+thermoNames_t::
+thermoNames_t (const char* v)
+: ::xml_schema::string (v)
+{
+}
+
+thermoNames_t::
+thermoNames_t (const ::std::string& v)
+: ::xml_schema::string (v)
+{
+}
+
+thermoNames_t::
+thermoNames_t (const ::xml_schema::string& v)
+: ::xml_schema::string (v)
+{
+}
+
+thermoNames_t::
+thermoNames_t (const thermoNames_t& v,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+: ::xml_schema::string (v, f, c)
+{
+}
+
+thermoNames_t& thermoNames_t::
+operator= (value v)
+{
+  static_cast< ::xml_schema::string& > (*this) = 
+  ::xml_schema::string (_xsd_thermoNames_t_literals_[v]);
+
+  return *this;
+}
+
+
 // boundary_t
 //
 
@@ -342,6 +387,36 @@ void tempParams_t::
 maxTempDelta (const maxTempDelta_optional& x)
 {
   this->maxTempDelta_ = x;
+}
+
+const tempParams_t::type_optional& tempParams_t::
+type () const
+{
+  return this->type_;
+}
+
+tempParams_t::type_optional& tempParams_t::
+type ()
+{
+  return this->type_;
+}
+
+void tempParams_t::
+type (const type_type& x)
+{
+  this->type_.set (x);
+}
+
+void tempParams_t::
+type (const type_optional& x)
+{
+  this->type_ = x;
+}
+
+void tempParams_t::
+type (::std::unique_ptr< type_type > x)
+{
+  this->type_.set (std::move (x));
 }
 
 
@@ -582,6 +657,30 @@ void ParticleType_t::
 epsilon (const epsilon_type& x)
 {
   this->epsilon_.set (x);
+}
+
+const ParticleType_t::immobile_optional& ParticleType_t::
+immobile () const
+{
+  return this->immobile_;
+}
+
+ParticleType_t::immobile_optional& ParticleType_t::
+immobile ()
+{
+  return this->immobile_;
+}
+
+void ParticleType_t::
+immobile (const immobile_type& x)
+{
+  this->immobile_.set (x);
+}
+
+void ParticleType_t::
+immobile (const immobile_optional& x)
+{
+  this->immobile_ = x;
 }
 
 
@@ -1412,6 +1511,60 @@ gravity (const gravity_optional& x)
   this->gravity_ = x;
 }
 
+const params_t::analysisFreq_optional& params_t::
+analysisFreq () const
+{
+  return this->analysisFreq_;
+}
+
+params_t::analysisFreq_optional& params_t::
+analysisFreq ()
+{
+  return this->analysisFreq_;
+}
+
+void params_t::
+analysisFreq (const analysisFreq_type& x)
+{
+  this->analysisFreq_.set (x);
+}
+
+void params_t::
+analysisFreq (const analysisFreq_optional& x)
+{
+  this->analysisFreq_ = x;
+}
+
+const params_t::analysisName_optional& params_t::
+analysisName () const
+{
+  return this->analysisName_;
+}
+
+params_t::analysisName_optional& params_t::
+analysisName ()
+{
+  return this->analysisName_;
+}
+
+void params_t::
+analysisName (const analysisName_type& x)
+{
+  this->analysisName_.set (x);
+}
+
+void params_t::
+analysisName (const analysisName_optional& x)
+{
+  this->analysisName_ = x;
+}
+
+void params_t::
+analysisName (::std::unique_ptr< analysisName_type > x)
+{
+  this->analysisName_.set (std::move (x));
+}
+
 
 // simulation_t
 //
@@ -1923,6 +2076,76 @@ _xsd_boundaryNames_t_indexes_[3] =
   ::boundaryNames_t::soft_reflective
 };
 
+// thermoNames_t
+//
+
+thermoNames_t::
+thermoNames_t (const ::xercesc::DOMElement& e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+: ::xml_schema::string (e, f, c)
+{
+  _xsd_thermoNames_t_convert ();
+}
+
+thermoNames_t::
+thermoNames_t (const ::xercesc::DOMAttr& a,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+: ::xml_schema::string (a, f, c)
+{
+  _xsd_thermoNames_t_convert ();
+}
+
+thermoNames_t::
+thermoNames_t (const ::std::string& s,
+               const ::xercesc::DOMElement* e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+: ::xml_schema::string (s, e, f, c)
+{
+  _xsd_thermoNames_t_convert ();
+}
+
+thermoNames_t* thermoNames_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class thermoNames_t (*this, f, c);
+}
+
+thermoNames_t::value thermoNames_t::
+_xsd_thermoNames_t_convert () const
+{
+  ::xsd::cxx::tree::enum_comparator< char > c (_xsd_thermoNames_t_literals_);
+  const value* i (::std::lower_bound (
+                    _xsd_thermoNames_t_indexes_,
+                    _xsd_thermoNames_t_indexes_ + 2,
+                    *this,
+                    c));
+
+  if (i == _xsd_thermoNames_t_indexes_ + 2 || _xsd_thermoNames_t_literals_[*i] != *this)
+  {
+    throw ::xsd::cxx::tree::unexpected_enumerator < char > (*this);
+  }
+
+  return *i;
+}
+
+const char* const thermoNames_t::
+_xsd_thermoNames_t_literals_[2] =
+{
+  "classic",
+  "individual"
+};
+
+const thermoNames_t::value thermoNames_t::
+_xsd_thermoNames_t_indexes_[2] =
+{
+  ::thermoNames_t::classic,
+  ::thermoNames_t::individual
+};
+
 // boundary_t
 //
 
@@ -2029,7 +2252,8 @@ tempParams_t ()
   initialTemp_ (this),
   targetTemp_ (this),
   thermoFreq_ (this),
-  maxTempDelta_ (this)
+  maxTempDelta_ (this),
+  type_ (this)
 {
 }
 
@@ -2041,7 +2265,8 @@ tempParams_t (const tempParams_t& x,
   initialTemp_ (x.initialTemp_, f, this),
   targetTemp_ (x.targetTemp_, f, this),
   thermoFreq_ (x.thermoFreq_, f, this),
-  maxTempDelta_ (x.maxTempDelta_, f, this)
+  maxTempDelta_ (x.maxTempDelta_, f, this),
+  type_ (x.type_, f, this)
 {
 }
 
@@ -2053,7 +2278,8 @@ tempParams_t (const ::xercesc::DOMElement& e,
   initialTemp_ (this),
   targetTemp_ (this),
   thermoFreq_ (this),
-  maxTempDelta_ (this)
+  maxTempDelta_ (this),
+  type_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -2116,6 +2342,20 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // type
+    //
+    if (n.name () == "type" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< type_type > r (
+        type_traits::create (i, f, this));
+
+      if (!this->type_)
+      {
+        this->type_.set (::std::move (r));
+        continue;
+      }
+    }
+
     break;
   }
 }
@@ -2137,6 +2377,7 @@ operator= (const tempParams_t& x)
     this->targetTemp_ = x.targetTemp_;
     this->thermoFreq_ = x.thermoFreq_;
     this->maxTempDelta_ = x.maxTempDelta_;
+    this->type_ = x.type_;
   }
 
   return *this;
@@ -2527,7 +2768,8 @@ ParticleType_t (const sigma_type& sigma,
                 const epsilon_type& epsilon)
 : ::xml_schema::type (),
   sigma_ (sigma, this),
-  epsilon_ (epsilon, this)
+  epsilon_ (epsilon, this),
+  immobile_ (this)
 {
 }
 
@@ -2537,7 +2779,8 @@ ParticleType_t (const ParticleType_t& x,
                 ::xml_schema::container* c)
 : ::xml_schema::type (x, f, c),
   sigma_ (x.sigma_, f, this),
-  epsilon_ (x.epsilon_, f, this)
+  epsilon_ (x.epsilon_, f, this),
+  immobile_ (x.immobile_, f, this)
 {
 }
 
@@ -2547,7 +2790,8 @@ ParticleType_t (const ::xercesc::DOMElement& e,
                 ::xml_schema::container* c)
 : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
   sigma_ (this),
-  epsilon_ (this)
+  epsilon_ (this),
+  immobile_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -2588,6 +2832,17 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // immobile
+    //
+    if (n.name () == "immobile" && n.namespace_ ().empty ())
+    {
+      if (!this->immobile_)
+      {
+        this->immobile_.set (immobile_traits::create (i, f, this));
+        continue;
+      }
+    }
+
     break;
   }
 
@@ -2621,6 +2876,7 @@ operator= (const ParticleType_t& x)
     static_cast< ::xml_schema::type& > (*this) = x;
     this->sigma_ = x.sigma_;
     this->epsilon_ = x.epsilon_;
+    this->immobile_ = x.immobile_;
   }
 
   return *this;
@@ -3489,7 +3745,9 @@ params_t ()
   updateFreq_ (this),
   boundaries_ (this),
   thermostat_ (this),
-  gravity_ (this)
+  gravity_ (this),
+  analysisFreq_ (this),
+  analysisName_ (this)
 {
 }
 
@@ -3511,7 +3769,9 @@ params_t (const params_t& x,
   updateFreq_ (x.updateFreq_, f, this),
   boundaries_ (x.boundaries_, f, this),
   thermostat_ (x.thermostat_, f, this),
-  gravity_ (x.gravity_, f, this)
+  gravity_ (x.gravity_, f, this),
+  analysisFreq_ (x.analysisFreq_, f, this),
+  analysisName_ (x.analysisName_, f, this)
 {
 }
 
@@ -3533,7 +3793,9 @@ params_t (const ::xercesc::DOMElement& e,
   updateFreq_ (this),
   boundaries_ (this),
   thermostat_ (this),
-  gravity_ (this)
+  gravity_ (this),
+  analysisFreq_ (this),
+  analysisName_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -3721,6 +3983,31 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
+    // analysisFreq
+    //
+    if (n.name () == "analysisFreq" && n.namespace_ ().empty ())
+    {
+      if (!this->analysisFreq_)
+      {
+        this->analysisFreq_.set (analysisFreq_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // analysisName
+    //
+    if (n.name () == "analysisName" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< analysisName_type > r (
+        analysisName_traits::create (i, f, this));
+
+      if (!this->analysisName_)
+      {
+        this->analysisName_.set (::std::move (r));
+        continue;
+      }
+    }
+
     break;
   }
 }
@@ -3752,6 +4039,8 @@ operator= (const params_t& x)
     this->boundaries_ = x.boundaries_;
     this->thermostat_ = x.thermostat_;
     this->gravity_ = x.gravity_;
+    this->analysisFreq_ = x.analysisFreq_;
+    this->analysisName_ = x.analysisName_;
   }
 
   return *this;
@@ -4318,6 +4607,25 @@ operator<< (::xml_schema::list_stream& l,
 }
 
 void
+operator<< (::xercesc::DOMElement& e, const thermoNames_t& i)
+{
+  e << static_cast< const ::xml_schema::string& > (i);
+}
+
+void
+operator<< (::xercesc::DOMAttr& a, const thermoNames_t& i)
+{
+  a << static_cast< const ::xml_schema::string& > (i);
+}
+
+void
+operator<< (::xml_schema::list_stream& l,
+            const thermoNames_t& i)
+{
+  l << static_cast< const ::xml_schema::string& > (i);
+}
+
+void
 operator<< (::xercesc::DOMElement& e, const boundary_t& i)
 {
   e << static_cast< const ::xml_schema::type& > (i);
@@ -4406,6 +4714,18 @@ operator<< (::xercesc::DOMElement& e, const tempParams_t& i)
         e));
 
     s << ::xml_schema::as_double(*i.maxTempDelta ());
+  }
+
+  // type
+  //
+  if (i.type ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "type",
+        e));
+
+    s << *i.type ();
   }
 }
 
@@ -4542,6 +4862,18 @@ operator<< (::xercesc::DOMElement& e, const ParticleType_t& i)
         e));
 
     s << ::xml_schema::as_double(i.epsilon ());
+  }
+
+  // immobile
+  //
+  if (i.immobile ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "immobile",
+        e));
+
+    s << *i.immobile ();
   }
 }
 
@@ -4994,6 +5326,30 @@ operator<< (::xercesc::DOMElement& e, const params_t& i)
         e));
 
     s << ::xml_schema::as_double(*i.gravity ());
+  }
+
+  // analysisFreq
+  //
+  if (i.analysisFreq ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "analysisFreq",
+        e));
+
+    s << *i.analysisFreq ();
+  }
+
+  // analysisName
+  //
+  if (i.analysisName ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "analysisName",
+        e));
+
+    s << *i.analysisName ();
   }
 }
 

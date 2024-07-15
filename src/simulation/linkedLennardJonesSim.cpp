@@ -5,6 +5,8 @@
 #include "physics/strategy.h"
 #include <spdlog/spdlog.h>
 
+#include <utility>
+
 LinkedLennardJonesSimulation::LinkedLennardJonesSimulation(
     double time,
     double delta_t,
@@ -13,6 +15,7 @@ LinkedLennardJonesSimulation::LinkedLennardJonesSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
+    std::map<unsigned , bool> stationaryParticleTypes,
     double epsilon,
     double sigma,
     std::array<double, 3> domainOrigin,
@@ -29,6 +32,7 @@ LinkedLennardJonesSimulation::LinkedLennardJonesSimulation(
           strat,
           std::move(writer),
           std::move(reader),
+          std::move(stationaryParticleTypes),
           epsilon,
           sigma,
           frequency,

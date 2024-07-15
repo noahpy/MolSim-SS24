@@ -3,6 +3,7 @@
 #include "models/linked_cell/CellGrid.h"
 #include "simulation/baseSimulation.h"
 #include "utils/ArrayUtils.h"
+#include <sys/wait.h>
 
 void force_gravity(const Simulation& sim)
 {
@@ -53,6 +54,10 @@ void lj_calc(
     std::array<double, 3> delta)
 {
     double dotDelta = ArrayUtils::DotProduct(delta);
+    if (!dotDelta) {
+        spdlog::warn("dotDelta is 0: {}", dotDelta);
+        return;
+    }
     double dotDelta3 = std::pow(dotDelta, 3);
     double dotDelta6 = std::pow(dotDelta3, 2);
 

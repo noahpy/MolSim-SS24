@@ -1,7 +1,9 @@
 
 #include "simulation/baseSimulation.h"
+
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
+#include <utility>
 
 Simulation::Simulation(
     double time,
@@ -11,6 +13,7 @@ Simulation::Simulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
+    std::map<unsigned , bool> stationaryParticleTypes,
     unsigned frequency)
     : time(time)
     , delta_t(delta_t)
@@ -20,13 +23,14 @@ Simulation::Simulation(
     , strategy(strat)
     , writer(std::move(writer))
     , reader(std::move(reader))
+    , stationaryParticleTypes(std::move(stationaryParticleTypes))
     , progressLogger(time, end_time, delta_t)
 {
 }
 
 void Simulation::setOutputFile(std::string output)
 {
-    this->writer->out_name = output;
+    this->writer->out_name = std::move(output);
 }
 
 std::string Simulation::getOutputFile() const
