@@ -1,10 +1,8 @@
 
 #include "physics/forceCal/forceCal.h"
 #include "models/linked_cell/CellGrid.h"
-#include "models/linked_cell/cell/CellType.h"
 #include "simulation/baseSimulation.h"
 #include "utils/ArrayUtils.h"
-#include <algorithm>
 #include <sys/wait.h>
 
 void force_gravity(const Simulation& sim)
@@ -187,12 +185,8 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
                 doLoopFor2D = false; // only do it once
                 z = 0;
             }
-            std::list<CellIndex> neighbors;
 
-            if (cellGrid.cells[0][0].size() == 1)
-                neighbors = cellGrid.getNeighbourCellsStencile2D({ x, y, z });
-            else
-                neighbors = cellGrid.getNeighbourCellsStencile3D({ x, y, z });
+            auto& neighbours = cellGrid.cells.at(x).at(y).at(z)->stencilNeighbours;
 
             // calculate the LJ forces in the cell
             for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
@@ -213,7 +207,7 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
             }
 
             // calculate LJ forces with the neighbours
-            for (auto i : neighbors) {
+            for (auto i : neighbours) {
                 // for all particles in the cell
                 for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles()) {
                     // go over all particles in the neighbour
@@ -233,7 +227,6 @@ void force_mixed_LJ_gravity_lc(const Simulation& sim)
             }
         }
     }
-
 
     // Calculate the forces gravity applies to the particles
     double gravityConstant = len_sim.getGravityConstant();

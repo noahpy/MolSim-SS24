@@ -109,6 +109,9 @@ public:
     std::vector<std::pair<CellIndex, std::vector<Position>>> haloNeighbours;
     std::vector<std::pair<CellIndex, std::vector<Position>>> innerNeighbours;
 
+    // Stencil neighbours
+    std::vector<CellIndex> stencilNeighbours;
+
     // Forward declaration.
     class PairListIterator;
 

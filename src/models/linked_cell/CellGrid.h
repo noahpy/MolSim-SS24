@@ -178,6 +178,14 @@ protected:
      */
     void determineNeighbours(CellIndex cell);
 
+
+    /**
+     * @brief Determines the stencil neighbours of the specified cell.
+     * @param cell The index of the cell to determine the neighbours of.
+     * @param is2D Set to true if the domain is 2D
+     */
+    void determineNeighboursStencile(CellIndex cell, bool is2D);
+
 private:
     /// The size of the simulation domain in each dimension.
     std::array<double, 3> domainSize;

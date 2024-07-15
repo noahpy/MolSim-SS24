@@ -64,6 +64,81 @@ void CellGrid::determineNeighbours(CellIndex cell)
     }
 }
 
+void CellGrid::determineNeighboursStencile(CellIndex cell, bool is2D)
+{
+    // If the cell is a halo, return an empty list
+    if (cells.at(cell[0]).at(cell[1]).at(cell[2])->getType() == CellType::Halo) {
+        return;
+    }
+
+    std::vector<CellIndex> cellList;
+    if (is2D) {
+        // Get following 4 neighbours (half of the neighbours):
+        cellList = {
+
+            //  - right, bottom
+            CellIndex { cell[0] + 1, cell[1] - 1, cell[2] },
+            //  ght, even
+            CellIndex { cell[0] + 1, cell[1], cell[2] },
+            //  ght, top
+            CellIndex { cell[0] + 1, cell[1] + 1, cell[2] },
+            //  en, bottom
+            CellIndex { cell[0], cell[1] - 1, cell[2] },
+
+        };
+    } else {
+        // Get following 13 neighbours (half of the neighbours):
+        cellList = {
+
+            //  - right, bottom, back
+            CellIndex { cell[0] + 1, cell[1] - 1, cell[2] - 1 },
+            //  - right, even, even
+            CellIndex { cell[0] + 1, cell[1], cell[2] },
+            //  - right, bottom, even
+            CellIndex { cell[0] + 1, cell[1] - 1, cell[2] },
+            //  - right, even, front
+            CellIndex { cell[0] + 1, cell[1], cell[2] + 1 },
+            //  - right, bottom, front
+            CellIndex { cell[0] + 1, cell[1] - 1, cell[2] + 1 },
+            //  - right, even, back
+            CellIndex { cell[0] + 1, cell[1], cell[2] - 1 },
+            //  - even, even, front
+            CellIndex { cell[0], cell[1], cell[2] + 1 },
+            //  - even, bottom, front
+            CellIndex { cell[0], cell[1] - 1, cell[2] + 1 },
+            //  - left, bottom, front
+            CellIndex { cell[0] - 1, cell[1] - 1, cell[2] + 1 },
+            //  - even, bottom, even
+            CellIndex { cell[0], cell[1] - 1, cell[2] },
+            //  - even, bottom, back
+            CellIndex { cell[0], cell[1] - 1, cell[2] - 1 },
+            //  - left, bottom, even
+            CellIndex { cell[0] - 1, cell[1] - 1, cell[2] },
+            //  - left, bottom, back
+            CellIndex { cell[0] - 1, cell[1] - 1, cell[2] - 1 }
+
+        };
+    }
+
+    // add halo cells if needed
+    for (auto haloInfo : cells.at(cell[0]).at(cell[1]).at(cell[2])->haloNeighbours) {
+        CellIndex haloIndex = haloInfo.first;
+        bool insert = true;
+        for (CellIndex index : cellList) {
+            if (haloIndex.at(0) == index.at(0) && haloIndex.at(1) == index.at(1) &&
+                haloIndex.at(2) == index.at(2)) {
+                insert = false;
+                break;
+            }
+        }
+        if (insert) {
+            cellList.emplace_back(haloIndex);
+        }
+    }
+
+    cells.at(cell[0]).at(cell[1]).at(cell[2])->stencilNeighbours = cellList;
+}
+
 void CellGrid::initializeGrid()
 {
     if (gridDimensionality == 2) {
@@ -108,6 +183,7 @@ void CellGrid::initializeGrid()
                 if (type == CellType::Halo) {
                     haloCells.push_back({ x, y, z });
                 }
+                determineNeighboursStencile({ x, y, z }, gridDimensionality == 2);
             }
         }
     }
@@ -330,7 +406,7 @@ std::list<CellIndex> CellGrid::getNeighbourCellsStencile3D(const CellIndex& inde
         CellIndex { index[0] + 1, index[1], index[2] + 1 },
         //  - right, bottom, front
         CellIndex { index[0] + 1, index[1] - 1, index[2] + 1 },
-        //  - right, even, back 
+        //  - right, even, back
         CellIndex { index[0] + 1, index[1], index[2] - 1 },
         //  - even, even, front
         CellIndex { index[0], index[1], index[2] + 1 },
