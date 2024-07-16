@@ -187,6 +187,7 @@ void MixedLJSimulation::runSim()
         }
         // Update thermostat if frequency is positive
         spdlog::debug("Iteration {} finished.", iteration);
+        progressLogger.logProgress(iteration);
 
         time += delta_t;
     }
