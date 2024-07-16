@@ -18,8 +18,7 @@ Membrane::Membrane(
     size_t dimensions,
     unsigned ptype,
     double r0,
-    double k,
-    Particle& root_arg)
+    double k)
     : Molecule(ptype)
     , origin(origin)
     , numParticlesWidth(numParticlesWidth)
@@ -33,7 +32,6 @@ Membrane::Membrane(
     , r0(r0)
     , diagR0(sqrt(2) * r0)
     , k(k)
-    , root(std::reference_wrapper<Particle>(root_arg))
 {
 }
 
@@ -54,15 +52,18 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
         exit(EXIT_FAILURE);
     }
 
+    this->ID = moleculeID;
+
     size_t firstRelevantDimension = numParticlesWidth == 1 ? 1 : 0;
     size_t secondRelevantDimension = firstRelevantDimension == 1 ? 2 : 1;
     std::array<int, 3> numParticles = { numParticlesWidth, numParticlesHeight, numParticlesDepth };
 
     // Ugly but needs to be initialized
+    Particle dummy{};
     ParticleGrid particleGrid(
         numParticles[firstRelevantDimension],
         std::vector<std::reference_wrapper<Particle>>(
-            numParticles[secondRelevantDimension], std::reference_wrapper<Particle>(root)));
+            numParticles[secondRelevantDimension], std::reference_wrapper<Particle>(dummy)));
 
     size_t index = container.particles.size();
     container.particles.resize(container.particles.size() + numParticlesWidth * numParticlesHeight * numParticlesDepth);
@@ -97,10 +98,6 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
             }
         }
     }
-
-    // Set root to the first particle
-    root = particleGrid[0][0];
-    root.get().setIsMoleculeRoot(true);
 
     // Set neighbors
     initNeighbors(particleGrid);
@@ -172,7 +169,7 @@ void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
                      ++it) {
                     auto pair = *it;
                     // Skip iteration if not both particles are part of this membrane
-                    if (pair.first.get().getMoleculeId() != root.get().getMoleculeId() ||
+                    if (pair.first.get().getMoleculeId() != ID ||
                         pair.first.get().getMoleculeId() != pair.second.get().getMoleculeId())
                         continue;
 
@@ -187,7 +184,7 @@ void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
                     for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles())
                         for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
                             // Skip iteration if not both particles are part of this membrane
-                            if (p1.get().getMoleculeId() != root.get().getMoleculeId() ||
+                            if (p1.get().getMoleculeId() != ID ||
                                 p1.get().getMoleculeId() != p2.get().getMoleculeId())
                                 continue;
 

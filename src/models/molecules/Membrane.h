@@ -38,7 +38,6 @@ public:
      * @param ptype The particle type
      * @param r0 The equilibrium distance
      * @param k The spring constant
-     * @param root_arg The root particle of the molecule. Will be overwritten after generate molecule
      */
     Membrane(
         std::array<double, 3> origin,
@@ -52,8 +51,7 @@ public:
         size_t dimensions,
         unsigned ptype,
         double r0,
-        double k,
-        Particle& root_arg);
+        double k);
 
     /**
      * @brief Generate the membrane
@@ -87,7 +85,6 @@ public:
     [[nodiscard]] const NeighborParticleMap& getDiagNeighbors() const { return diagNeighbors; }
 
 protected:
-    std::reference_wrapper<Particle> root; /**< The root particle of the molecule */
     /**
      * Idea: Only store the neighbors TOP, TOP-RIGHT, RIGHT, BOTTOM-RIGHT
      * This way, we can simply calculate the harmonic potential for those neighbors

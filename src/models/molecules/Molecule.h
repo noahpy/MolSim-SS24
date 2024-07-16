@@ -55,4 +55,5 @@ protected:
     double beta; /**< The beta value for the LJ potential */
     double gamma; /**< The gamma value for the LJ potential */
     double cutoffRadiusSquared; /**< The cutoff radius squared for the LJ potential */
+    size_t ID; /**< The molecule ID */
 };
