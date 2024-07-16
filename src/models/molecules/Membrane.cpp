@@ -205,6 +205,7 @@ void Membrane::calculateHarmonicForces()
 {
     // Calculate harmonic forces recursively
     for (auto& pair : directNeighbors)
+        // TODO is active
         for (auto& neighbor : pair.second)
             harmonic_calc(pair.first.get(), neighbor.get(), k, r0);
 
