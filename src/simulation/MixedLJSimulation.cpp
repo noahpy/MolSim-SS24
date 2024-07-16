@@ -155,10 +155,12 @@ MixedLJSimulation::MixedLJSimulation(
 void MixedLJSimulation::runSim()
 {
 
-    container.particles[874].setType(2);
-    container.particles[875].setType(2);
-    container.particles[924].setType(2);
-    container.particles[925].setType(2);
+    if (container.particles.size() == 2500) {
+        container.particles[874].setType(2);
+        container.particles[875].setType(2);
+        container.particles[924].setType(2);
+        container.particles[925].setType(2);
+    }
 
 
     auto startTime = std::chrono::steady_clock::now();
@@ -171,7 +173,7 @@ void MixedLJSimulation::runSim()
         strategy.calF(*this);
         spdlog::debug("Velocity calculation...");
 
-        if (time < 150) {
+        if (time < 150 && container.particles.size() == 2500) {
             std::array<double, 3> Fz_up = { 0, 0, 0.8 };
             Particle& p1 = container.particles[874];
             Particle& p2 = container.particles[875];
