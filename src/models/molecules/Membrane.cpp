@@ -59,14 +59,15 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
     std::array<int, 3> numParticles = { numParticlesWidth, numParticlesHeight, numParticlesDepth };
 
     // Ugly but needs to be initialized
-    Particle dummy{};
+    Particle dummy {};
     ParticleGrid particleGrid(
         numParticles[firstRelevantDimension],
         std::vector<std::reference_wrapper<Particle>>(
             numParticles[secondRelevantDimension], std::reference_wrapper<Particle>(dummy)));
 
     size_t index = container.particles.size();
-    container.particles.resize(container.particles.size() + numParticlesWidth * numParticlesHeight * numParticlesDepth);
+    container.particles.resize(
+        container.particles.size() + numParticlesWidth * numParticlesHeight * numParticlesDepth);
 
     // Same as in CuboidParticleCluster but add neighbors
     for (int i = 0; i < numParticlesWidth; i++) { // x
@@ -85,8 +86,8 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
                     initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
 
                 // Create particle
-                size_t id = container.activeParticleCount;
-                Particle particle(position, velocity, mass, static_cast<int>(ptype), id, true, moleculeID);
+                Particle particle(
+                    position, velocity, mass, static_cast<int>(ptype), index, true, moleculeID);
 
                 // Add particle to container
                 container.particles[index++] = particle;
@@ -173,7 +174,8 @@ void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
                         pair.first.get().getMoleculeId() != pair.second.get().getMoleculeId())
                         continue;
 
-                    std::array<double, 3> delta = pair.first.get().getX() - pair.second.get().getX();
+                    std::array<double, 3> delta =
+                        pair.first.get().getX() - pair.second.get().getX();
                     // Check if the distance is less than the cutoff to only have repulsive forces
                     if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
                         lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);

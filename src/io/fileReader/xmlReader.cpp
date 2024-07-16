@@ -88,6 +88,7 @@ void XmlReader::readFile(Simulation& sim)
                                particles.VelData()[i * 3 + 2] },
                              particles.MassData()[i],
                              (int)particles.TypeData()[i],
+                             i,
                              sim.stationaryParticleTypes.find((int)particles.TypeData()[i]) !=
                                  sim.stationaryParticleTypes.end() };
                 p.setF({ particles.ForceData()[i * 3],
