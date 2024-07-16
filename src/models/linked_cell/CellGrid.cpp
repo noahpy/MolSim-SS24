@@ -284,8 +284,20 @@ void CellGrid::preCalcSetup(ParticleContainer& container) const
 {
     spdlog::debug("Pre-calc setup...");
 #pragma omp parallel for
-    for (auto& particle : container) {
+    // Iterate over the original vector for better performance
+    for (auto& particle : container.particles) {
         particle.resetF();
+    }
+}
+
+void CellGrid::preCalcSetupGravity(ParticleContainer& container, double g) const
+{
+    spdlog::debug("Pre-calc setup...");
+#pragma omp parallel for
+    // Iterate over the original vector for better performance
+    for (auto& particle : container.particles) {
+        std::array<double, 3> gravityForce { 0, g * particle.getM(), 0 };
+        particle.resetF(gravityForce);
     }
 }
 
