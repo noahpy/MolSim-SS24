@@ -9,6 +9,7 @@
 #include <gtest/gtest.h>
 #include "models/generators/ParticleGenerator.h"
 #include "physics/thermostat/ThermostatFactory.h"
+#include "simulation/MixedLJSimulation.h"
 
 class StationaryTester : public ::testing::Test {
 protected:

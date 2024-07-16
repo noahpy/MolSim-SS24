@@ -7,6 +7,7 @@
 #include "physics/strategy.h"
 #include "physics/thermostat/ThermostatFactory.h"
 #include "physics/velocityCal/velocityCal.h"
+#include "simulation/MixedLJSimulation.h"
 #include "utils/Params.h"
 #include <fstream>
 #include <gtest/gtest.h>
