@@ -175,11 +175,11 @@ void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
                      ++it) {
                     auto pair = *it;
                     // Skip iteration if not both particles are part of this membrane
-                    if (pair.first.getMoleculeId() != root.get().getMoleculeId() ||
-                        pair.first.getMoleculeId() != pair.second.getMoleculeId())
+                    if (pair.first.get().getMoleculeId() != root.get().getMoleculeId() ||
+                        pair.first.get().getMoleculeId() != pair.second.get().getMoleculeId())
                         continue;
 
-                    std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
+                    std::array<double, 3> delta = pair.first.get().getX() - pair.second.get().getX();
                     // Check if the distance is less than the cutoff to only have repulsive forces
                     if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
                         lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);

@@ -288,18 +288,18 @@ void force_membrane(const Simulation& sim)
                      ++it) {
                     auto pair = *it;
 
-                    std::array<double, 3> delta = pair.first.getX() - pair.second.getX();
+                    std::array<double, 3> delta = pair.first.get().getX() - pair.second.get().getX();
                     // Check if the distance is less than the cutoff
                     // AND only calculate the force if the particles are not of the same
                     // molecule
                     if (ArrayUtils::DotProduct(delta) <= len_sim.getGrid().cutoffRadiusSquared &&
-                        (pair.first.getMoleculeId() != pair.second.getMoleculeId() ||
-                         pair.first.getMoleculeId() == 0)) {
+                        (pair.first.get().getMoleculeId() != pair.second.get().getMoleculeId() ||
+                         pair.first.get().getMoleculeId() == 0)) {
                         double alpha =
-                            len_sim.getAlpha(pair.first.getType(), pair.second.getType());
-                        double beta = len_sim.getBeta(pair.first.getType(), pair.second.getType());
+                            len_sim.getAlpha(pair.first.get().getType(), pair.second.get().getType());
+                        double beta = len_sim.getBeta(pair.first.get().getType(), pair.second.get().getType());
                         double gamma =
-                            len_sim.getGamma(pair.first.getType(), pair.second.getType());
+                            len_sim.getGamma(pair.first.get().getType(), pair.second.get().getType());
 
                         lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
                     }
