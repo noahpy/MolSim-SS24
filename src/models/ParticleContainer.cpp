@@ -169,18 +169,21 @@ ParticleContainer::ActiveIterator::difference_type ParticleContainer::ActiveIter
         std::swap(smaller, larger);
         factor = 1;
     }
-    auto smallerID = smaller->getID();
-    auto largerID = larger->getID();
-    if (smaller == end) {
-        smallerID = std::distance(end, begin);
+    auto smallerID = end - begin;
+    auto largerID = end - begin;
+    if (smaller != end) {
+        smallerID = smaller->getID();
     }
-    if (larger == end) {
-        largerID = end - begin;
+    if (larger != end) {
+        largerID = larger->getID();
     }
 
+    // calculate number of deleted particles inbetween
     auto lower_bound = inactiveMapRef.get().upper_bound(smallerID);
     auto upper_bound = inactiveMapRef.get().lower_bound(largerID);
     auto delted_dist = std::distance(lower_bound, upper_bound);
+
+    // calculate final result
     auto result = factor * (std::distance(smaller, larger) - delted_dist);
     return result;
 }
