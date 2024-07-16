@@ -8,13 +8,15 @@
 #include "simulation/planetSim.h"
 
 #include <spdlog/spdlog.h>
+#include "analytics/Analyzer.h"
 
 std::unique_ptr<Simulation> simFactory(
     Params& params,
     ParticleContainer& particles,
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writePointer,
-    std::unique_ptr<FileReader> readPointer)
+    std::unique_ptr<FileReader> readPointer,
+    std::unique_ptr<Thermostat> thermostat)
 {
     bool is2DTmp;
     switch (params.simulation_type) {
@@ -33,6 +35,7 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.plot_frequency);
 
     case SimulationType::LJ:
@@ -52,6 +55,7 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.epsilon,
             params.sigma,
             params.plot_frequency);
@@ -83,6 +87,7 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.epsilon,
             params.sigma,
             params.domain_origin,
@@ -131,14 +136,18 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.epsilon,
             params.sigma,
             params.domain_origin,
             params.domain_size,
             params.cutoff,
             params.boundaryConfig,
+            std::make_unique<Analyzer> (params.bins, params.outName),
             params.plot_frequency,
-            params.update_frequency);
+            params.update_frequency,
+            params.analysisInterval,
+            true);
     case SimulationType::MIXED_LJ:
         spdlog::info("Initializing Mixed LJ + Gravity Simulation with:");
         spdlog::info(
@@ -180,17 +189,18 @@ std::unique_ptr<Simulation> simFactory(
             strat,
             std::move(writePointer),
             std::move(readPointer),
+            std::move(params.immobileParticleTypes),
             params.typesMap,
             params.domain_origin,
             params.domain_size,
             params.cutoff,
             params.boundaryConfig,
+            std::make_unique<Analyzer> (params.bins, params.outName),
             params.gravity,
-            params.init_temp,
-            params.target_temp,
-            params.max_temp_delta,
+            std::move(thermostat),
             params.plot_frequency,
             params.update_frequency,
+            params.analysisInterval,
             true,
             params.thermo_freq,
             params.doPerformanceMeasurements);

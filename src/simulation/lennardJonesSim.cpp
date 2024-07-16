@@ -4,6 +4,7 @@
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
 #include <cmath>
+#include <utility>
 #include <spdlog/spdlog.h>
 
 LennardJonesSimulation::LennardJonesSimulation(
@@ -14,6 +15,7 @@ LennardJonesSimulation::LennardJonesSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
+    std::map<unsigned , bool> stationaryParticleTypes,
     double epsilon,
     double sigma,
     unsigned frequency,
@@ -26,6 +28,7 @@ LennardJonesSimulation::LennardJonesSimulation(
           strat,
           std::move(writer),
           std::move(reader),
+          std::move(stationaryParticleTypes),
           frequency)
     , epsilon(epsilon)
     , sigma(sigma)
@@ -62,6 +65,7 @@ void LennardJonesSimulation::runSim()
         if (iteration % frequency == 0) {
             writer->plotParticles(*this);
         }
+        progressLogger.logProgress(iteration);
         spdlog::trace("Iteration {} finished.", iteration);
 
         time += delta_t;

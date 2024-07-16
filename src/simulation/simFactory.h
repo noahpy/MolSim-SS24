@@ -2,6 +2,7 @@
 #pragma once
 #include "models/ParticleContainer.h"
 #include "physics/strategy.h"
+#include "physics/thermostat/Thermostat.h"
 #include "simulation/baseSimulation.h"
 #include "utils/Params.h"
 
@@ -23,4 +24,5 @@ std::unique_ptr<Simulation> simFactory(
     ParticleContainer& particles,
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writePointer,
-    std::unique_ptr<FileReader> readPointer);
+    std::unique_ptr<FileReader> readPointer,
+    std::unique_ptr<Thermostat> thermostat);

@@ -19,6 +19,7 @@ public:
      * @param strat The strategy to be used for the physics calculations
      * @param writer The writer object to write the output to file
      * @param reader The reader object to read the input from file
+     * @param stationaryParticleTypes The types of particles which are stationary
      * @param epsilon The epsilon parameter of the Lennard-Jones potential
      * @param sigma The sigma parameter of the Lennard-Jones potential
      * @param domainOrigin The origin of the simulation domain
@@ -35,6 +36,7 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
+        std::map<unsigned , bool> stationaryParticleTypes,
         double epsilon,
         double sigma,
         std::array<double, 3> domainOrigin,

@@ -16,7 +16,7 @@ PeriodicBoundary::PeriodicBoundary(
             coordinateToPosition(boundaryCellIndex, cellGrid.getGridDimensions(), !is2D);
         // Only if the first position is the bound itself, then we want to consider it
         // -> That way we make sure to only transform cells on edges or corners once
-        if (boundarySides[0] != position)
+        if (!isThisSideResponsibleForShifts(boundaryConfig, boundarySides))
             continue;
 
         // Only look at cells that are affected only by periodic bounds -> otherwise the other bound
@@ -95,7 +95,7 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                     insertedParticles.at(insertionIndex)->setActivity(false);
                 } else {
                     Particle haloParticle(
-                        haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType());
+                        haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType(), false);
                     haloParticle.setActivity(false);
                     insertedParticles.push_back(std::make_unique<Particle>(haloParticle));
                 }
@@ -125,10 +125,7 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
      * We need to also delete the particles of the opposite side
      */
     for (auto pos : allPositions) {
-        auto iter = LGDSim.getGrid().haloCellIterator(pos);
-        auto b = iter.begin();
-        auto e = iter.end();
-        for (auto haloCellIndex : iter) {
+        for (auto haloCellIndex : LGDSim.getGrid().haloCellIterator(pos)) {
             LGDSim.getGrid()
                 .cells[haloCellIndex[0]][haloCellIndex[1]][haloCellIndex[2]]
                 ->clearParticles();
@@ -143,6 +140,12 @@ void PeriodicBoundary::postUpdateBoundaryHandling(Simulation& simulation)
         auto it = particles.begin();
         auto end = particles.end();
         while (it != end) {
+            // If the particle is stationary, we do not need to do anything, as it cannot move
+            if (!(*it).get().getIsNotStationary()) {
+                ++it;
+                continue;
+            }
+
             std::array<double, 3> pos = (*it).get().getX();
 
             CellIndex actualCellIndex = LGDSim.getGrid().getIndexFromPos(pos);
@@ -227,4 +230,16 @@ PeriodicBoundShifts PeriodicBoundary::getPeriodicShiftFromPosition(
         (grid.getGridDimensions()[relevantDimension] - 1 - 1) * normalNat;
 
     return { positionalShift, cellIndexShift };
+}
+
+bool PeriodicBoundary::isThisSideResponsibleForShifts(
+    const BoundaryConfig& boundaryConfig, const std::vector<Position>& boundarySides) const
+{
+    size_t i = 0;
+    // Skip all non periodic sides
+    while (boundaryConfig.boundaryMap.at(boundarySides[i]) != BoundaryType::PERIODIC && i < (boundarySides.size()-1)) {
+        i++;
+    }
+    // This side is responsible, if it is the first periodic side
+    return boundarySides[i] == position;
 }

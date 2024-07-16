@@ -41,7 +41,8 @@ TEST_F(clusterReaderTest, testComments)
 {
     fileReader = std::make_unique<ClusterReader>(commentFile);
     PlanetSimulation sim {
-        start_time, delta_t, end_time, particles, strat, std::move(writer), std::move(fileReader)
+        start_time, delta_t, end_time, particles, strat, std::move(writer), std::move(fileReader),
+        {}
     };
 
     EXPECT_TRUE(particles.particles.empty());
@@ -60,7 +61,8 @@ TEST_F(clusterReaderTest, testUnknownCluster)
                 particles,
                 strat,
                 std::move(writer),
-                std::move(fileReader));
+                std::move(fileReader),
+                {});
         },
         ".*");
 }
@@ -78,7 +80,8 @@ TEST_F(clusterReaderTest, testMissingParam)
                 particles,
                 strat,
                 std::move(writer),
-                std::move(fileReader));
+                std::move(fileReader),
+                {});
         },
         ".*");
 }
@@ -96,7 +99,8 @@ TEST_F(clusterReaderTest, testMissingType)
                 particles,
                 strat,
                 std::move(writer),
-                std::move(fileReader));
+                std::move(fileReader),
+                {});
         },
         ".*");
 }
@@ -105,8 +109,15 @@ TEST_F(clusterReaderTest, testMissingType)
 TEST_F(clusterReaderTest, testClusterGeneration)
 {
     fileReader = std::make_unique<ClusterReader>(clusterFile);
-    PlanetSimulation sim (
-        start_time, delta_t, end_time, particles, strat, std::move(writer), std::move(fileReader));
+    PlanetSimulation sim(
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        {});
 
     EXPECT_EQ(384, particles.particles.size());
 

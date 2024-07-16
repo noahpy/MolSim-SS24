@@ -90,6 +90,19 @@
         </xs:restriction>
  </xs:simpleType>
 
+ <xs:simpleType name="thermoNames_t">
+      <xs:annotation>
+      <xs:documentation>
+        Boundary names for the simulation
+      </xs:documentation>
+    </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="classic"/>
+            <xs:enumeration value="individual"/>
+        </xs:restriction>
+ </xs:simpleType>
+
+
  <xs:complexType name="boundary_t">
      <xs:annotation>
       <xs:documentation>
@@ -136,54 +149,13 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-    </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="memParams_t">
-    <xs:sequence>
-        <xs:element name="origin" type="doubleVec_t">
+      <xs:element name="type" type="thermoNames_t" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-              The origin of the membrane.
+              The thermostat type for the simulation.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="width" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation>
-              The width of the membrane.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="height" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation>
-              The width of the membrane.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="stiffness" type="xs:double">
-        <xs:annotation>
-          <xs:documentation>
-              The stiffness of the membrane.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="bond_length" type="xs:double">
-        <xs:annotation>
-          <xs:documentation>
-              The average bond length of the membrane.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="spacing" type="xs:double">
-        <xs:annotation>
-          <xs:documentation>
-              The spacing of the membrane.
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-
     </xs:sequence>
 </xs:complexType>
 
@@ -219,6 +191,7 @@
     <xs:sequence>
       <xs:element name="sigma" type="xs:double"/>
       <xs:element name="epsilon" type="xs:double"/>
+      <xs:element name="immobile" type="xs:boolean" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -511,13 +484,14 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="membrane" type="memParams_t" minOccurs="0">
+      <xs:element name="analysisFreq" type="xs:unsignedInt" minOccurs="0">
         <xs:annotation>
           <xs:documentation>
-              The membrane configuration.
+              The frequency of analysing the grid.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+
     </xs:all>
   </xs:complexType>
 

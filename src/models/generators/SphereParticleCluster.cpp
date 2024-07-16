@@ -11,8 +11,9 @@ SphereParticleCluster::SphereParticleCluster(
     std::array<double, 3> initialVelocity,
     double meanVelocity,
     size_t brownianMotionDimensions,
+    const std::map<unsigned , bool>& stationaryParticleTypes,
     unsigned ptype)
-    : ParticleCluster(origin, mass, initialVelocity, meanVelocity, brownianMotionDimensions, ptype)
+    : ParticleCluster(origin, mass, initialVelocity, meanVelocity, brownianMotionDimensions, stationaryParticleTypes, ptype)
     , sphereRadius(radius)
     , sphereDimensions(sphereDimensions)
     , spacing(spacing)
@@ -59,7 +60,7 @@ void SphereParticleCluster::generateRing(
         std::array<double, 3> position { origin[0], origin[1], origin[2] + z_offset };
         std::array<double, 3> velocity =
             initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
-        Particle particle (position, velocity, mass, ptype);
+        Particle particle (position, velocity, mass, ptype, insertionIndex, isNotStationary);
 
         particles[insertionIndex++] = particle;
     } else if (realRadius >= spacing) {
@@ -81,7 +82,7 @@ void SphereParticleCluster::generateRing(
 
             std::array<double, 3> velocity =
                 initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
-            Particle particle (position, velocity, mass, ptype);
+            Particle particle (position, velocity, mass, ptype, insertionIndex, isNotStationary);
 
             particles[insertionIndex++] = particle;
 

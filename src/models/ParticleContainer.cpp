@@ -4,6 +4,7 @@
 
 #include "ParticleContainer.h"
 #include "Particle.h"
+#include <omp.h>
 
 ParticleContainer::ParticleContainer()
 {
@@ -27,17 +28,24 @@ ParticleContainer::ParticleContainer(const std::vector<Particle>& particles)
 void ParticleContainer::addParticle(const Particle& p)
 {
     particles.push_back(p);
+    particles.back().setID(particles.size() - 1);
     activeParticleCount++;
 }
 
 void ParticleContainer::removeParticle(Particle& p)
 {
-    p.setV({ 0, 0, 0 });
-    p.setOldF({ 0, 0, 0 });
-    p.setF({ 0, 0, 0 });
-    p.setActivity(false);
-    if (activeParticleCount)
+    if (activeParticleCount && p.getActivity()) {
         activeParticleCount--;
+        p.setActivity(false);
+        inactiveParticleMap.insert_or_assign(p.getID(), p.getID());
+    }
+}
+
+size_t ParticleContainer::getIndex(size_t id)
+{
+    auto lowerBound = inactiveParticleMap.lower_bound(0);
+    auto upperBound = inactiveParticleMap.upper_bound(id);
+    return id - std::distance(lowerBound, upperBound);
 }
 
 std::vector<Particle> ParticleContainer::getContainer() const
@@ -45,15 +53,24 @@ std::vector<Particle> ParticleContainer::getContainer() const
     return particles;
 }
 
-// ActiveIterator Implementation
+ParticleContainer::ActiveIterator ParticleContainer::beginActive()
+{
+    return { particles.begin(), particles.begin(), particles.end(), inactiveParticleMap };
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::endActive()
+{
+    return { particles.end(), particles.begin(), particles.end(), inactiveParticleMap };
+}
+
 ParticleContainer::ActiveIterator ParticleContainer::begin()
 {
-    return { particles.begin(), particles.end() };
+    return { particles.begin(), particles.begin(), particles.end(), inactiveParticleMap };
 }
 
 ParticleContainer::ActiveIterator ParticleContainer::end()
 {
-    return { particles.end(), particles.end() };
+    return { particles.end(), particles.begin(), particles.end(), inactiveParticleMap };
 }
 
 void ParticleContainer::ActiveIterator::advanceToNextActive()
@@ -64,10 +81,14 @@ void ParticleContainer::ActiveIterator::advanceToNextActive()
 }
 
 ParticleContainer::ActiveIterator::ActiveIterator(
-    std::vector<Particle>::iterator start, std::vector<Particle>::iterator end)
-    : begin(start)
+    std::vector<Particle>::iterator start,
+    std::vector<Particle>::iterator begin,
+    std::vector<Particle>::iterator end,
+    std::reference_wrapper<std::map<size_t, size_t>> mapRef)
+    : begin(begin)
     , current(start)
     , end(end)
+    , inactiveMapRef(mapRef)
 {
     advanceToNextActive();
 }
@@ -102,23 +123,88 @@ bool ParticleContainer::ActiveIterator::operator==(const ActiveIterator& other) 
     return current == other.current;
 }
 
+ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+=(difference_type n)
+{
+    if (n < 0) {
+        this->operator-=(-n);
+        return *this;
+    }
+    for (difference_type i = 0; i < n; ++i)
+        ++(*this);
+    return *this;
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-=(difference_type n)
+{
+    if (n < 0) {
+        this->operator+=(-n);
+        return *this;
+    }
+    for (difference_type i = 0; i < n; ++i)
+        --(*this);
+    return *this;
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator+(difference_type n)
+{
+    auto copy = *this;
+    copy += n;
+    return copy;
+}
+
+ParticleContainer::ActiveIterator ParticleContainer::ActiveIterator::operator-(difference_type n)
+{
+    auto copy = *this;
+    copy -= n;
+    return copy;
+}
+
+ParticleContainer::ActiveIterator::difference_type ParticleContainer::ActiveIterator::operator-(
+    const ActiveIterator& other) const
+{
+    auto smaller = current;
+    auto larger = other.current;
+    int factor = -1;
+    if (smaller > larger) {
+        std::swap(smaller, larger);
+        factor = 1;
+    }
+    auto smallerID = end - begin;
+    auto largerID = end - begin;
+    if (smaller != end) {
+        smallerID = smaller->getID();
+    }
+    if (larger != end) {
+        largerID = larger->getID();
+    }
+
+    // calculate number of deleted particles inbetween
+    auto lower_bound = inactiveMapRef.get().upper_bound(smallerID);
+    auto upper_bound = inactiveMapRef.get().lower_bound(largerID);
+    auto delted_dist = std::distance(lower_bound, upper_bound);
+
+    // calculate final result
+    auto result = factor * (std::distance(smaller, larger) - delted_dist);
+    return result;
+}
+
 // PairIterator Implementation
 //  Returns an iterator to the first pair of particles
 ParticleContainer::PairIterator ParticleContainer::beginPairs()
 {
     if (particles.empty()) {
-        return { begin(), begin(), end() };
+        return { beginActive(), beginActive(), endActive() };
     }
-    return { begin(), begin(), --end() };
+    return { beginActive(), beginActive(), --endActive() };
 }
 
 // Returns an iterator indicating the end of pairs
 ParticleContainer::PairIterator ParticleContainer::endPairs()
 {
     if (particles.empty()) {
-        return { begin(), end(), end() };
+        return { beginActive(), endActive(), endActive() };
     }
-    return { begin(), --end(), --end() };
+    return { beginActive(), --endActive(), --endActive() };
 }
 
 // PairIterator constructor
