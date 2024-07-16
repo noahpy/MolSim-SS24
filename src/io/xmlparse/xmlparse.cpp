@@ -89,17 +89,6 @@ void xmlparse(Params& sim_params, std::string& filename)
         else {
             sim_params.thermo_freq = 0;
         }
-        /*
-        if (params.membrane().present()){
-            auto membrane_config = params.membrane().get();
-            sim_params.membraneOrigin = {membrane_config.origin().x(), membrane_config.origin().y(), membrane_config.origin().z()};
-            sim_params.membraneWidth = membrane_config.width();
-            sim_params.membraneHeight = membrane_config.height();
-            sim_params.membraneSpacing = membrane_config.spacing();
-            sim_params.membraneStiffness = membrane_config.stiffness();
-            sim_params.membraneBondLength = membrane_config.bond_length();
-        }
-         */
 
         Particle p {};
         Membrane m {{40,40,100}, 50, 50, 1, 2.2, 1, {0,0,0}, 0, 3, 1, 2.2, 300, p};

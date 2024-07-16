@@ -64,11 +64,8 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
         std::vector<std::reference_wrapper<Particle>>(
             numParticles[secondRelevantDimension], std::reference_wrapper<Particle>(root)));
 
-    // TODO TMP!!!! FIXME LATER -> Problem: The container will resize and thus make the references
-    // invalid
-    container.particles =
-        std::vector<Particle>(numParticlesWidth * numParticlesHeight * numParticlesDepth);
-    int index = 0;
+    size_t index = container.particles.size();
+    container.particles.resize(container.particles.size() + numParticlesWidth * numParticlesHeight * numParticlesDepth);
 
     // Same as in CuboidParticleCluster but add neighbors
     for (int i = 0; i < numParticlesWidth; i++) { // x
@@ -87,7 +84,7 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
                     initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
 
                 // Create particle
-                size_t id = container.activeParticleCount; // TODO check id
+                size_t id = container.activeParticleCount;
                 Particle particle(position, velocity, mass, static_cast<int>(ptype), id, true, moleculeID);
 
                 // Add particle to container
