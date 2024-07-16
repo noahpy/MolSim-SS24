@@ -81,11 +81,11 @@ TEST(MembraneTests, membraneNeighborCountTests)
 
     // lambda function to check if particle is at the top layer
     auto isTopLayer = [](Particle& p, int height, double spacing) {
-        return p.getX()[1] > (static_cast<double>(height) - 0.5f) * spacing;
+        return p.getX()[1] > (static_cast<double>(height - 1) - 0.5f) * spacing;
     };
     // lambda function to check if particle is at right layer
     auto isRightLayer = [](Particle& p, int width, double spacing) {
-        return p.getX()[0] > (static_cast<double>(width) - 0.5f) * spacing;
+        return p.getX()[0] > (static_cast<double>(width - 1) - 0.5f) * spacing;
     };
     // lambda function to check if particle is at the bottom layer
     auto isBottomLayer = [](Particle& p, double spacing) { return p.getX()[1] < 0.5f * spacing; };
