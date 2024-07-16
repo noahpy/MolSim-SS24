@@ -10,8 +10,7 @@ std::array<double, 3> z = { 0, 0, 0 };
 // Test if the molecule id has been set correctly
 TEST(MembraneTests, initMembraneTests)
 {
-    Particle tmp;
-    Membrane m { z, 20, 20, 1, 1, 1, z, 0, 3, 1, 1, 20, tmp };
+    Membrane m { z, 20, 20, 1, 1, 1, z, 0, 3, 1, 1, 20 };
 
     std::vector<Particle> particles {};
     ParticleContainer container(particles);
@@ -26,11 +25,10 @@ TEST(MembraneTests, initMembraneTests)
 // Check if the neighbors are set correctly
 TEST(MembraneTests, membraneMapTests)
 {
-    Particle tmp;
     int width = 34;
     int height = 23;
     int depth = 1;
-    Membrane m { z, width, height, depth, 1, 1, z, 0, 3, 1, 1, 20, tmp };
+    Membrane m { z, width, height, depth, 1, 1, z, 0, 3, 1, 1, 20 };
 
     std::vector<Particle> particles {};
     ParticleContainer container(particles);
@@ -68,11 +66,10 @@ TEST(MembraneTests, membraneMapTests)
 // Test if the number of neighbors is correct
 TEST(MembraneTests, membraneNeighborCountTests)
 {
-    Particle tmp;
     int width = 34;
     int height = 23;
     int depth = 1;
-    Membrane m { z, width, height, depth, 1, 1, z, 0, 3, 1, 1, 20, tmp };
+    Membrane m { z, width, height, depth, 1, 1, z, 0, 3, 1, 1, 20 };
 
     std::vector<Particle> particles {};
     ParticleContainer container(particles);

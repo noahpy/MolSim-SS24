@@ -57,8 +57,7 @@ TEST_F(calcForceMembrane, calcForceMembrane)
 
     particles = std::vector<Particle> {};
     ParticleContainer container { particles };
-    Particle tmp;
-    Membrane mem { z, 2, 1, 1, r, 1, z, 0, 3, 1, r0, k, tmp };
+    Membrane mem { z, 2, 1, 1, r, 1, z, 0, 3, 1, r0, k };
     mem.generateMolecule(container, 562);
 
     // Check if the number of particles are correct
@@ -89,8 +88,7 @@ TEST_F(calcForceMembrane, calcForceMembraneDiagonal)
 
     particles = std::vector<Particle> {};
     ParticleContainer container { particles };
-    Particle tmp;
-    Membrane mem { z, 2, 2, 1, r, 1, z, 0, 3, 1, r0, k, tmp };
+    Membrane mem { z, 2, 2, 1, r, 1, z, 0, 3, 1, r0, k };
     mem.initLJParams(1, 0.1); // small sigma to ignore repulsive forces
     mem.generateMolecule(container, 562);
 
@@ -141,8 +139,7 @@ TEST_F(calcForceMembrane, calcForceMembraneLJ)
 
     particles = std::vector<Particle> {};
     ParticleContainer container { particles };
-    Particle tmp;
-    Membrane mem { z, 2, 2, 1, r, 1, z, 0, 3, 1, r0, k, tmp };
+    Membrane mem { z, 2, 2, 1, r, 1, z, 0, 3, 1, r0, k };
     mem.initLJParams(1, 2); // big sigma to include repulsive forces
     mem.generateMolecule(container, 562);
 
