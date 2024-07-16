@@ -102,27 +102,6 @@ public:
         visited = false;
     }
 
-    inline bool getVisited() const
-    {
-        return visited;
-    }
-
-    /**
-     * @brief Returns the current state of the visited flag and sets to false if true.
-     * @return The current state of the visited flag.
-     */
-    inline bool visit()
-    {
-        bool tmp = visited;
-        visited = true;
-        return tmp;
-    }
-
-    inline void unvisit()
-    {
-        visited = false;
-    }
-
     /** @brief Index of the cell. */
     CellIndex myIndex;
 

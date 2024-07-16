@@ -18,8 +18,8 @@ Particle::Particle(
     double m_arg,
     int type_arg,
     size_t id,
-    size_t moleculeId_arg,
-    bool isNotStationary_arg)
+    bool isNotStationary_arg,
+    size_t moleculeId_arg)
     : x(x_arg)
     , v(v_arg)
     , m(m_arg)

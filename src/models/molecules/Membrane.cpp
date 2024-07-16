@@ -87,7 +87,8 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
                     initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
 
                 // Create particle
-                Particle particle(position, velocity, mass, static_cast<int>(ptype), moleculeID);
+                size_t id = container.activeParticleCount; // TODO check id
+                Particle particle(position, velocity, mass, static_cast<int>(ptype), id, true, moleculeID);
 
                 // Add particle to container
                 container.particles[index++] = particle;
