@@ -46,7 +46,7 @@ void force_gravity_V2(const Simulation& sim)
     }
 }
 
-inline void lj_calc(
+void lj_calc(
     Particle& p1,
     Particle& p2,
     double alpha,
