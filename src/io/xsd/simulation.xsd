@@ -351,6 +351,89 @@
     </xs:sequence>
   </xs:complexType>
 
+
+  <xs:complexType name="membrane_t">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the properties of a cuboid-shaped cluster.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="pos" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The initial position of the cuboid in 3D space.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vel" type="doubleVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The initial velocity of the cuboid in 3D space.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dim" type="intVec_t">
+        <xs:annotation>
+          <xs:documentation>
+            The dimensions of the cuboid in terms of number of particles along each axis.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mass" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The mass of the cuboid.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spacing" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The spacing between particles in the cuboid.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brownVel" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The Brownian motion velocity.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brownDim" type="dimension_t">
+        <xs:annotation>
+          <xs:documentation>
+            The dimension affected by Brownian motion.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ptype" type="xs:unsignedInt" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The particle type of the cuboid.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="equiDist" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+              The equilibrium distance.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="springConst" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+              The spring constant for harmonic force calculations.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- Clusters type definition -->
 
   <xs:complexType name="clusters_t">
@@ -371,6 +454,13 @@
         <xs:annotation>
           <xs:documentation>
             A sphere cluster within the collection.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+       <xs:element name="membrane" type="membrane_t">
+        <xs:annotation>
+          <xs:documentation>
+            A membrane cluster within the collection.
           </xs:documentation>
         </xs:annotation>
       </xs:element>

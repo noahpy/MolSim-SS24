@@ -102,6 +102,11 @@ void XmlReader::readFile(Simulation& sim)
             spdlog::info("Read {} particles indiviually from particle data.", particle_count);
         }
 
+        const auto& membranes = sim_input->clusters().membrane();
+        for(auto& membrane : membranes){
+            // TODO: Read in membrane
+        }
+
     } catch (const xml_schema::exception& e) {
         spdlog::error("Error when reading: {}", filename);
 
