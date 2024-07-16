@@ -7,8 +7,8 @@
 void location_stroemer_verlet(const Simulation& sim)
 {
 #pragma omp parallel for
-    for (auto& p : sim.container) {
-        if (p.getIsNotStationary()) {
+    for (auto& p : sim.container.particles) {
+        if (p.getIsNotStationary() && p.getActivity()) {
             // x = x + Δt * v + (Δt)^2 * F / (2 * m)
             auto tmp = p.getX() + sim.delta_t * p.getV() +
                        (sim.delta_t * sim.delta_t / (2 * p.getM())) * p.getF();
