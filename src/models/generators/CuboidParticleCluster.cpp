@@ -44,7 +44,7 @@ void CuboidParticleCluster::generateCluster(
                     initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
 
                 // Create particle
-                Particle particle(position, velocity, mass, ptype, isNotStationary);
+                Particle particle (position, velocity, mass, ptype, insertionIndex, isNotStationary);
 
                 // Add particle to container
                 particles[insertionIndex++] = particle;

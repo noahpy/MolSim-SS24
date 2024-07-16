@@ -40,8 +40,7 @@ double Thermostat::getTotalKineticEnergy(Simulation& sim)
     // Calculate kinetic energy
     double E = 0;
     for (auto& p : sim.container)
-        if (p.getActivity())
-            E += p.getM() * (ArrayUtils::DotProduct(p.getV()));
+        E += p.getM() * (ArrayUtils::DotProduct(p.getV()));
 
     return E;
 }

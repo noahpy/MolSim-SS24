@@ -68,7 +68,25 @@ public:
      * @param cellIndex The index of the target cell
      * @return A list of references to all particles in the target cell and its neighbors
      */
-    [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const;
+    [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const
+        THREAD_SAFE;
+
+    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile2D(const CellIndex& cellIndex) const;
+
+    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile3D(const CellIndex& cellIndex) const;
+
+    /**
+     * @brief Resets the forces for all particles for the next force calculation
+     * @param particleContainer The container holding the particles
+     * @return void
+     */
+    void preCalcSetup(ParticleContainer& particleContainer) const;
+
+    /**
+     * @brief Resets the visited flag of all cells to false
+     * @return void
+     */
+    void postCalcSetup() const;
 
     /**
      * @brief Updates the cell lists by the position of all particles.
@@ -159,6 +177,14 @@ protected:
      * @param cell The index of the cell to determine the neighbours of.
      */
     void determineNeighbours(CellIndex cell);
+
+
+    /**
+     * @brief Determines the stencil neighbours of the specified cell.
+     * @param cell The index of the cell to determine the neighbours of.
+     * @param is2D Set to true if the domain is 2D
+     */
+    void determineNeighboursStencile(CellIndex cell, bool is2D);
 
 private:
     /// The size of the simulation domain in each dimension.

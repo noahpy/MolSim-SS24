@@ -11,8 +11,8 @@
 #include "physics/thermostat/ThermostatFactory.h"
 #include "spdlog/spdlog.h"
 #include "utils/Params.h"
-
 #include <string>
+
 
 // Main function
 int main(int argc, char* argsv[])
@@ -38,7 +38,7 @@ int main(int argc, char* argsv[])
         params.thermostat_type,
         params.init_temp,
         params.target_temp,
-        params.delta_t,
+        params.max_temp_delta,
         params.domain_size[2] > 1 ? 3 : 2);
 
     // Intialize physics strategy

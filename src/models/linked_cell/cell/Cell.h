@@ -29,11 +29,11 @@ public:
      */
     explicit Cell(CellType type, const CellIndex index);
 
+    /** @brief Copy constructor for Cell. */
+    Cell(const Cell& other);
+
     /** @brief Destructor for Cell. */
     virtual ~Cell();
-
-    /** @brief Flag to check if this cell has been visited. */
-    bool visited = false;
 
     /**
      * @brief Adds a particle to the cell.
@@ -77,30 +77,29 @@ public:
      */
     ParticleRefList::iterator end();
 
-    /**
-     * @brief Gets the current value of the neighbor counter.
-     * @return The current value of the neighbor counter.
-     */
-    [[nodiscard]] inline int getCounter() const
+    inline bool getVisited() const THREAD_SAFE
     {
-        return neighborCounter;
+        std::lock_guard<std::mutex> lock(mutex);
+        return visited;
     }
 
     /**
-     * @brief Sets the value of the neighbor counter.
-     * @param value The new value for the neighbor counter.
+     * @brief Returns the current state of the visited flag and sets to false if true.
+     * @return The current state of the visited flag.
      */
-    void setCounter(int value);
+    inline bool visit() THREAD_SAFE
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        bool tmp = visited;
+        visited = true;
+        return tmp;
+    }
 
-    /**
-     * @brief Decrements the neighbor counter.
-     */
-    void decrementCounter() { neighborCounter--; };
-
-    /**
-     * @brief Increments the neighbor counter.
-     */
-    void incrementCounter() { neighborCounter++; };
+    inline void unvisit() THREAD_SAFE
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        visited = false;
+    }
 
     /** @brief Index of the cell. */
     CellIndex myIndex;
@@ -109,6 +108,9 @@ public:
     std::vector<std::pair<CellIndex, std::vector<Position>>> boundaryNeighbours;
     std::vector<std::pair<CellIndex, std::vector<Position>>> haloNeighbours;
     std::vector<std::pair<CellIndex, std::vector<Position>>> innerNeighbours;
+
+    // Stencil neighbours
+    std::vector<CellIndex> stencilNeighbours;
 
     // Forward declaration.
     class PairListIterator;
@@ -129,11 +131,14 @@ private:
     /// The type of the cell (boundary, halo, or bulk).
     CellType type;
 
-    /// A counter used for tracking processed neighbors (e.g., during force calculations).
-    int neighborCounter;
+    /** @brief Flag to check if this cell has been visited. */
+    bool visited = false;
 
     /// A list storing references to particles within the cell.
     ParticleRefList particles;
+
+    /// mutex
+    mutable std::mutex mutex;
 
 public:
     class PairListIterator {
@@ -149,7 +154,8 @@ public:
          * @brief Dereferences the iterator, returning a pair of particle pointers.
          * @return A pair of pointers to the current particle pair.
          */
-        std::pair<Particle&, Particle&> operator*() const;
+        std::pair<std::reference_wrapper<Particle>, std::reference_wrapper<Particle>> operator*()
+            const;
 
         /**
          * @brief Increments the iterator to the next particle pair.

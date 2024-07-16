@@ -1,5 +1,6 @@
 
 #include "CellGrid.h"
+#include "models/ParticleContainer.h"
 #include "models/linked_cell/cell/Cell.h"
 #include "utils/ArrayUtils.h"
 #include "utils/Position.h"
@@ -63,10 +64,85 @@ void CellGrid::determineNeighbours(CellIndex cell)
     }
 }
 
+void CellGrid::determineNeighboursStencile(CellIndex cell, bool is2D)
+{
+    // If the cell is a halo, return an empty list
+    if (cells.at(cell[0]).at(cell[1]).at(cell[2])->getType() == CellType::Halo) {
+        return;
+    }
+
+    std::vector<CellIndex> cellList;
+    if (is2D) {
+        // Get following 4 neighbours (half of the neighbours):
+        cellList = {
+
+            //  - right, bottom
+            CellIndex { cell[0] + 1, cell[1] - 1, cell[2] },
+            //  ght, even
+            CellIndex { cell[0] + 1, cell[1], cell[2] },
+            //  ght, top
+            CellIndex { cell[0] + 1, cell[1] + 1, cell[2] },
+            //  en, bottom
+            CellIndex { cell[0], cell[1] - 1, cell[2] },
+
+        };
+    } else {
+        // Get following 13 neighbours (half of the neighbours):
+        cellList = {
+
+            //  - right, bottom, back
+            CellIndex { cell[0] + 1, cell[1] - 1, cell[2] - 1 },
+            //  - right, even, even
+            CellIndex { cell[0] + 1, cell[1], cell[2] },
+            //  - right, bottom, even
+            CellIndex { cell[0] + 1, cell[1] - 1, cell[2] },
+            //  - right, even, front
+            CellIndex { cell[0] + 1, cell[1], cell[2] + 1 },
+            //  - right, bottom, front
+            CellIndex { cell[0] + 1, cell[1] - 1, cell[2] + 1 },
+            //  - right, even, back
+            CellIndex { cell[0] + 1, cell[1], cell[2] - 1 },
+            //  - even, even, front
+            CellIndex { cell[0], cell[1], cell[2] + 1 },
+            //  - even, bottom, front
+            CellIndex { cell[0], cell[1] - 1, cell[2] + 1 },
+            //  - left, bottom, front
+            CellIndex { cell[0] - 1, cell[1] - 1, cell[2] + 1 },
+            //  - even, bottom, even
+            CellIndex { cell[0], cell[1] - 1, cell[2] },
+            //  - even, bottom, back
+            CellIndex { cell[0], cell[1] - 1, cell[2] - 1 },
+            //  - left, bottom, even
+            CellIndex { cell[0] - 1, cell[1] - 1, cell[2] },
+            //  - left, bottom, back
+            CellIndex { cell[0] - 1, cell[1] - 1, cell[2] - 1 }
+
+        };
+    }
+
+    // add halo cells if needed
+    for (auto haloInfo : cells.at(cell[0]).at(cell[1]).at(cell[2])->haloNeighbours) {
+        CellIndex haloIndex = haloInfo.first;
+        bool insert = true;
+        for (CellIndex index : cellList) {
+            if (haloIndex.at(0) == index.at(0) && haloIndex.at(1) == index.at(1) &&
+                haloIndex.at(2) == index.at(2)) {
+                insert = false;
+                break;
+            }
+        }
+        if (insert) {
+            cellList.emplace_back(haloIndex);
+        }
+    }
+
+    cells.at(cell[0]).at(cell[1]).at(cell[2])->stencilNeighbours = cellList;
+}
+
 void CellGrid::initializeGrid()
 {
     if (gridDimensionality == 2) {
-        spdlog::info("Domain is set to 0 in z-Axis. Gird will be constructed in 2D.");
+        spdlog::info("Domain is set to 0 in z-Axis. Grid will be constructed in 2D.");
         gridDimensions[2] = 1; // a single cell
         cellSize[2] = 0; // no depth
     }
@@ -107,6 +183,7 @@ void CellGrid::initializeGrid()
                 if (type == CellType::Halo) {
                     haloCells.push_back({ x, y, z });
                 }
+                determineNeighboursStencile({ x, y, z }, gridDimensionality == 2);
             }
         }
     }
@@ -203,90 +280,167 @@ void CellGrid::addParticlesFromContainer(ParticleContainer& particleContainer)
     }
 }
 
-std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& cellIndex) const
+void CellGrid::preCalcSetup(ParticleContainer& container) const
+{
+    spdlog::debug("Pre-calc setup...");
+#pragma omp parallel for
+    for (auto& particle : container) {
+        particle.resetF();
+    }
+}
+
+void CellGrid::postCalcSetup() const
+{
+    spdlog::debug("Post-calc setup...");
+#pragma omp parallel for
+    for (auto& cell : cells) {
+        for (auto& row : cell) {
+            for (auto& col : row) {
+                col->unvisit();
+            }
+        }
+    }
+}
+
+std::list<CellIndex> CellGrid::getNeighbourCells(const CellIndex& index) const THREAD_SAFE
 {
     std::list<CellIndex> cellList;
 
-    // If not all neighbours have been paired up, return an empty list
     // If the cell is a halo, return an empty list
-    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() > 0 ||
-        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getType() == CellType::Halo) {
+    if (cells.at(index[0]).at(index[1]).at(index[2])->getType() == CellType::Halo) {
         return cellList;
     }
 
-    // check if this cell was not visited
-    if (!cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited) {
-        // Mark this cell as visited
-        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = true;
-        // Set forces
-        auto particleRefs =
-            cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getParticles();
-        for (auto& p : particleRefs) {
-            p.get().setOldF(p.get().getF());
-            p.get().setF({ 0.0, 0.0, 0.0 });
-        }
+    // If the cell has already been visited, return an empty list
+    // and if not, flip the visit flag
+    if (cells.at(index[0]).at(index[1]).at(index[2])->visit()) {
+        return cellList;
     }
 
-    // Iterate over all neighbors including the cell itself
+    // Iterate over all neighbors
     for (int dx = -1; dx <= 1; ++dx) {
         for (int dy = -1; dy <= 1; ++dy) {
             for (int dz = -1; dz <= 1; ++dz) {
-                size_t nx = cellIndex[0] + dx;
-                size_t ny = cellIndex[1] + dy;
-                size_t nz = cellIndex[2] + dz;
-
                 // Skip if it is the original cell
                 if (dx == 0 && dy == 0 && dz == 0) {
                     continue;
                 }
 
+                size_t nx = index[0] + dx;
+                size_t ny = index[1] + dy;
+                size_t nz = index[2] + dz;
+
+                // Continue if the neighbor is in bounds
                 if (nx < gridDimensions[0] && ny < gridDimensions[1] && nz < gridDimensions[2]) {
-                    if (cells.at(nx).at(ny).at(nz)->getCounter() > 0) {
-                        // Decrease counter
-                        cells.at(nx).at(ny).at(nz)->decrementCounter();
-                        // if counter reached zero, reset visited
-                        if (cells.at(nx).at(ny).at(nz)->getCounter() == 0) {
-                            cells.at(nx).at(ny).at(nz)->visited = false;
-                        }
-                        // Skip this neighbour
+                    // if the neighbour is already visited, continue
+                    if (cells.at(nx).at(ny).at(nz)->getVisited()) {
                         continue;
                     }
 
                     // Insert all particles into particleList
                     cellList.emplace_back(CellIndex { nx, ny, nz });
-
-                    // check if not visited yet
-                    if (!cells.at(nx).at(ny).at(nz)->visited) {
-                        // Mark as visited
-                        cells.at(nx).at(ny).at(nz)->visited = true;
-                        // Set OldF to F and zero F
-                        ParticleRefList& particleRefs = cells.at(nx).at(ny).at(nz)->getParticles();
-                        auto it = particleRefs.begin();
-                        while (it != particleRefs.end()) {
-                            (*it).get().setOldF((*it).get().getF());
-                            (*it).get().setF({ 0.0, 0.0, 0.0 });
-                            ++it;
-                        }
-                    }
-
-                    if (cells.at(nx).at(ny).at(nz)->getType() != CellType::Halo) {
-                        // Increment neighborCounter if not a halo cell
-                        cells.at(cellIndex[0])
-                            .at(cellIndex[1])
-                            .at(cellIndex[2])
-                            ->incrementCounter();
-                    }
                 }
             }
         }
     }
+    return cellList;
+}
 
-    // If there are no relevant neighbors (i.e. all neighbors did already do their calculations)
-    // We need to set visited to false again, as the force calculation is done for the iteration
-    // This is an edge case
-    if (cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->getCounter() == 0) {
-        cells.at(cellIndex[0]).at(cellIndex[1]).at(cellIndex[2])->visited = false;
+std::list<CellIndex> CellGrid::getNeighbourCellsStencile2D(const CellIndex& index) const
+{
+    // If the cell is a halo, return an empty list
+    if (cells.at(index[0]).at(index[1]).at(index[2])->getType() == CellType::Halo) {
+        return {};
     }
+
+    // Get following 4 neighbours (half of the neighbours):
+    std::list<CellIndex> cellList = {
+
+        //  - right, bottom
+        CellIndex { index[0] + 1, index[1] - 1, index[2] },
+        //  - right, even
+        CellIndex { index[0] + 1, index[1], index[2] },
+        //  - right, top
+        CellIndex { index[0] + 1, index[1] + 1, index[2] },
+        //  - even, bottom
+        CellIndex { index[0], index[1] - 1, index[2] },
+
+    };
+
+    // add halo cells if needed
+    for (auto haloInfo : cells.at(index[0]).at(index[1]).at(index[2])->haloNeighbours) {
+        CellIndex haloIndex = haloInfo.first;
+        bool insert = true;
+        for (CellIndex index : cellList) {
+            if (haloIndex.at(0) == index.at(0) && haloIndex.at(1) == index.at(1) &&
+                haloIndex.at(2) == index.at(2)) {
+                insert = false;
+                break;
+            }
+        }
+        if (insert) {
+            cellList.emplace_back(haloIndex);
+        }
+    }
+
+    return cellList;
+}
+
+std::list<CellIndex> CellGrid::getNeighbourCellsStencile3D(const CellIndex& index) const
+{
+    // If the cell is a halo, return an empty list
+    if (cells.at(index[0]).at(index[1]).at(index[2])->getType() == CellType::Halo) {
+        return {};
+    }
+
+    // Get following 13 neighbours (half of the neighbours):
+    std::list<CellIndex> cellList = {
+
+        //  - right, bottom, back
+        CellIndex { index[0] + 1, index[1] - 1, index[2] - 1 },
+        //  - right, even, even
+        CellIndex { index[0] + 1, index[1], index[2] },
+        //  - right, bottom, even
+        CellIndex { index[0] + 1, index[1] - 1, index[2] },
+        //  - right, even, front
+        CellIndex { index[0] + 1, index[1], index[2] + 1 },
+        //  - right, bottom, front
+        CellIndex { index[0] + 1, index[1] - 1, index[2] + 1 },
+        //  - right, even, back
+        CellIndex { index[0] + 1, index[1], index[2] - 1 },
+        //  - even, even, front
+        CellIndex { index[0], index[1], index[2] + 1 },
+        //  - even, bottom, front
+        CellIndex { index[0], index[1] - 1, index[2] + 1 },
+        //  - left, bottom, front
+        CellIndex { index[0] - 1, index[1] - 1, index[2] + 1 },
+        //  - even, bottom, even
+        CellIndex { index[0], index[1] - 1, index[2] },
+        //  - even, bottom, back
+        CellIndex { index[0], index[1] - 1, index[2] - 1 },
+        //  - left, bottom, even
+        CellIndex { index[0] - 1, index[1] - 1, index[2] },
+        //  - left, bottom, back
+        CellIndex { index[0] - 1, index[1] - 1, index[2] - 1 }
+
+    };
+
+    // add halo cells if needed
+    for (auto haloInfo : cells.at(index[0]).at(index[1]).at(index[2])->haloNeighbours) {
+        CellIndex haloIndex = haloInfo.first;
+        bool insert = true;
+        for (CellIndex index : cellList) {
+            if (haloIndex.at(0) == index.at(0) && haloIndex.at(1) == index.at(1) &&
+                haloIndex.at(2) == index.at(2)) {
+                insert = false;
+                break;
+            }
+        }
+        if (insert) {
+            cellList.emplace_back(haloIndex);
+        }
+    }
+
     return cellList;
 }
 

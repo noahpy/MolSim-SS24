@@ -17,6 +17,8 @@ ParticleCluster::ParticleCluster(
     , ptype(ptype)
     , isNotStationary(stationaryParticleTypes.find(ptype) == stationaryParticleTypes.end())
 {
+    spdlog::info("type {} is not stationary {}", ptype, isNotStationary);
+
     if (dimensions > 3) {
         spdlog::warn(
             "The dimensions specified for the brownian motion of a particle cluster was set to {}. "

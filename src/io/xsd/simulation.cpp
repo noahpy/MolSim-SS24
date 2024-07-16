@@ -1535,36 +1535,6 @@ analysisFreq (const analysisFreq_optional& x)
   this->analysisFreq_ = x;
 }
 
-const params_t::analysisName_optional& params_t::
-analysisName () const
-{
-  return this->analysisName_;
-}
-
-params_t::analysisName_optional& params_t::
-analysisName ()
-{
-  return this->analysisName_;
-}
-
-void params_t::
-analysisName (const analysisName_type& x)
-{
-  this->analysisName_.set (x);
-}
-
-void params_t::
-analysisName (const analysisName_optional& x)
-{
-  this->analysisName_ = x;
-}
-
-void params_t::
-analysisName (::std::unique_ptr< analysisName_type > x)
-{
-  this->analysisName_.set (std::move (x));
-}
-
 
 // simulation_t
 //
@@ -3746,8 +3716,7 @@ params_t ()
   boundaries_ (this),
   thermostat_ (this),
   gravity_ (this),
-  analysisFreq_ (this),
-  analysisName_ (this)
+  analysisFreq_ (this)
 {
 }
 
@@ -3770,8 +3739,7 @@ params_t (const params_t& x,
   boundaries_ (x.boundaries_, f, this),
   thermostat_ (x.thermostat_, f, this),
   gravity_ (x.gravity_, f, this),
-  analysisFreq_ (x.analysisFreq_, f, this),
-  analysisName_ (x.analysisName_, f, this)
+  analysisFreq_ (x.analysisFreq_, f, this)
 {
 }
 
@@ -3794,8 +3762,7 @@ params_t (const ::xercesc::DOMElement& e,
   boundaries_ (this),
   thermostat_ (this),
   gravity_ (this),
-  analysisFreq_ (this),
-  analysisName_ (this)
+  analysisFreq_ (this)
 {
   if ((f & ::xml_schema::flags::base) == 0)
   {
@@ -3994,20 +3961,6 @@ parse (::xsd::cxx::xml::dom::parser< char >& p,
       }
     }
 
-    // analysisName
-    //
-    if (n.name () == "analysisName" && n.namespace_ ().empty ())
-    {
-      ::std::unique_ptr< analysisName_type > r (
-        analysisName_traits::create (i, f, this));
-
-      if (!this->analysisName_)
-      {
-        this->analysisName_.set (::std::move (r));
-        continue;
-      }
-    }
-
     break;
   }
 }
@@ -4040,7 +3993,6 @@ operator= (const params_t& x)
     this->thermostat_ = x.thermostat_;
     this->gravity_ = x.gravity_;
     this->analysisFreq_ = x.analysisFreq_;
-    this->analysisName_ = x.analysisName_;
   }
 
   return *this;
@@ -5338,18 +5290,6 @@ operator<< (::xercesc::DOMElement& e, const params_t& i)
         e));
 
     s << *i.analysisFreq ();
-  }
-
-  // analysisName
-  //
-  if (i.analysisName ())
-  {
-    ::xercesc::DOMElement& s (
-      ::xsd::cxx::xml::dom::create_element (
-        "analysisName",
-        e));
-
-    s << *i.analysisName ();
   }
 }
 
