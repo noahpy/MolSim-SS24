@@ -7,6 +7,7 @@
 #include "physics/locationCal/locationCal.h"
 #include "physics/strategy.h"
 #include "physics/velocityCal/velocityCal.h"
+#include "simulation/lennardJonesSim.h"
 #include <benchmark/benchmark.h>
 #include <spdlog/common.h>
 #include <spdlog/spdlog.h>
