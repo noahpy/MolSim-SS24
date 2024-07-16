@@ -1,193 +1,106 @@
 
 #include "models/Particle.h"
 #include "models/ParticleContainer.h"
-#include "models/membrane/Membrane.h"
+#include "models/molecules/Membrane.h"
+#include "utils/ArrayUtils.h"
 #include "gtest/gtest.h"
-#include <spdlog/spdlog.h>
 
-std::array<double, 3> z = {0, 0, 0};
+std::array<double, 3> z = { 0, 0, 0 };
 
+// Test if the molecule id has been set correctly
 TEST(MembraneTests, initMembraneTests)
 {
-    Particle p1 = {z, z, 1, 0};
-    Particle p2 = {{1, 0, 0}, z, 1, 0};
-    Particle p3 = {{2, 0, 0}, z, 1, 0};
-    std::vector<Particle> particles = {p1, p2, p3};
+    Particle tmp;
+    Membrane m { z, 20, 20, 1, 1, 1, z, 0, 3, 1, 1, 20, tmp };
 
+    std::vector<Particle> particles {};
     ParticleContainer container(particles);
-    Membrane membrane({0,0,0}, 3, 1);
-    membrane.initMembrane(container, 1);
+
+    m.generateMolecule(container, 562);
 
     for (auto& p : container.particles) {
-        EXPECT_EQ(p.getMembraneId() != -1, true);
-    }
-
-    Particle p4 = {{0, 1, 0}, z, 1, 0};
-    Particle p5 = {{1, 1, 0}, z, 1, 0};
-    Particle p6 = {{2, 1, 0}, z, 1, 0};
-
-    container.addParticle(p4);
-    container.addParticle(p5);
-    container.addParticle(p6);
-
-    Membrane membrane2({0,0,0}, 3, 2);
-    membrane2.initMembrane(container, 1);
-
-    for (auto& p : container.particles) {
-        EXPECT_EQ(p.getMembraneId() != -1, true);
+        EXPECT_EQ(p.getMoleculeId(), 562);
     }
 }
 
+// Check if the neighbors are set correctly
 TEST(MembraneTests, membraneMapTests)
 {
-    Particle p1 = {z, z, 1, 0};
-    Particle p2 = {{1, 0, 0}, z, 1, 0};
-    Particle p3 = {{2, 0, 0}, z, 1, 0};
-    std::vector<Particle> particles = {p1, p2, p3};
+    Particle tmp;
+    int width = 34;
+    int height = 23;
+    int depth = 1;
+    Membrane m { z, width, height, depth, 1, 1, z, 0, 3, 1, 1, 20, tmp };
 
+    std::vector<Particle> particles {};
     ParticleContainer container(particles);
-    Membrane membrane({0,0,0}, 3, 1);
-    membrane.initMembrane(container, 1);
 
-    EXPECT_EQ(membrane.isNeighbor(container.particles[0], container.particles[1]), true);
-    EXPECT_EQ(membrane.isNeighbor(container.particles[1], container.particles[2]), true);
-    EXPECT_EQ(membrane.isNeighbor(container.particles[1], container.particles[0]), true);
-    EXPECT_EQ(membrane.isNeighbor(container.particles[2], container.particles[1]), true);
-    EXPECT_EQ(membrane.isNeighbor(container.particles[0], container.particles[2]), false);
+    m.generateMolecule(container, 562);
 
-    Particle p4 = {{0, 1, 0}, z, 1, 0};
-    Particle p5 = {{1, 1, 0}, z, 1, 0};
-    Particle p6 = {{2, 1, 0}, z, 1, 0};
+    // Check if the number of particles and neighbors are correct
+    EXPECT_EQ(container.particles.size(), width * height * depth);
+    EXPECT_EQ(m.getDiagNeighbors().size(), width * height * depth);
+    EXPECT_EQ(m.getDirectNeighbors().size(), width * height * depth);
 
-    container.addParticle(p4);
-    container.addParticle(p5);
-    container.addParticle(p6);
+    std::array<double, 3> directTop = { 0, 1, 0 };
+    std::array<double, 3> directRight = { 1, 0, 0 };
 
-    Membrane membrane2({0,0,0}, 3, 2);
-    membrane2.initMembrane(container, 1);
+    std::array<double, 3> diagTopRight = { 1, 1, 0 };
+    std::array<double, 3> diagBottomRight = { 1, -1, 0 };
 
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[0], container.particles[4]), true);
-    EXPECT_EQ(membrane2.isNeighbor(container.particles[0], container.particles[3]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[1], container.particles[3]), true);
-    EXPECT_EQ(membrane2.isNeighbor(container.particles[1], container.particles[4]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[1], container.particles[5]), true);
-    EXPECT_EQ(membrane2.isNeighbor(container.particles[2], container.particles[5]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[2], container.particles[4]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[4], container.particles[0]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[4], container.particles[2]), true);
-    EXPECT_EQ(membrane2.isNeighbor(container.particles[4], container.particles[1]), true);
-
-
-    std::vector<int> neighbors = membrane2.getNeighbors(container.particles[0]);
-    std::vector check{1, 4, 3, -1, -1, -1, -1 , -1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors[id] == check[id], true);
-    }
-
-    std::vector<int> neighbors2 = membrane2.getNeighbors(container.particles[1]);
-    std::vector check2{2, 5, 4, 3, 0, -1, -1 , -1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors2[id] == check2[id], true);
-    }
-
-    std::vector<int> neighbors3 = membrane2.getNeighbors(container.particles[2]);
-    std::vector check3{-1, -1, 5, 4, 1, -1, -1 , -1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors3[id] == check3[id], true);
-    }
-
-    std::vector<int> neighbors4 = membrane2.getNeighbors(container.particles[3]);
-    std::vector check4{4, -1, -1, -1, -1, -1, 0 , 1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors4[id] == check4[id], true);
-    }
-
-    std::vector<int> neighbors5 = membrane2.getNeighbors(container.particles[4]);
-    std::vector check5{5, -1, -1, -1, 3, 0, 1 , 2};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors5[id] == check5[id], true);
-    }
-
-    std::vector<int> neighbors6 = membrane2.getNeighbors(container.particles[5]);
-    std::vector check6{-1, -1, -1, -1, 4, 1, 2 , -1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors6[id] == check6[id], true);
+    // A neighbor's position must be reconstructable from the particle's position
+    // Note the != works as XOR here i.e. only one of the two shifts can be true
+    for (auto& p : container.particles) {
+        auto ref = std::reference_wrapper<Particle>(p);
+        for (auto& neighbor : m.getDirectNeighbors().at(ref)) {
+            bool neighborIsValid = (neighbor.get().getX() == p.getX() + directTop) !=
+                                   (neighbor.get().getX() == p.getX() + directRight);
+            EXPECT_TRUE(neighborIsValid);
+        }
+        for (auto& neighbor : m.getDiagNeighbors().at(ref)) {
+            bool neighborIsValid = (neighbor.get().getX() == p.getX() + diagTopRight) !=
+                                   (neighbor.get().getX() == p.getX() + diagBottomRight);
+            EXPECT_TRUE(neighborIsValid);
+        }
     }
 }
 
-TEST(MembraneTests, membraneMapTests2)
+// Test if the number of neighbors is correct
+TEST(MembraneTests, membraneNeighborCountTests)
 {
-    Particle p1 = {z, z, 1, 0};
-    Particle p2 = {{2, 0, 0}, z, 1, 0};
-    Particle p3 = {{4, 0, 0}, z, 1, 0};
-    std::vector<Particle> particles = {p1, p2, p3};
+    Particle tmp;
+    int width = 34;
+    int height = 23;
+    int depth = 1;
+    Membrane m { z, width, height, depth, 1, 1, z, 0, 3, 1, 1, 20, tmp };
 
+    std::vector<Particle> particles {};
     ParticleContainer container(particles);
-    Membrane membrane({0,0,0}, 3, 1);
-    membrane.initMembrane(container, 2);
 
-    EXPECT_EQ(membrane.isNeighbor(container.particles[0], container.particles[1]), true);
-    EXPECT_EQ(membrane.isNeighbor(container.particles[1], container.particles[2]), true);
-    EXPECT_EQ(membrane.isNeighbor(container.particles[1], container.particles[0]), true);
-    EXPECT_EQ(membrane.isNeighbor(container.particles[2], container.particles[1]), true);
-    EXPECT_EQ(membrane.isNeighbor(container.particles[0], container.particles[2]), false);
+    m.generateMolecule(container, 562);
 
-    Particle p4 = {{0, 2, 0}, z, 1, 0};
-    Particle p5 = {{2, 2, 0}, z, 1, 0};
-    Particle p6 = {{4, 2, 0}, z, 1, 0};
+    // lambda function to check if particle is at the top layer
+    auto isTopLayer = [](Particle& p, int height, double spacing) {
+        return p.getX()[1] > (static_cast<double>(height) - 0.5f) * spacing;
+    };
+    // lambda function to check if particle is at right layer
+    auto isRightLayer = [](Particle& p, int width, double spacing) {
+        return p.getX()[0] > (static_cast<double>(width) - 0.5f) * spacing;
+    };
+    // lambda function to check if particle is at the bottom layer
+    auto isBottomLayer = [](Particle& p, double spacing) { return p.getX()[1] < 0.5f * spacing; };
 
-    container.addParticle(p4);
-    container.addParticle(p5);
-    container.addParticle(p6);
+    // Check if the number of neighbors is correct
+    for (auto& p : container.particles) {
+        auto ref = std::reference_wrapper<Particle>(p);
+        int expectedDirectNeighbors =
+            2 - (isTopLayer(p, height, 1) ? 1 : 0) - (isRightLayer(p, width, 1) ? 1 : 0);
+        int expectedDiagNeighbors =
+            2 - (isRightLayer(p, width, 1)
+                     ? 2
+                     : (isTopLayer(p, height, 1) || isBottomLayer(p, 1) ? 1 : 0));
 
-    Membrane membrane2({0,0,0}, 3, 2);
-    membrane2.initMembrane(container, 2);
-
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[0], container.particles[4]), true);
-    EXPECT_EQ(membrane2.isNeighbor(container.particles[0], container.particles[3]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[1], container.particles[3]), true);
-    EXPECT_EQ(membrane2.isNeighbor(container.particles[1], container.particles[4]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[1], container.particles[5]), true);
-    EXPECT_EQ(membrane2.isNeighbor(container.particles[2], container.particles[5]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[2], container.particles[4]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[4], container.particles[0]), true);
-    EXPECT_EQ(membrane2.isDiagonalNeighbor(container.particles[4], container.particles[2]), true);
-    EXPECT_EQ(membrane2.isNeighbor(container.particles[4], container.particles[1]), true);
-
-
-    std::vector<int> neighbors = membrane2.getNeighbors(container.particles[0]);
-    std::vector check{1, 4, 3, -1, -1, -1, -1 , -1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors[id] == check[id], true);
-    }
-
-    std::vector<int> neighbors2 = membrane2.getNeighbors(container.particles[1]);
-    std::vector check2{2, 5, 4, 3, 0, -1, -1 , -1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors2[id] == check2[id], true);
-    }
-
-    std::vector<int> neighbors3 = membrane2.getNeighbors(container.particles[2]);
-    std::vector check3{-1, -1, 5, 4, 1, -1, -1 , -1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors3[id] == check3[id], true);
-    }
-
-    std::vector<int> neighbors4 = membrane2.getNeighbors(container.particles[3]);
-    std::vector check4{4, -1, -1, -1, -1, -1, 0 , 1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors4[id] == check4[id], true);
-    }
-
-    std::vector<int> neighbors5 = membrane2.getNeighbors(container.particles[4]);
-    std::vector check5{5, -1, -1, -1, 3, 0, 1 , 2};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors5[id] == check5[id], true);
-    }
-
-    std::vector<int> neighbors6 = membrane2.getNeighbors(container.particles[5]);
-    std::vector check6{-1, -1, -1, -1, 4, 1, 2 , -1};
-    for (int id = 0; id < 8; ++id) {
-        EXPECT_EQ(neighbors6[id] == check6[id], true);
+        EXPECT_EQ(m.getDirectNeighbors().at(ref).size(), expectedDirectNeighbors);
+        EXPECT_EQ(m.getDiagNeighbors().at(ref).size(), expectedDiagNeighbors);
     }
 }

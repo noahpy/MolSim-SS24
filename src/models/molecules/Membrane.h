@@ -74,6 +74,18 @@ public:
      */
     std::string toString();
 
+    /**
+     * @brief Get the direct neighbors of the particles
+     * @return The direct neighbors of the particles
+     */
+    [[nodiscard]] const NeighborParticleMap& getDirectNeighbors() const { return directNeighbors; }
+
+    /**
+     * @brief Get the diagonal neighbors of the particles
+     * @return The diagonal neighbors of the particles
+     */
+    [[nodiscard]] const NeighborParticleMap& getDiagNeighbors() const { return diagNeighbors; }
+
 protected:
     std::reference_wrapper<Particle> root; /**< The root particle of the molecule */
     /**
