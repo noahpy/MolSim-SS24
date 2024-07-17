@@ -58,7 +58,41 @@ instead.
 To run the project (in general), run the following command:
 
 ```
-src/MolSim -d <delta_t> -e <end_t> ../input/<input_file>
+src/MolSim ../input/<input_file> <program Arguments>
+```
+
+The program arguments can be specified as follows
+
+```
+-d, --delta_t=VALUE    Set the time step (default: 0.014)
+-e, --end_time=VALUE   Set the end time for simulation (default: 2.8)
+    --epsilon=VALUE    Set the depth of LJ potential well (default: 5)
+    --sigma=VALUE      Set the Zero crossing of LJ potential (default: 1)
+-l, --log_level=LEVEL  Set the logging level (default: 3, incompatible with -p)
+      - 1                 trace
+      - 2                 debug
+      - 3                 info
+      - 4                 warn
+      - 5                 error
+      - 6                 critical
+      - 7                 off
+-c                     Specify that the given input file describes clusters
+-a                     Specify that the given input file is of type ascii art
+-x                     Specify that the given input file is of type XML
+-s, --simtype=VALUE    Specify simulation type (default: 0)
+      - 0                 PlanetSimulation
+      - 1                 LennardJonesSimulation
+      - 2                 LinkedLennardJonesSimulation
+      - 3                 LennardJonesDomainSimulation
+      - 4                 MixedLJSimulation
+      - 5                 MembraneSimulation
+-w, --writetype=VALUE  Specify writer type (default: 0, incompatible with -p)
+      - 0                 VTK-Writer
+      - 1                 XYZ-Writer
+      - 2                 XML-Writer
+      - 3                 Empty i.e. no output
+-p                     Run performance measurements (incompatible with -l, -w)
+-h, --help             Display help message
 ```
 
 #### Assignment 1 simulation
@@ -301,6 +335,6 @@ MolSim-SS24
         └── boundaryConditions      Tests for the boundary conditions
 ```
 
-- `src/MolSim.cpp`: Is the core file holding main function
+- `src/MolSim.cpp`: Is the core file holding the main function
 
 ### Input specification
