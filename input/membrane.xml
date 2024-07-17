@@ -4,8 +4,8 @@
     <params>
         <delta_t>0.01</delta_t>
         <end_time>500</end_time>
-        <output>membrane_refactor</output>
-        <frequency>10</frequency>
+        <output>membrane_moved</output>
+        <frequency>100</frequency>
         <!-- Domain params -->
         <domainOrigin>
             <x>0</x>
@@ -14,7 +14,7 @@
         </domainOrigin>
         <domainSize>
             <x>200</x>
-            <y>200</y>
+            <y>300</y>
             <z>200</z>
         </domainSize>
         <cutoff>4</cutoff>

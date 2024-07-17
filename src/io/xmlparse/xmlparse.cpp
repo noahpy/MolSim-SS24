@@ -91,7 +91,7 @@ void xmlparse(Params& sim_params, std::string& filename)
         }
 
         Particle p {};
-        Membrane m {{40,40,100}, 50, 50, 1, 2.2, 1, {0,0,0}, 0, 3, 1, 2.2, 300};
+        Membrane m {{40,140,100}, 50, 50, 1, 2.2, 1, {0,0,0}, 0, 3, 1, 2.2, 300};
         std::unique_ptr<Molecule> m_ptr = std::make_unique<Membrane>(m);
         sim_params.molecules.push_back(std::move(m_ptr));
 
