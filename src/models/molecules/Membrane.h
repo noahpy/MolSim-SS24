@@ -14,6 +14,11 @@ typedef std::vector<std::vector<size_t>> ParticleGrid;
 typedef std::map<size_t , std::vector<size_t>> NeighborParticleMap;
 
 /**
+ * @brief A map that stores if two particles are neighbors
+ */
+typedef std::map<std::pair<size_t, size_t>, bool> NeighboringRelationMap;
+
+/**
  * @brief A class to model a molecules of particles
  */
 class Membrane : public Molecule {
@@ -87,6 +92,8 @@ protected:
     NeighborParticleMap directNeighbors; /**< The direct neighbors of the particles (only the ones that are required to calculate the forces) */
     NeighborParticleMap diagNeighbors; /**< The vertical neighbors of the particles (only the ones that are required to calculate the forces) */
 
+    NeighboringRelationMap neighboringRelations; /**< The neighboring relations of the particles */
+
     std::array<double, 3> origin; /**< The origin of the membrane */
     int numParticlesWidth; /**< The number of particles in width */
     int numParticlesHeight; /**< The number of particles in height */
@@ -103,13 +110,30 @@ protected:
     /**
      * @brief Initialize the neighbors of the particles after the gird has been generated
      * @param particleGrid The particle grid of the membrane (flattend to 2D grid)
-     * @param container The container of the particles
      */
-    void initNeighbors(const ParticleGrid& particleGrid, const ParticleContainer& container);
+    void initNeighbors(const ParticleGrid& particleGrid);
 
     /**
      * @brief Calculate the harmonic forces for all particles of the membrane
      * @param container The container of the particles
      */
     void calculateHarmonicForces(ParticleContainer& container);
+
+    /**
+     * @brief Check if two particles are neighbors
+     * @param particleID1 The ID of the first particle
+     * @param particleID2 The ID of the second particle
+     * @return True <=> The particles are neighbors
+     */
+    bool isNeighbor(size_t particleID1, size_t particleID2);
+
+    /**
+     * @brief Get the key for the neighboring relations map
+     * @param particleID1 The ID of the first particle
+     * @param particleID2 The ID of the second particle
+     * @return The key for the neighboring relations map
+     */
+    inline std::pair<size_t, size_t> getKey(size_t particleID1, size_t particleID2) {
+        return particleID1 < particleID2 ? std::make_pair(particleID1, particleID2) : std::make_pair(particleID2, particleID1);
+    }
 };

@@ -99,12 +99,12 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
     }
 
     // Set neighbors
-    initNeighbors(particleGrid, container);
+    initNeighbors(particleGrid);
 
     spdlog::info("Generated Membrane: {}", toString());
 }
 
-void Membrane::initNeighbors(const ParticleGrid& particleGrid, const ParticleContainer& container)
+void Membrane::initNeighbors(const ParticleGrid& particleGrid)
 {
     /**
      * Idea:
@@ -123,6 +123,12 @@ void Membrane::initNeighbors(const ParticleGrid& particleGrid, const ParticleCon
         { 1, 1 }, // Top-Right
         { 1, -1 } // Bottom-Right
     };
+    std::vector<std::array<int, 2>> otherNeighbors = {
+        { 0, -1 }, // Bottom
+        { -1, 0 }, // Left
+        { -1, -1 }, // Bottom-Left
+        { -1, 1 } // Top-Left
+    };
 
     for (int x = 0; x < particleGrid.size(); x++) { // x
         for (int y = 0; y < particleGrid[0].size(); y++) { // z
@@ -132,15 +138,26 @@ void Membrane::initNeighbors(const ParticleGrid& particleGrid, const ParticleCon
             for (auto& offset : offsetKernelsDirect) {
                 int i = offset[0] + x;
                 int j = offset[1] + y;
-                if (i >= 0 && i < particleGrid.size() && j >= 0 && j < particleGrid[0].size())
+                if (i >= 0 && i < particleGrid.size() && j >= 0 && j < particleGrid[0].size()) {
                     directNeighbors[particleGrid[x][y]].push_back(particleGrid[i][j]);
+                    neighboringRelations.insert({getKey(particleGrid[x][y], particleGrid[i][j]), true});
+                }
             }
 
             for (auto& offset : offsetKernelsDiag) {
                 int i = offset[0] + x;
                 int j = offset[1] + y;
-                if (i >= 0 && i < particleGrid.size() && j >= 0 && j < particleGrid[0].size())
+                if (i >= 0 && i < particleGrid.size() && j >= 0 && j < particleGrid[0].size()) {
                     diagNeighbors[particleGrid[x][y]].push_back(particleGrid[i][j]);
+                    neighboringRelations.insert({getKey(particleGrid[x][y], particleGrid[i][j]), true});
+                }
+            }
+
+            for (auto& offset : otherNeighbors) {
+                int i = offset[0] + x;
+                int j = offset[1] + y;
+                if (i >= 0 && i < particleGrid.size() && j >= 0 && j < particleGrid[0].size())
+                    neighboringRelations.insert({getKey(particleGrid[x][y], particleGrid[i][j]), true});
             }
         }
     }
@@ -176,6 +193,10 @@ void Membrane::calculateIntraMolecularForces(const Simulation& sim)
                         pair.first.get().getMoleculeId() != pair.second.get().getMoleculeId())
                         continue;
 
+                    // Skip iteration if particles are neighbors -> no repulsion
+                    if (isNeighbor(pair.first.get().getID(), pair.second.get().getID()))
+                        continue;
+
                     std::array<double, 3> delta =
                         pair.first.get().getX() - pair.second.get().getX();
                     // Check if the distance is less than the cutoff to only have repulsive forces
@@ -190,6 +211,10 @@ void Membrane::calculateIntraMolecularForces(const Simulation& sim)
                             // Skip iteration if not both particles are part of this membrane
                             if (p1.get().getMoleculeId() != ID ||
                                 p1.get().getMoleculeId() != p2.get().getMoleculeId())
+                                continue;
+
+                            // Skip iteration if particles are neighbors -> no repulsion
+                            if (isNeighbor(p1.get().getID(), p2.get().getID()))
                                 continue;
 
                             // Check if the distance is less than the cutoff to only have repulsive
@@ -218,6 +243,11 @@ void Membrane::calculateHarmonicForces(ParticleContainer& container)
                 if (container.particles[neighbor].getActivity())
                     harmonic_calc(
                         container.particles[pair.first], container.particles[neighbor], k, diagR0);
+}
+
+
+bool Membrane::isNeighbor(size_t particleID1, size_t particleID2) {
+    return neighboringRelations.find(getKey(particleID1, particleID2)) == neighboringRelations.end();
 }
 
 std::string Membrane::toString()
