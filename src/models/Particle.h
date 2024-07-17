@@ -67,6 +67,11 @@ private:
 
     bool isNotStationary; /**< Whether the particle is stationary or not */
 
+    /**
+     * @brief id in the molecules, if particle is not part of a molecules then id = -1
+     */
+    size_t moleculeId;
+
 public:
     /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
@@ -76,6 +81,7 @@ public:
      * @param type The type of the particle
      * @param id The id of the particle
      * @param isNotStationary_arg Whether the particle is stationary or not
+     * @param moleculeId The molecule's id the particle belongs to (0 if it does not belong)
      * @return Particle object
      */
     Particle(
@@ -86,7 +92,8 @@ public:
         double m_arg,
         int type = 0,
         size_t id = 0,
-        bool isNotStationary_arg = true);
+        bool isNotStationary_arg = true,
+        size_t moleculeId = 0);
 
     /**
      * @brief Construct a new Particle object by copying another Particle object -> do not use
@@ -183,6 +190,16 @@ public:
     }
 
     /**
+     * @brief Get the molecules id
+     * @return id for the molecules
+     */
+    [[nodiscard]] inline size_t getMoleculeId() const THREAD_SAFE
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        return moleculeId;
+    }
+
+    /**
      * @brief Get whether the particle is stationary or not
      * @return The value of isNotStationary
      */
@@ -270,7 +287,14 @@ public:
         active = act_new;
     }
 
-    inline size_t getID() const { return id; }
+    /**
+     * @brief Get the particle's id
+     * @return The particle's id
+     */
+    inline size_t getID() const
+    {
+        return id;
+    }
 
     inline void setID(size_t id_new) THREAD_SAFE
     {

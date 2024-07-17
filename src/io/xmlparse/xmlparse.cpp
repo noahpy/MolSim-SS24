@@ -4,6 +4,7 @@
 #include "physics/thermostat/Thermostat.h"
 #include <fstream>
 #include <spdlog/spdlog.h>
+#include "models/molecules/Membrane.h"
 
 void xmlparse(Params& sim_params, std::string& filename)
 {

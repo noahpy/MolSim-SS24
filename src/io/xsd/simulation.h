@@ -631,7 +631,9 @@ class ParticleTypeAttr_t;
 class ParticleTypes_t;
 class cuboid_t;
 class sphere_t;
+class membrane_t;
 class clusters_t;
+class molecules_t;
 class params_t;
 class simulation_t;
 
@@ -4734,6 +4736,690 @@ class sphere_t: public ::xml_schema::type
 };
 
 /**
+ * @brief Class corresponding to the %membrane_t schema type.
+ *
+ * Defines the properties of a cuboid-shaped cluster.
+ *
+ * @nosubgrouping
+ */
+class membrane_t: public ::xml_schema::type
+{
+  public:
+  /**
+   * @name pos
+   *
+   * @brief Accessor and modifier functions for the %pos
+   * required element.
+   *
+   * The initial position of the cuboid in 3D space.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::doubleVec_t pos_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< pos_type, char > pos_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const pos_type&
+  pos () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  pos_type&
+  pos ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  pos (const pos_type& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly
+   * instead of making a copy.
+   */
+  void
+  pos (::std::unique_ptr< pos_type > p);
+
+  //@}
+
+  /**
+   * @name vel
+   *
+   * @brief Accessor and modifier functions for the %vel
+   * required element.
+   *
+   * The initial velocity of the cuboid in 3D space.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::doubleVec_t vel_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< vel_type, char > vel_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const vel_type&
+  vel () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  vel_type&
+  vel ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  vel (const vel_type& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly
+   * instead of making a copy.
+   */
+  void
+  vel (::std::unique_ptr< vel_type > p);
+
+  //@}
+
+  /**
+   * @name dim
+   *
+   * @brief Accessor and modifier functions for the %dim
+   * required element.
+   *
+   * The dimensions of the cuboid in terms of number of particles along
+   * each axis.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::intVec_t dim_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< dim_type, char > dim_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const dim_type&
+  dim () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  dim_type&
+  dim ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  dim (const dim_type& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly
+   * instead of making a copy.
+   */
+  void
+  dim (::std::unique_ptr< dim_type > p);
+
+  //@}
+
+  /**
+   * @name mass
+   *
+   * @brief Accessor and modifier functions for the %mass
+   * required element.
+   *
+   * The mass of the cuboid.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ mass_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< mass_type, char, ::xsd::cxx::tree::schema_type::double_ > mass_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const mass_type&
+  mass () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  mass_type&
+  mass ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  mass (const mass_type& x);
+
+  //@}
+
+  /**
+   * @name spacing
+   *
+   * @brief Accessor and modifier functions for the %spacing
+   * required element.
+   *
+   * The spacing between particles in the cuboid.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ spacing_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< spacing_type, char, ::xsd::cxx::tree::schema_type::double_ > spacing_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const spacing_type&
+  spacing () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  spacing_type&
+  spacing ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  spacing (const spacing_type& x);
+
+  //@}
+
+  /**
+   * @name brownVel
+   *
+   * @brief Accessor and modifier functions for the %brownVel
+   * required element.
+   *
+   * The Brownian motion velocity.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ brownVel_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< brownVel_type, char, ::xsd::cxx::tree::schema_type::double_ > brownVel_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const brownVel_type&
+  brownVel () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  brownVel_type&
+  brownVel ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  brownVel (const brownVel_type& x);
+
+  //@}
+
+  /**
+   * @name brownDim
+   *
+   * @brief Accessor and modifier functions for the %brownDim
+   * required element.
+   *
+   * The dimension affected by Brownian motion.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::dimension_t brownDim_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< brownDim_type, char > brownDim_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const brownDim_type&
+  brownDim () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  brownDim_type&
+  brownDim ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  brownDim (const brownDim_type& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly
+   * instead of making a copy.
+   */
+  void
+  brownDim (::std::unique_ptr< brownDim_type > p);
+
+  //@}
+
+  /**
+   * @name ptype
+   *
+   * @brief Accessor and modifier functions for the %ptype
+   * optional element.
+   *
+   * The particle type of the cuboid.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::unsigned_int ptype_type;
+
+  /**
+   * @brief Element optional container type.
+   */
+  typedef ::xsd::cxx::tree::optional< ptype_type > ptype_optional;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< ptype_type, char > ptype_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * container.
+   *
+   * @return A constant reference to the optional container.
+   */
+  const ptype_optional&
+  ptype () const;
+
+  /**
+   * @brief Return a read-write reference to the element container.
+   *
+   * @return A reference to the optional container.
+   */
+  ptype_optional&
+  ptype ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  ptype (const ptype_type& x);
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x An optional container with the new value to set.
+   *
+   * If the value is present in @a x then this function makes a copy 
+   * of this value and sets it as the new value of the element.
+   * Otherwise the element container is set the 'not present' state.
+   */
+  void
+  ptype (const ptype_optional& x);
+
+  //@}
+
+  /**
+   * @name equiDist
+   *
+   * @brief Accessor and modifier functions for the %equiDist
+   * required element.
+   *
+   * The equilibrium distance.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ equiDist_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< equiDist_type, char, ::xsd::cxx::tree::schema_type::double_ > equiDist_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const equiDist_type&
+  equiDist () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  equiDist_type&
+  equiDist ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  equiDist (const equiDist_type& x);
+
+  //@}
+
+  /**
+   * @name springConst
+   *
+   * @brief Accessor and modifier functions for the %springConst
+   * required element.
+   *
+   * The spring constant for harmonic force calculations.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::xml_schema::double_ springConst_type;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< springConst_type, char, ::xsd::cxx::tree::schema_type::double_ > springConst_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element.
+   *
+   * @return A constant reference to the element.
+   */
+  const springConst_type&
+  springConst () const;
+
+  /**
+   * @brief Return a read-write reference to the element.
+   *
+   * @return A reference to the element.
+   */
+  springConst_type&
+  springConst ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  springConst (const springConst_type& x);
+
+  //@}
+
+  /**
+   * @name Constructors
+   */
+  //@{
+
+  /**
+   * @brief Create an instance from the ultimate base and
+   * initializers for required elements and attributes.
+   */
+  membrane_t (const pos_type&,
+              const vel_type&,
+              const dim_type&,
+              const mass_type&,
+              const spacing_type&,
+              const brownVel_type&,
+              const brownDim_type&,
+              const equiDist_type&,
+              const springConst_type&);
+
+  /**
+   * @brief Create an instance from the ultimate base and
+   * initializers for required elements and attributes
+   * (::std::unique_ptr version).
+   *
+   * This constructor will try to use the passed values directly
+   * instead of making copies.
+   */
+  membrane_t (::std::unique_ptr< pos_type >,
+              ::std::unique_ptr< vel_type >,
+              ::std::unique_ptr< dim_type >,
+              const mass_type&,
+              const spacing_type&,
+              const brownVel_type&,
+              const brownDim_type&,
+              const equiDist_type&,
+              const springConst_type&);
+
+  /**
+   * @brief Create an instance from a DOM element.
+   *
+   * @param e A DOM element to extract the data from.
+   * @param f Flags to create the new instance with.
+   * @param c A pointer to the object that will contain the new
+   * instance.
+   */
+  membrane_t (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy constructor.
+   *
+   * @param x An instance to make a copy of.
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  membrane_t (const membrane_t& x,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy the instance polymorphically.
+   *
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   * @return A pointer to the dynamically allocated copy.
+   *
+   * This function ensures that the dynamic type of the instance is
+   * used for copying and should be used for polymorphic object
+   * models instead of the copy constructor.
+   */
+  virtual membrane_t*
+  _clone (::xml_schema::flags f = 0,
+          ::xml_schema::container* c = 0) const;
+
+  /**
+   * @brief Copy assignment operator.
+   *
+   * @param x An instance to make a copy of.
+   * @return A reference to itself.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  membrane_t&
+  operator= (const membrane_t& x);
+
+  //@}
+
+  /**
+   * @brief Destructor.
+   */
+  virtual 
+  ~membrane_t ();
+
+  // Implementation.
+  //
+
+  //@cond
+
+  protected:
+  void
+  parse (::xsd::cxx::xml::dom::parser< char >&,
+         ::xml_schema::flags);
+
+  protected:
+  ::xsd::cxx::tree::one< pos_type > pos_;
+  ::xsd::cxx::tree::one< vel_type > vel_;
+  ::xsd::cxx::tree::one< dim_type > dim_;
+  ::xsd::cxx::tree::one< mass_type > mass_;
+  ::xsd::cxx::tree::one< spacing_type > spacing_;
+  ::xsd::cxx::tree::one< brownVel_type > brownVel_;
+  ::xsd::cxx::tree::one< brownDim_type > brownDim_;
+  ptype_optional ptype_;
+  ::xsd::cxx::tree::one< equiDist_type > equiDist_;
+  ::xsd::cxx::tree::one< springConst_type > springConst_;
+
+  //@endcond
+};
+
+/**
  * @brief Class corresponding to the %clusters_t schema type.
  *
  * Represents a collection of clusters.
@@ -4958,6 +5644,168 @@ class clusters_t: public ::xml_schema::type
   protected:
   cuboid_sequence cuboid_;
   sphere_sequence sphere_;
+
+  //@endcond
+};
+
+/**
+ * @brief Class corresponding to the %molecules_t schema type.
+ *
+ * Represents a collection of molecules.
+ *
+ * @nosubgrouping
+ */
+class molecules_t: public ::xml_schema::type
+{
+  public:
+  /**
+   * @name membrane
+   *
+   * @brief Accessor and modifier functions for the %membrane
+   * sequence element.
+   *
+   * A membrane cluster within the collection.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::membrane_t membrane_type;
+
+  /**
+   * @brief Element sequence container type.
+   */
+  typedef ::xsd::cxx::tree::sequence< membrane_type > membrane_sequence;
+
+  /**
+   * @brief Element iterator type.
+   */
+  typedef membrane_sequence::iterator membrane_iterator;
+
+  /**
+   * @brief Element constant iterator type.
+   */
+  typedef membrane_sequence::const_iterator membrane_const_iterator;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< membrane_type, char > membrane_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * sequence.
+   *
+   * @return A constant reference to the sequence container.
+   */
+  const membrane_sequence&
+  membrane () const;
+
+  /**
+   * @brief Return a read-write reference to the element sequence.
+   *
+   * @return A reference to the sequence container.
+   */
+  membrane_sequence&
+  membrane ();
+
+  /**
+   * @brief Copy elements from a given sequence.
+   *
+   * @param s A sequence to copy elements from.
+   *
+   * For each element in @a s this function makes a copy and adds it 
+   * to the sequence. Note that this operation completely changes the 
+   * sequence and all old elements will be lost.
+   */
+  void
+  membrane (const membrane_sequence& s);
+
+  //@}
+
+  /**
+   * @name Constructors
+   */
+  //@{
+
+  /**
+   * @brief Create an instance from the ultimate base and
+   * initializers for required elements and attributes.
+   */
+  molecules_t ();
+
+  /**
+   * @brief Create an instance from a DOM element.
+   *
+   * @param e A DOM element to extract the data from.
+   * @param f Flags to create the new instance with.
+   * @param c A pointer to the object that will contain the new
+   * instance.
+   */
+  molecules_t (const ::xercesc::DOMElement& e,
+               ::xml_schema::flags f = 0,
+               ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy constructor.
+   *
+   * @param x An instance to make a copy of.
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  molecules_t (const molecules_t& x,
+               ::xml_schema::flags f = 0,
+               ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy the instance polymorphically.
+   *
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   * @return A pointer to the dynamically allocated copy.
+   *
+   * This function ensures that the dynamic type of the instance is
+   * used for copying and should be used for polymorphic object
+   * models instead of the copy constructor.
+   */
+  virtual molecules_t*
+  _clone (::xml_schema::flags f = 0,
+          ::xml_schema::container* c = 0) const;
+
+  /**
+   * @brief Copy assignment operator.
+   *
+   * @param x An instance to make a copy of.
+   * @return A reference to itself.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  molecules_t&
+  operator= (const molecules_t& x);
+
+  //@}
+
+  /**
+   * @brief Destructor.
+   */
+  virtual 
+  ~molecules_t ();
+
+  // Implementation.
+  //
+
+  //@cond
+
+  protected:
+  void
+  parse (::xsd::cxx::xml::dom::parser< char >&,
+         ::xml_schema::flags);
+
+  protected:
+  membrane_sequence membrane_;
 
   //@endcond
 };
@@ -6264,6 +7112,84 @@ class simulation_t: public ::xml_schema::type
   //@}
 
   /**
+   * @name molecules
+   *
+   * @brief Accessor and modifier functions for the %molecules
+   * optional element.
+   *
+   * The collection of molecules to be simulated.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::molecules_t molecules_type;
+
+  /**
+   * @brief Element optional container type.
+   */
+  typedef ::xsd::cxx::tree::optional< molecules_type > molecules_optional;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< molecules_type, char > molecules_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * container.
+   *
+   * @return A constant reference to the optional container.
+   */
+  const molecules_optional&
+  molecules () const;
+
+  /**
+   * @brief Return a read-write reference to the element container.
+   *
+   * @return A reference to the optional container.
+   */
+  molecules_optional&
+  molecules ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  molecules (const molecules_type& x);
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x An optional container with the new value to set.
+   *
+   * If the value is present in @a x then this function makes a copy 
+   * of this value and sets it as the new value of the element.
+   * Otherwise the element container is set the 'not present' state.
+   */
+  void
+  molecules (const molecules_optional& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly instead
+   * of making a copy.
+   */
+  void
+  molecules (::std::unique_ptr< molecules_type > p);
+
+  //@}
+
+  /**
    * @name ptypes
    *
    * @brief Accessor and modifier functions for the %ptypes
@@ -6514,6 +7440,7 @@ class simulation_t: public ::xml_schema::type
   protected:
   ::xsd::cxx::tree::one< params_type > params_;
   ::xsd::cxx::tree::one< clusters_type > clusters_;
+  molecules_optional molecules_;
   ptypes_optional ptypes_;
   particles_optional particles_;
 
@@ -6863,7 +7790,13 @@ void
 operator<< (::xercesc::DOMElement&, const sphere_t&);
 
 void
+operator<< (::xercesc::DOMElement&, const membrane_t&);
+
+void
 operator<< (::xercesc::DOMElement&, const clusters_t&);
+
+void
+operator<< (::xercesc::DOMElement&, const molecules_t&);
 
 void
 operator<< (::xercesc::DOMElement&, const params_t&);
