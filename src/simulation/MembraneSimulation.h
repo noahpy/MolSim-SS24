@@ -75,6 +75,5 @@ public:
      */
     [[nodiscard]] const std::vector<std::unique_ptr<Molecule>>& getMolecules() const { return molecules; }
 
-protected:
     std::vector<std::unique_ptr<Molecule>> molecules; /**< The molecules in the simulation */
 };

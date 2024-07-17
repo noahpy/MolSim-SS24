@@ -41,6 +41,33 @@
         <!-- No Clusters -->
     </clusters>
 
+    <molecules>
+        <membrane>
+          <pos>
+            <x>15</x>
+            <y>15</y>
+            <z>1.5</z>
+          </pos>
+          <vel>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </vel>
+          <dim>
+            <x>50</x>
+            <y>50</y>
+            <z>1</z>
+          </dim>
+          <mass>1.0</mass>
+          <spacing>2.2</spacing>
+          <brownVel>0</brownVel>
+          <brownDim>2</brownDim>
+          <ptype>1</ptype>
+          <equiDist>2.2</equiDist>
+          <springConst>300</springConst>
+        </membrane>
+    </molecules>
+
     <!-- Particle types -->
     <ptypes>
         <ptype type="1">

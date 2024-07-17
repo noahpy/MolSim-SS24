@@ -457,6 +457,18 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+    <!-- Molecules type definition -->
+
+  <xs:complexType name="molecules_t">
+    <xs:annotation>
+      <xs:documentation>
+        Represents a collection of molecules.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
        <xs:element name="membrane" type="membrane_t">
         <xs:annotation>
           <xs:documentation>
@@ -605,6 +617,13 @@
         <xs:annotation>
           <xs:documentation>
             The collection of clusters to be simulated.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="molecules" type="molecules_t" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The collection of molecules to be simulated.
           </xs:documentation>
         </xs:annotation>
       </xs:element>

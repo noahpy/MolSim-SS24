@@ -633,6 +633,7 @@ class cuboid_t;
 class sphere_t;
 class membrane_t;
 class clusters_t;
+class molecules_t;
 class params_t;
 class simulation_t;
 
@@ -5561,72 +5562,6 @@ class clusters_t: public ::xml_schema::type
   //@}
 
   /**
-   * @name membrane
-   *
-   * @brief Accessor and modifier functions for the %membrane
-   * sequence element.
-   *
-   * A membrane cluster within the collection.
-   */
-  //@{
-
-  /**
-   * @brief Element type.
-   */
-  typedef ::membrane_t membrane_type;
-
-  /**
-   * @brief Element sequence container type.
-   */
-  typedef ::xsd::cxx::tree::sequence< membrane_type > membrane_sequence;
-
-  /**
-   * @brief Element iterator type.
-   */
-  typedef membrane_sequence::iterator membrane_iterator;
-
-  /**
-   * @brief Element constant iterator type.
-   */
-  typedef membrane_sequence::const_iterator membrane_const_iterator;
-
-  /**
-   * @brief Element traits type.
-   */
-  typedef ::xsd::cxx::tree::traits< membrane_type, char > membrane_traits;
-
-  /**
-   * @brief Return a read-only (constant) reference to the element
-   * sequence.
-   *
-   * @return A constant reference to the sequence container.
-   */
-  const membrane_sequence&
-  membrane () const;
-
-  /**
-   * @brief Return a read-write reference to the element sequence.
-   *
-   * @return A reference to the sequence container.
-   */
-  membrane_sequence&
-  membrane ();
-
-  /**
-   * @brief Copy elements from a given sequence.
-   *
-   * @param s A sequence to copy elements from.
-   *
-   * For each element in @a s this function makes a copy and adds it 
-   * to the sequence. Note that this operation completely changes the 
-   * sequence and all old elements will be lost.
-   */
-  void
-  membrane (const membrane_sequence& s);
-
-  //@}
-
-  /**
    * @name Constructors
    */
   //@{
@@ -5709,6 +5644,167 @@ class clusters_t: public ::xml_schema::type
   protected:
   cuboid_sequence cuboid_;
   sphere_sequence sphere_;
+
+  //@endcond
+};
+
+/**
+ * @brief Class corresponding to the %molecules_t schema type.
+ *
+ * Represents a collection of molecules.
+ *
+ * @nosubgrouping
+ */
+class molecules_t: public ::xml_schema::type
+{
+  public:
+  /**
+   * @name membrane
+   *
+   * @brief Accessor and modifier functions for the %membrane
+   * sequence element.
+   *
+   * A membrane cluster within the collection.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::membrane_t membrane_type;
+
+  /**
+   * @brief Element sequence container type.
+   */
+  typedef ::xsd::cxx::tree::sequence< membrane_type > membrane_sequence;
+
+  /**
+   * @brief Element iterator type.
+   */
+  typedef membrane_sequence::iterator membrane_iterator;
+
+  /**
+   * @brief Element constant iterator type.
+   */
+  typedef membrane_sequence::const_iterator membrane_const_iterator;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< membrane_type, char > membrane_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * sequence.
+   *
+   * @return A constant reference to the sequence container.
+   */
+  const membrane_sequence&
+  membrane () const;
+
+  /**
+   * @brief Return a read-write reference to the element sequence.
+   *
+   * @return A reference to the sequence container.
+   */
+  membrane_sequence&
+  membrane ();
+
+  /**
+   * @brief Copy elements from a given sequence.
+   *
+   * @param s A sequence to copy elements from.
+   *
+   * For each element in @a s this function makes a copy and adds it 
+   * to the sequence. Note that this operation completely changes the 
+   * sequence and all old elements will be lost.
+   */
+  void
+  membrane (const membrane_sequence& s);
+
+  //@}
+
+  /**
+   * @name Constructors
+   */
+  //@{
+
+  /**
+   * @brief Create an instance from the ultimate base and
+   * initializers for required elements and attributes.
+   */
+  molecules_t ();
+
+  /**
+   * @brief Create an instance from a DOM element.
+   *
+   * @param e A DOM element to extract the data from.
+   * @param f Flags to create the new instance with.
+   * @param c A pointer to the object that will contain the new
+   * instance.
+   */
+  molecules_t (const ::xercesc::DOMElement& e,
+               ::xml_schema::flags f = 0,
+               ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy constructor.
+   *
+   * @param x An instance to make a copy of.
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  molecules_t (const molecules_t& x,
+               ::xml_schema::flags f = 0,
+               ::xml_schema::container* c = 0);
+
+  /**
+   * @brief Copy the instance polymorphically.
+   *
+   * @param f Flags to create the copy with.
+   * @param c A pointer to the object that will contain the copy.
+   * @return A pointer to the dynamically allocated copy.
+   *
+   * This function ensures that the dynamic type of the instance is
+   * used for copying and should be used for polymorphic object
+   * models instead of the copy constructor.
+   */
+  virtual molecules_t*
+  _clone (::xml_schema::flags f = 0,
+          ::xml_schema::container* c = 0) const;
+
+  /**
+   * @brief Copy assignment operator.
+   *
+   * @param x An instance to make a copy of.
+   * @return A reference to itself.
+   *
+   * For polymorphic object models use the @c _clone function instead.
+   */
+  molecules_t&
+  operator= (const molecules_t& x);
+
+  //@}
+
+  /**
+   * @brief Destructor.
+   */
+  virtual 
+  ~molecules_t ();
+
+  // Implementation.
+  //
+
+  //@cond
+
+  protected:
+  void
+  parse (::xsd::cxx::xml::dom::parser< char >&,
+         ::xml_schema::flags);
+
+  protected:
   membrane_sequence membrane_;
 
   //@endcond
@@ -7016,6 +7112,84 @@ class simulation_t: public ::xml_schema::type
   //@}
 
   /**
+   * @name molecules
+   *
+   * @brief Accessor and modifier functions for the %molecules
+   * optional element.
+   *
+   * The collection of molecules to be simulated.
+   */
+  //@{
+
+  /**
+   * @brief Element type.
+   */
+  typedef ::molecules_t molecules_type;
+
+  /**
+   * @brief Element optional container type.
+   */
+  typedef ::xsd::cxx::tree::optional< molecules_type > molecules_optional;
+
+  /**
+   * @brief Element traits type.
+   */
+  typedef ::xsd::cxx::tree::traits< molecules_type, char > molecules_traits;
+
+  /**
+   * @brief Return a read-only (constant) reference to the element
+   * container.
+   *
+   * @return A constant reference to the optional container.
+   */
+  const molecules_optional&
+  molecules () const;
+
+  /**
+   * @brief Return a read-write reference to the element container.
+   *
+   * @return A reference to the optional container.
+   */
+  molecules_optional&
+  molecules ();
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x A new value to set.
+   *
+   * This function makes a copy of its argument and sets it as
+   * the new value of the element.
+   */
+  void
+  molecules (const molecules_type& x);
+
+  /**
+   * @brief Set the element value.
+   *
+   * @param x An optional container with the new value to set.
+   *
+   * If the value is present in @a x then this function makes a copy 
+   * of this value and sets it as the new value of the element.
+   * Otherwise the element container is set the 'not present' state.
+   */
+  void
+  molecules (const molecules_optional& x);
+
+  /**
+   * @brief Set the element value without copying.
+   *
+   * @param p A new value to use.
+   *
+   * This function will try to use the passed value directly instead
+   * of making a copy.
+   */
+  void
+  molecules (::std::unique_ptr< molecules_type > p);
+
+  //@}
+
+  /**
    * @name ptypes
    *
    * @brief Accessor and modifier functions for the %ptypes
@@ -7266,6 +7440,7 @@ class simulation_t: public ::xml_schema::type
   protected:
   ::xsd::cxx::tree::one< params_type > params_;
   ::xsd::cxx::tree::one< clusters_type > clusters_;
+  molecules_optional molecules_;
   ptypes_optional ptypes_;
   particles_optional particles_;
 
@@ -7619,6 +7794,9 @@ operator<< (::xercesc::DOMElement&, const membrane_t&);
 
 void
 operator<< (::xercesc::DOMElement&, const clusters_t&);
+
+void
+operator<< (::xercesc::DOMElement&, const molecules_t&);
 
 void
 operator<< (::xercesc::DOMElement&, const params_t&);
