@@ -205,15 +205,19 @@ void Membrane::calculateIntraMolecularForces(const Simulation& sim)
 
 void Membrane::calculateHarmonicForces(ParticleContainer& container)
 {
-    // Calculate harmonic forces recursively
     for (auto& pair : directNeighbors)
-        // TODO is active
-        for (auto& neighbor : pair.second)
-            harmonic_calc(container.particles[pair.first], container.particles[neighbor], k, r0);
+        if (container.particles[pair.first].getActivity())
+            for (auto& neighbor : pair.second)
+                if (container.particles[neighbor].getActivity())
+                    harmonic_calc(
+                        container.particles[pair.first], container.particles[neighbor], k, r0);
 
     for (auto& pair : diagNeighbors)
-        for (auto& neighbor : pair.second)
-            harmonic_calc(container.particles[pair.first], container.particles[neighbor], k, diagR0);
+        if (container.particles[pair.first].getActivity())
+            for (auto& neighbor : pair.second)
+                if (container.particles[neighbor].getActivity())
+                    harmonic_calc(
+                        container.particles[pair.first], container.particles[neighbor], k, diagR0);
 }
 
 std::string Membrane::toString()
