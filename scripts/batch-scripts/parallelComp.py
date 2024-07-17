@@ -7,7 +7,7 @@ def get_run_script(name: str, num_threads: str, input_file: str,
     SCRIPT = f"""#!/bin/bash
 #SBATCH -J {name}
 #SBATCH -o ./%x.%j.%N.out
-#SBATCH -D .
+#SBATCH -D ./MolSim-SS24/build
 #SBATCH --get-user-env
 #SBATCH --clusters={clusters}
 #SBATCH --partition={partition}
