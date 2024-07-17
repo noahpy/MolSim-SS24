@@ -84,7 +84,7 @@ public:
         std::array<double, 3> x_arg,
         std::array<double, 3> v_arg,
         double m_arg,
-        int type = 0, 
+        int type = 0,
         size_t id = 0,
         bool isNotStationary_arg = true);
 
@@ -186,9 +186,7 @@ public:
      * @brief Get whether the particle is stationary or not
      * @return The value of isNotStationary
      */
-    [[nodiscard]] inline bool getIsNotStationary() const {
-        return isNotStationary;
-    }
+    [[nodiscard]] inline bool getIsNotStationary() const { return isNotStationary; }
 
     /**
      * @brief Set the type of the particle
@@ -272,10 +270,7 @@ public:
         active = act_new;
     }
 
-    inline size_t getID() const 
-    {
-        return id;
-    }
+    inline size_t getID() const { return id; }
 
     inline void setID(size_t id_new) THREAD_SAFE
     {
@@ -287,12 +282,12 @@ public:
      * @brief Reset the force for the next timestep
      * @return void
      */
-    inline void resetF() THREAD_SAFE
+    inline void resetF(std::array<double, 3> new_f = { 0., 0., 0. }) THREAD_SAFE
 
     {
         std::lock_guard<std::mutex> lock(mutex);
         old_f = f;
-        f = { 0., 0., 0. };
+        f = new_f;
     }
 
     /**

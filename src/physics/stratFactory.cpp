@@ -6,7 +6,7 @@
 #include "physics/velocityCal/velocityCal.h"
 #include <spdlog/spdlog.h>
 
-PhysicsStrategy stratFactory(SimulationType simulation_type)
+PhysicsStrategy stratFactory(SimulationType simulation_type, ParallelType parallel_type)
 {
     switch (simulation_type) {
     case SimulationType::PLANET:
@@ -23,7 +23,18 @@ PhysicsStrategy stratFactory(SimulationType simulation_type)
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones_lc };
     case SimulationType::MIXED_LJ:
         spdlog::info("Initializing Force LJ Mixed Strat...");
-        return { location_stroemer_verlet, velocity_stroemer_verlet, force_mixed_LJ_gravity_lc };
+        if (parallel_type == ParallelType::STATIC) {
+            spdlog::info("Parallel strategy: static");
+            return { location_stroemer_verlet,
+                     velocity_stroemer_verlet,
+                     force_mixed_LJ_gravity_lc };
+        }
+        else {
+            spdlog::info("Parallel strategy: task");
+            return { location_stroemer_verlet,
+                     velocity_stroemer_verlet,
+                     force_mixed_LJ_gravity_lc_task };
+        }
     default:
         spdlog::info("Unknown simulation type, proceeding with default physics strategy.");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };
