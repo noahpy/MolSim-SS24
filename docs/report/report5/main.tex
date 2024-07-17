@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{placeins}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{makecell}
+
+\usepackage{hyperref}
+\usepackage{textcomp}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\title{Scientific Computing - Molecular dynamics \\ Group F}
+\newcommand{\subtitle}{Problem sheet 5}
+\author{
+    Jimin Kim \\
+    Christian Nix \\
+    Noah Schlenker
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \LARGE \subtitle{}
+\end{center}
+
+\section{Pull request}
+\label{sec:pr}
+The pull request can be found \href{https://github.com/noahpy/MolSim-SS24/pull/60}{here}.
+
+All new features have been tested with their according Unit tests (see \texttt{tests}) and have XML adaptations respectively.
+
+\section{Membrane simulation}
+\label{sec:mem}
+
+    \begin{itemize}
+        \item To achieve efficient membrane particle iteration, we utilized maps of neighboring molecular particles in the new \texttt{Membrane} class.
+        \item We introduced a unique ID attribute for particles, identifying them within a molecule. This allowed us to store only the molecular IDs in the neighbor maps, which is more memory-efficient than storing reference wrappers.
+        \item We separated direct and diagonal neighbors into distinct maps for quick differentiation when calculating harmonic potentials.
+        \item By storing only the top, top-right, right, and bottom-right neighbors (half of the neighbors) of a molecular particle, we enabled force calculation iteration using Newton's third law, thus reducing the number of calculations.
+        \item The iteration of membrane particles can be conceptualized as a directional iteration through a non-cyclic graph with a single root, marked by a boolean flag within the particle (illustrated here\ \ref{fig:mem}).
+        \item We added functions for the calculation of truncated intra-molecular and harmonic forces. The Lennard-Jones potential function was reused from the previous assignment.
+        \item Our usual particle generation of our program structure proved to be incompatible for the membrane realization, as we needed to make the neighbor maps accessible at the simulation level.
+        \item Therefore, the membrane cluster generation is managed by the \texttt{Membrane} class itself, eliminating the need for cluster specifications in the XML input file.
+        \item The new simulation class, \texttt{MembraneSimulation}, extends \texttt{MixedLJSimulation} and manages the membrane initialization and generation accordingly.
+    \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{../../res/membraneNeighbor.drawio}
+    \caption{Illustration of neighbor relations in the membrane.}
+    \label{fig:mem}
+\end{figure}
+
+\section{Parallelization}
+\label{sec:para}
+
+    \begin{itemize}
+        \item The parallelization of our program primarily focused on iterating particles for calculations.
+        \item A mutex was added to particles to prevent race conditions.
+        \item We encountered issues with the parallelization of force calculations due to the handling of cell iteration, requiring significant adjustments to our cell grid.
+        \item The runtime distribution can be seen here\ \ref{fig:runtime}.
+    \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.3\textwidth]{../../res/runtimeVisualized}
+    \caption{Visualization of runtime distributions.}
+    \label{fig:runtime}
+\end{figure}
+
+\section{Nano-scale flow simulation}
+\label{sec:nano}
+
+\subsection{Videos}
+\label{subsec:vidnano}
+
+    \begin{itemize}
+        \item Here a list of all videos for the simulation.
+        \item The simulation parameters were set to the specified values in the assignment sheet, if not stated otherwise. Further information can be found in the video descriptions
+        \begin{itemize}
+            \item Standard simulation run: \href{https://youtu.be/-eWISjhgIgA}{here}
+            \item Addition of small cluster of particles: \href{https://youtu.be/G34H3SCnpW0}{here}
+            \item Lennard-Jones parameters of the walls set to $\sigma = 0.8$ and $\epsilon = 5.0$: \href{https://youtu.be/I4h6tjnJVuI}{here}
+            \item Thermostat frequency set to 1000, gravity constant set to -9.81, and the Lennard-Jones parameters of the walls set to $\sigma = 0.8$ and $\epsilon = 5.0$: \href{https://youtu.be/yxNYmXJg5r0}{here}
+        \end{itemize}
+    \end{itemize}
+
+\subsection{Implementation of the flow simulation}
+\label{subsec:wall}
+
+    \begin{itemize}
+        \item We implemented the fixation of particles to enable particle flow between walls.
+        \item For that we had to introduce a new boolean attribute to particles to mark them as stationary.
+        \item During cuboid generation, particles are added to a map representing static particles based on their type.
+        \item A new thermostat class, \texttt{thermostat/IndividualThermostat}, was added to ignore fixated particles.
+        \item The selection of the thermostat is now decided via a factory function. The thermostat can be turned off by selecting the \texttt{NoneThermostat}.
+        \item This approach allowed us to run the simulation without creating a new simulation class and by simply specifying simulation parameters.
+        \item Adjustments were made to the generation, boundary, and calculation files to accommodate stationary particles.
+    \end{itemize}
+
+\subsection{Analytics}
+\label{subsec:ana}
+
+    \begin{itemize}
+        \item We added a class \texttt{analytics/Analyzer} that can write density and velocity profiles to a .csv file for later analysis.
+        \item These profiles can then be plotted to a 2d heat map via a python script in \texttt{scripts/plots}.
+        \item In the videos of\ \ref{subsec:vidnano} the plotted diagrams for density and velocity can be seen next to the running simulation.
+    \end{itemize}
+
+\end{document}
