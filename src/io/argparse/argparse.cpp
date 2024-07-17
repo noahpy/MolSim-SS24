@@ -26,7 +26,8 @@ void printHelp(std::string progName)
               << std::endl
               << "      --sigma=VALUE      Set the Zero crossing of LJ potential (default: 1)"
               << std::endl
-              << "  -l, --log_level=LEVEL  Set the logging level (default: 3, incompatible with -p)" << std::endl
+              << "  -l, --log_level=LEVEL  Set the logging level (default: 3, incompatible with -p)"
+              << std::endl
               << "  -c                     Specify that the given input file describes clusters "
               << std::endl
               << "  -a                     Specify that the given input file is of type ascii art"
@@ -34,8 +35,11 @@ void printHelp(std::string progName)
               << "  -x                     Specify that the given input file is of type XML"
               << std::endl
               << "  -s, --simtype=VALUE    Specify simulation type (default: 0)" << std::endl
-              << "  -w, --writetype=VALUE  Specify writer type (default: 0, incompatible with -p)" << std::endl
-              << "  -p                     Run performance measurements (incompatible with -l, -w)" << std::endl
+              << "  -w, --writetype=VALUE  Specify writer type (default: 0, incompatible with -p)"
+              << std::endl
+              << "  -p                     Run performance measurements (incompatible with -l, -w)"
+              << std::endl
+              << "  -P, --parallel         Specify parallel strategy (static, task)" << std::endl
               << "  -h, --help             Display this help message" << std::endl
               << std::endl
               << "For more details, see the man page with: man ./.molsim.1" << std::endl;
@@ -144,6 +148,18 @@ WriterType unsignedToWriterType(unsigned value)
     }
 }
 
+ParallelType stringToParallelType(std::string value)
+{
+    if (value == "static") {
+        return ParallelType::STATIC;
+    } else if (value == "task") {
+        return ParallelType::TASK;
+    } else {
+        spdlog::warn("Unknown parallel type: {}", value);
+        exit(EXIT_FAILURE);
+    }
+}
+
 void argparse(int argc, char* argsv[], Params& params)
 {
     // Long options definition
@@ -154,12 +170,13 @@ void argparse(int argc, char* argsv[], Params& params)
                                             { "sigma", required_argument, 0, 'S' },
                                             { "simtype", required_argument, 0, 's' },
                                             { "writetype", required_argument, 0, 'w' },
+                                            { "parallel", required_argument, 0, 'P' },
                                             { "help", no_argument, 0, 'h' },
                                             { 0, 0, 0, 0 } };
 
     unsigned tmp;
     int opt;
-    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:axp", long_options, NULL)) != -1) {
+    while ((opt = getopt_long(argc, argsv, "d:e:l:hcs:w:axpP:", long_options, NULL)) != -1) {
         switch (opt) {
         case 'd':
             convertToDouble(optarg, params.delta_t);
@@ -199,6 +216,9 @@ void argparse(int argc, char* argsv[], Params& params)
             params.doPerformanceMeasurements = true;
             params.writer_type = WriterType::EMPTY;
             spdlog::set_level(spdlog::level::off);
+            break;
+        case 'P':
+            params.parallel_type = stringToParallelType(optarg);
             break;
         case 'h':
             printHelp(argsv[0]);

@@ -14,6 +14,8 @@ enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ, MEMBRANE_LJ };
 
 enum ThermostatType { CLASSICAL, INDIVIDUAL, NONE };
 
+enum ParallelType { STATIC, TASK };
+
 class Params {
 public:
     // start time
@@ -36,6 +38,8 @@ public:
     WriterType writer_type = WriterType::VTK;
     // simulation type
     SimulationType simulation_type = SimulationType::PLANET;
+    // parallel type 
+    ParallelType parallel_type = ParallelType::STATIC;
     // domain origin
     std::array<double, 3> domain_origin = { -10.0, -10.0, 0 };
     // domain size

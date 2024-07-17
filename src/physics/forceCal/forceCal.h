@@ -1,7 +1,6 @@
 
 #pragma once
 #include "simulation/baseSimulation.h"
-#include "simulation/MixedLJSimulation.h"
 
 /**
  * @brief Calculate the forces between particles using the Stroemer-Verlet algorithm
@@ -73,3 +72,5 @@ void lj_calc(
     double beta,
     double gamma,
     std::array<double, 3> delta);
+
+void force_mixed_LJ_gravity_lc_task(const Simulation& sim);

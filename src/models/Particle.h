@@ -203,9 +203,7 @@ public:
      * @brief Get whether the particle is stationary or not
      * @return The value of isNotStationary
      */
-    [[nodiscard]] inline bool getIsNotStationary() const {
-        return isNotStationary;
-    }
+    [[nodiscard]] inline bool getIsNotStationary() const { return isNotStationary; }
 
     /**
      * @brief Set the type of the particle
@@ -290,8 +288,8 @@ public:
     }
 
     /**
-     * @brief Get the molecule's id
-     * @return The molecule's id
+     * @brief Get the particle's id
+     * @return The particle's id
      */
     inline size_t getID() const
     {
@@ -308,12 +306,12 @@ public:
      * @brief Reset the force for the next timestep
      * @return void
      */
-    inline void resetF() THREAD_SAFE
+    inline void resetF(std::array<double, 3> new_f = { 0., 0., 0. }) THREAD_SAFE
 
     {
         std::lock_guard<std::mutex> lock(mutex);
         old_f = f;
-        f = { 0., 0., 0. };
+        f = new_f;
     }
 
     /**

@@ -71,9 +71,11 @@ public:
     [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const
         THREAD_SAFE;
 
-    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile2D(const CellIndex& cellIndex) const;
+    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile2D(
+        const CellIndex& cellIndex) const;
 
-    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile3D(const CellIndex& cellIndex) const;
+    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile3D(
+        const CellIndex& cellIndex) const;
 
     /**
      * @brief Resets the forces for all particles for the next force calculation
@@ -81,6 +83,16 @@ public:
      * @return void
      */
     void preCalcSetup(ParticleContainer& particleContainer) const;
+
+    /**
+     * @brief Resets the forces for all particles for the next force calculation, whilst
+     * already setting the new gravitational force, given the gravitational constant
+     * @param particleContainer The container holding the particles
+     * @param gravitationalConstant The gravitational constant
+     * @return void
+     */
+    void preCalcSetupGravity(
+        ParticleContainer& particleContainer, double gravitationalConstant) const;
 
     /**
      * @brief Resets the visited flag of all cells to false
@@ -177,7 +189,6 @@ protected:
      * @param cell The index of the cell to determine the neighbours of.
      */
     void determineNeighbours(CellIndex cell);
-
 
     /**
      * @brief Determines the stencil neighbours of the specified cell.

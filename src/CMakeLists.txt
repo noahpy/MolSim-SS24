@@ -28,6 +28,7 @@ target_link_libraries(
         XercesC::XercesC
         spdlog::spdlog
         OpenMP::OpenMP_CXX
+        -static-libstdc++
 )
 
 # define MolSim target
