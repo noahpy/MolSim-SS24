@@ -16,7 +16,7 @@ def get_run_script(name: str, num_threads: str, input_file: str,
 #SBATCH --export=NONE
 #SBATCH --mail-user=ge42joq@mytum.de
 #SBATCH --time=00:30:00
-OMP_NUM_THREADS={num_threads} src/MolSim {input_file} -x -s 4
+OMP_NUM_THREADS={num_threads} src/MolSim {input_file} -x -s 4 -p
 """
     return SCRIPT
 
