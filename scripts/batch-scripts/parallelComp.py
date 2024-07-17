@@ -34,4 +34,4 @@ if __name__ == "__main__":
         with open(f"{name}.sh", "w") as f:
             f.write(run_script)
 
-        subprocess.call([f"sbatch {name}.sh"])
+        subprocess.call(["sbatch", "{name}.sh"])
