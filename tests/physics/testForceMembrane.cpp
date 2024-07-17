@@ -160,31 +160,30 @@ TEST_F(calcForceMembrane, calcForceMembraneDiagonal)
     };
 
     // Generate expected forces
-    std::vector<std::array<double, 3>> expectedForces(container.particles.size(), { 0, 0, 0 });
-    for (int i = 0; i < container.particles.size(); i++)
-        for (int j = 0; j < container.particles.size(); j++)
+    std::vector<std::array<double, 3>> expectedForces(sim.container.particles.size(), { 0, 0, 0 });
+    for (int i = 0; i < sim.container.particles.size(); i++)
+        for (int j = 0; j < sim.container.particles.size(); j++)
             if (i != j) {
                 // The r0 to use depends on if the particles are aligned diagonally
                 double actualR0 =
-                    (container.particles[i].getX()[0] == container.particles[j].getX()[0] ||
-                     container.particles[i].getX()[1] == container.particles[j].getX()[1])
+                    (sim.container.particles[i].getX()[0] == sim.container.particles[j].getX()[0] ||
+                     sim.container.particles[i].getX()[1] == sim.container.particles[j].getX()[1])
                         ? r0
                         : std::sqrt(2) * r0;
                 expectedForces[i] =
                     expectedForces[i] +
-                    harmonicPotential(container.particles[i], container.particles[j], actualR0, k);
+                    harmonicPotential(sim.container.particles[i], sim.container.particles[j], actualR0, k);
             }
 
     // Check if the forces match
-    for (int i = 0; i < container.particles.size(); i++)
+    for (int i = 0; i < sim.container.particles.size(); i++)
         for (int j = 0; j < 3; j++)
-            EXPECT_NEAR(container.particles[i].getF().at(j), expectedForces[i].at(j), PRESICION);
+            EXPECT_NEAR(sim.container.particles[i].getF().at(j), expectedForces[i].at(j), PRESICION);
 }
 
-// Test intra molecular forces including LJ forces for membrane particles
-// Exact same as above, only see if the forces are different -> thus we know the forces were changed
-// and the LJ Test makes sure the calculation is correct
-TEST_F(calcForceMembrane, calcForceMembraneLJ)
+// Test intra molecular forces and leaving LJ forces for membrane particles that are neighbors
+// Exact same as above, only change sigma to make LJ calc appear
+TEST_F(calcForceMembrane, calcForceMembraneLJNeighbors)
 {
     double r0 = 2;
     double r = 1;
@@ -237,23 +236,99 @@ TEST_F(calcForceMembrane, calcForceMembraneLJ)
     };
 
     // Generate expected forces
-    std::vector<std::array<double, 3>> expectedForces(container.particles.size(), { 0, 0, 0 });
-    for (int i = 0; i < container.particles.size(); i++)
-        for (int j = 0; j < container.particles.size(); j++)
+    std::vector<std::array<double, 3>> expectedForces(sim.container.particles.size(), { 0, 0, 0 });
+    for (int i = 0; i < sim.container.particles.size(); i++)
+        for (int j = 0; j < sim.container.particles.size(); j++)
             if (i != j) {
                 // The r0 to use depends on if the particles are aligned diagonally
                 double actualR0 =
-                    (container.particles[i].getX()[0] == container.particles[j].getX()[0] ||
-                     container.particles[i].getX()[1] == container.particles[j].getX()[1])
+                    (sim.container.particles[i].getX()[0] == sim.container.particles[j].getX()[0] ||
+                     sim.container.particles[i].getX()[1] == sim.container.particles[j].getX()[1])
                         ? r0
                         : std::sqrt(2) * r0;
                 expectedForces[i] =
                     expectedForces[i] +
-                    harmonicPotential(container.particles[i], container.particles[j], actualR0, k);
+                    harmonicPotential(sim.container.particles[i], sim.container.particles[j], actualR0, k);
             }
 
-    // Check if the forces don't match -> as LJ was added
-    for (int i = 0; i < container.particles.size(); i++)
+    // Check if the forces match -> as LJ was not added because direct neighbor
+    for (int i = 0; i < sim.container.particles.size(); i++)
+        EXPECT_FALSE(
+            ArrayUtils::L2Norm(sim.container.particles[i].getF() - expectedForces[i]) > PRESICION);
+}
+
+// Test intra molecular forces and LJ forces for membrane particles that are not neighbors
+TEST_F(calcForceMembrane, calcForceMembraneLJNonNeighbors)
+{
+    double r0 = 2;
+    double r = 1;
+    double k = 20;
+
+    particles = std::vector<Particle> {};
+    ParticleContainer container { particles };
+    Membrane mem { z, 4, 4, 1, r, 1, z, 0, 3, 1, r0, k };
+    std::unique_ptr<Molecule> ptr = std::make_unique<Membrane>(mem);
+    std::vector<std::unique_ptr<Molecule>> memVec {};
+    memVec.push_back(std::move(ptr));
+
+    Analyzer analyzer({ 1, 0, 4 }, "");
+    std::unique_ptr<Analyzer> analyzerPtr = std::make_unique<Analyzer>(analyzer);
+
+    MembraneSimulation sim(
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        {},
+        { { 1, { 1, 7 } } },
+        domainOrigin,
+        domainSize,
+        cutoff,
+        BoundaryConfig(
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW),
+        std::move(analyzerPtr),
+        0,
+        thermostatFactory(ThermostatType::CLASSICAL, 0, 0, 0, 0),
+        std::move(memVec));
+
+    sim.getMolecules()[0]->calculateIntraMolecularForces(sim);
+
+    // Check if the number of particles are correct
+    EXPECT_EQ(sim.container.particles.size(), 16);
+
+    // lambda function to do harmonic potential
+    auto harmonicPotential = [](Particle& p1, Particle& p2, double r0, double k) {
+        return k / ArrayUtils::L2Norm(p2.getX() - p1.getX()) *
+               (ArrayUtils::L2Norm(p2.getX() - p1.getX()) - r0) * (p2.getX() - p1.getX());
+    };
+
+    // Generate expected forces
+    std::vector<std::array<double, 3>> expectedForces(sim.container.particles.size(), { 0, 0, 0 });
+    for (int i = 0; i < sim.container.particles.size(); i++)
+        for (int j = 0; j < sim.container.particles.size(); j++)
+            if (i != j) {
+                // The r0 to use depends on if the particles are aligned diagonally
+                double actualR0 =
+                    (sim.container.particles[i].getX()[0] == sim.container.particles[j].getX()[0] ||
+                     sim.container.particles[i].getX()[1] == sim.container.particles[j].getX()[1])
+                        ? r0
+                        : std::sqrt(2) * r0;
+                expectedForces[i] =
+                    expectedForces[i] +
+                    harmonicPotential(sim.container.particles[i], sim.container.particles[j], actualR0, k);
+            }
+
+    // Check if the forces do not match -> Sigma is so big that at least one non-neighbor is close enough to act a force upon a particle
+    // This force must be LJ force
+    for (int i = 0; i < sim.container.particles.size(); i++)
         EXPECT_TRUE(
-            ArrayUtils::L2Norm(container.particles[i].getF() - expectedForces[i]) > PRESICION);
+            ArrayUtils::L2Norm(sim.container.particles[i].getF() - expectedForces[i]) > PRESICION);
 }

@@ -247,7 +247,7 @@ void Membrane::calculateHarmonicForces(ParticleContainer& container)
 
 
 bool Membrane::isNeighbor(size_t particleID1, size_t particleID2) {
-    return neighboringRelations.find(getKey(particleID1, particleID2)) == neighboringRelations.end();
+    return neighboringRelations.find(getKey(particleID1, particleID2)) != neighboringRelations.end();
 }
 
 std::string Membrane::toString()
