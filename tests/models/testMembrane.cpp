@@ -49,15 +49,14 @@ TEST(MembraneTests, membraneMapTests)
     // A neighbor's position must be reconstructable from the particle's position
     // Note the != works as XOR here i.e. only one of the two shifts can be true
     for (auto& p : container.particles) {
-        auto ref = std::reference_wrapper<Particle>(p);
-        for (auto& neighbor : m.getDirectNeighbors().at(ref)) {
-            bool neighborIsValid = (neighbor.get().getX() == p.getX() + directTop) !=
-                                   (neighbor.get().getX() == p.getX() + directRight);
+        for (auto& neighbor : m.getDirectNeighbors().at(p.getID())) {
+            bool neighborIsValid = (container.particles[neighbor].getX() == p.getX() + directTop) !=
+                                   (container.particles[neighbor].getX() == p.getX() + directRight);
             EXPECT_TRUE(neighborIsValid);
         }
-        for (auto& neighbor : m.getDiagNeighbors().at(ref)) {
-            bool neighborIsValid = (neighbor.get().getX() == p.getX() + diagTopRight) !=
-                                   (neighbor.get().getX() == p.getX() + diagBottomRight);
+        for (auto& neighbor : m.getDiagNeighbors().at(p.getID())) {
+            bool neighborIsValid = (container.particles[neighbor].getX() == p.getX() + diagTopRight) !=
+                                   (container.particles[neighbor].getX() == p.getX() + diagBottomRight);
             EXPECT_TRUE(neighborIsValid);
         }
     }
@@ -89,7 +88,6 @@ TEST(MembraneTests, membraneNeighborCountTests)
 
     // Check if the number of neighbors is correct
     for (auto& p : container.particles) {
-        auto ref = std::reference_wrapper<Particle>(p);
         int expectedDirectNeighbors =
             2 - (isTopLayer(p, height, 1) ? 1 : 0) - (isRightLayer(p, width, 1) ? 1 : 0);
         int expectedDiagNeighbors =
@@ -97,7 +95,7 @@ TEST(MembraneTests, membraneNeighborCountTests)
                      ? 2
                      : (isTopLayer(p, height, 1) || isBottomLayer(p, 1) ? 1 : 0));
 
-        EXPECT_EQ(m.getDirectNeighbors().at(ref).size(), expectedDirectNeighbors);
-        EXPECT_EQ(m.getDiagNeighbors().at(ref).size(), expectedDiagNeighbors);
+        EXPECT_EQ(m.getDirectNeighbors().at(p.getID()).size(), expectedDirectNeighbors);
+        EXPECT_EQ(m.getDiagNeighbors().at(p.getID()).size(), expectedDiagNeighbors);
     }
 }

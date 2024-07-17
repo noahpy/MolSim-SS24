@@ -7,13 +7,13 @@
 #include "physics/forceCal/forceCal.h"
 #include "physics/locationCal/locationCal.h"
 #include "physics/strategy.h"
+#include "physics/thermostat/ThermostatFactory.h"
 #include "physics/velocityCal/velocityCal.h"
 #include "simulation/MembraneSimulation.h"
 #include "simulation/baseSimulation.h"
 #include "utils/ArrayUtils.h"
 #include <cmath>
 #include <gtest/gtest.h>
-
 
 class calcForceMembrane : public ::testing::Test {
 protected:
@@ -45,37 +45,64 @@ protected:
         , strat { location_stroemer_verlet, velocity_stroemer_verlet, force_lennard_jones }
         , particles { {} }
     {
+        spdlog::set_level(spdlog::level::off);
     }
 };
 
 // Test intra molecular force calculations for linear molecules against hand calculated values
-TEST_F(calcForceMembrane, calcForceMembrane)
+TEST_F(calcForceMembrane, calcForceMembraneLinear)
 {
     double r0 = 2;
     double r = 1;
     double k = 20;
 
-    particles = std::vector<Particle> {};
-    ParticleContainer container { particles };
+    ParticleContainer container { {} };
     Membrane mem { z, 2, 1, 1, r, 1, z, 0, 3, 1, r0, k };
-    mem.generateMolecule(container, 562);
+    std::unique_ptr<Molecule> ptr = std::make_unique<Membrane>(mem);
+    std::vector<std::unique_ptr<Molecule>> memVec {};
+    memVec.push_back(std::move(ptr));
+
+    Analyzer analyzer({ 1, 0, 4 }, "");
+    std::unique_ptr<Analyzer> analyzerPtr = std::make_unique<Analyzer>(analyzer);
+
+    MembraneSimulation sim(
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        {},
+        { { 1, { 1, 1 } } },
+        domainOrigin,
+        domainSize,
+        cutoff,
+        BoundaryConfig(
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW),
+        std::move(analyzerPtr),
+        0,
+        thermostatFactory(ThermostatType::CLASSICAL, 0, 0, 0, 0),
+        std::move(memVec));
 
     // Check if the number of particles are correct
-    EXPECT_EQ(container.particles.size(), 2);
+    EXPECT_EQ(sim.container.particles.size(), 2);
 
-    CellGrid grid { { -5, -5, -5 }, { 10, 10, 10 }, 5 };
-    grid.addParticlesFromContainer(container);
-
-    mem.calculateIntraMolecularForces(grid);
+    sim.getMolecules()[0]->calculateIntraMolecularForces(sim);
 
     // This is simply the harmonic potential
     std::array<double, 3> expectedForce =
-        k / r * (r - r0) * (container.particles[1].getX() - container.particles[0].getX());
+        k / r * (r - r0) * (sim.container.particles[1].getX() - sim.container.particles[0].getX());
 
     for (int i = 0; i < 3; i++) {
         // Newtons third law
-        EXPECT_NEAR(container.particles[0].getF().at(i), expectedForce.at(i), PRESICION);
-        EXPECT_NEAR(container.particles[1].getF().at(i), -expectedForce.at(i), PRESICION);
+        EXPECT_NEAR(sim.container.particles[0].getF().at(i), expectedForce.at(i), PRESICION);
+        EXPECT_NEAR(sim.container.particles[1].getF().at(i), -expectedForce.at(i), PRESICION);
     }
 }
 
@@ -89,16 +116,42 @@ TEST_F(calcForceMembrane, calcForceMembraneDiagonal)
     particles = std::vector<Particle> {};
     ParticleContainer container { particles };
     Membrane mem { z, 2, 2, 1, r, 1, z, 0, 3, 1, r0, k };
-    mem.initLJParams(1, 0.1); // small sigma to ignore repulsive forces
-    mem.generateMolecule(container, 562);
+    std::unique_ptr<Molecule> ptr = std::make_unique<Membrane>(mem);
+    std::vector<std::unique_ptr<Molecule>> memVec {};
+    memVec.push_back(std::move(ptr));
+
+    Analyzer analyzer({ 1, 0, 4 }, "");
+    std::unique_ptr<Analyzer> analyzerPtr = std::make_unique<Analyzer>(analyzer);
+
+    MembraneSimulation sim(
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        {},
+        { { 1, { 1, 0.1 } } },
+        domainOrigin,
+        domainSize,
+        cutoff,
+        BoundaryConfig(
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW),
+        std::move(analyzerPtr),
+        0,
+        thermostatFactory(ThermostatType::CLASSICAL, 0, 0, 0, 0),
+        std::move(memVec));
+
+    sim.getMolecules()[0]->calculateIntraMolecularForces(sim);
 
     // Check if the number of particles are correct
-    EXPECT_EQ(container.particles.size(), 4);
-
-    CellGrid grid { { -5, -5, -5 }, { 10, 10, 10 }, 5 };
-    grid.addParticlesFromContainer(container);
-
-    mem.calculateIntraMolecularForces(grid);
+    EXPECT_EQ(sim.container.particles.size(), 4);
 
     // lambda function to do harmonic potential
     auto harmonicPotential = [](Particle& p1, Particle& p2, double r0, double k) {
@@ -140,16 +193,42 @@ TEST_F(calcForceMembrane, calcForceMembraneLJ)
     particles = std::vector<Particle> {};
     ParticleContainer container { particles };
     Membrane mem { z, 2, 2, 1, r, 1, z, 0, 3, 1, r0, k };
-    mem.initLJParams(1, 2); // big sigma to include repulsive forces
-    mem.generateMolecule(container, 562);
+    std::unique_ptr<Molecule> ptr = std::make_unique<Membrane>(mem);
+    std::vector<std::unique_ptr<Molecule>> memVec {};
+    memVec.push_back(std::move(ptr));
+
+    Analyzer analyzer({ 1, 0, 4 }, "");
+    std::unique_ptr<Analyzer> analyzerPtr = std::make_unique<Analyzer>(analyzer);
+
+    MembraneSimulation sim(
+        start_time,
+        delta_t,
+        end_time,
+        particles,
+        strat,
+        std::move(writer),
+        std::move(fileReader),
+        {},
+        { { 1, { 1, 2 } } },
+        domainOrigin,
+        domainSize,
+        cutoff,
+        BoundaryConfig(
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW,
+            BoundaryType::OUTFLOW),
+        std::move(analyzerPtr),
+        0,
+        thermostatFactory(ThermostatType::CLASSICAL, 0, 0, 0, 0),
+        std::move(memVec));
+
+    sim.getMolecules()[0]->calculateIntraMolecularForces(sim);
 
     // Check if the number of particles are correct
-    EXPECT_EQ(container.particles.size(), 4);
-
-    CellGrid grid { { -5, -5, -5 }, { 10, 10, 10 }, 5 };
-    grid.addParticlesFromContainer(container);
-
-    mem.calculateIntraMolecularForces(grid);
+    EXPECT_EQ(sim.container.particles.size(), 4);
 
     // lambda function to do harmonic potential
     auto harmonicPotential = [](Particle& p1, Particle& p2, double r0, double k) {
@@ -175,5 +254,6 @@ TEST_F(calcForceMembrane, calcForceMembraneLJ)
 
     // Check if the forces don't match -> as LJ was added
     for (int i = 0; i < container.particles.size(); i++)
-            EXPECT_TRUE(ArrayUtils::L2Norm(container.particles[i].getF() - expectedForces[i]) > PRESICION);
+        EXPECT_TRUE(
+            ArrayUtils::L2Norm(container.particles[i].getF() - expectedForces[i]) > PRESICION);
 }

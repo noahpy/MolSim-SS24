@@ -262,7 +262,7 @@ void force_membrane(const Simulation& sim)
 
     // loop over all molecules and call calculateIntraMolecularForces()
     for (auto& membrane : len_sim.getMolecules()) {
-        membrane->calculateIntraMolecularForces(cellGrid);
+        membrane->calculateIntraMolecularForces(sim);
         cellGrid.postCalcSetup(); // each time, the grid must be seen as non visited
     }
 

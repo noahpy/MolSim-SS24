@@ -1,6 +1,7 @@
 
 #include "Membrane.h"
 #include "physics/forceCal/forceCal.h"
+#include "simulation/MembraneSimulation.h"
 #include "spdlog/spdlog.h"
 #include "utils/ArrayUtils.h"
 #include "utils/MaxwellBoltzmannDistribution.h"
@@ -58,12 +59,9 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
     size_t secondRelevantDimension = firstRelevantDimension == 1 ? 2 : 1;
     std::array<int, 3> numParticles = { numParticlesWidth, numParticlesHeight, numParticlesDepth };
 
-    // Ugly but needs to be initialized
-    Particle dummy {};
     ParticleGrid particleGrid(
         numParticles[firstRelevantDimension],
-        std::vector<std::reference_wrapper<Particle>>(
-            numParticles[secondRelevantDimension], std::reference_wrapper<Particle>(dummy)));
+        std::vector<size_t>(numParticles[secondRelevantDimension], 0));
 
     size_t index = container.particles.size();
     container.particles.resize(
@@ -95,18 +93,18 @@ void Membrane::generateMolecule(ParticleContainer& container, size_t moleculeID)
 
                 // Add particle to grid
                 particleGrid[indices[firstRelevantDimension]][indices[secondRelevantDimension]] =
-                    std::reference_wrapper<Particle>(container.particles[index - 1]);
+                    particle.getID();
             }
         }
     }
 
     // Set neighbors
-    initNeighbors(particleGrid);
+    initNeighbors(particleGrid, container);
 
     spdlog::info("Generated Membrane: {}", toString());
 }
 
-void Membrane::initNeighbors(ParticleGrid& particleGrid)
+void Membrane::initNeighbors(const ParticleGrid& particleGrid, const ParticleContainer& container)
 {
     /**
      * Idea:
@@ -115,6 +113,7 @@ void Membrane::initNeighbors(ParticleGrid& particleGrid)
      * By using a fix set of neighbors we avoid doubly calculating forces
      * Essentially we create a directed, non-cyclic graph with a single root
      * From this root, we can calculate all intra molecular forces of the membrane
+     * Also, we know that the particle ID is its index in the particle vector
      */
     std::vector<std::array<int, 2>> offsetKernelsDirect = {
         { 0, 1 }, // Top
@@ -147,10 +146,13 @@ void Membrane::initNeighbors(ParticleGrid& particleGrid)
     }
 }
 
-void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
+void Membrane::calculateIntraMolecularForces(const Simulation& sim)
 {
+    const MembraneSimulation& mem_sim = static_cast<const MembraneSimulation&>(sim);
+    const CellGrid& cellGrid = mem_sim.getGrid();
+
     // Calculate harmonic forces
-    calculateHarmonicForces();
+    calculateHarmonicForces(mem_sim.container);
 
     // Calculate repulsive-LJ forces for the membrane particles to avoid self-penetration
     // See forceCal.h for the same structure
@@ -201,17 +203,17 @@ void Membrane::calculateIntraMolecularForces(const CellGrid& cellGrid)
         }
 }
 
-void Membrane::calculateHarmonicForces()
+void Membrane::calculateHarmonicForces(ParticleContainer& container)
 {
     // Calculate harmonic forces recursively
     for (auto& pair : directNeighbors)
         // TODO is active
         for (auto& neighbor : pair.second)
-            harmonic_calc(pair.first.get(), neighbor.get(), k, r0);
+            harmonic_calc(container.particles[pair.first], container.particles[neighbor], k, r0);
 
     for (auto& pair : diagNeighbors)
         for (auto& neighbor : pair.second)
-            harmonic_calc(pair.first.get(), neighbor.get(), k, diagR0);
+            harmonic_calc(container.particles[pair.first], container.particles[neighbor], k, diagR0);
 }
 
 std::string Membrane::toString()

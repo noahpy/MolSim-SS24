@@ -4,6 +4,7 @@
 #include "models/Particle.h"
 #include "models/ParticleContainer.h"
 #include "models/linked_cell/CellGrid.h"
+#include "simulation/baseSimulation.h"
 #include <functional>
 #include <vector>
 
@@ -32,9 +33,9 @@ public:
 
     /**
      * @brief Calculate the molecular specific intra-molecular forces
-     * @param cellGrid The cell simulation grid to calculate the forces
+     * @param sim The simulation to calculate the forces for
      */
-    virtual void calculateIntraMolecularForces(const CellGrid& cellGrid) = 0;
+    virtual void calculateIntraMolecularForces(const Simulation& sim) = 0;
 
     /**
      * @brief Initialize the Lennard-Jones parameters for the membrane

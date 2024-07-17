@@ -4,20 +4,14 @@
 #include <map>
 
 /**
- * @brief A 2D grid of particles (Membranes will be represented as 2D grids)
+ * @brief A 2D grid of particles (Membranes will be represented as 2D grids of particle ids)
  */
-typedef std::vector<std::vector<std::reference_wrapper<Particle>>> ParticleGrid;
-
-struct ParticleComparator {
-    bool operator()(const std::reference_wrapper<Particle>& lhs, const std::reference_wrapper<Particle>& rhs) const {
-        return &lhs.get() < &rhs.get();
-    }
-};
+typedef std::vector<std::vector<size_t>> ParticleGrid;
 
 /**
  * @brief A map from particles to their neighbors
  */
-typedef std::map<std::reference_wrapper<Particle>, std::vector<std::reference_wrapper<Particle>>, ParticleComparator> NeighborParticleMap;
+typedef std::map<size_t , std::vector<size_t>> NeighborParticleMap;
 
 /**
  * @brief A class to model a molecules of particles
@@ -62,9 +56,9 @@ public:
 
     /**
      * @brief Calculate the membrane specific intra-molecular forces using the harmonic potential
-     * @param cellGrid The cell simulation grid to calculate the forces
+     * @param sim The simulation to calculate the forces for
      */
-    void calculateIntraMolecularForces(const CellGrid& cellGrid) override;
+    void calculateIntraMolecularForces(const Simulation& sim) override;
 
     /**
      * @brief Get the string representation of the membrane
@@ -109,11 +103,13 @@ protected:
     /**
      * @brief Initialize the neighbors of the particles after the gird has been generated
      * @param particleGrid The particle grid of the membrane (flattend to 2D grid)
+     * @param container The container of the particles
      */
-    void initNeighbors(ParticleGrid& particleGrid);
+    void initNeighbors(const ParticleGrid& particleGrid, const ParticleContainer& container);
 
     /**
      * @brief Calculate the harmonic forces for all particles of the membrane
+     * @param container The container of the particles
      */
-    void calculateHarmonicForces();
+    void calculateHarmonicForces(ParticleContainer& container);
 };
