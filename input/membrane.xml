@@ -4,7 +4,7 @@
     <params>
         <delta_t>0.01</delta_t>
         <end_time>500</end_time>
-        <output>membrane_moved</output>
+        <output>membrane</output>
         <frequency>100</frequency>
         <!-- Domain params -->
         <domainOrigin>
@@ -13,19 +13,19 @@
             <z>0</z>
         </domainOrigin>
         <domainSize>
-            <x>200</x>
-            <y>300</y>
-            <z>200</z>
+            <x>148</x>
+            <y>148</y>
+            <z>148</z>
         </domainSize>
         <cutoff>4</cutoff>
         <!-- Boundary params -->
         <boundaries>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
-            <bound_six>outflow</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
+            <bound_six>soft_reflective</bound_six>
         </boundaries>
         <!-- Thermostat params -->
         <thermostat>
