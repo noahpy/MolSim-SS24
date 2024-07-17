@@ -28,7 +28,6 @@ target_link_libraries(
         XercesC::XercesC
         spdlog::spdlog
         OpenMP::OpenMP_CXX
-        # -static-libgcc 
         -static-libstdc++
 )
 
