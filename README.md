@@ -26,6 +26,11 @@ You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSi
     - [Project structure](#project-structure)
     - [Folder structure](#folder-structure)
     - [Input specification](#input-specification)
+      - [Compatibility overview](#compatibility-overview)
+      - [Cluster (-c)](#cluster--c)
+      - [Ascii-Art (-a)](#ascii-art--a)
+      - [XML (-x)](#xml--x)
+    - [Performance](#performance)
 
 ## Group members
 
@@ -338,3 +343,24 @@ MolSim-SS24
 - `src/MolSim.cpp`: Is the core file holding the main function
 
 ### Input specification
+
+#### Compatibility overview
+
+Input type vs. what can be specified in it
+
+|           | Clusters           | Single Points      | Ascii Art          | Program Arguments (s.a. start, end, ...) | Different particle types |
+| --------- | ------------------ | ------------------ | ------------------ | ---------------------------------------- | ------------------------ |
+| XYZ       | :recycle:          | :white_check_mark: | :x:                | :x:                                      | :x:                      |
+| Cluster   | :white_check_mark: | :recycle:          | :x:                | :x:                                      | :x:                      |
+| Ascii Art | :recycle:          | :recycle:          | :white_check_mark: | :x:                                      | :x:                      |
+| XML       | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark:                       | :white_check_mark:       |
+
+**Note:** :recycle: means you technically can, but probably shouldn't
+
+#### Cluster (-c)
+
+#### Ascii-Art (-a)
+
+#### XML (-x)
+
+### Performance
