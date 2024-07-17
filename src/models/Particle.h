@@ -72,8 +72,6 @@ private:
      */
     size_t moleculeId;
 
-    bool isMoleculeRoot; /**< True if this particle is the root of a molecule */
-
 public:
     /**
      * @brief Construct a new Particle object with given position, velocity, mass and type
@@ -292,25 +290,9 @@ public:
     }
 
     /**
-     * @brief Set the molecules id
-     * @param id_new The new id value
+     * @brief Get the molecule's id
+     * @return The molecule's id
      */
-    inline void setMoleculeId(size_t id_new) THREAD_SAFE
-    {
-        std::lock_guard<std::mutex> lock(mutex);
-        moleculeId = id_new;
-    }
-
-    /**
-     * @brief Set the isMoleculeRoot flag
-     * @param isRoot The new value of the isMoleculeRoot flag
-     */
-    inline void setIsMoleculeRoot(bool isRoot) THREAD_SAFE
-    {
-        std::lock_guard<std::mutex> lock(mutex);
-        isMoleculeRoot = isRoot;
-    }
-
     inline size_t getID() const
     {
         return id;
