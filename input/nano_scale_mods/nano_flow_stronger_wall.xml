@@ -3,7 +3,7 @@
     <params>
         <delta_t>0.0005</delta_t>
         <end_time>500</end_time>
-        <output>nano_scale_base</output>
+        <output>nano_scale_stronger_walls</output>
         <frequency>100</frequency>
         <!-- Domain params -->
         <domainOrigin>
@@ -33,9 +33,9 @@
             <type>individual</type>
         </thermostat>
         <!-- Gravity params -->
-        <gravity>−0.8</gravity>
+        <gravity>-0.8</gravity>
         <analysisFreq>100</analysisFreq>
-        <analysisName>nano_scale_base_50x_1y_20z</analysisName>
+        <analysisName>nano_scale_stronger_walls_50x_1y_20z</analysisName>
     </params>
 
     <!-- Cluster specifications -->
@@ -115,8 +115,8 @@
     <!-- Particle types -->
     <ptypes>
         <ptype type="2">
-            <sigma>1.1</sigma>
-            <epsilon>2.0</epsilon>
+            <sigma>0.8</sigma>
+            <epsilon>5.0</epsilon>
             <immobile>true</immobile>
         </ptype>
         <ptype type="1">

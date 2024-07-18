@@ -3,7 +3,7 @@
     <params>
         <delta_t>0.0005</delta_t>
         <end_time>500</end_time>
-        <output>nano_scale_base</output>
+        <output>nano_scale_turbulence</output>
         <frequency>100</frequency>
         <!-- Domain params -->
         <domainOrigin>
@@ -35,7 +35,7 @@
         <!-- Gravity params -->
         <gravity>−0.8</gravity>
         <analysisFreq>100</analysisFreq>
-        <analysisName>nano_scale_base_50x_1y_20z</analysisName>
+        <analysisName>nano_scale_turbulence_50x_1y_20z</analysisName>
     </params>
 
     <!-- Cluster specifications -->
@@ -87,7 +87,31 @@
             <ptype>2</ptype>
         </cuboid>
 
-        <!-- Fluid -->
+        <!-- Blockage -->
+        <cuboid>
+            <pos>
+                <x>10</x>
+                <y>10</y>
+                <z>0.5</z>
+            </pos>
+            <vel>
+                <x>0</x>
+                <y>0</y>
+                <z>0</z>
+            </vel>
+            <dim>
+                <x>10</x>
+                <y>1</y>
+                <z>2</z>
+            </dim>
+            <mass>1.0</mass>
+            <spacing>1.0</spacing>
+            <brownVel>0</brownVel>
+            <brownDim>3</brownDim>
+            <ptype>2</ptype>
+        </cuboid>
+
+        <!-- Fluid Bottom -->
         <cuboid>
             <pos>
                 <x>3.2</x>
@@ -101,7 +125,7 @@
             </vel>
             <dim>
                 <x>20</x>
-                <y>25</y>
+                <y>8</y>
                 <z>10</z>
             </dim>
             <mass>1.0</mass>
@@ -110,7 +134,55 @@
             <brownDim>3</brownDim>
             <ptype>1</ptype>
         </cuboid>
-    </clusters>
+
+    <!-- Fluid Top -->
+    <cuboid>
+        <pos>
+            <x>3.2</x>
+            <y>11.2</y>
+            <z>0.6</z>
+        </pos>
+        <vel>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+        </vel>
+        <dim>
+            <x>20</x>
+            <y>16</y>
+            <z>10</z>
+        </dim>
+        <mass>1.0</mass>
+        <spacing>1.2</spacing>
+        <brownVel>0</brownVel>
+        <brownDim>3</brownDim>
+        <ptype>1</ptype>
+    </cuboid>
+
+    <!-- Fluid Blockage level -->
+    <cuboid>
+        <pos>
+            <x>3.2</x>
+            <y>10</y>
+            <z>3.7</z>
+        </pos>
+        <vel>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+        </vel>
+        <dim>
+            <x>20</x>
+            <y>1</y>
+            <z>7</z>
+        </dim>
+        <mass>1.0</mass>
+        <spacing>1.2</spacing>
+        <brownVel>0</brownVel>
+        <brownDim>3</brownDim>
+        <ptype>1</ptype>
+    </cuboid>
+</clusters>
 
     <!-- Particle types -->
     <ptypes>
