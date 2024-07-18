@@ -1,11 +1,11 @@
 
 #include "LennardJonesDomainSimulation.h"
+#include "analytics/Analyzer.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/boundaryConditions/BoundaryConfig.h"
 #include "physics/strategy.h"
 #include <spdlog/spdlog.h>
-#include "analytics/Analyzer.h"
 
 #include <utility>
 
@@ -17,7 +17,7 @@ LennardJonesDomainSimulation::LennardJonesDomainSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
-    std::map<unsigned , bool> stationaryParticleTypes,
+    std::map<unsigned, bool> stationaryParticleTypes,
     double epsilon,
     double sigma,
     std::array<double, 3> domainOrigin,
@@ -94,7 +94,8 @@ void LennardJonesDomainSimulation::runSim()
     }
 }
 
-double LennardJonesDomainSimulation::getRepulsiveDistance(int type) const {
+double LennardJonesDomainSimulation::getRepulsiveDistance(int type) const
+{
     spdlog::trace("Got repulsive distance from Domain sim");
     return repulsiveDistance;
 };

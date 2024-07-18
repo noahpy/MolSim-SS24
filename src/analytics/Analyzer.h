@@ -12,7 +12,8 @@ class Analyzer {
 public:
     /**
      * @brief Construct a new Analyzer object
-     * @param binCounts The number of bins in each dimension. Set a given dimension to 1 to disable binning in that dimension.
+     * @param binCounts The number of bins in each dimension. Set a given dimension to 1 to disable
+     * binning in that dimension.
      * @param outName The name of the output file.
      */
     Analyzer(std::array<size_t, 3> binCounts, std::string outName);
@@ -44,4 +45,3 @@ protected:
      */
     [[nodiscard]] size_t getVectorIndexFromBinIndex(const std::array<size_t, 3>& binIndex) const;
 };
-

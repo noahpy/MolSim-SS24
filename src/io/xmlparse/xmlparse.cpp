@@ -85,8 +85,7 @@ void xmlparse(Params& sim_params, std::string& filename)
                 sim_params.max_temp_delta = thermo_config.maxTempDelta().get();
             if (thermo_config.type().present())
                 sim_params.thermostat_type = getThermostatType(thermo_config.type().get());
-        }
-        else {
+        } else {
             sim_params.thermo_freq = 0;
         }
 

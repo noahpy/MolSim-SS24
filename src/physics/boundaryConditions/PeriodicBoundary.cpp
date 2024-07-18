@@ -237,7 +237,8 @@ bool PeriodicBoundary::isThisSideResponsibleForShifts(
 {
     size_t i = 0;
     // Skip all non periodic sides
-    while (boundaryConfig.boundaryMap.at(boundarySides[i]) != BoundaryType::PERIODIC && i < (boundarySides.size()-1)) {
+    while (boundaryConfig.boundaryMap.at(boundarySides[i]) != BoundaryType::PERIODIC &&
+           i < (boundarySides.size() - 1)) {
         i++;
     }
     // This side is responsible, if it is the first periodic side

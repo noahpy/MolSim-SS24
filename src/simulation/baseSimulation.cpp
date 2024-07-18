@@ -13,7 +13,7 @@ Simulation::Simulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
-    std::map<unsigned , bool> stationaryParticleTypes,
+    std::map<unsigned, bool> stationaryParticleTypes,
     unsigned frequency)
     : time(time)
     , delta_t(delta_t)

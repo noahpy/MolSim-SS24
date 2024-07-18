@@ -42,8 +42,7 @@ public:
      * @param LJDSim The simulation for wich to get the point for
      * @return A point on the boundary-plane
      */
-    std::array<double, 3> getPointOnBoundaryPlane(
-        const LennardJonesDomainSimulation& LJDSim);
+    std::array<double, 3> getPointOnBoundaryPlane(const LennardJonesDomainSimulation& LJDSim);
 
     /**
      * @brief Get the dimension that is relevant to the boundary

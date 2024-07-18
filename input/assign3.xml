@@ -5,7 +5,7 @@
     <end_time>20</end_time>
     <epsilon>5</epsilon>
     <sigma>1.0</sigma>
-    <output>sim</output>
+    <output>sim_ass3_clusters</output>
     <frequency>10</frequency>
     <domainOrigin>
       <x>0</x>

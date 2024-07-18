@@ -2,7 +2,7 @@
 #include "io/fileWriter/FileWriter.h"
 
 namespace outputWriter {
-    
+
 class XmlWriter : public FileWriter {
 public:
     /**
@@ -14,7 +14,8 @@ public:
      * @brief This function initializes the XmlWriter class
      * @param out_name the name of the output file
      */
-    XmlWriter(std::string out_name) : FileWriter(out_name) {};
+    XmlWriter(std::string out_name)
+        : FileWriter(out_name) {};
 
     /**
      * @brief Destructor of the XmlWriter class
@@ -26,7 +27,6 @@ public:
      * @param s Simulation object
      */
     void plotParticles(const Simulation& s) override;
-
 };
 
 }

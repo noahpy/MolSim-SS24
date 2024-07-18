@@ -16,8 +16,9 @@ void IndividualThermostat::updateT(Simulation& sim)
         initialize(sim);
 
     // Calculate current Temperature
-    double T_current = getTotalKineticEnergy(sim) /
-                       static_cast<double>((sim.container.activeParticleCount - numFixParticles) * dim);
+    double T_current =
+        getTotalKineticEnergy(sim) /
+        static_cast<double>((sim.container.activeParticleCount - numFixParticles) * dim);
 
     double beta = getBeta(T_current);
 
@@ -47,7 +48,9 @@ std::array<double, 3> IndividualThermostat::getMeanVelocity(Simulation& sim) con
         if (p.getActivity() && p.getIsNotStationary())
             meanVelocity = meanVelocity + p.getV();
 
-    meanVelocity = (1.0 / static_cast<double>(sim.container.activeParticleCount - numFixParticles)) * meanVelocity;
+    meanVelocity =
+        (1.0 / static_cast<double>(sim.container.activeParticleCount - numFixParticles)) *
+        meanVelocity;
     return meanVelocity;
 }
 

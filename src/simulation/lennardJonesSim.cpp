@@ -4,8 +4,8 @@
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
 #include <cmath>
-#include <utility>
 #include <spdlog/spdlog.h>
+#include <utility>
 
 LennardJonesSimulation::LennardJonesSimulation(
     double time,
@@ -15,7 +15,7 @@ LennardJonesSimulation::LennardJonesSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
-    std::map<unsigned , bool> stationaryParticleTypes,
+    std::map<unsigned, bool> stationaryParticleTypes,
     double epsilon,
     double sigma,
     unsigned frequency,

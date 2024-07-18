@@ -168,7 +168,6 @@ void MixedLJSimulation::runSim()
     while (time < end_time) {
         bcHandler.preUpdateBoundaryHandling(*this);
 
-
         spdlog::debug("Force calculation...");
         strategy.calF(*this);
         spdlog::debug("Velocity calculation...");

@@ -4,8 +4,8 @@
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
 #include <memory>
-#include <utility>
 #include <spdlog/spdlog.h>
+#include <utility>
 
 PlanetSimulation::PlanetSimulation(
     double time,
@@ -15,7 +15,7 @@ PlanetSimulation::PlanetSimulation(
     PhysicsStrategy& strat,
     std::unique_ptr<FileWriter> writer,
     std::unique_ptr<FileReader> reader,
-    std::map<unsigned , bool> stationaryParticleTypes,
+    std::map<unsigned, bool> stationaryParticleTypes,
     unsigned frequency)
     : Simulation(
           time,

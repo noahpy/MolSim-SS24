@@ -73,7 +73,7 @@ void Analyzer::writeVectorToCSVFile(const std::vector<double>& data, const std::
         spdlog::error("Failed to open file: {}", filename);
         return;
     }
-    outfile << data [0];
+    outfile << data[0];
     for (size_t i = 1; i < data.size(); i++) {
         outfile << "," << data[i];
     }
