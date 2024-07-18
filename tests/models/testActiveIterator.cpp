@@ -8,6 +8,7 @@
 #include "physics/strategy.h"
 #include "physics/thermostat/ThermostatFactory.h"
 #include "physics/velocityCal/velocityCal.h"
+#include "simulation/MixedLJSimulation.h"
 #include "simulation/baseSimulation.h"
 #include "utils/Params.h"
 #include <cmath>

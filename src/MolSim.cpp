@@ -41,7 +41,7 @@ int main(int argc, char* argsv[])
         params.domain_size[2] > 1 ? 3 : 2);
 
     // Intialize physics strategy
-    PhysicsStrategy strat = stratFactory(params.simulation_type);
+    PhysicsStrategy strat = stratFactory(params.simulation_type, params.parallel_type);
 
     // Intialize empty particle container
     ParticleContainer particles {};

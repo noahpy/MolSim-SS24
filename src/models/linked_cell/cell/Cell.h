@@ -5,6 +5,7 @@
 #include "utils/Position.h"
 #include <functional>
 #include <list>
+#include <mutex>
 
 /** @brief A 3D index representing a cell's position within the grid. */
 typedef std::array<size_t, 3> CellIndex;

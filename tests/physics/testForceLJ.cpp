@@ -7,6 +7,7 @@
 #include "physics/strategy.h"
 #include "physics/velocityCal/velocityCal.h"
 #include "simulation/baseSimulation.h"
+#include "simulation/linkedLennardJonesSim.h"
 #include <cmath>
 #include <gtest/gtest.h>
 

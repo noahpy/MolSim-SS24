@@ -3,14 +3,18 @@
 #include "physics/boundaryConditions/BoundaryConfig.h"
 #include <array>
 #include <string>
+#include "models/molecules/Molecule.h"
+#include <memory>
 
 enum ReaderType { STANDARD, CLUSTER, EMPTY, ASCII, XML };
 
 enum class WriterType { XYZ, VTK, XML, EMPTY };
 
-enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ };
+enum SimulationType { PLANET, LJ, LINKED_LJ, DOMAIN_LJ, MIXED_LJ, MEMBRANE_LJ };
 
 enum ThermostatType { CLASSICAL, INDIVIDUAL, NONE };
+
+enum ParallelType { STATIC, TASK };
 
 class Params {
 public:
@@ -34,6 +38,8 @@ public:
     WriterType writer_type = WriterType::VTK;
     // simulation type
     SimulationType simulation_type = SimulationType::PLANET;
+    // parallel type 
+    ParallelType parallel_type = ParallelType::STATIC;
     // domain origin
     std::array<double, 3> domain_origin = { -10.0, -10.0, 0 };
     // domain size
@@ -72,14 +78,13 @@ public:
     // List of all types which should be immobile
     std::map<unsigned, bool> immobileParticleTypes {};
     // The number of bins to use in the analyzer - 1 for ignoring a given axis
-    std::array<size_t, 3> bins = { 50, 1, 12 };
+    std::array<size_t, 3> bins = { 50, 0, 12 };
     // The file name to write the analyzer results to
     std::string outName = "analysis";
     // The interval to run the analyzer
     size_t analysisInterval = 100000;
+    // Molecules in the simulation
+    std::vector<std::unique_ptr<Molecule>> molecules {};
 
-    // TODO
-    // [ ] Read ThermostatType from input file -> also none
-    // [ ] Read immobileParticleTypes from input file
-    // [ ] Read analysis params from xml
+    // TODO read the molecules from the input file (set any particle as root, will be overwritten)
 };

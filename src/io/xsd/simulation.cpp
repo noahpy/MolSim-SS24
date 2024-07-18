@@ -923,6 +923,221 @@ void sphere_t::ptype(const ptype_optional& x)
     this->ptype_ = x;
 }
 
+
+// membrane_t
+//
+
+const membrane_t::pos_type& membrane_t::
+pos () const
+{
+  return this->pos_.get ();
+}
+
+membrane_t::pos_type& membrane_t::
+pos ()
+{
+  return this->pos_.get ();
+}
+
+void membrane_t::
+pos (const pos_type& x)
+{
+  this->pos_.set (x);
+}
+
+void membrane_t::
+pos (::std::unique_ptr< pos_type > x)
+{
+  this->pos_.set (std::move (x));
+}
+
+const membrane_t::vel_type& membrane_t::
+vel () const
+{
+  return this->vel_.get ();
+}
+
+membrane_t::vel_type& membrane_t::
+vel ()
+{
+  return this->vel_.get ();
+}
+
+void membrane_t::
+vel (const vel_type& x)
+{
+  this->vel_.set (x);
+}
+
+void membrane_t::
+vel (::std::unique_ptr< vel_type > x)
+{
+  this->vel_.set (std::move (x));
+}
+
+const membrane_t::dim_type& membrane_t::
+dim () const
+{
+  return this->dim_.get ();
+}
+
+membrane_t::dim_type& membrane_t::
+dim ()
+{
+  return this->dim_.get ();
+}
+
+void membrane_t::
+dim (const dim_type& x)
+{
+  this->dim_.set (x);
+}
+
+void membrane_t::
+dim (::std::unique_ptr< dim_type > x)
+{
+  this->dim_.set (std::move (x));
+}
+
+const membrane_t::mass_type& membrane_t::
+mass () const
+{
+  return this->mass_.get ();
+}
+
+membrane_t::mass_type& membrane_t::
+mass ()
+{
+  return this->mass_.get ();
+}
+
+void membrane_t::
+mass (const mass_type& x)
+{
+  this->mass_.set (x);
+}
+
+const membrane_t::spacing_type& membrane_t::
+spacing () const
+{
+  return this->spacing_.get ();
+}
+
+membrane_t::spacing_type& membrane_t::
+spacing ()
+{
+  return this->spacing_.get ();
+}
+
+void membrane_t::
+spacing (const spacing_type& x)
+{
+  this->spacing_.set (x);
+}
+
+const membrane_t::brownVel_type& membrane_t::
+brownVel () const
+{
+  return this->brownVel_.get ();
+}
+
+membrane_t::brownVel_type& membrane_t::
+brownVel ()
+{
+  return this->brownVel_.get ();
+}
+
+void membrane_t::
+brownVel (const brownVel_type& x)
+{
+  this->brownVel_.set (x);
+}
+
+const membrane_t::brownDim_type& membrane_t::
+brownDim () const
+{
+  return this->brownDim_.get ();
+}
+
+membrane_t::brownDim_type& membrane_t::
+brownDim ()
+{
+  return this->brownDim_.get ();
+}
+
+void membrane_t::
+brownDim (const brownDim_type& x)
+{
+  this->brownDim_.set (x);
+}
+
+void membrane_t::
+brownDim (::std::unique_ptr< brownDim_type > x)
+{
+  this->brownDim_.set (std::move (x));
+}
+
+const membrane_t::ptype_optional& membrane_t::
+ptype () const
+{
+  return this->ptype_;
+}
+
+membrane_t::ptype_optional& membrane_t::
+ptype ()
+{
+  return this->ptype_;
+}
+
+void membrane_t::
+ptype (const ptype_type& x)
+{
+  this->ptype_.set (x);
+}
+
+void membrane_t::
+ptype (const ptype_optional& x)
+{
+  this->ptype_ = x;
+}
+
+const membrane_t::equiDist_type& membrane_t::
+equiDist () const
+{
+  return this->equiDist_.get ();
+}
+
+membrane_t::equiDist_type& membrane_t::
+equiDist ()
+{
+  return this->equiDist_.get ();
+}
+
+void membrane_t::
+equiDist (const equiDist_type& x)
+{
+  this->equiDist_.set (x);
+}
+
+const membrane_t::springConst_type& membrane_t::
+springConst () const
+{
+  return this->springConst_.get ();
+}
+
+membrane_t::springConst_type& membrane_t::
+springConst ()
+{
+  return this->springConst_.get ();
+}
+
+void membrane_t::
+springConst (const springConst_type& x)
+{
+  this->springConst_.set (x);
+}
+
+
 // clusters_t
 //
 
@@ -955,6 +1170,29 @@ void clusters_t::sphere(const sphere_sequence& s)
 {
     this->sphere_ = s;
 }
+
+
+// molecules_t
+//
+
+const molecules_t::membrane_sequence& molecules_t::
+membrane () const
+{
+  return this->membrane_;
+}
+
+molecules_t::membrane_sequence& molecules_t::
+membrane ()
+{
+  return this->membrane_;
+}
+
+void molecules_t::
+membrane (const membrane_sequence& s)
+{
+  this->membrane_ = s;
+}
+
 
 // params_t
 //
@@ -1327,7 +1565,38 @@ void simulation_t::clusters(::std::unique_ptr<clusters_type> x)
     this->clusters_.set(std::move(x));
 }
 
-const simulation_t::ptypes_optional& simulation_t::ptypes() const
+const simulation_t::molecules_optional& simulation_t::
+molecules () const
+{
+  return this->molecules_;
+}
+
+simulation_t::molecules_optional& simulation_t::
+molecules ()
+{
+  return this->molecules_;
+}
+
+void simulation_t::
+molecules (const molecules_type& x)
+{
+  this->molecules_.set (x);
+}
+
+void simulation_t::
+molecules (const molecules_optional& x)
+{
+  this->molecules_ = x;
+}
+
+void simulation_t::
+molecules (::std::unique_ptr< molecules_type > x)
+{
+  this->molecules_.set (std::move (x));
+}
+
+const simulation_t::ptypes_optional& simulation_t::
+ptypes () const
 {
     return this->ptypes_;
 }
@@ -2888,6 +3157,330 @@ sphere_t& sphere_t::operator=(const sphere_t& x)
 
 sphere_t::~sphere_t() {}
 
+// membrane_t
+//
+
+membrane_t::
+membrane_t (const pos_type& pos,
+            const vel_type& vel,
+            const dim_type& dim,
+            const mass_type& mass,
+            const spacing_type& spacing,
+            const brownVel_type& brownVel,
+            const brownDim_type& brownDim,
+            const equiDist_type& equiDist,
+            const springConst_type& springConst)
+: ::xml_schema::type (),
+  pos_ (pos, this),
+  vel_ (vel, this),
+  dim_ (dim, this),
+  mass_ (mass, this),
+  spacing_ (spacing, this),
+  brownVel_ (brownVel, this),
+  brownDim_ (brownDim, this),
+  ptype_ (this),
+  equiDist_ (equiDist, this),
+  springConst_ (springConst, this)
+{
+}
+
+membrane_t::
+membrane_t (::std::unique_ptr< pos_type > pos,
+            ::std::unique_ptr< vel_type > vel,
+            ::std::unique_ptr< dim_type > dim,
+            const mass_type& mass,
+            const spacing_type& spacing,
+            const brownVel_type& brownVel,
+            const brownDim_type& brownDim,
+            const equiDist_type& equiDist,
+            const springConst_type& springConst)
+: ::xml_schema::type (),
+  pos_ (std::move (pos), this),
+  vel_ (std::move (vel), this),
+  dim_ (std::move (dim), this),
+  mass_ (mass, this),
+  spacing_ (spacing, this),
+  brownVel_ (brownVel, this),
+  brownDim_ (brownDim, this),
+  ptype_ (this),
+  equiDist_ (equiDist, this),
+  springConst_ (springConst, this)
+{
+}
+
+membrane_t::
+membrane_t (const membrane_t& x,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+: ::xml_schema::type (x, f, c),
+  pos_ (x.pos_, f, this),
+  vel_ (x.vel_, f, this),
+  dim_ (x.dim_, f, this),
+  mass_ (x.mass_, f, this),
+  spacing_ (x.spacing_, f, this),
+  brownVel_ (x.brownVel_, f, this),
+  brownDim_ (x.brownDim_, f, this),
+  ptype_ (x.ptype_, f, this),
+  equiDist_ (x.equiDist_, f, this),
+  springConst_ (x.springConst_, f, this)
+{
+}
+
+membrane_t::
+membrane_t (const ::xercesc::DOMElement& e,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+: ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+  pos_ (this),
+  vel_ (this),
+  dim_ (this),
+  mass_ (this),
+  spacing_ (this),
+  brownVel_ (this),
+  brownDim_ (this),
+  ptype_ (this),
+  equiDist_ (this),
+  springConst_ (this)
+{
+  if ((f & ::xml_schema::flags::base) == 0)
+  {
+    ::xsd::cxx::xml::dom::parser< char > p (e, true, false, false);
+    this->parse (p, f);
+  }
+}
+
+void membrane_t::
+parse (::xsd::cxx::xml::dom::parser< char >& p,
+       ::xml_schema::flags f)
+{
+  for (; p.more_content (); p.next_content (false))
+  {
+    const ::xercesc::DOMElement& i (p.cur_element ());
+    const ::xsd::cxx::xml::qualified_name< char > n (
+      ::xsd::cxx::xml::dom::name< char > (i));
+
+    // pos
+    //
+    if (n.name () == "pos" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< pos_type > r (
+        pos_traits::create (i, f, this));
+
+      if (!pos_.present ())
+      {
+        this->pos_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // vel
+    //
+    if (n.name () == "vel" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< vel_type > r (
+        vel_traits::create (i, f, this));
+
+      if (!vel_.present ())
+      {
+        this->vel_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // dim
+    //
+    if (n.name () == "dim" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< dim_type > r (
+        dim_traits::create (i, f, this));
+
+      if (!dim_.present ())
+      {
+        this->dim_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // mass
+    //
+    if (n.name () == "mass" && n.namespace_ ().empty ())
+    {
+      if (!mass_.present ())
+      {
+        this->mass_.set (mass_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // spacing
+    //
+    if (n.name () == "spacing" && n.namespace_ ().empty ())
+    {
+      if (!spacing_.present ())
+      {
+        this->spacing_.set (spacing_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // brownVel
+    //
+    if (n.name () == "brownVel" && n.namespace_ ().empty ())
+    {
+      if (!brownVel_.present ())
+      {
+        this->brownVel_.set (brownVel_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // brownDim
+    //
+    if (n.name () == "brownDim" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< brownDim_type > r (
+        brownDim_traits::create (i, f, this));
+
+      if (!brownDim_.present ())
+      {
+        this->brownDim_.set (::std::move (r));
+        continue;
+      }
+    }
+
+    // ptype
+    //
+    if (n.name () == "ptype" && n.namespace_ ().empty ())
+    {
+      if (!this->ptype_)
+      {
+        this->ptype_.set (ptype_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // equiDist
+    //
+    if (n.name () == "equiDist" && n.namespace_ ().empty ())
+    {
+      if (!equiDist_.present ())
+      {
+        this->equiDist_.set (equiDist_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    // springConst
+    //
+    if (n.name () == "springConst" && n.namespace_ ().empty ())
+    {
+      if (!springConst_.present ())
+      {
+        this->springConst_.set (springConst_traits::create (i, f, this));
+        continue;
+      }
+    }
+
+    break;
+  }
+
+  if (!pos_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "pos",
+      "");
+  }
+
+  if (!vel_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "vel",
+      "");
+  }
+
+  if (!dim_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "dim",
+      "");
+  }
+
+  if (!mass_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "mass",
+      "");
+  }
+
+  if (!spacing_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "spacing",
+      "");
+  }
+
+  if (!brownVel_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "brownVel",
+      "");
+  }
+
+  if (!brownDim_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "brownDim",
+      "");
+  }
+
+  if (!equiDist_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "equiDist",
+      "");
+  }
+
+  if (!springConst_.present ())
+  {
+    throw ::xsd::cxx::tree::expected_element< char > (
+      "springConst",
+      "");
+  }
+}
+
+membrane_t* membrane_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class membrane_t (*this, f, c);
+}
+
+membrane_t& membrane_t::
+operator= (const membrane_t& x)
+{
+  if (this != &x)
+  {
+    static_cast< ::xml_schema::type& > (*this) = x;
+    this->pos_ = x.pos_;
+    this->vel_ = x.vel_;
+    this->dim_ = x.dim_;
+    this->mass_ = x.mass_;
+    this->spacing_ = x.spacing_;
+    this->brownVel_ = x.brownVel_;
+    this->brownDim_ = x.brownDim_;
+    this->ptype_ = x.ptype_;
+    this->equiDist_ = x.equiDist_;
+    this->springConst_ = x.springConst_;
+  }
+
+  return *this;
+}
+
+membrane_t::
+~membrane_t ()
+{
+}
+
 // clusters_t
 //
 
@@ -2962,6 +3555,88 @@ clusters_t& clusters_t::operator=(const clusters_t& x)
 }
 
 clusters_t::~clusters_t() {}
+
+// molecules_t
+//
+
+molecules_t::
+molecules_t ()
+: ::xml_schema::type (),
+  membrane_ (this)
+{
+}
+
+molecules_t::
+molecules_t (const molecules_t& x,
+             ::xml_schema::flags f,
+             ::xml_schema::container* c)
+: ::xml_schema::type (x, f, c),
+  membrane_ (x.membrane_, f, this)
+{
+}
+
+molecules_t::
+molecules_t (const ::xercesc::DOMElement& e,
+             ::xml_schema::flags f,
+             ::xml_schema::container* c)
+: ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+  membrane_ (this)
+{
+  if ((f & ::xml_schema::flags::base) == 0)
+  {
+    ::xsd::cxx::xml::dom::parser< char > p (e, true, false, false);
+    this->parse (p, f);
+  }
+}
+
+void molecules_t::
+parse (::xsd::cxx::xml::dom::parser< char >& p,
+       ::xml_schema::flags f)
+{
+  for (; p.more_content (); p.next_content (false))
+  {
+    const ::xercesc::DOMElement& i (p.cur_element ());
+    const ::xsd::cxx::xml::qualified_name< char > n (
+      ::xsd::cxx::xml::dom::name< char > (i));
+
+    // membrane
+    //
+    if (n.name () == "membrane" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< membrane_type > r (
+        membrane_traits::create (i, f, this));
+
+      this->membrane_.push_back (::std::move (r));
+      continue;
+    }
+
+    break;
+  }
+}
+
+molecules_t* molecules_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class molecules_t (*this, f, c);
+}
+
+molecules_t& molecules_t::
+operator= (const molecules_t& x)
+{
+  if (this != &x)
+  {
+    static_cast< ::xml_schema::type& > (*this) = x;
+    this->membrane_ = x.membrane_;
+  }
+
+  return *this;
+}
+
+molecules_t::
+~molecules_t ()
+{
+}
 
 // params_t
 //
@@ -3220,41 +3895,53 @@ params_t::~params_t() {}
 // simulation_t
 //
 
-simulation_t::simulation_t(const params_type& params, const clusters_type& clusters)
-    : ::xml_schema::type()
-    , params_(params, this)
-    , clusters_(clusters, this)
-    , ptypes_(this)
-    , particles_(this)
+simulation_t::
+simulation_t (const params_type& params,
+              const clusters_type& clusters)
+: ::xml_schema::type (),
+  params_ (params, this),
+  clusters_ (clusters, this),
+  molecules_ (this),
+  ptypes_ (this),
+  particles_ (this)
 {
 }
 
-simulation_t::simulation_t(
-    ::std::unique_ptr<params_type> params, ::std::unique_ptr<clusters_type> clusters)
-    : ::xml_schema::type()
-    , params_(std::move(params), this)
-    , clusters_(std::move(clusters), this)
-    , ptypes_(this)
-    , particles_(this)
+simulation_t::
+simulation_t (::std::unique_ptr< params_type > params,
+              ::std::unique_ptr< clusters_type > clusters)
+: ::xml_schema::type (),
+  params_ (std::move (params), this),
+  clusters_ (std::move (clusters), this),
+  molecules_ (this),
+  ptypes_ (this),
+  particles_ (this)
 {
 }
 
-simulation_t::simulation_t(const simulation_t& x, ::xml_schema::flags f, ::xml_schema::container* c)
-    : ::xml_schema::type(x, f, c)
-    , params_(x.params_, f, this)
-    , clusters_(x.clusters_, f, this)
-    , ptypes_(x.ptypes_, f, this)
-    , particles_(x.particles_, f, this)
+simulation_t::
+simulation_t (const simulation_t& x,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+: ::xml_schema::type (x, f, c),
+  params_ (x.params_, f, this),
+  clusters_ (x.clusters_, f, this),
+  molecules_ (x.molecules_, f, this),
+  ptypes_ (x.ptypes_, f, this),
+  particles_ (x.particles_, f, this)
 {
 }
 
-simulation_t::simulation_t(
-    const ::xercesc::DOMElement& e, ::xml_schema::flags f, ::xml_schema::container* c)
-    : ::xml_schema::type(e, f | ::xml_schema::flags::base, c)
-    , params_(this)
-    , clusters_(this)
-    , ptypes_(this)
-    , particles_(this)
+simulation_t::
+simulation_t (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+: ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+  params_ (this),
+  clusters_ (this),
+  molecules_ (this),
+  ptypes_ (this),
+  particles_ (this)
 {
     if ((f & ::xml_schema::flags::base) == 0) {
         ::xsd::cxx::xml::dom::parser<char> p(e, true, false, false);
@@ -3319,10 +4006,26 @@ void simulation_t::parse(::xsd::cxx::xml::dom::parser<char>& p, ::xml_schema::fl
         throw ::xsd::cxx::tree::expected_element<char>("params", "");
     }
 
-    if (!clusters_.present()) {
-        throw ::xsd::cxx::tree::expected_element<char>("clusters", "");
+    // molecules
+    //
+    if (n.name () == "molecules" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< molecules_type > r (
+        molecules_traits::create (i, f, this));
+
+      if (!this->molecules_)
+      {
+        this->molecules_.set (::std::move (r));
+        continue;
+      }
     }
-}
+
+    // ptypes
+    //
+    if (n.name () == "ptypes" && n.namespace_ ().empty ())
+    {
+      ::std::unique_ptr< ptypes_type > r (
+        ptypes_traits::create (i, f, this));
 
 simulation_t* simulation_t::_clone(::xml_schema::flags f, ::xml_schema::container* c) const
 {
@@ -3342,7 +4045,33 @@ simulation_t& simulation_t::operator=(const simulation_t& x)
     return *this;
 }
 
-simulation_t::~simulation_t() {}
+simulation_t* simulation_t::
+_clone (::xml_schema::flags f,
+        ::xml_schema::container* c) const
+{
+  return new class simulation_t (*this, f, c);
+}
+
+simulation_t& simulation_t::
+operator= (const simulation_t& x)
+{
+  if (this != &x)
+  {
+    static_cast< ::xml_schema::type& > (*this) = x;
+    this->params_ = x.params_;
+    this->clusters_ = x.clusters_;
+    this->molecules_ = x.molecules_;
+    this->ptypes_ = x.ptypes_;
+    this->particles_ = x.particles_;
+  }
+
+  return *this;
+}
+
+simulation_t::
+~simulation_t ()
+{
+}
 
 #include <istream>
 #include <xsd/cxx/tree/error-handler.hxx>
@@ -4045,7 +4774,125 @@ void operator<<(::xercesc::DOMElement& e, const sphere_t& i)
     }
 }
 
-void operator<<(::xercesc::DOMElement& e, const clusters_t& i)
+void
+operator<< (::xercesc::DOMElement& e, const membrane_t& i)
+{
+  e << static_cast< const ::xml_schema::type& > (i);
+
+  // pos
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "pos",
+        e));
+
+    s << i.pos ();
+  }
+
+  // vel
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "vel",
+        e));
+
+    s << i.vel ();
+  }
+
+  // dim
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "dim",
+        e));
+
+    s << i.dim ();
+  }
+
+  // mass
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "mass",
+        e));
+
+    s << ::xml_schema::as_double(i.mass ());
+  }
+
+  // spacing
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "spacing",
+        e));
+
+    s << ::xml_schema::as_double(i.spacing ());
+  }
+
+  // brownVel
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "brownVel",
+        e));
+
+    s << ::xml_schema::as_double(i.brownVel ());
+  }
+
+  // brownDim
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "brownDim",
+        e));
+
+    s << i.brownDim ();
+  }
+
+  // ptype
+  //
+  if (i.ptype ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "ptype",
+        e));
+
+    s << *i.ptype ();
+  }
+
+  // equiDist
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "equiDist",
+        e));
+
+    s << ::xml_schema::as_double(i.equiDist ());
+  }
+
+  // springConst
+  //
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "springConst",
+        e));
+
+    s << ::xml_schema::as_double(i.springConst ());
+  }
+}
+
+void
+operator<< (::xercesc::DOMElement& e, const clusters_t& i)
 {
     e << static_cast<const ::xml_schema::type&>(i);
 
@@ -4072,7 +4919,30 @@ void operator<<(::xercesc::DOMElement& e, const clusters_t& i)
     }
 }
 
-void operator<<(::xercesc::DOMElement& e, const params_t& i)
+void
+operator<< (::xercesc::DOMElement& e, const molecules_t& i)
+{
+  e << static_cast< const ::xml_schema::type& > (i);
+
+  // membrane
+  //
+  for (molecules_t::membrane_const_iterator
+       b (i.membrane ().begin ()), n (i.membrane ().end ());
+       b != n; ++b)
+  {
+    const molecules_t::membrane_type& x (*b);
+
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "membrane",
+        e));
+
+    s << x;
+  }
+}
+
+void
+operator<< (::xercesc::DOMElement& e, const params_t& i)
 {
     e << static_cast<const ::xml_schema::type&>(i);
 
@@ -4217,10 +5087,26 @@ void operator<<(::xercesc::DOMElement& e, const simulation_t& i)
         s << i.clusters();
     }
 
-    // ptypes
-    //
-    if (i.ptypes()) {
-        ::xercesc::DOMElement& s(::xsd::cxx::xml::dom::create_element("ptypes", e));
+  // molecules
+  //
+  if (i.molecules ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "molecules",
+        e));
+
+    s << *i.molecules ();
+  }
+
+  // ptypes
+  //
+  if (i.ptypes ())
+  {
+    ::xercesc::DOMElement& s (
+      ::xsd::cxx::xml::dom::create_element (
+        "ptypes",
+        e));
 
         s << *i.ptypes();
     }
