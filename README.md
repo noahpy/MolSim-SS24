@@ -3,7 +3,9 @@
 ![Testing workflow](https://github.com/noahpy/MolSim-SS24/actions/workflows/tests.yaml/badge.svg)
 
 The molecular dynamics SS24 code base of Group F.  
+This is a Particle Simulation program, which outputs data to be then visualized using [ParaView](https://www.paraview.org/).
 You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSim-SS24/](https://noahpy.github.io/MolSim-SS24/).
+You can find a playlist of our simulations on [Youtube](https://www.youtube.com/playlist?list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl).
 
 ## Table of Contents
 
