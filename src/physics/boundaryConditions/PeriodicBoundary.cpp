@@ -95,7 +95,11 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                     insertedParticles.at(insertionIndex)->setActivity(false);
                 } else {
                     Particle haloParticle(
-                        haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType(), false);
+                        haloPosition,
+                        { 0, 0, 0 },
+                        particle.get().getM(),
+                        particle.get().getType(),
+                        false);
                     haloParticle.setActivity(false);
                     insertedParticles.push_back(std::make_unique<Particle>(haloParticle));
                 }
@@ -237,7 +241,8 @@ bool PeriodicBoundary::isThisSideResponsibleForShifts(
 {
     size_t i = 0;
     // Skip all non periodic sides
-    while (boundaryConfig.boundaryMap.at(boundarySides[i]) != BoundaryType::PERIODIC && i < (boundarySides.size()-1)) {
+    while (boundaryConfig.boundaryMap.at(boundarySides[i]) != BoundaryType::PERIODIC &&
+           i < (boundarySides.size() - 1)) {
         i++;
     }
     // This side is responsible, if it is the first periodic side

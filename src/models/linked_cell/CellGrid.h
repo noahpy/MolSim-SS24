@@ -71,9 +71,11 @@ public:
     [[nodiscard]] std::list<CellIndex> getNeighbourCells(const CellIndex& cellIndex) const
         THREAD_SAFE;
 
-    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile2D(const CellIndex& cellIndex) const;
+    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile2D(
+        const CellIndex& cellIndex) const;
 
-    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile3D(const CellIndex& cellIndex) const;
+    [[nodiscard]] std::list<CellIndex> getNeighbourCellsStencile3D(
+        const CellIndex& cellIndex) const;
 
     /**
      * @brief Resets the forces for all particles for the next force calculation
@@ -177,7 +179,6 @@ protected:
      * @param cell The index of the cell to determine the neighbours of.
      */
     void determineNeighbours(CellIndex cell);
-
 
     /**
      * @brief Determines the stencil neighbours of the specified cell.

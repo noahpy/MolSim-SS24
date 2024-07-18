@@ -44,8 +44,17 @@ void ClusterReader::readFile(Simulation& sim)
                     "When reading cluster type Cuboid: Could not read parameters correctly");
                 exit(EXIT_FAILURE);
             }
-            generator.registerCluster(std::make_unique<CuboidParticleCluster>(
-                CuboidParticleCluster({ ox, oy, oz }, nx, ny, nz, h, m, { vx, vy, vz }, mv, dim, sim.stationaryParticleTypes)));
+            generator.registerCluster(std::make_unique<CuboidParticleCluster>(CuboidParticleCluster(
+                { ox, oy, oz },
+                nx,
+                ny,
+                nz,
+                h,
+                m,
+                { vx, vy, vz },
+                mv,
+                dim,
+                sim.stationaryParticleTypes)));
             break;
         case 'S':
             double osx, osy, osz;

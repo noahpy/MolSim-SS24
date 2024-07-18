@@ -7,7 +7,7 @@ ParticleCluster::ParticleCluster(
     std::array<double, 3> initialVelocity,
     double meanVelocity,
     size_t dimensions,
-    const std::map<unsigned , bool>& stationaryParticleTypes,
+    const std::map<unsigned, bool>& stationaryParticleTypes,
     unsigned ptype)
     : origin(origin)
     , mass(mass)

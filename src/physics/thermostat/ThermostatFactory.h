@@ -12,4 +12,5 @@
  * @param dim The dimension used.
  * @return The created thermostat object.
  */
-std::unique_ptr<Thermostat> thermostatFactory(ThermostatType type, double init, double target, double delta, size_t dim);
+std::unique_ptr<Thermostat> thermostatFactory(
+    ThermostatType type, double init, double target, double delta, size_t dim);

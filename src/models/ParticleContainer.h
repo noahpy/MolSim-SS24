@@ -75,7 +75,6 @@ public:
      */
     class ActiveIterator;
 
-
     /**
      * @brief Get the iterator to the first active particle
      * @return The iterator to the first active particle
@@ -109,7 +108,6 @@ public:
     ActiveIterator beginActive();
 
     ActiveIterator endActive();
-
 
     /**
      * @brief Iterator class for active particles

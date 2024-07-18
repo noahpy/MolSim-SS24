@@ -3,8 +3,8 @@
 
 #include "analytics/ProgressLogger.h"
 #include "models/ParticleContainer.h"
-#include <memory>
 #include <map>
+#include <memory>
 
 // forward-declare PhysicsStrategy
 class PhysicsStrategy;
@@ -41,7 +41,7 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
-        std::map<unsigned , bool> stationaryParticleTypes,
+        std::map<unsigned, bool> stationaryParticleTypes,
         unsigned frequency = 10);
 
     /**
@@ -55,7 +55,8 @@ public:
     unsigned iteration = 0; /**< The current iteration of the simulation */
     unsigned frequency = 10; /**< The frequency for writing outputs */
     ParticleContainer& container; /**< The particle container which holds all particles */
-    std::map<unsigned, bool> stationaryParticleTypes; /**< The types of particles which are stationary */
+    std::map<unsigned, bool>
+        stationaryParticleTypes; /**< The types of particles which are stationary */
 
     /*
      * @brief Destructor of Simulation

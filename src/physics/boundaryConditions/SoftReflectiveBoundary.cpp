@@ -56,7 +56,11 @@ void SoftReflectiveBoundary::preUpdateBoundaryHandling(Simulation& simulation)
             } else {
                 // create a new particle
                 Particle haloParticle(
-                    haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType(), false);
+                    haloPosition,
+                    { 0, 0, 0 },
+                    particle.get().getM(),
+                    particle.get().getType(),
+                    false);
                 haloParticle.setActivity(false);
                 insertedParticles.push_back(std::make_unique<Particle>(haloParticle));
             }

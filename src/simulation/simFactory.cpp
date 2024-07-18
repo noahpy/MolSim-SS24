@@ -1,12 +1,12 @@
 
 #include "simFactory.h"
+#include "analytics/Analyzer.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/boundaryConditions/BoundaryConfig.h"
 #include "simulation/MixedLJSimulation.h"
 #include "simulation/planetSim.h"
 #include <spdlog/spdlog.h>
-#include "analytics/Analyzer.h"
 
 std::unique_ptr<Simulation> simFactory(
     Params& params,
@@ -141,7 +141,7 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_size,
             params.cutoff,
             params.boundaryConfig,
-            std::make_unique<Analyzer> (params.bins, params.outName),
+            std::make_unique<Analyzer>(params.bins, params.outName),
             params.plot_frequency,
             params.update_frequency,
             params.analysisInterval,
@@ -193,7 +193,7 @@ std::unique_ptr<Simulation> simFactory(
             params.domain_size,
             params.cutoff,
             params.boundaryConfig,
-            std::make_unique<Analyzer> (params.bins, params.outName),
+            std::make_unique<Analyzer>(params.bins, params.outName),
             params.gravity,
             std::move(thermostat),
             params.plot_frequency,
