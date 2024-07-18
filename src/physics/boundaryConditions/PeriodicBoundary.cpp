@@ -95,11 +95,7 @@ void PeriodicBoundary::preUpdateBoundaryHandling(Simulation& simulation)
                     insertedParticles.at(insertionIndex)->setActivity(false);
                 } else {
                     Particle haloParticle(
-                        haloPosition,
-                        { 0, 0, 0 },
-                        particle.get().getM(),
-                        particle.get().getType(),
-                        false);
+                        haloPosition, { 0, 0, 0 }, particle.get().getM(), particle.get().getType(),  0,false);
                     haloParticle.setActivity(false);
                     insertedParticles.push_back(std::make_unique<Particle>(haloParticle));
                 }

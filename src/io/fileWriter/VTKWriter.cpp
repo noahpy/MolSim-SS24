@@ -24,8 +24,9 @@ void VTKWriter::plotParticles(const Simulation& s)
 {
     initializeOutput(s.container.activeParticleCount);
 #pragma omp parallel for
-    for (auto& p : s.container) {
-        plotParticle(p, s.container.getIndex(p.getID()));
+    for (auto& p : s.container.particles) {
+        if (p.getActivity())
+            plotParticle(p, s.container.getIndex(p.getID()));
     }
 
     writeFile(this->out_name, s.iteration);

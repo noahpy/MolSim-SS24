@@ -9,6 +9,7 @@
 #include "physics/thermostat/IndividualThermostat.h"
 #include "physics/thermostat/ThermostatFactory.h"
 #include "physics/velocityCal/velocityCal.h"
+#include "simulation/MixedLJSimulation.h"
 #include "utils/ArrayUtils.h"
 #include "utils/Params.h"
 #include <gtest/gtest.h>

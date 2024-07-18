@@ -85,6 +85,16 @@ public:
     void preCalcSetup(ParticleContainer& particleContainer) const;
 
     /**
+     * @brief Resets the forces for all particles for the next force calculation, whilst
+     * already setting the new gravitational force, given the gravitational constant
+     * @param particleContainer The container holding the particles
+     * @param gravitationalConstant The gravitational constant
+     * @return void
+     */
+    void preCalcSetupGravity(
+        ParticleContainer& particleContainer, double gravitationalConstant) const;
+
+    /**
      * @brief Resets the visited flag of all cells to false
      * @return void
      */

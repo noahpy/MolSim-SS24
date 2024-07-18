@@ -1,10 +1,10 @@
 
 #include "MixedLJSimulation.h"
-
 #include "analytics/Analyzer.h"
 #include "io/fileReader/FileReader.h"
 #include "io/fileWriter/FileWriter.h"
 #include "physics/strategy.h"
+#include "utils/ArrayUtils.h"
 #include <utility>
 
 MixedLJSimulation::MixedLJSimulation(
@@ -154,6 +154,15 @@ MixedLJSimulation::MixedLJSimulation(
 
 void MixedLJSimulation::runSim()
 {
+
+    if (container.particles.size() == 2500) {
+        container.particles[874].setType(2);
+        container.particles[875].setType(2);
+        container.particles[924].setType(2);
+        container.particles[925].setType(2);
+    }
+
+
     auto startTime = std::chrono::steady_clock::now();
     unsigned long long particleUpdates = 0;
     while (time < end_time) {
@@ -162,6 +171,23 @@ void MixedLJSimulation::runSim()
         spdlog::debug("Force calculation...");
         strategy.calF(*this);
         spdlog::debug("Velocity calculation...");
+
+        if (time < 150 && container.particles.size() == 2500) {
+            std::array<double, 3> Fz_up = { 0, 0, 0.8 };
+            Particle& p1 = container.particles[874];
+            Particle& p2 = container.particles[875];
+            Particle& p3 = container.particles[924];
+            Particle& p4 = container.particles[925];
+            p1.setOldF(p1.getF());
+            p1.setF(p1.getF() + Fz_up);
+            p2.setOldF(p2.getF());
+            p2.setF(p2.getF() + Fz_up);
+            p3.setOldF(p3.getF());
+            p3.setF(p3.getF() + Fz_up);
+            p4.setOldF(p4.getF());
+            p4.setF(p4.getF() + Fz_up);
+        }
+
         strategy.calV(*this);
         spdlog::debug("Position calculation...");
         strategy.calX(*this);
@@ -184,7 +210,6 @@ void MixedLJSimulation::runSim()
         if (doProfile) {
             particleUpdates += container.activeParticleCount;
         }
-        // Update thermostat if frequency is positive
         spdlog::debug("Iteration {} finished.", iteration);
         progressLogger.logProgress(iteration);
 

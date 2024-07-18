@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simulation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <params>
+    <delta_t>0.0005</delta_t>
+    <end_time>0.5</end_time>
+    <output>rl_3d_short</output>
+    <frequency>10</frequency>
+    <!-- Domain params -->
+    <domainOrigin>
+      <x>0</x>
+      <y>0</y>
+      <z>0</z>
+    </domainOrigin>
+    <domainSize>
+      <x>60</x>
+      <y>60</y>
+      <z>60</z>
+    </domainSize>
+    <cutoff>3.6</cutoff>
+    <!-- Boundary params -->
+    <boundaries>
+      <bound_six>periodic</bound_six>
+      <bound_six>periodic</bound_six>
+      <bound_six>soft_reflective</bound_six>
+      <bound_six>soft_reflective</bound_six>
+      <bound_six>periodic</bound_six>
+      <bound_six>periodic</bound_six>
+    </boundaries>
+    <!-- Thermostat params -->
+    <thermostat>
+        <initialTemp>40</initialTemp>
+        <thermoFreq>1000</thermoFreq>
+        <maxTempDelta>20</maxTempDelta>
+    </thermostat>
+    <!-- Gravity params -->
+    <gravity>-12.44</gravity>
+  </params>
+
+  <!-- Cluster specifications -->
+  <clusters>
+    <cuboid>
+      <pos>
+        <x>0.6</x>
+        <y>0.6</y>
+        <z>0.6</z>
+      </pos>
+      <vel>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </vel>
+      <dim>
+        <x>50</x>
+        <y>20</y>
+        <z>50</z>
+      </dim>
+      <mass>1.0</mass>
+      <spacing>1.2</spacing>
+      <brownVel>0</brownVel>
+      <brownDim>2</brownDim>
+      <ptype>1</ptype>
+    </cuboid> 
+    <cuboid>
+      <pos>
+        <x>0.6</x>
+        <y>24.6</y>
+        <z>0.6</z>
+      </pos>
+      <vel>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </vel>
+      <dim>
+        <x>50</x>
+        <y>20</y>
+        <z>50</z>
+      </dim>
+      <mass>2.0</mass>
+      <spacing>1.2</spacing>
+      <brownVel>0</brownVel>
+      <brownDim>2</brownDim>
+      <ptype>2</ptype>
+    </cuboid>
+  </clusters>
+
+  <!-- Particle types -->
+  <ptypes>
+      <ptype type="1">
+          <sigma>1.2</sigma>
+          <epsilon>1.0</epsilon>
+      </ptype>
+      <ptype type="2">
+          <sigma>1.1</sigma>
+          <epsilon>1.0</epsilon>
+      </ptype>
+  </ptypes>
+</simulation>
