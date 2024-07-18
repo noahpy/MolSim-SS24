@@ -140,7 +140,8 @@ void Membrane::initNeighbors(const ParticleGrid& particleGrid)
                 int j = offset[1] + y;
                 if (i >= 0 && i < particleGrid.size() && j >= 0 && j < particleGrid[0].size()) {
                     directNeighbors[particleGrid[x][y]].push_back(particleGrid[i][j]);
-                    neighboringRelations.insert({getKey(particleGrid[x][y], particleGrid[i][j]), true});
+                    neighboringRelations.insert(
+                        { getKey(particleGrid[x][y], particleGrid[i][j]), true });
                 }
             }
 
@@ -149,7 +150,8 @@ void Membrane::initNeighbors(const ParticleGrid& particleGrid)
                 int j = offset[1] + y;
                 if (i >= 0 && i < particleGrid.size() && j >= 0 && j < particleGrid[0].size()) {
                     diagNeighbors[particleGrid[x][y]].push_back(particleGrid[i][j]);
-                    neighboringRelations.insert({getKey(particleGrid[x][y], particleGrid[i][j]), true});
+                    neighboringRelations.insert(
+                        { getKey(particleGrid[x][y], particleGrid[i][j]), true });
                 }
             }
 
@@ -157,7 +159,8 @@ void Membrane::initNeighbors(const ParticleGrid& particleGrid)
                 int i = offset[0] + x;
                 int j = offset[1] + y;
                 if (i >= 0 && i < particleGrid.size() && j >= 0 && j < particleGrid[0].size())
-                    neighboringRelations.insert({getKey(particleGrid[x][y], particleGrid[i][j]), true});
+                    neighboringRelations.insert(
+                        { getKey(particleGrid[x][y], particleGrid[i][j]), true });
             }
         }
     }
@@ -173,59 +176,64 @@ void Membrane::calculateIntraMolecularForces(const Simulation& sim)
 
     // Calculate repulsive-LJ forces for the membrane particles to avoid self-penetration
     // See forceCal.h for the same structure
-    for (size_t x = 1; x < cellGrid.cells.size() - 1; ++x)
-        for (size_t y = 1; y < cellGrid.cells[0].size() - 1; ++y) {
-            bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
-            for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
-                if (doLoopFor2D) {
-                    doLoopFor2D = false; // only do it once
-                    z = 0;
-                }
-                std::list<CellIndex> neighbors = cellGrid.getNeighbourCells({ x, y, z });
+    size_t xSize = cellGrid.cells.size();
+    size_t ySize = cellGrid.cells[0].size();
 
-                // calculate the LJ forces in the cell
-                for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
-                     it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
-                     ++it) {
-                    auto pair = *it;
-                    // Skip iteration if not both particles are part of this membrane
-                    if (pair.first.get().getMoleculeId() != ID ||
-                        pair.first.get().getMoleculeId() != pair.second.get().getMoleculeId())
-                        continue;
-
-                    // Skip iteration if particles are neighbors -> no repulsion
-                    if (isNeighbor(pair.first.get().getID(), pair.second.get().getID()))
-                        continue;
-
-                    std::array<double, 3> delta =
-                        pair.first.get().getX() - pair.second.get().getX();
-                    // Check if the distance is less than the cutoff to only have repulsive forces
-                    if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
-                        lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
-                    }
-                }
-
-                for (auto i : neighbors)
-                    for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles())
-                        for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
-                            // Skip iteration if not both particles are part of this membrane
-                            if (p1.get().getMoleculeId() != ID ||
-                                p1.get().getMoleculeId() != p2.get().getMoleculeId())
-                                continue;
-
-                            // Skip iteration if particles are neighbors -> no repulsion
-                            if (isNeighbor(p1.get().getID(), p2.get().getID()))
-                                continue;
-
-                            // Check if the distance is less than the cutoff to only have repulsive
-                            // forces
-                            std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
-                            if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
-                                lj_calc(p1, p2, alpha, beta, gamma, delta);
-                            }
-                        }
+#pragma omp parallel for
+    // for all cells in the grid
+    for (size_t index = 0; index < (xSize - 2) * (ySize - 2); ++index) {
+        size_t x = index / (ySize - 2) + 1;
+        size_t y = index % (ySize - 2) + 1;
+        bool doLoopFor2D = cellGrid.cells[0][0].size() == 1;
+        for (size_t z = 1; z < cellGrid.cells[0][0].size() - 1 || doLoopFor2D; ++z) {
+            if (doLoopFor2D) {
+                doLoopFor2D = false; // only do it once
+                z = 0;
             }
+            auto& neighbours = cellGrid.cells.at(x).at(y).at(z)->stencilNeighbours;
+
+            // calculate the LJ forces in the cell
+            for (auto it = cellGrid.cells.at(x).at(y).at(z)->beginPairs();
+                 it != cellGrid.cells.at(x).at(y).at(z)->endPairs();
+                 ++it) {
+                auto pair = *it;
+                // Skip iteration if not both particles are part of this membrane
+                if (pair.first.get().getMoleculeId() != ID ||
+                    pair.first.get().getMoleculeId() != pair.second.get().getMoleculeId())
+                    continue;
+
+                // Skip iteration if particles are neighbors -> no repulsion
+                if (isNeighbor(pair.first.get().getID(), pair.second.get().getID()))
+                    continue;
+
+                std::array<double, 3> delta = pair.first.get().getX() - pair.second.get().getX();
+                // Check if the distance is less than the cutoff to only have repulsive forces
+                if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
+                    lj_calc(pair.first, pair.second, alpha, beta, gamma, delta);
+                }
+            }
+
+            for (auto i : neighbours)
+                for (auto p1 : cellGrid.cells.at(x).at(y).at(z)->getParticles())
+                    for (auto p2 : cellGrid.cells[i[0]][i[1]][i[2]]->getParticles()) {
+                        // Skip iteration if not both particles are part of this membrane
+                        if (p1.get().getMoleculeId() != ID ||
+                            p1.get().getMoleculeId() != p2.get().getMoleculeId())
+                            continue;
+
+                        // Skip iteration if particles are neighbors -> no repulsion
+                        if (isNeighbor(p1.get().getID(), p2.get().getID()))
+                            continue;
+
+                        // Check if the distance is less than the cutoff to only have repulsive
+                        // forces
+                        std::array<double, 3> delta = p1.get().getX() - p2.get().getX();
+                        if (ArrayUtils::DotProduct(delta) < cutoffRadiusSquared) {
+                            lj_calc(p1, p2, alpha, beta, gamma, delta);
+                        }
+                    }
         }
+    }
 }
 
 void Membrane::calculateHarmonicForces(ParticleContainer& container)
@@ -245,9 +253,10 @@ void Membrane::calculateHarmonicForces(ParticleContainer& container)
                         container.particles[pair.first], container.particles[neighbor], k, diagR0);
 }
 
-
-bool Membrane::isNeighbor(size_t particleID1, size_t particleID2) {
-    return neighboringRelations.find(getKey(particleID1, particleID2)) != neighboringRelations.end();
+bool Membrane::isNeighbor(size_t particleID1, size_t particleID2)
+{
+    return neighboringRelations.find(getKey(particleID1, particleID2)) !=
+           neighboringRelations.end();
 }
 
 std::string Membrane::toString()
