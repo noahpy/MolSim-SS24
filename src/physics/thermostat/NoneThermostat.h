@@ -31,7 +31,8 @@ public:
      * @param sim The simulation to get the total kinetic energy for.
      * @return 0 as it does nothing
      */
-    double getTotalKineticEnergy(Simulation& sim) override {
+    double getTotalKineticEnergy(Simulation& sim) override
+    {
         // Do nothing
         return 0;
     };
@@ -40,7 +41,5 @@ public:
      * @brief Get the name of the thermostat.
      * @return The name of the thermostat.
      */
-    [[nodiscard]] std::string getName() const override {
-        return "No Thermostat active";
-    };
+    [[nodiscard]] std::string getName() const override { return "No Thermostat active"; };
 };

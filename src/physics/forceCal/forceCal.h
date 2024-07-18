@@ -1,7 +1,7 @@
 
 #pragma once
-#include "simulation/baseSimulation.h"
 #include "simulation/MixedLJSimulation.h"
+#include "simulation/baseSimulation.h"
 
 /**
  * @brief Calculate the forces between particles using the Stroemer-Verlet algorithm

@@ -26,7 +26,8 @@ void printHelp(std::string progName)
               << std::endl
               << "      --sigma=VALUE      Set the Zero crossing of LJ potential (default: 1)"
               << std::endl
-              << "  -l, --log_level=LEVEL  Set the logging level (default: 3, incompatible with -p)" << std::endl
+              << "  -l, --log_level=LEVEL  Set the logging level (default: 3, incompatible with -p)"
+              << std::endl
               << "  -c                     Specify that the given input file describes clusters "
               << std::endl
               << "  -a                     Specify that the given input file is of type ascii art"
@@ -34,8 +35,10 @@ void printHelp(std::string progName)
               << "  -x                     Specify that the given input file is of type XML"
               << std::endl
               << "  -s, --simtype=VALUE    Specify simulation type (default: 0)" << std::endl
-              << "  -w, --writetype=VALUE  Specify writer type (default: 0, incompatible with -p)" << std::endl
-              << "  -p                     Run performance measurements (incompatible with -l, -w)" << std::endl
+              << "  -w, --writetype=VALUE  Specify writer type (default: 0, incompatible with -p)"
+              << std::endl
+              << "  -p                     Run performance measurements (incompatible with -l, -w)"
+              << std::endl
               << "  -h, --help             Display this help message" << std::endl
               << std::endl
               << "For more details, see the man page with: man ./.molsim.1" << std::endl;

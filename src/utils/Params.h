@@ -63,14 +63,14 @@ public:
     double max_temp_delta = 10;
     // gravitational constant
     double gravity = 0.0;
-    // particle types 
+    // particle types
     std::vector<std::pair<double, double>> particleTypes;
     // map to particle types
     std::map<unsigned, std::pair<double, double>> typesMap;
     // Flag for measuring performance -> will not use any io and time the simulation
     bool doPerformanceMeasurements = false;
     // List of all types which should be immobile
-    std::map<unsigned , bool> immobileParticleTypes {};
+    std::map<unsigned, bool> immobileParticleTypes {};
     // The number of bins to use in the analyzer - 1 for ignoring a given axis
     std::array<size_t, 3> bins = { 50, 1, 12 };
     // The file name to write the analyzer results to

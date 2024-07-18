@@ -3,8 +3,8 @@
 #include "physics/boundaryConditions/OverflowBoundary.h"
 #include "physics/boundaryConditions/PeriodicBoundary.h"
 #include "physics/boundaryConditions/SoftReflectiveBoundary.h"
-#include <spdlog/spdlog.h>
 #include <algorithm>
+#include <spdlog/spdlog.h>
 
 BoundaryConditionHandler::BoundaryConditionHandler(
     const BoundaryConfig& boundaryConfig, const CellGrid& cellGrid)

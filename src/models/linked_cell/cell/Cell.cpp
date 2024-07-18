@@ -75,7 +75,6 @@ ParticleRefList::iterator Cell::end()
     return particles.end();
 }
 
-
 Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
     : particles(particles)
     , firstIt(particles.begin())
@@ -90,7 +89,6 @@ Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
         secondIt = particles.end();
     }
 }
-
 
 std::pair<std::reference_wrapper<Particle>, std::reference_wrapper<Particle>> Cell::
     PairListIterator::operator*() const
