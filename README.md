@@ -168,10 +168,28 @@ Rayleigh-Taylor instability in 3D:
 src/MolSim ../input/reyleigh_3D.xml -x -s 4
 ```
 
-Nano-scale flow simulation:
+Nano-scale flow simulation (base):
 
 ```sh
 src/MolSim ../input/nano_scale_flow.xml -x -s 4
+```
+
+Nano-scale flow simulation (strong wall + rare thermostat update):
+
+```sh
+src/MolSim ../input/nano_scale_mods/nano_flow_stronger_wall_weak_thermo.xml -x -s 4
+```
+
+Nano-scale flow simulation (strong wall with nice profile result):
+
+```sh
+src/MolSim ../input/nano_scale_mods/nano_flow_stronger_wall.xml -x -s 4
+```
+
+Nano-scale flow simulation (with turbulence):
+
+```sh
+src/MolSim ../input/nano_scale_mods/nano_flow_turbulence.xml -x -s 4
 ```
 
 ### Generate Doxygen documentation
