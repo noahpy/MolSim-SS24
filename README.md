@@ -290,6 +290,8 @@ man ./.molsim.1
 
 The project is structured as follows:  
 ![Project structure UML](docs/res/UML-Structure.svg)
+
+
 Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project. The latest changes done within the scope of assignment 5 are highlighted in orange.
 
 **`Simulation`**
