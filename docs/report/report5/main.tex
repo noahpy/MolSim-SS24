@@ -25,6 +25,14 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+
 
 \title{Scientific Computing - Molecular dynamics \\ Group F}
 \newcommand{\subtitle}{Problem sheet 5}
@@ -181,7 +189,7 @@ We can observe that the most time is spent at computing the forces, of which a t
 We interpret this positively, as we spend most our time of the program for the heart of the simulation, the force calculation, which is also the tackle point of our parallelization.
 Furthermore, we can see that we significantly reduced the runtime of the output of particles to essentially the I/O operation of the file (\texttt{VTKFile} is 6.36\% of 6.41\% of \texttt{writeFile}).
 Additionally, location, velocity calculation and the thermostat calculations are below 0.5\% of the total runtime.
-Another significant of the runtime is the $\_init$ function, which is called when a shared library is loaded.
+Another significant of the runtime is the \texttt{\_init} function, which is called when a shared library is loaded.
 As we do not use any libraries except \texttt{spdlog}, \texttt{xerces-c} and \texttt{openmp}, we interpret this as an indicator that our overall runtime of our program is quite low, but we might need to investigate this further :)
 
 \begin{figure}[H]
@@ -190,6 +198,69 @@ As we do not use any libraries except \texttt{spdlog}, \texttt{xerces-c} and \te
     \caption{Visualization of runtime distributions.}
     \label{fig:runtime}
 \end{figure}
+
+\section{Rayleigh-Taylor instability in 3D}
+This experiment is specified in \texttt{reyleigh\_3D.xml}.
+We ran the simulation using 18 cores, which took a bit more than 20 hours, with an output frequency of every 10 iterations.
+The final result of our simulation can be found \href{https://www.youtube.com/watch?v=DXrORoIFdDM}{here}.
+We can observe how the upper fluid finds multiple entrypoints, forcing its way down.
+Finally, the fluids switch places and start to stabilize.
+
+
+For a thrilling acoustic experience, we also created a heavy metal version of the \href{https://youtu.be/U99R1vSeBxQ}{experiment}, emphasizing the blood, sweat and tears that have flown for this project.
+
+\section{Competition}
+We are thrilled to find out how good our program is compared to the other teams!
+Unfortunately, compiling in g++/11 on the cluster did not work, as it does not allow the usage of enhanced for loops.
+To overcome this, we would need to change the code on a lot of spots to less readable one, which we decided against. 
+We still hope that we can convince you with our program and our hard dedication!!
+Note: The output says 999 iterations, but we also count the zeroth iteration. 
+You can also find the output files of the batch jobs in this submission.
+
+\bigskip
+This is our best runtime for the 3D experiment with the following specifications:
+
+\begin{itemize}
+    \item 56 threads 
+    \item cluster: cm2
+    \item partition: cm2\_std
+    \item time: 198s
+    \item compiler: icpc
+    \item xml: \texttt{reyleigh\_3D\_short.xml}
+\end{itemize}
+
+Batch job output:
+\begin{lstlisting}
+[2024-07-17 14:05:46.499] [info] Simulation ran for 198 seconds (999 iterations)
+[2024-07-17 14:05:46.501] [info] Average time per iteration: 198 ms
+[2024-07-17 14:05:46.501] [info] MUP/S = 505050 (MUP = force+vel+pos calc i.e. one update per particle per iteration)
+[2024-07-17 14:05:46.501] [info] Output written. Terminating...
+\end{lstlisting}
+You can recreate this using the latest commit on the \texttt{assignment5} branch and then submitting the batch job via \texttt{parallel\_56.sh} found in this submission.
+
+
+\bigskip
+This is our best runtime for the 2D experiment with the following specifications:
+
+\begin{itemize}
+    \item 16 threads 
+    \item cluster: cm2
+    \item partition: cm2\_std
+    \item time: 2s 
+    \item compiler: icpc
+    \item xml: \texttt{big\_rayleigh\_taylor\_short.xml}
+\end{itemize}
+
+Batch job output:
+\begin{lstlisting}
+[2024-07-18 15:01:49.698] [info] Simulation ran for 2 seconds (999 iterations)
+[2024-07-18 15:01:49.698] [info] Average time per iteration: 2 ms
+[2024-07-18 15:01:49.698] [info] MUP/S = 5000000 (MUP = force+vel+pos calc i.e. one update per particle per iteration)
+[2024-07-18 15:01:49.698] [info] Output written. Terminating...
+\end{lstlisting}
+You can recreate this using the latest commit on the \texttt{assignment5} branch and then submitting the batch job via \texttt{brl\_parallel\_16.sh} found in this submission.
+
+
 
 \section{Nano-scale flow simulation}
 \label{sec:nano}
