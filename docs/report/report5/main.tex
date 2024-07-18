@@ -45,6 +45,18 @@ All new features have been tested with their according Unit tests (see \texttt{t
 \section{Membrane simulation}
 \label{sec:mem}
 
+    \subsection{Video}
+    \label{sec:mem:video}
+    \begin{itemize}
+        \item The simulation was carried out as per the assignment sheet.
+        \item However, only one boundary was specified to be reflective
+        \item We chose to make all bounds reflective in one experiment
+    \end{itemize}
+
+    \begin{enumerate}
+        \item Membrane simulation as per assignment + all reflective can be found \href{https://youtu.be/FDe_RSdYlXM}{here}
+    \end{enumerate}
+
     \subsection{Molecular abstraction}
     \label{sec:mem:mol}
         \begin{itemize}
@@ -129,6 +141,7 @@ The nano flow simulations did not require new physics and had most of the elemen
             \item The mean velocity in y-direction seems to be evenly distributed in both positive and negative to yield zero in the end, i.e. no directed flow seems to take place
             \item We hypothesized this could be due to weak wall-fluid interactions and a weak gravity force, and/or the thermostat being applied to often to not allow for acceleration downward.
             \item Which then ends up in a random flow that has no directed downward movement
+            \item \textbf{Please note:} The video says the max iteration to be 8214 instead of 10000. This is due to some vtk files being missing after copying them to the local machine. We are not certain, how this could have happened.
         \end{itemize}
         \item Building upon the last experiment we decided to increase $\epsilon$ and decrease $\sigma$ to force stronger wall-fluid interactions as well as increasing the thermostat frequency and gravity to allow for stronger acceleration.
         \begin{itemize}
@@ -171,13 +184,14 @@ The nano flow simulations did not require new physics and had most of the elemen
     \begin{itemize}
         \item Here a list of all videos for the simulation.
         \item The coloring of the simulation is by the velocities along the y-axis, where smaller numbers suggest downward movement (darker blue color), while larger numbers suggest upward movement (red color).
-        \item The simulation parameters were set to the specified values in the assignment sheet, if not stated otherwise.
-        \begin{itemize}
-            \item Standard simulation run: \href{https://youtu.be/-eWISjhgIgA}{here}
-            \item Addition of small cluster of particles: \href{https://youtu.be/G34H3SCnpW0}{here}
-            \item Lennard-Jones parameters of the walls set to $\sigma = 0.8$ and $\epsilon = 5.0$: \href{https://youtu.be/I4h6tjnJVuI}{here}
-            \item Thermostat frequency set to 1000, gravity constant set to -9.81, and the Lennard-Jones parameters of the walls set to $\sigma = 0.8$ and $\epsilon = 5.0$: \href{https://youtu.be/yxNYmXJg5r0}{here}
-        \end{itemize}
+        \item The simulations below are the ones specified above in Section \ref{sec:nano:exp}
+        \begin{enumerate}
+            \item Standard simulation run (until t=30): \href{https://youtu.be/-eWISjhgIgA}{here}
+            \item Standard simulation run. Full run, only y-direction profile: \href{https://www.youtube.com/watch?v=0xr62UzcphU}{here}
+            \item Stronger wall-fluid interactions, stronger gravity, less frequent thermostat: \href{https://www.youtube.com/watch?v=yxNYmXJg5r0}{here}
+            \item Stronger wall-fluid interactions, stronger gravity: \href{https://www.youtube.com/watch?v=I4h6tjnJVuI}{here}
+            \item Addition of small cluster of particles: \href{https://www.youtube.com/watch?v=G34H3SCnpW0}{here}
+        \end{enumerate}
     \end{itemize}
 
 \subsection{Implementation of the flow simulation}
