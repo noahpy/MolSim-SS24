@@ -114,18 +114,19 @@ In order to parallelize the iteration over all cells, every function in the iter
 \subsection{Parallelization Strategy}
 To compare different strategies, two parallelization strategies were implemented (static, task-based).
 These can be chosen using the \texttt{-P} option via command line.
+\bigskip
 
 \textbf{Static parallelization}:
 \begin{itemize}
     \item{We used the static schedule of \texttt{omp parallel for} to distribute cells amongst threads (see \texttt{force\_mixed\_LJ\_gravity\_lc}).}
-    \item{This has great compatibility with the pre-calculated neighbours, as this tends towards a steady work load per cell rather than a dynamic behaviour, minimizing the wait time for the slowest thread.}
+    \item{This has great compatibility with the pre-calculated neighbours, as this tends towards a steady work load per cell rather than a dynamic behaviour, minimizing the wait time for the slowest thread. Still, if the cells themselves had big differences in the number of particles containing them, this could lead to a less optimal runtime.}
     \item{This strategy yields a runtime of around 45 seconds with 8 threads for the small 2D rayleigh experiment (commit: \texttt{923142a34003dec94c6dda462f4ef52704cd0983})}
 \end{itemize}
 
 \textbf{Task-based parallelization}:
 \begin{itemize}
     \item{We used the task-based parallelization of \texttt{omp task} to distribute cells as a task amongst threads (see \texttt{force\_mixed\_LJ\_gravity\_lc\_task}).}
-    \item{In this strategy, one thread iterates over the cells and creates tasks, which get dynamically assigned to threads. The dynamic nature of the task assignment might benefit if there was a great inbalance in the number of particles (workload) amongst the cells, so one might want to use this strategy in such scenarios.}
+    \item{In this strategy, one thread iterates over the cells and creates tasks, which get dynamically assigned to threads. The dynamic nature of the task assignment might benefit if there was a great inbalance in the number of particles (workload) amongst the cells, so one might want to use this strategy in such scenarios. This strategy also has more additional overhead than the static parallalization, leading to a longer runtime if there is little difference in workload between the cells.}
     \item{This strategy yields a runtime of around 57 seconds with 8 threads for the small 2D rayleigh experiment (commit: \texttt{923142a34003dec94c6dda462f4ef52704cd0983})}
 \end{itemize}
 
@@ -178,6 +179,10 @@ The distribution when running \texttt{src/MolSim} \texttt{../input/small\_raylei
 Nodes and edges with less than 0.5\% runtime have been left out for a simpler overview.
 We can observe that the most time is spent at computing the forces, of which a third is the raw calculation of Lennard Jones forces.
 We interpret this positively, as we spend most our time of the program for the heart of the simulation, the force calculation, which is also the tackle point of our parallelization.
+Furthermore, we can see that we significantly reduced the runtime of the output of particles to essentially the I/O operation of the file (\texttt{VTKFile} is 6.36\% of 6.41\% of \texttt{writeFile}).
+Additionally, location, velocity calculation and the thermostat calculations are below 0.5\% of the total runtime.
+Another significant of the runtime is the $\_init$ function, which is called when a shared library is loaded.
+As we do not use any libraries except \texttt{spdlog}, \texttt{xerces-c} and \texttt{openmp}, we interpret this as an indicator that our overall runtime of our program is quite low, but we might need to investigate this further :)
 
 \begin{figure}[H]
     \centering
