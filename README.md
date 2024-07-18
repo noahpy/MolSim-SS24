@@ -17,6 +17,7 @@ You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSi
       - [Assignment 2 simulation](#assignment-2-simulation)
       - [Assignment 3 simulation](#assignment-3-simulation)
       - [Assignment 4 simulation](#assignment-4-simulation)
+      - [Assignment 5 simulation](#assignment-5-simulation)
     - [Generate Doxygen documentation](#generate-doxygen-documentation)
     - [Run tests](#run-tests)
     - [Run benchmarks](#run-benchmarks)
@@ -102,6 +103,14 @@ The program arguments can be specified as follows
 -h, --help             Display help message
 ```
 
+For more information about arguments and default settings, type:
+
+```sh
+src/MolSim -h
+```
+
+or read the [man page](#open-man-page)
+
 #### Assignment 1 simulation
 
 ```sh
@@ -142,13 +151,25 @@ Falling drop:
 src/MolSim ../input/falling_drop_after_equi.xml -x -s 4
 ```
 
-For more information about arguments and default settings, type:
+#### Assignment 5 simulation
+
+Membrane:
 
 ```sh
-src/MolSim -h
+src/MolSim ../input/membrane.xml -x -s 5
 ```
 
-or read the [man page](#open-man-page)
+Rayleigh-Taylor instability in 3D:
+
+```sh
+src/MolSim ../input/reyleigh_3D.xml -x -s 4
+```
+
+Nano-scale flow simulation:
+
+```sh
+src/MolSim ../input/nano_scale_flow.xml -x -s 4
+```
 
 ### Generate Doxygen documentation
 
