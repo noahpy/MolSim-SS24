@@ -109,7 +109,7 @@ void XmlReader::readFile(Simulation& sim)
             if (sim_input->molecules().get().membrane().size()) {
                 try {
                     // downcast to membraneSim
-                    MembraneSimulation& membraneSim = static_cast<MembraneSimulation&>(sim);
+                    MembraneSimulation& membraneSim = dynamic_cast<MembraneSimulation&>(sim);
                     for (auto membrane : sim_input->molecules().get().membrane()) {
                         std::array<double, 3> pos = { membrane.pos().x(),
                                                       membrane.pos().y(),
