@@ -198,8 +198,7 @@ Nano-scale flow simulation (strong wall + rare thermostat update):
 src/MolSim ../input/nano_scale_mods/nano_flow_stronger_wall_weak_thermo.xml -x -s 4
 ```
 
-See this [YouTube video](https://www.youtube.com/watch?v=-eWISjhgIgA&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
-https://www.youtube.com/watch?v=yxNYmXJg5r0&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl
+See this [YouTube video](https://www.youtube.com/watch?v=yxNYmXJg5r0&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
 
 Nano-scale flow simulation (strong wall with nice profile result):
 
