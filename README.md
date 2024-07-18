@@ -350,9 +350,9 @@ Input type vs. what can be specified in it
 
 |           | Clusters           | Single Points      | Ascii Art          | Program Arguments (s.a. start, end, ...) | Different particle types |
 | --------- | ------------------ | ------------------ | ------------------ | ---------------------------------------- | ------------------------ |
-| XYZ       | :recycle:          | :white_check_mark: | :x:                | :x:                                      | :x:                      |
+| XYZ       | :x:                | :white_check_mark: | :x:                | :x:                                      | :x:                      |
 | Cluster   | :white_check_mark: | :recycle:          | :x:                | :x:                                      | :x:                      |
-| Ascii Art | :recycle:          | :recycle:          | :white_check_mark: | :x:                                      | :x:                      |
+| Ascii Art | :x:                | :recycle:          | :white_check_mark: | :x:                                      | :x:                      |
 | XML       | :white_check_mark: | :white_check_mark: | :x:                | :white_check_mark:                       | :white_check_mark:       |
 
 **Note:** :recycle: means you technically can, but probably shouldn't
