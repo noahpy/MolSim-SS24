@@ -100,6 +100,9 @@ The program arguments can be specified as follows
       - 2                 XML-Writer
       - 3                 Empty i.e. no output
 -p                     Run performance measurements (incompatible with -l, -w)
+-P, --parallel         Specify parallel strategy
+      - static
+      - task
 -h, --help             Display help message
 ```
 
