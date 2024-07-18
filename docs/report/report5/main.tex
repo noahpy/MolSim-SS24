@@ -99,14 +99,78 @@ The nano flow simulations did not require new physics and had most of the elemen
 \label{sec:nano:exp}
 
     \begin{itemize}
-        \item 
+        \item We performed a series of 5 simulations, investigating different experimental settings
+        \item Generally, we would expect the fluid particles to accelerate in the y-direction due to gravity
+        \item The wall particles are fixed and should by their attractive forces slow nearby particles
+        \item[] \!\!\!\!\!\!\!\!\! $\Rightarrow$ We expect to see a concave graph along the velocity profiles and thus a more blue coloring in the center, while the particles closer to the walls should be more red. The density profile should also be higher towards the center as particles are dragged into the center by the higher velocities.
+        \item \textbf{Some general notes:} The spikes in the density profile on the edges and the zero-velocities on the edges are due to the walls and the relatively fine grained grid (50 bins in x, 20 bins in z).
     \end{itemize}
+
+    \begin{enumerate}
+        \item Base simulation: We ran the simulation as specified on the worksheet with the following parameters and results:
+        \begin{itemize}
+            \item $g_{grav} = -0.8$
+            \item $n_{thermostat} = 10$
+            \item $\epsilon_{wall} = 2.0$, $\sigma_{wall} = 1.1$
+            \item $\epsilon_{fluid} = 1.0$, $\sigma_{fluid} = 1.0$
+            \item Unfortunately, the simulation was terminated before finishing on the cluster (at 67\%)
+            \item Looking at the video of the simulation and corresponding profiles (see Section \ref{sec:nano:video}), one is not able to see any form of acceleration of the particles in the center
+            \item Also visibly no acceleration along the y-axis can be made out
+            \item The density profile also remains unchanged
+        \end{itemize}
+        \item We suspected the analyzer was not able to measure the fine changes in velocity, as the analyzer only wrote the mean $||V||_{l2}$ to the file. The y-velocity changes might have been more prominent. Thus we restarted the simulation with the following:
+        \begin{itemize}
+            \item $g_{grav} = -0.8$
+            \item $n_{thermostat} = 10$
+            \item $\epsilon_{wall} = 2.0$, $\sigma_{wall} = 1.1$
+            \item $\epsilon_{fluid} = 1.0$, $\sigma_{fluid} = 1.0$
+            \item \textbf{Only change:} Analyzer now writes the mean velocities only along the y-axis $\; \frac{1}{\text{\#Bin Particles}}\sum_{p}^{\text{Bin Particles}} p.vel.y$
+            \item However, looking at the velocity profile in the y-direction does still not reveal the expected result.
+            \item The mean velocity in y-direction seems to be evenly distributed in both positive and negative to yield zero in the end, i.e. no directed flow seems to take place
+            \item We hypothesized this could be due to weak wall-fluid interactions and a weak gravity force, and/or the thermostat being applied to often to not allow for acceleration downward.
+            \item Which then ends up in a random flow that has no directed downward movement
+        \end{itemize}
+        \item Building upon the last experiment we decided to increase $\epsilon$ and decrease $\sigma$ to force stronger wall-fluid interactions as well as increasing the thermostat frequency and gravity to allow for stronger acceleration.
+        \begin{itemize}
+            \item $g_{grav} = -9.81$
+            \item $n_{thermostat} = 1000$
+            \item $\epsilon_{wall} = 2.0$, $\sigma_{wall} = 1.1$
+            \item $\epsilon_{fluid} = 5.0$, $\sigma_{fluid} = 0.8$
+            \item The idea being that the wall would attract nearby particles more strongly while center particles would accelerate more strongly by the increased gravity
+            \item Looking at the video one can see that the thermostat frequency was set way to high, leading to an inevitable explosions as the velocities continuously increase
+        \end{itemize}
+        \item Thus the next idea was decreasing the thermostat's frequency back to the default value provided on the worksheet to control the temperature. The results finally approached our expectations:
+        \begin{itemize}
+            \item $g_{grav} = -9.81$
+            \item $n_{thermostat} = 10$
+            \item $\epsilon_{wall} = 2.0$, $\sigma_{wall} = 1.1$
+            \item $\epsilon_{fluid} = 5.0$, $\sigma_{fluid} = 0.8$
+            \item Looking at the video one can observe a formation of the expected concave velocity graph (now back to l2 norm, video is mis-labeled)
+            \item Also the density is slightly higher in the center compared to closer to the wall
+            \item This can be explained by the particles essentially being packed as close together as possible from the beginning, not allowing for a lot of compression, thus only a tiny increase can be observed
+            \item Also visually it can be nicely seen that the center particles are more blue than the edges confirming the profile
+        \end{itemize}
+        \item Unrelated to the other experiments, we wanted to see if we could observe turbulences. We placed a small 2 by 10 particle cluster at the edge of the flow while leaving the other parameters to their default values.
+        \begin{itemize}
+            \item $g_{grav} = -0.8$
+            \item $n_{thermostat} = 10$
+            \item $\epsilon_{wall} = 2.0$, $\sigma_{wall} = 1.1$
+            \item $\epsilon_{fluid} = 1.0$, $\sigma_{fluid} = 1.0$
+            \item Unfortunately, the small cluster did not impact the flow as that we could observe it.
+            \item Also, as the default setup does not seem to generate a directed flow no turbulences could be expected.
+            \item Looking at the velocity profile does not show any decrease in the center where the cluster is underling the hypothesis no directed flow is occurring in the base simulation.
+            \item As the simulations took a long time to run and we had to finish the sheet, we decided against running follow-up experiments.
+            \item It would however have been interesting to run the same simulation with the parameters of the stronger wall simulation and look for any turbulences.
+        \end{itemize}
+        
+    \end{enumerate}
 
 \subsection{Videos}
 \label{sec:nano:video}
 
     \begin{itemize}
         \item Here a list of all videos for the simulation.
+        \item The coloring of the simulation is by the velocities along the y-axis, where smaller numbers suggest downward movement (darker blue color), while larger numbers suggest upward movement (red color).
         \item The simulation parameters were set to the specified values in the assignment sheet, if not stated otherwise.
         \begin{itemize}
             \item Standard simulation run: \href{https://youtu.be/-eWISjhgIgA}{here}
@@ -153,6 +217,8 @@ The nano flow simulations did not require new physics and had most of the elemen
         \item The resulting profiles can then be plotted to a 2D heat map and 2D graph via a python script in \texttt{scripts/plots}.
         \item In our simulations we decided to have bins in 2 dimensions. The resulting heat map can be interpreted as the velocity / density profile of slices on top of the x-z-plane. The graph is simply the collapsed version onto the x-axis (see Figure \ref{fig:plot_xmpl}).
         \item In the videos of the nano flow simulations in Section \ref{sec:nano:video} the plotted diagrams for density and velocity can be seen next to the running simulation.
+        \item Regarding feedback from previous assignments and continuously increasing run-times, we added a progress logger to let the user know about the estimated time the simulation will still take to complete.
+        \item This is also a nice quality of life feature as it is a simple sign that the simulation is progressing
     \end{itemize}
 
     \begin{figure}[H]
@@ -161,10 +227,5 @@ The nano flow simulations did not require new physics and had most of the elemen
         \caption{Example of our profiling plots. The heat map is a visualization of velocities along the y-axis on top of the x-z plane. The graph is the collapsed versions onto the x-axis. }
         \label{fig:plot_xmpl}
     \end{figure}
-
-    \begin{itemize}
-        \item Regarding feedback from previous assignments and continuously increasing run-times, we added a progress logger to let the user know about the estimated time the simulation will still take to complete.
-        \item This is also a nice quality of life feature as it is a simple sign that the simulation is progressing
-    \end{itemize}
 
 \end{document}
