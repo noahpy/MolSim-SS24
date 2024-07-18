@@ -28,7 +28,9 @@ You can find the doxygen documentation hosted on [https://noahpy.github.io/MolSi
     - [Input specification](#input-specification)
       - [Compatibility overview](#compatibility-overview)
       - [Cluster (-c)](#cluster--c)
+        - [Cluster Input Example](#cluster-input-example)
       - [Ascii-Art (-a)](#ascii-art--a)
+        - [Ascii-Art Input Example](#ascii-art-input-example)
       - [XML (-x)](#xml--x)
     - [Performance](#performance)
 
@@ -62,7 +64,7 @@ instead.
 
 To run the project (in general), run the following command:
 
-```
+```sh
 src/MolSim ../input/<input_file> <program Arguments>
 ```
 
@@ -102,13 +104,13 @@ The program arguments can be specified as follows
 
 #### Assignment 1 simulation
 
-```
+```sh
 src/MolSim ../input/eingabe-sonne.txt -e 1000
 ```
 
 #### Assignment 2 simulation
 
-```
+```sh
 src/MolSim ../input/clusters.txt -c -s 1 -d 0.0002 -e 5
 ```
 
@@ -116,13 +118,13 @@ src/MolSim ../input/clusters.txt -c -s 1 -d 0.0002 -e 5
 
 Cuboid collision:
 
-```
+```sh
 src/MolSim ../input/assign3.xml -x -s 3
 ```
 
 Falling drop:
 
-```
+```sh
 src/MolSim ../input/falling_drop.xml -x -s 3
 ```
 
@@ -130,19 +132,19 @@ src/MolSim ../input/falling_drop.xml -x -s 3
 
 Rayleigh-Taylor instability:
 
-```
+```sh
 src/MolSim ../input/big_rayleigh_taylor.xml -x -s 4
 ```
 
 Falling drop:
 
-```
+```sh
 src/MolSim ../input/falling_drop_after_equi.xml -x -s 4
 ```
 
 For more information about arguments and default settings, type:
 
-```
+```sh
 src/MolSim -h
 ```
 
@@ -152,7 +154,7 @@ or read the [man page](#open-man-page)
 
 To generate the Doxygen documentation, run the following command:
 
-```
+```sh
 make doc_doxygen
 ```
 
@@ -162,20 +164,20 @@ This will generate the documentation into the folder `doxys_documentation`.
 
 To build the tests run:
 
-```
+```sh
 cd build
 make tests
 ```
 
 To run the tests, run the following command:
 
-```
+```sh
 tests/tests
 ```
 
 Or alternatively with ctest:
 
-```
+```sh
 ctest --test-dir tests
 ```
 
@@ -184,14 +186,14 @@ ctest --test-dir tests
 The benchmarks are run using [Google benchmark](https://github.com/google/benchmark).
 Build:
 
-```
+```sh
 cd build
 make benchmarks
 ```
 
 Run:
 
-```
+```sh
 bench/benchmarks
 ```
 
@@ -199,7 +201,7 @@ bench/benchmarks
 
 If your system has clang-format installed, the target `clangformat` will be created. You can then run:
 
-```
+```sh
 make clangformat
 ```
 
@@ -210,7 +212,7 @@ to format the code.
 To see more details on how to use the program, you can look at our man page.
 Enter the project root and then run:
 
-```
+```sh
 man ./.molsim.1
 ```
 
@@ -359,8 +361,254 @@ Input type vs. what can be specified in it
 
 #### Cluster (-c)
 
+- A cluster file can only code for clusters. By specifying clusters of size 1, a single point could be created
+- Lines that start with a `#` are disregarded as comments
+- Each line can specify one cluster
+- The input can be written to a `.txt` file
+- The format is as follows:
+
+```
+# For Cuboid Clusters:
+C <posx> <posy> <posz> <width> <height> <depth> <spacing> <mass> <meanVel> <vx> <vy> <vz> <Dim. of Brownian motion (2/3)>
+# For Sphere Clusters:
+S <posx> <posy> <posz> <radius> <sphereDimensions (2/3)> <mass> <meanVel> <vx> <vy> <vz> <Dim. of Brownian motion (2/3)>
+```
+
+- Where the specified position is the back, left, bottom corner of the cuboid or center of the sphere
+
+##### Cluster Input Example
+
+```
+# Sphere
+S 0.0 0.0 0.0 4 2 1.1225 1 0.1 -30 0 0 2
+# Cluster:
+C 35 15 0 8 8 1 1.125 1 1 10 0 0 2
+```
+
 #### Ascii-Art (-a)
 
+- An ascii-Art input file is a `.txt` file
+- It specifies a 2D shape of particles i.e. creates particles in the shape of ascii art
+- One can use any character in the ascii art as long as it is listed
+- The format is as follows:
+
+```
+<posx> <posy> <posz>
+<vx> <vy> <vz> <mass> <spacing> <meanVel>
+<first char to represent particle> <second char to represent particle> ...
+<Shape>
+```
+
+##### Ascii-Art Input Example
+
+```
+0 0 0
+0 -10 0 1 1.125 0.1
++ . : - =
+++++++++++++++++++++++++++++++++++-         :+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++-         :+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++-         :+++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++-         :+++++++++++++++++++++++++++++++++++++++++++++
+........:++++++++:........++++++++-         :++++++++:........:++++++++-.........-++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++-         :++++++++          ++++++++:         -++++++++
+        .++++++++.        ++++++++===========++++++++          ++++++++:         -++++++++
+        .++++++++.        +++++++++++++++++++++++++++          ++++++++:         -++++++++
+        .++++++++.        +++++++++++++++++++++++++++          ++++++++:         -++++++++
+        .++++++++.        +++++++++++++++++++++++++++          ++++++++:         -++++++++
+```
+
 #### XML (-x)
+
+- The XML input file is the recommended input format as it allows for the must broad input specification
+- The input must be stored as `.xml` files
+- **Note:** Not all parameters that can be specified work with all simulation types. Please refer to [the overview in the project structure](#project-structure)
+- The input specification is as follows:
+
+**`Scaffold`**
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<simulation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    ...
+</simulation>
+```
+
+**`Simulation parameters`**
+
+```XML
+<params>
+  <delta_t>yourDeltaT</delta_t>
+  <end_time>yourEndTime</end_time>
+  <output>NameOfOutputFile</output>
+  <frequency>FrequencyOfPlotting</frequency>
+  <!-- Domain params -->
+  <domainOrigin> <!-- Back-Bottom-Left corner of Domain -->
+    <x>xCoord</x>
+    <y>yCoord</y>
+    <z>zCoord</z>
+  </domainOrigin>
+  <domainSize>
+    <x>sizeInXDirection</x>
+    <y>sizeInXDirection</y>
+    <z>sizeInZDirection</z> <!-- Set to 0 for 2D domain -->
+  </domainSize>
+  <cutoff>YourCutoffForLinkedCell</cutoff>
+  <!-- Boundary params -> Choose periodic, soft_reflective, outflow -->
+  <boundaries>
+    <!-- For 2D Domain use bound_four tag -->
+    <bound_four>yourBoundary</bound_four> <!-- Left Boundary -->
+    <bound_four>yourBoundary</bound_four> <!-- Right Boundary -->
+    <bound_four>yourBoundary</bound_four> <!-- Top Boundary -->
+    <bound_four>yourBoundary</bound_four> <!-- Bottom Boundary -->
+    <!-- For 3D Domain use bound_six tag -->
+    <bound_six>yourBoundary</bound_six> <!-- Left Boundary -->
+    <bound_six>yourBoundary</bound_six> <!-- Right Boundary -->
+    <bound_six>yourBoundary</bound_six> <!-- Top Boundary -->
+    <bound_six>yourBoundary</bound_six> <!-- Bottom Boundary -->
+    <bound_six>yourBoundary</bound_six> <!-- Front Boundary -->
+    <bound_six>yourBoundary</bound_six> <!-- Back Boundary -->
+  </boundaries>
+  <!-- Thermostat params -->
+  <thermostat>
+      <initialTemp>yourStartingTemperatureInKelvin</initialTemp>
+      <thermoFreq>FrequencyOfThermostatApplication</thermoFreq>
+      <maxTempDelta>MaximalChangeInTemperatureInKelvin</maxTempDelta>
+      <type>ThermostatType</type> <!-- Choose between individual or classic -->
+  </thermostat>
+  <!-- Gravity params -->
+  <gravity>YourGravity</gravity> <!-- F = gravity * particleMass -->
+  <!-- Analyzer params -->
+  <analysisName>OutPutNameOfAnalysisFiles</analysisName>
+  <analysisFreq>FrequencyOfRunningAnalyzer</analysisFreq>
+</params>
+```
+
+**`Clusters`**
+
+Scaffold:
+
+```XML
+<clusters>
+  ...
+</clusters>
+```
+
+Sphere:
+
+```XML
+<sphere>
+  <center>
+    <x>XCoordOfCenter</x>
+    <y>YCoordOfCenter</y>
+    <z>ZCoordOfCenter</z>
+  </center>
+  <vel>
+    <x>InitialVelInXDirection</x>
+    <y>InitialVelInYDirection</y>
+    <z>InitialVelInZDirection</z>
+  </vel>
+  <radius>RadiusOfSphereInParticles</radius>
+  <mass>MassOfParticles</mass>
+  <sphereDim>DimensionalityOfSphere(2/3)</sphereDim>
+  <spacing>MinimalSpacingBetweenParticles</spacing>
+  <brownVel>MeanBrownianVelocity</brownVel>
+  <brownDim>DimensionalityToApplyBrownianMotionTo</brownDim>
+  <ptype>TypeOfTheParticles</ptype>
+</sphere>
+```
+
+Cuboid:
+
+```XML
+<cuboid>
+  <pos> <!-- Lower-Left-Bottom Corner -->
+    <x>CornerXCoordinate</x>
+    <y>CornerXCoordinate</y>
+    <z>CornerZCoordinate</z>
+  </pos>
+  <vel>
+    <x>InitialVelInXDirection</x>
+    <y>InitialVelInYDirection</y>
+    <z>InitialVelInZDirection</z>
+  </vel>
+  <dim>
+    <x>NumberOfParticlesWidth</x>
+    <y>NumberOfParticlesHight</y>
+    <z>NumberOfParticlesDepth</z>
+  </dim>
+  <mass>MassOfParticle</mass>
+  <spacing>SpacingBetweenParticles</spacing>
+  <brownVel>MeanBrownianVelocity</brownVel>
+  <brownDim>DimensionsOfBrownianMotion(2/3)</brownDim>
+  <ptype>TypeOfParticle</ptype>
+</cuboid>
+```
+
+**`Single Particles`**
+
+This follows the VTK structure
+
+```XML
+<particles>
+  <PointData dim="3">
+    xOfFirst yOfFirst zOfFirst xOfSecond yOfSecond zOfSecond ...
+  </PointData>
+
+  <VelData dim="3">
+    xVelOfFirst yVelOfFirst zVelOfFirst xVelOfSecond yVelOfSecond zVelOfSecond ...
+  </ValData>
+
+  <ForceData dim="3">
+    xForceOfFirst yForceOfFirst zForceOfFirst xForceOfSecond yForceOfSecond zForceOfSecond ...
+  </ForceData>
+
+  <OldForceData dim="3">
+    xOldForceOfFirst yOldForceOfFirst zOldForceOfFirst xOldForceOfSecond yOldForceOfSecond zOldForceOfSecond ...
+  </OldForceData>
+
+  <MassData dim="1">
+    massOfFirst massOfSecond ...
+  </MassData>
+
+  <TypeData dim="1">
+    typeOfFirst typeOfSecond ...
+  </TypeData>
+</particles>
+```
+
+**`Different Particles`**
+
+Scaffold:
+
+```XML
+<ptypes>
+  ...
+</ptypes>
+```
+
+Specify different particle types and their LJ params + fixing them:
+
+```XML
+<ptype type="Particle Type">
+    <sigma>SigmaValue</sigma>
+    <epsilon>EpsilonValue</epsilon>
+    <immobile>TrueWillFixateParticleAndNotMoveIt</immobile>
+</ptype>
+```
+
+**For Examples see Input files**
 
 ### Performance
