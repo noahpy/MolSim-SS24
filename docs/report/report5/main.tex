@@ -45,17 +45,27 @@ All new features have been tested with their according Unit tests (see \texttt{t
 \section{Membrane simulation}
 \label{sec:mem}
 
-    \begin{itemize}
-        \item To achieve efficient membrane particle iteration, we utilized maps of neighboring molecular particles in the new \texttt{Membrane} class.
-        \item We introduced a unique ID attribute for particles, identifying them within a molecule. This allowed us to store only the molecular IDs in the neighbor maps, which is more memory-efficient than storing reference wrappers.
-        \item We separated direct and diagonal neighbors into distinct maps for quick differentiation when calculating harmonic potentials.
-        \item By storing only the top, top-right, right, and bottom-right neighbors (half of the neighbors) of a molecular particle, we enabled force calculation iteration using Newton's third law, thus reducing the number of calculations.
-        \item The iteration of membrane particles can be conceptualized as a directional iteration through a non-cyclic graph with a single root, marked by a boolean flag within the particle (illustrated here\ \ref{fig:mem}).
-        \item We added functions for the calculation of truncated intra-molecular and harmonic forces. The Lennard-Jones potential function was reused from the previous assignment.
-        \item Our usual particle generation of our program structure proved to be incompatible for the membrane realization, as we needed to make the neighbor maps accessible at the simulation level.
-        \item Therefore, the membrane cluster generation is managed by the \texttt{Membrane} class itself, eliminating the need for cluster specifications in the XML input file.
-        \item The new simulation class, \texttt{MembraneSimulation}, extends \texttt{MixedLJSimulation} and manages the membrane initialization and generation accordingly.
-    \end{itemize}
+    \subsection{Molecular abstraction}
+    \label{sec:mem:mol}
+        \begin{itemize}
+            \item To allow future extension of the code base with different molecules and their potentials (eg. rotation, ...) we abstracted a molecule class that calculates its own intra-molecular forces using the virtual \texttt{calculateIntraMolecularForces} method
+            \item To allow for different structures the molecule class offers a virtual \texttt{generateMolecule} method to construct the molecule into the container
+        \end{itemize}
+
+    \subsection{Membrane class}
+    \label{sec:mem:mem}
+        \begin{itemize}
+            \item The membrane class inherits from the molecule class and overwrites the \texttt{calculateIntraMolecularForces} and \texttt{generateMolecule} methods
+            \item Essentially, a membrane is generated exactly as a cuboid cluster would, except that we store maps of neighboring particles 
+            \item We introduced a unique ID attribute for particles, identifying them within a molecule. This allowed us to store only the molecular IDs in the neighbor maps, which is more memory-efficient than storing reference wrappers.
+            \item We separated direct and diagonal neighbors into distinct maps for quick differentiation when calculating harmonic potentials.
+            \item By storing only the top, top-right, right, and bottom-right neighbors (half of the neighbors) of a molecular particle, we enabled force calculation iteration using Newton's third law, thus reducing the number of calculations.
+            \item The iteration of membrane particles can be conceptualized as a directional iteration through a non-cyclic graph with a single root, marked by a boolean flag within the particle (illustrated here\ \ref{fig:mem}).
+            \item We added functions for the calculation of truncated intra-molecular and harmonic forces. The Lennard-Jones potential function was reused from the previous assignment.
+            \item Our usual particle generation of our program structure proved to be incompatible for the membrane realization, as we needed to make the neighbor maps accessible at the simulation level.
+            \item Therefore, the membrane cluster generation is managed by the \texttt{Membrane} class itself, eliminating the need for cluster specifications in the XML input file.
+            \item The new simulation class, \texttt{MembraneSimulation}, extends \texttt{MixedLJSimulation} and manages the membrane initialization and generation accordingly.
+        \end{itemize}
 
 \begin{figure}[H]
     \centering
