@@ -2,7 +2,43 @@
 \label{sec:parllel}
 
 \begin{frame}
-    \frametitle{Parallelization}
+    \frametitle{Parallelization strategies}
+
+    \textbf{Thread safety:}
+    \vspace{-5pt}
+    \begin{itemize}
+        \item \texttt{getNeighbourCells}:
+        \begin{itemize}
+            \item Initial \texttt{getNeighbourCells} proposed in the past assignments had design flaw (counter)
+            \item Introduced \texttt{determineNeighboursStencile} in \texttt{CellGrid}, which pre-calculates the distinct neighbours of a \texttt{Cell}
+        \end{itemize}
+    \end{itemize}
+
+    \hrule
+
+    \textbf{Parallelization Strategy:}
+    \vspace{-5pt}
+    \begin{itemize}
+        \item Static parallelization
+        \begin{itemize}
+            \item \texttt{determineNeighboursStencile} allowed us to simply use  \texttt{omp parallel for} on the force calculations
+            \item This is a static schedule and works best when a homogenous particle distribution is present
+        \end{itemize}
+        \item Task based
+        \begin{itemize}
+            \item Task-based parallelization of \texttt{omp task} to distribute cells as a task amongst threads
+            \item This is favorable if the distribution is heterogenous
+        \end{itemize}
+    \end{itemize}
+
+    \hrule
+
+    \textbf{Additionally added output parallelization}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Parallelization Results}
 
     \begin{columns}
         \begin{column}{0.5\textwidth}
@@ -53,6 +89,4 @@
                 \end{figure}
             \end{column}
     \end{columns}
-
-
 \end{frame}
