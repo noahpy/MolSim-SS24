@@ -120,11 +120,15 @@ or read the [man page](#open-man-page)
 src/MolSim ../input/eingabe-sonne.txt -e 1000
 ```
 
+See this [YouTube video](https://www.youtube.com/watch?v=E5wFatZMrjY&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
+
 #### Assignment 2 simulation
 
 ```sh
 src/MolSim ../input/clusters.txt -c -s 1 -d 0.0002 -e 5
 ```
+
+See this [YouTube video](https://www.youtube.com/watch?v=VvjTVmM5JKw&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
 
 #### Assignment 3 simulation
 
@@ -134,25 +138,33 @@ Cuboid collision:
 src/MolSim ../input/assign3.xml -x -s 3
 ```
 
+See this [YouTube video](https://www.youtube.com/watch?v=_jjDo9g1zxU&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
+
 Falling drop:
 
 ```sh
 src/MolSim ../input/falling_drop.xml -x -s 3
 ```
 
+See this [YouTube video](https://www.youtube.com/watch?v=zIzGzFO7_gg&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
+
 #### Assignment 4 simulation
 
-Rayleigh-Taylor instability:
+Big Rayleigh-Taylor instability:
 
 ```sh
 src/MolSim ../input/big_rayleigh_taylor.xml -x -s 4
 ```
+
+See this [YouTube video](https://www.youtube.com/watch?v=2bC6tZDAa3Y&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgD) for our result.
 
 Falling drop:
 
 ```sh
 src/MolSim ../input/falling_drop_after_equi.xml -x -s 4
 ```
+
+See this [YouTube video](https://www.youtube.com/watch?v=Os7ZwBb_ywY&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for a result of ours.
 
 #### Assignment 5 simulation
 
@@ -162,11 +174,15 @@ Membrane:
 src/MolSim ../input/membrane.xml -x -s 5
 ```
 
+See this [YouTube video](https://www.youtube.com/watch?v=FDe_RSdYlXM&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
+
 Rayleigh-Taylor instability in 3D:
 
 ```sh
 src/MolSim ../input/reyleigh_3D.xml -x -s 4
 ```
+
+See this [YouTube video](https://www.youtube.com/watch?v=U99R1vSeBxQ&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
 
 Nano-scale flow simulation (base):
 
@@ -174,11 +190,16 @@ Nano-scale flow simulation (base):
 src/MolSim ../input/nano_scale_flow.xml -x -s 4
 ```
 
+See this [YouTube video](https://www.youtube.com/watch?v=-eWISjhgIgA&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
+
 Nano-scale flow simulation (strong wall + rare thermostat update):
 
 ```sh
 src/MolSim ../input/nano_scale_mods/nano_flow_stronger_wall_weak_thermo.xml -x -s 4
 ```
+
+See this [YouTube video](https://www.youtube.com/watch?v=-eWISjhgIgA&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
+https://www.youtube.com/watch?v=yxNYmXJg5r0&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl
 
 Nano-scale flow simulation (strong wall with nice profile result):
 
@@ -186,11 +207,15 @@ Nano-scale flow simulation (strong wall with nice profile result):
 src/MolSim ../input/nano_scale_mods/nano_flow_stronger_wall.xml -x -s 4
 ```
 
+See this [YouTube video](https://www.youtube.com/watch?v=I4h6tjnJVuI&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
+
 Nano-scale flow simulation (with turbulence):
 
 ```sh
 src/MolSim ../input/nano_scale_mods/nano_flow_turbulence.xml -x -s 4
 ```
+
+See this [YouTube video](https://www.youtube.com/watch?v=G34H3SCnpW0&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl) for our result.
 
 ### Generate Doxygen documentation
 
