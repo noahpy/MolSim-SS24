@@ -60,7 +60,7 @@ All new features have been tested with their according Unit tests (see \texttt{t
             \item We introduced a unique ID attribute for particles (which is their index within the particle cluster). This allowed us to store only the molecular IDs in the neighbor maps, which is both more memory-efficient and memory safe than storing reference wrappers
             \item We separated direct and diagonal neighbors into distinct maps for quick differentiation when calculating harmonic potentials.
             \item By storing only the top, top-right, right, and bottom-right neighbors (half of the neighbors) of a molecular particle, we enabled parallel force calculations by using Newton's third law (stencil idea which is also used in the parallelization of the force calculations later on).
-            \item The iteration of membrane particles can be conceptualized as a directional iteration through a non-cyclic graph with a single root (illustrated in Figure \ref{fig:mem}).
+            \item The neighbor relations within a membrane can be conceptualized as a directional non-cyclic graph with a single root (illustrated in Figure \ref{fig:mem}). Thus the force calculation can be done at any point in the graph at any time without calculating the forces twice.
             \item We added functions for the calculation of truncated intra-molecular and harmonic forces. The Lennard-Jones potential function was reused from the previous assignment while only applying it to non-neighbors that are close enough to repel each other ($dist = \sqrt[\leftroot{-2}\uproot{2}6]{2} \cdot \sigma$).
             \item The new simulation class, \texttt{MembraneSimulation}, extends \texttt{MixedLJSimulation} and manages the membrane initialization and generation accordingly. The rest of the simulation is the same
             \item The force calculation must also be adapted to not apply Lennard-Jones forces to particles within the membrane (we added a new function to include in the according strategy pattern)
@@ -93,12 +93,21 @@ All new features have been tested with their according Unit tests (see \texttt{t
 \section{Nano-scale flow simulation}
 \label{sec:nano}
 
+The nano flow simulations did not require new physics and had most of the elements in place \textit{a priori}, which is why we decided to tackle option A.
+
+\subsection{Experimental setups}
+\label{sec:nano:exp}
+
+    \begin{itemize}
+        \item 
+    \end{itemize}
+
 \subsection{Videos}
-\label{subsec:vidnano}
+\label{sec:nano:video}
 
     \begin{itemize}
         \item Here a list of all videos for the simulation.
-        \item The simulation parameters were set to the specified values in the assignment sheet, if not stated otherwise. Further information can be found in the video descriptions
+        \item The simulation parameters were set to the specified values in the assignment sheet, if not stated otherwise.
         \begin{itemize}
             \item Standard simulation run: \href{https://youtu.be/-eWISjhgIgA}{here}
             \item Addition of small cluster of particles: \href{https://youtu.be/G34H3SCnpW0}{here}
@@ -108,25 +117,45 @@ All new features have been tested with their according Unit tests (see \texttt{t
     \end{itemize}
 
 \subsection{Implementation of the flow simulation}
-\label{subsec:wall}
+\label{sec:nano:impl}
 
-    \begin{itemize}
-        \item We implemented the fixation of particles to enable particle flow between walls.
-        \item For that we had to introduce a new boolean attribute to particles to mark them as stationary.
-        \item During cuboid generation, particles are added to a map representing static particles based on their type.
-        \item A new thermostat class, \texttt{thermostat/IndividualThermostat}, was added to ignore fixated particles.
-        \item The selection of the thermostat is now decided via a factory function. The thermostat can be turned off by selecting the \texttt{NoneThermostat}.
-        \item This approach allowed us to run the simulation without creating a new simulation class and by simply specifying simulation parameters.
-        \item Adjustments were made to the generation, boundary, and calculation files to accommodate stationary particles.
-    \end{itemize}
+    \subsubsection{Immobilization}
+    \label{sec:nano:impl:immob}
+        \begin{itemize}
+            \item To fix particles and make them immovable, we added a new input specification where particle types could be marked immobile.
+            \item For that we had to introduce a new boolean attribute to particles to mark them as stationary.
+            \item Within the velocity and positional calculations, we disregard any particles that are immobilized.
+            \item Adjustments were made to the generation, boundary, and calculation files to accommodate stationary particles.
+            \item The feature of immobile particles is backwards compatible so that even the base simulation has the option to have immobile particles.
+        \end{itemize}
+
+    \subsection{Thermostat}
+    \label{sec:nano:impl:thermo}
+        \begin{itemize}
+            \item For the nano flow simulation a new thermostat class was implemented - \texttt{thermostat/IndividualThermostat}
+            \item This thermostat will ignore fixed particles and perform temperature updates without changing the mean velocity of the particles.
+            \item The selection of the thermostat is now decided via a factory function. The thermostat can be turned off by selecting the \texttt{NoneThermostat} or setting the frequency of thermal updates to 0.
+            \item This approach allowed us to run the simulation without creating a new simulation class and by simply specifying simulation parameters.
+        \end{itemize}
+
 
 \subsection{Analytics}
-\label{subsec:ana}
+\label{sec:nano:ana}
 
     \begin{itemize}
         \item We added a class \texttt{analytics/Analyzer} that can write density and velocity profiles to a .csv file for later analysis.
-        \item These profiles can then be plotted to a 2d heat map via a python script in \texttt{scripts/plots}.
-        \item In the videos of\ \ref{subsec:vidnano} the plotted diagrams for density and velocity can be seen next to the running simulation.
+        \item The specification of analysis frequency and output file name can be done using the xml attributes.
+        \item Also, it is possible to specify the number of bins to look at. This is even possible in multiple dimensions, allowing for more fine-grained analytics.
+        \item The resulting profiles can then be plotted to a 2D heat map and 2D graph via a python script in \texttt{scripts/plots}.
+        \item In our simulations we decided to have bins in 2 dimensions. The resulting heat map can be interpreted as the velocity / density profile of slices on top of the x-z-plane. The graph is simply the collapsed version onto the x-axis (see Figure \ref{fig:plot_xmpl}).
+        \item In the videos of the nano flow simulations in Section \ref{sec:nano:video} the plotted diagrams for density and velocity can be seen next to the running simulation.
     \end{itemize}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{../../res/Profile_example.png}
+        \caption{Example of our profiling plots. The heat map is a visualization of velocities along the y-axis on top of the x-z plane. The graph is the collapsed versions onto the x-axis. }
+        \label{fig:plot_xmpl}
+    \end{figure}
 
 \end{document}
