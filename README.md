@@ -589,6 +589,47 @@ This follows the VTK structure
 </particles>
 ```
 
+**`Molecules`**
+
+Currently there is only the membrane available as molecule
+
+Scaffold:
+
+```XML
+<molecules>
+  ...
+</molecules>
+```
+
+Membrane:
+
+```XML
+<membrane>
+  <pos> <!-- Lower-Left-Bottom Corner -->
+    <x>CornerXCoordinate</x>
+    <y>CornerXCoordinate</y>
+    <z>CornerZCoordinate</z>
+  </pos>
+  <vel>
+    <x>InitialVelInXDirection</x>
+    <y>InitialVelInYDirection</y>
+    <z>InitialVelInZDirection</z>
+  </vel>
+  <dim>
+    <x>NumberOfParticlesWidth</x>
+    <y>NumberOfParticlesHight</y>
+    <z>NumberOfParticlesDepth</z>
+  </dim>
+  <mass>MassOfParticle</mass>
+  <spacing>SpacingBetweenParticles</spacing>
+  <brownVel>MeanBrownianVelocity</brownVel>
+  <brownDim>DimensionsOfBrownianMotion(2/3)</brownDim>
+  <ptype>TypeOfParticle</ptype>
+  <equiDist>r0ForMembrane</equiDist>
+  <springConst>SpringConstantK</springConst>
+</membrane>
+```
+
 **`Different Particles`**
 
 Scaffold:
