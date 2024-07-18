@@ -19,6 +19,13 @@
     urlcolor=blue,
 }
 
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,fit}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+
 \title{Scientific Computing - Molecular dynamics \\ Group F}
 \newcommand{\subtitle}{Problem sheet 5}
 \author{
@@ -88,16 +95,93 @@ All new features have been tested with their according Unit tests (see \texttt{t
 \section{Parallelization}
 \label{sec:para}
 
-    \begin{itemize}
-        \item The parallelization of our program primarily focused on iterating particles for calculations.
-        \item A mutex was added to particles to prevent race conditions.
-        \item We encountered issues with the parallelization of force calculations due to the handling of cell iteration, requiring significant adjustments to our cell grid.
-        \item The runtime distribution can be seen here\ \ref{fig:runtime}.
-    \end{itemize}
+        The parallelization of our program primarily focused on parallelizing the force calulcation of the particles, as this posed the biggest computational effort in our program.
+    \subsection{Implementing Thread-Safety}
+In order to parallelize the iteration over all cells, every function in the iteration modifying shared data needed to be turned thread-safe. This especially included the \texttt{getNeighbours}-function of the \texttt{CellGrid} and the functions modifying a \texttt{Particle}.
+
+\texttt{getNeighbourCells}:
+\begin{itemize}
+    \item{Initially, the \texttt{getNeighbourCells} proposed in the past assignments were meant to work under parallelization by simply adding locks to their respective function calls, but this was not true and modifications needed to be done.}
+    \item{Whilst, a modification was found to be working for a static scheduleof the OMP-library, it surfaced that the concept of the function inheritly does not allow for parallelization.}
+    \item{This is why we introduced \texttt{determineNeighboursStencile} in \texttt{CellGrid}, which pre-calculates the distinct neighbours of a \texttt{Cell} and stores it into \texttt{Cell.stencileNeighbours}. This follows the concept introduced in \texttt{Membrane}, calculating forces with half of the neighbours which are not symmetric to the center cell. }
+\end{itemize}
+
+\texttt{Particle}:
+\begin{itemize}
+    \item{In order to allow thread-safe modification of \texttt{Particle}, all functions were equipped with a lock, ensuring there were no race conditions.}
+\end{itemize}
+
+\subsection{Parallelization Strategy}
+To compare different strategies, two parallelization strategies were implemented (static, task-based).
+These can be chosen using the \texttt{-P} option via command line.
+
+\textbf{Static parallelization}:
+\begin{itemize}
+    \item{We used the static schedule of \texttt{omp parallel for} to distribute cells amongst threads (see \texttt{force\_mixed\_LJ\_gravity\_lc}).}
+    \item{This has great compatibility with the pre-calculated neighbours, as this tends towards a steady work load per cell rather than a dynamic behaviour, minimizing the wait time for the slowest thread.}
+    \item{This strategy yields a runtime of around 45 seconds with 8 threads for the small 2D rayleigh experiment (commit: \texttt{923142a34003dec94c6dda462f4ef52704cd0983})}
+\end{itemize}
+
+\textbf{Task-based parallelization}:
+\begin{itemize}
+    \item{We used the task-based parallelization of \texttt{omp task} to distribute cells as a task amongst threads (see \texttt{force\_mixed\_LJ\_gravity\_lc\_task}).}
+    \item{In this strategy, one thread iterates over the cells and creates tasks, which get dynamically assigned to threads. The dynamic nature of the task assignment might benefit if there was a great inbalance in the number of particles (workload) amongst the cells, so one might want to use this strategy in such scenarios.}
+    \item{This strategy yields a runtime of around 57 seconds with 8 threads for the small 2D rayleigh experiment (commit: \texttt{923142a34003dec94c6dda462f4ef52704cd0983})}
+\end{itemize}
+
+\subsection{Additional Parallelization}
+It is not irrelevant to mention other parts of the program have been parallelized as well:
+\begin{itemize}
+    \item{The calculation of the location, the velocity of particles and the calculation used for the Thermostats have been parallelized. The iteration over the particles is distributed amongst threads using \texttt{omp parallel for}. Initially, a custom iterator (\texttt{ActiveIterator} in \texttt{ParticleContainer.h}) was implemented which only iterates over active (not deleted) particles and compatible for parallelization, but it was found that this was less performant than just iterating over the plain vector of particles and checking whether the particle is active or not. Though, the \texttt{ActiveIterator} might be superior in a scenario where a lot of particles get deleted, causing a bigger difference in workload between the threads.}
+    \item{Though not relevant for the contest, we saw great interest in parallelizing the output of the simulation, as it was a significant part of the actual runtime. We succeeded in doing so by pre-allocating the buffer where particle information would be written and again distributing the particles to be written among threads using \texttt{omp parallel for} (see \texttt{VTKWriter.cpp}). Though, this faces the question at which index of the buffer a particle needs to be inserted, as we skip the inactive particles. Conveniently, each particle has an unique ID which is equivalent to the index it was put into the vector of the \texttt{ParticleContainer}. Subtracting the amount of inactive particles "before" the respective particle would result in our interesed "true" index of the particle. But how do we efficiently determine the number of inactive particles "before" one particle? Iterating through the vector and counting those would be a disaster for our runtime. To circumvent this, we take use of \texttt{std::map} and its tree structure over its keys. When "deleting" a particle, we insert its index (its ID) into this map (see \texttt{ParticleContainer:40}). This way we can now determine the number of deleted particles before a certain index by "following" the tree where it would insert us (see \texttt{ParticleContainer:47}), yielding a runtime of $n \cdot \log m$. With this, we can now parallelize the output of particles!}
+\end{itemize}
+
+\subsection{Parallelization Performance}
+To verify the effectiveness of the parallelization, we ran the first 1000 iterations of the 3D rayleight experiment (\texttt{src/MolSim} \texttt{../input/reyleigh\_3D\_short.xml} \texttt{-x -s 4 -p}) on cm2\_tiny and cm2 clusters, using \texttt{scripts/}\texttt{batch-scripts/} \texttt{parallelComp.py}.
+As seen below, initially we can observe an almost linear speedup as the number of threads increases, which then stagnates past 16 threads.
+The concateneted output of the batch jobs (the runtimes) can be seen in \texttt{all.out} in our submission.
+
+\bigskip
+
+\centerline{
+\begin{tikzpicture}
+\begin{axis}[
+    title={Speedup vs Number of Threads},
+    xlabel={Number of Threads},
+    ylabel={Speedup},
+    grid=both,
+    xtick={1, 2, 4, 8, 16, 28, 56},
+    ytick={0, 2, 4, 6, 8, 10, 12, 14, 16},
+    legend pos=north west
+]
+\addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (1, 1)
+    (2, 3272 / 1680)
+    (4, 3272 / 885)
+    (8, 3272 / 488)
+    (16, 3272 / 295)
+    (28, 3272 / 243)
+    (56, 3272 / 198)
+    };
+\addlegendentry{Speedup}
+\end{axis}
+\end{tikzpicture}
+}
+
+\bigskip
+We also analysed the runtime distribution using \texttt{gprof}.
+The distribution when running \texttt{src/MolSim} \texttt{../input/small\_rayleigh\_taylor.xml} \texttt{-x -s 4 -P static} at commit \texttt{923142a34003dec94c6dda462f4ef52704cd0983} with 8 cores can be seen in Figure \ref{fig:runtime}.
+Nodes and edges with less than 0.5\% runtime have been left out for a simpler overview.
+We can observe that the most time is spent at computing the forces, of which a third is the raw calculation of Lennard Jones forces.
+We interpret this positively, as we spend most our time of the program for the heart of the simulation, the force calculation, which is also the tackle point of our parallelization.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.3\textwidth]{../../res/runtimeVisualized}
+    \includegraphics[width=1\textwidth]{../../res/optimized.png}
     \caption{Visualization of runtime distributions.}
     \label{fig:runtime}
 \end{figure}
