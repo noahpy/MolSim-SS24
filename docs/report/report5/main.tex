@@ -146,6 +146,10 @@ The nano flow simulations did not require new physics and had most of the elemen
         \item We added a class \texttt{analytics/Analyzer} that can write density and velocity profiles to a .csv file for later analysis.
         \item The specification of analysis frequency and output file name can be done using the xml attributes.
         \item Also, it is possible to specify the number of bins to look at. This is even possible in multiple dimensions, allowing for more fine-grained analytics.
+        \item As the .csv is only in 1D we needed to flatten the data using the following formula:
+        \[
+        \text{1D Index} = \text{x-Index} + \text{y-Index} \cdot \text{\#x-Bins} + \text{z-Index} \cdot \text{\#x-Bins} \cdot \text{\#y-Bins}
+        \]
         \item The resulting profiles can then be plotted to a 2D heat map and 2D graph via a python script in \texttt{scripts/plots}.
         \item In our simulations we decided to have bins in 2 dimensions. The resulting heat map can be interpreted as the velocity / density profile of slices on top of the x-z-plane. The graph is simply the collapsed version onto the x-axis (see Figure \ref{fig:plot_xmpl}).
         \item In the videos of the nano flow simulations in Section \ref{sec:nano:video} the plotted diagrams for density and velocity can be seen next to the running simulation.
@@ -157,5 +161,10 @@ The nano flow simulations did not require new physics and had most of the elemen
         \caption{Example of our profiling plots. The heat map is a visualization of velocities along the y-axis on top of the x-z plane. The graph is the collapsed versions onto the x-axis. }
         \label{fig:plot_xmpl}
     \end{figure}
+
+    \begin{itemize}
+        \item Regarding feedback from previous assignments and continuously increasing run-times, we added a progress logger to let the user know about the estimated time the simulation will still take to complete.
+        \item This is also a nice quality of life feature as it is a simple sign that the simulation is progressing
+    \end{itemize}
 
 \end{document}
