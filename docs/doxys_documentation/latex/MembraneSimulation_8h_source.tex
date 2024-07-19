@@ -1,0 +1,46 @@
+\doxysection{Membrane\+Simulation.\+h}
+\hypertarget{MembraneSimulation_8h_source}{}\label{MembraneSimulation_8h_source}\index{src/simulation/MembraneSimulation.h@{src/simulation/MembraneSimulation.h}}
+\mbox{\hyperlink{MembraneSimulation_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{MixedLJSimulation_8h}{MixedLJSimulation.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Molecule_8h}{models/molecules/Molecule.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Analyzer_8h}{analytics/Analyzer.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMembraneSimulation}{MembraneSimulation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMixedLJSimulation}{MixedLJSimulation}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classMembraneSimulation_ab4cd318e0c78f7cb2a853b21e74e0319}{MembraneSimulation}}(}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\_t}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\_time}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::map<unsigned\ ,\ bool>\ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationaryParticleTypes}},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<\textcolor{keywordtype}{unsigned},\ std::pair<double,\ double>>\&\ LJParams,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ domainOrigin,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ domainSize,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cutoff,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\&\ boundaryConfig,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ std::unique\_ptr<Analyzer>\ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ gravity\_constant,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ std::unique\_ptr<Thermostat>\ \mbox{\hyperlink{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}{thermostat}},}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<Molecule>>\ \mbox{\hyperlink{classMembraneSimulation_a34a9220e6d903ae288aadef0d31effc2}{molecules}},}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}\ =\ 10,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}}\ =\ 10,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysisFrequency}}\ =\ 10000,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ read\_file\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\_thermostat}}\ =\ 1000,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8}{doProfile}}\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMembraneSimulation_a3f952f814e3c35ec4bbdc296c6f3fc61}{runSim}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ std::vector<std::unique\_ptr<Molecule>>\&\ \mbox{\hyperlink{classMembraneSimulation_a6fe3724f93c42bb975d4a3c0994cd6e6}{getMolecules}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMembraneSimulation_a34a9220e6d903ae288aadef0d31effc2}{molecules}};\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ std::vector<std::unique\_ptr<Molecule>>\ \mbox{\hyperlink{classMembraneSimulation_a34a9220e6d903ae288aadef0d31effc2}{molecules}};\ }
+\DoxyCodeLine{00079\ \};}
+
+\end{DoxyCode}

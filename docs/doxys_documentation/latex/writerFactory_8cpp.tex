@@ -1,0 +1,38 @@
+\doxysection{src/io/file\+Writer/writer\+Factory.cpp File Reference}
+\hypertarget{writerFactory_8cpp}{}\label{writerFactory_8cpp}\index{src/io/fileWriter/writerFactory.cpp@{src/io/fileWriter/writerFactory.cpp}}
+{\ttfamily \#include "{}io/file\+Writer/writer\+Factory.\+h"{}}\newline
+{\ttfamily \#include "{}io/file\+Writer/\+VTKWriter.\+h"{}}\newline
+{\ttfamily \#include "{}io/file\+Writer/\+XMLWriter.\+h"{}}\newline
+{\ttfamily \#include "{}io/file\+Writer/\+XYZWriter.\+h"{}}\newline
+{\ttfamily \#include "{}io/file\+Writer/empty\+Writer.\+h"{}}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{writerFactory_8cpp_a278d83a6067a27a61f916da505a4281e}{writer\+Factory}} (\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} \mbox{\hyperlink{classtype}{type}}, const std\+::string \&out\+\_\+name)
+\begin{DoxyCompactList}\small\item\em A factory function for creating \doxylink{classFileWriter}{File\+Writer} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{writerFactory_8cpp_a278d83a6067a27a61f916da505a4281e}\index{writerFactory.cpp@{writerFactory.cpp}!writerFactory@{writerFactory}}
+\index{writerFactory@{writerFactory}!writerFactory.cpp@{writerFactory.cpp}}
+\doxysubsubsection{\texorpdfstring{writerFactory()}{writerFactory()}}
+{\footnotesize\ttfamily \label{writerFactory_8cpp_a278d83a6067a27a61f916da505a4281e} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ writer\+Factory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}}}]{type}{, }\item[{const std\+::string \&}]{out\+\_\+name}{}\end{DoxyParamCaption})}
+
+
+
+A factory function for creating \doxylink{classFileWriter}{File\+Writer} objects. 
+
+This function creates and returns a unique pointer to a \doxylink{classFileWriter}{File\+Writer} or one of its derived classes based on the file type provided.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & An unsigned integer representing the type of file writer to create. \\
+\hline
+{\em out\+\_\+name} & The name of the output file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique pointer to a \doxylink{classFileWriter}{File\+Writer} object or nullptr if the file type is not supported. 
+\end{DoxyReturn}

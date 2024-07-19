@@ -1,0 +1,200 @@
+\doxysection{Particle.\+h}
+\hypertarget{Particle_8h_source}{}\label{Particle_8h_source}\index{src/models/Particle.h@{src/models/Particle.h}}
+\mbox{\hyperlink{Particle_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Particle.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 23.02.2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ eckhardw}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ THREAD\_SAFE}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticle}{Particle}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticle_a027e5a09c12953df5fcbbdb15896de3e}{x}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticle_a0fe6d1e0651ad949d0b37ac327c9c6d1}{v}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticle_a968dfd29adaa41fb25a08d3c45903156}{old\_f}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticle_aedcc7e1bc53b0e2b1a4a07c9a1b47563}{m}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ \mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classParticle_a2b73dd42bcd56ba2e7ffeb0a5515a866}{type}};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticle_a73a4154dfbae2e2787ef72c1bee83413}{active}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticle_ae3346aa8ec90f566f8aae7fe38f78a52}{id}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticle_a66babd0ea1d8d642dc2404b163ad3aca}{isNotStationary}};\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticle_aa27802f907a48e30e030b04a0cb0a1e1}{moleculeId}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{classParticle_a40f4c7e248029d72e7714b7802d5e5e1}{Particle}}(}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ visualization,\ we\ need\ always\ 3\ coordinates}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/>\ in\ case\ of\ 2d,\ we\ use\ only\ the\ first\ and\ the\ second}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ x\_arg,}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ v\_arg,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ m\_arg,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtype}{type}}\ =\ 0,}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id}\ =\ 0,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isNotStationary\_arg\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticle_aa27802f907a48e30e030b04a0cb0a1e1}{moleculeId}}\ =\ 0);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{classParticle_a40f4c7e248029d72e7714b7802d5e5e1}{Particle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticle}{Particle}}\&\ other);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classParticle_ad030d0fe7b88cf81744b127c99244ff4}{\string~Particle}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{classParticle}{Particle}}\&\ \mbox{\hyperlink{classParticle_a70adc57286f9c07626fc7a1bb8a51ca0}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticle}{Particle}}\&\ other);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00122\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_a53882c55fca9eda5be01d27afef3df67}{getX}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00123\ \ \ \ \ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_a027e5a09c12953df5fcbbdb15896de3e}{x}};}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00132\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_ade978bceb72caf3d350fd62edf93c248}{getV}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_a0fe6d1e0651ad949d0b37ac327c9c6d1}{v}};}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00142\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_ada5cac66f4d393d6f9172346f8edc237}{getF}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00143\ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}};}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00152\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classParticle_aa25c38be9c13206cb7fab7a881fe4761}{getOldF}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_a968dfd29adaa41fb25a08d3c45903156}{old\_f}};}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00163\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticle_a2f96a69c04e692faff3f0a765f4561ff}{getM}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_aedcc7e1bc53b0e2b1a4a07c9a1b47563}{m}};}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00174\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticle_a385844dffcc5305e0a93098a964459e4}{getActivity}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_a73a4154dfbae2e2787ef72c1bee83413}{active}};}
+\DoxyCodeLine{00179\ \ \ \ \ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00185\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classParticle_a495c8d7746f460c8fd13976b8813afe6}{getType}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_a2b73dd42bcd56ba2e7ffeb0a5515a866}{type}};}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00196\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticle_acc3f74f459d2fe90b7c73fc65e527698}{getMoleculeId}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00197\ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_aa27802f907a48e30e030b04a0cb0a1e1}{moleculeId}};}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00206\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticle_acc16af62de14d91de9044bfc1044a78b}{getIsNotStationary}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_a66babd0ea1d8d642dc2404b163ad3aca}{isNotStationary}};\ \}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_ac30a84af01bc51f0f002a45afaf2f237}{setType}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ type\_new)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtype}{type}}\ =\ type\_new;}
+\DoxyCodeLine{00217\ \ \ \ \ \}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a18f3d4b46cdf251a9c4000f40ece2958}{setX}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ x\_new)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a027e5a09c12953df5fcbbdb15896de3e}{x}}\ =\ x\_new;}
+\DoxyCodeLine{00229\ \ \ \ \ \}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a46ca2a0816765441255939fc1ef4804a}{setV}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ v\_new)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a0fe6d1e0651ad949d0b37ac327c9c6d1}{v}}\ =\ v\_new;}
+\DoxyCodeLine{00241\ \ \ \ \ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_ae84a89ceaf19c46027af6d869b02c857}{setF}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ f\_new)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}}\ =\ f\_new;}
+\DoxyCodeLine{00253\ \ \ \ \ \}}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_ae4bd93be0446f558dd4f7f39f42ebb7b}{setOldF}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ f\_new)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a968dfd29adaa41fb25a08d3c45903156}{old\_f}}\ =\ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}};}
+\DoxyCodeLine{00265\ \ \ \ \ \}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a9607b1ffe253165e958c88f990bfabb5}{setM}}(\textcolor{keywordtype}{double}\ m\_new)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_aedcc7e1bc53b0e2b1a4a07c9a1b47563}{m}}\ =\ m\_new;}
+\DoxyCodeLine{00277\ \ \ \ \ \}}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a8148c4af2e4c419abfc4c877ebb2b74a}{setActivity}}(\textcolor{keywordtype}{bool}\ act\_new)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a73a4154dfbae2e2787ef72c1bee83413}{active}}\ =\ act\_new;}
+\DoxyCodeLine{00288\ \ \ \ \ \}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticle_a34e5d6c92808f80b02ff5f1deaf06858}{getID}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00295\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classParticle_ae3346aa8ec90f566f8aae7fe38f78a52}{id}};}
+\DoxyCodeLine{00297\ \ \ \ \ \}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a6e313746c411d972b853cc9de0d3b6fa}{setID}}(\textcolor{keywordtype}{size\_t}\ id\_new)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00300\ \ \ \ \ \{}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ id\_new;}
+\DoxyCodeLine{00303\ \ \ \ \ \}}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_ac0037aa0058c225a0076e91cafb714b1}{resetF}}(std::array<double,\ 3>\ new\_f\ =\ \{\ 0.,\ 0.,\ 0.\ \})\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \ \ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a968dfd29adaa41fb25a08d3c45903156}{old\_f}}\ =\ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}};}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}}\ =\ new\_f;}
+\DoxyCodeLine{00315\ \ \ \ \ \}}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticle_a1aeda87cc3754b04ceec5d6f5ad42831}{addForce}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ force)\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \ \ \ \ \{}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}});}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}}[0]\ +=\ force[0];}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}}[1]\ +=\ force[1];}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}}[2]\ +=\ force[2];}
+\DoxyCodeLine{00329\ \ \ \ \ \}}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticle_a5034babb77618a56e00927d8891afabe}{operator==}}(\mbox{\hyperlink{classParticle}{Particle}}\&\ other);}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00342\ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{classParticle_a41f3a8baf5d8b29ec806681d63ab2f81}{toString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00343\ \ \ \ \ \mbox{\hyperlink{classParticle_a40f4c7e248029d72e7714b7802d5e5e1}{Particle}}();}
+\DoxyCodeLine{00344\ \};}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00352\ std::ostream\&\ \mbox{\hyperlink{Particle_8h_a81ef406001cd289eaccd54181e64f98d}{operator<<}}(std::ostream\&\ stream,\ \mbox{\hyperlink{classParticle}{Particle}}\&\ p);}
+
+\end{DoxyCode}

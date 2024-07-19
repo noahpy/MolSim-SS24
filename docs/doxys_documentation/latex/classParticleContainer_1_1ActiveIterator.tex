@@ -1,0 +1,213 @@
+\doxysection{Particle\+Container\+::Active\+Iterator Class Reference}
+\hypertarget{classParticleContainer_1_1ActiveIterator}{}\label{classParticleContainer_1_1ActiveIterator}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+
+
+Iterator class for active particles.  
+
+
+
+
+{\ttfamily \#include $<$Particle\+Container.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}} = std\+::ptrdiff\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_adb07e4414c76c0114a15bec01cee7e66}{Active\+Iterator}} (std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator start, std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a2fa8b2bf6f43d2773941c7b682bae0a6}{begin}}, std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a7082a48f3c621be776dcc04e4c3c441e}{end}}, std\+::reference\+\_\+wrapper$<$ std\+::map$<$ size\+\_\+t, size\+\_\+t $>$ $>$ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_ab3a8456d37c8e0c369dd04761ba9dd7c}{inactive\+Map\+Ref}})
+\begin{DoxyCompactList}\small\item\em Construct a new Iterator over active particles. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticle}{Particle}} \& \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a71eaed4a63a3c4bb7020c5e6c68e48ba}{operator\texorpdfstring{$\ast$}{*}}} () const
+\begin{DoxyCompactList}\small\item\em Override the \texorpdfstring{$\ast$}{*} operator for range-\/based for loop. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \& \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a4740501d4015574c30d72f9bf5c79df0}{operator++}} ()
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \& \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_aaa69c56fc738c82a8980d66070ad2179}{operator-\/-\/}} ()
+\item 
+bool \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a20c10a2506a7603d13a6068744b57633}{operator!=}} (const \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \&other) const
+\item 
+bool \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a6f687cbf09bdfefd3415ac2d11e0a61a}{operator==}} (const \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \&other) const
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a096fd4b475c946b4e78b8736e4ceefcf}{operator+=}} (\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}} n)
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a9589e2042c45cb7817d1ae84bd2f263b}{operator-\/=}} (\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}} n)
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a90e93c8538950f112c5a57e7c8745dc7}{operator+}} (\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}} n)
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_aa195a35b120b7e9da0e02ff33b3a4e36}{operator-\/}} (\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}} n)
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}} \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a2d71cf8769afc9df89e34ebe0f37c20e}{operator-\/}} (const \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_ab2e35ad4bad564afa79ccbbcb72e731c}{advance\+To\+Next\+Active}} ()
+\begin{DoxyCompactList}\small\item\em Advance to the next active particle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a2fa8b2bf6f43d2773941c7b682bae0a6}{begin}}
+\begin{DoxyCompactList}\small\item\em Iterator for the \doxylink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a9a6d8d3de1f1f89ed0b2bac33c6a7a23}{current}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a7082a48f3c621be776dcc04e4c3c441e}{end}}
+\item 
+std\+::reference\+\_\+wrapper$<$ std\+::map$<$ size\+\_\+t, size\+\_\+t $>$ $>$ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_ab3a8456d37c8e0c369dd04761ba9dd7c}{inactive\+Map\+Ref}}
+\begin{DoxyCompactList}\small\item\em Map for the inactive particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Iterator class for active particles. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!difference\_type@{difference\_type}}
+\index{difference\_type@{difference\_type}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{difference\_type}{difference\_type}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0} 
+using \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{Particle\+Container\+::\+Active\+Iterator\+::difference\+\_\+type}} = std\+::ptrdiff\+\_\+t}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classParticleContainer_1_1ActiveIterator_adb07e4414c76c0114a15bec01cee7e66}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!ActiveIterator@{ActiveIterator}}
+\index{ActiveIterator@{ActiveIterator}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{ActiveIterator()}{ActiveIterator()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_adb07e4414c76c0114a15bec01cee7e66} 
+Particle\+Container\+::\+Active\+Iterator\+::\+Active\+Iterator (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator}]{start}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator}]{begin}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$\+::iterator}]{end}{, }\item[{std\+::reference\+\_\+wrapper$<$ std\+::map$<$ size\+\_\+t, size\+\_\+t $>$ $>$}]{inactive\+Map\+Ref}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new Iterator over active particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The iterator to the first active particle \\
+\hline
+{\em end} & The iterator to the last active particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classParticleContainer_1_1ActiveIterator_ab2e35ad4bad564afa79ccbbcb72e731c}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!advanceToNextActive@{advanceToNextActive}}
+\index{advanceToNextActive@{advanceToNextActive}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{advanceToNextActive()}{advanceToNextActive()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_ab2e35ad4bad564afa79ccbbcb72e731c} 
+void Particle\+Container\+::\+Active\+Iterator\+::advance\+To\+Next\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Advance to the next active particle. 
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a20c10a2506a7603d13a6068744b57633}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a20c10a2506a7603d13a6068744b57633} 
+bool Particle\+Container\+::\+Active\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a71eaed4a63a3c4bb7020c5e6c68e48ba}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a71eaed4a63a3c4bb7020c5e6c68e48ba} 
+\mbox{\hyperlink{classParticle}{Particle}} \& Particle\+Container\+::\+Active\+Iterator\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Override the \texorpdfstring{$\ast$}{*} operator for range-\/based for loop. 
+
+\begin{DoxyReturn}{Returns}
+The reference to the current active particle 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a90e93c8538950f112c5a57e7c8745dc7}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator+@{operator+}}
+\index{operator+@{operator+}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a90e93c8538950f112c5a57e7c8745dc7} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} Particle\+Container\+::\+Active\+Iterator\+::operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a4740501d4015574c30d72f9bf5c79df0}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a4740501d4015574c30d72f9bf5c79df0} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} \& Particle\+Container\+::\+Active\+Iterator\+::operator++ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a096fd4b475c946b4e78b8736e4ceefcf}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a096fd4b475c946b4e78b8736e4ceefcf} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} Particle\+Container\+::\+Active\+Iterator\+::operator+= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a2d71cf8769afc9df89e34ebe0f37c20e}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a2d71cf8769afc9df89e34ebe0f37c20e} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{Particle\+Container\+::\+Active\+Iterator\+::difference\+\_\+type}} Particle\+Container\+::\+Active\+Iterator\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_aa195a35b120b7e9da0e02ff33b3a4e36}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_aa195a35b120b7e9da0e02ff33b3a4e36} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} Particle\+Container\+::\+Active\+Iterator\+::operator-\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_aaa69c56fc738c82a8980d66070ad2179}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_aaa69c56fc738c82a8980d66070ad2179} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} \& Particle\+Container\+::\+Active\+Iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a9589e2042c45cb7817d1ae84bd2f263b}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a9589e2042c45cb7817d1ae84bd2f263b} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} Particle\+Container\+::\+Active\+Iterator\+::operator-\/= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a6f687cbf09bdfefd3415ac2d11e0a61a}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a6f687cbf09bdfefd3415ac2d11e0a61a} 
+bool Particle\+Container\+::\+Active\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a2fa8b2bf6f43d2773941c7b682bae0a6}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!begin@{begin}}
+\index{begin@{begin}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{begin}{begin}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a2fa8b2bf6f43d2773941c7b682bae0a6} 
+std\+::vector$<$\mbox{\hyperlink{classParticle}{Particle}}$>$\+::iterator Particle\+Container\+::\+Active\+Iterator\+::begin\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Iterator for the \doxylink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}. 
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a9a6d8d3de1f1f89ed0b2bac33c6a7a23}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!current@{current}}
+\index{current@{current}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{current}{current}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a9a6d8d3de1f1f89ed0b2bac33c6a7a23} 
+std\+::vector$<$\mbox{\hyperlink{classParticle}{Particle}}$>$\+::iterator Particle\+Container\+::\+Active\+Iterator\+::current\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_a7082a48f3c621be776dcc04e4c3c441e}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!end@{end}}
+\index{end@{end}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_a7082a48f3c621be776dcc04e4c3c441e} 
+std\+::vector$<$\mbox{\hyperlink{classParticle}{Particle}}$>$\+::iterator Particle\+Container\+::\+Active\+Iterator\+::end\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classParticleContainer_1_1ActiveIterator_ab3a8456d37c8e0c369dd04761ba9dd7c}\index{ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}!inactiveMapRef@{inactiveMapRef}}
+\index{inactiveMapRef@{inactiveMapRef}!ParticleContainer::ActiveIterator@{ParticleContainer::ActiveIterator}}
+\doxysubsubsection{\texorpdfstring{inactiveMapRef}{inactiveMapRef}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1ActiveIterator_ab3a8456d37c8e0c369dd04761ba9dd7c} 
+std\+::reference\+\_\+wrapper$<$std\+::map$<$size\+\_\+t, size\+\_\+t$>$ $>$ Particle\+Container\+::\+Active\+Iterator\+::inactive\+Map\+Ref\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map for the inactive particles. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/\mbox{\hyperlink{ParticleContainer_8h}{Particle\+Container.\+h}}\item 
+src/models/\mbox{\hyperlink{ParticleContainer_8cpp}{Particle\+Container.\+cpp}}\end{DoxyCompactItemize}

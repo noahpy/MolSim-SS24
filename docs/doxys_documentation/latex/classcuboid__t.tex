@@ -1,0 +1,865 @@
+\doxysection{cuboid\+\_\+t Class Reference}
+\hypertarget{classcuboid__t}{}\label{classcuboid__t}\index{cuboid\_t@{cuboid\_t}}
+
+
+Class corresponding to the cuboid\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$simulation.\+h$>$}
+
+Inheritance diagram for cuboid\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcuboid__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{pos}
+Accessor and modifier functions for the pos required element.
+
+The initial position of the cuboid in 3D space. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_a9cf8a2b3fba4dbe577a3ae05bdfe6917}{pos\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a81a7ff682799f742303d03da2e3a23c5}{pos}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_ab17d531f102b4ae322ffb4808749baf4}{pos}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_a122f06acff90f105a5732d684ce29198}{pos}} (const \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_aad17088833d012657c4c220533af84df}{pos}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{vel}
+Accessor and modifier functions for the vel required element.
+
+The initial velocity of the cuboid in 3D space. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_a9f443749c10882ac615d545c1e1c2b18}{vel\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a94679eb0138d678940ac90b86c3504b1}{vel}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_abba288bf1464843698088d8182480ed0}{vel}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_adf6a9efcb13358a2fd24ec4d5c5d185f}{vel}} (const \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_ae34b75903cc3e4a3e1f217f926acc1b5}{vel}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{dim}
+Accessor and modifier functions for the dim required element.
+
+The dimensions of the cuboid in terms of number of particles along each axis. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classintVec__t}{\+::int\+Vec\+\_\+t}} \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_a493bf40cbed658231dd9a2398706c8ec}{dim\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a3b0b3788edf9649f3650fdc0c3649de0}{dim}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_ae0038606a4201bc3188d19c24d88ba62}{dim}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_aadc24e2debe696756f27e77a5e5cea85}{dim}} (const \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_ae8244d100cb54c3c4196f123498cd03c}{dim}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{mass}
+Accessor and modifier functions for the mass required element.
+
+The mass of the cuboid. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classcuboid__t_a37a8f8c2d962d37a6fbd21d8000fca66}{mass\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a314e32849d951d2eeb9c6147aeb45267}{mass}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a886b32175330faa8cf5b3b4a6d5f962b}{mass}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_a819aa170a5430d8e58e8c8bd21690655}{mass}} (const \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{spacing}
+Accessor and modifier functions for the spacing required element.
+
+The spacing between particles in the cuboid. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classcuboid__t_a4fa2af79594ebd57d2753b9df9cb74a8}{spacing\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a70c4bb4034265d11977384f0539a729c}{spacing}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a1e66a2adbd77af6b4cf7120b5a602658}{spacing}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_a1e01a1469c79576614012b7837ca6454}{spacing}} (const \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{brown\+Vel}
+Accessor and modifier functions for the brown\+Vel required element.
+
+The Brownian motion velocity. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classcuboid__t_af3f00a4bac4462ed6918cb6f7e0efd3a}{brown\+Vel\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a27b5a2fb742e910d00c621cbe3145183}{brown\+Vel}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a5fb34164b4f062bbfdd4025f956f07b4}{brown\+Vel}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_afba03378ede461daff1f2ce768050436}{brown\+Vel}} (const \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{brown\+Dim}
+Accessor and modifier functions for the brown\+Dim required element.
+
+The dimension affected by Brownian motion. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdimension__t}{\+::dimension\+\_\+t}} \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_a06dc3b216c5ace12a119695e1aa75137}{brown\+Dim\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_addc0644e5afae02186350a287344bad1}{brown\+Dim}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} \& \mbox{\hyperlink{classcuboid__t_a5b4c207793abe201005ec5744d930010}{brown\+Dim}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_ad5d32fabadf4a6008cbc0fb93dcab9dd}{brown\+Dim}} (const \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_a8b08a394739cd2fc7baeee32d3b89c13}{brown\+Dim}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{ptype}
+Accessor and modifier functions for the ptype optional element.
+
+The particle type of the cuboid. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_a85ca3205d8af287e149aac54535f57e7}{\+::xml\+\_\+schema\+::unsigned\+\_\+int}} \mbox{\hyperlink{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}{ptype\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}{ptype\+\_\+type}} $>$ \mbox{\hyperlink{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}{ptype\+\_\+optional}}
+\begin{DoxyCompactList}\small\item\em Element optional container type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}{ptype\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_acac94e70aa428c876e2c60f86a002b4f}{ptype\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}{ptype\+\_\+optional}} \& \mbox{\hyperlink{classcuboid__t_a7944ed8a3242bb31af62d32bef201ead}{ptype}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}{ptype\+\_\+optional}} \& \mbox{\hyperlink{classcuboid__t_a95ccbb4e20273f354e70aa0b52dcf522}{ptype}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_aeaf4e963b90d6f03650c4c106c40a43a}{ptype}} (const \mbox{\hyperlink{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}{ptype\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcuboid__t_ad4ed32d6985038cc2c27b8aac3eecd6f}{ptype}} (const \mbox{\hyperlink{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}{ptype\+\_\+optional}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcuboid__t_afbe38a6b58e3eb9a2a27f23faa424dbc}{cuboid\+\_\+t}} (const \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_a75e1989b35ff76c1394eb1317a2c20af}{cuboid\+\_\+t}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} $>$, const \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}} \&, const \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_abe1a29c00319c11db2bbe3ebfd3d579f}{cuboid\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t_ad27672501fcf939aaf1d93f731e40a6e}{cuboid\+\_\+t}} (const \mbox{\hyperlink{classcuboid__t}{cuboid\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classcuboid__t}{cuboid\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcuboid__t_a215454dc4e70cac8b671503a48cd82c2}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcuboid__t}{cuboid\+\_\+t}} \& \mbox{\hyperlink{classcuboid__t_a63f90f88f500fa731186f53d2c668552}{operator=}} (const \mbox{\hyperlink{classcuboid__t}{cuboid\+\_\+t}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classcuboid__t_ad45791533f3643e2e2f565801c0ca20a}{\texorpdfstring{$\sim$}{\string~}cuboid\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the cuboid\+\_\+t schema type. 
+
+Defines the properties of a cuboid-\/shaped cluster. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classcuboid__t_a06dc3b216c5ace12a119695e1aa75137}\index{cuboid\_t@{cuboid\_t}!brownDim\_traits@{brownDim\_traits}}
+\index{brownDim\_traits@{brownDim\_traits}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim\_traits}{brownDim\_traits}}
+{\footnotesize\ttfamily \label{classcuboid__t_a06dc3b216c5ace12a119695e1aa75137} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_a06dc3b216c5ace12a119695e1aa75137}{cuboid\+\_\+t\+::brown\+Dim\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}\index{cuboid\_t@{cuboid\_t}!brownDim\_type@{brownDim\_type}}
+\index{brownDim\_type@{brownDim\_type}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim\_type}{brownDim\_type}}
+{\footnotesize\ttfamily \label{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc} 
+typedef \mbox{\hyperlink{classdimension__t}{\+::dimension\+\_\+t}} \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{cuboid\+\_\+t\+::brown\+Dim\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classcuboid__t_af3f00a4bac4462ed6918cb6f7e0efd3a}\index{cuboid\_t@{cuboid\_t}!brownVel\_traits@{brownVel\_traits}}
+\index{brownVel\_traits@{brownVel\_traits}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel\_traits}{brownVel\_traits}}
+{\footnotesize\ttfamily \label{classcuboid__t_af3f00a4bac4462ed6918cb6f7e0efd3a} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classcuboid__t_af3f00a4bac4462ed6918cb6f7e0efd3a}{cuboid\+\_\+t\+::brown\+Vel\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}\index{cuboid\_t@{cuboid\_t}!brownVel\_type@{brownVel\_type}}
+\index{brownVel\_type@{brownVel\_type}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel\_type}{brownVel\_type}}
+{\footnotesize\ttfamily \label{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{cuboid\+\_\+t\+::brown\+Vel\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classcuboid__t_a493bf40cbed658231dd9a2398706c8ec}\index{cuboid\_t@{cuboid\_t}!dim\_traits@{dim\_traits}}
+\index{dim\_traits@{dim\_traits}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{dim\_traits}{dim\_traits}}
+{\footnotesize\ttfamily \label{classcuboid__t_a493bf40cbed658231dd9a2398706c8ec} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_a493bf40cbed658231dd9a2398706c8ec}{cuboid\+\_\+t\+::dim\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}\index{cuboid\_t@{cuboid\_t}!dim\_type@{dim\_type}}
+\index{dim\_type@{dim\_type}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{dim\_type}{dim\_type}}
+{\footnotesize\ttfamily \label{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3} 
+typedef \mbox{\hyperlink{classintVec__t}{\+::int\+Vec\+\_\+t}} \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{cuboid\+\_\+t\+::dim\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classcuboid__t_a37a8f8c2d962d37a6fbd21d8000fca66}\index{cuboid\_t@{cuboid\_t}!mass\_traits@{mass\_traits}}
+\index{mass\_traits@{mass\_traits}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{mass\_traits}{mass\_traits}}
+{\footnotesize\ttfamily \label{classcuboid__t_a37a8f8c2d962d37a6fbd21d8000fca66} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classcuboid__t_a37a8f8c2d962d37a6fbd21d8000fca66}{cuboid\+\_\+t\+::mass\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}\index{cuboid\_t@{cuboid\_t}!mass\_type@{mass\_type}}
+\index{mass\_type@{mass\_type}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{mass\_type}{mass\_type}}
+{\footnotesize\ttfamily \label{classcuboid__t_a9ecc283542278ba724035a9036c92c1e} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{cuboid\+\_\+t\+::mass\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classcuboid__t_a9cf8a2b3fba4dbe577a3ae05bdfe6917}\index{cuboid\_t@{cuboid\_t}!pos\_traits@{pos\_traits}}
+\index{pos\_traits@{pos\_traits}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{pos\_traits}{pos\_traits}}
+{\footnotesize\ttfamily \label{classcuboid__t_a9cf8a2b3fba4dbe577a3ae05bdfe6917} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_a9cf8a2b3fba4dbe577a3ae05bdfe6917}{cuboid\+\_\+t\+::pos\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}\index{cuboid\_t@{cuboid\_t}!pos\_type@{pos\_type}}
+\index{pos\_type@{pos\_type}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{pos\_type}{pos\_type}}
+{\footnotesize\ttfamily \label{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6} 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{cuboid\+\_\+t\+::pos\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}\index{cuboid\_t@{cuboid\_t}!ptype\_optional@{ptype\_optional}}
+\index{ptype\_optional@{ptype\_optional}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_optional}{ptype\_optional}}
+{\footnotesize\ttfamily \label{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c} 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}{ptype\+\_\+type}} $>$ \mbox{\hyperlink{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}{cuboid\+\_\+t\+::ptype\+\_\+optional}}}
+
+
+
+Element optional container type. 
+
+\Hypertarget{classcuboid__t_acac94e70aa428c876e2c60f86a002b4f}\index{cuboid\_t@{cuboid\_t}!ptype\_traits@{ptype\_traits}}
+\index{ptype\_traits@{ptype\_traits}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_traits}{ptype\_traits}}
+{\footnotesize\ttfamily \label{classcuboid__t_acac94e70aa428c876e2c60f86a002b4f} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}{ptype\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_acac94e70aa428c876e2c60f86a002b4f}{cuboid\+\_\+t\+::ptype\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}\index{cuboid\_t@{cuboid\_t}!ptype\_type@{ptype\_type}}
+\index{ptype\_type@{ptype\_type}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_type}{ptype\_type}}
+{\footnotesize\ttfamily \label{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764} 
+typedef \mbox{\hyperlink{namespacexml__schema_a85ca3205d8af287e149aac54535f57e7}{\+::xml\+\_\+schema\+::unsigned\+\_\+int}} \mbox{\hyperlink{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}{cuboid\+\_\+t\+::ptype\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classcuboid__t_a4fa2af79594ebd57d2753b9df9cb74a8}\index{cuboid\_t@{cuboid\_t}!spacing\_traits@{spacing\_traits}}
+\index{spacing\_traits@{spacing\_traits}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{spacing\_traits}{spacing\_traits}}
+{\footnotesize\ttfamily \label{classcuboid__t_a4fa2af79594ebd57d2753b9df9cb74a8} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classcuboid__t_a4fa2af79594ebd57d2753b9df9cb74a8}{cuboid\+\_\+t\+::spacing\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}\index{cuboid\_t@{cuboid\_t}!spacing\_type@{spacing\_type}}
+\index{spacing\_type@{spacing\_type}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{spacing\_type}{spacing\_type}}
+{\footnotesize\ttfamily \label{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{cuboid\+\_\+t\+::spacing\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classcuboid__t_a9f443749c10882ac615d545c1e1c2b18}\index{cuboid\_t@{cuboid\_t}!vel\_traits@{vel\_traits}}
+\index{vel\_traits@{vel\_traits}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{vel\_traits}{vel\_traits}}
+{\footnotesize\ttfamily \label{classcuboid__t_a9f443749c10882ac615d545c1e1c2b18} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}}, char $>$ \mbox{\hyperlink{classcuboid__t_a9f443749c10882ac615d545c1e1c2b18}{cuboid\+\_\+t\+::vel\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}\index{cuboid\_t@{cuboid\_t}!vel\_type@{vel\_type}}
+\index{vel\_type@{vel\_type}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{vel\_type}{vel\_type}}
+{\footnotesize\ttfamily \label{classcuboid__t_ad576d2cbca85e6640e1aa03046168772} 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{cuboid\+\_\+t\+::vel\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcuboid__t_afbe38a6b58e3eb9a2a27f23faa424dbc}\index{cuboid\_t@{cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\index{cuboid\_t@{cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{cuboid\_t()}{cuboid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_afbe38a6b58e3eb9a2a27f23faa424dbc} 
+cuboid\+\_\+t\+::cuboid\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} \&}]{pos}{, }\item[{const \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} \&}]{vel}{, }\item[{const \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} \&}]{dim}{, }\item[{const \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}} \&}]{mass}{, }\item[{const \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}} \&}]{spacing}{, }\item[{const \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}} \&}]{brown\+Vel}{, }\item[{const \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} \&}]{brown\+Dim}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classcuboid__t_a75e1989b35ff76c1394eb1317a2c20af}\index{cuboid\_t@{cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\index{cuboid\_t@{cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{cuboid\_t()}{cuboid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a75e1989b35ff76c1394eb1317a2c20af} 
+cuboid\+\_\+t\+::cuboid\+\_\+t (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} $>$}]{pos}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} $>$}]{vel}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} $>$}]{dim}{, }\item[{const \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}} \&}]{mass}{, }\item[{const \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}} \&}]{spacing}{, }\item[{const \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}} \&}]{brown\+Vel}{, }\item[{const \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} \&}]{brown\+Dim}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). 
+
+This constructor will try to use the passed values directly instead of making copies. \Hypertarget{classcuboid__t_abe1a29c00319c11db2bbe3ebfd3d579f}\index{cuboid\_t@{cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\index{cuboid\_t@{cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{cuboid\_t()}{cuboid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_abe1a29c00319c11db2bbe3ebfd3d579f} 
+cuboid\+\_\+t\+::cuboid\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcuboid__t_ad27672501fcf939aaf1d93f731e40a6e}\index{cuboid\_t@{cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\index{cuboid\_t@{cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{cuboid\_t()}{cuboid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_ad27672501fcf939aaf1d93f731e40a6e} 
+cuboid\+\_\+t\+::cuboid\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t}{cuboid\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classcuboid__t_ad45791533f3643e2e2f565801c0ca20a}\index{cuboid\_t@{cuboid\_t}!````~cuboid\_t@{\texorpdfstring{$\sim$}{\string~}cuboid\_t}}
+\index{````~cuboid\_t@{\texorpdfstring{$\sim$}{\string~}cuboid\_t}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}cuboid\_t()}{\string~cuboid\_t()}}
+{\footnotesize\ttfamily \label{classcuboid__t_ad45791533f3643e2e2f565801c0ca20a} 
+cuboid\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}cuboid\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcuboid__t_a215454dc4e70cac8b671503a48cd82c2}\index{cuboid\_t@{cuboid\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classcuboid__t_a215454dc4e70cac8b671503a48cd82c2} 
+\mbox{\hyperlink{classcuboid__t}{cuboid\+\_\+t}} \texorpdfstring{$\ast$}{*} cuboid\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classcuboid__t_a5b4c207793abe201005ec5744d930010}\index{cuboid\_t@{cuboid\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a5b4c207793abe201005ec5744d930010} 
+\mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{cuboid\+\_\+t\+::brown\+Dim\+\_\+type}} \& cuboid\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_addc0644e5afae02186350a287344bad1}\index{cuboid\_t@{cuboid\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_addc0644e5afae02186350a287344bad1} 
+const \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{cuboid\+\_\+t\+::brown\+Dim\+\_\+type}} \& cuboid\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a8b08a394739cd2fc7baeee32d3b89c13}\index{cuboid\_t@{cuboid\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a8b08a394739cd2fc7baeee32d3b89c13} 
+void cuboid\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classcuboid__t_ad5d32fabadf4a6008cbc0fb93dcab9dd}\index{cuboid\_t@{cuboid\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_ad5d32fabadf4a6008cbc0fb93dcab9dd} 
+void cuboid\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_abe8649dbcd957c1276543faaabdc77fc}{brown\+Dim\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classcuboid__t_a5fb34164b4f062bbfdd4025f956f07b4}\index{cuboid\_t@{cuboid\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a5fb34164b4f062bbfdd4025f956f07b4} 
+\mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{cuboid\+\_\+t\+::brown\+Vel\+\_\+type}} \& cuboid\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a27b5a2fb742e910d00c621cbe3145183}\index{cuboid\_t@{cuboid\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a27b5a2fb742e910d00c621cbe3145183} 
+const \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{cuboid\+\_\+t\+::brown\+Vel\+\_\+type}} \& cuboid\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_afba03378ede461daff1f2ce768050436}\index{cuboid\_t@{cuboid\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_afba03378ede461daff1f2ce768050436} 
+void cuboid\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_a8a85a94769edbd3a5beafcd0b912b2fa}{brown\+Vel\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classcuboid__t_ae0038606a4201bc3188d19c24d88ba62}\index{cuboid\_t@{cuboid\_t}!dim@{dim}}
+\index{dim@{dim}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_ae0038606a4201bc3188d19c24d88ba62} 
+\mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{cuboid\+\_\+t\+::dim\+\_\+type}} \& cuboid\+\_\+t\+::dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a3b0b3788edf9649f3650fdc0c3649de0}\index{cuboid\_t@{cuboid\_t}!dim@{dim}}
+\index{dim@{dim}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a3b0b3788edf9649f3650fdc0c3649de0} 
+const \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{cuboid\+\_\+t\+::dim\+\_\+type}} \& cuboid\+\_\+t\+::dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_ae8244d100cb54c3c4196f123498cd03c}\index{cuboid\_t@{cuboid\_t}!dim@{dim}}
+\index{dim@{dim}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_ae8244d100cb54c3c4196f123498cd03c} 
+void cuboid\+\_\+t\+::dim (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classcuboid__t_aadc24e2debe696756f27e77a5e5cea85}\index{cuboid\_t@{cuboid\_t}!dim@{dim}}
+\index{dim@{dim}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_aadc24e2debe696756f27e77a5e5cea85} 
+void cuboid\+\_\+t\+::dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_a6b8a954defa16dae9925ca0dfd3aafa3}{dim\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classcuboid__t_a886b32175330faa8cf5b3b4a6d5f962b}\index{cuboid\_t@{cuboid\_t}!mass@{mass}}
+\index{mass@{mass}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a886b32175330faa8cf5b3b4a6d5f962b} 
+\mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{cuboid\+\_\+t\+::mass\+\_\+type}} \& cuboid\+\_\+t\+::mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a314e32849d951d2eeb9c6147aeb45267}\index{cuboid\_t@{cuboid\_t}!mass@{mass}}
+\index{mass@{mass}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a314e32849d951d2eeb9c6147aeb45267} 
+const \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{cuboid\+\_\+t\+::mass\+\_\+type}} \& cuboid\+\_\+t\+::mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a819aa170a5430d8e58e8c8bd21690655}\index{cuboid\_t@{cuboid\_t}!mass@{mass}}
+\index{mass@{mass}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a819aa170a5430d8e58e8c8bd21690655} 
+void cuboid\+\_\+t\+::mass (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_a9ecc283542278ba724035a9036c92c1e}{mass\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classcuboid__t_a63f90f88f500fa731186f53d2c668552}\index{cuboid\_t@{cuboid\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classcuboid__t_a63f90f88f500fa731186f53d2c668552} 
+\mbox{\hyperlink{classcuboid__t}{cuboid\+\_\+t}} \& cuboid\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t}{cuboid\+\_\+t}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classcuboid__t_ab17d531f102b4ae322ffb4808749baf4}\index{cuboid\_t@{cuboid\_t}!pos@{pos}}
+\index{pos@{pos}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_ab17d531f102b4ae322ffb4808749baf4} 
+\mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{cuboid\+\_\+t\+::pos\+\_\+type}} \& cuboid\+\_\+t\+::pos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a81a7ff682799f742303d03da2e3a23c5}\index{cuboid\_t@{cuboid\_t}!pos@{pos}}
+\index{pos@{pos}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a81a7ff682799f742303d03da2e3a23c5} 
+const \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{cuboid\+\_\+t\+::pos\+\_\+type}} \& cuboid\+\_\+t\+::pos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_aad17088833d012657c4c220533af84df}\index{cuboid\_t@{cuboid\_t}!pos@{pos}}
+\index{pos@{pos}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_aad17088833d012657c4c220533af84df} 
+void cuboid\+\_\+t\+::pos (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classcuboid__t_a122f06acff90f105a5732d684ce29198}\index{cuboid\_t@{cuboid\_t}!pos@{pos}}
+\index{pos@{pos}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a122f06acff90f105a5732d684ce29198} 
+void cuboid\+\_\+t\+::pos (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_a786a3101661b6f1b2e80364a7e126de6}{pos\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classcuboid__t_a95ccbb4e20273f354e70aa0b52dcf522}\index{cuboid\_t@{cuboid\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a95ccbb4e20273f354e70aa0b52dcf522} 
+\mbox{\hyperlink{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}{cuboid\+\_\+t\+::ptype\+\_\+optional}} \& cuboid\+\_\+t\+::ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a7944ed8a3242bb31af62d32bef201ead}\index{cuboid\_t@{cuboid\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a7944ed8a3242bb31af62d32bef201ead} 
+const \mbox{\hyperlink{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}{cuboid\+\_\+t\+::ptype\+\_\+optional}} \& cuboid\+\_\+t\+::ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_ad4ed32d6985038cc2c27b8aac3eecd6f}\index{cuboid\_t@{cuboid\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_ad4ed32d6985038cc2c27b8aac3eecd6f} 
+void cuboid\+\_\+t\+::ptype (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_ab1bf427f9d86ce81b05da49bb349127c}{ptype\+\_\+optional}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An optional container with the new value to set.\\
+\hline
+\end{DoxyParams}
+If the value is present in {\itshape x} then this function makes a copy of this value and sets it as the new value of the element. Otherwise the element container is set the \textquotesingle{}not present\textquotesingle{} state. \Hypertarget{classcuboid__t_aeaf4e963b90d6f03650c4c106c40a43a}\index{cuboid\_t@{cuboid\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_aeaf4e963b90d6f03650c4c106c40a43a} 
+void cuboid\+\_\+t\+::ptype (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_abb03384909c26b20ef0c5c9e5d4ae764}{ptype\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classcuboid__t_a1e66a2adbd77af6b4cf7120b5a602658}\index{cuboid\_t@{cuboid\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a1e66a2adbd77af6b4cf7120b5a602658} 
+\mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{cuboid\+\_\+t\+::spacing\+\_\+type}} \& cuboid\+\_\+t\+::spacing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a70c4bb4034265d11977384f0539a729c}\index{cuboid\_t@{cuboid\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a70c4bb4034265d11977384f0539a729c} 
+const \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{cuboid\+\_\+t\+::spacing\+\_\+type}} \& cuboid\+\_\+t\+::spacing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a1e01a1469c79576614012b7837ca6454}\index{cuboid\_t@{cuboid\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a1e01a1469c79576614012b7837ca6454} 
+void cuboid\+\_\+t\+::spacing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_a9aa12881b6a9eeb2b2182447a316e9fe}{spacing\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classcuboid__t_abba288bf1464843698088d8182480ed0}\index{cuboid\_t@{cuboid\_t}!vel@{vel}}
+\index{vel@{vel}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_abba288bf1464843698088d8182480ed0} 
+\mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{cuboid\+\_\+t\+::vel\+\_\+type}} \& cuboid\+\_\+t\+::vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_a94679eb0138d678940ac90b86c3504b1}\index{cuboid\_t@{cuboid\_t}!vel@{vel}}
+\index{vel@{vel}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_a94679eb0138d678940ac90b86c3504b1} 
+const \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{cuboid\+\_\+t\+::vel\+\_\+type}} \& cuboid\+\_\+t\+::vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classcuboid__t_ae34b75903cc3e4a3e1f217f926acc1b5}\index{cuboid\_t@{cuboid\_t}!vel@{vel}}
+\index{vel@{vel}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_ae34b75903cc3e4a3e1f217f926acc1b5} 
+void cuboid\+\_\+t\+::vel (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classcuboid__t_adf6a9efcb13358a2fd24ec4d5c5d185f}\index{cuboid\_t@{cuboid\_t}!vel@{vel}}
+\index{vel@{vel}!cuboid\_t@{cuboid\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classcuboid__t_adf6a9efcb13358a2fd24ec4d5c5d185f} 
+void cuboid\+\_\+t\+::vel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcuboid__t_ad576d2cbca85e6640e1aa03046168772}{vel\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8h}{simulation.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8cpp}{simulation.\+cpp}}\end{DoxyCompactItemize}

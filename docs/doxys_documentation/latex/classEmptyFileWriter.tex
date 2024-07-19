@@ -1,0 +1,60 @@
+\doxysection{Empty\+File\+Writer Class Reference}
+\hypertarget{classEmptyFileWriter}{}\label{classEmptyFileWriter}\index{EmptyFileWriter@{EmptyFileWriter}}
+
+
+{\ttfamily \#include $<$empty\+Writer.\+h$>$}
+
+Inheritance diagram for Empty\+File\+Writer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classEmptyFileWriter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classEmptyFileWriter_a5a687b8fd1b4f8b9550af3c2d8233ade}{plot\+Particles}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&s)
+\begin{DoxyCompactList}\small\item\em Write the simulation data to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFileWriter}{File\+Writer}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileWriter_ae4dd90b95298451fc84d753b987ddc82}{File\+Writer}} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{classFileWriter}{File\+Writer}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFileWriter_a09798489903156b2438525fc687d3651}{File\+Writer}} (std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}})
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{classFileWriter}{File\+Writer}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classFileWriter_a004bf2acbdc1a2f72015cd71f17aa2e2}{\texorpdfstring{$\sim$}{\string~}\+File\+Writer}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classFileWriter}{File\+Writer}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}} = "{}MD\+\_\+vtk"{}
+\begin{DoxyCompactList}\small\item\em The name of the output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEmptyFileWriter_a5a687b8fd1b4f8b9550af3c2d8233ade}\index{EmptyFileWriter@{EmptyFileWriter}!plotParticles@{plotParticles}}
+\index{plotParticles@{plotParticles}!EmptyFileWriter@{EmptyFileWriter}}
+\doxysubsubsection{\texorpdfstring{plotParticles()}{plotParticles()}}
+{\footnotesize\ttfamily \label{classEmptyFileWriter_a5a687b8fd1b4f8b9550af3c2d8233ade} 
+void Empty\+File\+Writer\+::plot\+Particles (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Write the simulation data to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \doxylink{classSimulation}{Simulation} object \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classFileWriter_a30e2074c246bae28cb0af971c76609ed}{File\+Writer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/file\+Writer/\mbox{\hyperlink{emptyWriter_8h}{empty\+Writer.\+h}}\item 
+src/io/file\+Writer/\mbox{\hyperlink{emptyWriter_8cpp}{empty\+Writer.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,52 @@
+\doxysection{src/models/\+Particle.h File Reference}
+\hypertarget{Particle_8h}{}\label{Particle_8h}\index{src/models/Particle.h@{src/models/Particle.h}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classParticle}{Particle}}
+\begin{DoxyCompactList}\small\item\em Class representing a particle in the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{Particle_8h_a81ef406001cd289eaccd54181e64f98d}{operator$<$$<$}} (std\+::ostream \&stream, \mbox{\hyperlink{classParticle}{Particle}} \&p)
+\begin{DoxyCompactList}\small\item\em Overload the \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator for the \doxylink{classParticle}{Particle} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}\index{Particle.h@{Particle.h}!THREAD\_SAFE@{THREAD\_SAFE}}
+\index{THREAD\_SAFE@{THREAD\_SAFE}!Particle.h@{Particle.h}}
+\doxysubsubsection{\texorpdfstring{THREAD\_SAFE}{THREAD\_SAFE}}
+{\footnotesize\ttfamily \label{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab} 
+\#define THREAD\+\_\+\+SAFE}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Particle_8h_a81ef406001cd289eaccd54181e64f98d}\index{Particle.h@{Particle.h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Particle.h@{Particle.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \label{Particle_8h_a81ef406001cd289eaccd54181e64f98d} 
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream}{, }\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Overload the \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator for the \doxylink{classParticle}{Particle} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & The output stream \\
+\hline
+{\em p} & The particle object to output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The stream with the particle object outputted 
+\end{DoxyReturn}

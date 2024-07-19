@@ -1,0 +1,41 @@
+\doxysection{XYZWriter.\+h}
+\hypertarget{XYZWriter_8h_source}{}\label{XYZWriter_8h_source}\index{src/io/fileWriter/XYZWriter.h@{src/io/fileWriter/XYZWriter.h}}
+\mbox{\hyperlink{XYZWriter_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ XYZWriter.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 01.03.2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ eckhardw}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{FileWriter_8h}{io/fileWriter/FileWriter.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceoutputWriter}{outputWriter}}\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classoutputWriter_1_1XYZWriter}{XYZWriter}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classFileWriter}{FileWriter}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a73b1eacd622152993f2fa6c181e69c8a}{XYZWriter}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Initializes\ the\ XYZWriter\ class}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ \ \ \ *\ @param\ out\_name\ the\ name\ of\ the\ output\ file}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a322512b62157dd7230c22d59267817d3}{XYZWriter}}(std::string\ \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\_name}})}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classFileWriter}{FileWriter}}(\mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\_name}})}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_ad3fe6dbb5e1aa5bdeffcc9986795309b}{\string~XYZWriter}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a58653e0504bc44b696e1338da79bd640}{plotParticles}}(\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\ particles,\ \textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keywordtype}{int}\ iteration);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a58653e0504bc44b696e1338da79bd640}{plotParticles}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&\ s)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \}\ \textcolor{comment}{//\ namespace\ outputWriter}}
+
+\end{DoxyCode}

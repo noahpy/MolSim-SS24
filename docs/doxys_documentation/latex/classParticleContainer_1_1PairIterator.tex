@@ -1,0 +1,182 @@
+\doxysection{Particle\+Container\+::Pair\+Iterator Class Reference}
+\hypertarget{classParticleContainer_1_1PairIterator}{}\label{classParticleContainer_1_1PairIterator}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+
+
+Pair Iterator nested class for iterating over all unique pairs of particles.  
+
+
+
+
+{\ttfamily \#include $<$Particle\+Container.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1PairIterator_a9cc05a2aa3b95105af0d8eb3d85ffd1a}{Pair\+Iterator}} (\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1PairIterator_add64697b818f5d7031c6d42fb4b85856}{start}}, \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1PairIterator_ab698d58f49407d8eb546978d05d53daa}{first}}, \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a6d0482898559382d258baeb07c4482c8}{last}})
+\begin{DoxyCompactList}\small\item\em Construct a new Pair Iterator object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticle}{Particle}} \& \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a9f376f9f3fa7ba307ff6195f1f4ab2c8}{get\+Last}} ()
+\begin{DoxyCompactList}\small\item\em Get the last particle. \end{DoxyCompactList}\item 
+std\+::pair$<$ \mbox{\hyperlink{classParticle}{Particle}} \&, \mbox{\hyperlink{classParticle}{Particle}} \& $>$ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a05841a1d70079cebd1299986d876762b}{operator\texorpdfstring{$\ast$}{*}}} () const
+\begin{DoxyCompactList}\small\item\em Override the \texorpdfstring{$\ast$}{*} operator for range-\/based for loop. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}} \& \mbox{\hyperlink{classParticleContainer_1_1PairIterator_ab0de54e56be180630f17d2becca556ec}{operator++}} ()
+\begin{DoxyCompactList}\small\item\em Override the ++ operator for range-\/based for loop. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a5523d30437364cc051fa74bd37a7acd4}{operator!=}} (const \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}} \&other) const
+\begin{DoxyCompactList}\small\item\em Override the != operator for range-\/based for loop. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classParticleContainer_1_1PairIterator_afb169479718e6d8c8deb67e5fb16b607}{operator==}} (const \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}} \&other) const
+\begin{DoxyCompactList}\small\item\em Override the == operator for range-\/based for loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1PairIterator_add64697b818f5d7031c6d42fb4b85856}{start}}
+\begin{DoxyCompactList}\small\item\em The iterators need to iterate over the particle pairs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1PairIterator_ab698d58f49407d8eb546978d05d53daa}{first}}
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1PairIterator_aea099a15f968ec808b09fb82564ddfd8}{second}}
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a6d0482898559382d258baeb07c4482c8}{last}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pair Iterator nested class for iterating over all unique pairs of particles. 
+
+Iterate from one fixed particle over every possible pair and continue to the next fixed particle. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classParticleContainer_1_1PairIterator_a9cc05a2aa3b95105af0d8eb3d85ffd1a}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!PairIterator@{PairIterator}}
+\index{PairIterator@{PairIterator}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{PairIterator()}{PairIterator()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_a9cc05a2aa3b95105af0d8eb3d85ffd1a} 
+Particle\+Container\+::\+Pair\+Iterator\+::\+Pair\+Iterator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}}}]{start}{, }\item[{\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}}}]{first}{, }\item[{\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}}}]{last}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new Pair Iterator object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The iterator to the first particle \\
+\hline
+{\em first} & The iterator to the first particle \\
+\hline
+{\em last} & The iterator to the last particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classParticleContainer_1_1PairIterator}{Pair\+Iterator} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classParticleContainer_1_1PairIterator_a9f376f9f3fa7ba307ff6195f1f4ab2c8}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!getLast@{getLast}}
+\index{getLast@{getLast}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{getLast()}{getLast()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_a9f376f9f3fa7ba307ff6195f1f4ab2c8} 
+\mbox{\hyperlink{classParticle}{Particle}} \& Particle\+Container\+::\+Pair\+Iterator\+::get\+Last (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the last particle. 
+
+\begin{DoxyReturn}{Returns}
+The last particle 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_1_1PairIterator_a5523d30437364cc051fa74bd37a7acd4}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_a5523d30437364cc051fa74bd37a7acd4} 
+bool Particle\+Container\+::\+Pair\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+Override the != operator for range-\/based for loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{classParticleContainer_1_1PairIterator}{Pair\+Iterator} object to be compared to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the two \doxylink{classParticleContainer_1_1PairIterator}{Pair\+Iterator} objects are not equal 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_1_1PairIterator_a05841a1d70079cebd1299986d876762b}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_a05841a1d70079cebd1299986d876762b} 
+std\+::pair$<$ \mbox{\hyperlink{classParticle}{Particle}} \&, \mbox{\hyperlink{classParticle}{Particle}} \& $>$ Particle\+Container\+::\+Pair\+Iterator\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Override the \texorpdfstring{$\ast$}{*} operator for range-\/based for loop. 
+
+\begin{DoxyReturn}{Returns}
+A the reference to the current pair of particles 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_1_1PairIterator_ab0de54e56be180630f17d2becca556ec}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_ab0de54e56be180630f17d2becca556ec} 
+\mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Particle\+Container\+::\+Pair\+Iterator}} \& Particle\+Container\+::\+Pair\+Iterator\+::operator++ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Override the ++ operator for range-\/based for loop. 
+
+\begin{DoxyReturn}{Returns}
+The next pair of particles 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_1_1PairIterator_afb169479718e6d8c8deb67e5fb16b607}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_afb169479718e6d8c8deb67e5fb16b607} 
+bool Particle\+Container\+::\+Pair\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+Override the == operator for range-\/based for loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{classParticleContainer_1_1PairIterator}{Pair\+Iterator} object to be compared to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return yes if the two \doxylink{classParticleContainer_1_1PairIterator}{Pair\+Iterator} objects are equal, false otherwise 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classParticleContainer_1_1PairIterator_ab698d58f49407d8eb546978d05d53daa}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!first@{first}}
+\index{first@{first}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{first}{first}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_ab698d58f49407d8eb546978d05d53daa} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} Particle\+Container\+::\+Pair\+Iterator\+::first}
+
+\Hypertarget{classParticleContainer_1_1PairIterator_a6d0482898559382d258baeb07c4482c8}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!last@{last}}
+\index{last@{last}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{last}{last}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_a6d0482898559382d258baeb07c4482c8} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} Particle\+Container\+::\+Pair\+Iterator\+::last}
+
+\Hypertarget{classParticleContainer_1_1PairIterator_aea099a15f968ec808b09fb82564ddfd8}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!second@{second}}
+\index{second@{second}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{second}{second}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_aea099a15f968ec808b09fb82564ddfd8} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} Particle\+Container\+::\+Pair\+Iterator\+::second}
+
+\Hypertarget{classParticleContainer_1_1PairIterator_add64697b818f5d7031c6d42fb4b85856}\index{ParticleContainer::PairIterator@{ParticleContainer::PairIterator}!start@{start}}
+\index{start@{start}!ParticleContainer::PairIterator@{ParticleContainer::PairIterator}}
+\doxysubsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily \label{classParticleContainer_1_1PairIterator_add64697b818f5d7031c6d42fb4b85856} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} Particle\+Container\+::\+Pair\+Iterator\+::start}
+
+
+
+The iterators need to iterate over the particle pairs. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/\mbox{\hyperlink{ParticleContainer_8h}{Particle\+Container.\+h}}\item 
+src/models/\mbox{\hyperlink{ParticleContainer_8cpp}{Particle\+Container.\+cpp}}\end{DoxyCompactItemize}

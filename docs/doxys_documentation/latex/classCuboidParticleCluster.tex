@@ -1,0 +1,200 @@
+\doxysection{Cuboid\+Particle\+Cluster Class Reference}
+\hypertarget{classCuboidParticleCluster}{}\label{classCuboidParticleCluster}\index{CuboidParticleCluster@{CuboidParticleCluster}}
+
+
+A class to model a cluster of particles in the shape of a cuboid, see \doxylink{classParticleCluster}{Particle\+Cluster}.  
+
+
+
+
+{\ttfamily \#include $<$Cuboid\+Particle\+Cluster.\+h$>$}
+
+Inheritance diagram for Cuboid\+Particle\+Cluster\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCuboidParticleCluster}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCuboidParticleCluster_a7a6527f52b095e07d9265f1aeaa01d24}{Cuboid\+Particle\+Cluster}} (std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}}, int \mbox{\hyperlink{classCuboidParticleCluster_aeb172e19129740bda9392ec47e95cf28}{num\+Particles\+Width}}, int \mbox{\hyperlink{classCuboidParticleCluster_ae1b07681bbc9410e9a2d5655f851ea06}{num\+Particles\+Height}}, int \mbox{\hyperlink{classCuboidParticleCluster_ae2a36d7a4dd72261a36fda74291ec699}{num\+Particles\+Depth}}, double \mbox{\hyperlink{classCuboidParticleCluster_a0c84dd0f2a7bbe896ceefec9c6bd5393}{spacing}}, double \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}}, std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initial\+Velocity}}, double \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{mean\+Velocity}}, size\+\_\+t \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}}, const std\+::map$<$ unsigned, bool $>$ \&stationary\+Particle\+Types, unsigned \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}}=0)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classCuboidParticleCluster}{Cuboid\+Particle\+Cluster} class. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classCuboidParticleCluster_aea57abe040a9679b2cb3e0a0456dc395}{get\+Total\+Number\+Of\+Particles}} () const override
+\begin{DoxyCompactList}\small\item\em Get the total number of particles in the cluster. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCuboidParticleCluster_ac8629622c8f8ebde085fb519cfe1d343}{generate\+Cluster}} (std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&particles, size\+\_\+t \&insertion\+Index) const override
+\begin{DoxyCompactList}\small\item\em Generate the cluster of particles. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classCuboidParticleCluster_a3d354998e031848be5d4f14c14058dec}{to\+String}} () const override
+\begin{DoxyCompactList}\small\item\em Get a string representation of the cluster. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classParticleCluster}{Particle\+Cluster}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleCluster_ab2cbefcaff9fa3fd7964e51e83a5adb5}{Particle\+Cluster}} (std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}}, double \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}}, std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initial\+Velocity}}, double \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{mean\+Velocity}}, size\+\_\+t \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}}, const std\+::map$<$ unsigned, bool $>$ \&stationary\+Particle\+Types, unsigned \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classParticleCluster_abeb65133a030f3c6c5708163dd2090c6}{\texorpdfstring{$\sim$}{\string~}\+Particle\+Cluster}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classCuboidParticleCluster_aeb172e19129740bda9392ec47e95cf28}{num\+Particles\+Width}}
+\item 
+int \mbox{\hyperlink{classCuboidParticleCluster_ae1b07681bbc9410e9a2d5655f851ea06}{num\+Particles\+Height}}
+\item 
+int \mbox{\hyperlink{classCuboidParticleCluster_ae2a36d7a4dd72261a36fda74291ec699}{num\+Particles\+Depth}}
+\item 
+double \mbox{\hyperlink{classCuboidParticleCluster_a0c84dd0f2a7bbe896ceefec9c6bd5393}{spacing}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classParticleCluster}{Particle\+Cluster}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}}
+\item 
+double \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initial\+Velocity}}
+\item 
+double \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{mean\+Velocity}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}}
+\item 
+unsigned \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}}
+\item 
+bool \mbox{\hyperlink{classParticleCluster_a7983f0ed76457e2c226cbc6f00d55be2}{is\+Not\+Stationary}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to model a cluster of particles in the shape of a cuboid, see \doxylink{classParticleCluster}{Particle\+Cluster}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCuboidParticleCluster_a7a6527f52b095e07d9265f1aeaa01d24}\index{CuboidParticleCluster@{CuboidParticleCluster}!CuboidParticleCluster@{CuboidParticleCluster}}
+\index{CuboidParticleCluster@{CuboidParticleCluster}!CuboidParticleCluster@{CuboidParticleCluster}}
+\doxysubsubsection{\texorpdfstring{CuboidParticleCluster()}{CuboidParticleCluster()}}
+{\footnotesize\ttfamily \label{classCuboidParticleCluster_a7a6527f52b095e07d9265f1aeaa01d24} 
+Cuboid\+Particle\+Cluster\+::\+Cuboid\+Particle\+Cluster (\begin{DoxyParamCaption}\item[{std\+::array$<$ double, 3 $>$}]{origin}{, }\item[{int}]{num\+Particles\+Width}{, }\item[{int}]{num\+Particles\+Height}{, }\item[{int}]{num\+Particles\+Depth}{, }\item[{double}]{spacing}{, }\item[{double}]{mass}{, }\item[{std\+::array$<$ double, 3 $>$}]{initial\+Velocity}{, }\item[{double}]{mean\+Velocity}{, }\item[{size\+\_\+t}]{dimensions}{, }\item[{const std\+::map$<$ unsigned, bool $>$ \&}]{stationary\+Particle\+Types}{, }\item[{unsigned}]{ptype}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classCuboidParticleCluster}{Cuboid\+Particle\+Cluster} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & The origin of the cluster, will be the bottom left corner of the cuboid \\
+\hline
+{\em num\+Particles\+Width} & The number of particles in the width of the cuboid (x) \\
+\hline
+{\em num\+Particles\+Height} & The number of particles in the height of the cuboid (y) \\
+\hline
+{\em num\+Particles\+Depth} & The number of particles in the depth of the cuboid (z) \\
+\hline
+{\em spacing} & The spacing between the particles \\
+\hline
+{\em mass} & The mass of the particles \\
+\hline
+{\em initial\+Velocity} & The initial velocity of the particles \\
+\hline
+{\em mean\+Velocity} & The mean velocity of the particles \\
+\hline
+{\em dimensions} & The dimensions of the cluster (\texorpdfstring{$<$}{<}= 3). Will be passed to \doxylink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity()} The dimensions of the cluster (\texorpdfstring{$<$}{<}= 3) will be passed to \doxylink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity()} if set to 0 no brownian motion will be added, if set to 1 then only on the x axis, then x+y, and finally x+y+z axis \\
+\hline
+{\em stationary\+Particle\+Types} & A map of particle types that are stationary \\
+\hline
+{\em ptype} & The particle type for this cluster \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCuboidParticleCluster_ac8629622c8f8ebde085fb519cfe1d343}\index{CuboidParticleCluster@{CuboidParticleCluster}!generateCluster@{generateCluster}}
+\index{generateCluster@{generateCluster}!CuboidParticleCluster@{CuboidParticleCluster}}
+\doxysubsubsection{\texorpdfstring{generateCluster()}{generateCluster()}}
+{\footnotesize\ttfamily \label{classCuboidParticleCluster_ac8629622c8f8ebde085fb519cfe1d343} 
+void Cuboid\+Particle\+Cluster\+::generate\+Cluster (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&}]{particles}{, }\item[{size\+\_\+t \&}]{insertion\+Index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Generate the cluster of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & The vector to insert the particles into \\
+\hline
+{\em insertion\+Index} & The index to start inserting the particles at (will be incremented) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classParticleCluster_a89c4a884946202191e646f44a0a345da}{Particle\+Cluster}}.
+
+\Hypertarget{classCuboidParticleCluster_aea57abe040a9679b2cb3e0a0456dc395}\index{CuboidParticleCluster@{CuboidParticleCluster}!getTotalNumberOfParticles@{getTotalNumberOfParticles}}
+\index{getTotalNumberOfParticles@{getTotalNumberOfParticles}!CuboidParticleCluster@{CuboidParticleCluster}}
+\doxysubsubsection{\texorpdfstring{getTotalNumberOfParticles()}{getTotalNumberOfParticles()}}
+{\footnotesize\ttfamily \label{classCuboidParticleCluster_aea57abe040a9679b2cb3e0a0456dc395} 
+size\+\_\+t Cuboid\+Particle\+Cluster\+::get\+Total\+Number\+Of\+Particles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the total number of particles in the cluster. 
+
+\begin{DoxyReturn}{Returns}
+The total number of particles in the cluster i.\+e. num\+Particles\+Width \texorpdfstring{$\ast$}{*} num\+Particles\+Height \texorpdfstring{$\ast$}{*} num\+Particles\+Depth 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classParticleCluster_ac4f75cbf593129fb391ef0ca6c55dc2b}{Particle\+Cluster}}.
+
+\Hypertarget{classCuboidParticleCluster_a3d354998e031848be5d4f14c14058dec}\index{CuboidParticleCluster@{CuboidParticleCluster}!toString@{toString}}
+\index{toString@{toString}!CuboidParticleCluster@{CuboidParticleCluster}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{classCuboidParticleCluster_a3d354998e031848be5d4f14c14058dec} 
+std\+::string Cuboid\+Particle\+Cluster\+::to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get a string representation of the cluster. 
+
+\begin{DoxyReturn}{Returns}
+A string representation of the cluster 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classParticleCluster_a9427aeece5cd04430ef8fc2e849010ce}{Particle\+Cluster}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCuboidParticleCluster_ae2a36d7a4dd72261a36fda74291ec699}\index{CuboidParticleCluster@{CuboidParticleCluster}!numParticlesDepth@{numParticlesDepth}}
+\index{numParticlesDepth@{numParticlesDepth}!CuboidParticleCluster@{CuboidParticleCluster}}
+\doxysubsubsection{\texorpdfstring{numParticlesDepth}{numParticlesDepth}}
+{\footnotesize\ttfamily \label{classCuboidParticleCluster_ae2a36d7a4dd72261a36fda74291ec699} 
+int Cuboid\+Particle\+Cluster\+::num\+Particles\+Depth\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of particles in the depth of the cuboid (z) \Hypertarget{classCuboidParticleCluster_ae1b07681bbc9410e9a2d5655f851ea06}\index{CuboidParticleCluster@{CuboidParticleCluster}!numParticlesHeight@{numParticlesHeight}}
+\index{numParticlesHeight@{numParticlesHeight}!CuboidParticleCluster@{CuboidParticleCluster}}
+\doxysubsubsection{\texorpdfstring{numParticlesHeight}{numParticlesHeight}}
+{\footnotesize\ttfamily \label{classCuboidParticleCluster_ae1b07681bbc9410e9a2d5655f851ea06} 
+int Cuboid\+Particle\+Cluster\+::num\+Particles\+Height\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of particles in the height of the cuboid (y) \Hypertarget{classCuboidParticleCluster_aeb172e19129740bda9392ec47e95cf28}\index{CuboidParticleCluster@{CuboidParticleCluster}!numParticlesWidth@{numParticlesWidth}}
+\index{numParticlesWidth@{numParticlesWidth}!CuboidParticleCluster@{CuboidParticleCluster}}
+\doxysubsubsection{\texorpdfstring{numParticlesWidth}{numParticlesWidth}}
+{\footnotesize\ttfamily \label{classCuboidParticleCluster_aeb172e19129740bda9392ec47e95cf28} 
+int Cuboid\+Particle\+Cluster\+::num\+Particles\+Width\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of particles in the width of the cuboid (x) \Hypertarget{classCuboidParticleCluster_a0c84dd0f2a7bbe896ceefec9c6bd5393}\index{CuboidParticleCluster@{CuboidParticleCluster}!spacing@{spacing}}
+\index{spacing@{spacing}!CuboidParticleCluster@{CuboidParticleCluster}}
+\doxysubsubsection{\texorpdfstring{spacing}{spacing}}
+{\footnotesize\ttfamily \label{classCuboidParticleCluster_a0c84dd0f2a7bbe896ceefec9c6bd5393} 
+double Cuboid\+Particle\+Cluster\+::spacing\hspace{0.3cm}{\ttfamily [protected]}}
+
+The spacing between the particles 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/generators/\mbox{\hyperlink{CuboidParticleCluster_8h}{Cuboid\+Particle\+Cluster.\+h}}\item 
+src/models/generators/\mbox{\hyperlink{CuboidParticleCluster_8cpp}{Cuboid\+Particle\+Cluster.\+cpp}}\end{DoxyCompactItemize}

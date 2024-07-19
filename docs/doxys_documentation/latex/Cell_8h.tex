@@ -1,0 +1,45 @@
+\doxysection{src/models/linked\+\_\+cell/cell/\+Cell.h File Reference}
+\hypertarget{Cell_8h}{}\label{Cell_8h}\index{src/models/linked\_cell/cell/Cell.h@{src/models/linked\_cell/cell/Cell.h}}
+{\ttfamily \#include "{}models/\+Particle.\+h"{}}\newline
+{\ttfamily \#include "{}models/linked\+\_\+cell/cell/\+Cell\+Type.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Position.\+h"{}}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classCell}{Cell}}
+\begin{DoxyCompactList}\small\item\em Represents a single cell within the \doxylink{classCellGrid}{Cell\+Grid}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCell_1_1PairListIterator}{Cell\+::\+Pair\+List\+Iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}
+\begin{DoxyCompactList}\small\item\em A 3D index representing a cell\textquotesingle{}s position within the grid. \end{DoxyCompactList}\item 
+typedef std\+::list$<$ std\+::reference\+\_\+wrapper$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ $>$ \mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}}
+\begin{DoxyCompactList}\small\item\em A list of references to particles in a cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{Cell_8h_a91ad28c9020cc0a834fd764e67105995}\index{Cell.h@{Cell.h}!CellIndex@{CellIndex}}
+\index{CellIndex@{CellIndex}!Cell.h@{Cell.h}}
+\doxysubsubsection{\texorpdfstring{CellIndex}{CellIndex}}
+{\footnotesize\ttfamily \label{Cell_8h_a91ad28c9020cc0a834fd764e67105995} 
+typedef std\+::array$<$size\+\_\+t, 3$>$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}}
+
+
+
+A 3D index representing a cell\textquotesingle{}s position within the grid. 
+
+\Hypertarget{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}\index{Cell.h@{Cell.h}!ParticleRefList@{ParticleRefList}}
+\index{ParticleRefList@{ParticleRefList}!Cell.h@{Cell.h}}
+\doxysubsubsection{\texorpdfstring{ParticleRefList}{ParticleRefList}}
+{\footnotesize\ttfamily \label{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f} 
+typedef std\+::list$<$std\+::reference\+\_\+wrapper$<$\mbox{\hyperlink{classParticle}{Particle}}$>$ $>$ \mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}}}
+
+
+
+A list of references to particles in a cell. 
+

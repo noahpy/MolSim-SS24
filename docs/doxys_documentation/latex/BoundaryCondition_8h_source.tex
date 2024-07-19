@@ -1,0 +1,43 @@
+\doxysection{Boundary\+Condition.\+h}
+\hypertarget{BoundaryCondition_8h_source}{}\label{BoundaryCondition_8h_source}\index{src/physics/boundaryConditions/BoundaryCondition.h@{src/physics/boundaryConditions/BoundaryCondition.h}}
+\mbox{\hyperlink{BoundaryCondition_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Position_8h}{utils/Position.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ forward\ declare}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLennardJonesDomainSimulation}{LennardJonesDomainSimulation}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBoundaryCondition}{BoundaryCondition}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{BoundaryCondition}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}(\mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Virtual\ destructor}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\string~BoundaryCondition}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBoundaryCondition_a7806aa116ba9779d164b53411dc0515b}{preUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})\ =\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBoundaryCondition_ac515c5d031e15483b6959dbef91aa898}{postUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})\ =\ 0;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa}{getPointOnBoundaryPlane}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classLennardJonesDomainSimulation}{LennardJonesDomainSimulation}}\&\ LJDSim);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85}{getRelevantDimension}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ normal)}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ relevantDimension\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ 3;\ i++)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (normal[i]\ !=\ 0)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ relevantDimension\ =\ i;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ relevantDimension;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}};\ }
+\DoxyCodeLine{00067\ \};}
+
+\end{DoxyCode}

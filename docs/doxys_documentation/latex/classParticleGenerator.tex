@@ -1,0 +1,126 @@
+\doxysection{Particle\+Generator Class Reference}
+\hypertarget{classParticleGenerator}{}\label{classParticleGenerator}\index{ParticleGenerator@{ParticleGenerator}}
+
+
+Class to generate particles for the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Particle\+Generator.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleGenerator_a856c26e2c6c6dd96fef3678fca9e39cd}{Particle\+Generator}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classParticleGenerator_a20c5546328fde02b7cc84194c5a53a23}{container}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classParticleGenerator}{Particle\+Generator} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticleGenerator_a39a17231bec16ea2f797ef4d7ef9a174}{register\+Cluster}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classParticleCluster}{Particle\+Cluster}} $>$ cluster)
+\begin{DoxyCompactList}\small\item\em Register a cluster to be generated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticleGenerator_a884ab47d948a028c2349baf3c1760b6b}{generate\+Clusters}} ()
+\begin{DoxyCompactList}\small\item\em Generate the clusters into the container specified in the constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \& \mbox{\hyperlink{classParticleGenerator_a20c5546328fde02b7cc84194c5a53a23}{container}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classParticleCluster}{Particle\+Cluster}} $>$ $>$ \mbox{\hyperlink{classParticleGenerator_a2904f5b8a5bae25f3c9d378d07c22793}{clusters}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to generate particles for the simulation. 
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classLennardJonesSimulation}{LennardJonesSimulation}}\ simLJ\ =\ ...}
+\DoxyCodeLine{CuboidParticleCluster\ cluster1\ =\ \mbox{\hyperlink{classCuboidParticleCluster}{CuboidParticleCluster}}(std::array<double,\ 3>\ \{0,0,0\},}
+\DoxyCodeLine{40,8,1,\ 1.1225,\ 1,\ std::array<double,\ 3>\ \{0,0,0\},\ 0.1,\ 2);\ \mbox{\hyperlink{classCuboidParticleCluster}{CuboidParticleCluster}}\ cluster2\ =}
+\DoxyCodeLine{\mbox{\hyperlink{classCuboidParticleCluster}{CuboidParticleCluster}}(std::array<double,\ 3>\ \{15,15,0\},\ 8,8,1,\ 1.1225,\ 1,\ std::array<double,\ 3>}
+\DoxyCodeLine{\{0,-\/10,0\},\ 0.1,\ 2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classParticleGenerator}{ParticleGenerator}}\ p\ =\ \mbox{\hyperlink{classParticleGenerator_a856c26e2c6c6dd96fef3678fca9e39cd}{ParticleGenerator}}(simLJ.\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{p.registerCluster(std::make\_unique<CuboidParticleCluster>(cluster1));}
+\DoxyCodeLine{p.registerCluster(std::make\_unique<CuboidParticleCluster>(cluster2));}
+\DoxyCodeLine{p.generateClusters();}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classParticleGenerator_a856c26e2c6c6dd96fef3678fca9e39cd}\index{ParticleGenerator@{ParticleGenerator}!ParticleGenerator@{ParticleGenerator}}
+\index{ParticleGenerator@{ParticleGenerator}!ParticleGenerator@{ParticleGenerator}}
+\doxysubsubsection{\texorpdfstring{ParticleGenerator()}{ParticleGenerator()}}
+{\footnotesize\ttfamily \label{classParticleGenerator_a856c26e2c6c6dd96fef3678fca9e39cd} 
+Particle\+Generator\+::\+Particle\+Generator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{classParticleGenerator}{Particle\+Generator} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The container to store the particles in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classParticleGenerator}{Particle\+Generator} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classParticleGenerator_a884ab47d948a028c2349baf3c1760b6b}\index{ParticleGenerator@{ParticleGenerator}!generateClusters@{generateClusters}}
+\index{generateClusters@{generateClusters}!ParticleGenerator@{ParticleGenerator}}
+\doxysubsubsection{\texorpdfstring{generateClusters()}{generateClusters()}}
+{\footnotesize\ttfamily \label{classParticleGenerator_a884ab47d948a028c2349baf3c1760b6b} 
+void Particle\+Generator\+::generate\+Clusters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Generate the clusters into the container specified in the constructor. 
+
+Generates the clusters into the container specified in the constructor. The clusters are generated in the order they were registered and the vector containing the clusters will be cleared after the generation \begin{DoxyAttention}{Attention}
+This will set the vector of particles in the container. Call this method before inserting single particles that do not belong to a cluster 
+\end{DoxyAttention}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticleGenerator_a39a17231bec16ea2f797ef4d7ef9a174}\index{ParticleGenerator@{ParticleGenerator}!registerCluster@{registerCluster}}
+\index{registerCluster@{registerCluster}!ParticleGenerator@{ParticleGenerator}}
+\doxysubsubsection{\texorpdfstring{registerCluster()}{registerCluster()}}
+{\footnotesize\ttfamily \label{classParticleGenerator_a39a17231bec16ea2f797ef4d7ef9a174} 
+void Particle\+Generator\+::register\+Cluster (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classParticleCluster}{Particle\+Cluster}} $>$}]{cluster}{}\end{DoxyParamCaption})}
+
+
+
+Register a cluster to be generated. 
+
+Adds a cluster to the list of clusters to generate. The cluster can be generated by calling \doxylink{classParticleGenerator_a884ab47d948a028c2349baf3c1760b6b}{generate\+Clusters()} 
+\begin{DoxyParams}{Parameters}
+{\em cluster} & The cluster to generate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classParticleGenerator_a2904f5b8a5bae25f3c9d378d07c22793}\index{ParticleGenerator@{ParticleGenerator}!clusters@{clusters}}
+\index{clusters@{clusters}!ParticleGenerator@{ParticleGenerator}}
+\doxysubsubsection{\texorpdfstring{clusters}{clusters}}
+{\footnotesize\ttfamily \label{classParticleGenerator_a2904f5b8a5bae25f3c9d378d07c22793} 
+std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classParticleCluster}{Particle\+Cluster}}$>$ $>$ Particle\+Generator\+::clusters\hspace{0.3cm}{\ttfamily [private]}}
+
+The clusters to generate \Hypertarget{classParticleGenerator_a20c5546328fde02b7cc84194c5a53a23}\index{ParticleGenerator@{ParticleGenerator}!container@{container}}
+\index{container@{container}!ParticleGenerator@{ParticleGenerator}}
+\doxysubsubsection{\texorpdfstring{container}{container}}
+{\footnotesize\ttfamily \label{classParticleGenerator_a20c5546328fde02b7cc84194c5a53a23} 
+\mbox{\hyperlink{classParticleContainer}{Particle\+Container}}\& Particle\+Generator\+::container\hspace{0.3cm}{\ttfamily [private]}}
+
+The container to store the particles in 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/generators/\mbox{\hyperlink{ParticleGenerator_8h}{Particle\+Generator.\+h}}\item 
+src/models/generators/\mbox{\hyperlink{ParticleGenerator_8cpp}{Particle\+Generator.\+cpp}}\end{DoxyCompactItemize}

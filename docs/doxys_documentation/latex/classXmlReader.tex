@@ -1,0 +1,92 @@
+\doxysection{Xml\+Reader Class Reference}
+\hypertarget{classXmlReader}{}\label{classXmlReader}\index{XmlReader@{XmlReader}}
+
+
+A class for reading XML files, inheriting from \doxylink{classFileReader}{File\+Reader}.  
+
+
+
+
+{\ttfamily \#include $<$xml\+Reader.\+h$>$}
+
+Inheritance diagram for Xml\+Reader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classXmlReader}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classXmlReader_ad9ea97c9d14d72b29b7d0990853833f2}{read\+File}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&sim) override
+\begin{DoxyCompactList}\small\item\em Reads an XML file and populates the \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classXmlReader_a9ce82a24500af1259a4bff8d19cb0474}{File\+Reader}} (std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classFileReader}{File\+Reader} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFileReader}{File\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileReader_a9ce82a24500af1259a4bff8d19cb0474}{File\+Reader}} (std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classFileReader}{File\+Reader} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classFileReader_a1382969e8f1468f3b04ad4b44ab39dee}{\texorpdfstring{$\sim$}{\string~}\+File\+Reader}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classFileReader}{File\+Reader} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_acebf231636d2ac6721d6d0a4195b4353}{read\+File}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particles, std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}})
+\begin{DoxyCompactList}\small\item\em Read a file and store the data in a \doxylink{classParticleContainer}{Particle\+Container}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classFileReader}{File\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}}
+\begin{DoxyCompactList}\small\item\em The name of the file to read. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class for reading XML files, inheriting from \doxylink{classFileReader}{File\+Reader}. 
+
+\doxylink{classXmlReader}{Xml\+Reader} is a specialized class that inherits from the \doxylink{classFileReader}{File\+Reader} class and is designed to read and parse XML files. It overrides the read\+File method to implement specific logic for handling XML data. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classXmlReader_a9ce82a24500af1259a4bff8d19cb0474}\index{XmlReader@{XmlReader}!FileReader@{FileReader}}
+\index{FileReader@{FileReader}!XmlReader@{XmlReader}}
+\doxysubsubsection{\texorpdfstring{FileReader()}{FileReader()}}
+{\footnotesize\ttfamily \label{classXmlReader_a9ce82a24500af1259a4bff8d19cb0474} 
+File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Construct a new \doxylink{classFileReader}{File\+Reader} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classFileReader}{File\+Reader} 
+\end{DoxyReturn}
+\Hypertarget{classXmlReader_ad9ea97c9d14d72b29b7d0990853833f2}\index{XmlReader@{XmlReader}!readFile@{readFile}}
+\index{readFile@{readFile}!XmlReader@{XmlReader}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily \label{classXmlReader_ad9ea97c9d14d72b29b7d0990853833f2} 
+void Xml\+Reader\+::read\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Reads an XML file and populates the \doxylink{classSimulation}{Simulation} object. 
+
+This method overrides the read\+File method from the \doxylink{classFileReader}{File\+Reader} class. It reads the contents of an XML file and processes the data to initialize or update the \doxylink{classSimulation}{Simulation} object provided as a parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & A reference to the \doxylink{classSimulation}{Simulation} object to be populated or updated. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classFileReader_a7f33eef4ad8b47e67c2721eb9a3a8e91}{File\+Reader}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/file\+Reader/\mbox{\hyperlink{xmlReader_8h}{xml\+Reader.\+h}}\item 
+src/io/file\+Reader/\mbox{\hyperlink{xmlReader_8cpp}{xml\+Reader.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,29 @@
+\doxysection{File\+Writer.\+h}
+\hypertarget{FileWriter_8h_source}{}\label{FileWriter_8h_source}\index{src/io/fileWriter/FileWriter.h@{src/io/fileWriter/FileWriter.h}}
+\mbox{\hyperlink{FileWriter_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFileWriter}{FileWriter}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFileWriter_a30e2074c246bae28cb0af971c76609ed}{plotParticles}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&\ s)\ =\ 0;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classFileWriter_ae4dd90b95298451fc84d753b987ddc82}{FileWriter}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classFileWriter_a09798489903156b2438525fc687d3651}{FileWriter}}(std::string\ \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\_name}})}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\_name}}(\mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\_name}})}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::string\ \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\_name}}\ =\ \textcolor{stringliteral}{"{}MD\_vtk"{}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ of\ FileWriter}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classFileWriter_a004bf2acbdc1a2f72015cd71f17aa2e2}{\string~FileWriter}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ \};}
+
+\end{DoxyCode}

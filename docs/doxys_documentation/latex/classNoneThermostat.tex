@@ -1,0 +1,154 @@
+\doxysection{None\+Thermostat Class Reference}
+\hypertarget{classNoneThermostat}{}\label{classNoneThermostat}\index{NoneThermostat@{NoneThermostat}}
+
+
+{\ttfamily \#include $<$None\+Thermostat.\+h$>$}
+
+Inheritance diagram for None\+Thermostat\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classNoneThermostat}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNoneThermostat_ae2a3f05a97ee99fc10f4876abff9667c}{None\+Thermostat}} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classNoneThermostat}{None\+Thermostat}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNoneThermostat_acebeead349ebed847e6d379991ff20bc}{updateT}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&sim) override
+\begin{DoxyCompactList}\small\item\em Does no updates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNoneThermostat_a83e880630d9b7a152ee16ae33cde2884}{initialize\+Brownian\+Motion}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&sim) const override
+\begin{DoxyCompactList}\small\item\em Does no initialization. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classNoneThermostat_a7ff0f79fa0b074361bad60df7d1a1c5c}{get\+Total\+Kinetic\+Energy}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&sim) override
+\begin{DoxyCompactList}\small\item\em Does nothing. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classNoneThermostat_a55b6c2d46a4a4ba63fee683db96c7740}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Get the name of the thermostat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classThermostat}{Thermostat}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classThermostat_a277a57c01ed56b68ff32c2d00e3bb164}{Thermostat}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{classThermostat}{Thermostat}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classThermostat_a50aa875ffa8d5556111b0dd777b117b2}{\texorpdfstring{$\sim$}{\string~}\+Thermostat}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \doxylink{classThermostat}{Thermostat}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classThermostat_ac0a3ba485fde2a2a0fe0bf3ffc384eb1}{Thermostat}} (double \mbox{\hyperlink{classThermostat_a17c39daa8962c39be528ec92901c69ac}{init}}, double \mbox{\hyperlink{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}{target}}, double \mbox{\hyperlink{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}{delta}}, size\+\_\+t \mbox{\hyperlink{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}{dim}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classThermostat}{Thermostat}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classThermostat_ac85c736f5c595192a771fd55a50cdbca}{get\+Beta}} (double T\+\_\+current) const
+\begin{DoxyCompactList}\small\item\em Calculates the scaling factor beta. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classThermostat_a4268df5b95f01014ed3beea284572cb6}{get\+Init}} () const
+\begin{DoxyCompactList}\small\item\em Get the initial temperature. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classThermostat_a9c26f4dec5c3312d8eb55222c703c370}{get\+Target}} () const
+\begin{DoxyCompactList}\small\item\em Get the target temperature. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classThermostat_aa51f06c0d045422895f984696351a930}{get\+Delta}} () const
+\begin{DoxyCompactList}\small\item\em Get the maximum temperature change. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classThermostat_a298fa6e18709d533ed428b715d2b2e66}{get\+Dim}} () const
+\begin{DoxyCompactList}\small\item\em Get the dimension used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classThermostat}{Thermostat}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classThermostat_a17c39daa8962c39be528ec92901c69ac}{init}}
+\item 
+double \mbox{\hyperlink{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}{target}}
+\item 
+double \mbox{\hyperlink{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}{delta}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}{dim}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classNoneThermostat_ae2a3f05a97ee99fc10f4876abff9667c}\index{NoneThermostat@{NoneThermostat}!NoneThermostat@{NoneThermostat}}
+\index{NoneThermostat@{NoneThermostat}!NoneThermostat@{NoneThermostat}}
+\doxysubsubsection{\texorpdfstring{NoneThermostat()}{NoneThermostat()}}
+{\footnotesize\ttfamily \label{classNoneThermostat_ae2a3f05a97ee99fc10f4876abff9667c} 
+None\+Thermostat\+::\+None\+Thermostat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Constructor for \doxylink{classNoneThermostat}{None\+Thermostat}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classNoneThermostat_a55b6c2d46a4a4ba63fee683db96c7740}\index{NoneThermostat@{NoneThermostat}!getName@{getName}}
+\index{getName@{getName}!NoneThermostat@{NoneThermostat}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{classNoneThermostat_a55b6c2d46a4a4ba63fee683db96c7740} 
+std\+::string None\+Thermostat\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the name of the thermostat. 
+
+\begin{DoxyReturn}{Returns}
+The name of the thermostat. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classThermostat_a5c55b7235cd165a46961a232988b5a2e}{Thermostat}}.
+
+\Hypertarget{classNoneThermostat_a7ff0f79fa0b074361bad60df7d1a1c5c}\index{NoneThermostat@{NoneThermostat}!getTotalKineticEnergy@{getTotalKineticEnergy}}
+\index{getTotalKineticEnergy@{getTotalKineticEnergy}!NoneThermostat@{NoneThermostat}}
+\doxysubsubsection{\texorpdfstring{getTotalKineticEnergy()}{getTotalKineticEnergy()}}
+{\footnotesize\ttfamily \label{classNoneThermostat_a7ff0f79fa0b074361bad60df7d1a1c5c} 
+double None\+Thermostat\+::get\+Total\+Kinetic\+Energy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Does nothing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to get the total kinetic energy for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 as it does nothing 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classThermostat_af7a3e1c6fd39b713b52f1ad881cd1e00}{Thermostat}}.
+
+\Hypertarget{classNoneThermostat_a83e880630d9b7a152ee16ae33cde2884}\index{NoneThermostat@{NoneThermostat}!initializeBrownianMotion@{initializeBrownianMotion}}
+\index{initializeBrownianMotion@{initializeBrownianMotion}!NoneThermostat@{NoneThermostat}}
+\doxysubsubsection{\texorpdfstring{initializeBrownianMotion()}{initializeBrownianMotion()}}
+{\footnotesize\ttfamily \label{classNoneThermostat_a83e880630d9b7a152ee16ae33cde2884} 
+void None\+Thermostat\+::initialize\+Brownian\+Motion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Does no initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to initialize. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classThermostat_acf8842c0f4035bc78f1db61f096acd50}{Thermostat}}.
+
+\Hypertarget{classNoneThermostat_acebeead349ebed847e6d379991ff20bc}\index{NoneThermostat@{NoneThermostat}!updateT@{updateT}}
+\index{updateT@{updateT}!NoneThermostat@{NoneThermostat}}
+\doxysubsubsection{\texorpdfstring{updateT()}{updateT()}}
+{\footnotesize\ttfamily \label{classNoneThermostat_acebeead349ebed847e6d379991ff20bc} 
+void None\+Thermostat\+::updateT (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Does no updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to update the temperature of. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classThermostat_a0b24a04cfccc062c2fdd9b31ce09abfb}{Thermostat}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/physics/thermostat/\mbox{\hyperlink{NoneThermostat_8h}{None\+Thermostat.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,51 @@
+\doxysection{Progress\+Logger.\+h}
+\hypertarget{ProgressLogger_8h_source}{}\label{ProgressLogger_8h_source}\index{src/analytics/ProgressLogger.h@{src/analytics/ProgressLogger.h}}
+\mbox{\hyperlink{ProgressLogger_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <spdlog/spdlog.h>}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classProgressLogger}{ProgressLogger}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classProgressLogger_a4f12cb45f124f19b7a3f53d999f33662}{ProgressLogger}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classProgressLogger_a637a01edf72e772d966512437efba47c}{startTime}},\ \textcolor{keywordtype}{double}\ endTime,\ \textcolor{keywordtype}{double}\ deltaT)}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classProgressLogger_a0a19444f2445b27f4f60650cc2a2f28a}{totalIterations}}(static\_cast<unsigned>(std::ceil((endTime\ -\/\ \mbox{\hyperlink{classProgressLogger_a637a01edf72e772d966512437efba47c}{startTime}})\ /\ deltaT)))}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{classProgressLogger_a637a01edf72e772d966512437efba47c}{startTime}}(std::chrono::steady\_clock::now())}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{classProgressLogger_a58284fa05879b59dd35fcf1fa321ff06}{nextLoggingIteration}}(\mbox{\hyperlink{classProgressLogger_a0a19444f2445b27f4f60650cc2a2f28a}{totalIterations}}\ /\ 100)}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProgressLogger_af38489aa0342f7ccbcc6a17485e83a27}{logProgress}}(\textcolor{keywordtype}{unsigned}\ currentIteration)}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ only\ log,\ if\ new\ percentage\ is\ reached\ -\/>\ 100\ updates}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentIteration\ <\ \mbox{\hyperlink{classProgressLogger_a58284fa05879b59dd35fcf1fa321ff06}{nextLoggingIteration}}\ ||}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::level::info\ <\ spdlog::default\_logger()-\/>level())}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ currentTime\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ elapsedTime\ =}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::duration\_cast<std::chrono::milliseconds>(currentTime\ -\/\ \mbox{\hyperlink{classProgressLogger_a637a01edf72e772d966512437efba47c}{startTime}}).count();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ progress\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(currentIteration)\ /\ \mbox{\hyperlink{classProgressLogger_a0a19444f2445b27f4f60650cc2a2f28a}{totalIterations}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ estimatedTimeLeft\ =}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{long}\textcolor{keyword}{>}((\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(elapsedTime)\ /\ progress))\ -\/\ elapsedTime;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ spdlog::info(}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Progress:\ \{:.2f\}\%,\ Estimated\ time\ left\ (DD:HH:MM:SS):\ \{:02\}:\{:02\}:\{:02\}:\{:02\}"{}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ progress\ *\ 100,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ estimatedTimeLeft\ /\ 86400000l,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ (estimatedTimeLeft\ \%\ 86400000l)\ /\ 3600000l,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ (estimatedTimeLeft\ \%\ 3600000l)\ /\ 60000l,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ (estimatedTimeLeft\ \%\ 60000l)\ /\ 1000l);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProgressLogger_a58284fa05879b59dd35fcf1fa321ff06}{nextLoggingIteration}}\ =}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\textcolor{keyword}{>}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\mbox{\hyperlink{classProgressLogger_a0a19444f2445b27f4f60650cc2a2f28a}{totalIterations}})\ *\ (progress\ +\ 0.01));}
+\DoxyCodeLine{00055\ \ \ \ \ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classProgressLogger_a0a19444f2445b27f4f60650cc2a2f28a}{totalIterations}};\ }
+\DoxyCodeLine{00059\ \ \ \ \ std::chrono::steady\_clock::time\_point\ \mbox{\hyperlink{classProgressLogger_a637a01edf72e772d966512437efba47c}{startTime}};\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classProgressLogger_a58284fa05879b59dd35fcf1fa321ff06}{nextLoggingIteration}};\ }
+\DoxyCodeLine{00061\ \};}
+
+\end{DoxyCode}

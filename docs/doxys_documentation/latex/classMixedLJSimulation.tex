@@ -1,0 +1,709 @@
+\doxysection{Mixed\+LJSimulation Class Reference}
+\hypertarget{classMixedLJSimulation}{}\label{classMixedLJSimulation}\index{MixedLJSimulation@{MixedLJSimulation}}
+
+
+\doxylink{classSimulation}{Simulation} class for the Lennard-\/\+Jones simulation with mixed LJ parameters.  
+
+
+
+
+{\ttfamily \#include $<$Mixed\+LJSimulation.\+h$>$}
+
+Inheritance diagram for Mixed\+LJSimulation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{classMixedLJSimulation}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMixedLJSimulation_a3744ca22864f02372df106840d3b6962}{Mixed\+LJSimulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, const std\+::map$<$ unsigned, std\+::pair$<$ double, double $>$ $>$ \&LJParams, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&boundary\+Config, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}}, double gravity\+\_\+constant, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$ \mbox{\hyperlink{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}{thermostat}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, size\+\_\+t \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysis\+Frequency}}=10000, bool read\+\_\+file=true, unsigned \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\+\_\+thermostat}}=1000, bool \mbox{\hyperlink{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8}{do\+Profile}}=false)
+\begin{DoxyCompactList}\small\item\em Construct a new Mixed Lennard Jones Domain \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5}{run\+Sim}} () override
+\begin{DoxyCompactList}\small\item\em Run the simulation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a5ae150d4e7cc6a76902145a5194eb01c}{get\+Epsilon}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the epsilon of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a9d7ccddaa7c40cdc8f4bc0bdf4ecaec6}{get\+Sigma}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the sigma of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_affdfb3616d49044590eb8c4503f64566}{get\+Alpha}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the alpha of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a770dbd7af68281175c29f23bdd482850}{get\+Beta}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the beta of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_ab795f98301fddce0a2afa1a786e8e86f}{get\+Gamma}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the gamma of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a2c2f1e6d7c1549d5c4763dad80bc768e}{get\+Gravity\+Constant}} () const
+\begin{DoxyCompactList}\small\item\em get the gravity constant \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_aa6519b46f5ff67a4e0564d05d3bd9060}{get\+Repulsive\+Distance}} (int \mbox{\hyperlink{classtype}{type}}) const override
+\begin{DoxyCompactList}\small\item\em Gets the distance for a particle where repulsion starts. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a25a521fd8f5b7746f32139e08cddbd78}{get\+T\+\_\+init}} () const
+\begin{DoxyCompactList}\small\item\em Get the initial temperature. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a70b450960c2af7048a414a65d511d19c}{get\+T\+\_\+target}} () const
+\begin{DoxyCompactList}\small\item\em Get the target temperature. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a618a70f8c367d02f3669835003a5e163}{get\+Delta\+\_\+T}} () const
+\begin{DoxyCompactList}\small\item\em Get the delta\+\_\+T. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classMixedLJSimulation_a2c0357b482147dd43dce300974ebe88d}{get\+N\+\_\+thermostat}} () const
+\begin{DoxyCompactList}\small\item\em Get the number of thermostat updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLennardJonesDomainSimulation_af2d21f61f9b1d12749b952b5cf5f7c03}{Lennard\+Jones\+Domain\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&boundary\+Config, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, size\+\_\+t \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysis\+Frequency}}=10000, bool read\+\_\+file=true)
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones Domain \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLennardJonesDomainSimulation_a4915e32c862e4cd19c5403f7a603db12}{Linked\+Lennard\+Jones\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, bool read\+\_\+file=true)
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLinkedLennardJonesSimulation}{Linked\+Lennard\+Jones\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLinkedLennardJonesSimulation_a4915e32c862e4cd19c5403f7a603db12}{Linked\+Lennard\+Jones\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, bool read\+\_\+file=true)
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \& \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad022bd88e8f58fda708eb34c30353617}{get\+Grid}} () const
+\item 
+void \mbox{\hyperlink{classLinkedLennardJonesSimulation_a9682407f0e0ebb304761847b0ede05cd}{set\+Domain\+Origin}} (const std\+::array$<$ double, 3 $>$ \&domain\+Origin)
+\begin{DoxyCompactList}\small\item\em Set the origin of the simulation domain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac02835357b8355afe540b3788c4f5579}{set\+Domain\+Size}} (const std\+::array$<$ double, 3 $>$ \&domain\+Size)
+\begin{DoxyCompactList}\small\item\em Set the size of the simulation domain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad91c1524037aecc193a2fb43fe5786f6}{set\+Cutoff}} (double cutoff)
+\begin{DoxyCompactList}\small\item\em Set the cutoff radius of the simulation. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a5ae6ddb827ae3f33910048338a197646}{get\+Domain\+Origin}} () const
+\begin{DoxyCompactList}\small\item\em Get the origin of the simulation domain. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classLinkedLennardJonesSimulation_aceebb5a0bce20b3cd52f5eb4e92015c3}{get\+Domain\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the size of the simulation domain. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLinkedLennardJonesSimulation_aec5131d8e80d154378041fb0bc802544}{get\+Cutoff}} () const
+\begin{DoxyCompactList}\small\item\em Get the cutoff radius of the simulation. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a16772a2392ac33187a25a7f0008e54aa}{get\+Update\+Frequency}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLennardJonesSimulation}{Lennard\+Jones\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLennardJonesSimulation_a11255c84e605ba367661627f7ce1a947}{Lennard\+Jones\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, bool read\+\_\+file=true)
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLennardJonesSimulation_a03b2d037dda00ab1b39cab5808f8abae}{set\+Epsilon}} (double eps)
+\begin{DoxyCompactList}\small\item\em Set the epsilon parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLennardJonesSimulation_a71edfeb82be06f000833da94472ea51f}{set\+Sigma}} (double sig)
+\begin{DoxyCompactList}\small\item\em Set the sigma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a42422dd40e29be6f43c1911934b6c4fb}{get\+Epsilon}} () const
+\begin{DoxyCompactList}\small\item\em Get the epsilon parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a456b96b4514880185a9aea867a855af3}{get\+Sigma}} () const
+\begin{DoxyCompactList}\small\item\em Get the sigma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a41a1c4c60c6a2760aa11af66f656e1a4}{get\+Alpha}} () const
+\begin{DoxyCompactList}\small\item\em Get the alpha parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_ab177ce539ce797212d9b24303ae65f2f}{get\+Beta}} () const
+\begin{DoxyCompactList}\small\item\em Get the beta parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a0d7cf6c105468d3677d1c9538752a85b}{get\+Gamma}} () const
+\begin{DoxyCompactList}\small\item\em Get the gamma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classLennardJonesSimulation_a09afdfe50f109b6626e3fdfd8c4f733b}{\texorpdfstring{$\sim$}{\string~}\+Lennard\+Jones\+Simulation}} ()=default
+\item 
+\mbox{\hyperlink{classLennardJonesSimulation_a1c3bad0b5e9842a84e616e2fd135f311}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimulation_a1c3bad0b5e9842a84e616e2fd135f311}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classSimulation_a85781a859dbdf089b4c807ac11646e18}{\texorpdfstring{$\sim$}{\string~}\+Simulation}} ()=default
+\item 
+void \mbox{\hyperlink{classSimulation_ace2a60993f57c241c081ffea6ea14e99}{set\+Output\+File}} (std\+::string output)
+\item 
+std\+::string \mbox{\hyperlink{classSimulation_aded0641608524c4f1fb5a85dd91d387f}{get\+Output\+File}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::pair$<$ int, int $>$ \mbox{\hyperlink{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}{get\+Mix\+Key}} (unsigned type1, unsigned type2)
+\begin{DoxyCompactList}\small\item\em Get the key to access the LJ param maps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::map$<$ unsigned, std\+::pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classMixedLJSimulation_aa7bb1f7d12080f0139aa4dc35d8030d3}{ljparams}}
+\begin{DoxyCompactList}\small\item\em map that stores the different particle types \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBoundaryConditionHandler}{Boundary\+Condition\+Handler}} \mbox{\hyperlink{classLennardJonesDomainSimulation_a3af863607123c29438029baea218198b}{bc\+Handler}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}
+\item 
+double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}
+\item 
+double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}
+\item 
+unsigned \mbox{\hyperlink{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1}{iteration}} = 0
+\item 
+unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}} = 10
+\item 
+\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \& \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}
+\item 
+std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_a7576f75eee44a3f7082d3d7e22a3954a}{epsilons}}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_ace21f3725169264364e1a4d5590f51b2}{sigmas}}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_afe081eebe176f5349c4dd5a32a34eb20}{alphas}}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_ad0329bb270a24c0373da54ae6f8ed2a9}{betas}}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_ad49bb3f14691b38427287c21fed64b66}{gammas}}
+\item 
+std\+::map$<$ unsigned, double $>$ \mbox{\hyperlink{classMixedLJSimulation_aca34d7e6b4bc61c6ee41d464ebae3e98}{repulsive\+Distances}}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a68dc278e818d8914713b758b9b91c02b}{gravity\+Constant}}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a5ced68a26e022d598162967aa846de52}{T\+\_\+init}}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a57d6c21075835a40950d93f75a2bc0ae}{T\+\_\+target}}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a5893624d38e3d7fb8fdaf4c3ee38ff7e}{delta\+\_\+T}}
+\item 
+unsigned \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\+\_\+thermostat}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$ \mbox{\hyperlink{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}{thermostat}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysis\+Frequency}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classLinkedLennardJonesSimulation}{Linked\+Lennard\+Jones\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cell\+Grid}}
+\item 
+unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classLennardJonesSimulation}{Lennard\+Jones\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a99f2652b63a24bfb8b4c5e270d079429}{alpha}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a8e4e4a8fb0b0f6a2d8be5b856e1dd8e1}{beta}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a67fb7cac88492151222b2200a0e1b5af}{gamma}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \& \mbox{\hyperlink{classSimulation_abdb48771e24ba63a3db95b27d153b629}{strategy}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}
+\item 
+\mbox{\hyperlink{classProgressLogger}{Progress\+Logger}} \mbox{\hyperlink{classSimulation_a5f898fce7219971170a580872af32224}{progress\+Logger}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a41a1c4c60c6a2760aa11af66f656e1a4}{get\+Alpha}} () const
+\begin{DoxyCompactList}\small\item\em Get the alpha parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_ab177ce539ce797212d9b24303ae65f2f}{get\+Beta}} () const
+\begin{DoxyCompactList}\small\item\em Get the beta parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a42422dd40e29be6f43c1911934b6c4fb}{get\+Epsilon}} () const
+\begin{DoxyCompactList}\small\item\em Get the epsilon parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a0d7cf6c105468d3677d1c9538752a85b}{get\+Gamma}} () const
+\begin{DoxyCompactList}\small\item\em Get the gamma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a456b96b4514880185a9aea867a855af3}{get\+Sigma}} () const
+\begin{DoxyCompactList}\small\item\em Get the sigma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMixedLJSimulation_a03b2d037dda00ab1b39cab5808f8abae}{set\+Epsilon}} (double eps)
+\begin{DoxyCompactList}\small\item\em Set the epsilon parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMixedLJSimulation_a71edfeb82be06f000833da94472ea51f}{set\+Sigma}} (double sig)
+\begin{DoxyCompactList}\small\item\em Set the sigma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8}{do\+Profile}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classSimulation}{Simulation} class for the Lennard-\/\+Jones simulation with mixed LJ parameters. 
+
+This class is a subclass of the Lennard-\/\+Jones domain simulation class and is used to simulate different particles in one simulation. For that the Lorentz-\/\+Berthelot mixing rules are used 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMixedLJSimulation_a3744ca22864f02372df106840d3b6962}\index{MixedLJSimulation@{MixedLJSimulation}!MixedLJSimulation@{MixedLJSimulation}}
+\index{MixedLJSimulation@{MixedLJSimulation}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{MixedLJSimulation()}{MixedLJSimulation()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a3744ca22864f02372df106840d3b6962} 
+Mixed\+LJSimulation\+::\+Mixed\+LJSimulation (\begin{DoxyParamCaption}\item[{double}]{time}{, }\item[{double}]{delta\+\_\+t}{, }\item[{double}]{end\+\_\+time}{, }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container}{, }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$}]{writer}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$}]{reader}{, }\item[{std\+::map$<$ unsigned, bool $>$}]{stationary\+Particle\+Types}{, }\item[{const std\+::map$<$ unsigned, std\+::pair$<$ double, double $>$ $>$ \&}]{LJParams}{, }\item[{std\+::array$<$ double, 3 $>$}]{domain\+Origin}{, }\item[{std\+::array$<$ double, 3 $>$}]{domain\+Size}{, }\item[{double}]{cutoff}{, }\item[{const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&}]{boundary\+Config}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$}]{analyzer}{, }\item[{double}]{gravity\+\_\+constant}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$}]{thermostat}{, }\item[{unsigned}]{frequency}{ = {\ttfamily 10}, }\item[{unsigned}]{update\+Frequency}{ = {\ttfamily 10}, }\item[{size\+\_\+t}]{analysis\+Frequency}{ = {\ttfamily 10000}, }\item[{bool}]{read\+\_\+file}{ = {\ttfamily true}, }\item[{unsigned}]{n\+\_\+thermostat}{ = {\ttfamily 1000}, }\item[{bool}]{do\+Profile}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Construct a new Mixed Lennard Jones Domain \doxylink{classSimulation}{Simulation} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The current time of the simulation i.\+e. start time \\
+\hline
+{\em delta\+\_\+t} & The time increment for each iteration \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em container} & The container of particles \\
+\hline
+{\em strat} & The strategy to be used for the physics calculations \\
+\hline
+{\em writer} & The writer object to write the output to file \\
+\hline
+{\em reader} & The reader object to read the input from file \\
+\hline
+{\em stationary\+Particle\+Types} & The types of particles which are stationary \\
+\hline
+{\em LJParams} & A map that resolves particle type to their epsilon and sigma values \\
+\hline
+{\em domain\+Origin} & The origin of the simulation domain \\
+\hline
+{\em domain\+Size} & The size of the simulation domain \\
+\hline
+{\em cutoff} & The cutoff radius of the simulation \\
+\hline
+{\em boundary\+Config} & The boundary condition configuration specification \\
+\hline
+{\em analyzer} & The analyzer object to analyze the simulation \\
+\hline
+{\em gravity\+\_\+constant} & The gravity constant to be used \\
+\hline
+{\em thermostat} & The thermostat to be used \\
+\hline
+{\em frequency} & The frequency for writing outputs (default = 10) \\
+\hline
+{\em update\+Frequency} & The frequency for updating the grid (default = 10) \\
+\hline
+{\em analysis\+Frequency} & The frequency for analyzing the simulation (default = 10000) \\
+\hline
+{\em read\+\_\+file} & Whether to read the input file (default = true) \\
+\hline
+{\em n\+\_\+thermostat} & The number of steps between thermostat updates (default = 1000 \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMixedLJSimulation_a41a1c4c60c6a2760aa11af66f656e1a4}\index{MixedLJSimulation@{MixedLJSimulation}!getAlpha@{getAlpha}}
+\index{getAlpha@{getAlpha}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getAlpha()}{getAlpha()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a41a1c4c60c6a2760aa11af66f656e1a4} 
+double Lennard\+Jones\+Simulation\+::get\+Alpha (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the alpha parameter of the Lennard-\/\+Jones potential. 
+
+The alpha parameter is calculated as -\/24 \texorpdfstring{$\ast$}{*} epsilon and will be used to simplify the calculations \begin{DoxyReturn}{Returns}
+The alpha parameter i.\+e. -\/24 \texorpdfstring{$\ast$}{*} epsilon 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_affdfb3616d49044590eb8c4503f64566}\index{MixedLJSimulation@{MixedLJSimulation}!getAlpha@{getAlpha}}
+\index{getAlpha@{getAlpha}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getAlpha()}{getAlpha()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_affdfb3616d49044590eb8c4503f64566} 
+double Mixed\+LJSimulation\+::get\+Alpha (\begin{DoxyParamCaption}\item[{int}]{type1}{, }\item[{int}]{type2}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the alpha of a combination of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type1} & Type of the first particle \\
+\hline
+{\em type2} & Type of the second particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The alpha of both particles according to mixing rules 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_ab177ce539ce797212d9b24303ae65f2f}\index{MixedLJSimulation@{MixedLJSimulation}!getBeta@{getBeta}}
+\index{getBeta@{getBeta}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getBeta()}{getBeta()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_ab177ce539ce797212d9b24303ae65f2f} 
+double Lennard\+Jones\+Simulation\+::get\+Beta (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the beta parameter of the Lennard-\/\+Jones potential. 
+
+The beta parameter is calculated as sigma\texorpdfstring{$^\wedge$}{\string^}6 and will be used to simplify the calculations \begin{DoxyReturn}{Returns}
+The beta parameter i.\+e. sigma\texorpdfstring{$^\wedge$}{\string^}6 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a770dbd7af68281175c29f23bdd482850}\index{MixedLJSimulation@{MixedLJSimulation}!getBeta@{getBeta}}
+\index{getBeta@{getBeta}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getBeta()}{getBeta()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a770dbd7af68281175c29f23bdd482850} 
+double Mixed\+LJSimulation\+::get\+Beta (\begin{DoxyParamCaption}\item[{int}]{type1}{, }\item[{int}]{type2}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the beta of a combination of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type1} & Type of the first particle \\
+\hline
+{\em type2} & Type of the second particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The beta of both particles according to mixing rules 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a618a70f8c367d02f3669835003a5e163}\index{MixedLJSimulation@{MixedLJSimulation}!getDelta\_T@{getDelta\_T}}
+\index{getDelta\_T@{getDelta\_T}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getDelta\_T()}{getDelta\_T()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a618a70f8c367d02f3669835003a5e163} 
+double Mixed\+LJSimulation\+::get\+Delta\+\_\+T (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the delta\+\_\+T. 
+
+\begin{DoxyReturn}{Returns}
+The delta\+\_\+T 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a42422dd40e29be6f43c1911934b6c4fb}\index{MixedLJSimulation@{MixedLJSimulation}!getEpsilon@{getEpsilon}}
+\index{getEpsilon@{getEpsilon}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getEpsilon()}{getEpsilon()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a42422dd40e29be6f43c1911934b6c4fb} 
+double Lennard\+Jones\+Simulation\+::get\+Epsilon (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the epsilon parameter of the Lennard-\/\+Jones potential. 
+
+\begin{DoxyReturn}{Returns}
+The epsilon parameter 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a5ae150d4e7cc6a76902145a5194eb01c}\index{MixedLJSimulation@{MixedLJSimulation}!getEpsilon@{getEpsilon}}
+\index{getEpsilon@{getEpsilon}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getEpsilon()}{getEpsilon()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a5ae150d4e7cc6a76902145a5194eb01c} 
+double Mixed\+LJSimulation\+::get\+Epsilon (\begin{DoxyParamCaption}\item[{int}]{type1}{, }\item[{int}]{type2}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the epsilon of a combination of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type1} & Type of the first particle \\
+\hline
+{\em type2} & Type of the second particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The epsilon of both particles according to mixing rules 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a0d7cf6c105468d3677d1c9538752a85b}\index{MixedLJSimulation@{MixedLJSimulation}!getGamma@{getGamma}}
+\index{getGamma@{getGamma}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getGamma()}{getGamma()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a0d7cf6c105468d3677d1c9538752a85b} 
+double Lennard\+Jones\+Simulation\+::get\+Gamma (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the gamma parameter of the Lennard-\/\+Jones potential. 
+
+The gamma parameter is calculated as -\/2 \texorpdfstring{$\ast$}{*} sigma\texorpdfstring{$^\wedge$}{\string^}12 and will be used to simplify the calculations \begin{DoxyReturn}{Returns}
+The gamma parameter i.\+e. -\/2 \texorpdfstring{$\ast$}{*} sigma\texorpdfstring{$^\wedge$}{\string^}12 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_ab795f98301fddce0a2afa1a786e8e86f}\index{MixedLJSimulation@{MixedLJSimulation}!getGamma@{getGamma}}
+\index{getGamma@{getGamma}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getGamma()}{getGamma()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_ab795f98301fddce0a2afa1a786e8e86f} 
+double Mixed\+LJSimulation\+::get\+Gamma (\begin{DoxyParamCaption}\item[{int}]{type1}{, }\item[{int}]{type2}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the gamma of a combination of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type1} & Type of the first particle \\
+\hline
+{\em type2} & Type of the second particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The gama of both particles according to mixing rules 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a2c2f1e6d7c1549d5c4763dad80bc768e}\index{MixedLJSimulation@{MixedLJSimulation}!getGravityConstant@{getGravityConstant}}
+\index{getGravityConstant@{getGravityConstant}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getGravityConstant()}{getGravityConstant()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a2c2f1e6d7c1549d5c4763dad80bc768e} 
+double Mixed\+LJSimulation\+::get\+Gravity\+Constant (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get the gravity constant 
+
+\begin{DoxyReturn}{Returns}
+The gravity constant used in the simulation 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}\index{MixedLJSimulation@{MixedLJSimulation}!getMixKey@{getMixKey}}
+\index{getMixKey@{getMixKey}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getMixKey()}{getMixKey()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a} 
+static std\+::pair$<$ int, int $>$ Mixed\+LJSimulation\+::get\+Mix\+Key (\begin{DoxyParamCaption}\item[{unsigned}]{type1}{, }\item[{unsigned}]{type2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the key to access the LJ param maps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type1} & The type of the first particle \\
+\hline
+{\em type2} & The type of the second particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pair that is used as the key in the maps 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a2c0357b482147dd43dce300974ebe88d}\index{MixedLJSimulation@{MixedLJSimulation}!getN\_thermostat@{getN\_thermostat}}
+\index{getN\_thermostat@{getN\_thermostat}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getN\_thermostat()}{getN\_thermostat()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a2c0357b482147dd43dce300974ebe88d} 
+unsigned Mixed\+LJSimulation\+::get\+N\+\_\+thermostat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of thermostat updates. 
+
+\begin{DoxyReturn}{Returns}
+The number of thermostat updates 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_aa6519b46f5ff67a4e0564d05d3bd9060}\index{MixedLJSimulation@{MixedLJSimulation}!getRepulsiveDistance@{getRepulsiveDistance}}
+\index{getRepulsiveDistance@{getRepulsiveDistance}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getRepulsiveDistance()}{getRepulsiveDistance()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_aa6519b46f5ff67a4e0564d05d3bd9060} 
+double Mixed\+LJSimulation\+::get\+Repulsive\+Distance (\begin{DoxyParamCaption}\item[{int}]{type}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the distance for a particle where repulsion starts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance repulsion starts at 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classLennardJonesDomainSimulation_aaf0118c1352dcce015a1a08a29be4f69}{Lennard\+Jones\+Domain\+Simulation}}.
+
+\Hypertarget{classMixedLJSimulation_a456b96b4514880185a9aea867a855af3}\index{MixedLJSimulation@{MixedLJSimulation}!getSigma@{getSigma}}
+\index{getSigma@{getSigma}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getSigma()}{getSigma()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a456b96b4514880185a9aea867a855af3} 
+double Lennard\+Jones\+Simulation\+::get\+Sigma (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the sigma parameter of the Lennard-\/\+Jones potential. 
+
+\begin{DoxyReturn}{Returns}
+The sigma parameter 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a9d7ccddaa7c40cdc8f4bc0bdf4ecaec6}\index{MixedLJSimulation@{MixedLJSimulation}!getSigma@{getSigma}}
+\index{getSigma@{getSigma}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getSigma()}{getSigma()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a9d7ccddaa7c40cdc8f4bc0bdf4ecaec6} 
+double Mixed\+LJSimulation\+::get\+Sigma (\begin{DoxyParamCaption}\item[{int}]{type1}{, }\item[{int}]{type2}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the sigma of a combination of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type1} & Type of the first particle \\
+\hline
+{\em type2} & Type of the second particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sigma of both particles according to mixing rules 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a25a521fd8f5b7746f32139e08cddbd78}\index{MixedLJSimulation@{MixedLJSimulation}!getT\_init@{getT\_init}}
+\index{getT\_init@{getT\_init}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getT\_init()}{getT\_init()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a25a521fd8f5b7746f32139e08cddbd78} 
+double Mixed\+LJSimulation\+::get\+T\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the initial temperature. 
+
+\begin{DoxyReturn}{Returns}
+The initial temperature 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_a70b450960c2af7048a414a65d511d19c}\index{MixedLJSimulation@{MixedLJSimulation}!getT\_target@{getT\_target}}
+\index{getT\_target@{getT\_target}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{getT\_target()}{getT\_target()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a70b450960c2af7048a414a65d511d19c} 
+double Mixed\+LJSimulation\+::get\+T\+\_\+target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the target temperature. 
+
+\begin{DoxyReturn}{Returns}
+The target temperature 
+\end{DoxyReturn}
+\Hypertarget{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5}\index{MixedLJSimulation@{MixedLJSimulation}!runSim@{runSim}}
+\index{runSim@{runSim}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{runSim()}{runSim()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5} 
+void Mixed\+LJSimulation\+::run\+Sim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Run the simulation. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classLennardJonesDomainSimulation_a15d018ced2b94487a881b1224af7d405}{Lennard\+Jones\+Domain\+Simulation}}.
+
+\Hypertarget{classMixedLJSimulation_a03b2d037dda00ab1b39cab5808f8abae}\index{MixedLJSimulation@{MixedLJSimulation}!setEpsilon@{setEpsilon}}
+\index{setEpsilon@{setEpsilon}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{setEpsilon()}{setEpsilon()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a03b2d037dda00ab1b39cab5808f8abae} 
+void Lennard\+Jones\+Simulation\+::set\+Epsilon (\begin{DoxyParamCaption}\item[{double}]{eps}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Set the epsilon parameter of the Lennard-\/\+Jones potential. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eps} & The new epsilon value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMixedLJSimulation_a71edfeb82be06f000833da94472ea51f}\index{MixedLJSimulation@{MixedLJSimulation}!setSigma@{setSigma}}
+\index{setSigma@{setSigma}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{setSigma()}{setSigma()}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a71edfeb82be06f000833da94472ea51f} 
+void Lennard\+Jones\+Simulation\+::set\+Sigma (\begin{DoxyParamCaption}\item[{double}]{sig}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Set the sigma parameter of the Lennard-\/\+Jones potential. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sig} & The new sigma value \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMixedLJSimulation_afe081eebe176f5349c4dd5a32a34eb20}\index{MixedLJSimulation@{MixedLJSimulation}!alphas@{alphas}}
+\index{alphas@{alphas}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{alphas}{alphas}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_afe081eebe176f5349c4dd5a32a34eb20} 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} Mixed\+LJSimulation\+::alphas\hspace{0.3cm}{\ttfamily [protected]}}
+
+-\/24 \texorpdfstring{$\ast$}{*} epsilon \Hypertarget{classMixedLJSimulation_ad0329bb270a24c0373da54ae6f8ed2a9}\index{MixedLJSimulation@{MixedLJSimulation}!betas@{betas}}
+\index{betas@{betas}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{betas}{betas}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_ad0329bb270a24c0373da54ae6f8ed2a9} 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} Mixed\+LJSimulation\+::betas\hspace{0.3cm}{\ttfamily [protected]}}
+
+sigma\texorpdfstring{$^\wedge$}{\string^}6 \Hypertarget{classMixedLJSimulation_a5893624d38e3d7fb8fdaf4c3ee38ff7e}\index{MixedLJSimulation@{MixedLJSimulation}!delta\_T@{delta\_T}}
+\index{delta\_T@{delta\_T}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{delta\_T}{delta\_T}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a5893624d38e3d7fb8fdaf4c3ee38ff7e} 
+double Mixed\+LJSimulation\+::delta\+\_\+T\hspace{0.3cm}{\ttfamily [protected]}}
+
+The maximal temperature change in one step \Hypertarget{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8}\index{MixedLJSimulation@{MixedLJSimulation}!doProfile@{doProfile}}
+\index{doProfile@{doProfile}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{doProfile}{doProfile}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8} 
+bool Mixed\+LJSimulation\+::do\+Profile\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classMixedLJSimulation_a7576f75eee44a3f7082d3d7e22a3954a}\index{MixedLJSimulation@{MixedLJSimulation}!epsilons@{epsilons}}
+\index{epsilons@{epsilons}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{epsilons}{epsilons}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a7576f75eee44a3f7082d3d7e22a3954a} 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} Mixed\+LJSimulation\+::epsilons\hspace{0.3cm}{\ttfamily [protected]}}
+
+The mixed epsilon parameters of the Lennard-\/\+Jones potential \Hypertarget{classMixedLJSimulation_ad49bb3f14691b38427287c21fed64b66}\index{MixedLJSimulation@{MixedLJSimulation}!gammas@{gammas}}
+\index{gammas@{gammas}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{gammas}{gammas}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_ad49bb3f14691b38427287c21fed64b66} 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} Mixed\+LJSimulation\+::gammas\hspace{0.3cm}{\ttfamily [protected]}}
+
+-\/2 \texorpdfstring{$\ast$}{*} sigma\texorpdfstring{$^\wedge$}{\string^}12 \Hypertarget{classMixedLJSimulation_a68dc278e818d8914713b758b9b91c02b}\index{MixedLJSimulation@{MixedLJSimulation}!gravityConstant@{gravityConstant}}
+\index{gravityConstant@{gravityConstant}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{gravityConstant}{gravityConstant}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a68dc278e818d8914713b758b9b91c02b} 
+double Mixed\+LJSimulation\+::gravity\+Constant\hspace{0.3cm}{\ttfamily [protected]}}
+
+The gravity constant \Hypertarget{classMixedLJSimulation_aa7bb1f7d12080f0139aa4dc35d8030d3}\index{MixedLJSimulation@{MixedLJSimulation}!ljparams@{ljparams}}
+\index{ljparams@{ljparams}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{ljparams}{ljparams}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_aa7bb1f7d12080f0139aa4dc35d8030d3} 
+const std\+::map$<$unsigned, std\+::pair$<$double, double$>$ $>$ Mixed\+LJSimulation\+::ljparams}
+
+
+
+map that stores the different particle types 
+
+\Hypertarget{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}\index{MixedLJSimulation@{MixedLJSimulation}!n\_thermostat@{n\_thermostat}}
+\index{n\_thermostat@{n\_thermostat}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{n\_thermostat}{n\_thermostat}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6} 
+unsigned Mixed\+LJSimulation\+::n\+\_\+thermostat\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of steps between thermostat updates \Hypertarget{classMixedLJSimulation_aca34d7e6b4bc61c6ee41d464ebae3e98}\index{MixedLJSimulation@{MixedLJSimulation}!repulsiveDistances@{repulsiveDistances}}
+\index{repulsiveDistances@{repulsiveDistances}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{repulsiveDistances}{repulsiveDistances}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_aca34d7e6b4bc61c6ee41d464ebae3e98} 
+std\+::map$<$unsigned, double$>$ Mixed\+LJSimulation\+::repulsive\+Distances\hspace{0.3cm}{\ttfamily [protected]}}
+
+The repulsive distances for every particle \Hypertarget{classMixedLJSimulation_ace21f3725169264364e1a4d5590f51b2}\index{MixedLJSimulation@{MixedLJSimulation}!sigmas@{sigmas}}
+\index{sigmas@{sigmas}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{sigmas}{sigmas}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_ace21f3725169264364e1a4d5590f51b2} 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} Mixed\+LJSimulation\+::sigmas\hspace{0.3cm}{\ttfamily [protected]}}
+
+The mixed sigma parameters of the Lennard-\/\+Jones potential \Hypertarget{classMixedLJSimulation_a5ced68a26e022d598162967aa846de52}\index{MixedLJSimulation@{MixedLJSimulation}!T\_init@{T\_init}}
+\index{T\_init@{T\_init}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{T\_init}{T\_init}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a5ced68a26e022d598162967aa846de52} 
+double Mixed\+LJSimulation\+::\+T\+\_\+init\hspace{0.3cm}{\ttfamily [protected]}}
+
+The initial temperature \Hypertarget{classMixedLJSimulation_a57d6c21075835a40950d93f75a2bc0ae}\index{MixedLJSimulation@{MixedLJSimulation}!T\_target@{T\_target}}
+\index{T\_target@{T\_target}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{T\_target}{T\_target}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_a57d6c21075835a40950d93f75a2bc0ae} 
+double Mixed\+LJSimulation\+::\+T\+\_\+target\hspace{0.3cm}{\ttfamily [protected]}}
+
+The target temperature \Hypertarget{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}\index{MixedLJSimulation@{MixedLJSimulation}!thermostat@{thermostat}}
+\index{thermostat@{thermostat}!MixedLJSimulation@{MixedLJSimulation}}
+\doxysubsubsection{\texorpdfstring{thermostat}{thermostat}}
+{\footnotesize\ttfamily \label{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classThermostat}{Thermostat}}$>$ Mixed\+LJSimulation\+::thermostat\hspace{0.3cm}{\ttfamily [protected]}}
+
+The thermostat 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/simulation/\mbox{\hyperlink{MixedLJSimulation_8h}{Mixed\+LJSimulation.\+h}}\item 
+src/simulation/\mbox{\hyperlink{MixedLJSimulation_8cpp}{Mixed\+LJSimulation.\+cpp}}\end{DoxyCompactItemize}

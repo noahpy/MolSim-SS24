@@ -1,0 +1,36 @@
+\doxysection{src/io/file\+Reader/reader\+Factory.h File Reference}
+\hypertarget{readerFactory_8h}{}\label{readerFactory_8h}\index{src/io/fileReader/readerFactory.h@{src/io/fileReader/readerFactory.h}}
+{\ttfamily \#include "{}io/file\+Reader/\+File\+Reader.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Params.\+h"{}}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{readerFactory_8h_a395cac38c5d703e109e3ff79acd6fac4}{reader\+Factory}} (std\+::string input\+\_\+file, \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{Reader\+Type}} \mbox{\hyperlink{classtype}{type}})
+\begin{DoxyCompactList}\small\item\em A factory function for creating \doxylink{classFileReader}{File\+Reader} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{readerFactory_8h_a395cac38c5d703e109e3ff79acd6fac4}\index{readerFactory.h@{readerFactory.h}!readerFactory@{readerFactory}}
+\index{readerFactory@{readerFactory}!readerFactory.h@{readerFactory.h}}
+\doxysubsubsection{\texorpdfstring{readerFactory()}{readerFactory()}}
+{\footnotesize\ttfamily \label{readerFactory_8h_a395cac38c5d703e109e3ff79acd6fac4} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ reader\+Factory (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file}{, }\item[{\mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{Reader\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+A factory function for creating \doxylink{classFileReader}{File\+Reader} objects. 
+
+This function creates and returns a unique pointer to a \doxylink{classFileReader}{File\+Reader} or one of its derived classes based on the file type provided.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+file} & The path to the file to be read. \\
+\hline
+{\em type} & An unsigned integer representing the type of file reader to create. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique pointer to a \doxylink{classFileReader}{File\+Reader} object or nullptr if the file type is not supported. 
+\end{DoxyReturn}

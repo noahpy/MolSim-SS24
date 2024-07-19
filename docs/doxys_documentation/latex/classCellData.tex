@@ -1,0 +1,256 @@
+\doxysection{Cell\+Data Class Reference}
+\hypertarget{classCellData}{}\label{classCellData}\index{CellData@{CellData}}
+
+
+Class corresponding to the Cell\+Data schema type.  
+
+
+
+
+{\ttfamily \#include $<$vtk-\/unstructured.\+h$>$}
+
+Inheritance diagram for Cell\+Data\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCellData}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data\+Array}
+Accessor and modifier functions for the Data\+Array sequence element. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classDataArray__t}{\+::\+Data\+Array\+\_\+t}} \mbox{\hyperlink{classCellData_a3b277b87cd25225dc944f250bd52057d}{Data\+Array\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classCellData_a3b277b87cd25225dc944f250bd52057d}{Data\+Array\+\_\+type}} $>$ \mbox{\hyperlink{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}{Data\+Array\+\_\+sequence}}
+\begin{DoxyCompactList}\small\item\em Element sequence container type. \end{DoxyCompactList}\item 
+typedef Data\+Array\+\_\+sequence\+::iterator \mbox{\hyperlink{classCellData_abe0f5b0713690cc81703132bcdccd51f}{Data\+Array\+\_\+iterator}}
+\begin{DoxyCompactList}\small\item\em Element iterator type. \end{DoxyCompactList}\item 
+typedef Data\+Array\+\_\+sequence\+::const\+\_\+iterator \mbox{\hyperlink{classCellData_a8213ea10f002fac23b5555ca0b2b2a21}{Data\+Array\+\_\+const\+\_\+iterator}}
+\begin{DoxyCompactList}\small\item\em Element constant iterator type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classCellData_a3b277b87cd25225dc944f250bd52057d}{Data\+Array\+\_\+type}}, char $>$ \mbox{\hyperlink{classCellData_a03e76eec5af05a6ac5512e9cb80300bd}{Data\+Array\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}{Data\+Array\+\_\+sequence}} \& \mbox{\hyperlink{classCellData_aca9227bd949dcd4cf9284d88de61f3ac}{Data\+Array}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element sequence. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}{Data\+Array\+\_\+sequence}} \& \mbox{\hyperlink{classCellData_ac40c7e291f83e3e9fabfddeef14131f5}{Data\+Array}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element sequence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellData_a9ee9fc1ef295b3ad2c4dc3e9e70ac357}{Data\+Array}} (const \mbox{\hyperlink{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}{Data\+Array\+\_\+sequence}} \&s)
+\begin{DoxyCompactList}\small\item\em Copy elements from a given sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCellData_a0d89ba23195659a1fcdc714fa27697a5}{Cell\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellData_acce82df83577032db7b5fc03bdef701e}{Cell\+Data}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellData_ac9645aba69c45cfbda828a63e02be754}{Cell\+Data}} (const \mbox{\hyperlink{classCellData}{Cell\+Data}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCellData}{Cell\+Data}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCellData_a087f468a0292e3b6d8d6bfe0463dce88}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellData}{Cell\+Data}} \& \mbox{\hyperlink{classCellData_a42d87874818d38a583d898832b54b7fa}{operator=}} (const \mbox{\hyperlink{classCellData}{Cell\+Data}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCellData_aaf439852120aadb5a267799e2a7bf2a3}{\texorpdfstring{$\sim$}{\string~}\+Cell\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the Cell\+Data schema type. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classCellData_a8213ea10f002fac23b5555ca0b2b2a21}\index{CellData@{CellData}!DataArray\_const\_iterator@{DataArray\_const\_iterator}}
+\index{DataArray\_const\_iterator@{DataArray\_const\_iterator}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{DataArray\_const\_iterator}{DataArray\_const\_iterator}}
+{\footnotesize\ttfamily \label{classCellData_a8213ea10f002fac23b5555ca0b2b2a21} 
+typedef Data\+Array\+\_\+sequence\+::const\+\_\+iterator \mbox{\hyperlink{classCellData_a8213ea10f002fac23b5555ca0b2b2a21}{Cell\+Data\+::\+Data\+Array\+\_\+const\+\_\+iterator}}}
+
+
+
+Element constant iterator type. 
+
+\Hypertarget{classCellData_abe0f5b0713690cc81703132bcdccd51f}\index{CellData@{CellData}!DataArray\_iterator@{DataArray\_iterator}}
+\index{DataArray\_iterator@{DataArray\_iterator}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{DataArray\_iterator}{DataArray\_iterator}}
+{\footnotesize\ttfamily \label{classCellData_abe0f5b0713690cc81703132bcdccd51f} 
+typedef Data\+Array\+\_\+sequence\+::iterator \mbox{\hyperlink{classCellData_abe0f5b0713690cc81703132bcdccd51f}{Cell\+Data\+::\+Data\+Array\+\_\+iterator}}}
+
+
+
+Element iterator type. 
+
+\Hypertarget{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}\index{CellData@{CellData}!DataArray\_sequence@{DataArray\_sequence}}
+\index{DataArray\_sequence@{DataArray\_sequence}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{DataArray\_sequence}{DataArray\_sequence}}
+{\footnotesize\ttfamily \label{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a} 
+typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classCellData_a3b277b87cd25225dc944f250bd52057d}{Data\+Array\+\_\+type}} $>$ \mbox{\hyperlink{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}{Cell\+Data\+::\+Data\+Array\+\_\+sequence}}}
+
+
+
+Element sequence container type. 
+
+\Hypertarget{classCellData_a03e76eec5af05a6ac5512e9cb80300bd}\index{CellData@{CellData}!DataArray\_traits@{DataArray\_traits}}
+\index{DataArray\_traits@{DataArray\_traits}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{DataArray\_traits}{DataArray\_traits}}
+{\footnotesize\ttfamily \label{classCellData_a03e76eec5af05a6ac5512e9cb80300bd} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classCellData_a3b277b87cd25225dc944f250bd52057d}{Data\+Array\+\_\+type}}, char $>$ \mbox{\hyperlink{classCellData_a03e76eec5af05a6ac5512e9cb80300bd}{Cell\+Data\+::\+Data\+Array\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classCellData_a3b277b87cd25225dc944f250bd52057d}\index{CellData@{CellData}!DataArray\_type@{DataArray\_type}}
+\index{DataArray\_type@{DataArray\_type}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{DataArray\_type}{DataArray\_type}}
+{\footnotesize\ttfamily \label{classCellData_a3b277b87cd25225dc944f250bd52057d} 
+typedef \mbox{\hyperlink{classDataArray__t}{\+::\+Data\+Array\+\_\+t}} \mbox{\hyperlink{classCellData_a3b277b87cd25225dc944f250bd52057d}{Cell\+Data\+::\+Data\+Array\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCellData_a0d89ba23195659a1fcdc714fa27697a5}\index{CellData@{CellData}!CellData@{CellData}}
+\index{CellData@{CellData}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{CellData()}{CellData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classCellData_a0d89ba23195659a1fcdc714fa27697a5} 
+Cell\+Data\+::\+Cell\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classCellData_acce82df83577032db7b5fc03bdef701e}\index{CellData@{CellData}!CellData@{CellData}}
+\index{CellData@{CellData}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{CellData()}{CellData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classCellData_acce82df83577032db7b5fc03bdef701e} 
+Cell\+Data\+::\+Cell\+Data (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellData_ac9645aba69c45cfbda828a63e02be754}\index{CellData@{CellData}!CellData@{CellData}}
+\index{CellData@{CellData}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{CellData()}{CellData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classCellData_ac9645aba69c45cfbda828a63e02be754} 
+Cell\+Data\+::\+Cell\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCellData}{Cell\+Data}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classCellData_aaf439852120aadb5a267799e2a7bf2a3}\index{CellData@{CellData}!````~CellData@{\texorpdfstring{$\sim$}{\string~}CellData}}
+\index{````~CellData@{\texorpdfstring{$\sim$}{\string~}CellData}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CellData()}{\string~CellData()}}
+{\footnotesize\ttfamily \label{classCellData_aaf439852120aadb5a267799e2a7bf2a3} 
+Cell\+Data\+::\texorpdfstring{$\sim$}{\string~}\+Cell\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCellData_a087f468a0292e3b6d8d6bfe0463dce88}\index{CellData@{CellData}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classCellData_a087f468a0292e3b6d8d6bfe0463dce88} 
+\mbox{\hyperlink{classCellData}{Cell\+Data}} \texorpdfstring{$\ast$}{*} Cell\+Data\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classCellData_ac40c7e291f83e3e9fabfddeef14131f5}\index{CellData@{CellData}!DataArray@{DataArray}}
+\index{DataArray@{DataArray}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{DataArray()}{DataArray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classCellData_ac40c7e291f83e3e9fabfddeef14131f5} 
+\mbox{\hyperlink{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}{Cell\+Data\+::\+Data\+Array\+\_\+sequence}} \& Cell\+Data\+::\+Data\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element sequence. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the sequence container. 
+\end{DoxyReturn}
+\Hypertarget{classCellData_aca9227bd949dcd4cf9284d88de61f3ac}\index{CellData@{CellData}!DataArray@{DataArray}}
+\index{DataArray@{DataArray}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{DataArray()}{DataArray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classCellData_aca9227bd949dcd4cf9284d88de61f3ac} 
+const \mbox{\hyperlink{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}{Cell\+Data\+::\+Data\+Array\+\_\+sequence}} \& Cell\+Data\+::\+Data\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element sequence. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the sequence container. 
+\end{DoxyReturn}
+\Hypertarget{classCellData_a9ee9fc1ef295b3ad2c4dc3e9e70ac357}\index{CellData@{CellData}!DataArray@{DataArray}}
+\index{DataArray@{DataArray}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{DataArray()}{DataArray()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classCellData_a9ee9fc1ef295b3ad2c4dc3e9e70ac357} 
+void Cell\+Data\+::\+Data\+Array (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCellData_a52b0c8e18ccdb06ed9e6ae76cd809c4a}{Data\+Array\+\_\+sequence}} \&}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Copy elements from a given sequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & A sequence to copy elements from.\\
+\hline
+\end{DoxyParams}
+For each element in {\itshape s} this function makes a copy and adds it to the sequence. Note that this operation completely changes the sequence and all old elements will be lost. \Hypertarget{classCellData_a42d87874818d38a583d898832b54b7fa}\index{CellData@{CellData}!operator=@{operator=}}
+\index{operator=@{operator=}!CellData@{CellData}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classCellData_a42d87874818d38a583d898832b54b7fa} 
+\mbox{\hyperlink{classCellData}{Cell\+Data}} \& Cell\+Data\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCellData}{Cell\+Data}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8h}{vtk-\/unstructured.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8cpp}{vtk-\/unstructured.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,28 @@
+\doxysection{planet\+Sim.\+h}
+\hypertarget{planetSim_8h_source}{}\label{planetSim_8h_source}\index{src/simulation/planetSim.h@{src/simulation/planetSim.h}}
+\mbox{\hyperlink{planetSim_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPlanetSimulation}{PlanetSimulation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSimulation}{Simulation}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{comment}{//\ lift\ simulation\ constructor}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSimulation_a1c3bad0b5e9842a84e616e2fd135f311}{Simulation::Simulation}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classPlanetSimulation_a4a049b5ff3851517550d8c87c68bb12c}{PlanetSimulation}}(}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\_t}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\_time}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::map<unsigned,\ bool>\ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationaryParticleTypes}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}\ =\ 10);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPlanetSimulation_a9e9abcf4d8960f3bc22644e29411f928}{runSim}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ \};}
+
+\end{DoxyCode}

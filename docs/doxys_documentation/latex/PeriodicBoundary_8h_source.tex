@@ -1,0 +1,49 @@
+\doxysection{Periodic\+Boundary.\+h}
+\hypertarget{PeriodicBoundary_8h_source}{}\label{PeriodicBoundary_8h_source}\index{src/physics/boundaryConditions/PeriodicBoundary.h@{src/physics/boundaryConditions/PeriodicBoundary.h}}
+\mbox{\hyperlink{PeriodicBoundary_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryCondition_8h}{physics/boundaryConditions/BoundaryCondition.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryConfig_8h}{physics/boundaryConditions/BoundaryConfig.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ forward\ declare}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellGrid}{CellGrid}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ std::pair<std::array<double,\ 3>,\ std::array<int,\ 3>>\ \mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{PeriodicBoundShifts}};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ std::map<std::vector<Position>,\ std::vector<PeriodicBoundShifts>>}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{MultiDimPeriodicBoundShiftsMap}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPeriodicBoundary}{PeriodicBoundary}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classBoundaryCondition}{BoundaryCondition}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classPeriodicBoundary_a83c2e54f9487ae9fea8ec74b579cad92}{PeriodicBoundary}}(}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\&\ boundaryConfig,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCellGrid}{CellGrid}}\&\ cellGrid);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPeriodicBoundary_a82cafd61cbf2438a28b825a6a6133e9e}{preUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPeriodicBoundary_a7115c8f3b01940ef54718f1c7c13dabb}{postUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{MultiDimPeriodicBoundShiftsMap}}\ \mbox{\hyperlink{classPeriodicBoundary_add3230edd604015563288fd190c282ee}{getTranslationMap}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPeriodicBoundary_a4cc1e8fc0204160e43c2e07e0db77b2f}{translationMap}};\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \ \ std::vector<std::unique\_ptr<Particle>>}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPeriodicBoundary_a6fae62dd4f90757a80beabd45f4c9971}{insertedParticles}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classPeriodicBoundary_adcd99a15de029c99e8ae79878165b316}{insertionIndex}};\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPeriodicBoundary_a3ab404bc6aab419dafc8929808a8606f}{is2D}};\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{PeriodicBoundShifts}}\ \mbox{\hyperlink{classPeriodicBoundary_a0cd3718c2f5729cdcd26c9867ad3c16c}{innerTranslation}};\ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{MultiDimPeriodicBoundShiftsMap}}\ \mbox{\hyperlink{classPeriodicBoundary_a4cc1e8fc0204160e43c2e07e0db77b2f}{translationMap}};\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{PeriodicBoundShifts}}\ \mbox{\hyperlink{classPeriodicBoundary_a2f7f21038338142cd92e5f9c5eac3477}{getPeriodicShift}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCellGrid}{CellGrid}}\&\ grid)}
+\DoxyCodeLine{00076\ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPeriodicBoundary_ad64e446b8abeaa31d2a5b40c06aec3ae}{getPeriodicShiftFromPosition}}(\mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}},\ grid);}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{PeriodicBoundShifts}}\ \mbox{\hyperlink{classPeriodicBoundary_ad64e446b8abeaa31d2a5b40c06aec3ae}{getPeriodicShiftFromPosition}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ pos,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCellGrid}{CellGrid}}\&\ grid);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPeriodicBoundary_a48428cd33a01be033b66c900d78437ae}{fillTranslationMap}}(}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Position>\&\ key,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Position>\&\ boundarySides,}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCellGrid}{CellGrid}}\&\ cellGrid);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPeriodicBoundary_ab4ebd08a20f2f0b9216ef63d9113ab9a}{isThisSideResponsibleForShifts}}(}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\&\ boundaryConfig,\ \textcolor{keyword}{const}\ std::vector<Position>\&\ boundarySides)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00108\ \};}
+
+\end{DoxyCode}

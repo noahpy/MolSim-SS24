@@ -1,0 +1,67 @@
+\doxysection{base\+Simulation.\+h}
+\hypertarget{baseSimulation_8h_source}{}\label{baseSimulation_8h_source}\index{src/simulation/baseSimulation.h@{src/simulation/baseSimulation.h}}
+\mbox{\hyperlink{baseSimulation_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ProgressLogger_8h}{analytics/ProgressLogger.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ forward-\/declare\ PhysicsStrategy}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}};}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ forward-\/declare\ FileWriter}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFileWriter}{FileWriter}};}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ forward-\/declare\ FileReader}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFileReader}{FileReader}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSimulation}{Simulation}}\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classSimulation_a1c3bad0b5e9842a84e616e2fd135f311}{Simulation}}(}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\_t}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\_time}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ std::map<unsigned,\ bool>\ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationaryParticleTypes}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}\ =\ 10);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSimulation_ada940a3e4924c796b043a062950e3c49}{runSim}}()\ =\ 0;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}};\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\_t}};\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\_time}};\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1}{iteration}}\ =\ 0;\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}\ =\ 10;\ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}};\ }
+\DoxyCodeLine{00058\ \ \ \ \ std::map<unsigned,\ bool>}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationaryParticleTypes}};\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ of\ Simulation}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classSimulation_a85781a859dbdf089b4c807ac11646e18}{\string~Simulation}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Set\ the\ output\ file\ name\ of\ the\ writer}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ \ *\ @param\ output\ Specifies\ the\ basename\ of\ the\ output\ file}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSimulation_ace2a60993f57c241c081ffea6ea14e99}{setOutputFile}}(std::string\ output);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Get\ the\ output\ file\ name\ of\ the\ writer}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ \ *\ @return\ The\ basename\ of\ the\ output\ file}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00076\ \ \ \ \ std::string\ \mbox{\hyperlink{classSimulation_aded0641608524c4f1fb5a85dd91d387f}{getOutputFile}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ \mbox{\hyperlink{classSimulation_abdb48771e24ba63a3db95b27d153b629}{strategy}};\ }
+\DoxyCodeLine{00080\ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}};\ }
+\DoxyCodeLine{00081\ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}};\ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classProgressLogger}{ProgressLogger}}\ \mbox{\hyperlink{classSimulation_a5f898fce7219971170a580872af32224}{progressLogger}};\ }
+\DoxyCodeLine{00083\ \};}
+
+\end{DoxyCode}

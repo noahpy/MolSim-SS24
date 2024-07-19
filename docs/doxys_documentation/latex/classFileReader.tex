@@ -1,0 +1,134 @@
+\doxysection{File\+Reader Class Reference}
+\hypertarget{classFileReader}{}\label{classFileReader}\index{FileReader@{FileReader}}
+
+
+Class for reading input files for a simulation.  
+
+
+
+
+{\ttfamily \#include $<$File\+Reader.\+h$>$}
+
+Inheritance diagram for File\+Reader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classFileReader}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileReader_a9ce82a24500af1259a4bff8d19cb0474}{File\+Reader}} (std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classFileReader}{File\+Reader} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classFileReader_a1382969e8f1468f3b04ad4b44ab39dee}{\texorpdfstring{$\sim$}{\string~}\+File\+Reader}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classFileReader}{File\+Reader} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_acebf231636d2ac6721d6d0a4195b4353}{read\+File}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particles, std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}})
+\begin{DoxyCompactList}\small\item\em Read a file and store the data in a \doxylink{classParticleContainer}{Particle\+Container}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classFileReader_a7f33eef4ad8b47e67c2721eb9a3a8e91}{read\+File}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Read a file and store the data in a \doxylink{classSimulation}{Simulation}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}}
+\begin{DoxyCompactList}\small\item\em The name of the file to read. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for reading input files for a simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classFileReader_a9ce82a24500af1259a4bff8d19cb0474}\index{FileReader@{FileReader}!FileReader@{FileReader}}
+\index{FileReader@{FileReader}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{FileReader()}{FileReader()}}
+{\footnotesize\ttfamily \label{classFileReader_a9ce82a24500af1259a4bff8d19cb0474} 
+File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classFileReader}{File\+Reader} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classFileReader}{File\+Reader} 
+\end{DoxyReturn}
+\Hypertarget{classFileReader_a1382969e8f1468f3b04ad4b44ab39dee}\index{FileReader@{FileReader}!````~FileReader@{\texorpdfstring{$\sim$}{\string~}FileReader}}
+\index{````~FileReader@{\texorpdfstring{$\sim$}{\string~}FileReader}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}FileReader()}{\string~FileReader()}}
+{\footnotesize\ttfamily \label{classFileReader_a1382969e8f1468f3b04ad4b44ab39dee} 
+File\+Reader\+::\texorpdfstring{$\sim$}{\string~}\+File\+Reader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destroy the \doxylink{classFileReader}{File\+Reader} object. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFileReader_acebf231636d2ac6721d6d0a4195b4353}\index{FileReader@{FileReader}!readFile@{readFile}}
+\index{readFile@{readFile}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classFileReader_acebf231636d2ac6721d6d0a4195b4353} 
+void File\+Reader\+::read\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{particles}{, }\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Read a file and store the data in a \doxylink{classParticleContainer}{Particle\+Container}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & The particle container to store the data in \\
+\hline
+{\em filename} & The name of the file to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classFileReader_a7f33eef4ad8b47e67c2721eb9a3a8e91}\index{FileReader@{FileReader}!readFile@{readFile}}
+\index{readFile@{readFile}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classFileReader_a7f33eef4ad8b47e67c2721eb9a3a8e91} 
+void File\+Reader\+::read\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Read a file and store the data in a \doxylink{classSimulation}{Simulation}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to store the data in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classAsciiReader_a8fadf7de4caa12a2ab0e74ada783e62b}{Ascii\+Reader}}, \mbox{\hyperlink{classClusterReader_a65eab595a3b38a7ee17231a6595efa25}{Cluster\+Reader}}, \mbox{\hyperlink{classEmptyFileReader_a12faa2ffd74c326d6f2e970a1ccb1741}{Empty\+File\+Reader}}, and \mbox{\hyperlink{classXmlReader_ad9ea97c9d14d72b29b7d0990853833f2}{Xml\+Reader}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}\index{FileReader@{FileReader}!filename@{filename}}
+\index{filename@{filename}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily \label{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df} 
+std\+::string File\+Reader\+::filename\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The name of the file to read. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/file\+Reader/\mbox{\hyperlink{FileReader_8h}{File\+Reader.\+h}}\item 
+src/io/file\+Reader/\mbox{\hyperlink{FileReader_8cpp}{File\+Reader.\+cpp}}\end{DoxyCompactItemize}

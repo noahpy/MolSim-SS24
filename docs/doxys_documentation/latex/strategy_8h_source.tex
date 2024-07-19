@@ -1,0 +1,23 @@
+\doxysection{strategy.\+h}
+\hypertarget{strategy_8h_source}{}\label{strategy_8h_source}\index{src/physics/strategy.h@{src/physics/strategy.h}}
+\mbox{\hyperlink{strategy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy_aeafc383c0262036605f237a4fe7e2a2d}{PhysicsStrategy}}(}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&)>\ \mbox{\hyperlink{classPhysicsStrategy_abb9c32c3cd1ebc67b7de6b5a254efe68}{calX}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&)>\ \mbox{\hyperlink{classPhysicsStrategy_a6c70122fdb960296c2a226ff456ff92b}{calV}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&)>\ \mbox{\hyperlink{classPhysicsStrategy_a46fbd81442c986c50c46182a017fb93f}{calF}});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&)>\ \mbox{\hyperlink{classPhysicsStrategy_abb9c32c3cd1ebc67b7de6b5a254efe68}{calX}};}
+\DoxyCodeLine{00036\ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&)>\ \mbox{\hyperlink{classPhysicsStrategy_a6c70122fdb960296c2a226ff456ff92b}{calV}};}
+\DoxyCodeLine{00040\ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&)>\ \mbox{\hyperlink{classPhysicsStrategy_a46fbd81442c986c50c46182a017fb93f}{calF}};}
+\DoxyCodeLine{00041\ \};}
+
+\end{DoxyCode}

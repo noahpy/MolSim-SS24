@@ -1,0 +1,941 @@
+\doxysection{sphere\+\_\+t Class Reference}
+\hypertarget{classsphere__t}{}\label{classsphere__t}\index{sphere\_t@{sphere\_t}}
+
+
+Class corresponding to the sphere\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$simulation.\+h$>$}
+
+Inheritance diagram for sphere\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsphere__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{center}
+Accessor and modifier functions for the center required element.
+
+The center position of the sphere in 3D space. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_a242a11b8fbbfd9c10f6bc48413c9f39c}{center\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_ae53fd531ac2f810b3c3a13656df5aa6d}{center}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_ae933fa1fa8a15aef9624d96d031aa215}{center}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_a176d62733f8cee5ca1a93bb69ff38df2}{center}} (const \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_af2e567591eda76da4c122213234764c4}{center}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{vel}
+Accessor and modifier functions for the vel required element.
+
+The initial velocity of the sphere in 3D space. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_afd20921f2107deeac2ebe1394ec8313d}{vel\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a7031a56d4c4d149a46cc977602af1406}{vel}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a58ed6e63deef2cecc063b19ff4e22489}{vel}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_af0909b6e8c594ad4e798448a8c0e66ac}{vel}} (const \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_ad4505d9657298f0f9d93a7a430c5313d}{vel}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{radius}
+Accessor and modifier functions for the radius required element.
+
+The radius of the sphere. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classsphere__t_a5a3505e8023388105017923a13ebf9db}{radius\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a277c96740a24c554471af8fa433749b2}{radius}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a81e6298c6de20edbdd3f8ea438034a44}{radius}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_a60f5b0da9c0d08cd75cb6871caa0a405}{radius}} (const \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{mass}
+Accessor and modifier functions for the mass required element.
+
+The mass of the sphere. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classsphere__t_a3e706f0dd688189745198cb063b0f2f1}{mass\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a62bcf38909a45e055bfa1f11736dc08d}{mass}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a8c1f47605261cf8abeba327de1605ff3}{mass}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_a6cf9fc5b6c12bea191473067abd800ce}{mass}} (const \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{sphere\+Dim}
+Accessor and modifier functions for the sphere\+Dim required element.
+
+The dimensions of the sphere. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdimension__t}{\+::dimension\+\_\+t}} \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_a31fd501b82ec576953a983c58ed2ac7b}{sphere\+Dim\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a1900537c8f2c9d37d3f6e64bdc1d7f3b}{sphere\+Dim}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a9d78b517777f68dac726368e777bbae1}{sphere\+Dim}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_a875a05fa9d36964b28847316d69a3f56}{sphere\+Dim}} (const \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_ac7e79178c3832d068067559c290602f2}{sphere\+Dim}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{spacing}
+Accessor and modifier functions for the spacing required element.
+
+The spacing between particles in the sphere. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classsphere__t_a7479b610c1e4323d70e2a25b49a37173}{spacing\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a59466df1281ac9c5682546f80babe70c}{spacing}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a4b0d4d62f301cb7662bacdd4a51e49a9}{spacing}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_a39bcea31b9b6f0cea61b007351275c66}{spacing}} (const \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{brown\+Vel}
+Accessor and modifier functions for the brown\+Vel required element.
+
+The Brownian motion velocity. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classsphere__t_ad4f70c1a548da3337f1c8fc3bd230c57}{brown\+Vel\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a850d2d2a38e3926c302ed7474c1cc048}{brown\+Vel}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a1d2daf32215546c07c4cabe4d7ae468e}{brown\+Vel}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_ab17782f7e69c726f462b08d31d07f5bf}{brown\+Vel}} (const \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{brown\+Dim}
+Accessor and modifier functions for the brown\+Dim required element.
+
+The dimension affected by Brownian motion. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdimension__t}{\+::dimension\+\_\+t}} \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_a6606934ac257ee8d6899e971302fe22b}{brown\+Dim\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_a87933b1af8693254bb04aed83bcbfb6b}{brown\+Dim}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} \& \mbox{\hyperlink{classsphere__t_aad74d614ddce059e5b007300f58e9e09}{brown\+Dim}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_afc1fc84048cda9ff51718e5f4e7b7449}{brown\+Dim}} (const \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_a938d3052e576a11b3fa8108d139dada0}{brown\+Dim}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{ptype}
+Accessor and modifier functions for the ptype optional element.
+
+The particle type of the cuboid. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_a85ca3205d8af287e149aac54535f57e7}{\+::xml\+\_\+schema\+::unsigned\+\_\+int}} \mbox{\hyperlink{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}{ptype\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}{ptype\+\_\+type}} $>$ \mbox{\hyperlink{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}{ptype\+\_\+optional}}
+\begin{DoxyCompactList}\small\item\em Element optional container type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}{ptype\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_aea4bab6af2baddcd22850bb1520c9e3a}{ptype\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}{ptype\+\_\+optional}} \& \mbox{\hyperlink{classsphere__t_aca2836ced380a3965b58f6c13307e05d}{ptype}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}{ptype\+\_\+optional}} \& \mbox{\hyperlink{classsphere__t_ae8abcbba102e965e07702ab7ab66ece9}{ptype}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_ac087fdc653cd9a729f9c56104664db98}{ptype}} (const \mbox{\hyperlink{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}{ptype\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsphere__t_af9763a4a85daaad9440013542c04dcb4}{ptype}} (const \mbox{\hyperlink{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}{ptype\+\_\+optional}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsphere__t_a056bf2bbc465f7687a33c85a6d33fe43}{sphere\+\_\+t}} (const \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a9978ecdb35172f1e4984bdd3c95d9b54}{sphere\+\_\+t}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} $>$, const \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}} \&, const \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_aebff335a6d76d0b704d4413a41115a0a}{sphere\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t_a31ac71c05beaab68c6de0ecdb0812512}{sphere\+\_\+t}} (const \mbox{\hyperlink{classsphere__t}{sphere\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsphere__t}{sphere\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsphere__t_af9962d9c3b731f76430cf855a342341e}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsphere__t}{sphere\+\_\+t}} \& \mbox{\hyperlink{classsphere__t_ab3394ed9ade57ffa5541c8e5f86d48c3}{operator=}} (const \mbox{\hyperlink{classsphere__t}{sphere\+\_\+t}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsphere__t_a857c5c67e4649983f9d3228131262d0e}{\texorpdfstring{$\sim$}{\string~}sphere\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the sphere\+\_\+t schema type. 
+
+Defines the properties of a sphere-\/shaped cluster. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classsphere__t_a6606934ac257ee8d6899e971302fe22b}\index{sphere\_t@{sphere\_t}!brownDim\_traits@{brownDim\_traits}}
+\index{brownDim\_traits@{brownDim\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim\_traits}{brownDim\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_a6606934ac257ee8d6899e971302fe22b} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_a6606934ac257ee8d6899e971302fe22b}{sphere\+\_\+t\+::brown\+Dim\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_a8311c7495299fca6244a922be0d71184}\index{sphere\_t@{sphere\_t}!brownDim\_type@{brownDim\_type}}
+\index{brownDim\_type@{brownDim\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim\_type}{brownDim\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_a8311c7495299fca6244a922be0d71184} 
+typedef \mbox{\hyperlink{classdimension__t}{\+::dimension\+\_\+t}} \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{sphere\+\_\+t\+::brown\+Dim\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsphere__t_ad4f70c1a548da3337f1c8fc3bd230c57}\index{sphere\_t@{sphere\_t}!brownVel\_traits@{brownVel\_traits}}
+\index{brownVel\_traits@{brownVel\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel\_traits}{brownVel\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_ad4f70c1a548da3337f1c8fc3bd230c57} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classsphere__t_ad4f70c1a548da3337f1c8fc3bd230c57}{sphere\+\_\+t\+::brown\+Vel\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}\index{sphere\_t@{sphere\_t}!brownVel\_type@{brownVel\_type}}
+\index{brownVel\_type@{brownVel\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel\_type}{brownVel\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_a4825b5d7200aaedd240026e0a378d68f} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{sphere\+\_\+t\+::brown\+Vel\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsphere__t_a242a11b8fbbfd9c10f6bc48413c9f39c}\index{sphere\_t@{sphere\_t}!center\_traits@{center\_traits}}
+\index{center\_traits@{center\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{center\_traits}{center\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_a242a11b8fbbfd9c10f6bc48413c9f39c} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_a242a11b8fbbfd9c10f6bc48413c9f39c}{sphere\+\_\+t\+::center\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}\index{sphere\_t@{sphere\_t}!center\_type@{center\_type}}
+\index{center\_type@{center\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{center\_type}{center\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1} 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{sphere\+\_\+t\+::center\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsphere__t_a3e706f0dd688189745198cb063b0f2f1}\index{sphere\_t@{sphere\_t}!mass\_traits@{mass\_traits}}
+\index{mass\_traits@{mass\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{mass\_traits}{mass\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_a3e706f0dd688189745198cb063b0f2f1} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classsphere__t_a3e706f0dd688189745198cb063b0f2f1}{sphere\+\_\+t\+::mass\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}\index{sphere\_t@{sphere\_t}!mass\_type@{mass\_type}}
+\index{mass\_type@{mass\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{mass\_type}{mass\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{sphere\+\_\+t\+::mass\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}\index{sphere\_t@{sphere\_t}!ptype\_optional@{ptype\_optional}}
+\index{ptype\_optional@{ptype\_optional}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_optional}{ptype\_optional}}
+{\footnotesize\ttfamily \label{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670} 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}{ptype\+\_\+type}} $>$ \mbox{\hyperlink{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}{sphere\+\_\+t\+::ptype\+\_\+optional}}}
+
+
+
+Element optional container type. 
+
+\Hypertarget{classsphere__t_aea4bab6af2baddcd22850bb1520c9e3a}\index{sphere\_t@{sphere\_t}!ptype\_traits@{ptype\_traits}}
+\index{ptype\_traits@{ptype\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_traits}{ptype\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_aea4bab6af2baddcd22850bb1520c9e3a} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}{ptype\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_aea4bab6af2baddcd22850bb1520c9e3a}{sphere\+\_\+t\+::ptype\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}\index{sphere\_t@{sphere\_t}!ptype\_type@{ptype\_type}}
+\index{ptype\_type@{ptype\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_type}{ptype\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0} 
+typedef \mbox{\hyperlink{namespacexml__schema_a85ca3205d8af287e149aac54535f57e7}{\+::xml\+\_\+schema\+::unsigned\+\_\+int}} \mbox{\hyperlink{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}{sphere\+\_\+t\+::ptype\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsphere__t_a5a3505e8023388105017923a13ebf9db}\index{sphere\_t@{sphere\_t}!radius\_traits@{radius\_traits}}
+\index{radius\_traits@{radius\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{radius\_traits}{radius\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_a5a3505e8023388105017923a13ebf9db} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classsphere__t_a5a3505e8023388105017923a13ebf9db}{sphere\+\_\+t\+::radius\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}\index{sphere\_t@{sphere\_t}!radius\_type@{radius\_type}}
+\index{radius\_type@{radius\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{radius\_type}{radius\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_a967c1a54782ab486b5f68fb59297eea3} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{sphere\+\_\+t\+::radius\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsphere__t_a7479b610c1e4323d70e2a25b49a37173}\index{sphere\_t@{sphere\_t}!spacing\_traits@{spacing\_traits}}
+\index{spacing\_traits@{spacing\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{spacing\_traits}{spacing\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_a7479b610c1e4323d70e2a25b49a37173} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classsphere__t_a7479b610c1e4323d70e2a25b49a37173}{sphere\+\_\+t\+::spacing\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}\index{sphere\_t@{sphere\_t}!spacing\_type@{spacing\_type}}
+\index{spacing\_type@{spacing\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{spacing\_type}{spacing\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_ac650d414b3ba11ad584b02b55728b45e} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{sphere\+\_\+t\+::spacing\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsphere__t_a31fd501b82ec576953a983c58ed2ac7b}\index{sphere\_t@{sphere\_t}!sphereDim\_traits@{sphereDim\_traits}}
+\index{sphereDim\_traits@{sphereDim\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphereDim\_traits}{sphereDim\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_a31fd501b82ec576953a983c58ed2ac7b} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_a31fd501b82ec576953a983c58ed2ac7b}{sphere\+\_\+t\+::sphere\+Dim\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}\index{sphere\_t@{sphere\_t}!sphereDim\_type@{sphereDim\_type}}
+\index{sphereDim\_type@{sphereDim\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphereDim\_type}{sphereDim\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb} 
+typedef \mbox{\hyperlink{classdimension__t}{\+::dimension\+\_\+t}} \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+\_\+t\+::sphere\+Dim\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsphere__t_afd20921f2107deeac2ebe1394ec8313d}\index{sphere\_t@{sphere\_t}!vel\_traits@{vel\_traits}}
+\index{vel\_traits@{vel\_traits}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{vel\_traits}{vel\_traits}}
+{\footnotesize\ttfamily \label{classsphere__t_afd20921f2107deeac2ebe1394ec8313d} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}}, char $>$ \mbox{\hyperlink{classsphere__t_afd20921f2107deeac2ebe1394ec8313d}{sphere\+\_\+t\+::vel\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}\index{sphere\_t@{sphere\_t}!vel\_type@{vel\_type}}
+\index{vel\_type@{vel\_type}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{vel\_type}{vel\_type}}
+{\footnotesize\ttfamily \label{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda} 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{sphere\+\_\+t\+::vel\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsphere__t_a056bf2bbc465f7687a33c85a6d33fe43}\index{sphere\_t@{sphere\_t}!sphere\_t@{sphere\_t}}
+\index{sphere\_t@{sphere\_t}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphere\_t()}{sphere\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a056bf2bbc465f7687a33c85a6d33fe43} 
+sphere\+\_\+t\+::sphere\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} \&}]{center}{, }\item[{const \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} \&}]{vel}{, }\item[{const \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}} \&}]{radius}{, }\item[{const \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}} \&}]{mass}{, }\item[{const \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} \&}]{sphere\+Dim}{, }\item[{const \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}} \&}]{spacing}{, }\item[{const \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}} \&}]{brown\+Vel}{, }\item[{const \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} \&}]{brown\+Dim}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classsphere__t_a9978ecdb35172f1e4984bdd3c95d9b54}\index{sphere\_t@{sphere\_t}!sphere\_t@{sphere\_t}}
+\index{sphere\_t@{sphere\_t}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphere\_t()}{sphere\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a9978ecdb35172f1e4984bdd3c95d9b54} 
+sphere\+\_\+t\+::sphere\+\_\+t (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} $>$}]{center}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} $>$}]{vel}{, }\item[{const \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}} \&}]{radius}{, }\item[{const \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}} \&}]{mass}{, }\item[{const \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} \&}]{sphere\+Dim}{, }\item[{const \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}} \&}]{spacing}{, }\item[{const \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}} \&}]{brown\+Vel}{, }\item[{const \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} \&}]{brown\+Dim}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). 
+
+This constructor will try to use the passed values directly instead of making copies. \Hypertarget{classsphere__t_aebff335a6d76d0b704d4413a41115a0a}\index{sphere\_t@{sphere\_t}!sphere\_t@{sphere\_t}}
+\index{sphere\_t@{sphere\_t}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphere\_t()}{sphere\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_aebff335a6d76d0b704d4413a41115a0a} 
+sphere\+\_\+t\+::sphere\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classsphere__t_a31ac71c05beaab68c6de0ecdb0812512}\index{sphere\_t@{sphere\_t}!sphere\_t@{sphere\_t}}
+\index{sphere\_t@{sphere\_t}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphere\_t()}{sphere\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a31ac71c05beaab68c6de0ecdb0812512} 
+sphere\+\_\+t\+::sphere\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t}{sphere\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classsphere__t_a857c5c67e4649983f9d3228131262d0e}\index{sphere\_t@{sphere\_t}!````~sphere\_t@{\texorpdfstring{$\sim$}{\string~}sphere\_t}}
+\index{````~sphere\_t@{\texorpdfstring{$\sim$}{\string~}sphere\_t}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}sphere\_t()}{\string~sphere\_t()}}
+{\footnotesize\ttfamily \label{classsphere__t_a857c5c67e4649983f9d3228131262d0e} 
+sphere\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}sphere\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsphere__t_af9962d9c3b731f76430cf855a342341e}\index{sphere\_t@{sphere\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classsphere__t_af9962d9c3b731f76430cf855a342341e} 
+\mbox{\hyperlink{classsphere__t}{sphere\+\_\+t}} \texorpdfstring{$\ast$}{*} sphere\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classsphere__t_aad74d614ddce059e5b007300f58e9e09}\index{sphere\_t@{sphere\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_aad74d614ddce059e5b007300f58e9e09} 
+\mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{sphere\+\_\+t\+::brown\+Dim\+\_\+type}} \& sphere\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a87933b1af8693254bb04aed83bcbfb6b}\index{sphere\_t@{sphere\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a87933b1af8693254bb04aed83bcbfb6b} 
+const \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{sphere\+\_\+t\+::brown\+Dim\+\_\+type}} \& sphere\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a938d3052e576a11b3fa8108d139dada0}\index{sphere\_t@{sphere\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a938d3052e576a11b3fa8108d139dada0} 
+void sphere\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsphere__t_afc1fc84048cda9ff51718e5f4e7b7449}\index{sphere\_t@{sphere\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_afc1fc84048cda9ff51718e5f4e7b7449} 
+void sphere\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a8311c7495299fca6244a922be0d71184}{brown\+Dim\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsphere__t_a1d2daf32215546c07c4cabe4d7ae468e}\index{sphere\_t@{sphere\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a1d2daf32215546c07c4cabe4d7ae468e} 
+\mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{sphere\+\_\+t\+::brown\+Vel\+\_\+type}} \& sphere\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a850d2d2a38e3926c302ed7474c1cc048}\index{sphere\_t@{sphere\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a850d2d2a38e3926c302ed7474c1cc048} 
+const \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{sphere\+\_\+t\+::brown\+Vel\+\_\+type}} \& sphere\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_ab17782f7e69c726f462b08d31d07f5bf}\index{sphere\_t@{sphere\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_ab17782f7e69c726f462b08d31d07f5bf} 
+void sphere\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a4825b5d7200aaedd240026e0a378d68f}{brown\+Vel\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsphere__t_ae933fa1fa8a15aef9624d96d031aa215}\index{sphere\_t@{sphere\_t}!center@{center}}
+\index{center@{center}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{center()}{center()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_ae933fa1fa8a15aef9624d96d031aa215} 
+\mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{sphere\+\_\+t\+::center\+\_\+type}} \& sphere\+\_\+t\+::center (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_ae53fd531ac2f810b3c3a13656df5aa6d}\index{sphere\_t@{sphere\_t}!center@{center}}
+\index{center@{center}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{center()}{center()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_ae53fd531ac2f810b3c3a13656df5aa6d} 
+const \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{sphere\+\_\+t\+::center\+\_\+type}} \& sphere\+\_\+t\+::center (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_af2e567591eda76da4c122213234764c4}\index{sphere\_t@{sphere\_t}!center@{center}}
+\index{center@{center}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{center()}{center()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_af2e567591eda76da4c122213234764c4} 
+void sphere\+\_\+t\+::center (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsphere__t_a176d62733f8cee5ca1a93bb69ff38df2}\index{sphere\_t@{sphere\_t}!center@{center}}
+\index{center@{center}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{center()}{center()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a176d62733f8cee5ca1a93bb69ff38df2} 
+void sphere\+\_\+t\+::center (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a6a2d13f9bca59b41bfd31cadd2cd30a1}{center\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsphere__t_a8c1f47605261cf8abeba327de1605ff3}\index{sphere\_t@{sphere\_t}!mass@{mass}}
+\index{mass@{mass}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a8c1f47605261cf8abeba327de1605ff3} 
+\mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{sphere\+\_\+t\+::mass\+\_\+type}} \& sphere\+\_\+t\+::mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a62bcf38909a45e055bfa1f11736dc08d}\index{sphere\_t@{sphere\_t}!mass@{mass}}
+\index{mass@{mass}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a62bcf38909a45e055bfa1f11736dc08d} 
+const \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{sphere\+\_\+t\+::mass\+\_\+type}} \& sphere\+\_\+t\+::mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a6cf9fc5b6c12bea191473067abd800ce}\index{sphere\_t@{sphere\_t}!mass@{mass}}
+\index{mass@{mass}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a6cf9fc5b6c12bea191473067abd800ce} 
+void sphere\+\_\+t\+::mass (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a0c5c755c31ba04d5827dcc6062aef093}{mass\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsphere__t_ab3394ed9ade57ffa5541c8e5f86d48c3}\index{sphere\_t@{sphere\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classsphere__t_ab3394ed9ade57ffa5541c8e5f86d48c3} 
+\mbox{\hyperlink{classsphere__t}{sphere\+\_\+t}} \& sphere\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t}{sphere\+\_\+t}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classsphere__t_ae8abcbba102e965e07702ab7ab66ece9}\index{sphere\_t@{sphere\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_ae8abcbba102e965e07702ab7ab66ece9} 
+\mbox{\hyperlink{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}{sphere\+\_\+t\+::ptype\+\_\+optional}} \& sphere\+\_\+t\+::ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_aca2836ced380a3965b58f6c13307e05d}\index{sphere\_t@{sphere\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_aca2836ced380a3965b58f6c13307e05d} 
+const \mbox{\hyperlink{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}{sphere\+\_\+t\+::ptype\+\_\+optional}} \& sphere\+\_\+t\+::ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_af9763a4a85daaad9440013542c04dcb4}\index{sphere\_t@{sphere\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_af9763a4a85daaad9440013542c04dcb4} 
+void sphere\+\_\+t\+::ptype (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a662c7330ee0a3d9c5ff5eb8805a34670}{ptype\+\_\+optional}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An optional container with the new value to set.\\
+\hline
+\end{DoxyParams}
+If the value is present in {\itshape x} then this function makes a copy of this value and sets it as the new value of the element. Otherwise the element container is set the \textquotesingle{}not present\textquotesingle{} state. \Hypertarget{classsphere__t_ac087fdc653cd9a729f9c56104664db98}\index{sphere\_t@{sphere\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_ac087fdc653cd9a729f9c56104664db98} 
+void sphere\+\_\+t\+::ptype (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_ab01b841c8c0d6d4c49b31ef717956af0}{ptype\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsphere__t_a81e6298c6de20edbdd3f8ea438034a44}\index{sphere\_t@{sphere\_t}!radius@{radius}}
+\index{radius@{radius}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{radius()}{radius()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a81e6298c6de20edbdd3f8ea438034a44} 
+\mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{sphere\+\_\+t\+::radius\+\_\+type}} \& sphere\+\_\+t\+::radius (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a277c96740a24c554471af8fa433749b2}\index{sphere\_t@{sphere\_t}!radius@{radius}}
+\index{radius@{radius}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{radius()}{radius()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a277c96740a24c554471af8fa433749b2} 
+const \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{sphere\+\_\+t\+::radius\+\_\+type}} \& sphere\+\_\+t\+::radius (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a60f5b0da9c0d08cd75cb6871caa0a405}\index{sphere\_t@{sphere\_t}!radius@{radius}}
+\index{radius@{radius}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{radius()}{radius()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a60f5b0da9c0d08cd75cb6871caa0a405} 
+void sphere\+\_\+t\+::radius (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a967c1a54782ab486b5f68fb59297eea3}{radius\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsphere__t_a4b0d4d62f301cb7662bacdd4a51e49a9}\index{sphere\_t@{sphere\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a4b0d4d62f301cb7662bacdd4a51e49a9} 
+\mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{sphere\+\_\+t\+::spacing\+\_\+type}} \& sphere\+\_\+t\+::spacing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a59466df1281ac9c5682546f80babe70c}\index{sphere\_t@{sphere\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a59466df1281ac9c5682546f80babe70c} 
+const \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{sphere\+\_\+t\+::spacing\+\_\+type}} \& sphere\+\_\+t\+::spacing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a39bcea31b9b6f0cea61b007351275c66}\index{sphere\_t@{sphere\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classsphere__t_a39bcea31b9b6f0cea61b007351275c66} 
+void sphere\+\_\+t\+::spacing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_ac650d414b3ba11ad584b02b55728b45e}{spacing\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsphere__t_a9d78b517777f68dac726368e777bbae1}\index{sphere\_t@{sphere\_t}!sphereDim@{sphereDim}}
+\index{sphereDim@{sphereDim}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphereDim()}{sphereDim()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a9d78b517777f68dac726368e777bbae1} 
+\mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+\_\+t\+::sphere\+Dim\+\_\+type}} \& sphere\+\_\+t\+::sphere\+Dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a1900537c8f2c9d37d3f6e64bdc1d7f3b}\index{sphere\_t@{sphere\_t}!sphereDim@{sphereDim}}
+\index{sphereDim@{sphereDim}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphereDim()}{sphereDim()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a1900537c8f2c9d37d3f6e64bdc1d7f3b} 
+const \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+\_\+t\+::sphere\+Dim\+\_\+type}} \& sphere\+\_\+t\+::sphere\+Dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_ac7e79178c3832d068067559c290602f2}\index{sphere\_t@{sphere\_t}!sphereDim@{sphereDim}}
+\index{sphereDim@{sphereDim}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphereDim()}{sphereDim()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_ac7e79178c3832d068067559c290602f2} 
+void sphere\+\_\+t\+::sphere\+Dim (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsphere__t_a875a05fa9d36964b28847316d69a3f56}\index{sphere\_t@{sphere\_t}!sphereDim@{sphereDim}}
+\index{sphereDim@{sphereDim}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{sphereDim()}{sphereDim()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a875a05fa9d36964b28847316d69a3f56} 
+void sphere\+\_\+t\+::sphere\+Dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a227f64a194dfbb51af1ed401cad3f4cb}{sphere\+Dim\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsphere__t_a58ed6e63deef2cecc063b19ff4e22489}\index{sphere\_t@{sphere\_t}!vel@{vel}}
+\index{vel@{vel}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a58ed6e63deef2cecc063b19ff4e22489} 
+\mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{sphere\+\_\+t\+::vel\+\_\+type}} \& sphere\+\_\+t\+::vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_a7031a56d4c4d149a46cc977602af1406}\index{sphere\_t@{sphere\_t}!vel@{vel}}
+\index{vel@{vel}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_a7031a56d4c4d149a46cc977602af1406} 
+const \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{sphere\+\_\+t\+::vel\+\_\+type}} \& sphere\+\_\+t\+::vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsphere__t_ad4505d9657298f0f9d93a7a430c5313d}\index{sphere\_t@{sphere\_t}!vel@{vel}}
+\index{vel@{vel}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_ad4505d9657298f0f9d93a7a430c5313d} 
+void sphere\+\_\+t\+::vel (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsphere__t_af0909b6e8c594ad4e798448a8c0e66ac}\index{sphere\_t@{sphere\_t}!vel@{vel}}
+\index{vel@{vel}!sphere\_t@{sphere\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsphere__t_af0909b6e8c594ad4e798448a8c0e66ac} 
+void sphere\+\_\+t\+::vel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsphere__t_a7f883510cb14fbb4f6cbb768a99f4bda}{vel\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8h}{simulation.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8cpp}{simulation.\+cpp}}\end{DoxyCompactItemize}

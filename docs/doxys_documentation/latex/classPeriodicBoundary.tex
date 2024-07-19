@@ -1,0 +1,271 @@
+\doxysection{Periodic\+Boundary Class Reference}
+\hypertarget{classPeriodicBoundary}{}\label{classPeriodicBoundary}\index{PeriodicBoundary@{PeriodicBoundary}}
+
+
+{\ttfamily \#include $<$Periodic\+Boundary.\+h$>$}
+
+Inheritance diagram for Periodic\+Boundary\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPeriodicBoundary}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPeriodicBoundary_a83c2e54f9487ae9fea8ec74b579cad92}{Periodic\+Boundary}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}, const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&boundary\+Config, const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&cell\+Grid)
+\begin{DoxyCompactList}\small\item\em The constructor of the \doxylink{classPeriodicBoundary}{Periodic\+Boundary}. The constructor gets the config passed, as the boundary behaves differently if the neighboring boundaries are periodic too. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPeriodicBoundary_a82cafd61cbf2438a28b825a6a6133e9e}{pre\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}}) override
+\begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation before all updates are made. This will introduce the halo particles for all boundary particles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPeriodicBoundary_a7115c8f3b01940ef54718f1c7c13dabb}{post\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}}) override
+\begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation after all updates are made. Removes all inserted halo particles used for the boundary particles and moves any particles, that have crossed the border. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{Multi\+Dim\+Periodic\+Bound\+Shifts\+Map}} \mbox{\hyperlink{classPeriodicBoundary_add3230edd604015563288fd190c282ee}{get\+Translation\+Map}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the translation\+Map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{Boundary\+Condition}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa}{get\+Point\+On\+Boundary\+Plane}} (const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&LJDSim)
+\begin{DoxyCompactList}\small\item\em Returns a point on the boundary-\/plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}} \mbox{\hyperlink{classPeriodicBoundary_a2f7f21038338142cd92e5f9c5eac3477}{get\+Periodic\+Shift}} (const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&grid)
+\begin{DoxyCompactList}\small\item\em get the appropriate shifts for the position of the boundary \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPeriodicBoundary_a48428cd33a01be033b66c900d78437ae}{fill\+Translation\+Map}} (const std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \&key, const std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \&boundary\+Sides, const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&cell\+Grid)
+\begin{DoxyCompactList}\small\item\em Helper function to actually generate the translations needed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPeriodicBoundary_ab4ebd08a20f2f0b9216ef63d9113ab9a}{is\+This\+Side\+Responsible\+For\+Shifts}} (const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&boundary\+Config, const std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \&boundary\+Sides) const
+\begin{DoxyCompactList}\small\item\em This method checks, if the side is responsible for the shifts. We need this, as we only want to shift particles once. E.\+g. if a cell belongs to two boundaries, we only want to shift it once. For that we check, if the side is the highest priority periodic side. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}} \mbox{\hyperlink{classPeriodicBoundary_ad64e446b8abeaa31d2a5b40c06aec3ae}{get\+Periodic\+Shift\+From\+Position}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} pos, const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&grid)
+\begin{DoxyCompactList}\small\item\em get the appropriate shifts for any position \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ $>$ \mbox{\hyperlink{classPeriodicBoundary_a6fae62dd4f90757a80beabd45f4c9971}{inserted\+Particles}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classPeriodicBoundary_adcd99a15de029c99e8ae79878165b316}{insertion\+Index}}
+\item 
+bool \mbox{\hyperlink{classPeriodicBoundary_a3ab404bc6aab419dafc8929808a8606f}{is2D}}
+\item 
+\mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}} \mbox{\hyperlink{classPeriodicBoundary_a0cd3718c2f5729cdcd26c9867ad3c16c}{inner\+Translation}}
+\item 
+\mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{Multi\+Dim\+Periodic\+Bound\+Shifts\+Map}} \mbox{\hyperlink{classPeriodicBoundary_a4cc1e8fc0204160e43c2e07e0db77b2f}{translation\+Map}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85}{get\+Relevant\+Dimension}} (const std\+::array$<$ double, 3 $>$ \&normal)
+\begin{DoxyCompactList}\small\item\em Get the dimension that is relevant to the boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPeriodicBoundary_a83c2e54f9487ae9fea8ec74b579cad92}\index{PeriodicBoundary@{PeriodicBoundary}!PeriodicBoundary@{PeriodicBoundary}}
+\index{PeriodicBoundary@{PeriodicBoundary}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{PeriodicBoundary()}{PeriodicBoundary()}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a83c2e54f9487ae9fea8ec74b579cad92} 
+Periodic\+Boundary\+::\+Periodic\+Boundary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{, }\item[{const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&}]{boundary\+Config}{, }\item[{const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&}]{cell\+Grid}{}\end{DoxyParamCaption})}
+
+
+
+The constructor of the \doxylink{classPeriodicBoundary}{Periodic\+Boundary}. The constructor gets the config passed, as the boundary behaves differently if the neighboring boundaries are periodic too. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the boundary \\
+\hline
+{\em boundary\+Config} & The configuration of the boundaries of the simulation \\
+\hline
+{\em cell\+Grid} & The cell grid to perform the periodic boundaries in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Periodic boundary 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPeriodicBoundary_a48428cd33a01be033b66c900d78437ae}\index{PeriodicBoundary@{PeriodicBoundary}!fillTranslationMap@{fillTranslationMap}}
+\index{fillTranslationMap@{fillTranslationMap}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{fillTranslationMap()}{fillTranslationMap()}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a48428cd33a01be033b66c900d78437ae} 
+void Periodic\+Boundary\+::fill\+Translation\+Map (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \&}]{key}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \&}]{boundary\+Sides}{, }\item[{const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&}]{cell\+Grid}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper function to actually generate the translations needed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to insert into in the map \\
+\hline
+{\em boundary\+Sides} & The sides to generate the translations for \\
+\hline
+{\em cell\+Grid} & The grid to perform the translations in \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPeriodicBoundary_a2f7f21038338142cd92e5f9c5eac3477}\index{PeriodicBoundary@{PeriodicBoundary}!getPeriodicShift@{getPeriodicShift}}
+\index{getPeriodicShift@{getPeriodicShift}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{getPeriodicShift()}{getPeriodicShift()}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a2f7f21038338142cd92e5f9c5eac3477} 
+\mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}} Periodic\+Boundary\+::get\+Periodic\+Shift (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&}]{grid}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+get the appropriate shifts for the position of the boundary 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & The grid that the shifts will be performed in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The shifts 
+\end{DoxyReturn}
+\Hypertarget{classPeriodicBoundary_ad64e446b8abeaa31d2a5b40c06aec3ae}\index{PeriodicBoundary@{PeriodicBoundary}!getPeriodicShiftFromPosition@{getPeriodicShiftFromPosition}}
+\index{getPeriodicShiftFromPosition@{getPeriodicShiftFromPosition}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{getPeriodicShiftFromPosition()}{getPeriodicShiftFromPosition()}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_ad64e446b8abeaa31d2a5b40c06aec3ae} 
+\mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}} Periodic\+Boundary\+::get\+Periodic\+Shift\+From\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{pos}{, }\item[{const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \&}]{grid}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+get the appropriate shifts for any position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The position to get the shifts for \\
+\hline
+{\em grid} & The grid that the shifts will be performed in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The shifts 
+\end{DoxyReturn}
+\Hypertarget{classPeriodicBoundary_add3230edd604015563288fd190c282ee}\index{PeriodicBoundary@{PeriodicBoundary}!getTranslationMap@{getTranslationMap}}
+\index{getTranslationMap@{getTranslationMap}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{getTranslationMap()}{getTranslationMap()}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_add3230edd604015563288fd190c282ee} 
+\mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{Multi\+Dim\+Periodic\+Bound\+Shifts\+Map}} Periodic\+Boundary\+::get\+Translation\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the translation\+Map. 
+
+\begin{DoxyReturn}{Returns}
+The translation map 
+\end{DoxyReturn}
+\Hypertarget{classPeriodicBoundary_ab4ebd08a20f2f0b9216ef63d9113ab9a}\index{PeriodicBoundary@{PeriodicBoundary}!isThisSideResponsibleForShifts@{isThisSideResponsibleForShifts}}
+\index{isThisSideResponsibleForShifts@{isThisSideResponsibleForShifts}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{isThisSideResponsibleForShifts()}{isThisSideResponsibleForShifts()}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_ab4ebd08a20f2f0b9216ef63d9113ab9a} 
+bool Periodic\+Boundary\+::is\+This\+Side\+Responsible\+For\+Shifts (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&}]{boundary\+Config}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \&}]{boundary\+Sides}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This method checks, if the side is responsible for the shifts. We need this, as we only want to shift particles once. E.\+g. if a cell belongs to two boundaries, we only want to shift it once. For that we check, if the side is the highest priority periodic side. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em boundary\+Config} & The boundary configuration \\
+\hline
+{\em boundary\+Sides} & The sides a cell belongs to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether this side is supposed to shift. True iff it is supposed 
+\end{DoxyReturn}
+\Hypertarget{classPeriodicBoundary_a7115c8f3b01940ef54718f1c7c13dabb}\index{PeriodicBoundary@{PeriodicBoundary}!postUpdateBoundaryHandling@{postUpdateBoundaryHandling}}
+\index{postUpdateBoundaryHandling@{postUpdateBoundaryHandling}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{postUpdateBoundaryHandling()}{postUpdateBoundaryHandling()}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a7115c8f3b01940ef54718f1c7c13dabb} 
+void Periodic\+Boundary\+::post\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The call to apply the boundary condition to the simulation after all updates are made. Removes all inserted halo particles used for the boundary particles and moves any particles, that have crossed the border. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation} & The simulation to apply the boundary to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBoundaryCondition_ac515c5d031e15483b6959dbef91aa898}{Boundary\+Condition}}.
+
+\Hypertarget{classPeriodicBoundary_a82cafd61cbf2438a28b825a6a6133e9e}\index{PeriodicBoundary@{PeriodicBoundary}!preUpdateBoundaryHandling@{preUpdateBoundaryHandling}}
+\index{preUpdateBoundaryHandling@{preUpdateBoundaryHandling}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{preUpdateBoundaryHandling()}{preUpdateBoundaryHandling()}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a82cafd61cbf2438a28b825a6a6133e9e} 
+void Periodic\+Boundary\+::pre\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The call to apply the boundary condition to the simulation before all updates are made. This will introduce the halo particles for all boundary particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation} & The simulation to apply the boundary to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBoundaryCondition_a7806aa116ba9779d164b53411dc0515b}{Boundary\+Condition}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPeriodicBoundary_a0cd3718c2f5729cdcd26c9867ad3c16c}\index{PeriodicBoundary@{PeriodicBoundary}!innerTranslation@{innerTranslation}}
+\index{innerTranslation@{innerTranslation}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{innerTranslation}{innerTranslation}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a0cd3718c2f5729cdcd26c9867ad3c16c} 
+\mbox{\hyperlink{PeriodicBoundary_8h_a7d56ec6bc3b744219541e70d5bf9a598}{Periodic\+Bound\+Shifts}} Periodic\+Boundary\+::inner\+Translation\hspace{0.3cm}{\ttfamily [private]}}
+
+The translations to apply to cells that are only affected by one boundary \Hypertarget{classPeriodicBoundary_a6fae62dd4f90757a80beabd45f4c9971}\index{PeriodicBoundary@{PeriodicBoundary}!insertedParticles@{insertedParticles}}
+\index{insertedParticles@{insertedParticles}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{insertedParticles}{insertedParticles}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a6fae62dd4f90757a80beabd45f4c9971} 
+std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classParticle}{Particle}}$>$ $>$ Periodic\+Boundary\+::inserted\+Particles\hspace{0.3cm}{\ttfamily [private]}}
+
+The particles that were inserted. These will be recycled \Hypertarget{classPeriodicBoundary_adcd99a15de029c99e8ae79878165b316}\index{PeriodicBoundary@{PeriodicBoundary}!insertionIndex@{insertionIndex}}
+\index{insertionIndex@{insertionIndex}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{insertionIndex}{insertionIndex}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_adcd99a15de029c99e8ae79878165b316} 
+size\+\_\+t Periodic\+Boundary\+::insertion\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+The index of the next particle to recycle \Hypertarget{classPeriodicBoundary_a3ab404bc6aab419dafc8929808a8606f}\index{PeriodicBoundary@{PeriodicBoundary}!is2D@{is2D}}
+\index{is2D@{is2D}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{is2D}{is2D}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a3ab404bc6aab419dafc8929808a8606f} 
+bool Periodic\+Boundary\+::is2D\hspace{0.3cm}{\ttfamily [private]}}
+
+Whether this is a 2D bound or 3D \Hypertarget{classPeriodicBoundary_a4cc1e8fc0204160e43c2e07e0db77b2f}\index{PeriodicBoundary@{PeriodicBoundary}!translationMap@{translationMap}}
+\index{translationMap@{translationMap}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{translationMap}{translationMap}}
+{\footnotesize\ttfamily \label{classPeriodicBoundary_a4cc1e8fc0204160e43c2e07e0db77b2f} 
+\mbox{\hyperlink{PeriodicBoundary_8h_a576c1e758af34424179b99903c31ee51}{Multi\+Dim\+Periodic\+Bound\+Shifts\+Map}} Periodic\+Boundary\+::translation\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+The translations to apply to cells that are only affected by two boundaries 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/physics/boundary\+Conditions/\mbox{\hyperlink{PeriodicBoundary_8h}{Periodic\+Boundary.\+h}}\item 
+src/physics/boundary\+Conditions/\mbox{\hyperlink{PeriodicBoundary_8cpp}{Periodic\+Boundary.\+cpp}}\end{DoxyCompactItemize}

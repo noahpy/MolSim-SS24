@@ -1,0 +1,335 @@
+\doxysection{Membrane\+Simulation Class Reference}
+\hypertarget{classMembraneSimulation}{}\label{classMembraneSimulation}\index{MembraneSimulation@{MembraneSimulation}}
+
+
+\doxylink{classSimulation}{Simulation} class for the Lennard-\/\+Jones simulation with a molecules.  
+
+
+
+
+{\ttfamily \#include $<$Membrane\+Simulation.\+h$>$}
+
+Inheritance diagram for Membrane\+Simulation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{classMembraneSimulation}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMembraneSimulation_ab4cd318e0c78f7cb2a853b21e74e0319}{Membrane\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, const std\+::map$<$ unsigned, std\+::pair$<$ double, double $>$ $>$ \&LJParams, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&boundary\+Config, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}}, double gravity\+\_\+constant, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$ \mbox{\hyperlink{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}{thermostat}}, std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classMolecule}{Molecule}} $>$ $>$ \mbox{\hyperlink{classMembraneSimulation_a34a9220e6d903ae288aadef0d31effc2}{molecules}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, size\+\_\+t \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysis\+Frequency}}=10000, bool read\+\_\+file=true, unsigned \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\+\_\+thermostat}}=1000, bool \mbox{\hyperlink{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8}{do\+Profile}}=false)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classMembrane}{Membrane} \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMembraneSimulation_a3f952f814e3c35ec4bbdc296c6f3fc61}{run\+Sim}} () override
+\begin{DoxyCompactList}\small\item\em Run the simulation. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classMolecule}{Molecule}} $>$ $>$ \& \mbox{\hyperlink{classMembraneSimulation_a6fe3724f93c42bb975d4a3c0994cd6e6}{get\+Molecules}} () const
+\begin{DoxyCompactList}\small\item\em Get the molecules in the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMixedLJSimulation}{Mixed\+LJSimulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMixedLJSimulation_a3744ca22864f02372df106840d3b6962}{Mixed\+LJSimulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, const std\+::map$<$ unsigned, std\+::pair$<$ double, double $>$ $>$ \&LJParams, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&boundary\+Config, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}}, double gravity\+\_\+constant, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$ \mbox{\hyperlink{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}{thermostat}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, size\+\_\+t \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysis\+Frequency}}=10000, bool read\+\_\+file=true, unsigned \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\+\_\+thermostat}}=1000, bool \mbox{\hyperlink{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8}{do\+Profile}}=false)
+\begin{DoxyCompactList}\small\item\em Construct a new Mixed Lennard Jones Domain \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5}{run\+Sim}} () override
+\begin{DoxyCompactList}\small\item\em Run the simulation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a5ae150d4e7cc6a76902145a5194eb01c}{get\+Epsilon}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the epsilon of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a9d7ccddaa7c40cdc8f4bc0bdf4ecaec6}{get\+Sigma}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the sigma of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_affdfb3616d49044590eb8c4503f64566}{get\+Alpha}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the alpha of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a770dbd7af68281175c29f23bdd482850}{get\+Beta}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the beta of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_ab795f98301fddce0a2afa1a786e8e86f}{get\+Gamma}} (int type1, int type2) const
+\begin{DoxyCompactList}\small\item\em Get the gamma of a combination of particles. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a2c2f1e6d7c1549d5c4763dad80bc768e}{get\+Gravity\+Constant}} () const
+\begin{DoxyCompactList}\small\item\em get the gravity constant \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_aa6519b46f5ff67a4e0564d05d3bd9060}{get\+Repulsive\+Distance}} (int \mbox{\hyperlink{classtype}{type}}) const override
+\begin{DoxyCompactList}\small\item\em Gets the distance for a particle where repulsion starts. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a25a521fd8f5b7746f32139e08cddbd78}{get\+T\+\_\+init}} () const
+\begin{DoxyCompactList}\small\item\em Get the initial temperature. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a70b450960c2af7048a414a65d511d19c}{get\+T\+\_\+target}} () const
+\begin{DoxyCompactList}\small\item\em Get the target temperature. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a618a70f8c367d02f3669835003a5e163}{get\+Delta\+\_\+T}} () const
+\begin{DoxyCompactList}\small\item\em Get the delta\+\_\+T. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classMixedLJSimulation_a2c0357b482147dd43dce300974ebe88d}{get\+N\+\_\+thermostat}} () const
+\begin{DoxyCompactList}\small\item\em Get the number of thermostat updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLennardJonesDomainSimulation_af2d21f61f9b1d12749b952b5cf5f7c03}{Lennard\+Jones\+Domain\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&boundary\+Config, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, size\+\_\+t \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysis\+Frequency}}=10000, bool read\+\_\+file=true)
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones Domain \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLennardJonesDomainSimulation_a4915e32c862e4cd19c5403f7a603db12}{Linked\+Lennard\+Jones\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, bool read\+\_\+file=true)
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLinkedLennardJonesSimulation}{Linked\+Lennard\+Jones\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLinkedLennardJonesSimulation_a4915e32c862e4cd19c5403f7a603db12}{Linked\+Lennard\+Jones\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, std\+::array$<$ double, 3 $>$ domain\+Origin, std\+::array$<$ double, 3 $>$ domain\+Size, double cutoff, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}=10, bool read\+\_\+file=true)
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \& \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad022bd88e8f58fda708eb34c30353617}{get\+Grid}} () const
+\item 
+void \mbox{\hyperlink{classLinkedLennardJonesSimulation_a9682407f0e0ebb304761847b0ede05cd}{set\+Domain\+Origin}} (const std\+::array$<$ double, 3 $>$ \&domain\+Origin)
+\begin{DoxyCompactList}\small\item\em Set the origin of the simulation domain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac02835357b8355afe540b3788c4f5579}{set\+Domain\+Size}} (const std\+::array$<$ double, 3 $>$ \&domain\+Size)
+\begin{DoxyCompactList}\small\item\em Set the size of the simulation domain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad91c1524037aecc193a2fb43fe5786f6}{set\+Cutoff}} (double cutoff)
+\begin{DoxyCompactList}\small\item\em Set the cutoff radius of the simulation. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a5ae6ddb827ae3f33910048338a197646}{get\+Domain\+Origin}} () const
+\begin{DoxyCompactList}\small\item\em Get the origin of the simulation domain. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classLinkedLennardJonesSimulation_aceebb5a0bce20b3cd52f5eb4e92015c3}{get\+Domain\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the size of the simulation domain. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLinkedLennardJonesSimulation_aec5131d8e80d154378041fb0bc802544}{get\+Cutoff}} () const
+\begin{DoxyCompactList}\small\item\em Get the cutoff radius of the simulation. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a16772a2392ac33187a25a7f0008e54aa}{get\+Update\+Frequency}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLennardJonesSimulation}{Lennard\+Jones\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLennardJonesSimulation_a11255c84e605ba367661627f7ce1a947}{Lennard\+Jones\+Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}, double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10, bool read\+\_\+file=true)
+\begin{DoxyCompactList}\small\item\em Construct a new Lennard Jones \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLennardJonesSimulation_a03b2d037dda00ab1b39cab5808f8abae}{set\+Epsilon}} (double eps)
+\begin{DoxyCompactList}\small\item\em Set the epsilon parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLennardJonesSimulation_a71edfeb82be06f000833da94472ea51f}{set\+Sigma}} (double sig)
+\begin{DoxyCompactList}\small\item\em Set the sigma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a42422dd40e29be6f43c1911934b6c4fb}{get\+Epsilon}} () const
+\begin{DoxyCompactList}\small\item\em Get the epsilon parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a456b96b4514880185a9aea867a855af3}{get\+Sigma}} () const
+\begin{DoxyCompactList}\small\item\em Get the sigma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a41a1c4c60c6a2760aa11af66f656e1a4}{get\+Alpha}} () const
+\begin{DoxyCompactList}\small\item\em Get the alpha parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_ab177ce539ce797212d9b24303ae65f2f}{get\+Beta}} () const
+\begin{DoxyCompactList}\small\item\em Get the beta parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a0d7cf6c105468d3677d1c9538752a85b}{get\+Gamma}} () const
+\begin{DoxyCompactList}\small\item\em Get the gamma parameter of the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classLennardJonesSimulation_a09afdfe50f109b6626e3fdfd8c4f733b}{\texorpdfstring{$\sim$}{\string~}\+Lennard\+Jones\+Simulation}} ()=default
+\item 
+\mbox{\hyperlink{classLennardJonesSimulation_a1c3bad0b5e9842a84e616e2fd135f311}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimulation_a1c3bad0b5e9842a84e616e2fd135f311}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classSimulation_a85781a859dbdf089b4c807ac11646e18}{\texorpdfstring{$\sim$}{\string~}\+Simulation}} ()=default
+\item 
+void \mbox{\hyperlink{classSimulation_ace2a60993f57c241c081ffea6ea14e99}{set\+Output\+File}} (std\+::string output)
+\item 
+std\+::string \mbox{\hyperlink{classSimulation_aded0641608524c4f1fb5a85dd91d387f}{get\+Output\+File}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classMolecule}{Molecule}} $>$ $>$ \mbox{\hyperlink{classMembraneSimulation_a34a9220e6d903ae288aadef0d31effc2}{molecules}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classMixedLJSimulation}{Mixed\+LJSimulation}}}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::map$<$ unsigned, std\+::pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classMixedLJSimulation_aa7bb1f7d12080f0139aa4dc35d8030d3}{ljparams}}
+\begin{DoxyCompactList}\small\item\em map that stores the different particle types \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBoundaryConditionHandler}{Boundary\+Condition\+Handler}} \mbox{\hyperlink{classLennardJonesDomainSimulation_a3af863607123c29438029baea218198b}{bc\+Handler}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}
+\item 
+double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}
+\item 
+double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}
+\item 
+unsigned \mbox{\hyperlink{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1}{iteration}} = 0
+\item 
+unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}} = 10
+\item 
+\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \& \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}
+\item 
+std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classMixedLJSimulation}{Mixed\+LJSimulation}}}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::pair$<$ int, int $>$ \mbox{\hyperlink{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}{get\+Mix\+Key}} (unsigned type1, unsigned type2)
+\begin{DoxyCompactList}\small\item\em Get the key to access the LJ param maps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMixedLJSimulation}{Mixed\+LJSimulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_a7576f75eee44a3f7082d3d7e22a3954a}{epsilons}}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_ace21f3725169264364e1a4d5590f51b2}{sigmas}}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_afe081eebe176f5349c4dd5a32a34eb20}{alphas}}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_ad0329bb270a24c0373da54ae6f8ed2a9}{betas}}
+\item 
+\mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{Mix\+LJParam\+Map}} \mbox{\hyperlink{classMixedLJSimulation_ad49bb3f14691b38427287c21fed64b66}{gammas}}
+\item 
+std\+::map$<$ unsigned, double $>$ \mbox{\hyperlink{classMixedLJSimulation_aca34d7e6b4bc61c6ee41d464ebae3e98}{repulsive\+Distances}}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a68dc278e818d8914713b758b9b91c02b}{gravity\+Constant}}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a5ced68a26e022d598162967aa846de52}{T\+\_\+init}}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a57d6c21075835a40950d93f75a2bc0ae}{T\+\_\+target}}
+\item 
+double \mbox{\hyperlink{classMixedLJSimulation_a5893624d38e3d7fb8fdaf4c3ee38ff7e}{delta\+\_\+T}}
+\item 
+unsigned \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\+\_\+thermostat}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$ \mbox{\hyperlink{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}{thermostat}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysis\+Frequency}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classLinkedLennardJonesSimulation}{Linked\+Lennard\+Jones\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCellGrid}{Cell\+Grid}} \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cell\+Grid}}
+\item 
+unsigned \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{update\+Frequency}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classLennardJonesSimulation}{Lennard\+Jones\+Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a99f2652b63a24bfb8b4c5e270d079429}{alpha}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a8e4e4a8fb0b0f6a2d8be5b856e1dd8e1}{beta}}
+\item 
+double \mbox{\hyperlink{classLennardJonesSimulation_a67fb7cac88492151222b2200a0e1b5af}{gamma}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSimulation}{Simulation}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \& \mbox{\hyperlink{classSimulation_abdb48771e24ba63a3db95b27d153b629}{strategy}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}
+\item 
+\mbox{\hyperlink{classProgressLogger}{Progress\+Logger}} \mbox{\hyperlink{classSimulation_a5f898fce7219971170a580872af32224}{progress\+Logger}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classSimulation}{Simulation} class for the Lennard-\/\+Jones simulation with a molecules. 
+
+This class is a subclass of the \doxylink{classMixedLJSimulation}{Mixed\+LJSimulation} and is used to simulate different particles in one simulation, with an additional molecules. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMembraneSimulation_ab4cd318e0c78f7cb2a853b21e74e0319}\index{MembraneSimulation@{MembraneSimulation}!MembraneSimulation@{MembraneSimulation}}
+\index{MembraneSimulation@{MembraneSimulation}!MembraneSimulation@{MembraneSimulation}}
+\doxysubsubsection{\texorpdfstring{MembraneSimulation()}{MembraneSimulation()}}
+{\footnotesize\ttfamily \label{classMembraneSimulation_ab4cd318e0c78f7cb2a853b21e74e0319} 
+Membrane\+Simulation\+::\+Membrane\+Simulation (\begin{DoxyParamCaption}\item[{double}]{time}{, }\item[{double}]{delta\+\_\+t}{, }\item[{double}]{end\+\_\+time}{, }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container}{, }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$}]{writer}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$}]{reader}{, }\item[{std\+::map$<$ unsigned, bool $>$}]{stationary\+Particle\+Types}{, }\item[{const std\+::map$<$ unsigned, std\+::pair$<$ double, double $>$ $>$ \&}]{LJParams}{, }\item[{std\+::array$<$ double, 3 $>$}]{domain\+Origin}{, }\item[{std\+::array$<$ double, 3 $>$}]{domain\+Size}{, }\item[{double}]{cutoff}{, }\item[{const \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}} \&}]{boundary\+Config}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAnalyzer}{Analyzer}} $>$}]{analyzer}{, }\item[{double}]{gravity\+\_\+constant}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$}]{thermostat}{, }\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classMolecule}{Molecule}} $>$ $>$}]{molecules}{, }\item[{unsigned}]{frequency}{ = {\ttfamily 10}, }\item[{unsigned}]{update\+Frequency}{ = {\ttfamily 10}, }\item[{size\+\_\+t}]{analysis\+Frequency}{ = {\ttfamily 10000}, }\item[{bool}]{read\+\_\+file}{ = {\ttfamily true}, }\item[{unsigned}]{n\+\_\+thermostat}{ = {\ttfamily 1000}, }\item[{bool}]{do\+Profile}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classMembrane}{Membrane} \doxylink{classSimulation}{Simulation} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The current time of the simulation i.\+e. start time \\
+\hline
+{\em delta\+\_\+t} & The time increment for each iteration \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em container} & The container of particles \\
+\hline
+{\em strat} & The strategy to be used for the physics calculations \\
+\hline
+{\em writer} & The writer object to write the output to file \\
+\hline
+{\em reader} & The reader object to read the input from file \\
+\hline
+{\em stationary\+Particle\+Types} & \\
+\hline
+{\em LJParams} & A map that resolves particle type to their epsilon and sigma values \\
+\hline
+{\em domain\+Origin} & The origin of the simulation domain \\
+\hline
+{\em domain\+Size} & The size of the simulation domain \\
+\hline
+{\em cutoff} & The cutoff radius of the simulation \\
+\hline
+{\em boundary\+Config} & The boundary condition configuration specification \\
+\hline
+{\em analyzer} & The analyzer object to analyze the simulation \\
+\hline
+{\em gravity\+\_\+constant} & The gravity constant to be used \\
+\hline
+{\em thermostat} & The thermostat to be used in the simulation \\
+\hline
+{\em molecules} & The molecules to be used in the simulation \\
+\hline
+{\em frequency} & The frequency for writing outputs (default = 10) \\
+\hline
+{\em update\+Frequency} & The frequency for updating the grid (default = 10) \\
+\hline
+{\em analysis\+Frequency} & The frequency for analysis (default = 10000) \\
+\hline
+{\em read\+\_\+file} & Whether to read the input file (default = true) \\
+\hline
+{\em n\+\_\+thermostat} & The number of steps between thermostat updates (default = 1000) \\
+\hline
+{\em do\+Profile} & Whether to profile the simulation (default = false) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMembraneSimulation_a6fe3724f93c42bb975d4a3c0994cd6e6}\index{MembraneSimulation@{MembraneSimulation}!getMolecules@{getMolecules}}
+\index{getMolecules@{getMolecules}!MembraneSimulation@{MembraneSimulation}}
+\doxysubsubsection{\texorpdfstring{getMolecules()}{getMolecules()}}
+{\footnotesize\ttfamily \label{classMembraneSimulation_a6fe3724f93c42bb975d4a3c0994cd6e6} 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classMolecule}{Molecule}} $>$ $>$ \& Membrane\+Simulation\+::get\+Molecules (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the molecules in the simulation. 
+
+\begin{DoxyReturn}{Returns}
+The molecules in the simulation 
+\end{DoxyReturn}
+\Hypertarget{classMembraneSimulation_a3f952f814e3c35ec4bbdc296c6f3fc61}\index{MembraneSimulation@{MembraneSimulation}!runSim@{runSim}}
+\index{runSim@{runSim}!MembraneSimulation@{MembraneSimulation}}
+\doxysubsubsection{\texorpdfstring{runSim()}{runSim()}}
+{\footnotesize\ttfamily \label{classMembraneSimulation_a3f952f814e3c35ec4bbdc296c6f3fc61} 
+void Membrane\+Simulation\+::run\+Sim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Run the simulation. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classLennardJonesDomainSimulation_a15d018ced2b94487a881b1224af7d405}{Lennard\+Jones\+Domain\+Simulation}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMembraneSimulation_a34a9220e6d903ae288aadef0d31effc2}\index{MembraneSimulation@{MembraneSimulation}!molecules@{molecules}}
+\index{molecules@{molecules}!MembraneSimulation@{MembraneSimulation}}
+\doxysubsubsection{\texorpdfstring{molecules}{molecules}}
+{\footnotesize\ttfamily \label{classMembraneSimulation_a34a9220e6d903ae288aadef0d31effc2} 
+std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classMolecule}{Molecule}}$>$ $>$ Membrane\+Simulation\+::molecules}
+
+The molecules in the simulation 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/simulation/\mbox{\hyperlink{MembraneSimulation_8h}{Membrane\+Simulation.\+h}}\item 
+src/simulation/\mbox{\hyperlink{MembraneSimulation_8cpp}{Membrane\+Simulation.\+cpp}}\end{DoxyCompactItemize}

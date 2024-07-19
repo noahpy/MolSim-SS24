@@ -1,0 +1,156 @@
+\doxysection{Analyzer Class Reference}
+\hypertarget{classAnalyzer}{}\label{classAnalyzer}\index{Analyzer@{Analyzer}}
+
+
+Base class for analyzing simulation data. This is introduced for assignment 5. It is able to calculate density and velocity profiles.  
+
+
+
+
+{\ttfamily \#include $<$Analyzer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAnalyzer_aeb1c84d53342c2e5b1ff2401fa2efcb3}{Analyzer}} (std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{classAnalyzer_a4d9c74cae1375e9710f71d946eda238d}{bin\+Counts}}, std\+::string \mbox{\hyperlink{classAnalyzer_af5600985a4d6e55d0139ae2132d6d48d}{out\+Name}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classAnalyzer}{Analyzer} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classAnalyzer_a56a3405dfc3838d7e5ebcb2aebc0d383}{analyze}} (\mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Analyze the simulation data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classAnalyzer_a1590cf4151b4dde2b3fac85f6262e75c}{get\+Vector\+Index\+From\+Bin\+Index}} (const std\+::array$<$ size\+\_\+t, 3 $>$ \&bin\+Index) const
+\begin{DoxyCompactList}\small\item\em Get the vector index from a bin index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classAnalyzer_a29829d519ef93432b675163b6b4e119e}{write\+Vector\+To\+CSVFile}} (const std\+::vector$<$ double $>$ \&data, const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Write a vector to a CSVFile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{classAnalyzer_a4d9c74cae1375e9710f71d946eda238d}{bin\+Counts}}
+\item 
+std\+::string \mbox{\hyperlink{classAnalyzer_af5600985a4d6e55d0139ae2132d6d48d}{out\+Name}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classAnalyzer_a105d5481e8a634ce7a0b80e6f7fa1566}{n\+Bins}}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classAnalyzer_a74cb5e14ad7e8f8811d781e7c2b4d729}{bin\+Size}}
+\item 
+bool \mbox{\hyperlink{classAnalyzer_ae7a6c9f6505376bbf445915f5ba1215b}{initialized}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for analyzing simulation data. This is introduced for assignment 5. It is able to calculate density and velocity profiles. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classAnalyzer_aeb1c84d53342c2e5b1ff2401fa2efcb3}\index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
+\index{Analyzer@{Analyzer}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{Analyzer()}{Analyzer()}}
+{\footnotesize\ttfamily \label{classAnalyzer_aeb1c84d53342c2e5b1ff2401fa2efcb3} 
+Analyzer\+::\+Analyzer (\begin{DoxyParamCaption}\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{bin\+Counts}{, }\item[{std\+::string}]{out\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classAnalyzer}{Analyzer} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bin\+Counts} & The number of bins in each dimension. Set a given dimension to 1 to disable binning in that dimension. \\
+\hline
+{\em out\+Name} & The name of the output file. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAnalyzer_a56a3405dfc3838d7e5ebcb2aebc0d383}\index{Analyzer@{Analyzer}!analyze@{analyze}}
+\index{analyze@{analyze}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{analyze()}{analyze()}}
+{\footnotesize\ttfamily \label{classAnalyzer_a56a3405dfc3838d7e5ebcb2aebc0d383} 
+void Analyzer\+::analyze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&}]{sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Analyze the simulation data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to analyze. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAnalyzer_a1590cf4151b4dde2b3fac85f6262e75c}\index{Analyzer@{Analyzer}!getVectorIndexFromBinIndex@{getVectorIndexFromBinIndex}}
+\index{getVectorIndexFromBinIndex@{getVectorIndexFromBinIndex}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{getVectorIndexFromBinIndex()}{getVectorIndexFromBinIndex()}}
+{\footnotesize\ttfamily \label{classAnalyzer_a1590cf4151b4dde2b3fac85f6262e75c} 
+size\+\_\+t Analyzer\+::get\+Vector\+Index\+From\+Bin\+Index (\begin{DoxyParamCaption}\item[{const std\+::array$<$ size\+\_\+t, 3 $>$ \&}]{bin\+Index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [protected]}}
+
+
+
+Get the vector index from a bin index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bin\+Index} & The bin index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The vector index. 
+\end{DoxyReturn}
+\Hypertarget{classAnalyzer_a29829d519ef93432b675163b6b4e119e}\index{Analyzer@{Analyzer}!writeVectorToCSVFile@{writeVectorToCSVFile}}
+\index{writeVectorToCSVFile@{writeVectorToCSVFile}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{writeVectorToCSVFile()}{writeVectorToCSVFile()}}
+{\footnotesize\ttfamily \label{classAnalyzer_a29829d519ef93432b675163b6b4e119e} 
+void Analyzer\+::write\+Vector\+To\+CSVFile (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{data}{, }\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Write a vector to a CSVFile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The vector to write. \\
+\hline
+{\em filename} & The name of the file to write to. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classAnalyzer_a4d9c74cae1375e9710f71d946eda238d}\index{Analyzer@{Analyzer}!binCounts@{binCounts}}
+\index{binCounts@{binCounts}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{binCounts}{binCounts}}
+{\footnotesize\ttfamily \label{classAnalyzer_a4d9c74cae1375e9710f71d946eda238d} 
+std\+::array$<$size\+\_\+t, 3$>$ Analyzer\+::bin\+Counts\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of bins in each dimension. \Hypertarget{classAnalyzer_a74cb5e14ad7e8f8811d781e7c2b4d729}\index{Analyzer@{Analyzer}!binSize@{binSize}}
+\index{binSize@{binSize}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{binSize}{binSize}}
+{\footnotesize\ttfamily \label{classAnalyzer_a74cb5e14ad7e8f8811d781e7c2b4d729} 
+std\+::array$<$double, 3$>$ Analyzer\+::bin\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+The width of each bin in each dimension. \Hypertarget{classAnalyzer_ae7a6c9f6505376bbf445915f5ba1215b}\index{Analyzer@{Analyzer}!initialized@{initialized}}
+\index{initialized@{initialized}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{initialized}{initialized}}
+{\footnotesize\ttfamily \label{classAnalyzer_ae7a6c9f6505376bbf445915f5ba1215b} 
+bool Analyzer\+::initialized = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+Whether the analyzer has been initialized. \Hypertarget{classAnalyzer_a105d5481e8a634ce7a0b80e6f7fa1566}\index{Analyzer@{Analyzer}!nBins@{nBins}}
+\index{nBins@{nBins}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{nBins}{nBins}}
+{\footnotesize\ttfamily \label{classAnalyzer_a105d5481e8a634ce7a0b80e6f7fa1566} 
+size\+\_\+t Analyzer\+::n\+Bins\hspace{0.3cm}{\ttfamily [protected]}}
+
+The total number of bins. \Hypertarget{classAnalyzer_af5600985a4d6e55d0139ae2132d6d48d}\index{Analyzer@{Analyzer}!outName@{outName}}
+\index{outName@{outName}!Analyzer@{Analyzer}}
+\doxysubsubsection{\texorpdfstring{outName}{outName}}
+{\footnotesize\ttfamily \label{classAnalyzer_af5600985a4d6e55d0139ae2132d6d48d} 
+std\+::string Analyzer\+::out\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+The name of the output file. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/analytics/\mbox{\hyperlink{Analyzer_8h}{Analyzer.\+h}}\item 
+src/analytics/\mbox{\hyperlink{Analyzer_8cpp}{Analyzer.\+cpp}}\end{DoxyCompactItemize}

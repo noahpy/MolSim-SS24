@@ -1,0 +1,33 @@
+\doxysection{src/io/xmlparse/xmlparse.cpp File Reference}
+\hypertarget{xmlparse_8cpp}{}\label{xmlparse_8cpp}\index{src/io/xmlparse/xmlparse.cpp@{src/io/xmlparse/xmlparse.cpp}}
+{\ttfamily \#include "{}io/xmlparse/xmlparse.\+h"{}}\newline
+{\ttfamily \#include "{}io/xsd/simulation.\+h"{}}\newline
+{\ttfamily \#include "{}physics/thermostat/\+Thermostat.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
+{\ttfamily \#include "{}models/molecules/\+Membrane.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{xmlparse_8cpp_aa69284ada8d80e6607b4e1fccd5e54d7}{xmlparse}} (\mbox{\hyperlink{classParams}{Params}} \&sim\+\_\+params, std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Parse XML file and read parameters, which need to be read in before instantiation of the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{xmlparse_8cpp_aa69284ada8d80e6607b4e1fccd5e54d7}\index{xmlparse.cpp@{xmlparse.cpp}!xmlparse@{xmlparse}}
+\index{xmlparse@{xmlparse}!xmlparse.cpp@{xmlparse.cpp}}
+\doxysubsubsection{\texorpdfstring{xmlparse()}{xmlparse()}}
+{\footnotesize\ttfamily \label{xmlparse_8cpp_aa69284ada8d80e6607b4e1fccd5e54d7} 
+void xmlparse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParams}{Params}} \&}]{params}{, }\item[{std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Parse XML file and read parameters, which need to be read in before instantiation of the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & \\
+\hline
+{\em filename} & \\
+\hline
+\end{DoxyParams}

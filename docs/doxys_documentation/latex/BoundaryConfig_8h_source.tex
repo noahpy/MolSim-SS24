@@ -1,0 +1,96 @@
+\doxysection{Boundary\+Config.\+h}
+\hypertarget{BoundaryConfig_8h_source}{}\label{BoundaryConfig_8h_source}\index{src/physics/boundaryConditions/BoundaryConfig.h@{src/physics/boundaryConditions/BoundaryConfig.h}}
+\mbox{\hyperlink{BoundaryConfig_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Position_8h}{utils/Position.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <spdlog/spdlog.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ \{\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ab4f0c6dc947ae9ed5e9e1b1381c982a7}{OUTFLOW}},\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{SOFT\_REFLECTIVE}},\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ad9d83fc826ae0d42075af007a477e2c9}{PERIODIC}}\ \};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classBoundaryConfig_af344ff933a1d25622b44c9fbadea7b44}{BoundaryConfig}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ 3D\ Config}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classBoundaryConfig_a5eb957573eb2b317dc97d78c6c8b449c}{BoundaryConfig}}(}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ left,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ right,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ top,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ bottom,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ front,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ back)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classBoundaryConfig_ac567ac544d3d9dfe3366d7671caa0b61}{boundaryMap}}\ \{\ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}},\ left\ \},\ \ \ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}},\ right\ \},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}},\ top\ \},\ \ \ \ \ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}},\ bottom\ \},}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}},\ front\ \},\ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}},\ back\ \}\ \}\ \{\};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ 2D\ Config}}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classBoundaryConfig_af6fc1d30d7ee0b9210cf1d67c439fdd1}{BoundaryConfig}}(\mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ left,\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ right,\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ top,\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ bottom)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ :\ boundaryMap\ \{\ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}},\ left\ \},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}},\ right\ \},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}},\ top\ \},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}},\ bottom\ \}\ \}\ \{\};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ std::map<Position,\ BoundaryType>\ \mbox{\hyperlink{classBoundaryConfig_ac567ac544d3d9dfe3366d7671caa0b61}{boundaryMap}};}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ \mbox{\hyperlink{BoundaryConfig_8h_a5522f9bde351c1b342bc3e0173d9ccf4}{getBoundaryType}}(\textcolor{keyword}{const}\ std::string\&\ str)}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}outflow"{}})\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ab4f0c6dc947ae9ed5e9e1b1381c982a7}{BoundaryType::OUTFLOW}};}
+\DoxyCodeLine{00044\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}soft\_reflective"{}})\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}};}
+\DoxyCodeLine{00046\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}periodic"{}})\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ad9d83fc826ae0d42075af007a477e2c9}{BoundaryType::PERIODIC}};}
+\DoxyCodeLine{00048\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}Unknown\ boundary\ type:\ \{\},\ choosing\ OUTFLOW"{}},\ str);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ab4f0c6dc947ae9ed5e9e1b1381c982a7}{BoundaryType::OUTFLOW}};}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{BoundaryConfig_8h_a260afa8eb0d7e9614d14a31cb2b6106c}{getBoundaryString}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ \mbox{\hyperlink{classtype}{type}})}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtype}{type}}\ ==\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ab4f0c6dc947ae9ed5e9e1b1381c982a7}{BoundaryType::OUTFLOW}})\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}outflow"{}};}
+\DoxyCodeLine{00062\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtype}{type}}\ ==\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}})\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}soft\_reflective"{}};}
+\DoxyCodeLine{00064\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtype}{type}}\ ==\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ad9d83fc826ae0d42075af007a477e2c9}{BoundaryType::PERIODIC}})\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}periodic"{}};}
+\DoxyCodeLine{00066\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}Unknown\ boundary\ type,\ choosing\ OUTFLOW"{}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}overflow"{}};}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{BoundaryConfig_8h_a2d26311a66e8c2e851e394ca5e916ed7}{boundaryToPriority}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\&\ \mbox{\hyperlink{classtype}{type}})}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classtype}{type}})\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ab4f0c6dc947ae9ed5e9e1b1381c982a7}{BoundaryType::OUTFLOW}}:}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ad9d83fc826ae0d42075af007a477e2c9}{BoundaryType::PERIODIC}}:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}}:}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}Boundary\ type\ not\ recognized.\ Its\ priority\ has\ not\ been\ specified."{}});}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Boundary\ type\ not\ recognized"{}});}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{BoundaryConfig_8h_a96fd08624a87668ef5a504929824d042}{compareBoundaryTypeByPriority}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\&\ first,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\&\ second)}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{BoundaryConfig_8h_a2d26311a66e8c2e851e394ca5e916ed7}{boundaryToPriority}}(first)\ <\ \mbox{\hyperlink{BoundaryConfig_8h_a2d26311a66e8c2e851e394ca5e916ed7}{boundaryToPriority}}(second);}
+\DoxyCodeLine{00102\ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{BoundaryConfig_8h_a1e6da5ea70f93f5a28a5764222bc29ef}{compareBoundaryConfigMap}}(}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{const}\ std::pair<Position,\ BoundaryType>\&\ a,\ \textcolor{keyword}{const}\ std::pair<Position,\ BoundaryType>\&\ b)}
+\DoxyCodeLine{00114\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ typeA\ =\ a.second;}
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{BoundaryType}}\ typeB\ =\ b.second;}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{BoundaryConfig_8h_a96fd08624a87668ef5a504929824d042}{compareBoundaryTypeByPriority}}(typeA,\ typeB);}
+\DoxyCodeLine{00118\ \}}
+
+\end{DoxyCode}

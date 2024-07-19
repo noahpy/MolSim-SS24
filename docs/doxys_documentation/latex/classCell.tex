@@ -1,0 +1,364 @@
+\doxysection{Cell Class Reference}
+\hypertarget{classCell}{}\label{classCell}\index{Cell@{Cell}}
+
+
+Represents a single cell within the \doxylink{classCellGrid}{Cell\+Grid}.  
+
+
+
+
+{\ttfamily \#include $<$Cell.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classCell_1_1PairListIterator}{Pair\+List\+Iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCell_a0cacb11a350dae2d87a5b020f28407ff}{Cell}} (const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} index)
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{classCell}{Cell}, initializes it as a bulk cell. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCell_acdbccdb87a132b13c32686599befe2fe}{Cell}} (\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} \mbox{\hyperlink{classtype}{type}}, const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} index)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classCell}{Cell} with a specified type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCell_a5f7e1f953c71c7421726dc6af263e467}{Cell}} (const \mbox{\hyperlink{classCell}{Cell}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor for \doxylink{classCell}{Cell}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{\texorpdfstring{$\sim$}{\string~}\+Cell}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{classCell}{Cell}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCell_abc74ba060723b8d7f0448f8d76afa64f}{add\+Particle}} (\mbox{\hyperlink{classParticle}{Particle}} \&particle)
+\begin{DoxyCompactList}\small\item\em Adds a particle to the cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCell_aa8c6b8004ef50303d7cf685f6fb85171}{remove\+Particle}} (\mbox{\hyperlink{classParticle}{Particle}} \&particle)
+\begin{DoxyCompactList}\small\item\em Removes a particle from the cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCell_adb2e6aea3cd6e53d7727e57331ef05cc}{clear\+Particles}} ()
+\begin{DoxyCompactList}\small\item\em Clears all particles from the cell. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}} \& \mbox{\hyperlink{classCell_a6f3c4b2700b54ba5d30ecca03d44429b}{get\+Particles}} ()
+\begin{DoxyCompactList}\small\item\em Returns a list of references to all particles in the cell. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} \mbox{\hyperlink{classCell_a53cdbd744bf60c95f304aa1cbe7ed49a}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Returns the type of the cell. \end{DoxyCompactList}\item 
+Particle\+Ref\+List\+::iterator \mbox{\hyperlink{classCell_ad2bc2fb45166acc0f6f72dde2c54757b}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Returns an iterator pointing to the beginning of the particle list. \end{DoxyCompactList}\item 
+Particle\+Ref\+List\+::iterator \mbox{\hyperlink{classCell_a41b565f5a1b4e89e2728fa2140d8b7d9}{end}} ()
+\begin{DoxyCompactList}\small\item\em Returns an iterator pointing to the end of the particle list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCell_a3cad0d1502ad33b992abebca0ad79e76}{get\+Visited}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\item 
+bool \mbox{\hyperlink{classCell_a03f91585603d1b572bc0ec25796da549}{visit}} () \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Returns the current state of the visited flag and sets to false if true. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCell_aa1eae8d19642243c811aba941781ebd8}{unvisit}} () \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\item 
+\mbox{\hyperlink{classCell_1_1PairListIterator}{Pair\+List\+Iterator}} \mbox{\hyperlink{classCell_a98af32db9cee96056b7d4fb0960bd5f1}{begin\+Pairs}} ()
+\begin{DoxyCompactList}\small\item\em Returns a Pair\+Iterator pointing to the beginning of the particle pairs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCell_1_1PairListIterator}{Pair\+List\+Iterator}} \mbox{\hyperlink{classCell_a1ece72ee388de6eebce79727b83501bb}{end\+Pairs}} ()
+\begin{DoxyCompactList}\small\item\em Returns a Pair\+Iterator pointing to the end of the particle pairs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \mbox{\hyperlink{classCell_a247717ae4a44d2637ae56929700b7119}{my\+Index}}
+\begin{DoxyCompactList}\small\item\em Index of the cell. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ $>$ $>$ \mbox{\hyperlink{classCell_ae0ad055cdb99e440a443d65097ba20ed}{boundary\+Neighbours}}
+\begin{DoxyCompactList}\small\item\em Neighbours of the cell. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ $>$ $>$ \mbox{\hyperlink{classCell_a4a2cfd9fbc8d813187edba3772ab4374}{halo\+Neighbours}}
+\item 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ $>$ $>$ \mbox{\hyperlink{classCell_ae0c70baca2f0459d2058e2476d5eedc2}{inner\+Neighbours}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ \mbox{\hyperlink{classCell_a57dbfacfd05d32bc5c0787a180892aac}{stencil\+Neighbours}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} \mbox{\hyperlink{classCell_a8992d21b67e0ad78251dbd1de4c0b4f3}{type}}
+\begin{DoxyCompactList}\small\item\em The type of the cell (boundary, halo, or bulk). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCell_ac0fdf52adc7d9dd8c5de95635ff04de3}{visited}} = false
+\begin{DoxyCompactList}\small\item\em Flag to check if this cell has been visited. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}} \mbox{\hyperlink{classCell_abb8862246fc92b8331d09c1bf18e7aeb}{particles}}
+\begin{DoxyCompactList}\small\item\em A list storing references to particles within the cell. \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{classCell_a6190dad59a79f0b9299b4e0c70e44b6b}{mutex}}
+\begin{DoxyCompactList}\small\item\em mutex \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single cell within the \doxylink{classCellGrid}{Cell\+Grid}. 
+
+A \doxylink{classCell}{Cell} stores particles and tracks its type (boundary, halo, or bulk). It provides methods for managing particles, accessing their references, and managing a neighbor counter. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCell_a0cacb11a350dae2d87a5b020f28407ff}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classCell_a0cacb11a350dae2d87a5b020f28407ff} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor for \doxylink{classCell}{Cell}, initializes it as a bulk cell. 
+
+\Hypertarget{classCell_acdbccdb87a132b13c32686599befe2fe}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classCell_acdbccdb87a132b13c32686599befe2fe} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}}}]{type}{, }\item[{const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for \doxylink{classCell}{Cell} with a specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the cell (boundary, halo, or bulk). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCell_a5f7e1f953c71c7421726dc6af263e467}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classCell_a5f7e1f953c71c7421726dc6af263e467} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCell}{Cell}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Copy constructor for \doxylink{classCell}{Cell}. 
+
+\Hypertarget{classCell_a9fa559f7a28e2b4336c6879ca09304d8}\index{Cell@{Cell}!````~Cell@{\texorpdfstring{$\sim$}{\string~}Cell}}
+\index{````~Cell@{\texorpdfstring{$\sim$}{\string~}Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Cell()}{\string~Cell()}}
+{\footnotesize\ttfamily \label{classCell_a9fa559f7a28e2b4336c6879ca09304d8} 
+Cell\+::\texorpdfstring{$\sim$}{\string~}\+Cell (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destructor for \doxylink{classCell}{Cell}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCell_abc74ba060723b8d7f0448f8d76afa64f}\index{Cell@{Cell}!addParticle@{addParticle}}
+\index{addParticle@{addParticle}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{addParticle()}{addParticle()}}
+{\footnotesize\ttfamily \label{classCell_abc74ba060723b8d7f0448f8d76afa64f} 
+void Cell\+::add\+Particle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{particle}{}\end{DoxyParamCaption})}
+
+
+
+Adds a particle to the cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle} & A reference to the particle to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCell_ad2bc2fb45166acc0f6f72dde2c54757b}\index{Cell@{Cell}!begin@{begin}}
+\index{begin@{begin}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \label{classCell_ad2bc2fb45166acc0f6f72dde2c54757b} 
+Particle\+Ref\+List\+::iterator Cell\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns an iterator pointing to the beginning of the particle list. 
+
+\begin{DoxyReturn}{Returns}
+An iterator to the beginning of the particle list. 
+\end{DoxyReturn}
+\Hypertarget{classCell_a98af32db9cee96056b7d4fb0960bd5f1}\index{Cell@{Cell}!beginPairs@{beginPairs}}
+\index{beginPairs@{beginPairs}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{beginPairs()}{beginPairs()}}
+{\footnotesize\ttfamily \label{classCell_a98af32db9cee96056b7d4fb0960bd5f1} 
+\mbox{\hyperlink{classCell_1_1PairListIterator}{Cell\+::\+Pair\+List\+Iterator}} Cell\+::begin\+Pairs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns a Pair\+Iterator pointing to the beginning of the particle pairs. 
+
+\begin{DoxyReturn}{Returns}
+A Pair\+Iterator at the beginning of the pairs. 
+\end{DoxyReturn}
+\Hypertarget{classCell_adb2e6aea3cd6e53d7727e57331ef05cc}\index{Cell@{Cell}!clearParticles@{clearParticles}}
+\index{clearParticles@{clearParticles}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{clearParticles()}{clearParticles()}}
+{\footnotesize\ttfamily \label{classCell_adb2e6aea3cd6e53d7727e57331ef05cc} 
+void Cell\+::clear\+Particles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears all particles from the cell. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classCell_a41b565f5a1b4e89e2728fa2140d8b7d9}\index{Cell@{Cell}!end@{end}}
+\index{end@{end}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \label{classCell_a41b565f5a1b4e89e2728fa2140d8b7d9} 
+Particle\+Ref\+List\+::iterator Cell\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns an iterator pointing to the end of the particle list. 
+
+\begin{DoxyReturn}{Returns}
+An iterator to the end of the particle list. 
+\end{DoxyReturn}
+\Hypertarget{classCell_a1ece72ee388de6eebce79727b83501bb}\index{Cell@{Cell}!endPairs@{endPairs}}
+\index{endPairs@{endPairs}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{endPairs()}{endPairs()}}
+{\footnotesize\ttfamily \label{classCell_a1ece72ee388de6eebce79727b83501bb} 
+\mbox{\hyperlink{classCell_1_1PairListIterator}{Cell\+::\+Pair\+List\+Iterator}} Cell\+::end\+Pairs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns a Pair\+Iterator pointing to the end of the particle pairs. 
+
+\begin{DoxyReturn}{Returns}
+A Pair\+Iterator at the end of the pairs. 
+\end{DoxyReturn}
+\Hypertarget{classCell_a6f3c4b2700b54ba5d30ecca03d44429b}\index{Cell@{Cell}!getParticles@{getParticles}}
+\index{getParticles@{getParticles}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getParticles()}{getParticles()}}
+{\footnotesize\ttfamily \label{classCell_a6f3c4b2700b54ba5d30ecca03d44429b} 
+\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}} \& Cell\+::get\+Particles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Returns a list of references to all particles in the cell. 
+
+\begin{DoxyReturn}{Returns}
+A list of references to the particles in the cell. 
+\end{DoxyReturn}
+\Hypertarget{classCell_a53cdbd744bf60c95f304aa1cbe7ed49a}\index{Cell@{Cell}!getType@{getType}}
+\index{getType@{getType}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classCell_a53cdbd744bf60c95f304aa1cbe7ed49a} 
+\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} Cell\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Returns the type of the cell. 
+
+\begin{DoxyReturn}{Returns}
+The Cell\+Type of the cell (boundary, halo, or bulk). 
+\end{DoxyReturn}
+\Hypertarget{classCell_a3cad0d1502ad33b992abebca0ad79e76}\index{Cell@{Cell}!getVisited@{getVisited}}
+\index{getVisited@{getVisited}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getVisited()}{getVisited()}}
+{\footnotesize\ttfamily \label{classCell_a3cad0d1502ad33b992abebca0ad79e76} 
+bool Cell\+::get\+Visited (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCell_aa8c6b8004ef50303d7cf685f6fb85171}\index{Cell@{Cell}!removeParticle@{removeParticle}}
+\index{removeParticle@{removeParticle}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{removeParticle()}{removeParticle()}}
+{\footnotesize\ttfamily \label{classCell_aa8c6b8004ef50303d7cf685f6fb85171} 
+void Cell\+::remove\+Particle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{particle}{}\end{DoxyParamCaption})}
+
+
+
+Removes a particle from the cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle} & A reference to the particle to be removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCell_aa1eae8d19642243c811aba941781ebd8}\index{Cell@{Cell}!unvisit@{unvisit}}
+\index{unvisit@{unvisit}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{unvisit()}{unvisit()}}
+{\footnotesize\ttfamily \label{classCell_aa1eae8d19642243c811aba941781ebd8} 
+void Cell\+::unvisit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCell_a03f91585603d1b572bc0ec25796da549}\index{Cell@{Cell}!visit@{visit}}
+\index{visit@{visit}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{visit()}{visit()}}
+{\footnotesize\ttfamily \label{classCell_a03f91585603d1b572bc0ec25796da549} 
+bool Cell\+::visit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the current state of the visited flag and sets to false if true. 
+
+\begin{DoxyReturn}{Returns}
+The current state of the visited flag. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCell_ae0ad055cdb99e440a443d65097ba20ed}\index{Cell@{Cell}!boundaryNeighbours@{boundaryNeighbours}}
+\index{boundaryNeighbours@{boundaryNeighbours}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{boundaryNeighbours}{boundaryNeighbours}}
+{\footnotesize\ttfamily \label{classCell_ae0ad055cdb99e440a443d65097ba20ed} 
+std\+::vector$<$std\+::pair$<$\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}$>$ $>$ $>$ Cell\+::boundary\+Neighbours}
+
+
+
+Neighbours of the cell. 
+
+\Hypertarget{classCell_a4a2cfd9fbc8d813187edba3772ab4374}\index{Cell@{Cell}!haloNeighbours@{haloNeighbours}}
+\index{haloNeighbours@{haloNeighbours}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{haloNeighbours}{haloNeighbours}}
+{\footnotesize\ttfamily \label{classCell_a4a2cfd9fbc8d813187edba3772ab4374} 
+std\+::vector$<$std\+::pair$<$\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}$>$ $>$ $>$ Cell\+::halo\+Neighbours}
+
+\Hypertarget{classCell_ae0c70baca2f0459d2058e2476d5eedc2}\index{Cell@{Cell}!innerNeighbours@{innerNeighbours}}
+\index{innerNeighbours@{innerNeighbours}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{innerNeighbours}{innerNeighbours}}
+{\footnotesize\ttfamily \label{classCell_ae0c70baca2f0459d2058e2476d5eedc2} 
+std\+::vector$<$std\+::pair$<$\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}$>$ $>$ $>$ Cell\+::inner\+Neighbours}
+
+\Hypertarget{classCell_a6190dad59a79f0b9299b4e0c70e44b6b}\index{Cell@{Cell}!mutex@{mutex}}
+\index{mutex@{mutex}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{mutex}{mutex}}
+{\footnotesize\ttfamily \label{classCell_a6190dad59a79f0b9299b4e0c70e44b6b} 
+std\+::mutex Cell\+::mutex\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+mutex 
+
+\Hypertarget{classCell_a247717ae4a44d2637ae56929700b7119}\index{Cell@{Cell}!myIndex@{myIndex}}
+\index{myIndex@{myIndex}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{myIndex}{myIndex}}
+{\footnotesize\ttfamily \label{classCell_a247717ae4a44d2637ae56929700b7119} 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} Cell\+::my\+Index}
+
+
+
+Index of the cell. 
+
+\Hypertarget{classCell_abb8862246fc92b8331d09c1bf18e7aeb}\index{Cell@{Cell}!particles@{particles}}
+\index{particles@{particles}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{particles}{particles}}
+{\footnotesize\ttfamily \label{classCell_abb8862246fc92b8331d09c1bf18e7aeb} 
+\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}} Cell\+::particles\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A list storing references to particles within the cell. 
+
+\Hypertarget{classCell_a57dbfacfd05d32bc5c0787a180892aac}\index{Cell@{Cell}!stencilNeighbours@{stencilNeighbours}}
+\index{stencilNeighbours@{stencilNeighbours}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{stencilNeighbours}{stencilNeighbours}}
+{\footnotesize\ttfamily \label{classCell_a57dbfacfd05d32bc5c0787a180892aac} 
+std\+::vector$<$\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}$>$ Cell\+::stencil\+Neighbours}
+
+\Hypertarget{classCell_a8992d21b67e0ad78251dbd1de4c0b4f3}\index{Cell@{Cell}!type@{type}}
+\index{type@{type}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{classCell_a8992d21b67e0ad78251dbd1de4c0b4f3} 
+\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} Cell\+::type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The type of the cell (boundary, halo, or bulk). 
+
+\Hypertarget{classCell_ac0fdf52adc7d9dd8c5de95635ff04de3}\index{Cell@{Cell}!visited@{visited}}
+\index{visited@{visited}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{visited}{visited}}
+{\footnotesize\ttfamily \label{classCell_ac0fdf52adc7d9dd8c5de95635ff04de3} 
+bool Cell\+::visited = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag to check if this cell has been visited. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/linked\+\_\+cell/cell/\mbox{\hyperlink{Cell_8h}{Cell.\+h}}\item 
+src/models/linked\+\_\+cell/cell/\mbox{\hyperlink{Cell_8cpp}{Cell.\+cpp}}\end{DoxyCompactItemize}

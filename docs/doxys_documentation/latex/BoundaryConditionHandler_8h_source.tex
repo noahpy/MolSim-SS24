@@ -1,0 +1,32 @@
+\doxysection{Boundary\+Condition\+Handler.\+h}
+\hypertarget{BoundaryConditionHandler_8h_source}{}\label{BoundaryConditionHandler_8h_source}\index{src/physics/boundaryConditions/BoundaryConditionHandler.h@{src/physics/boundaryConditions/BoundaryConditionHandler.h}}
+\mbox{\hyperlink{BoundaryConditionHandler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryCondition_8h}{physics/boundaryConditions/BoundaryCondition.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryConfig_8h}{physics/boundaryConditions/BoundaryConfig.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ forward\ declare}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellGrid}{CellGrid}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBoundaryConditionHandler}{BoundaryConditionHandler}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classBoundaryConditionHandler_ab38704e462d30815dfaf5ce9e11696e1}{BoundaryConditionHandler}}(}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\&\ \mbox{\hyperlink{classBoundaryConditionHandler_a550a232544fc997d5fa76b7a60832bdf}{boundaryConfig}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCellGrid}{CellGrid}}\&\ cellGrid);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBoundaryConditionHandler_a6b5d810602cac0fa2a30dbe3ff9c0d68}{preUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}});}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBoundaryConditionHandler_a0e78ffad239ed92305d73ccc4045490f}{postUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classBoundaryConditionHandler_aceff5e2b9b566a060ecb7db2b6d9cd55}{dimensionality}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\ \mbox{\hyperlink{classBoundaryConditionHandler_a550a232544fc997d5fa76b7a60832bdf}{boundaryConfig}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<std::unique\_ptr<BoundaryCondition>>}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBoundaryConditionHandler_ac2adf67d070ada1da3b1373d8728755f}{boundaryConditions}};\ }
+\DoxyCodeLine{00045\ \};}
+
+\end{DoxyCode}

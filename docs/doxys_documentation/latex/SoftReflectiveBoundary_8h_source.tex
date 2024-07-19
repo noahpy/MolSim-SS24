@@ -1,0 +1,43 @@
+\doxysection{Soft\+Reflective\+Boundary.\+h}
+\hypertarget{SoftReflectiveBoundary_8h_source}{}\label{SoftReflectiveBoundary_8h_source}\index{src/physics/boundaryConditions/SoftReflectiveBoundary.h@{src/physics/boundaryConditions/SoftReflectiveBoundary.h}}
+\mbox{\hyperlink{SoftReflectiveBoundary_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Cell_8h}{models/linked\_cell/cell/Cell.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryCondition_8h}{physics/boundaryConditions/BoundaryCondition.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <spdlog/spdlog.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSoftReflectiveBoundary}{SoftReflectiveBoundary}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classBoundaryCondition}{BoundaryCondition}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ lift\ constructor}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{BoundaryCondition::BoundaryCondition}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoftReflectiveBoundary_a00be82115bb5bcce7a3efafff7475407}{preUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSoftReflectiveBoundary_ae0add0182fda0ee1c9ab23161b02c47f}{postUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ \mbox{\hyperlink{classSoftReflectiveBoundary_a158bba0562942c9d4a969ab3c4530ca7}{filterHaloNeighbors}}(}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::pair<\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}},\ std::vector<Position>>>\&\ haloNeighbors)}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ neighbors\ :\ haloNeighbors)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ cellIndex\ =\ neighbors.first;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ positions\ =\ neighbors.second;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}\ :\ positions)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}\ ==\ this-\/>\mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}\ \&\&\ positions.size()\ ==\ 1)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Only\ if\ the\ neighbor\ is\ at\ the\ side\ we\ want,\ then\ we\ can\ use\ it}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cellIndex;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}No\ suitable\ halo\ neighbor\ found\ for\ boundary\ handling.\ This\ is\ a\ bug"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ 0,\ 0,\ 0\ \};}
+\DoxyCodeLine{00056\ \ \ \ \ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ std::vector<std::unique\_ptr<Particle>>}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSoftReflectiveBoundary_a5ce1b37f83ab23d0d39dee42e0863380}{insertedParticles}};\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSoftReflectiveBoundary_ab00f3005456f8839ac58dd79cdac2e9d}{insertionIndex}};\ }
+\DoxyCodeLine{00061\ \};}
+
+\end{DoxyCode}

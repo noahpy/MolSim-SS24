@@ -1,0 +1,220 @@
+\doxysection{Data\+Array\+List\+\_\+t Class Reference}
+\hypertarget{classDataArrayList__t}{}\label{classDataArrayList__t}\index{DataArrayList\_t@{DataArrayList\_t}}
+
+
+List class corresponding to the Data\+Array\+List\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$vtk-\/unstructured.\+h$>$}
+
+Inheritance diagram for Data\+Array\+List\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.643836cm]{classDataArrayList__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDataArrayList__t_a3ec10a5824450940e47a90c376fdb065}{Data\+Array\+List\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataArrayList__t_ad821001ed5f5f94f06712f5b0acab874}{Data\+Array\+List\+\_\+t}} (size\+\_\+type n, const \mbox{\hyperlink{namespacexml__schema_a69bfaf24f63a8c18ebd8e21db6b343df}{\+::xml\+\_\+schema\+::decimal}} \&x)
+\begin{DoxyCompactList}\small\item\em Create a list with copies of the specified element. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename I $>$ }\\\mbox{\hyperlink{classDataArrayList__t_a7b3c40bcc5d41bafc235a30ffa1a3b8f}{Data\+Array\+List\+\_\+t}} (const I \&begin, const I \&end)
+\begin{DoxyCompactList}\small\item\em Create a list from an iterator range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataArrayList__t_a2359f0c60fd99bccf97385f49dd63bbc}{Data\+Array\+List\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataArrayList__t_ad8f928f4551dce259a0824cf545ca32a}{Data\+Array\+List\+\_\+t}} (const \+::xercesc\+::\+DOMAttr \&a, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM attribute. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataArrayList__t_a03c2b23434b76270327b9d7983499d62}{Data\+Array\+List\+\_\+t}} (const \+::std\+::string \&s, const \+::xercesc\+::\+DOMElement \texorpdfstring{$\ast$}{*}e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a string fragment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataArrayList__t_a4f9f8402981f882f05bb857e69a4c9a1}{Data\+Array\+List\+\_\+t}} (const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \& \mbox{\hyperlink{classDataArrayList__t_aa80cc972d53edaad748b9062b7d57952}{operator=}} (const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&)=default
+\item 
+virtual \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classDataArrayList__t_a8303457db583a0cb6631dedc01172fca}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classDataArrayList__t_aee3c16237122c72a9c163847232d830f}{\texorpdfstring{$\sim$}{\string~}\+Data\+Array\+List\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+List class corresponding to the Data\+Array\+List\+\_\+t schema type. 
+
+This class has an interface of a standard C++ sequence (e.\+g., std\+::vector). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDataArrayList__t_a3ec10a5824450940e47a90c376fdb065}\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{DataArrayList\_t()}{DataArrayList\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_a3ec10a5824450940e47a90c376fdb065} 
+Data\+Array\+List\+\_\+t\+::\+Data\+Array\+List\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Creates an empty list. \Hypertarget{classDataArrayList__t_ad821001ed5f5f94f06712f5b0acab874}\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{DataArrayList\_t()}{DataArrayList\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_ad821001ed5f5f94f06712f5b0acab874} 
+Data\+Array\+List\+\_\+t\+::\+Data\+Array\+List\+\_\+t (\begin{DoxyParamCaption}\item[{size\+\_\+type}]{n}{, }\item[{const \mbox{\hyperlink{namespacexml__schema_a69bfaf24f63a8c18ebd8e21db6b343df}{\+::xml\+\_\+schema\+::decimal}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Create a list with copies of the specified element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & A number of elements to copy. \\
+\hline
+{\em x} & An element to copy.\\
+\hline
+\end{DoxyParams}
+This constructor creates a list with {\itshape n} copies of {\itshape x}. \Hypertarget{classDataArrayList__t_a7b3c40bcc5d41bafc235a30ffa1a3b8f}\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{DataArrayList\_t()}{DataArrayList\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_a7b3c40bcc5d41bafc235a30ffa1a3b8f} 
+template$<$typename I $>$ \\
+Data\+Array\+List\+\_\+t\+::\+Data\+Array\+List\+\_\+t (\begin{DoxyParamCaption}\item[{const I \&}]{begin}{, }\item[{const I \&}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Create a list from an iterator range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & An iterator pointing to the first element. \\
+\hline
+{\em end} & An iterator pointing to the one past the last element.\\
+\hline
+\end{DoxyParams}
+This constructor creates a list consisting of copies of the elements in the range \mbox{[}begin,end). \Hypertarget{classDataArrayList__t_a2359f0c60fd99bccf97385f49dd63bbc}\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{DataArrayList\_t()}{DataArrayList\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_a2359f0c60fd99bccf97385f49dd63bbc} 
+Data\+Array\+List\+\_\+t\+::\+Data\+Array\+List\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDataArrayList__t_ad8f928f4551dce259a0824cf545ca32a}\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{DataArrayList\_t()}{DataArrayList\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_ad8f928f4551dce259a0824cf545ca32a} 
+Data\+Array\+List\+\_\+t\+::\+Data\+Array\+List\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMAttr \&}]{a}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & A DOM attribute to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDataArrayList__t_a03c2b23434b76270327b9d7983499d62}\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{DataArrayList\_t()}{DataArrayList\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_a03c2b23434b76270327b9d7983499d62} 
+Data\+Array\+List\+\_\+t\+::\+Data\+Array\+List\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::std\+::string \&}]{s}{, }\item[{const \+::xercesc\+::\+DOMElement \texorpdfstring{$\ast$}{*}}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a string fragment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & A string fragment to extract the data from. \\
+\hline
+{\em e} & A pointer to DOM element containing the string fragment. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDataArrayList__t_a4f9f8402981f882f05bb857e69a4c9a1}\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\index{DataArrayList\_t@{DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{DataArrayList\_t()}{DataArrayList\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_a4f9f8402981f882f05bb857e69a4c9a1} 
+Data\+Array\+List\+\_\+t\+::\+Data\+Array\+List\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classDataArrayList__t_aee3c16237122c72a9c163847232d830f}\index{DataArrayList\_t@{DataArrayList\_t}!````~DataArrayList\_t@{\texorpdfstring{$\sim$}{\string~}DataArrayList\_t}}
+\index{````~DataArrayList\_t@{\texorpdfstring{$\sim$}{\string~}DataArrayList\_t}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}DataArrayList\_t()}{\string~DataArrayList\_t()}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_aee3c16237122c72a9c163847232d830f} 
+Data\+Array\+List\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}\+Data\+Array\+List\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDataArrayList__t_a8303457db583a0cb6631dedc01172fca}\index{DataArrayList\_t@{DataArrayList\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_a8303457db583a0cb6631dedc01172fca} 
+\mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \texorpdfstring{$\ast$}{*} Data\+Array\+List\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. 
+
+Reimplemented in \mbox{\hyperlink{classDataArray__t_a73debee539c564a1f2ecd98c30f2aeaf}{Data\+Array\+\_\+t}}.
+
+\Hypertarget{classDataArrayList__t_aa80cc972d53edaad748b9062b7d57952}\index{DataArrayList\_t@{DataArrayList\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!DataArrayList\_t@{DataArrayList\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classDataArrayList__t_aa80cc972d53edaad748b9062b7d57952} 
+\mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \& Data\+Array\+List\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8h}{vtk-\/unstructured.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8cpp}{vtk-\/unstructured.\+cpp}}\end{DoxyCompactItemize}

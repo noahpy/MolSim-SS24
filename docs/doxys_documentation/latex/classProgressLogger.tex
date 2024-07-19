@@ -1,0 +1,96 @@
+\doxysection{Progress\+Logger Class Reference}
+\hypertarget{classProgressLogger}{}\label{classProgressLogger}\index{ProgressLogger@{ProgressLogger}}
+
+
+A class for logging progress during a simulation.  
+
+
+
+
+{\ttfamily \#include $<$Progress\+Logger.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classProgressLogger_a4f12cb45f124f19b7a3f53d999f33662}{Progress\+Logger}} (double \mbox{\hyperlink{classProgressLogger_a637a01edf72e772d966512437efba47c}{start\+Time}}, double end\+Time, double deltaT)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classProgressLogger}{Progress\+Logger} object with the specified start time, end time, and delta time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProgressLogger_af38489aa0342f7ccbcc6a17485e83a27}{log\+Progress}} (unsigned current\+Iteration)
+\begin{DoxyCompactList}\small\item\em Logs the progress of the simulation. This will only write a log if a new percentage is reached. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classProgressLogger_a0a19444f2445b27f4f60650cc2a2f28a}{total\+Iterations}}
+\item 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classProgressLogger_a637a01edf72e772d966512437efba47c}{start\+Time}}
+\item 
+unsigned \mbox{\hyperlink{classProgressLogger_a58284fa05879b59dd35fcf1fa321ff06}{next\+Logging\+Iteration}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class for logging progress during a simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classProgressLogger_a4f12cb45f124f19b7a3f53d999f33662}\index{ProgressLogger@{ProgressLogger}!ProgressLogger@{ProgressLogger}}
+\index{ProgressLogger@{ProgressLogger}!ProgressLogger@{ProgressLogger}}
+\doxysubsubsection{\texorpdfstring{ProgressLogger()}{ProgressLogger()}}
+{\footnotesize\ttfamily \label{classProgressLogger_a4f12cb45f124f19b7a3f53d999f33662} 
+Progress\+Logger\+::\+Progress\+Logger (\begin{DoxyParamCaption}\item[{double}]{start\+Time}{, }\item[{double}]{end\+Time}{, }\item[{double}]{deltaT}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classProgressLogger}{Progress\+Logger} object with the specified start time, end time, and delta time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Time} & The start time of the simulation. \\
+\hline
+{\em end\+Time} & The end time of the simulation. \\
+\hline
+{\em deltaT} & The time steps of the simulation. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classProgressLogger_af38489aa0342f7ccbcc6a17485e83a27}\index{ProgressLogger@{ProgressLogger}!logProgress@{logProgress}}
+\index{logProgress@{logProgress}!ProgressLogger@{ProgressLogger}}
+\doxysubsubsection{\texorpdfstring{logProgress()}{logProgress()}}
+{\footnotesize\ttfamily \label{classProgressLogger_af38489aa0342f7ccbcc6a17485e83a27} 
+void Progress\+Logger\+::log\+Progress (\begin{DoxyParamCaption}\item[{unsigned}]{current\+Iteration}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Logs the progress of the simulation. This will only write a log if a new percentage is reached. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Iteration} & The current iteration of the simulation. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classProgressLogger_a58284fa05879b59dd35fcf1fa321ff06}\index{ProgressLogger@{ProgressLogger}!nextLoggingIteration@{nextLoggingIteration}}
+\index{nextLoggingIteration@{nextLoggingIteration}!ProgressLogger@{ProgressLogger}}
+\doxysubsubsection{\texorpdfstring{nextLoggingIteration}{nextLoggingIteration}}
+{\footnotesize\ttfamily \label{classProgressLogger_a58284fa05879b59dd35fcf1fa321ff06} 
+unsigned Progress\+Logger\+::next\+Logging\+Iteration\hspace{0.3cm}{\ttfamily [private]}}
+
+Next iteration a log will be added. \Hypertarget{classProgressLogger_a637a01edf72e772d966512437efba47c}\index{ProgressLogger@{ProgressLogger}!startTime@{startTime}}
+\index{startTime@{startTime}!ProgressLogger@{ProgressLogger}}
+\doxysubsubsection{\texorpdfstring{startTime}{startTime}}
+{\footnotesize\ttfamily \label{classProgressLogger_a637a01edf72e772d966512437efba47c} 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point Progress\+Logger\+::start\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+The start time of the simulation. \Hypertarget{classProgressLogger_a0a19444f2445b27f4f60650cc2a2f28a}\index{ProgressLogger@{ProgressLogger}!totalIterations@{totalIterations}}
+\index{totalIterations@{totalIterations}!ProgressLogger@{ProgressLogger}}
+\doxysubsubsection{\texorpdfstring{totalIterations}{totalIterations}}
+{\footnotesize\ttfamily \label{classProgressLogger_a0a19444f2445b27f4f60650cc2a2f28a} 
+unsigned Progress\+Logger\+::total\+Iterations\hspace{0.3cm}{\ttfamily [private]}}
+
+The total number of iterations in the simulation. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/analytics/\mbox{\hyperlink{ProgressLogger_8h}{Progress\+Logger.\+h}}\end{DoxyCompactItemize}

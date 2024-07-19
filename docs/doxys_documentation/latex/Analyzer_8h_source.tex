@@ -1,0 +1,28 @@
+\doxysection{Analyzer.\+h}
+\hypertarget{Analyzer_8h_source}{}\label{Analyzer_8h_source}\index{src/analytics/Analyzer.h@{src/analytics/Analyzer.h}}
+\mbox{\hyperlink{Analyzer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{LennardJonesDomainSimulation_8h}{simulation/LennardJonesDomainSimulation.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAnalyzer}{Analyzer}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classAnalyzer_aeb1c84d53342c2e5b1ff2401fa2efcb3}{Analyzer}}(std::array<size\_t,\ 3>\ \mbox{\hyperlink{classAnalyzer_a4d9c74cae1375e9710f71d946eda238d}{binCounts}},\ std::string\ \mbox{\hyperlink{classAnalyzer_af5600985a4d6e55d0139ae2132d6d48d}{outName}});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAnalyzer_a56a3405dfc3838d7e5ebcb2aebc0d383}{analyze}}(\mbox{\hyperlink{classLennardJonesDomainSimulation}{LennardJonesDomainSimulation}}\&\ sim);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00028\ \ \ \ \ std::array<size\_t,\ 3>\ \mbox{\hyperlink{classAnalyzer_a4d9c74cae1375e9710f71d946eda238d}{binCounts}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ \mbox{\hyperlink{classAnalyzer_af5600985a4d6e55d0139ae2132d6d48d}{outName}};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classAnalyzer_a105d5481e8a634ce7a0b80e6f7fa1566}{nBins}};\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classAnalyzer_a74cb5e14ad7e8f8811d781e7c2b4d729}{binSize}};\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classAnalyzer_ae7a6c9f6505376bbf445915f5ba1215b}{initialized}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAnalyzer_a29829d519ef93432b675163b6b4e119e}{writeVectorToCSVFile}}(\textcolor{keyword}{const}\ std::vector<double>\&\ data,\ \textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classAnalyzer_a1590cf4151b4dde2b3fac85f6262e75c}{getVectorIndexFromBinIndex}}(\textcolor{keyword}{const}\ std::array<size\_t,\ 3>\&\ binIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ \};}
+
+\end{DoxyCode}

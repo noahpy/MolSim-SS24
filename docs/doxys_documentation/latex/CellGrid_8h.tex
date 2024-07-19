@@ -1,0 +1,35 @@
+\doxysection{src/models/linked\+\_\+cell/\+Cell\+Grid.h File Reference}
+\hypertarget{CellGrid_8h}{}\label{CellGrid_8h}\index{src/models/linked\_cell/CellGrid.h@{src/models/linked\_cell/CellGrid.h}}
+{\ttfamily \#include "{}models/\+Particle\+Container.\+h"{}}\newline
+{\ttfamily \#include "{}models/linked\+\_\+cell/cell/\+Cell.\+h"{}}\newline
+{\ttfamily \#include "{}models/linked\+\_\+cell/cell/\+Cell\+Type.\+h"{}}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classCellGrid}{Cell\+Grid}}
+\begin{DoxyCompactList}\small\item\em Represents a 3D grid of cells to organize particles in a simulation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Cell\+Grid\+::\+Boundary\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Iterator for iterating over boundary cells. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCellGrid_1_1HaloIterator}{Cell\+Grid\+::\+Halo\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Iterator for iterating over halo cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCell}{Cell}} $>$ $>$ $>$ $>$ \mbox{\hyperlink{CellGrid_8h_a8b6c9bba89b2c2ddd3a290ae0b2a11b7}{Cell\+Vec}}
+\begin{DoxyCompactList}\small\item\em A 3D vector of pointers to \doxylink{classCells}{Cells}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{CellGrid_8h_a8b6c9bba89b2c2ddd3a290ae0b2a11b7}\index{CellGrid.h@{CellGrid.h}!CellVec@{CellVec}}
+\index{CellVec@{CellVec}!CellGrid.h@{CellGrid.h}}
+\doxysubsubsection{\texorpdfstring{CellVec}{CellVec}}
+{\footnotesize\ttfamily \label{CellGrid_8h_a8b6c9bba89b2c2ddd3a290ae0b2a11b7} 
+typedef std\+::vector$<$std\+::vector$<$std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classCell}{Cell}}$>$ $>$ $>$ $>$ \mbox{\hyperlink{CellGrid_8h_a8b6c9bba89b2c2ddd3a290ae0b2a11b7}{Cell\+Vec}}}
+
+
+
+A 3D vector of pointers to \doxylink{classCells}{Cells}. 
+

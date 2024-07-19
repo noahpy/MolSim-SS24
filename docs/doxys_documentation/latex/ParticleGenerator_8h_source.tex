@@ -1,0 +1,23 @@
+\doxysection{Particle\+Generator.\+h}
+\hypertarget{ParticleGenerator_8h_source}{}\label{ParticleGenerator_8h_source}\index{src/models/generators/ParticleGenerator.h@{src/models/generators/ParticleGenerator.h}}
+\mbox{\hyperlink{ParticleGenerator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{CuboidParticleCluster_8h}{CuboidParticleCluster.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SphereParticleCluster_8h}{SphereParticleCluster.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticleGenerator}{ParticleGenerator}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classParticleGenerator_a856c26e2c6c6dd96fef3678fca9e39cd}{ParticleGenerator}}(\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classParticleGenerator_a20c5546328fde02b7cc84194c5a53a23}{container}});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticleGenerator_a39a17231bec16ea2f797ef4d7ef9a174}{registerCluster}}(std::unique\_ptr<ParticleCluster>\ cluster);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticleGenerator_a884ab47d948a028c2349baf3c1760b6b}{generateClusters}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classParticleGenerator_a20c5546328fde02b7cc84194c5a53a23}{container}};\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<std::unique\_ptr<ParticleCluster>>\ \mbox{\hyperlink{classParticleGenerator_a2904f5b8a5bae25f3c9d378d07c22793}{clusters}};\ }
+\DoxyCodeLine{00056\ \};}
+
+\end{DoxyCode}

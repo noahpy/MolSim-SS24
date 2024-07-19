@@ -1,0 +1,264 @@
+\doxysection{Particle\+Container Class Reference}
+\hypertarget{classParticleContainer}{}\label{classParticleContainer}\index{ParticleContainer@{ParticleContainer}}
+
+
+The \doxylink{classParticleContainer}{Particle\+Container} class is a data structure that holds the collection of particles.  
+
+
+
+
+{\ttfamily \#include $<$Particle\+Container.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Iterator class for active particles. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Pair Iterator nested class for iterating over all unique pairs of particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleContainer_ae9539f4acc05f090f213ef5a245b1f8c}{Particle\+Container}} (const std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&\mbox{\hyperlink{classParticleContainer_a837d29fec29694cf90572fe943303776}{particles}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classParticle}{Particle} Container object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_a76d21bdb5141158cf664d65e2d8b1db7}{Particle\+Container}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new empty \doxylink{classParticle}{Particle} Container object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticleContainer_ac9316f41ac4e37e5e4ac55ae4cf176de}{add\+Particle}} (const \mbox{\hyperlink{classParticle}{Particle}} \&p)
+\begin{DoxyCompactList}\small\item\em Adds a particle to the container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticleContainer_aa70bb015688c449289564656c6391095}{remove\+Particle}} (\mbox{\hyperlink{classParticle}{Particle}} \&p)
+\begin{DoxyCompactList}\small\item\em Removes the particles from further calculations. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classParticleContainer_a99a1ef83a80f90181e6297d65450b1aa}{get\+Index}} (size\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em Get the true index of the particle, ignoring the inactive particles. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \mbox{\hyperlink{classParticleContainer_a33a2348e19f93850e67ce59867d1e38f}{get\+Container}} () const
+\begin{DoxyCompactList}\small\item\em Get the particles within the container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_ad050ec922143d33356ea8b3d195c6423}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Get the iterator to the first active particle. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_a7619c5b38a50eb55272d41d6255b86b6}{end}} ()
+\begin{DoxyCompactList}\small\item\em Get the iterator to the last active particle. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}} \mbox{\hyperlink{classParticleContainer_a8ad5de2a6c97452ecf68222fa78cbbab}{begin\+Pairs}} ()
+\begin{DoxyCompactList}\small\item\em Get the iterator to the beginning of the pairs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Pair\+Iterator}} \mbox{\hyperlink{classParticleContainer_a71ca5d7c3f5d054e9d5c7ed54dc83907}{end\+Pairs}} ()
+\begin{DoxyCompactList}\small\item\em Get the iterator to the end of the pairs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_a941b8f31254a4f62293dabfacfbcdcc6}{begin\+Active}} ()
+\item 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Active\+Iterator}} \mbox{\hyperlink{classParticleContainer_aa10204cd456da2697ef1d3f43397110d}{end\+Active}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \mbox{\hyperlink{classParticleContainer_a837d29fec29694cf90572fe943303776}{particles}}
+\begin{DoxyCompactList}\small\item\em Vector that contains all the particles. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classParticleContainer_affd6551cdebeb57aac9e03f6d2299572}{active\+Particle\+Count}}
+\begin{DoxyCompactList}\small\item\em Counter for active particles. \end{DoxyCompactList}\item 
+std\+::map$<$ size\+\_\+t, size\+\_\+t $>$ \mbox{\hyperlink{classParticleContainer_add8152963258b1b6acc64e143d97df00}{inactive\+Particle\+Map}}
+\begin{DoxyCompactList}\small\item\em Map that contains all the inactive particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classParticleContainer}{Particle\+Container} class is a data structure that holds the collection of particles. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classParticleContainer_ae9539f4acc05f090f213ef5a245b1f8c}\index{ParticleContainer@{ParticleContainer}!ParticleContainer@{ParticleContainer}}
+\index{ParticleContainer@{ParticleContainer}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{ParticleContainer()}{ParticleContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classParticleContainer_ae9539f4acc05f090f213ef5a245b1f8c} 
+Particle\+Container\+::\+Particle\+Container (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&}]{particles}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classParticle}{Particle} Container object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & The particles to be added to the container \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classParticleContainer}{Particle\+Container} object 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_a76d21bdb5141158cf664d65e2d8b1db7}\index{ParticleContainer@{ParticleContainer}!ParticleContainer@{ParticleContainer}}
+\index{ParticleContainer@{ParticleContainer}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{ParticleContainer()}{ParticleContainer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classParticleContainer_a76d21bdb5141158cf664d65e2d8b1db7} 
+Particle\+Container\+::\+Particle\+Container (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new empty \doxylink{classParticle}{Particle} Container object. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classParticleContainer}{Particle\+Container} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classParticleContainer_ac9316f41ac4e37e5e4ac55ae4cf176de}\index{ParticleContainer@{ParticleContainer}!addParticle@{addParticle}}
+\index{addParticle@{addParticle}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{addParticle()}{addParticle()}}
+{\footnotesize\ttfamily \label{classParticleContainer_ac9316f41ac4e37e5e4ac55ae4cf176de} 
+void Particle\+Container\+::add\+Particle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticle}{Particle}} \&}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Adds a particle to the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The particle to be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_ad050ec922143d33356ea8b3d195c6423}\index{ParticleContainer@{ParticleContainer}!begin@{begin}}
+\index{begin@{begin}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \label{classParticleContainer_ad050ec922143d33356ea8b3d195c6423} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} Particle\+Container\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the iterator to the first active particle. 
+
+\begin{DoxyReturn}{Returns}
+The iterator to the first active particle 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_a941b8f31254a4f62293dabfacfbcdcc6}\index{ParticleContainer@{ParticleContainer}!beginActive@{beginActive}}
+\index{beginActive@{beginActive}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{beginActive()}{beginActive()}}
+{\footnotesize\ttfamily \label{classParticleContainer_a941b8f31254a4f62293dabfacfbcdcc6} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} Particle\+Container\+::begin\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classParticleContainer_a8ad5de2a6c97452ecf68222fa78cbbab}\index{ParticleContainer@{ParticleContainer}!beginPairs@{beginPairs}}
+\index{beginPairs@{beginPairs}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{beginPairs()}{beginPairs()}}
+{\footnotesize\ttfamily \label{classParticleContainer_a8ad5de2a6c97452ecf68222fa78cbbab} 
+\mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Particle\+Container\+::\+Pair\+Iterator}} Particle\+Container\+::begin\+Pairs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the iterator to the beginning of the pairs. 
+
+\begin{DoxyReturn}{Returns}
+The iterator to the beginning of the pairs 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_a7619c5b38a50eb55272d41d6255b86b6}\index{ParticleContainer@{ParticleContainer}!end@{end}}
+\index{end@{end}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \label{classParticleContainer_a7619c5b38a50eb55272d41d6255b86b6} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} Particle\+Container\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the iterator to the last active particle. 
+
+\begin{DoxyReturn}{Returns}
+The iterator to the last active particle 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_aa10204cd456da2697ef1d3f43397110d}\index{ParticleContainer@{ParticleContainer}!endActive@{endActive}}
+\index{endActive@{endActive}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{endActive()}{endActive()}}
+{\footnotesize\ttfamily \label{classParticleContainer_aa10204cd456da2697ef1d3f43397110d} 
+\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{Particle\+Container\+::\+Active\+Iterator}} Particle\+Container\+::end\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classParticleContainer_a71ca5d7c3f5d054e9d5c7ed54dc83907}\index{ParticleContainer@{ParticleContainer}!endPairs@{endPairs}}
+\index{endPairs@{endPairs}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{endPairs()}{endPairs()}}
+{\footnotesize\ttfamily \label{classParticleContainer_a71ca5d7c3f5d054e9d5c7ed54dc83907} 
+\mbox{\hyperlink{classParticleContainer_1_1PairIterator}{Particle\+Container\+::\+Pair\+Iterator}} Particle\+Container\+::end\+Pairs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the iterator to the end of the pairs. 
+
+\begin{DoxyReturn}{Returns}
+The iterator to the end of the pairs 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_a33a2348e19f93850e67ce59867d1e38f}\index{ParticleContainer@{ParticleContainer}!getContainer@{getContainer}}
+\index{getContainer@{getContainer}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{getContainer()}{getContainer()}}
+{\footnotesize\ttfamily \label{classParticleContainer_a33a2348e19f93850e67ce59867d1e38f} 
+std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ Particle\+Container\+::get\+Container (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the particles within the container. 
+
+\begin{DoxyReturn}{Returns}
+The vector of particles 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_a99a1ef83a80f90181e6297d65450b1aa}\index{ParticleContainer@{ParticleContainer}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily \label{classParticleContainer_a99a1ef83a80f90181e6297d65450b1aa} 
+size\+\_\+t Particle\+Container\+::get\+Index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Get the true index of the particle, ignoring the inactive particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the particle 
+\end{DoxyReturn}
+\Hypertarget{classParticleContainer_aa70bb015688c449289564656c6391095}\index{ParticleContainer@{ParticleContainer}!removeParticle@{removeParticle}}
+\index{removeParticle@{removeParticle}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{removeParticle()}{removeParticle()}}
+{\footnotesize\ttfamily \label{classParticleContainer_aa70bb015688c449289564656c6391095} 
+void Particle\+Container\+::remove\+Particle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Removes the particles from further calculations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The particle to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classParticleContainer_affd6551cdebeb57aac9e03f6d2299572}\index{ParticleContainer@{ParticleContainer}!activeParticleCount@{activeParticleCount}}
+\index{activeParticleCount@{activeParticleCount}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{activeParticleCount}{activeParticleCount}}
+{\footnotesize\ttfamily \label{classParticleContainer_affd6551cdebeb57aac9e03f6d2299572} 
+int Particle\+Container\+::active\+Particle\+Count}
+
+
+
+Counter for active particles. 
+
+\Hypertarget{classParticleContainer_add8152963258b1b6acc64e143d97df00}\index{ParticleContainer@{ParticleContainer}!inactiveParticleMap@{inactiveParticleMap}}
+\index{inactiveParticleMap@{inactiveParticleMap}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{inactiveParticleMap}{inactiveParticleMap}}
+{\footnotesize\ttfamily \label{classParticleContainer_add8152963258b1b6acc64e143d97df00} 
+std\+::map$<$size\+\_\+t, size\+\_\+t$>$ Particle\+Container\+::inactive\+Particle\+Map}
+
+
+
+Map that contains all the inactive particles. 
+
+\Hypertarget{classParticleContainer_a837d29fec29694cf90572fe943303776}\index{ParticleContainer@{ParticleContainer}!particles@{particles}}
+\index{particles@{particles}!ParticleContainer@{ParticleContainer}}
+\doxysubsubsection{\texorpdfstring{particles}{particles}}
+{\footnotesize\ttfamily \label{classParticleContainer_a837d29fec29694cf90572fe943303776} 
+std\+::vector$<$\mbox{\hyperlink{classParticle}{Particle}}$>$ Particle\+Container\+::particles}
+
+
+
+Vector that contains all the particles. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/\mbox{\hyperlink{ParticleContainer_8h}{Particle\+Container.\+h}}\item 
+src/models/\mbox{\hyperlink{ParticleContainer_8cpp}{Particle\+Container.\+cpp}}\end{DoxyCompactItemize}

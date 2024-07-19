@@ -1,0 +1,620 @@
+\doxysection{Particle Class Reference}
+\hypertarget{classParticle}{}\label{classParticle}\index{Particle@{Particle}}
+
+
+Class representing a particle in the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Particle.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticle_a7399b4a9d0e7b56265b00e074627e036}{Particle}} (std\+::array$<$ double, 3 $>$ x\+\_\+arg, std\+::array$<$ double, 3 $>$ v\+\_\+arg, double m\+\_\+arg, int \mbox{\hyperlink{classtype}{type}}=0, size\+\_\+t \mbox{\hyperlink{classParticle_ae3346aa8ec90f566f8aae7fe38f78a52}{id}}=0, bool is\+Not\+Stationary\+\_\+arg=true, size\+\_\+t \mbox{\hyperlink{classParticle_aa27802f907a48e30e030b04a0cb0a1e1}{molecule\+Id}}=0)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classParticle}{Particle} object with given position, velocity, mass and type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticle_a24b04cb7c6f7ea4242d25c410f44ae56}{Particle}} (const \mbox{\hyperlink{classParticle}{Particle}} \&other)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classParticle}{Particle} object by copying another \doxylink{classParticle}{Particle} object -\/\texorpdfstring{$>$}{>} do not use. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classParticle_ad030d0fe7b88cf81744b127c99244ff4}{\texorpdfstring{$\sim$}{\string~}\+Particle}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classParticle}{Particle} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticle}{Particle}} \& \mbox{\hyperlink{classParticle_a70adc57286f9c07626fc7a1bb8a51ca0}{operator=}} (const \mbox{\hyperlink{classParticle}{Particle}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+const std\+::array$<$ double, 3 $>$ \& \mbox{\hyperlink{classParticle_a53882c55fca9eda5be01d27afef3df67}{getX}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Get the position of the particle. \end{DoxyCompactList}\item 
+const std\+::array$<$ double, 3 $>$ \& \mbox{\hyperlink{classParticle_ade978bceb72caf3d350fd62edf93c248}{getV}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Get the velocity of the particle. \end{DoxyCompactList}\item 
+const std\+::array$<$ double, 3 $>$ \& \mbox{\hyperlink{classParticle_ada5cac66f4d393d6f9172346f8edc237}{getF}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Get the force effective on the particle. \end{DoxyCompactList}\item 
+const std\+::array$<$ double, 3 $>$ \& \mbox{\hyperlink{classParticle_aa25c38be9c13206cb7fab7a881fe4761}{get\+OldF}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Get the force which was effective on the particle. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParticle_a2f96a69c04e692faff3f0a765f4561ff}{getM}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Get the mass of the particle. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classParticle_a385844dffcc5305e0a93098a964459e4}{get\+Activity}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Get the activity status of the particle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classParticle_a495c8d7746f460c8fd13976b8813afe6}{get\+Type}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Get the type of the particle. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classParticle_acc3f74f459d2fe90b7c73fc65e527698}{get\+Molecule\+Id}} () const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Get the molecules id. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classParticle_acc16af62de14d91de9044bfc1044a78b}{get\+Is\+Not\+Stationary}} () const
+\begin{DoxyCompactList}\small\item\em Get whether the particle is stationary or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_ac30a84af01bc51f0f002a45afaf2f237}{set\+Type}} (const int type\+\_\+new) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Set the type of the particle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_a18f3d4b46cdf251a9c4000f40ece2958}{setX}} (const std\+::array$<$ double, 3 $>$ \&x\+\_\+new) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Set the position of the particle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_a46ca2a0816765441255939fc1ef4804a}{setV}} (const std\+::array$<$ double, 3 $>$ \&v\+\_\+new) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Set the velocity of the particle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_ae84a89ceaf19c46027af6d869b02c857}{setF}} (const std\+::array$<$ double, 3 $>$ \&f\+\_\+new) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Set the force effective on the particle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_ae4bd93be0446f558dd4f7f39f42ebb7b}{set\+OldF}} (const std\+::array$<$ double, 3 $>$ \&f\+\_\+new) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Set the previous force effective on the particle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_a9607b1ffe253165e958c88f990bfabb5}{setM}} (double m\+\_\+new) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Set the mass of the particle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_a8148c4af2e4c419abfc4c877ebb2b74a}{set\+Activity}} (bool act\+\_\+new) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Set the new activity. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classParticle_a34e5d6c92808f80b02ff5f1deaf06858}{get\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Get the particle\textquotesingle{}s id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_a6e313746c411d972b853cc9de0d3b6fa}{set\+ID}} (size\+\_\+t id\+\_\+new) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\item 
+void \mbox{\hyperlink{classParticle_ac0037aa0058c225a0076e91cafb714b1}{resetF}} (std\+::array$<$ double, 3 $>$ new\+\_\+f=\{ 0., 0., 0. \}) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Reset the force for the next timestep. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticle_a1aeda87cc3754b04ceec5d6f5ad42831}{add\+Force}} (const std\+::array$<$ double, 3 $>$ \&force) \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Add a force to the particle. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classParticle_a5034babb77618a56e00927d8891afabe}{operator==}} (\mbox{\hyperlink{classParticle}{Particle}} \&other)
+\begin{DoxyCompactList}\small\item\em Overload the == operator for the \doxylink{classParticle}{Particle} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classParticle_a41f3a8baf5d8b29ec806681d63ab2f81}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Get the string representation of the \doxylink{classParticle}{Particle} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticle_a40f4c7e248029d72e7714b7802d5e5e1}{Particle}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticle_a027e5a09c12953df5fcbbdb15896de3e}{x}}
+\begin{DoxyCompactList}\small\item\em Position of the particle. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticle_a0fe6d1e0651ad949d0b37ac327c9c6d1}{v}}
+\begin{DoxyCompactList}\small\item\em Velocity of the particle. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}{f}}
+\begin{DoxyCompactList}\small\item\em Force effective on this particle. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticle_a968dfd29adaa41fb25a08d3c45903156}{old\+\_\+f}}
+\begin{DoxyCompactList}\small\item\em Force which was effective on this particle. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParticle_aedcc7e1bc53b0e2b1a4a07c9a1b47563}{m}}
+\begin{DoxyCompactList}\small\item\em Mass of this particle. \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}{mutex}}
+\begin{DoxyCompactList}\small\item\em Mutex for the particle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classParticle_a2b73dd42bcd56ba2e7ffeb0a5515a866}{type}}
+\begin{DoxyCompactList}\small\item\em Type of the particle. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classParticle_a73a4154dfbae2e2787ef72c1bee83413}{active}}
+\begin{DoxyCompactList}\small\item\em Activity status of a particle. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classParticle_ae3346aa8ec90f566f8aae7fe38f78a52}{id}}
+\begin{DoxyCompactList}\small\item\em Id of the particle. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classParticle_a66babd0ea1d8d642dc2404b163ad3aca}{is\+Not\+Stationary}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classParticle_aa27802f907a48e30e030b04a0cb0a1e1}{molecule\+Id}}
+\begin{DoxyCompactList}\small\item\em id in the molecules, if particle is not part of a molecules then id = -\/1 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a particle in the simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classParticle_a7399b4a9d0e7b56265b00e074627e036}\index{Particle@{Particle}!Particle@{Particle}}
+\index{Particle@{Particle}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{Particle()}{Particle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classParticle_a7399b4a9d0e7b56265b00e074627e036} 
+Particle\+::\+Particle (\begin{DoxyParamCaption}\item[{std\+::array$<$ double, 3 $>$}]{x\+\_\+arg}{, }\item[{std\+::array$<$ double, 3 $>$}]{v\+\_\+arg}{, }\item[{double}]{m\+\_\+arg}{, }\item[{int}]{type}{ = {\ttfamily 0}, }\item[{size\+\_\+t}]{id}{ = {\ttfamily 0}, }\item[{bool}]{is\+Not\+Stationary\+\_\+arg}{ = {\ttfamily true}, }\item[{size\+\_\+t}]{molecule\+Id}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classParticle}{Particle} object with given position, velocity, mass and type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+arg} & The position of the particle \\
+\hline
+{\em v\+\_\+arg} & The velocity of the particle \\
+\hline
+{\em m\+\_\+arg} & The mass of the particle \\
+\hline
+{\em type} & The type of the particle \\
+\hline
+{\em id} & The id of the particle \\
+\hline
+{\em is\+Not\+Stationary\+\_\+arg} & Whether the particle is stationary or not \\
+\hline
+{\em molecule\+Id} & The molecule\textquotesingle{}s id the particle belongs to (0 if it does not belong) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classParticle}{Particle} object 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a24b04cb7c6f7ea4242d25c410f44ae56}\index{Particle@{Particle}!Particle@{Particle}}
+\index{Particle@{Particle}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{Particle()}{Particle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classParticle_a24b04cb7c6f7ea4242d25c410f44ae56} 
+Particle\+::\+Particle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticle}{Particle}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classParticle}{Particle} object by copying another \doxylink{classParticle}{Particle} object -\/\texorpdfstring{$>$}{>} do not use. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{classParticle}{Particle} object to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classParticle}{Particle} object 
+\end{DoxyReturn}
+\Hypertarget{classParticle_ad030d0fe7b88cf81744b127c99244ff4}\index{Particle@{Particle}!````~Particle@{\texorpdfstring{$\sim$}{\string~}Particle}}
+\index{````~Particle@{\texorpdfstring{$\sim$}{\string~}Particle}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Particle()}{\string~Particle()}}
+{\footnotesize\ttfamily \label{classParticle_ad030d0fe7b88cf81744b127c99244ff4} 
+Particle\+::\texorpdfstring{$\sim$}{\string~}\+Particle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroy the \doxylink{classParticle}{Particle} object. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a40f4c7e248029d72e7714b7802d5e5e1}\index{Particle@{Particle}!Particle@{Particle}}
+\index{Particle@{Particle}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{Particle()}{Particle()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classParticle_a40f4c7e248029d72e7714b7802d5e5e1} 
+Particle\+::\+Particle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classParticle_a1aeda87cc3754b04ceec5d6f5ad42831}\index{Particle@{Particle}!addForce@{addForce}}
+\index{addForce@{addForce}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{addForce()}{addForce()}}
+{\footnotesize\ttfamily \label{classParticle_a1aeda87cc3754b04ceec5d6f5ad42831} 
+void Particle\+::add\+Force (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{force}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a force to the particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em force} & The force to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a385844dffcc5305e0a93098a964459e4}\index{Particle@{Particle}!getActivity@{getActivity}}
+\index{getActivity@{getActivity}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getActivity()}{getActivity()}}
+{\footnotesize\ttfamily \label{classParticle_a385844dffcc5305e0a93098a964459e4} 
+bool Particle\+::get\+Activity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the activity status of the particle. 
+
+\begin{DoxyReturn}{Returns}
+The activity status of the particle 
+\end{DoxyReturn}
+\Hypertarget{classParticle_ada5cac66f4d393d6f9172346f8edc237}\index{Particle@{Particle}!getF@{getF}}
+\index{getF@{getF}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getF()}{getF()}}
+{\footnotesize\ttfamily \label{classParticle_ada5cac66f4d393d6f9172346f8edc237} 
+const std\+::array$<$ double, 3 $>$ \& Particle\+::getF (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the force effective on the particle. 
+
+\begin{DoxyReturn}{Returns}
+The force effective on the particle 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a34e5d6c92808f80b02ff5f1deaf06858}\index{Particle@{Particle}!getID@{getID}}
+\index{getID@{getID}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getID()}{getID()}}
+{\footnotesize\ttfamily \label{classParticle_a34e5d6c92808f80b02ff5f1deaf06858} 
+size\+\_\+t Particle\+::get\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the particle\textquotesingle{}s id. 
+
+\begin{DoxyReturn}{Returns}
+The particle\textquotesingle{}s id 
+\end{DoxyReturn}
+\Hypertarget{classParticle_acc16af62de14d91de9044bfc1044a78b}\index{Particle@{Particle}!getIsNotStationary@{getIsNotStationary}}
+\index{getIsNotStationary@{getIsNotStationary}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getIsNotStationary()}{getIsNotStationary()}}
+{\footnotesize\ttfamily \label{classParticle_acc16af62de14d91de9044bfc1044a78b} 
+bool Particle\+::get\+Is\+Not\+Stationary (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get whether the particle is stationary or not. 
+
+\begin{DoxyReturn}{Returns}
+The value of is\+Not\+Stationary 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a2f96a69c04e692faff3f0a765f4561ff}\index{Particle@{Particle}!getM@{getM}}
+\index{getM@{getM}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getM()}{getM()}}
+{\footnotesize\ttfamily \label{classParticle_a2f96a69c04e692faff3f0a765f4561ff} 
+double Particle\+::getM (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the mass of the particle. 
+
+\begin{DoxyReturn}{Returns}
+The mass of the particle 
+\end{DoxyReturn}
+\Hypertarget{classParticle_acc3f74f459d2fe90b7c73fc65e527698}\index{Particle@{Particle}!getMoleculeId@{getMoleculeId}}
+\index{getMoleculeId@{getMoleculeId}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getMoleculeId()}{getMoleculeId()}}
+{\footnotesize\ttfamily \label{classParticle_acc3f74f459d2fe90b7c73fc65e527698} 
+size\+\_\+t Particle\+::get\+Molecule\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the molecules id. 
+
+\begin{DoxyReturn}{Returns}
+id for the molecules 
+\end{DoxyReturn}
+\Hypertarget{classParticle_aa25c38be9c13206cb7fab7a881fe4761}\index{Particle@{Particle}!getOldF@{getOldF}}
+\index{getOldF@{getOldF}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getOldF()}{getOldF()}}
+{\footnotesize\ttfamily \label{classParticle_aa25c38be9c13206cb7fab7a881fe4761} 
+const std\+::array$<$ double, 3 $>$ \& Particle\+::get\+OldF (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the force which was effective on the particle. 
+
+\begin{DoxyReturn}{Returns}
+The force which was effective on the particle 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a495c8d7746f460c8fd13976b8813afe6}\index{Particle@{Particle}!getType@{getType}}
+\index{getType@{getType}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classParticle_a495c8d7746f460c8fd13976b8813afe6} 
+int Particle\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the type of the particle. 
+
+\begin{DoxyReturn}{Returns}
+The mass of the particle 
+\end{DoxyReturn}
+\Hypertarget{classParticle_ade978bceb72caf3d350fd62edf93c248}\index{Particle@{Particle}!getV@{getV}}
+\index{getV@{getV}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getV()}{getV()}}
+{\footnotesize\ttfamily \label{classParticle_ade978bceb72caf3d350fd62edf93c248} 
+const std\+::array$<$ double, 3 $>$ \& Particle\+::getV (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the velocity of the particle. 
+
+\begin{DoxyReturn}{Returns}
+The velocity of the particle 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a53882c55fca9eda5be01d27afef3df67}\index{Particle@{Particle}!getX@{getX}}
+\index{getX@{getX}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily \label{classParticle_a53882c55fca9eda5be01d27afef3df67} 
+const std\+::array$<$ double, 3 $>$ \& Particle\+::getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the position of the particle. 
+
+\begin{DoxyReturn}{Returns}
+The position of the particle 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a70adc57286f9c07626fc7a1bb8a51ca0}\index{Particle@{Particle}!operator=@{operator=}}
+\index{operator=@{operator=}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classParticle_a70adc57286f9c07626fc7a1bb8a51ca0} 
+\mbox{\hyperlink{classParticle}{Particle}} \& Particle\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticle}{Particle}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{classParticle}{Particle} object to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The copied \doxylink{classParticle}{Particle} object 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a5034babb77618a56e00927d8891afabe}\index{Particle@{Particle}!operator==@{operator==}}
+\index{operator==@{operator==}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{classParticle_a5034babb77618a56e00927d8891afabe} 
+bool Particle\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Overload the == operator for the \doxylink{classParticle}{Particle} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{classParticle}{Particle} object to compare to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the two \doxylink{classParticle}{Particle} objects are value-\/wise equal, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classParticle_ac0037aa0058c225a0076e91cafb714b1}\index{Particle@{Particle}!resetF@{resetF}}
+\index{resetF@{resetF}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{resetF()}{resetF()}}
+{\footnotesize\ttfamily \label{classParticle_ac0037aa0058c225a0076e91cafb714b1} 
+void Particle\+::resetF (\begin{DoxyParamCaption}\item[{std\+::array$<$ double, 3 $>$}]{new\+\_\+f}{ = {\ttfamily \{~0.,~0.,~0.~\}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reset the force for the next timestep. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a8148c4af2e4c419abfc4c877ebb2b74a}\index{Particle@{Particle}!setActivity@{setActivity}}
+\index{setActivity@{setActivity}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setActivity()}{setActivity()}}
+{\footnotesize\ttfamily \label{classParticle_a8148c4af2e4c419abfc4c877ebb2b74a} 
+void Particle\+::set\+Activity (\begin{DoxyParamCaption}\item[{bool}]{act\+\_\+new}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the new activity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em act\+\_\+new} & The new activity \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classParticle_ae84a89ceaf19c46027af6d869b02c857}\index{Particle@{Particle}!setF@{setF}}
+\index{setF@{setF}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setF()}{setF()}}
+{\footnotesize\ttfamily \label{classParticle_ae84a89ceaf19c46027af6d869b02c857} 
+void Particle\+::setF (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{f\+\_\+new}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the force effective on the particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f\+\_\+new} & The new force effective on the particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a6e313746c411d972b853cc9de0d3b6fa}\index{Particle@{Particle}!setID@{setID}}
+\index{setID@{setID}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setID()}{setID()}}
+{\footnotesize\ttfamily \label{classParticle_a6e313746c411d972b853cc9de0d3b6fa} 
+void Particle\+::set\+ID (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id\+\_\+new}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classParticle_a9607b1ffe253165e958c88f990bfabb5}\index{Particle@{Particle}!setM@{setM}}
+\index{setM@{setM}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setM()}{setM()}}
+{\footnotesize\ttfamily \label{classParticle_a9607b1ffe253165e958c88f990bfabb5} 
+void Particle\+::setM (\begin{DoxyParamCaption}\item[{double}]{m\+\_\+new}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the mass of the particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+new} & The new mass of the particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticle_ae4bd93be0446f558dd4f7f39f42ebb7b}\index{Particle@{Particle}!setOldF@{setOldF}}
+\index{setOldF@{setOldF}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setOldF()}{setOldF()}}
+{\footnotesize\ttfamily \label{classParticle_ae4bd93be0446f558dd4f7f39f42ebb7b} 
+void Particle\+::set\+OldF (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{f\+\_\+new}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the previous force effective on the particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f\+\_\+new} & The previous force effective on the particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticle_ac30a84af01bc51f0f002a45afaf2f237}\index{Particle@{Particle}!setType@{setType}}
+\index{setType@{setType}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setType()}{setType()}}
+{\footnotesize\ttfamily \label{classParticle_ac30a84af01bc51f0f002a45afaf2f237} 
+void Particle\+::set\+Type (\begin{DoxyParamCaption}\item[{const int}]{type\+\_\+new}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the type of the particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type\+\_\+new} & The new type of the particle \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classParticle_a46ca2a0816765441255939fc1ef4804a}\index{Particle@{Particle}!setV@{setV}}
+\index{setV@{setV}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setV()}{setV()}}
+{\footnotesize\ttfamily \label{classParticle_a46ca2a0816765441255939fc1ef4804a} 
+void Particle\+::setV (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{v\+\_\+new}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the velocity of the particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+\_\+new} & The new velocity of the particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a18f3d4b46cdf251a9c4000f40ece2958}\index{Particle@{Particle}!setX@{setX}}
+\index{setX@{setX}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily \label{classParticle_a18f3d4b46cdf251a9c4000f40ece2958} 
+void Particle\+::setX (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{x\+\_\+new}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the position of the particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+new} & The new position of the particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classParticle_a41f3a8baf5d8b29ec806681d63ab2f81}\index{Particle@{Particle}!toString@{toString}}
+\index{toString@{toString}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{classParticle_a41f3a8baf5d8b29ec806681d63ab2f81} 
+std\+::string Particle\+::to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get the string representation of the \doxylink{classParticle}{Particle} object. 
+
+\begin{DoxyReturn}{Returns}
+The string representation of the \doxylink{classParticle}{Particle} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classParticle_a73a4154dfbae2e2787ef72c1bee83413}\index{Particle@{Particle}!active@{active}}
+\index{active@{active}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily \label{classParticle_a73a4154dfbae2e2787ef72c1bee83413} 
+bool Particle\+::active\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Activity status of a particle. 
+
+\Hypertarget{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a}\index{Particle@{Particle}!f@{f}}
+\index{f@{f}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{f}{f}}
+{\footnotesize\ttfamily \label{classParticle_a795fa0b3046fc186e4ac1dc0b9230c4a} 
+std\+::array$<$double, 3$>$ Particle\+::f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Force effective on this particle. 
+
+\Hypertarget{classParticle_ae3346aa8ec90f566f8aae7fe38f78a52}\index{Particle@{Particle}!id@{id}}
+\index{id@{id}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \label{classParticle_ae3346aa8ec90f566f8aae7fe38f78a52} 
+size\+\_\+t Particle\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Id of the particle. 
+
+\Hypertarget{classParticle_a66babd0ea1d8d642dc2404b163ad3aca}\index{Particle@{Particle}!isNotStationary@{isNotStationary}}
+\index{isNotStationary@{isNotStationary}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{isNotStationary}{isNotStationary}}
+{\footnotesize\ttfamily \label{classParticle_a66babd0ea1d8d642dc2404b163ad3aca} 
+bool Particle\+::is\+Not\+Stationary\hspace{0.3cm}{\ttfamily [private]}}
+
+Whether the particle is stationary or not \Hypertarget{classParticle_aedcc7e1bc53b0e2b1a4a07c9a1b47563}\index{Particle@{Particle}!m@{m}}
+\index{m@{m}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily \label{classParticle_aedcc7e1bc53b0e2b1a4a07c9a1b47563} 
+double Particle\+::m\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mass of this particle. 
+
+\Hypertarget{classParticle_aa27802f907a48e30e030b04a0cb0a1e1}\index{Particle@{Particle}!moleculeId@{moleculeId}}
+\index{moleculeId@{moleculeId}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{moleculeId}{moleculeId}}
+{\footnotesize\ttfamily \label{classParticle_aa27802f907a48e30e030b04a0cb0a1e1} 
+size\+\_\+t Particle\+::molecule\+Id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+id in the molecules, if particle is not part of a molecules then id = -\/1 
+
+\Hypertarget{classParticle_a4beb9a5a313dfde7517a3cabf89968fc}\index{Particle@{Particle}!mutex@{mutex}}
+\index{mutex@{mutex}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{mutex}{mutex}}
+{\footnotesize\ttfamily \label{classParticle_a4beb9a5a313dfde7517a3cabf89968fc} 
+std\+::mutex Particle\+::mutex\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Mutex for the particle. 
+
+\Hypertarget{classParticle_a968dfd29adaa41fb25a08d3c45903156}\index{Particle@{Particle}!old\_f@{old\_f}}
+\index{old\_f@{old\_f}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{old\_f}{old\_f}}
+{\footnotesize\ttfamily \label{classParticle_a968dfd29adaa41fb25a08d3c45903156} 
+std\+::array$<$double, 3$>$ Particle\+::old\+\_\+f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Force which was effective on this particle. 
+
+\Hypertarget{classParticle_a2b73dd42bcd56ba2e7ffeb0a5515a866}\index{Particle@{Particle}!type@{type}}
+\index{type@{type}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{classParticle_a2b73dd42bcd56ba2e7ffeb0a5515a866} 
+int Particle\+::type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Type of the particle. 
+
+Use it for whatever you want (e.\+g. to separate molecules belonging to different bodies, matters, and so on) \Hypertarget{classParticle_a0fe6d1e0651ad949d0b37ac327c9c6d1}\index{Particle@{Particle}!v@{v}}
+\index{v@{v}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily \label{classParticle_a0fe6d1e0651ad949d0b37ac327c9c6d1} 
+std\+::array$<$double, 3$>$ Particle\+::v\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Velocity of the particle. 
+
+\Hypertarget{classParticle_a027e5a09c12953df5fcbbdb15896de3e}\index{Particle@{Particle}!x@{x}}
+\index{x@{x}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{classParticle_a027e5a09c12953df5fcbbdb15896de3e} 
+std\+::array$<$double, 3$>$ Particle\+::x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Position of the particle. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/\mbox{\hyperlink{Particle_8h}{Particle.\+h}}\item 
+src/models/\mbox{\hyperlink{Particle_8cpp}{Particle.\+cpp}}\end{DoxyCompactItemize}

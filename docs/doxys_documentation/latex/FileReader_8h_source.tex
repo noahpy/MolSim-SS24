@@ -1,0 +1,31 @@
+\doxysection{File\+Reader.\+h}
+\hypertarget{FileReader_8h_source}{}\label{FileReader_8h_source}\index{src/io/fileReader/FileReader.h@{src/io/fileReader/FileReader.h}}
+\mbox{\hyperlink{FileReader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ FileReader.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 23.02.2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ eckhardw}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFileReader}{FileReader}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classFileReader_a9ce82a24500af1259a4bff8d19cb0474}{FileReader}}(std::string\ \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classFileReader_a1382969e8f1468f3b04ad4b44ab39dee}{\string~FileReader}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFileReader_acebf231636d2ac6721d6d0a4195b4353}{readFile}}(\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ particles,\ std::string\ \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFileReader_acebf231636d2ac6721d6d0a4195b4353}{readFile}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}};}
+\DoxyCodeLine{00051\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,712 @@
+\doxysection{simulation\+\_\+t Class Reference}
+\hypertarget{classsimulation__t}{}\label{classsimulation__t}\index{simulation\_t@{simulation\_t}}
+
+
+Class corresponding to the simulation\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$simulation.\+h$>$}
+
+Inheritance diagram for simulation\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsimulation__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{params}
+Accessor and modifier functions for the params required element.
+
+The parameters for the simulation. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classparams__t}{\+::params\+\_\+t}} \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_a3c0606140a8fcda75dc8ec25b89d1b84}{params\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} \& \mbox{\hyperlink{classsimulation__t_af1242653f685458d6e92d040140fb0f1}{params}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} \& \mbox{\hyperlink{classsimulation__t_a1998754dd1ace1c48eb4a85f3eba4cc2}{params}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_a17556999362549418c03ccdd080b1627}{params}} (const \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_ad209e3458ecf6f1daa1b86560aff9ca4}{params}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{clusters}
+Accessor and modifier functions for the clusters required element.
+
+The collection of clusters to be simulated. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classclusters__t}{\+::clusters\+\_\+t}} \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_aa1ef06b73383193f9823bd4ec0c0ec20}{clusters\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} \& \mbox{\hyperlink{classsimulation__t_af2df68e19aae495d8029398adfd2f846}{clusters}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} \& \mbox{\hyperlink{classsimulation__t_a6a502ad30f401e47f44ec4178a785e73}{clusters}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_aa5f814997f137b80995275899e3ce49f}{clusters}} (const \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_a1a32cd2b0248ecf875f1565a2dcefbc0}{clusters}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{molecules}
+Accessor and modifier functions for the molecules optional element.
+
+The collection of molecules to be simulated. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classmolecules__t}{\+::molecules\+\_\+t}} \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}} $>$ \mbox{\hyperlink{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}{molecules\+\_\+optional}}
+\begin{DoxyCompactList}\small\item\em Element optional container type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_ab665b96d3d737a8b7fc08f7b60e5505f}{molecules\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}{molecules\+\_\+optional}} \& \mbox{\hyperlink{classsimulation__t_aead136e2d816f2d183eed771cc4a97ce}{molecules}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}{molecules\+\_\+optional}} \& \mbox{\hyperlink{classsimulation__t_aaa45c38853f87e58b62a7873c7a4a158}{molecules}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_ad64ec9683a0fca7dd4dc7d67d32b88cb}{molecules}} (const \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_a890a1459fcae74734eea0d47cc0639e7}{molecules}} (const \mbox{\hyperlink{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}{molecules\+\_\+optional}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_a0de4fa4ed5b3955ffbdddbf1d4e66cb3}{molecules}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{ptypes}
+Accessor and modifier functions for the ptypes optional element.
+
+The collection of clusters to be simulated. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classParticleTypes__t}{\+::\+Particle\+Types\+\_\+t}} \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}} $>$ \mbox{\hyperlink{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}{ptypes\+\_\+optional}}
+\begin{DoxyCompactList}\small\item\em Element optional container type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_a2bef309c68a0f27a44e9812ad1de79f4}{ptypes\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}{ptypes\+\_\+optional}} \& \mbox{\hyperlink{classsimulation__t_ae12b193ba6dcbf3953f3b2e15704a1df}{ptypes}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}{ptypes\+\_\+optional}} \& \mbox{\hyperlink{classsimulation__t_a7f5893583030b6cf9313af7b35a674b0}{ptypes}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_a427e841e3e614d2a1c57d52bb38120b2}{ptypes}} (const \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_aa8c2147857e44d2f016209d6640a31ec}{ptypes}} (const \mbox{\hyperlink{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}{ptypes\+\_\+optional}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_ac8c684107b00292825d7c034cc9acacc}{ptypes}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{particles}
+Accessor and modifier functions for the particles optional element.
+
+Data of unresembled particles. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classParticleData__t}{\+::\+Particle\+Data\+\_\+t}} \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}} $>$ \mbox{\hyperlink{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}{particles\+\_\+optional}}
+\begin{DoxyCompactList}\small\item\em Element optional container type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_a741c38472954210c3be2211c410be717}{particles\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}{particles\+\_\+optional}} \& \mbox{\hyperlink{classsimulation__t_ab7c54cd65e8e163d4c2f4d605379f66f}{particles}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}{particles\+\_\+optional}} \& \mbox{\hyperlink{classsimulation__t_a2ffb1afc6cdc152fdf25e0a0b7f0284c}{particles}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_a45ed7b031cd1aa94e914449aa848cc0a}{particles}} (const \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_ab2116cd33aa729eb3e41097d30442ff6}{particles}} (const \mbox{\hyperlink{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}{particles\+\_\+optional}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsimulation__t_a8403c69c6b4b5c86a0d1f6efd698a821}{particles}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsimulation__t_af76a9f56c05f3215c439fcf98563beb4}{simulation\+\_\+t}} (const \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} \&, const \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t_abd72c93204811060ea59991782aeed18}{simulation\+\_\+t}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} $>$)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t_a16f9df313bc6fc7b4f272df6459cdad6}{simulation\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t_ac307d21bf2c1193ea822ed0647b248dc}{simulation\+\_\+t}} (const \mbox{\hyperlink{classsimulation__t}{simulation\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsimulation__t}{simulation\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classsimulation__t_a7b08ff56a2b857315a36a8f04417590a}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsimulation__t}{simulation\+\_\+t}} \& \mbox{\hyperlink{classsimulation__t_aa195e63cf0d44b12673b80647f4e6974}{operator=}} (const \mbox{\hyperlink{classsimulation__t}{simulation\+\_\+t}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classsimulation__t_aac8f93389c24edcb4b0dbd9362bf4ae6}{\texorpdfstring{$\sim$}{\string~}simulation\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the simulation\+\_\+t schema type. 
+
+The root type for the simulation configuration. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classsimulation__t_aa1ef06b73383193f9823bd4ec0c0ec20}\index{simulation\_t@{simulation\_t}!clusters\_traits@{clusters\_traits}}
+\index{clusters\_traits@{clusters\_traits}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{clusters\_traits}{clusters\_traits}}
+{\footnotesize\ttfamily \label{classsimulation__t_aa1ef06b73383193f9823bd4ec0c0ec20} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_aa1ef06b73383193f9823bd4ec0c0ec20}{simulation\+\_\+t\+::clusters\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsimulation__t_a17781021a9643476e7da8e018cfb936b}\index{simulation\_t@{simulation\_t}!clusters\_type@{clusters\_type}}
+\index{clusters\_type@{clusters\_type}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{clusters\_type}{clusters\_type}}
+{\footnotesize\ttfamily \label{classsimulation__t_a17781021a9643476e7da8e018cfb936b} 
+typedef \mbox{\hyperlink{classclusters__t}{\+::clusters\+\_\+t}} \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{simulation\+\_\+t\+::clusters\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}\index{simulation\_t@{simulation\_t}!molecules\_optional@{molecules\_optional}}
+\index{molecules\_optional@{molecules\_optional}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{molecules\_optional}{molecules\_optional}}
+{\footnotesize\ttfamily \label{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d} 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}} $>$ \mbox{\hyperlink{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}{simulation\+\_\+t\+::molecules\+\_\+optional}}}
+
+
+
+Element optional container type. 
+
+\Hypertarget{classsimulation__t_ab665b96d3d737a8b7fc08f7b60e5505f}\index{simulation\_t@{simulation\_t}!molecules\_traits@{molecules\_traits}}
+\index{molecules\_traits@{molecules\_traits}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{molecules\_traits}{molecules\_traits}}
+{\footnotesize\ttfamily \label{classsimulation__t_ab665b96d3d737a8b7fc08f7b60e5505f} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_ab665b96d3d737a8b7fc08f7b60e5505f}{simulation\+\_\+t\+::molecules\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}\index{simulation\_t@{simulation\_t}!molecules\_type@{molecules\_type}}
+\index{molecules\_type@{molecules\_type}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{molecules\_type}{molecules\_type}}
+{\footnotesize\ttfamily \label{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a} 
+typedef \mbox{\hyperlink{classmolecules__t}{\+::molecules\+\_\+t}} \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{simulation\+\_\+t\+::molecules\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsimulation__t_a3c0606140a8fcda75dc8ec25b89d1b84}\index{simulation\_t@{simulation\_t}!params\_traits@{params\_traits}}
+\index{params\_traits@{params\_traits}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{params\_traits}{params\_traits}}
+{\footnotesize\ttfamily \label{classsimulation__t_a3c0606140a8fcda75dc8ec25b89d1b84} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_a3c0606140a8fcda75dc8ec25b89d1b84}{simulation\+\_\+t\+::params\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}\index{simulation\_t@{simulation\_t}!params\_type@{params\_type}}
+\index{params\_type@{params\_type}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{params\_type}{params\_type}}
+{\footnotesize\ttfamily \label{classsimulation__t_aa5c6142524580fa03b04c37182584c2e} 
+typedef \mbox{\hyperlink{classparams__t}{\+::params\+\_\+t}} \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{simulation\+\_\+t\+::params\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}\index{simulation\_t@{simulation\_t}!particles\_optional@{particles\_optional}}
+\index{particles\_optional@{particles\_optional}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{particles\_optional}{particles\_optional}}
+{\footnotesize\ttfamily \label{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290} 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}} $>$ \mbox{\hyperlink{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}{simulation\+\_\+t\+::particles\+\_\+optional}}}
+
+
+
+Element optional container type. 
+
+\Hypertarget{classsimulation__t_a741c38472954210c3be2211c410be717}\index{simulation\_t@{simulation\_t}!particles\_traits@{particles\_traits}}
+\index{particles\_traits@{particles\_traits}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{particles\_traits}{particles\_traits}}
+{\footnotesize\ttfamily \label{classsimulation__t_a741c38472954210c3be2211c410be717} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_a741c38472954210c3be2211c410be717}{simulation\+\_\+t\+::particles\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}\index{simulation\_t@{simulation\_t}!particles\_type@{particles\_type}}
+\index{particles\_type@{particles\_type}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{particles\_type}{particles\_type}}
+{\footnotesize\ttfamily \label{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381} 
+typedef \mbox{\hyperlink{classParticleData__t}{\+::\+Particle\+Data\+\_\+t}} \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{simulation\+\_\+t\+::particles\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}\index{simulation\_t@{simulation\_t}!ptypes\_optional@{ptypes\_optional}}
+\index{ptypes\_optional@{ptypes\_optional}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{ptypes\_optional}{ptypes\_optional}}
+{\footnotesize\ttfamily \label{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df} 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}} $>$ \mbox{\hyperlink{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}{simulation\+\_\+t\+::ptypes\+\_\+optional}}}
+
+
+
+Element optional container type. 
+
+\Hypertarget{classsimulation__t_a2bef309c68a0f27a44e9812ad1de79f4}\index{simulation\_t@{simulation\_t}!ptypes\_traits@{ptypes\_traits}}
+\index{ptypes\_traits@{ptypes\_traits}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{ptypes\_traits}{ptypes\_traits}}
+{\footnotesize\ttfamily \label{classsimulation__t_a2bef309c68a0f27a44e9812ad1de79f4} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}}, char $>$ \mbox{\hyperlink{classsimulation__t_a2bef309c68a0f27a44e9812ad1de79f4}{simulation\+\_\+t\+::ptypes\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}\index{simulation\_t@{simulation\_t}!ptypes\_type@{ptypes\_type}}
+\index{ptypes\_type@{ptypes\_type}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{ptypes\_type}{ptypes\_type}}
+{\footnotesize\ttfamily \label{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a} 
+typedef \mbox{\hyperlink{classParticleTypes__t}{\+::\+Particle\+Types\+\_\+t}} \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{simulation\+\_\+t\+::ptypes\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsimulation__t_af76a9f56c05f3215c439fcf98563beb4}\index{simulation\_t@{simulation\_t}!simulation\_t@{simulation\_t}}
+\index{simulation\_t@{simulation\_t}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{simulation\_t()}{simulation\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_af76a9f56c05f3215c439fcf98563beb4} 
+simulation\+\_\+t\+::simulation\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} \&}]{params}{, }\item[{const \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} \&}]{clusters}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classsimulation__t_abd72c93204811060ea59991782aeed18}\index{simulation\_t@{simulation\_t}!simulation\_t@{simulation\_t}}
+\index{simulation\_t@{simulation\_t}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{simulation\_t()}{simulation\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_abd72c93204811060ea59991782aeed18} 
+simulation\+\_\+t\+::simulation\+\_\+t (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} $>$}]{params}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} $>$}]{clusters}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). 
+
+This constructor will try to use the passed values directly instead of making copies. \Hypertarget{classsimulation__t_a16f9df313bc6fc7b4f272df6459cdad6}\index{simulation\_t@{simulation\_t}!simulation\_t@{simulation\_t}}
+\index{simulation\_t@{simulation\_t}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{simulation\_t()}{simulation\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a16f9df313bc6fc7b4f272df6459cdad6} 
+simulation\+\_\+t\+::simulation\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classsimulation__t_ac307d21bf2c1193ea822ed0647b248dc}\index{simulation\_t@{simulation\_t}!simulation\_t@{simulation\_t}}
+\index{simulation\_t@{simulation\_t}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{simulation\_t()}{simulation\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_ac307d21bf2c1193ea822ed0647b248dc} 
+simulation\+\_\+t\+::simulation\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t}{simulation\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classsimulation__t_aac8f93389c24edcb4b0dbd9362bf4ae6}\index{simulation\_t@{simulation\_t}!````~simulation\_t@{\texorpdfstring{$\sim$}{\string~}simulation\_t}}
+\index{````~simulation\_t@{\texorpdfstring{$\sim$}{\string~}simulation\_t}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}simulation\_t()}{\string~simulation\_t()}}
+{\footnotesize\ttfamily \label{classsimulation__t_aac8f93389c24edcb4b0dbd9362bf4ae6} 
+simulation\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}simulation\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsimulation__t_a7b08ff56a2b857315a36a8f04417590a}\index{simulation\_t@{simulation\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classsimulation__t_a7b08ff56a2b857315a36a8f04417590a} 
+\mbox{\hyperlink{classsimulation__t}{simulation\+\_\+t}} \texorpdfstring{$\ast$}{*} simulation\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classsimulation__t_a6a502ad30f401e47f44ec4178a785e73}\index{simulation\_t@{simulation\_t}!clusters@{clusters}}
+\index{clusters@{clusters}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{clusters()}{clusters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a6a502ad30f401e47f44ec4178a785e73} 
+\mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{simulation\+\_\+t\+::clusters\+\_\+type}} \& simulation\+\_\+t\+::clusters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_af2df68e19aae495d8029398adfd2f846}\index{simulation\_t@{simulation\_t}!clusters@{clusters}}
+\index{clusters@{clusters}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{clusters()}{clusters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_af2df68e19aae495d8029398adfd2f846} 
+const \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{simulation\+\_\+t\+::clusters\+\_\+type}} \& simulation\+\_\+t\+::clusters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_a1a32cd2b0248ecf875f1565a2dcefbc0}\index{simulation\_t@{simulation\_t}!clusters@{clusters}}
+\index{clusters@{clusters}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{clusters()}{clusters()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a1a32cd2b0248ecf875f1565a2dcefbc0} 
+void simulation\+\_\+t\+::clusters (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsimulation__t_aa5f814997f137b80995275899e3ce49f}\index{simulation\_t@{simulation\_t}!clusters@{clusters}}
+\index{clusters@{clusters}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{clusters()}{clusters()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_aa5f814997f137b80995275899e3ce49f} 
+void simulation\+\_\+t\+::clusters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_a17781021a9643476e7da8e018cfb936b}{clusters\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsimulation__t_aaa45c38853f87e58b62a7873c7a4a158}\index{simulation\_t@{simulation\_t}!molecules@{molecules}}
+\index{molecules@{molecules}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{molecules()}{molecules()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_aaa45c38853f87e58b62a7873c7a4a158} 
+\mbox{\hyperlink{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}{simulation\+\_\+t\+::molecules\+\_\+optional}} \& simulation\+\_\+t\+::molecules (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_aead136e2d816f2d183eed771cc4a97ce}\index{simulation\_t@{simulation\_t}!molecules@{molecules}}
+\index{molecules@{molecules}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{molecules()}{molecules()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_aead136e2d816f2d183eed771cc4a97ce} 
+const \mbox{\hyperlink{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}{simulation\+\_\+t\+::molecules\+\_\+optional}} \& simulation\+\_\+t\+::molecules (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_a0de4fa4ed5b3955ffbdddbf1d4e66cb3}\index{simulation\_t@{simulation\_t}!molecules@{molecules}}
+\index{molecules@{molecules}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{molecules()}{molecules()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a0de4fa4ed5b3955ffbdddbf1d4e66cb3} 
+void simulation\+\_\+t\+::molecules (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsimulation__t_a890a1459fcae74734eea0d47cc0639e7}\index{simulation\_t@{simulation\_t}!molecules@{molecules}}
+\index{molecules@{molecules}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{molecules()}{molecules()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a890a1459fcae74734eea0d47cc0639e7} 
+void simulation\+\_\+t\+::molecules (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_a90762d59e99a92af1a620c5fa0b0524d}{molecules\+\_\+optional}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An optional container with the new value to set.\\
+\hline
+\end{DoxyParams}
+If the value is present in {\itshape x} then this function makes a copy of this value and sets it as the new value of the element. Otherwise the element container is set the \textquotesingle{}not present\textquotesingle{} state. \Hypertarget{classsimulation__t_ad64ec9683a0fca7dd4dc7d67d32b88cb}\index{simulation\_t@{simulation\_t}!molecules@{molecules}}
+\index{molecules@{molecules}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{molecules()}{molecules()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_ad64ec9683a0fca7dd4dc7d67d32b88cb} 
+void simulation\+\_\+t\+::molecules (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_a16d435ce128052ce520e1be8e6bfaa4a}{molecules\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsimulation__t_aa195e63cf0d44b12673b80647f4e6974}\index{simulation\_t@{simulation\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classsimulation__t_aa195e63cf0d44b12673b80647f4e6974} 
+\mbox{\hyperlink{classsimulation__t}{simulation\+\_\+t}} \& simulation\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t}{simulation\+\_\+t}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classsimulation__t_a1998754dd1ace1c48eb4a85f3eba4cc2}\index{simulation\_t@{simulation\_t}!params@{params}}
+\index{params@{params}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{params()}{params()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a1998754dd1ace1c48eb4a85f3eba4cc2} 
+\mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{simulation\+\_\+t\+::params\+\_\+type}} \& simulation\+\_\+t\+::params (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_af1242653f685458d6e92d040140fb0f1}\index{simulation\_t@{simulation\_t}!params@{params}}
+\index{params@{params}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{params()}{params()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_af1242653f685458d6e92d040140fb0f1} 
+const \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{simulation\+\_\+t\+::params\+\_\+type}} \& simulation\+\_\+t\+::params (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_ad209e3458ecf6f1daa1b86560aff9ca4}\index{simulation\_t@{simulation\_t}!params@{params}}
+\index{params@{params}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{params()}{params()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_ad209e3458ecf6f1daa1b86560aff9ca4} 
+void simulation\+\_\+t\+::params (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsimulation__t_a17556999362549418c03ccdd080b1627}\index{simulation\_t@{simulation\_t}!params@{params}}
+\index{params@{params}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{params()}{params()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a17556999362549418c03ccdd080b1627} 
+void simulation\+\_\+t\+::params (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_aa5c6142524580fa03b04c37182584c2e}{params\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsimulation__t_a2ffb1afc6cdc152fdf25e0a0b7f0284c}\index{simulation\_t@{simulation\_t}!particles@{particles}}
+\index{particles@{particles}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{particles()}{particles()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a2ffb1afc6cdc152fdf25e0a0b7f0284c} 
+\mbox{\hyperlink{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}{simulation\+\_\+t\+::particles\+\_\+optional}} \& simulation\+\_\+t\+::particles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_ab7c54cd65e8e163d4c2f4d605379f66f}\index{simulation\_t@{simulation\_t}!particles@{particles}}
+\index{particles@{particles}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{particles()}{particles()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_ab7c54cd65e8e163d4c2f4d605379f66f} 
+const \mbox{\hyperlink{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}{simulation\+\_\+t\+::particles\+\_\+optional}} \& simulation\+\_\+t\+::particles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_a8403c69c6b4b5c86a0d1f6efd698a821}\index{simulation\_t@{simulation\_t}!particles@{particles}}
+\index{particles@{particles}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{particles()}{particles()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a8403c69c6b4b5c86a0d1f6efd698a821} 
+void simulation\+\_\+t\+::particles (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsimulation__t_ab2116cd33aa729eb3e41097d30442ff6}\index{simulation\_t@{simulation\_t}!particles@{particles}}
+\index{particles@{particles}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{particles()}{particles()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_ab2116cd33aa729eb3e41097d30442ff6} 
+void simulation\+\_\+t\+::particles (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_a20ba28503d08ec3cb5844fe2c5b20290}{particles\+\_\+optional}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An optional container with the new value to set.\\
+\hline
+\end{DoxyParams}
+If the value is present in {\itshape x} then this function makes a copy of this value and sets it as the new value of the element. Otherwise the element container is set the \textquotesingle{}not present\textquotesingle{} state. \Hypertarget{classsimulation__t_a45ed7b031cd1aa94e914449aa848cc0a}\index{simulation\_t@{simulation\_t}!particles@{particles}}
+\index{particles@{particles}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{particles()}{particles()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a45ed7b031cd1aa94e914449aa848cc0a} 
+void simulation\+\_\+t\+::particles (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_abb59e8d5214e4810f57f0464bf4fd381}{particles\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classsimulation__t_a7f5893583030b6cf9313af7b35a674b0}\index{simulation\_t@{simulation\_t}!ptypes@{ptypes}}
+\index{ptypes@{ptypes}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{ptypes()}{ptypes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a7f5893583030b6cf9313af7b35a674b0} 
+\mbox{\hyperlink{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}{simulation\+\_\+t\+::ptypes\+\_\+optional}} \& simulation\+\_\+t\+::ptypes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_ae12b193ba6dcbf3953f3b2e15704a1df}\index{simulation\_t@{simulation\_t}!ptypes@{ptypes}}
+\index{ptypes@{ptypes}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{ptypes()}{ptypes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_ae12b193ba6dcbf3953f3b2e15704a1df} 
+const \mbox{\hyperlink{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}{simulation\+\_\+t\+::ptypes\+\_\+optional}} \& simulation\+\_\+t\+::ptypes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classsimulation__t_ac8c684107b00292825d7c034cc9acacc}\index{simulation\_t@{simulation\_t}!ptypes@{ptypes}}
+\index{ptypes@{ptypes}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{ptypes()}{ptypes()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_ac8c684107b00292825d7c034cc9acacc} 
+void simulation\+\_\+t\+::ptypes (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classsimulation__t_aa8c2147857e44d2f016209d6640a31ec}\index{simulation\_t@{simulation\_t}!ptypes@{ptypes}}
+\index{ptypes@{ptypes}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{ptypes()}{ptypes()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_aa8c2147857e44d2f016209d6640a31ec} 
+void simulation\+\_\+t\+::ptypes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_adda7e2b14b5ca178cb39a61f3f89c7df}{ptypes\+\_\+optional}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An optional container with the new value to set.\\
+\hline
+\end{DoxyParams}
+If the value is present in {\itshape x} then this function makes a copy of this value and sets it as the new value of the element. Otherwise the element container is set the \textquotesingle{}not present\textquotesingle{} state. \Hypertarget{classsimulation__t_a427e841e3e614d2a1c57d52bb38120b2}\index{simulation\_t@{simulation\_t}!ptypes@{ptypes}}
+\index{ptypes@{ptypes}!simulation\_t@{simulation\_t}}
+\doxysubsubsection{\texorpdfstring{ptypes()}{ptypes()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{classsimulation__t_a427e841e3e614d2a1c57d52bb38120b2} 
+void simulation\+\_\+t\+::ptypes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classsimulation__t_aad2bafad68a913b6debcb1ba29842e8a}{ptypes\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8h}{simulation.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8cpp}{simulation.\+cpp}}\end{DoxyCompactItemize}

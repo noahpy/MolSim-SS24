@@ -1,0 +1,155 @@
+\doxysection{Array\+Utils Namespace Reference}
+\hypertarget{namespaceArrayUtils}{}\label{namespaceArrayUtils}\index{ArrayUtils@{ArrayUtils}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceArrayUtils_1_1is__container__impl}{is\+\_\+container\+\_\+impl}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structArrayUtils_1_1is__container}{is\+\_\+container}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Container $>$ }\\std\+::string \mbox{\hyperlink{namespaceArrayUtils_a6ebc4c0b96cf4c0469183d6cd76d6630}{to\+\_\+string}} (const Container \&container, const std\+::string \&delimiter="{}, "{}, const std\+::array$<$ std\+::string, 2 $>$ \&surround=\{ "{}\mbox{[}"{}, "{}\mbox{]}"{} \})
+\item 
+{\footnotesize template$<$class Container , class F $>$ }\\Container \mbox{\hyperlink{namespaceArrayUtils_a9b9c0bb4a1f4358b8d9a436a583f8eda}{element\+Wise\+Pair\+Op}} (const Container \&lhs, const Container \&rhs, F binary\+Function)
+\item 
+{\footnotesize template$<$class Scalar , class Container , class F $>$ }\\Container \mbox{\hyperlink{namespaceArrayUtils_a7959b05d2d307318e0bd1f79dbc3faec}{element\+Wise\+Scalar\+Op}} (const Scalar \&lhs, const Container \&rhs, F binary\+Function)
+\item 
+{\footnotesize template$<$class Container $>$ }\\auto \mbox{\hyperlink{namespaceArrayUtils_a75ed8dcc1685d2373c6efcf45d4337fb}{L2\+Norm}} (const Container \&c)
+\item 
+{\footnotesize template$<$class Container $>$ }\\auto \mbox{\hyperlink{namespaceArrayUtils_a935b6bf37aaf1221dc8e89861ab863a5}{Dot\+Product}} (const Container \&c)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Collection of utility functions and operators for iterable data containers like std\+::array, std\+::vector, etc. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceArrayUtils_a935b6bf37aaf1221dc8e89861ab863a5}\index{ArrayUtils@{ArrayUtils}!DotProduct@{DotProduct}}
+\index{DotProduct@{DotProduct}!ArrayUtils@{ArrayUtils}}
+\doxysubsubsection{\texorpdfstring{DotProduct()}{DotProduct()}}
+{\footnotesize\ttfamily \label{namespaceArrayUtils_a935b6bf37aaf1221dc8e89861ab863a5} 
+template$<$class Container $>$ \\
+auto Array\+Utils\+::\+Dot\+Product (\begin{DoxyParamCaption}\item[{const Container \&}]{c}{}\end{DoxyParamCaption})}
+
+Calculates the dor product for a given container with itself. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Type of container \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Container to calculate the dot product for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sum\+\_\+i(abs(c\mbox{[}i\mbox{]})) i.\+e. c dot c 
+\end{DoxyReturn}
+\Hypertarget{namespaceArrayUtils_a9b9c0bb4a1f4358b8d9a436a583f8eda}\index{ArrayUtils@{ArrayUtils}!elementWisePairOp@{elementWisePairOp}}
+\index{elementWisePairOp@{elementWisePairOp}!ArrayUtils@{ArrayUtils}}
+\doxysubsubsection{\texorpdfstring{elementWisePairOp()}{elementWisePairOp()}}
+{\footnotesize\ttfamily \label{namespaceArrayUtils_a9b9c0bb4a1f4358b8d9a436a583f8eda} 
+template$<$class Container , class F $>$ \\
+Container Array\+Utils\+::element\+Wise\+Pair\+Op (\begin{DoxyParamCaption}\item[{const Container \&}]{lhs}{, }\item[{const Container \&}]{rhs}{, }\item[{F}]{binary\+Function}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Applies an element wise binary function F to two containers.
+
+If the containers differ in size the F is only applied to as many elements as are in the smaller container.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Type for both containers. \\
+\hline
+{\em F} & Type of binary function. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+{\em binary\+Function} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Element wise F(lhs, rhs). 
+\end{DoxyReturn}
+\Hypertarget{namespaceArrayUtils_a7959b05d2d307318e0bd1f79dbc3faec}\index{ArrayUtils@{ArrayUtils}!elementWiseScalarOp@{elementWiseScalarOp}}
+\index{elementWiseScalarOp@{elementWiseScalarOp}!ArrayUtils@{ArrayUtils}}
+\doxysubsubsection{\texorpdfstring{elementWiseScalarOp()}{elementWiseScalarOp()}}
+{\footnotesize\ttfamily \label{namespaceArrayUtils_a7959b05d2d307318e0bd1f79dbc3faec} 
+template$<$class Scalar , class Container , class F $>$ \\
+Container Array\+Utils\+::element\+Wise\+Scalar\+Op (\begin{DoxyParamCaption}\item[{const Scalar \&}]{lhs}{, }\item[{const Container \&}]{rhs}{, }\item[{F}]{binary\+Function}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Applies a binary function F to with a scalar to every element in a container.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Scalar} & Type of scalar value. \\
+\hline
+{\em Container} & Type of the container. \\
+\hline
+{\em F} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+{\em binary\+Function} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Element wise F(lhs, rhs). 
+\end{DoxyReturn}
+\Hypertarget{namespaceArrayUtils_a75ed8dcc1685d2373c6efcf45d4337fb}\index{ArrayUtils@{ArrayUtils}!L2Norm@{L2Norm}}
+\index{L2Norm@{L2Norm}!ArrayUtils@{ArrayUtils}}
+\doxysubsubsection{\texorpdfstring{L2Norm()}{L2Norm()}}
+{\footnotesize\ttfamily \label{namespaceArrayUtils_a75ed8dcc1685d2373c6efcf45d4337fb} 
+template$<$class Container $>$ \\
+auto Array\+Utils\+::\+L2\+Norm (\begin{DoxyParamCaption}\item[{const Container \&}]{c}{}\end{DoxyParamCaption})}
+
+Calculates the L2 norm for a given container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sqrt(sum\+\_\+i(c\mbox{[}i\mbox{]}\texorpdfstring{$\ast$}{*}c\mbox{[}i\mbox{]})). 
+\end{DoxyReturn}
+\Hypertarget{namespaceArrayUtils_a6ebc4c0b96cf4c0469183d6cd76d6630}\index{ArrayUtils@{ArrayUtils}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!ArrayUtils@{ArrayUtils}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily \label{namespaceArrayUtils_a6ebc4c0b96cf4c0469183d6cd76d6630} 
+template$<$class Container $>$ \\
+std\+::string Array\+Utils\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{const Container \&}]{container}{, }\item[{const std\+::string \&}]{delimiter}{ = {\ttfamily "{},~"{}}, }\item[{const std\+::array$<$ std\+::string, 2 $>$ \&}]{surround}{ = {\ttfamily \{~"{}\mbox{[}"{},~"{}\mbox{]}"{}~\}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+Generates a string representation of a container which fulfills the Container requirement (provide cbegin and cend). 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Type of Container. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em container.} & \\
+\hline
+{\em delimiter} & String that is put between items. \\
+\hline
+{\em surround} & Strings to be put before and after the listing (e.\+g. brackets). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String representation of container. 
+\end{DoxyReturn}

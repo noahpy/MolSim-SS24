@@ -1,0 +1,861 @@
+\chapter{Mol\+Sim Group F}
+\hypertarget{index}{}\label{index}\index{MolSim Group F@{MolSim Group F}}
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+ 
+
+The molecular dynamics SS24 code base of Group F. ~\newline
+ This is a \doxylink{classParticle}{Particle} \doxylink{classSimulation}{Simulation} program, which outputs data to be then visualized using \href{https://www.paraview.org/}{\texttt{ Para\+View}}. ~\newline
+ You can find the doxygen documentation hosted on \href{https://noahpy.github.io/MolSim-SS24/}{\texttt{ https\+://noahpy.\+github.\+io/\+Mol\+Sim-\/\+SS24/}}. ~\newline
+ You can find a playlist of our simulations on \href{https://www.youtube.com/playlist?list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ Youtube}}.\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Table of Contents}{Table of Contents}}\label{index_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Mol\+Sim Group F
+\begin{DoxyItemize}
+\item Table of Contents
+\item Group members
+\item Quickstart
+\begin{DoxyItemize}
+\item Build instructions
+\item Run instructions
+\begin{DoxyItemize}
+\item Assignment 1 simulation
+\item Assignment 2 simulation
+\item Assignment 3 simulation
+\item Assignment 4 simulation
+\item Assignment 5 simulation
+\end{DoxyItemize}
+\item Generate Doxygen documentation
+\item Run tests
+\item Run benchmarks
+\item Format code
+\item Open man page
+\end{DoxyItemize}
+\item Documentation
+\begin{DoxyItemize}
+\item Project structure
+\item Folder structure
+\item Input specification
+\begin{DoxyItemize}
+\item Compatibility overview
+\item Cluster (-\/c)
+\begin{DoxyItemize}
+\item Cluster Input Example
+\end{DoxyItemize}
+\item Ascii-\/\+Art (-\/a)
+\begin{DoxyItemize}
+\item Ascii-\/\+Art Input Example
+\end{DoxyItemize}
+\item XML (-\/x)
+\end{DoxyItemize}
+\item Performance
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Group members}{Group members}}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/noahpy}{\texttt{ Noah Schlenker}}
+\item \href{https://github.com/jimin31}{\texttt{ Jimin Kim}}
+\item \href{https://github.com/Chryzl}{\texttt{ Christian Nix}}
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{Quickstart}{Quickstart}}\label{index_autotoc_md3}
+\hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{Build instructions}{Build instructions}}\label{index_autotoc_md4}
+To build the project, run the following commands\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+
+To build without doxygen and benchmarks run
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/DGENERATE\_DOC=OFF\ \ -\/DBUILD\_BENCH=OFF}
+
+\end{DoxyCode}
+
+
+instead.\hypertarget{index_autotoc_md5}{}\doxysubsection{\texorpdfstring{Run instructions}{Run instructions}}\label{index_autotoc_md5}
+To run the project (in general), run the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/<input\_file>\ <program\ Arguments>}
+
+\end{DoxyCode}
+
+
+The program arguments can be specified as follows
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/d,\ -\/-\/delta\_t=VALUE\ \ \ \ Set\ the\ time\ step\ (default:\ 0.014)}
+\DoxyCodeLine{-\/e,\ -\/-\/end\_time=VALUE\ \ \ Set\ the\ end\ time\ for\ simulation\ (default:\ 2.8)}
+\DoxyCodeLine{\ \ \ \ -\/-\/epsilon=VALUE\ \ \ \ Set\ the\ depth\ of\ LJ\ potential\ well\ (default:\ 5)}
+\DoxyCodeLine{\ \ \ \ -\/-\/sigma=VALUE\ \ \ \ \ \ Set\ the\ Zero\ crossing\ of\ LJ\ potential\ (default:\ 1)}
+\DoxyCodeLine{-\/l,\ -\/-\/log\_level=LEVEL\ \ Set\ the\ logging\ level\ (default:\ 3,\ incompatible\ with\ -\/p)}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ trace}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ debug}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ info}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ warn}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ critical}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ off}
+\DoxyCodeLine{-\/c\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Specify\ that\ the\ given\ input\ file\ describes\ clusters}
+\DoxyCodeLine{-\/a\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Specify\ that\ the\ given\ input\ file\ is\ of\ type\ ascii\ art}
+\DoxyCodeLine{-\/x\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Specify\ that\ the\ given\ input\ file\ is\ of\ type\ XML}
+\DoxyCodeLine{-\/s,\ -\/-\/simtype=VALUE\ \ \ \ Specify\ simulation\ type\ (default:\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PlanetSimulation}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LennardJonesSimulation}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LinkedLennardJonesSimulation}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LennardJonesDomainSimulation}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MixedLJSimulation}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MembraneSimulation}
+\DoxyCodeLine{-\/w,\ -\/-\/writetype=VALUE\ \ Specify\ writer\ type\ (default:\ 0,\ incompatible\ with\ -\/p)}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VTK-\/Writer}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XYZ-\/Writer}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XML-\/Writer}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ 3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Empty\ i.e.\ no\ output}
+\DoxyCodeLine{-\/p\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Run\ performance\ measurements\ (incompatible\ with\ -\/l,\ -\/w)}
+\DoxyCodeLine{-\/P,\ -\/-\/parallel\ \ \ \ \ \ \ \ \ Specify\ parallel\ strategy}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ static}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ task}
+\DoxyCodeLine{-\/h,\ -\/-\/help\ \ \ \ \ \ \ \ \ \ \ \ \ Display\ help\ message}
+
+\end{DoxyCode}
+
+
+For more information about arguments and default settings, type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ -\/h}
+
+\end{DoxyCode}
+
+
+or read the man page\hypertarget{index_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Assignment 1 simulation}{Assignment 1 simulation}}\label{index_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/eingabe-\/sonne.txt\ -\/e\ 1000}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=E5wFatZMrjY&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.\hypertarget{index_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Assignment 2 simulation}{Assignment 2 simulation}}\label{index_autotoc_md7}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/clusters.txt\ -\/c\ -\/s\ 1\ -\/d\ 0.0002\ -\/e\ 5}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=VvjTVmM5JKw&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.\hypertarget{index_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Assignment 3 simulation}{Assignment 3 simulation}}\label{index_autotoc_md8}
+Cuboid collision\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/assign3.xml\ -\/x\ -\/s\ 3}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=_jjDo9g1zxU&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.
+
+Falling drop\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/falling\_drop.xml\ -\/x\ -\/s\ 3}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=zIzGzFO7_gg&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.\hypertarget{index_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{Assignment 4 simulation}{Assignment 4 simulation}}\label{index_autotoc_md9}
+Big Rayleigh-\/\+Taylor instability\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/big\_rayleigh\_taylor.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=2bC6tZDAa3Y&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgD}{\texttt{ You\+Tube video}} for our result.
+
+Falling drop\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/falling\_drop\_after\_equi.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=Os7ZwBb_ywY&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for a result of ours.\hypertarget{index_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Assignment 5 simulation}{Assignment 5 simulation}}\label{index_autotoc_md10}
+\doxylink{classMembrane}{Membrane}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/membrane.xml\ -\/x\ -\/s\ 5}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=FDe_RSdYlXM&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.
+
+Rayleigh-\/\+Taylor instability in 3D\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/reyleigh\_3D.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=U99R1vSeBxQ&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.
+
+Nano-\/scale flow simulation (base)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/nano\_scale\_flow.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=-eWISjhgIgA&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.
+
+Nano-\/scale flow simulation (strong wall + rare thermostat update)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/nano\_scale\_mods/nano\_flow\_stronger\_wall\_weak\_thermo.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=yxNYmXJg5r0&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.
+
+Nano-\/scale flow simulation (strong wall with nice profile result)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/nano\_scale\_mods/nano\_flow\_stronger\_wall.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=I4h6tjnJVuI&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.
+
+Nano-\/scale flow simulation (with turbulence)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/MolSim\ ../input/nano\_scale\_mods/nano\_flow\_turbulence.xml\ -\/x\ -\/s\ 4}
+
+\end{DoxyCode}
+
+
+See this \href{https://www.youtube.com/watch?v=G34H3SCnpW0&list=PL4YeS_XbiJyJYago_F6bgt_HOoO_9fgDl}{\texttt{ You\+Tube video}} for our result.\hypertarget{index_autotoc_md11}{}\doxysubsection{\texorpdfstring{Generate Doxygen documentation}{Generate Doxygen documentation}}\label{index_autotoc_md11}
+To generate the Doxygen documentation, run the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ doc\_doxygen}
+
+\end{DoxyCode}
+
+
+This will generate the documentation into the folder {\ttfamily doxys\+\_\+documentation}.\hypertarget{index_autotoc_md12}{}\doxysubsection{\texorpdfstring{Run tests}{Run tests}}\label{index_autotoc_md12}
+To build the tests run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{make\ tests}
+
+\end{DoxyCode}
+
+
+To run the tests, run the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{tests/tests}
+
+\end{DoxyCode}
+
+
+Or alternatively with ctest\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ tests}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md13}{}\doxysubsection{\texorpdfstring{Run benchmarks}{Run benchmarks}}\label{index_autotoc_md13}
+The benchmarks are run using \href{https://github.com/google/benchmark}{\texttt{ Google benchmark}}. Build\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{make\ benchmarks}
+
+\end{DoxyCode}
+
+
+Run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bench/benchmarks}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md14}{}\doxysubsection{\texorpdfstring{Format code}{Format code}}\label{index_autotoc_md14}
+If your system has clang-\/format installed, the target {\ttfamily clangformat} will be created. You can then run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clangformat}
+
+\end{DoxyCode}
+
+
+to format the code.\hypertarget{index_autotoc_md15}{}\doxysubsection{\texorpdfstring{Open man page}{Open man page}}\label{index_autotoc_md15}
+To see more details on how to use the program, you can look at our man page. Enter the project root and then run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{man\ ./.molsim.1}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md16}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{index_autotoc_md16}
+\hypertarget{index_autotoc_md17}{}\doxysubsection{\texorpdfstring{Project structure}{Project structure}}\label{index_autotoc_md17}
+The project is structured as follows\+: ~\newline
+  
+\begin{DoxyInlineImage}
+\includegraphics[height=\baselineskip,keepaspectratio=true]{UML-Structure.svg}%Project structure UML
+\end{DoxyInlineImage}
+   
+
+Note that this is not a perfect UML diagram, but rather a visualization of the broad structure of the project. The latest changes done within the scope of assignment 5 are highlighted in orange.
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classSimulation}{Simulation}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item Any kinds of a simulations are represented as a child class of the {\ttfamily \doxylink{classSimulation}{Simulation}} class
+\item Any simulation instance defines the {\ttfamily run\+Sim()} function, which uses the I/O classes ({\ttfamily \doxylink{classFileReader}{File\+Reader}}, {\ttfamily \doxylink{classFileWriter}{File\+Writer}}), the {\ttfamily \doxylink{classPhysicsStrategy}{Physics\+Strategy}} class and the model variables passed to it to calculate the simulation through time.
+\item Child simulations extend their parent simulation with new model variables.
+\begin{DoxyItemize}
+\item Multiple simulation classes have been added to allow for the functionality required for each assignment. See the following table for all functionality
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{10}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \doxylink{classSimulation}{Simulation} Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Gravity   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Lennard-\/\+Jones-\/\+Potential   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Linked-\/\+Cell   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Boundary Conditions   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Analytics   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Multiple different Particles   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \doxylink{classThermostat}{Thermostat}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Molecules    }\\\cline{1-10}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \doxylink{classSimulation}{Simulation} Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Gravity   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Lennard-\/\+Jones-\/\+Potential   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Linked-\/\+Cell   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Boundary Conditions   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Analytics   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Multiple different Particles   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \doxylink{classThermostat}{Thermostat}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Molecules    }\\\cline{1-10}
+\endhead
+\doxylink{classPlanetSimulation}{Planet\+Simulation}   &0   &\+:white\+\_\+check\+\_\+mark\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:    \\\cline{1-10}
+\doxylink{classLennardJonesSimulation}{Lennard\+Jones\+Simulation}   &1   &\+:x\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:    \\\cline{1-10}
+\doxylink{classLinkedLennardJonesSimulation}{Linked\+Lennard\+Jones\+Simulation}   &2   &\+:x\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:    \\\cline{1-10}
+\doxylink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}   &3   &\+:x\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:    \\\cline{1-10}
+\doxylink{classMixedLJSimulation}{Mixed\+LJSimulation}   &4   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:x\+:    \\\cline{1-10}
+\doxylink{classMembraneSimulation}{Membrane\+Simulation}   &5   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   \\\cline{1-10}
+\end{longtabu}
+
+
+{\bfseries{Note on Run-\/time\+:}} Without the Linked-\/\+Cell algorithm the complexity scales in \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}O(n\textsuperscript{2})\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, otherwise in {\bfseries{O(n)}}.
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classPhysicsStrategy}{Physics\+Strategy}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item Strategy interface allows for interchangable / compareable implementation of the physics
+\item Realistically, velocities and positions are calculated according to Störmer-\/\+Verlet and are not changed (only parallelized later on)
+\item Interchangeable are the force calculations -\/\texorpdfstring{$>$}{>} Essentially each simulation has its own implementation of the forces
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classFileWriter}{File\+Writer}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item Template method class defining a common interface of different writers
+\item There are XYZ and VTK writers available
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classFileReader}{File\+Reader}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item Template method class defining a common interface of different readers
+\item Different input types can be specified (see here in section Input specification)
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classParticleCluster}{Particle\+Cluster}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item Represents a cluster of particles that can be used to initialize the simulation
+\item Based on an abstract {\ttfamily \doxylink{classParticleCluster}{Particle\+Cluster}} class
+\item Child classes include {\ttfamily \doxylink{classCuboidParticleCluster}{Cuboid\+Particle\+Cluster}} and {\ttfamily \doxylink{classSphereParticleCluster}{Sphere\+Particle\+Cluster}}
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classCellGrid}{Cell\+Grid}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item The MD-\/\+Simulation uses the linked-\/cell algorithm starting from the \doxylink{classLinkedLennardJonesSimulation}{Linked\+Lennard\+Jones\+Simulation}
+\item The algorithm scales in {\bfseries{O(n)}} relative to the number of particles
+\item Assumes a certain {\itshape cutoff} distance after which the forces are neglected
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classThermostat}{Thermostat}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item Used to cool / heat / maintain the temperature of the simulation
+\item There are two thermostats available
+\item The classical thermostat will reduce the temperature without regarding the mean velocity of the system, while the individual thermostat does
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classAnalyzer}{Analyzer}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item Can be used to analyze the simulation
+\item It can produce the density and velocity profile of a simulation
+\item Can be specified with dimensionality
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classProgressLogger}{Progress\+Logger}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item Will log the progress of the simulation while it is running to inform the user about progress and ETA
+\item Will update after each percent of the simulation has finished
+\end{DoxyItemize}\hypertarget{index_autotoc_md18}{}\doxysubsection{\texorpdfstring{Folder structure}{Folder structure}}\label{index_autotoc_md18}
+This section describes the folder structure of this project (see UML-\/\+Diagram)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MolSim-\/SS24}
+\DoxyCodeLine{├──\ bench\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ benchmark\ simulation}
+\DoxyCodeLine{│  \ └──\ results\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Measurements\ from\ g-\/bench\ runs}
+\DoxyCodeLine{│  \ \ \ \ \ └──\ google\_benchmark\_plot\ \ \ Result\ plots}
+\DoxyCodeLine{├──\ cmake}
+\DoxyCodeLine{│  \ └──\ modules\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Files\ to\ find\ and\ load\ packages}
+\DoxyCodeLine{├──\ docs}
+\DoxyCodeLine{│  \ ├──\ presentation\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ latex-\/files\ for\ the\ presentations}
+\DoxyCodeLine{│  \ ├──\ report\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ latex-\/files\ for\ the\ reports}
+\DoxyCodeLine{│  \ └──\ res\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Images\ for\ the\ documentation}
+\DoxyCodeLine{├──\ input\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Input\ files\ used\ in\ the\ assignments}
+\DoxyCodeLine{├──\ libs}
+\DoxyCodeLine{│  \ └──\ libxsd\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ for\ the\ xsd\ library}
+\DoxyCodeLine{├──\ results\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Some\ density-\/profiles\ to\ plot}
+\DoxyCodeLine{├──\ scripts}
+\DoxyCodeLine{│  \ ├──\ batch-\/scripts\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scripts\ to\ run\ our\ simulations\ on\ cluster}
+\DoxyCodeLine{│  \ ├──\ paraview\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scripts\ used\ to\ help\ paraview}
+\DoxyCodeLine{│  \ └──\ plots\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scripts\ to\ create\ plots}
+\DoxyCodeLine{├──\ src}
+\DoxyCodeLine{│  \ ├──\ analytics\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ for\ ProgressLogger\ \&\ Analyzer}
+\DoxyCodeLine{│  \ ├──\ io}
+\DoxyCodeLine{│  \ │  \ ├──\ argparse\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ parse\ arguments}
+\DoxyCodeLine{│  \ │  \ ├──\ fileReader\ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ read\ input\ files}
+\DoxyCodeLine{│  \ │  \ ├──\ fileWriter\ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ write\ output\ files}
+\DoxyCodeLine{│  \ │  \ ├──\ xmlparse\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ parse\ xml\ input}
+\DoxyCodeLine{│  \ │  \ └──\ xsd\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ for\ xsd\ (xml\ input)}
+\DoxyCodeLine{│  \ ├──\ models}
+\DoxyCodeLine{│  \ │  \ ├──\ generators\ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ generate\ clusters}
+\DoxyCodeLine{│  \ │  \ ├──\ linked\_cell\ \ \ \ \ \ \ \ \ \ \ \ \ Code\ for\ the\ linked-\/cell\ data\ structure}
+\DoxyCodeLine{│  \ │  \ │  \ └──\ cell\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ for\ the\ cells\ in\ the\ data\ structure}
+\DoxyCodeLine{│  \ │  \ └──\ molecules\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ generate\ molecules}
+\DoxyCodeLine{│  \ ├──\ physics}
+\DoxyCodeLine{│  \ │  \ ├──\ boundaryConditions\ \ \ \ \ \ Code\ to\ do\ boundary\ conditions}
+\DoxyCodeLine{│  \ │  \ ├──\ forceCal\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ calculate\ forces}
+\DoxyCodeLine{│  \ │  \ ├──\ locationCal\ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ calculate\ positions}
+\DoxyCodeLine{│  \ │  \ ├──\ thermostat\ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ for\ the\ thermostats}
+\DoxyCodeLine{│  \ │  \ └──\ velocityCal\ \ \ \ \ \ \ \ \ \ \ \ \ Code\ to\ calculate\ velocities}
+\DoxyCodeLine{│  \ ├──\ simulation\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Code\ for\ the\ different\ simulations}
+\DoxyCodeLine{│  \ └──\ utils\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Utils\ code\ (ArrayUtils,\ ...)}
+\DoxyCodeLine{└──\ tests}
+\DoxyCodeLine{\ \ \ \ ├──\ analytics\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tests\ for\ the\ Analyzer}
+\DoxyCodeLine{\ \ \ \ ├──\ data\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Input\ for\ the\ tests}
+\DoxyCodeLine{\ \ \ \ ├──\ io\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tests\ for\ IO}
+\DoxyCodeLine{\ \ \ \ ├──\ models}
+\DoxyCodeLine{\ \ \ \ │  \ ├──\ generators\ \ \ \ \ \ \ \ \ \ \ \ \ \ Tests\ for\ the\ clusters}
+\DoxyCodeLine{\ \ \ \ │  \ └──\ linkedcell\ \ \ \ \ \ \ \ \ \ \ \ \ \ Tests\ for\ the\ linked-\/cell\ Algorithm}
+\DoxyCodeLine{\ \ \ \ └──\ physics\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tests\ for\ the\ physics\ codes}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ └──\ boundaryConditions\ \ \ \ \ \ Tests\ for\ the\ boundary\ conditions}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{MolSim_8cpp}{src/\+Mol\+Sim.\+cpp}}\+: Is the core file holding the main function
+\end{DoxyItemize}\hypertarget{index_autotoc_md19}{}\doxysubsection{\texorpdfstring{Input specification}{Input specification}}\label{index_autotoc_md19}
+\hypertarget{index_autotoc_md20}{}\doxysubsubsection{\texorpdfstring{Compatibility overview}{Compatibility overview}}\label{index_autotoc_md20}
+Input type vs. what can be specified in it
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Clusters   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Single \doxylink{classPoints}{Points}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Ascii Art   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Program Arguments (s.\+a. start, end, ...)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Different particle types    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Clusters   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Single \doxylink{classPoints}{Points}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Ascii Art   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Program Arguments (s.\+a. start, end, ...)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Different particle types    }\\\cline{1-6}
+\endhead
+XYZ   &\+:x\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:    \\\cline{1-6}
+Cluster   &\+:white\+\_\+check\+\_\+mark\+:   &\+:recycle\+:   &\+:x\+:   &\+:x\+:   &\+:x\+:    \\\cline{1-6}
+Ascii Art   &\+:x\+:   &\+:recycle\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:x\+:   &\+:x\+:    \\\cline{1-6}
+XML   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:x\+:   &\+:white\+\_\+check\+\_\+mark\+:   &\+:white\+\_\+check\+\_\+mark\+:   \\\cline{1-6}
+\end{longtabu}
+
+
+{\bfseries{Note\+:}} \+:recycle\+: means you technically can, but probably shouldn\textquotesingle{}t\hypertarget{index_autotoc_md21}{}\doxysubsubsection{\texorpdfstring{Cluster (-\/c)}{Cluster (-\/c)}}\label{index_autotoc_md21}
+
+\begin{DoxyItemize}
+\item A cluster file can only code for clusters. By specifying clusters of size 1, a single point could be created
+\item Lines that start with a {\ttfamily \#} are disregarded as comments
+\item Each line can specify one cluster
+\item The input can be written to a {\ttfamily .txt} file
+\item The format is as follows\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ For\ Cuboid\ Clusters:}
+\DoxyCodeLine{C\ <posx>\ <posy>\ <posz>\ <width>\ <height>\ <depth>\ <spacing>\ <mass>\ <meanVel>\ <vx>\ <vy>\ <vz>\ <Dim.\ of\ Brownian\ motion\ (2/3)>}
+\DoxyCodeLine{\#\ For\ Sphere\ Clusters:}
+\DoxyCodeLine{S\ <posx>\ <posy>\ <posz>\ <radius>\ <sphereDimensions\ (2/3)>\ <mass>\ <meanVel>\ <vx>\ <vy>\ <vz>\ <Dim.\ of\ Brownian\ motion\ (2/3)>}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Where the specified position is the back, left, bottom corner of the cuboid or center of the sphere
+\end{DoxyItemize}\hypertarget{index_autotoc_md22}{}\doxysubsubsubsection{\texorpdfstring{Cluster Input Example}{Cluster Input Example}}\label{index_autotoc_md22}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Sphere}
+\DoxyCodeLine{S\ 0.0\ 0.0\ 0.0\ 4\ 2\ 1.1225\ 1\ 0.1\ -\/30\ 0\ 0\ 2}
+\DoxyCodeLine{\#\ Cluster:}
+\DoxyCodeLine{C\ 35\ 15\ 0\ 8\ 8\ 1\ 1.125\ 1\ 1\ 10\ 0\ 0\ 2}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md23}{}\doxysubsubsection{\texorpdfstring{Ascii-\/\+Art (-\/a)}{Ascii-\/\+Art (-\/a)}}\label{index_autotoc_md23}
+
+\begin{DoxyItemize}
+\item An ascii-\/\+Art input file is a {\ttfamily .txt} file
+\item It specifies a 2D shape of particles i.\+e. creates particles in the shape of ascii art
+\item One can use any character in the ascii art as long as it is listed
+\item The format is as follows\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<posx>\ <posy>\ <posz>}
+\DoxyCodeLine{<vx>\ <vy>\ <vz>\ <mass>\ <spacing>\ <meanVel>}
+\DoxyCodeLine{<first\ char\ to\ represent\ particle>\ <second\ char\ to\ represent\ particle>\ ...}
+\DoxyCodeLine{<Shape>}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md24}{}\doxysubsubsubsection{\texorpdfstring{Ascii-\/\+Art Input Example}{Ascii-\/\+Art Input Example}}\label{index_autotoc_md24}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{0\ 0\ 0}
+\DoxyCodeLine{0\ -\/10\ 0\ 1\ 1.125\ 0.1}
+\DoxyCodeLine{+\ .\ :\ -\/\ =}
+\DoxyCodeLine{++++++++++++++++++++++++++++++++++-\/\ \ \ \ \ \ \ \ \ :+++++++++++++++++++++++++++++++++++++++++++++}
+\DoxyCodeLine{++++++++++++++++++++++++++++++++++-\/\ \ \ \ \ \ \ \ \ :+++++++++++++++++++++++++++++++++++++++++++++}
+\DoxyCodeLine{++++++++++++++++++++++++++++++++++-\/\ \ \ \ \ \ \ \ \ :+++++++++++++++++++++++++++++++++++++++++++++}
+\DoxyCodeLine{++++++++++++++++++++++++++++++++++-\/\ \ \ \ \ \ \ \ \ :+++++++++++++++++++++++++++++++++++++++++++++}
+\DoxyCodeLine{........:++++++++:........++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++:........:++++++++-\/.........-\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++-\/\ \ \ \ \ \ \ \ \ :++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ ++++++++===========++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ +++++++++++++++++++++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ +++++++++++++++++++++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .++++++++.\ \ \ \ \ \ \ \ +++++++++++++++++++++++++++\ \ \ \ \ \ \ \ \ \ ++++++++:\ \ \ \ \ \ \ \ \ -\/++++++++}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md25}{}\doxysubsubsection{\texorpdfstring{XML (-\/x)}{XML (-\/x)}}\label{index_autotoc_md25}
+
+\begin{DoxyItemize}
+\item The XML input file is the recommended input format as it allows for the must broad input specification
+\item The input must be stored as {\ttfamily .xml} files
+\item {\bfseries{Note\+:}} Not all parameters that can be specified work with all simulation types. Please refer to the overview in the project structure
+\item The input specification is as follows\+:
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily Scaffold}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<?\textcolor{keyword}{xml}\ \textcolor{keyword}{version}=\textcolor{stringliteral}{"{}1.0"{}}\ \textcolor{keyword}{encoding}=\textcolor{stringliteral}{"{}UTF-\/8"{}}?>}
+\DoxyCodeLine{<\textcolor{keywordtype}{simulation}\ \textcolor{keyword}{xmlns:xsi}=\textcolor{stringliteral}{"{}http://www.w3.org/2001/XMLSchema-\/instance"{}}>}
+\DoxyCodeLine{\ \ \ \ ...}
+\DoxyCodeLine{</\textcolor{keywordtype}{simulation}>}
+
+\end{DoxyCode}
+
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily \doxylink{classSimulation}{Simulation} parameters}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{params}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{delta\_t}>\textcolor{keyword}{yourDeltaT}</\textcolor{keywordtype}{delta\_t}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{end\_time}>\textcolor{keyword}{yourEndTime}</\textcolor{keywordtype}{end\_time}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{output}>\textcolor{keyword}{NameOfOutputFile}</\textcolor{keywordtype}{output}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{frequency}>\textcolor{keyword}{FrequencyOfPlotting}</\textcolor{keywordtype}{frequency}>}
+\DoxyCodeLine{\ \ \textcolor{comment}{<!-\/-\/\ Domain\ params\ -\/-\/>}}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{domainOrigin}>\ \textcolor{comment}{<!-\/-\/\ Back-\/Bottom-\/Left\ corner\ of\ Domain\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{xCoord}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{yCoord}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{zCoord}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{domainOrigin}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{domainSize}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{sizeInXDirection}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{sizeInXDirection}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{sizeInZDirection}</\textcolor{keywordtype}{z}>\ \textcolor{comment}{<!-\/-\/\ Set\ to\ 0\ for\ 2D\ domain\ -\/-\/>}}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{domainSize}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{cutoff}>\textcolor{keyword}{YourCutoffForLinkedCell}</\textcolor{keywordtype}{cutoff}>}
+\DoxyCodeLine{\ \ \textcolor{comment}{<!-\/-\/\ Boundary\ params\ -\/>\ Choose\ periodic,\ soft\_reflective,\ outflow\ -\/-\/>}}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{boundaries}>}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{<!-\/-\/\ For\ 2D\ Domain\ use\ bound\_four\ tag\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_four}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_four}>\ \textcolor{comment}{<!-\/-\/\ Left\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_four}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_four}>\ \textcolor{comment}{<!-\/-\/\ Right\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_four}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_four}>\ \textcolor{comment}{<!-\/-\/\ Top\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_four}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_four}>\ \textcolor{comment}{<!-\/-\/\ Bottom\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{<!-\/-\/\ For\ 3D\ Domain\ use\ bound\_six\ tag\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_six}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_six}>\ \textcolor{comment}{<!-\/-\/\ Left\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_six}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_six}>\ \textcolor{comment}{<!-\/-\/\ Right\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_six}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_six}>\ \textcolor{comment}{<!-\/-\/\ Top\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_six}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_six}>\ \textcolor{comment}{<!-\/-\/\ Bottom\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_six}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_six}>\ \textcolor{comment}{<!-\/-\/\ Front\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{bound\_six}>\textcolor{keyword}{yourBoundary}</\textcolor{keywordtype}{bound\_six}>\ \textcolor{comment}{<!-\/-\/\ Back\ Boundary\ -\/-\/>}}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{boundaries}>}
+\DoxyCodeLine{\ \ \textcolor{comment}{<!-\/-\/\ Thermostat\ params\ -\/-\/>}}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{thermostat}>}
+\DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{initialTemp}>\textcolor{keyword}{yourStartingTemperatureInKelvin}</\textcolor{keywordtype}{initialTemp}>}
+\DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{thermoFreq}>\textcolor{keyword}{FrequencyOfThermostatApplication}</\textcolor{keywordtype}{thermoFreq}>}
+\DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{maxTempDelta}>\textcolor{keyword}{MaximalChangeInTemperatureInKelvin}</\textcolor{keywordtype}{maxTempDelta}>}
+\DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{type}>\textcolor{keyword}{ThermostatType}</\textcolor{keywordtype}{type}>\ \textcolor{comment}{<!-\/-\/\ Choose\ between\ individual\ or\ classic\ -\/-\/>}}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{thermostat}>}
+\DoxyCodeLine{\ \ \textcolor{comment}{<!-\/-\/\ Gravity\ params\ -\/-\/>}}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{gravity}>\textcolor{keyword}{YourGravity}</\textcolor{keywordtype}{gravity}>\ \textcolor{comment}{<!-\/-\/\ F\ =\ gravity\ *\ particleMass\ -\/-\/>}}
+\DoxyCodeLine{\ \ \textcolor{comment}{<!-\/-\/\ Analyzer\ params\ -\/-\/>}}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{analysisName}>\textcolor{keyword}{OutPutNameOfAnalysisFiles}</\textcolor{keywordtype}{analysisName}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{analysisFreq}>\textcolor{keyword}{FrequencyOfRunningAnalyzer}</\textcolor{keywordtype}{analysisFreq}>}
+\DoxyCodeLine{</\textcolor{keywordtype}{params}>}
+
+\end{DoxyCode}
+
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily Clusters}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+Scaffold\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{clusters}>}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{</\textcolor{keywordtype}{clusters}>}
+
+\end{DoxyCode}
+
+
+Sphere\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{sphere}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{center}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{XCoordOfCenter}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{YCoordOfCenter}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{ZCoordOfCenter}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{center}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{vel}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{InitialVelInXDirection}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{InitialVelInYDirection}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{InitialVelInZDirection}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{vel}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{radius}>\textcolor{keyword}{RadiusOfSphereInParticles}</\textcolor{keywordtype}{radius}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{mass}>\textcolor{keyword}{MassOfParticles}</\textcolor{keywordtype}{mass}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{sphereDim}>\textcolor{keyword}{DimensionalityOfSphere}(2/3)</\textcolor{keywordtype}{sphereDim}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{spacing}>\textcolor{keyword}{MinimalSpacingBetweenParticles}</\textcolor{keywordtype}{spacing}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{brownVel}>\textcolor{keyword}{MeanBrownianVelocity}</\textcolor{keywordtype}{brownVel}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{brownDim}>\textcolor{keyword}{DimensionalityToApplyBrownianMotionTo}</\textcolor{keywordtype}{brownDim}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{ptype}>\textcolor{keyword}{TypeOfTheParticles}</\textcolor{keywordtype}{ptype}>}
+\DoxyCodeLine{</\textcolor{keywordtype}{sphere}>}
+
+\end{DoxyCode}
+
+
+Cuboid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{cuboid}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{pos}>\ \textcolor{comment}{<!-\/-\/\ Lower-\/Left-\/Bottom\ Corner\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{CornerXCoordinate}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{CornerXCoordinate}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{CornerZCoordinate}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{pos}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{vel}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{InitialVelInXDirection}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{InitialVelInYDirection}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{InitialVelInZDirection}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{vel}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{dim}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{NumberOfParticlesWidth}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{NumberOfParticlesHight}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{NumberOfParticlesDepth}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{dim}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{mass}>\textcolor{keyword}{MassOfParticle}</\textcolor{keywordtype}{mass}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{spacing}>\textcolor{keyword}{SpacingBetweenParticles}</\textcolor{keywordtype}{spacing}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{brownVel}>\textcolor{keyword}{MeanBrownianVelocity}</\textcolor{keywordtype}{brownVel}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{brownDim}>\textcolor{keyword}{DimensionsOfBrownianMotion}(2/3)</\textcolor{keywordtype}{brownDim}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{ptype}>\textcolor{keyword}{TypeOfParticle}</\textcolor{keywordtype}{ptype}>}
+\DoxyCodeLine{</\textcolor{keywordtype}{cuboid}>}
+
+\end{DoxyCode}
+
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily Single Particles}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+This follows the VTK structure
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{particles}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{PointData}\ \textcolor{keyword}{dim}=\textcolor{stringliteral}{"{}3"{}}>}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{xOfFirst}\ \textcolor{keyword}{yOfFirst}\ \textcolor{keyword}{zOfFirst}\ \textcolor{keyword}{xOfSecond}\ \textcolor{keyword}{yOfSecond}\ \textcolor{keyword}{zOfSecond}\ ...}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{PointData}>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{VelData}\ \textcolor{keyword}{dim}=\textcolor{stringliteral}{"{}3"{}}>}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{xVelOfFirst}\ \textcolor{keyword}{yVelOfFirst}\ \textcolor{keyword}{zVelOfFirst}\ \textcolor{keyword}{xVelOfSecond}\ \textcolor{keyword}{yVelOfSecond}\ \textcolor{keyword}{zVelOfSecond}\ ...}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{ValData}>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{ForceData}\ \textcolor{keyword}{dim}=\textcolor{stringliteral}{"{}3"{}}>}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{xForceOfFirst}\ \textcolor{keyword}{yForceOfFirst}\ \textcolor{keyword}{zForceOfFirst}\ \textcolor{keyword}{xForceOfSecond}\ \textcolor{keyword}{yForceOfSecond}\ \textcolor{keyword}{zForceOfSecond}\ ...}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{ForceData}>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{OldForceData}\ \textcolor{keyword}{dim}=\textcolor{stringliteral}{"{}3"{}}>}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{xOldForceOfFirst}\ \textcolor{keyword}{yOldForceOfFirst}\ \textcolor{keyword}{zOldForceOfFirst}\ \textcolor{keyword}{xOldForceOfSecond}\ \textcolor{keyword}{yOldForceOfSecond}\ \textcolor{keyword}{zOldForceOfSecond}\ ...}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{OldForceData}>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{MassData}\ \textcolor{keyword}{dim}=\textcolor{stringliteral}{"{}1"{}}>}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{massOfFirst}\ \textcolor{keyword}{massOfSecond}\ ...}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{MassData}>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{TypeData}\ \textcolor{keyword}{dim}=\textcolor{stringliteral}{"{}1"{}}>}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{typeOfFirst}\ \textcolor{keyword}{typeOfSecond}\ ...}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{TypeData}>}
+\DoxyCodeLine{</\textcolor{keywordtype}{particles}>}
+
+\end{DoxyCode}
+
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily Molecules}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+Currently there is only the membrane available as molecule
+
+Scaffold\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{molecules}>}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{</\textcolor{keywordtype}{molecules}>}
+
+\end{DoxyCode}
+
+
+\doxylink{classMembrane}{Membrane}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{membrane}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{pos}>\ \textcolor{comment}{<!-\/-\/\ Lower-\/Left-\/Bottom\ Corner\ -\/-\/>}}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{CornerXCoordinate}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{CornerXCoordinate}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{CornerZCoordinate}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{pos}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{vel}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{InitialVelInXDirection}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{InitialVelInYDirection}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{InitialVelInZDirection}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{vel}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{dim}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{x}>\textcolor{keyword}{NumberOfParticlesWidth}</\textcolor{keywordtype}{x}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{y}>\textcolor{keyword}{NumberOfParticlesHight}</\textcolor{keywordtype}{y}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{z}>\textcolor{keyword}{NumberOfParticlesDepth}</\textcolor{keywordtype}{z}>}
+\DoxyCodeLine{\ \ </\textcolor{keywordtype}{dim}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{mass}>\textcolor{keyword}{MassOfParticle}</\textcolor{keywordtype}{mass}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{spacing}>\textcolor{keyword}{SpacingBetweenParticles}</\textcolor{keywordtype}{spacing}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{brownVel}>\textcolor{keyword}{MeanBrownianVelocity}</\textcolor{keywordtype}{brownVel}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{brownDim}>\textcolor{keyword}{DimensionsOfBrownianMotion}(2/3)</\textcolor{keywordtype}{brownDim}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{ptype}>\textcolor{keyword}{TypeOfParticle}</\textcolor{keywordtype}{ptype}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{equiDist}>\textcolor{keyword}{r0ForMembrane}</\textcolor{keywordtype}{equiDist}>}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{springConst}>\textcolor{keyword}{SpringConstantK}</\textcolor{keywordtype}{springConst}>}
+\DoxyCodeLine{</\textcolor{keywordtype}{membrane}>}
+
+\end{DoxyCode}
+
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily Different Particles}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+Scaffold\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{ptypes}>}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{</\textcolor{keywordtype}{ptypes}>}
+
+\end{DoxyCode}
+
+
+Specify different particle types and their LJ params + fixing them\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{ptype}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Particle\ Type"{}}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{sigma}>\textcolor{keyword}{SigmaValue}</\textcolor{keywordtype}{sigma}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{epsilon}>\textcolor{keyword}{EpsilonValue}</\textcolor{keywordtype}{epsilon}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{immobile}>\textcolor{keyword}{TrueWillFixateParticleAndNotMoveIt}</\textcolor{keywordtype}{immobile}>}
+\DoxyCodeLine{</\textcolor{keywordtype}{ptype}>}
+
+\end{DoxyCode}
+
+
+{\bfseries{For Examples see Input files}}\hypertarget{index_autotoc_md26}{}\doxysubsection{\texorpdfstring{Performance}{Performance}}\label{index_autotoc_md26}

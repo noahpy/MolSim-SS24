@@ -1,0 +1,396 @@
+\doxysection{Membrane Class Reference}
+\hypertarget{classMembrane}{}\label{classMembrane}\index{Membrane@{Membrane}}
+
+
+A class to model a molecules of particles.  
+
+
+
+
+{\ttfamily \#include $<$Membrane.\+h$>$}
+
+Inheritance diagram for Membrane\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMembrane}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMembrane_a9f94d004fb57e1f5cd480e69efc0bfb1}{Membrane}} (std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classMembrane_a1c735b0943361f6830cdac5784621094}{origin}}, int \mbox{\hyperlink{classMembrane_a276ac400ca73cc083d3aa1a6cd26a650}{num\+Particles\+Width}}, int \mbox{\hyperlink{classMembrane_a05d9321388a8f34ab14195158dcb979f}{num\+Particles\+Height}}, int \mbox{\hyperlink{classMembrane_a9b172e276d3a677358286d196a4c798a}{num\+Particles\+Depth}}, double \mbox{\hyperlink{classMembrane_a77a318836ae31d2c870aa97ffde9a7b2}{spacing}}, double \mbox{\hyperlink{classMembrane_a5a800eb731a5bd1cc042ea2ca4de3aee}{mass}}, std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classMembrane_ab022cfd84abcf5c528d868e595adacc1}{initial\+Velocity}}, double \mbox{\hyperlink{classMembrane_a30f186220be86949c4b604bff88413b2}{mean\+Velocity}}, size\+\_\+t \mbox{\hyperlink{classMembrane_a0acf2ceaa76982dd476c63da8a749159}{dimensions}}, unsigned \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}}, double \mbox{\hyperlink{classMembrane_a3a3977d0c9528c0059a25aa229583bcf}{r0}}, double \mbox{\hyperlink{classMembrane_ab8a13948a7af1ed0612746ab4c815270}{k}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classMembrane}{Membrane} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMembrane_a45be848ecc1c9f2c5ac99007134d8aab}{generate\+Molecule}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&container, size\+\_\+t molecule\+ID) override
+\begin{DoxyCompactList}\small\item\em Generate the membrane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMembrane_a62992da8114e3332f9f7889a22c7d3a9}{calculate\+Intra\+Molecular\+Forces}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim) override
+\begin{DoxyCompactList}\small\item\em Calculate the membrane specific intra-\/molecular forces using the harmonic potential. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classMembrane_a6f16e24011272dd641987181a271e6ff}{to\+String}} ()
+\begin{DoxyCompactList}\small\item\em Get the string representation of the membrane. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}} \& \mbox{\hyperlink{classMembrane_a8272dc81894837d92029628e7b13c175}{get\+Direct\+Neighbors}} () const
+\begin{DoxyCompactList}\small\item\em Get the direct neighbors of the particles. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}} \& \mbox{\hyperlink{classMembrane_ad3424390ee16f9760a472914894b97f1}{get\+Diag\+Neighbors}} () const
+\begin{DoxyCompactList}\small\item\em Get the diagonal neighbors of the particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMolecule}{Molecule}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMolecule_a9b3ceda2d39cd2de85c8be83eed6f2a2}{Molecule}} (unsigned \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classMolecule}{Molecule} class. Will initialize root and particles empty. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classMolecule_a6f7a4f3a97ef2ac9fa6a7c5f85ede82a}{\texorpdfstring{$\sim$}{\string~}\+Molecule}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for the \doxylink{classMolecule}{Molecule} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMolecule_ae25da1cb0e21495ab14abc3f76477b93}{init\+LJParams}} (double epsilon, double sigma)
+\begin{DoxyCompactList}\small\item\em Initialize the Lennard-\/\+Jones parameters for the membrane. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classMolecule_a01bc01219ab37c832f0a2c85c234c135}{get\+Ptype}} () const
+\begin{DoxyCompactList}\small\item\em Get the particle type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMembrane_a7e0501d72157485035d2525b76adba1f}{init\+Neighbors}} (const \mbox{\hyperlink{Membrane_8h_a58e20956838df653bcc06ac13d30bf0f}{Particle\+Grid}} \&particle\+Grid)
+\begin{DoxyCompactList}\small\item\em Initialize the neighbors of the particles after the gird has been generated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMembrane_aecf3c385f6b73501bd716fae6430ccfa}{calculate\+Harmonic\+Forces}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&container)
+\begin{DoxyCompactList}\small\item\em Calculate the harmonic forces for all particles of the membrane. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMembrane_afeaef0f209e8809e69b739c8edb3fd0d}{is\+Neighbor}} (size\+\_\+t particle\+ID1, size\+\_\+t particle\+ID2)
+\begin{DoxyCompactList}\small\item\em Check if two particles are neighbors. \end{DoxyCompactList}\item 
+std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ \mbox{\hyperlink{classMembrane_a2b8df46e9c17d44139b7d06e4015b562}{get\+Key}} (size\+\_\+t particle\+ID1, size\+\_\+t particle\+ID2)
+\begin{DoxyCompactList}\small\item\em Get the key for the neighboring relations map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}} \mbox{\hyperlink{classMembrane_ac37cbbf6a740ee25652ca82976132b8f}{direct\+Neighbors}}
+\item 
+\mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}} \mbox{\hyperlink{classMembrane_a7b83d1ab91279451e0b58e1164160975}{diag\+Neighbors}}
+\item 
+\mbox{\hyperlink{Membrane_8h_a623b831fd404538400a013d5e66eade4}{Neighboring\+Relation\+Map}} \mbox{\hyperlink{classMembrane_a4f24def97457a3567c3e9dbca9fea6e1}{neighboring\+Relations}}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classMembrane_a1c735b0943361f6830cdac5784621094}{origin}}
+\item 
+int \mbox{\hyperlink{classMembrane_a276ac400ca73cc083d3aa1a6cd26a650}{num\+Particles\+Width}}
+\item 
+int \mbox{\hyperlink{classMembrane_a05d9321388a8f34ab14195158dcb979f}{num\+Particles\+Height}}
+\item 
+int \mbox{\hyperlink{classMembrane_a9b172e276d3a677358286d196a4c798a}{num\+Particles\+Depth}}
+\item 
+double \mbox{\hyperlink{classMembrane_a77a318836ae31d2c870aa97ffde9a7b2}{spacing}}
+\item 
+double \mbox{\hyperlink{classMembrane_a5a800eb731a5bd1cc042ea2ca4de3aee}{mass}}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classMembrane_ab022cfd84abcf5c528d868e595adacc1}{initial\+Velocity}}
+\item 
+double \mbox{\hyperlink{classMembrane_a30f186220be86949c4b604bff88413b2}{mean\+Velocity}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classMembrane_a0acf2ceaa76982dd476c63da8a749159}{dimensions}}
+\item 
+double \mbox{\hyperlink{classMembrane_a3a3977d0c9528c0059a25aa229583bcf}{r0}}
+\item 
+double \mbox{\hyperlink{classMembrane_a1ea2ba297079a328e5fdad9bfd458e21}{diag\+R0}}
+\item 
+double \mbox{\hyperlink{classMembrane_ab8a13948a7af1ed0612746ab4c815270}{k}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMolecule}{Molecule}}}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}}
+\item 
+double \mbox{\hyperlink{classMolecule_a4d282737de0cc8a26497a6e3f2f9a418}{alpha}}
+\item 
+double \mbox{\hyperlink{classMolecule_abada95c2d07a35324af183ac7717e9ed}{beta}}
+\item 
+double \mbox{\hyperlink{classMolecule_a137d8d465f120f81dfffe0f7b85d26d7}{gamma}}
+\item 
+double \mbox{\hyperlink{classMolecule_abaa01e2651e34e071b72c8aadab98969}{cutoff\+Radius\+Squared}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classMolecule_abe03f04a4cc230678bb651e45488d5b9}{ID}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to model a molecules of particles. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMembrane_a9f94d004fb57e1f5cd480e69efc0bfb1}\index{Membrane@{Membrane}!Membrane@{Membrane}}
+\index{Membrane@{Membrane}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{Membrane()}{Membrane()}}
+{\footnotesize\ttfamily \label{classMembrane_a9f94d004fb57e1f5cd480e69efc0bfb1} 
+Membrane\+::\+Membrane (\begin{DoxyParamCaption}\item[{std\+::array$<$ double, 3 $>$}]{origin}{, }\item[{int}]{num\+Particles\+Width}{, }\item[{int}]{num\+Particles\+Height}{, }\item[{int}]{num\+Particles\+Depth}{, }\item[{double}]{spacing}{, }\item[{double}]{mass}{, }\item[{std\+::array$<$ double, 3 $>$}]{initial\+Velocity}{, }\item[{double}]{mean\+Velocity}{, }\item[{size\+\_\+t}]{dimensions}{, }\item[{unsigned}]{ptype}{, }\item[{double}]{r0}{, }\item[{double}]{k}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classMembrane}{Membrane} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & The origin of the membrane \\
+\hline
+{\em num\+Particles\+Width} & The number of particles in width \\
+\hline
+{\em num\+Particles\+Height} & The number of particles in height \\
+\hline
+{\em num\+Particles\+Depth} & The number of particles in depth \\
+\hline
+{\em spacing} & The spacing between particles \\
+\hline
+{\em mass} & The mass of the particles \\
+\hline
+{\em initial\+Velocity} & The initial velocity of the particles \\
+\hline
+{\em mean\+Velocity} & The mean velocity of the particles \\
+\hline
+{\em dimensions} & The dimensions of the particles \\
+\hline
+{\em ptype} & The particle type \\
+\hline
+{\em r0} & The equilibrium distance \\
+\hline
+{\em k} & The spring constant \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMembrane_aecf3c385f6b73501bd716fae6430ccfa}\index{Membrane@{Membrane}!calculateHarmonicForces@{calculateHarmonicForces}}
+\index{calculateHarmonicForces@{calculateHarmonicForces}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{calculateHarmonicForces()}{calculateHarmonicForces()}}
+{\footnotesize\ttfamily \label{classMembrane_aecf3c385f6b73501bd716fae6430ccfa} 
+void Membrane\+::calculate\+Harmonic\+Forces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Calculate the harmonic forces for all particles of the membrane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The container of the particles \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMembrane_a62992da8114e3332f9f7889a22c7d3a9}\index{Membrane@{Membrane}!calculateIntraMolecularForces@{calculateIntraMolecularForces}}
+\index{calculateIntraMolecularForces@{calculateIntraMolecularForces}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{calculateIntraMolecularForces()}{calculateIntraMolecularForces()}}
+{\footnotesize\ttfamily \label{classMembrane_a62992da8114e3332f9f7889a22c7d3a9} 
+void Membrane\+::calculate\+Intra\+Molecular\+Forces (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the membrane specific intra-\/molecular forces using the harmonic potential. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to calculate the forces for \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classMolecule_aa416d7a3d8129fc9c6084b414ecf3ddd}{Molecule}}.
+
+\Hypertarget{classMembrane_a45be848ecc1c9f2c5ac99007134d8aab}\index{Membrane@{Membrane}!generateMolecule@{generateMolecule}}
+\index{generateMolecule@{generateMolecule}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{generateMolecule()}{generateMolecule()}}
+{\footnotesize\ttfamily \label{classMembrane_a45be848ecc1c9f2c5ac99007134d8aab} 
+void Membrane\+::generate\+Molecule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container}{, }\item[{size\+\_\+t}]{molecule\+ID}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Generate the membrane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The container to generate the membrane in \\
+\hline
+{\em molecule\+ID} & The molecule ID (unique identifier for the molecule) \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classMolecule_a0feb5dff63a56f33e67e9b9aedbf158f}{Molecule}}.
+
+\Hypertarget{classMembrane_ad3424390ee16f9760a472914894b97f1}\index{Membrane@{Membrane}!getDiagNeighbors@{getDiagNeighbors}}
+\index{getDiagNeighbors@{getDiagNeighbors}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{getDiagNeighbors()}{getDiagNeighbors()}}
+{\footnotesize\ttfamily \label{classMembrane_ad3424390ee16f9760a472914894b97f1} 
+const \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}} \& Membrane\+::get\+Diag\+Neighbors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the diagonal neighbors of the particles. 
+
+\begin{DoxyReturn}{Returns}
+The diagonal neighbors of the particles 
+\end{DoxyReturn}
+\Hypertarget{classMembrane_a8272dc81894837d92029628e7b13c175}\index{Membrane@{Membrane}!getDirectNeighbors@{getDirectNeighbors}}
+\index{getDirectNeighbors@{getDirectNeighbors}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{getDirectNeighbors()}{getDirectNeighbors()}}
+{\footnotesize\ttfamily \label{classMembrane_a8272dc81894837d92029628e7b13c175} 
+const \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}} \& Membrane\+::get\+Direct\+Neighbors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the direct neighbors of the particles. 
+
+\begin{DoxyReturn}{Returns}
+The direct neighbors of the particles 
+\end{DoxyReturn}
+\Hypertarget{classMembrane_a2b8df46e9c17d44139b7d06e4015b562}\index{Membrane@{Membrane}!getKey@{getKey}}
+\index{getKey@{getKey}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{getKey()}{getKey()}}
+{\footnotesize\ttfamily \label{classMembrane_a2b8df46e9c17d44139b7d06e4015b562} 
+std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ Membrane\+::get\+Key (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{particle\+ID1}{, }\item[{size\+\_\+t}]{particle\+ID2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Get the key for the neighboring relations map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle\+ID1} & The ID of the first particle \\
+\hline
+{\em particle\+ID2} & The ID of the second particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The key for the neighboring relations map 
+\end{DoxyReturn}
+\Hypertarget{classMembrane_a7e0501d72157485035d2525b76adba1f}\index{Membrane@{Membrane}!initNeighbors@{initNeighbors}}
+\index{initNeighbors@{initNeighbors}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{initNeighbors()}{initNeighbors()}}
+{\footnotesize\ttfamily \label{classMembrane_a7e0501d72157485035d2525b76adba1f} 
+void Membrane\+::init\+Neighbors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Membrane_8h_a58e20956838df653bcc06ac13d30bf0f}{Particle\+Grid}} \&}]{particle\+Grid}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Initialize the neighbors of the particles after the gird has been generated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle\+Grid} & The particle grid of the membrane (flattend to 2D grid) \\
+\hline
+\end{DoxyParams}
+Idea\+: We only store half of the neighbors This will allow us to use Netwon\textquotesingle{}s 3rd law By using a fix set of neighbors we avoid doubly calculating forces Essentially we create a directed, non-\/cyclic graph with a single root From this root, we can calculate all intra molecular forces of the membrane Also, we know that the particle ID is its index in the particle vector\Hypertarget{classMembrane_afeaef0f209e8809e69b739c8edb3fd0d}\index{Membrane@{Membrane}!isNeighbor@{isNeighbor}}
+\index{isNeighbor@{isNeighbor}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{isNeighbor()}{isNeighbor()}}
+{\footnotesize\ttfamily \label{classMembrane_afeaef0f209e8809e69b739c8edb3fd0d} 
+bool Membrane\+::is\+Neighbor (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{particle\+ID1}{, }\item[{size\+\_\+t}]{particle\+ID2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Check if two particles are neighbors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle\+ID1} & The ID of the first particle \\
+\hline
+{\em particle\+ID2} & The ID of the second particle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True \texorpdfstring{$<$}{<}=\texorpdfstring{$>$}{>} The particles are neighbors 
+\end{DoxyReturn}
+\Hypertarget{classMembrane_a6f16e24011272dd641987181a271e6ff}\index{Membrane@{Membrane}!toString@{toString}}
+\index{toString@{toString}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{classMembrane_a6f16e24011272dd641987181a271e6ff} 
+std\+::string Membrane\+::to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the string representation of the membrane. 
+
+\begin{DoxyReturn}{Returns}
+The string representation of the membrane 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMembrane_a7b83d1ab91279451e0b58e1164160975}\index{Membrane@{Membrane}!diagNeighbors@{diagNeighbors}}
+\index{diagNeighbors@{diagNeighbors}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{diagNeighbors}{diagNeighbors}}
+{\footnotesize\ttfamily \label{classMembrane_a7b83d1ab91279451e0b58e1164160975} 
+\mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}} Membrane\+::diag\+Neighbors\hspace{0.3cm}{\ttfamily [protected]}}
+
+The vertical neighbors of the particles (only the ones that are required to calculate the forces) \Hypertarget{classMembrane_a1ea2ba297079a328e5fdad9bfd458e21}\index{Membrane@{Membrane}!diagR0@{diagR0}}
+\index{diagR0@{diagR0}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{diagR0}{diagR0}}
+{\footnotesize\ttfamily \label{classMembrane_a1ea2ba297079a328e5fdad9bfd458e21} 
+double Membrane\+::diag\+R0\hspace{0.3cm}{\ttfamily [protected]}}
+
+The equilibrium distance for diagonal neighbors \Hypertarget{classMembrane_a0acf2ceaa76982dd476c63da8a749159}\index{Membrane@{Membrane}!dimensions@{dimensions}}
+\index{dimensions@{dimensions}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{dimensions}{dimensions}}
+{\footnotesize\ttfamily \label{classMembrane_a0acf2ceaa76982dd476c63da8a749159} 
+size\+\_\+t Membrane\+::dimensions\hspace{0.3cm}{\ttfamily [protected]}}
+
+The dimensions of the particles \Hypertarget{classMembrane_ac37cbbf6a740ee25652ca82976132b8f}\index{Membrane@{Membrane}!directNeighbors@{directNeighbors}}
+\index{directNeighbors@{directNeighbors}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{directNeighbors}{directNeighbors}}
+{\footnotesize\ttfamily \label{classMembrane_ac37cbbf6a740ee25652ca82976132b8f} 
+\mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}} Membrane\+::direct\+Neighbors\hspace{0.3cm}{\ttfamily [protected]}}
+
+Idea\+: Only store the neighbors TOP, TOP-\/\+RIGHT, RIGHT, BOTTOM-\/\+RIGHT This way, we can simply calculate the harmonic potential for those neighbors Then use newton\textquotesingle{}s third law -\/\texorpdfstring{$>$}{>} this way we only loop over all particles but get all forces The direct neighbors of the particles (only the ones that are required to calculate the forces) \Hypertarget{classMembrane_ab022cfd84abcf5c528d868e595adacc1}\index{Membrane@{Membrane}!initialVelocity@{initialVelocity}}
+\index{initialVelocity@{initialVelocity}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{initialVelocity}{initialVelocity}}
+{\footnotesize\ttfamily \label{classMembrane_ab022cfd84abcf5c528d868e595adacc1} 
+std\+::array$<$double, 3$>$ Membrane\+::initial\+Velocity\hspace{0.3cm}{\ttfamily [protected]}}
+
+The initial velocity of the particles \Hypertarget{classMembrane_ab8a13948a7af1ed0612746ab4c815270}\index{Membrane@{Membrane}!k@{k}}
+\index{k@{k}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{k}{k}}
+{\footnotesize\ttfamily \label{classMembrane_ab8a13948a7af1ed0612746ab4c815270} 
+double Membrane\+::k\hspace{0.3cm}{\ttfamily [protected]}}
+
+The spring constant \Hypertarget{classMembrane_a5a800eb731a5bd1cc042ea2ca4de3aee}\index{Membrane@{Membrane}!mass@{mass}}
+\index{mass@{mass}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{mass}{mass}}
+{\footnotesize\ttfamily \label{classMembrane_a5a800eb731a5bd1cc042ea2ca4de3aee} 
+double Membrane\+::mass\hspace{0.3cm}{\ttfamily [protected]}}
+
+The mass of the particles \Hypertarget{classMembrane_a30f186220be86949c4b604bff88413b2}\index{Membrane@{Membrane}!meanVelocity@{meanVelocity}}
+\index{meanVelocity@{meanVelocity}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{meanVelocity}{meanVelocity}}
+{\footnotesize\ttfamily \label{classMembrane_a30f186220be86949c4b604bff88413b2} 
+double Membrane\+::mean\+Velocity\hspace{0.3cm}{\ttfamily [protected]}}
+
+The mean velocity of the particles \Hypertarget{classMembrane_a4f24def97457a3567c3e9dbca9fea6e1}\index{Membrane@{Membrane}!neighboringRelations@{neighboringRelations}}
+\index{neighboringRelations@{neighboringRelations}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{neighboringRelations}{neighboringRelations}}
+{\footnotesize\ttfamily \label{classMembrane_a4f24def97457a3567c3e9dbca9fea6e1} 
+\mbox{\hyperlink{Membrane_8h_a623b831fd404538400a013d5e66eade4}{Neighboring\+Relation\+Map}} Membrane\+::neighboring\+Relations\hspace{0.3cm}{\ttfamily [protected]}}
+
+The neighboring relations of the particles \Hypertarget{classMembrane_a9b172e276d3a677358286d196a4c798a}\index{Membrane@{Membrane}!numParticlesDepth@{numParticlesDepth}}
+\index{numParticlesDepth@{numParticlesDepth}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{numParticlesDepth}{numParticlesDepth}}
+{\footnotesize\ttfamily \label{classMembrane_a9b172e276d3a677358286d196a4c798a} 
+int Membrane\+::num\+Particles\+Depth\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of particles in depth \Hypertarget{classMembrane_a05d9321388a8f34ab14195158dcb979f}\index{Membrane@{Membrane}!numParticlesHeight@{numParticlesHeight}}
+\index{numParticlesHeight@{numParticlesHeight}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{numParticlesHeight}{numParticlesHeight}}
+{\footnotesize\ttfamily \label{classMembrane_a05d9321388a8f34ab14195158dcb979f} 
+int Membrane\+::num\+Particles\+Height\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of particles in height \Hypertarget{classMembrane_a276ac400ca73cc083d3aa1a6cd26a650}\index{Membrane@{Membrane}!numParticlesWidth@{numParticlesWidth}}
+\index{numParticlesWidth@{numParticlesWidth}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{numParticlesWidth}{numParticlesWidth}}
+{\footnotesize\ttfamily \label{classMembrane_a276ac400ca73cc083d3aa1a6cd26a650} 
+int Membrane\+::num\+Particles\+Width\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of particles in width \Hypertarget{classMembrane_a1c735b0943361f6830cdac5784621094}\index{Membrane@{Membrane}!origin@{origin}}
+\index{origin@{origin}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{origin}{origin}}
+{\footnotesize\ttfamily \label{classMembrane_a1c735b0943361f6830cdac5784621094} 
+std\+::array$<$double, 3$>$ Membrane\+::origin\hspace{0.3cm}{\ttfamily [protected]}}
+
+The origin of the membrane \Hypertarget{classMembrane_a3a3977d0c9528c0059a25aa229583bcf}\index{Membrane@{Membrane}!r0@{r0}}
+\index{r0@{r0}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{r0}{r0}}
+{\footnotesize\ttfamily \label{classMembrane_a3a3977d0c9528c0059a25aa229583bcf} 
+double Membrane\+::r0\hspace{0.3cm}{\ttfamily [protected]}}
+
+The equilibrium distance \Hypertarget{classMembrane_a77a318836ae31d2c870aa97ffde9a7b2}\index{Membrane@{Membrane}!spacing@{spacing}}
+\index{spacing@{spacing}!Membrane@{Membrane}}
+\doxysubsubsection{\texorpdfstring{spacing}{spacing}}
+{\footnotesize\ttfamily \label{classMembrane_a77a318836ae31d2c870aa97ffde9a7b2} 
+double Membrane\+::spacing\hspace{0.3cm}{\ttfamily [protected]}}
+
+The spacing between particles 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/molecules/\mbox{\hyperlink{Membrane_8h}{Membrane.\+h}}\item 
+src/models/molecules/\mbox{\hyperlink{Membrane_8cpp}{Membrane.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,181 @@
+\doxysection{src/physics/force\+Cal/force\+Cal.h File Reference}
+\hypertarget{forceCal_8h}{}\label{forceCal_8h}\index{src/physics/forceCal/forceCal.h@{src/physics/forceCal/forceCal.h}}
+{\ttfamily \#include "{}simulation/base\+Simulation.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{forceCal_8h_a684f8d139798e74b987af1df9902e439}{force\+\_\+gravity}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8h_af832ee8c3785fcfd06487030f3ab7860}{force\+\_\+gravity\+\_\+\+V2}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm, while exploiting F\+\_\+12 = -\/F\+\_\+21 and iterating over distinct pairs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8h_ae14c2cd283291bf9db0b7b73e74e56e0}{force\+\_\+lennard\+\_\+jones}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles using the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8h_a62f0707a7a91c14d35537fd069ddc924}{force\+\_\+lennard\+\_\+jones\+\_\+lc}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8h_a30d7b8850b340fe52a39eb2fe1087619}{force\+\_\+mixed\+\_\+\+LJ\+\_\+gravity\+\_\+lc}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential and the mixing rules to allow multiple particle types \& regard gravity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8h_a84450d49b031d07bf080895142d90f18}{force\+\_\+membrane}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential, the mixing rules to allow multiple particle types \& regard gravity and the harmonic potential between particles of a molecules. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8h_a50a2b775d54e6fc23d448817a12760e4}{harmonic\+\_\+calc}} (\mbox{\hyperlink{classParticle}{Particle}} \&p1, \mbox{\hyperlink{classParticle}{Particle}} \&p2, double k, double r\+\_\+0)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between 2 particles in a molecule using the harmonic potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8h_a3dea65bc58f892ea6f9c5c58fcf3ef1c}{lj\+\_\+calc}} (\mbox{\hyperlink{classParticle}{Particle}} \&p1, \mbox{\hyperlink{classParticle}{Particle}} \&p2, double alpha, double beta, double gamma, std\+::array$<$ double, 3 $>$ delta)
+\begin{DoxyCompactList}\small\item\em Calculate the forces between 2 particles using the Lennard-\/\+Jones potential. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{forceCal_8h_a911593fde5f0d0bb52ec748ff8ea56b1}{force\+\_\+mixed\+\_\+\+LJ\+\_\+gravity\+\_\+lc\+\_\+task}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{forceCal_8h_a684f8d139798e74b987af1df9902e439}\index{forceCal.h@{forceCal.h}!force\_gravity@{force\_gravity}}
+\index{force\_gravity@{force\_gravity}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{force\_gravity()}{force\_gravity()}}
+{\footnotesize\ttfamily \label{forceCal_8h_a684f8d139798e74b987af1df9902e439} 
+void force\+\_\+gravity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation object to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{forceCal_8h_af832ee8c3785fcfd06487030f3ab7860}\index{forceCal.h@{forceCal.h}!force\_gravity\_V2@{force\_gravity\_V2}}
+\index{force\_gravity\_V2@{force\_gravity\_V2}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{force\_gravity\_V2()}{force\_gravity\_V2()}}
+{\footnotesize\ttfamily \label{forceCal_8h_af832ee8c3785fcfd06487030f3ab7860} 
+void force\+\_\+gravity\+\_\+\+V2 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles using the Stroemer-\/\+Verlet algorithm, while exploiting F\+\_\+12 = -\/F\+\_\+21 and iterating over distinct pairs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation object to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{forceCal_8h_ae14c2cd283291bf9db0b7b73e74e56e0}\index{forceCal.h@{forceCal.h}!force\_lennard\_jones@{force\_lennard\_jones}}
+\index{force\_lennard\_jones@{force\_lennard\_jones}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{force\_lennard\_jones()}{force\_lennard\_jones()}}
+{\footnotesize\ttfamily \label{forceCal_8h_ae14c2cd283291bf9db0b7b73e74e56e0} 
+void force\+\_\+lennard\+\_\+jones (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles using the Lennard-\/\+Jones potential. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The Lennard Jones simulation object to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{forceCal_8h_a62f0707a7a91c14d35537fd069ddc924}\index{forceCal.h@{forceCal.h}!force\_lennard\_jones\_lc@{force\_lennard\_jones\_lc}}
+\index{force\_lennard\_jones\_lc@{force\_lennard\_jones\_lc}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{force\_lennard\_jones\_lc()}{force\_lennard\_jones\_lc()}}
+{\footnotesize\ttfamily \label{forceCal_8h_a62f0707a7a91c14d35537fd069ddc924} 
+void force\+\_\+lennard\+\_\+jones\+\_\+lc (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The Lennard Jones simulation object to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{forceCal_8h_a84450d49b031d07bf080895142d90f18}\index{forceCal.h@{forceCal.h}!force\_membrane@{force\_membrane}}
+\index{force\_membrane@{force\_membrane}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{force\_membrane()}{force\_membrane()}}
+{\footnotesize\ttfamily \label{forceCal_8h_a84450d49b031d07bf080895142d90f18} 
+void force\+\_\+membrane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential, the mixing rules to allow multiple particle types \& regard gravity and the harmonic potential between particles of a molecules. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\Hypertarget{forceCal_8h_a30d7b8850b340fe52a39eb2fe1087619}\index{forceCal.h@{forceCal.h}!force\_mixed\_LJ\_gravity\_lc@{force\_mixed\_LJ\_gravity\_lc}}
+\index{force\_mixed\_LJ\_gravity\_lc@{force\_mixed\_LJ\_gravity\_lc}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{force\_mixed\_LJ\_gravity\_lc()}{force\_mixed\_LJ\_gravity\_lc()}}
+{\footnotesize\ttfamily \label{forceCal_8h_a30d7b8850b340fe52a39eb2fe1087619} 
+void force\+\_\+mixed\+\_\+\+LJ\+\_\+gravity\+\_\+lc (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between particles in a linked-\/cell structure using the Lennard-\/\+Jones potential and the mixing rules to allow multiple particle types \& regard gravity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to calculate the forces for \\
+\hline
+\end{DoxyParams}
+\Hypertarget{forceCal_8h_a911593fde5f0d0bb52ec748ff8ea56b1}\index{forceCal.h@{forceCal.h}!force\_mixed\_LJ\_gravity\_lc\_task@{force\_mixed\_LJ\_gravity\_lc\_task}}
+\index{force\_mixed\_LJ\_gravity\_lc\_task@{force\_mixed\_LJ\_gravity\_lc\_task}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{force\_mixed\_LJ\_gravity\_lc\_task()}{force\_mixed\_LJ\_gravity\_lc\_task()}}
+{\footnotesize\ttfamily \label{forceCal_8h_a911593fde5f0d0bb52ec748ff8ea56b1} 
+void force\+\_\+mixed\+\_\+\+LJ\+\_\+gravity\+\_\+lc\+\_\+task (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+\Hypertarget{forceCal_8h_a50a2b775d54e6fc23d448817a12760e4}\index{forceCal.h@{forceCal.h}!harmonic\_calc@{harmonic\_calc}}
+\index{harmonic\_calc@{harmonic\_calc}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{harmonic\_calc()}{harmonic\_calc()}}
+{\footnotesize\ttfamily \label{forceCal_8h_a50a2b775d54e6fc23d448817a12760e4} 
+void harmonic\+\_\+calc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p1}{, }\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p2}{, }\item[{double}]{k}{, }\item[{double}]{r\+\_\+0}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between 2 particles in a molecule using the harmonic potential. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & The first particle \\
+\hline
+{\em p2} & The second particle \\
+\hline
+{\em k} & The spring constant \\
+\hline
+{\em r\+\_\+0} & The equilibrium distance \\
+\hline
+\end{DoxyParams}
+\Hypertarget{forceCal_8h_a3dea65bc58f892ea6f9c5c58fcf3ef1c}\index{forceCal.h@{forceCal.h}!lj\_calc@{lj\_calc}}
+\index{lj\_calc@{lj\_calc}!forceCal.h@{forceCal.h}}
+\doxysubsubsection{\texorpdfstring{lj\_calc()}{lj\_calc()}}
+{\footnotesize\ttfamily \label{forceCal_8h_a3dea65bc58f892ea6f9c5c58fcf3ef1c} 
+void lj\+\_\+calc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p1}{, }\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{p2}{, }\item[{double}]{alpha}{, }\item[{double}]{beta}{, }\item[{double}]{gamma}{, }\item[{std\+::array$<$ double, 3 $>$}]{delta}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the forces between 2 particles using the Lennard-\/\+Jones potential. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & The first particle \\
+\hline
+{\em p2} & The second particle \\
+\hline
+{\em alpha} & The alpha value for the LJ potential \\
+\hline
+{\em beta} & The beta value for the LJ potential \\
+\hline
+{\em gamma} & The gamma value for the LJ potential \\
+\hline
+{\em delta} & The difference between the two particle positions \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,201 @@
+\doxysection{src/utils/\+Array\+Utils.h File Reference}
+\hypertarget{ArrayUtils_8h}{}\label{ArrayUtils_8h}\index{src/utils/ArrayUtils.h@{src/utils/ArrayUtils.h}}
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structArrayUtils_1_1is__container__impl_1_1is__container}{Array\+Utils\+::is\+\_\+container\+\_\+impl\+::is\+\_\+container$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structArrayUtils_1_1is__container__impl_1_1is__container_3_01std_1_1array_3_01T_00_01N_01_4_01_4}{Array\+Utils\+::is\+\_\+container\+\_\+impl\+::is\+\_\+container$<$ std\+::array$<$ T, N $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structArrayUtils_1_1is__container__impl_1_1is__container_3_01std_1_1vector_3_01Args_8_8_8_01_4_01_4}{Array\+Utils\+::is\+\_\+container\+\_\+impl\+::is\+\_\+container$<$ std\+::vector$<$ Args... $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structArrayUtils_1_1is__container__impl_1_1is__container_3_01std_1_1list_3_01Args_8_8_8_01_4_01_4}{Array\+Utils\+::is\+\_\+container\+\_\+impl\+::is\+\_\+container$<$ std\+::list$<$ Args... $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structArrayUtils_1_1is__container__impl_1_1is__container_3_01std_1_1set_3_01Args_8_8_8_01_4_01_4}{Array\+Utils\+::is\+\_\+container\+\_\+impl\+::is\+\_\+container$<$ std\+::set$<$ Args... $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structArrayUtils_1_1is__container__impl_1_1is__container_3_01std_1_1unordered__set_3_01Args_8_8_8_01_4_01_4}{Array\+Utils\+::is\+\_\+container\+\_\+impl\+::is\+\_\+container$<$ std\+::unordered\+\_\+set$<$ Args... $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceArrayUtils}{Array\+Utils}}
+\item 
+namespace \mbox{\hyperlink{namespaceArrayUtils_1_1is__container__impl}{Array\+Utils\+::is\+\_\+container\+\_\+impl}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Container $>$ }\\std\+::string \mbox{\hyperlink{namespaceArrayUtils_a6ebc4c0b96cf4c0469183d6cd76d6630}{Array\+Utils\+::to\+\_\+string}} (const Container \&container, const std\+::string \&delimiter="{}, "{}, const std\+::array$<$ std\+::string, 2 $>$ \&surround=\{ "{}\mbox{[}"{}, "{}\mbox{]}"{} \})
+\item 
+{\footnotesize template$<$class Container , class F $>$ }\\Container \mbox{\hyperlink{namespaceArrayUtils_a9b9c0bb4a1f4358b8d9a436a583f8eda}{Array\+Utils\+::element\+Wise\+Pair\+Op}} (const Container \&lhs, const Container \&rhs, F binary\+Function)
+\item 
+{\footnotesize template$<$class Scalar , class Container , class F $>$ }\\Container \mbox{\hyperlink{namespaceArrayUtils_a7959b05d2d307318e0bd1f79dbc3faec}{Array\+Utils\+::element\+Wise\+Scalar\+Op}} (const Scalar \&lhs, const Container \&rhs, F binary\+Function)
+\item 
+{\footnotesize template$<$class Container $>$ }\\auto \mbox{\hyperlink{namespaceArrayUtils_a75ed8dcc1685d2373c6efcf45d4337fb}{Array\+Utils\+::\+L2\+Norm}} (const Container \&c)
+\item 
+{\footnotesize template$<$class Container $>$ }\\auto \mbox{\hyperlink{namespaceArrayUtils_a935b6bf37aaf1221dc8e89861ab863a5}{Array\+Utils\+::\+Dot\+Product}} (const Container \&c)
+\item 
+{\footnotesize template$<$class Container $>$ }\\std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, std\+::ostream \& $>$ \mbox{\hyperlink{ArrayUtils_8h_a6d6b86595f074e3781d958a88d29ed36}{operator$<$$<$}} (std\+::ostream \&os, const Container \&container)
+\item 
+{\footnotesize template$<$class Container $>$ }\\std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, Container $>$ \mbox{\hyperlink{ArrayUtils_8h_a6be347f89bbe31baa67927b482534bf4}{operator+}} (const Container \&lhs, const Container \&rhs)
+\item 
+{\footnotesize template$<$class Container $>$ }\\std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, Container $>$ \mbox{\hyperlink{ArrayUtils_8h_ae8d1c9c4f1c47e9240d94b9fb88849ef}{operator-\/}} (const Container \&lhs, const Container \&rhs)
+\item 
+{\footnotesize template$<$class Container $>$ }\\std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, Container $>$ \mbox{\hyperlink{ArrayUtils_8h_a0cadafd6ea3040f9b9bdc99b7b7e5719}{operator\texorpdfstring{$\ast$}{*}}} (const Container \&lhs, const Container \&rhs)
+\item 
+{\footnotesize template$<$class Scalar , class Container $>$ }\\std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, Container $>$ \mbox{\hyperlink{ArrayUtils_8h_a381ab9264d498e78e17a88b1bd2f7d7e}{operator\texorpdfstring{$\ast$}{*}}} (const Scalar \&lhs, const Container \&rhs)
+\item 
+{\footnotesize template$<$class Container $>$ }\\std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, bool $>$ \mbox{\hyperlink{ArrayUtils_8h_a5077a0942d3a998d70f77f3acc507a43}{operator==}} (const Container \&lhs, const Container \&rhs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ArrayUtils_8h_a0cadafd6ea3040f9b9bdc99b7b7e5719}\index{ArrayUtils.h@{ArrayUtils.h}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!ArrayUtils.h@{ArrayUtils.h}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{ArrayUtils_8h_a0cadafd6ea3040f9b9bdc99b7b7e5719} 
+template$<$class Container $>$ \\
+std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, Container $>$ operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const Container \&}]{lhs}{, }\item[{const Container \&}]{rhs}{}\end{DoxyParamCaption})}
+
+Element wise multiplication of two containers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+For all i lhs\mbox{[}i\mbox{]} \texorpdfstring{$\ast$}{*} rhs\mbox{[}i\mbox{]}. 
+\end{DoxyReturn}
+\Hypertarget{ArrayUtils_8h_a381ab9264d498e78e17a88b1bd2f7d7e}\index{ArrayUtils.h@{ArrayUtils.h}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!ArrayUtils.h@{ArrayUtils.h}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{ArrayUtils_8h_a381ab9264d498e78e17a88b1bd2f7d7e} 
+template$<$class Scalar , class Container $>$ \\
+std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, Container $>$ operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const Scalar \&}]{lhs}{, }\item[{const Container \&}]{rhs}{}\end{DoxyParamCaption})}
+
+Element wise scaling of a container. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+For all i lhs \texorpdfstring{$\ast$}{*} rhs\mbox{[}i\mbox{]}. 
+\end{DoxyReturn}
+\Hypertarget{ArrayUtils_8h_a6be347f89bbe31baa67927b482534bf4}\index{ArrayUtils.h@{ArrayUtils.h}!operator+@{operator+}}
+\index{operator+@{operator+}!ArrayUtils.h@{ArrayUtils.h}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \label{ArrayUtils_8h_a6be347f89bbe31baa67927b482534bf4} 
+template$<$class Container $>$ \\
+std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, Container $>$ operator+ (\begin{DoxyParamCaption}\item[{const Container \&}]{lhs}{, }\item[{const Container \&}]{rhs}{}\end{DoxyParamCaption})}
+
+Element wise addition of two containers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+For all i lhs\mbox{[}i\mbox{]} + rhs\mbox{[}i\mbox{]}. 
+\end{DoxyReturn}
+\Hypertarget{ArrayUtils_8h_ae8d1c9c4f1c47e9240d94b9fb88849ef}\index{ArrayUtils.h@{ArrayUtils.h}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!ArrayUtils.h@{ArrayUtils.h}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily \label{ArrayUtils_8h_ae8d1c9c4f1c47e9240d94b9fb88849ef} 
+template$<$class Container $>$ \\
+std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, Container $>$ operator-\/ (\begin{DoxyParamCaption}\item[{const Container \&}]{lhs}{, }\item[{const Container \&}]{rhs}{}\end{DoxyParamCaption})}
+
+Element wise subtraction of two containers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+For all i lhs\mbox{[}i\mbox{]} -\/ rhs\mbox{[}i\mbox{]}. 
+\end{DoxyReturn}
+\Hypertarget{ArrayUtils_8h_a6d6b86595f074e3781d958a88d29ed36}\index{ArrayUtils.h@{ArrayUtils.h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ArrayUtils.h@{ArrayUtils.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \label{ArrayUtils_8h_a6d6b86595f074e3781d958a88d29ed36} 
+template$<$class Container $>$ \\
+std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, std\+::ostream \& $>$ operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const Container \&}]{container}{}\end{DoxyParamCaption})}
+
+Stream operator for containers.
+
+This function actually checks if the given Template parameter satisfies is\+\_\+container.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & \\
+\hline
+{\em container} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{ArrayUtils_8h_a5077a0942d3a998d70f77f3acc507a43}\index{ArrayUtils.h@{ArrayUtils.h}!operator==@{operator==}}
+\index{operator==@{operator==}!ArrayUtils.h@{ArrayUtils.h}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{ArrayUtils_8h_a5077a0942d3a998d70f77f3acc507a43} 
+template$<$class Container $>$ \\
+std\+::enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structArrayUtils_1_1is__container}{Array\+Utils\+::is\+\_\+container}}$<$ Container $>$\+::value, bool $>$ operator== (\begin{DoxyParamCaption}\item[{const Container \&}]{lhs}{, }\item[{const Container \&}]{rhs}{}\end{DoxyParamCaption})}
+
+Element wise comparison of two containers. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True iff the containers are of the same size, all elements are equal, and in the same order. 
+\end{DoxyReturn}

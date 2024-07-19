@@ -1,0 +1,1017 @@
+\doxysection{membrane\+\_\+t Class Reference}
+\hypertarget{classmembrane__t}{}\label{classmembrane__t}\index{membrane\_t@{membrane\_t}}
+
+
+Class corresponding to the membrane\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$simulation.\+h$>$}
+
+Inheritance diagram for membrane\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmembrane__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{pos}
+Accessor and modifier functions for the pos required element.
+
+The initial position of the cuboid in 3D space. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_a3234d9e787f280e601191c36a6fd7ed9}{pos\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_aca6ff1cb0e7666048ff9a87034177df7}{pos}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a6ef2c91210853eb7b0b7010b297d9be7}{pos}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_af63a4c12cbcc4571b7186f12758a9a33}{pos}} (const \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_a4fddfc18e6ba636a9b08471eab8a211a}{pos}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{vel}
+Accessor and modifier functions for the vel required element.
+
+The initial velocity of the cuboid in 3D space. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_ab14acd0cf614b188068cde43c71e5f33}{vel\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_ac33e02fb9d90c859ab296a39b7e045da}{vel}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a175a0ee73e1f3db090541c2b1fa45ec9}{vel}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_af7a9eea44de5f29043e46be2f50da380}{vel}} (const \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_a93f4f34692f86c1c5453f03904e1ea7c}{vel}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{dim}
+Accessor and modifier functions for the dim required element.
+
+The dimensions of the cuboid in terms of number of particles along each axis. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classintVec__t}{\+::int\+Vec\+\_\+t}} \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_ac33e21c7cf46b27a9b866754fec7a8c6}{dim\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_acf5f07d89bced2840b4c1cda52d39b70}{dim}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_acd2b809172aeb21719c7eecc99a2b269}{dim}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_a50a187dca246e0b6e65c7a8db38a4d9a}{dim}} (const \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_a1d9355a2855329763f4f77f208a72a34}{dim}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{mass}
+Accessor and modifier functions for the mass required element.
+
+The mass of the cuboid. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a40c0dd878570ecfaf3a06a6af7e918bd}{mass\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a917d8ca97f630d3bd74ca1364f331d76}{mass}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a717c0a16a0e0855c27a8bbd93f9aeaf7}{mass}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_afbc10283c8d86bfaeab900e9f7d0d99e}{mass}} (const \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{spacing}
+Accessor and modifier functions for the spacing required element.
+
+The spacing between particles in the cuboid. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a56c8bae6267703f050d50400715529c6}{spacing\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a0b6e301a5165d17a384e115b1ff784b6}{spacing}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a2912940de09f17234d372f9e1341f800}{spacing}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_ab818e5be05fa265b3fa20e2e89ddf41f}{spacing}} (const \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{brown\+Vel}
+Accessor and modifier functions for the brown\+Vel required element.
+
+The Brownian motion velocity. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a31821845e418a24cd44bf34952fda7dc}{brown\+Vel\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a3dfd2bb2cfd8541fe760856bb0bac959}{brown\+Vel}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a21629186a581f1e56ca10f7a20db6fc4}{brown\+Vel}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_a36e7f16f7aa503dbff31b6ada977ed0a}{brown\+Vel}} (const \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{brown\+Dim}
+Accessor and modifier functions for the brown\+Dim required element.
+
+The dimension affected by Brownian motion. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classdimension__t}{\+::dimension\+\_\+t}} \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_a11bbfe3e5d21b2df617ec887c44a12a7}{brown\+Dim\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a11ea58623a9ad8bef738d104b38d3dd7}{brown\+Dim}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a1b0f615beff24a5b930a022d2f15af1f}{brown\+Dim}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_ac20664b8d01561eafdd8ec5110718378}{brown\+Dim}} (const \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_ac575d915399cf9dd0ed985f563f23a20}{brown\+Dim}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{ptype}
+Accessor and modifier functions for the ptype optional element.
+
+The particle type of the cuboid. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_a85ca3205d8af287e149aac54535f57e7}{\+::xml\+\_\+schema\+::unsigned\+\_\+int}} \mbox{\hyperlink{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}{ptype\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}{ptype\+\_\+type}} $>$ \mbox{\hyperlink{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}{ptype\+\_\+optional}}
+\begin{DoxyCompactList}\small\item\em Element optional container type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}{ptype\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_ac308edc216b9caab70d9a3d2ad4f5184}{ptype\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}{ptype\+\_\+optional}} \& \mbox{\hyperlink{classmembrane__t_a21303a363d75982eaf071432c5e1efbc}{ptype}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}{ptype\+\_\+optional}} \& \mbox{\hyperlink{classmembrane__t_a92f31bf87c822de04a27eaa388557c34}{ptype}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element container. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_aad0e1890caa3459be2c225e7473e9232}{ptype}} (const \mbox{\hyperlink{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}{ptype\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_ac75ad7b65df49d81301ca8c47513f6c2}{ptype}} (const \mbox{\hyperlink{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}{ptype\+\_\+optional}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{equi\+Dist}
+Accessor and modifier functions for the equi\+Dist required element.
+
+The equilibrium distance. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a9bea800c9054a6a9e6f5f9221bdbdb32}{equi\+Dist\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_ae030428b7e718415c979f2e3a8dbff6d}{equi\+Dist}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a530484b346b669da48c72a4d41d398e6}{equi\+Dist}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_a2fbd3166d56ca9efa00bad18004261c9}{equi\+Dist}} (const \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{spring\+Const}
+Accessor and modifier functions for the spring\+Const required element.
+
+The spring constant for harmonic force calculations. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a973ec928e7158a10dd32bdf1a23db5f4}{spring\+Const\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_a534dd1037e0502b2379488448d7d11a6}{spring\+Const}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}} \& \mbox{\hyperlink{classmembrane__t_afefc5471b7fd5fba36eb2c7d9754661f}{spring\+Const}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmembrane__t_aaa91f5ab71f9fa4200a2595fae926a51}{spring\+Const}} (const \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmembrane__t_a8ddbc7d51ed0963497ddfb1aef16f97a}{membrane\+\_\+t}} (const \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_a465c7a92a104dd5f7d212ff1f78678d3}{membrane\+\_\+t}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} $>$, const \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}} \&, const \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_a5ad755fbb74d05b9f657de3928e66e2a}{membrane\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t_a22d2e00117a11392b440f224819f0c60}{membrane\+\_\+t}} (const \mbox{\hyperlink{classmembrane__t}{membrane\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classmembrane__t}{membrane\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classmembrane__t_a58927c418bdf7f248f1f689bd3c5ffc2}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmembrane__t}{membrane\+\_\+t}} \& \mbox{\hyperlink{classmembrane__t_ac3c55ad3e5298f4b30d32f10bf56eb64}{operator=}} (const \mbox{\hyperlink{classmembrane__t}{membrane\+\_\+t}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classmembrane__t_a68d8b32d034e0d0fac195b59a0408ef1}{\texorpdfstring{$\sim$}{\string~}membrane\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the membrane\+\_\+t schema type. 
+
+Defines the properties of a cuboid-\/shaped cluster. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classmembrane__t_a11bbfe3e5d21b2df617ec887c44a12a7}\index{membrane\_t@{membrane\_t}!brownDim\_traits@{brownDim\_traits}}
+\index{brownDim\_traits@{brownDim\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim\_traits}{brownDim\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_a11bbfe3e5d21b2df617ec887c44a12a7} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_a11bbfe3e5d21b2df617ec887c44a12a7}{membrane\+\_\+t\+::brown\+Dim\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}\index{membrane\_t@{membrane\_t}!brownDim\_type@{brownDim\_type}}
+\index{brownDim\_type@{brownDim\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim\_type}{brownDim\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601} 
+typedef \mbox{\hyperlink{classdimension__t}{\+::dimension\+\_\+t}} \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{membrane\+\_\+t\+::brown\+Dim\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_a31821845e418a24cd44bf34952fda7dc}\index{membrane\_t@{membrane\_t}!brownVel\_traits@{brownVel\_traits}}
+\index{brownVel\_traits@{brownVel\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel\_traits}{brownVel\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_a31821845e418a24cd44bf34952fda7dc} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a31821845e418a24cd44bf34952fda7dc}{membrane\+\_\+t\+::brown\+Vel\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}\index{membrane\_t@{membrane\_t}!brownVel\_type@{brownVel\_type}}
+\index{brownVel\_type@{brownVel\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel\_type}{brownVel\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{membrane\+\_\+t\+::brown\+Vel\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_ac33e21c7cf46b27a9b866754fec7a8c6}\index{membrane\_t@{membrane\_t}!dim\_traits@{dim\_traits}}
+\index{dim\_traits@{dim\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{dim\_traits}{dim\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_ac33e21c7cf46b27a9b866754fec7a8c6} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_ac33e21c7cf46b27a9b866754fec7a8c6}{membrane\+\_\+t\+::dim\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}\index{membrane\_t@{membrane\_t}!dim\_type@{dim\_type}}
+\index{dim\_type@{dim\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{dim\_type}{dim\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7} 
+typedef \mbox{\hyperlink{classintVec__t}{\+::int\+Vec\+\_\+t}} \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{membrane\+\_\+t\+::dim\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_a9bea800c9054a6a9e6f5f9221bdbdb32}\index{membrane\_t@{membrane\_t}!equiDist\_traits@{equiDist\_traits}}
+\index{equiDist\_traits@{equiDist\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{equiDist\_traits}{equiDist\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_a9bea800c9054a6a9e6f5f9221bdbdb32} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a9bea800c9054a6a9e6f5f9221bdbdb32}{membrane\+\_\+t\+::equi\+Dist\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}\index{membrane\_t@{membrane\_t}!equiDist\_type@{equiDist\_type}}
+\index{equiDist\_type@{equiDist\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{equiDist\_type}{equiDist\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{membrane\+\_\+t\+::equi\+Dist\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_a40c0dd878570ecfaf3a06a6af7e918bd}\index{membrane\_t@{membrane\_t}!mass\_traits@{mass\_traits}}
+\index{mass\_traits@{mass\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{mass\_traits}{mass\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_a40c0dd878570ecfaf3a06a6af7e918bd} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a40c0dd878570ecfaf3a06a6af7e918bd}{membrane\+\_\+t\+::mass\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_ad95845599a02aef471457dcd9e382425}\index{membrane\_t@{membrane\_t}!mass\_type@{mass\_type}}
+\index{mass\_type@{mass\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{mass\_type}{mass\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_ad95845599a02aef471457dcd9e382425} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{membrane\+\_\+t\+::mass\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_a3234d9e787f280e601191c36a6fd7ed9}\index{membrane\_t@{membrane\_t}!pos\_traits@{pos\_traits}}
+\index{pos\_traits@{pos\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{pos\_traits}{pos\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_a3234d9e787f280e601191c36a6fd7ed9} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_a3234d9e787f280e601191c36a6fd7ed9}{membrane\+\_\+t\+::pos\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}\index{membrane\_t@{membrane\_t}!pos\_type@{pos\_type}}
+\index{pos\_type@{pos\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{pos\_type}{pos\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912} 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{membrane\+\_\+t\+::pos\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}\index{membrane\_t@{membrane\_t}!ptype\_optional@{ptype\_optional}}
+\index{ptype\_optional@{ptype\_optional}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_optional}{ptype\_optional}}
+{\footnotesize\ttfamily \label{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b} 
+typedef \+::xsd\+::cxx\+::tree\+::optional$<$ \mbox{\hyperlink{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}{ptype\+\_\+type}} $>$ \mbox{\hyperlink{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}{membrane\+\_\+t\+::ptype\+\_\+optional}}}
+
+
+
+Element optional container type. 
+
+\Hypertarget{classmembrane__t_ac308edc216b9caab70d9a3d2ad4f5184}\index{membrane\_t@{membrane\_t}!ptype\_traits@{ptype\_traits}}
+\index{ptype\_traits@{ptype\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_traits}{ptype\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_ac308edc216b9caab70d9a3d2ad4f5184} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}{ptype\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_ac308edc216b9caab70d9a3d2ad4f5184}{membrane\+\_\+t\+::ptype\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}\index{membrane\_t@{membrane\_t}!ptype\_type@{ptype\_type}}
+\index{ptype\_type@{ptype\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_type}{ptype\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc} 
+typedef \mbox{\hyperlink{namespacexml__schema_a85ca3205d8af287e149aac54535f57e7}{\+::xml\+\_\+schema\+::unsigned\+\_\+int}} \mbox{\hyperlink{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}{membrane\+\_\+t\+::ptype\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_a56c8bae6267703f050d50400715529c6}\index{membrane\_t@{membrane\_t}!spacing\_traits@{spacing\_traits}}
+\index{spacing\_traits@{spacing\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{spacing\_traits}{spacing\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_a56c8bae6267703f050d50400715529c6} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a56c8bae6267703f050d50400715529c6}{membrane\+\_\+t\+::spacing\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}\index{membrane\_t@{membrane\_t}!spacing\_type@{spacing\_type}}
+\index{spacing\_type@{spacing\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{spacing\_type}{spacing\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{membrane\+\_\+t\+::spacing\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_a973ec928e7158a10dd32bdf1a23db5f4}\index{membrane\_t@{membrane\_t}!springConst\_traits@{springConst\_traits}}
+\index{springConst\_traits@{springConst\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{springConst\_traits}{springConst\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_a973ec928e7158a10dd32bdf1a23db5f4} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}}, char, \+::xsd\+::cxx\+::tree\+::schema\+\_\+type\+::double\+\_\+ $>$ \mbox{\hyperlink{classmembrane__t_a973ec928e7158a10dd32bdf1a23db5f4}{membrane\+\_\+t\+::spring\+Const\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}\index{membrane\_t@{membrane\_t}!springConst\_type@{springConst\_type}}
+\index{springConst\_type@{springConst\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{springConst\_type}{springConst\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac} 
+typedef \mbox{\hyperlink{namespacexml__schema_aac2d3d3483d3a20e8d96d2e8e5b3a470}{\+::xml\+\_\+schema\+::double\+\_\+}} \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{membrane\+\_\+t\+::spring\+Const\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classmembrane__t_ab14acd0cf614b188068cde43c71e5f33}\index{membrane\_t@{membrane\_t}!vel\_traits@{vel\_traits}}
+\index{vel\_traits@{vel\_traits}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{vel\_traits}{vel\_traits}}
+{\footnotesize\ttfamily \label{classmembrane__t_ab14acd0cf614b188068cde43c71e5f33} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}}, char $>$ \mbox{\hyperlink{classmembrane__t_ab14acd0cf614b188068cde43c71e5f33}{membrane\+\_\+t\+::vel\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}\index{membrane\_t@{membrane\_t}!vel\_type@{vel\_type}}
+\index{vel\_type@{vel\_type}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{vel\_type}{vel\_type}}
+{\footnotesize\ttfamily \label{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091} 
+typedef \mbox{\hyperlink{classdoubleVec__t}{\+::double\+Vec\+\_\+t}} \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{membrane\+\_\+t\+::vel\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmembrane__t_a8ddbc7d51ed0963497ddfb1aef16f97a}\index{membrane\_t@{membrane\_t}!membrane\_t@{membrane\_t}}
+\index{membrane\_t@{membrane\_t}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_t()}{membrane\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a8ddbc7d51ed0963497ddfb1aef16f97a} 
+membrane\+\_\+t\+::membrane\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} \&}]{pos}{, }\item[{const \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} \&}]{vel}{, }\item[{const \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} \&}]{dim}{, }\item[{const \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}} \&}]{mass}{, }\item[{const \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}} \&}]{spacing}{, }\item[{const \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}} \&}]{brown\+Vel}{, }\item[{const \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} \&}]{brown\+Dim}{, }\item[{const \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}} \&}]{equi\+Dist}{, }\item[{const \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}} \&}]{spring\+Const}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classmembrane__t_a465c7a92a104dd5f7d212ff1f78678d3}\index{membrane\_t@{membrane\_t}!membrane\_t@{membrane\_t}}
+\index{membrane\_t@{membrane\_t}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_t()}{membrane\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a465c7a92a104dd5f7d212ff1f78678d3} 
+membrane\+\_\+t\+::membrane\+\_\+t (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} $>$}]{pos}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} $>$}]{vel}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} $>$}]{dim}{, }\item[{const \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}} \&}]{mass}{, }\item[{const \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}} \&}]{spacing}{, }\item[{const \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}} \&}]{brown\+Vel}{, }\item[{const \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} \&}]{brown\+Dim}{, }\item[{const \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}} \&}]{equi\+Dist}{, }\item[{const \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}} \&}]{spring\+Const}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). 
+
+This constructor will try to use the passed values directly instead of making copies. \Hypertarget{classmembrane__t_a5ad755fbb74d05b9f657de3928e66e2a}\index{membrane\_t@{membrane\_t}!membrane\_t@{membrane\_t}}
+\index{membrane\_t@{membrane\_t}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_t()}{membrane\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a5ad755fbb74d05b9f657de3928e66e2a} 
+membrane\+\_\+t\+::membrane\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmembrane__t_a22d2e00117a11392b440f224819f0c60}\index{membrane\_t@{membrane\_t}!membrane\_t@{membrane\_t}}
+\index{membrane\_t@{membrane\_t}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_t()}{membrane\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a22d2e00117a11392b440f224819f0c60} 
+membrane\+\_\+t\+::membrane\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t}{membrane\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classmembrane__t_a68d8b32d034e0d0fac195b59a0408ef1}\index{membrane\_t@{membrane\_t}!````~membrane\_t@{\texorpdfstring{$\sim$}{\string~}membrane\_t}}
+\index{````~membrane\_t@{\texorpdfstring{$\sim$}{\string~}membrane\_t}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}membrane\_t()}{\string~membrane\_t()}}
+{\footnotesize\ttfamily \label{classmembrane__t_a68d8b32d034e0d0fac195b59a0408ef1} 
+membrane\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}membrane\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmembrane__t_a58927c418bdf7f248f1f689bd3c5ffc2}\index{membrane\_t@{membrane\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classmembrane__t_a58927c418bdf7f248f1f689bd3c5ffc2} 
+\mbox{\hyperlink{classmembrane__t}{membrane\+\_\+t}} \texorpdfstring{$\ast$}{*} membrane\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classmembrane__t_a1b0f615beff24a5b930a022d2f15af1f}\index{membrane\_t@{membrane\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a1b0f615beff24a5b930a022d2f15af1f} 
+\mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{membrane\+\_\+t\+::brown\+Dim\+\_\+type}} \& membrane\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a11ea58623a9ad8bef738d104b38d3dd7}\index{membrane\_t@{membrane\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a11ea58623a9ad8bef738d104b38d3dd7} 
+const \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{membrane\+\_\+t\+::brown\+Dim\+\_\+type}} \& membrane\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_ac575d915399cf9dd0ed985f563f23a20}\index{membrane\_t@{membrane\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_ac575d915399cf9dd0ed985f563f23a20} 
+void membrane\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classmembrane__t_ac20664b8d01561eafdd8ec5110718378}\index{membrane\_t@{membrane\_t}!brownDim@{brownDim}}
+\index{brownDim@{brownDim}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownDim()}{brownDim()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_ac20664b8d01561eafdd8ec5110718378} 
+void membrane\+\_\+t\+::brown\+Dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_a86f481f5fe2013c7f9231fbba1c00601}{brown\+Dim\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_a21629186a581f1e56ca10f7a20db6fc4}\index{membrane\_t@{membrane\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a21629186a581f1e56ca10f7a20db6fc4} 
+\mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{membrane\+\_\+t\+::brown\+Vel\+\_\+type}} \& membrane\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a3dfd2bb2cfd8541fe760856bb0bac959}\index{membrane\_t@{membrane\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a3dfd2bb2cfd8541fe760856bb0bac959} 
+const \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{membrane\+\_\+t\+::brown\+Vel\+\_\+type}} \& membrane\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a36e7f16f7aa503dbff31b6ada977ed0a}\index{membrane\_t@{membrane\_t}!brownVel@{brownVel}}
+\index{brownVel@{brownVel}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{brownVel()}{brownVel()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a36e7f16f7aa503dbff31b6ada977ed0a} 
+void membrane\+\_\+t\+::brown\+Vel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_aaf64041f5dcaf5b99b39ecfffbe02c07}{brown\+Vel\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_acd2b809172aeb21719c7eecc99a2b269}\index{membrane\_t@{membrane\_t}!dim@{dim}}
+\index{dim@{dim}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_acd2b809172aeb21719c7eecc99a2b269} 
+\mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{membrane\+\_\+t\+::dim\+\_\+type}} \& membrane\+\_\+t\+::dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_acf5f07d89bced2840b4c1cda52d39b70}\index{membrane\_t@{membrane\_t}!dim@{dim}}
+\index{dim@{dim}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_acf5f07d89bced2840b4c1cda52d39b70} 
+const \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{membrane\+\_\+t\+::dim\+\_\+type}} \& membrane\+\_\+t\+::dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a1d9355a2855329763f4f77f208a72a34}\index{membrane\_t@{membrane\_t}!dim@{dim}}
+\index{dim@{dim}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a1d9355a2855329763f4f77f208a72a34} 
+void membrane\+\_\+t\+::dim (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classmembrane__t_a50a187dca246e0b6e65c7a8db38a4d9a}\index{membrane\_t@{membrane\_t}!dim@{dim}}
+\index{dim@{dim}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a50a187dca246e0b6e65c7a8db38a4d9a} 
+void membrane\+\_\+t\+::dim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_a23906aaa5acf7e3c50885a25b2fd55e7}{dim\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_a530484b346b669da48c72a4d41d398e6}\index{membrane\_t@{membrane\_t}!equiDist@{equiDist}}
+\index{equiDist@{equiDist}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{equiDist()}{equiDist()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a530484b346b669da48c72a4d41d398e6} 
+\mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{membrane\+\_\+t\+::equi\+Dist\+\_\+type}} \& membrane\+\_\+t\+::equi\+Dist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_ae030428b7e718415c979f2e3a8dbff6d}\index{membrane\_t@{membrane\_t}!equiDist@{equiDist}}
+\index{equiDist@{equiDist}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{equiDist()}{equiDist()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_ae030428b7e718415c979f2e3a8dbff6d} 
+const \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{membrane\+\_\+t\+::equi\+Dist\+\_\+type}} \& membrane\+\_\+t\+::equi\+Dist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a2fbd3166d56ca9efa00bad18004261c9}\index{membrane\_t@{membrane\_t}!equiDist@{equiDist}}
+\index{equiDist@{equiDist}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{equiDist()}{equiDist()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a2fbd3166d56ca9efa00bad18004261c9} 
+void membrane\+\_\+t\+::equi\+Dist (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_af837af4e971533bc6c1cfdeb9892845f}{equi\+Dist\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_a717c0a16a0e0855c27a8bbd93f9aeaf7}\index{membrane\_t@{membrane\_t}!mass@{mass}}
+\index{mass@{mass}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a717c0a16a0e0855c27a8bbd93f9aeaf7} 
+\mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{membrane\+\_\+t\+::mass\+\_\+type}} \& membrane\+\_\+t\+::mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a917d8ca97f630d3bd74ca1364f331d76}\index{membrane\_t@{membrane\_t}!mass@{mass}}
+\index{mass@{mass}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a917d8ca97f630d3bd74ca1364f331d76} 
+const \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{membrane\+\_\+t\+::mass\+\_\+type}} \& membrane\+\_\+t\+::mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_afbc10283c8d86bfaeab900e9f7d0d99e}\index{membrane\_t@{membrane\_t}!mass@{mass}}
+\index{mass@{mass}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_afbc10283c8d86bfaeab900e9f7d0d99e} 
+void membrane\+\_\+t\+::mass (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_ad95845599a02aef471457dcd9e382425}{mass\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_ac3c55ad3e5298f4b30d32f10bf56eb64}\index{membrane\_t@{membrane\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classmembrane__t_ac3c55ad3e5298f4b30d32f10bf56eb64} 
+\mbox{\hyperlink{classmembrane__t}{membrane\+\_\+t}} \& membrane\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t}{membrane\+\_\+t}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classmembrane__t_a6ef2c91210853eb7b0b7010b297d9be7}\index{membrane\_t@{membrane\_t}!pos@{pos}}
+\index{pos@{pos}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a6ef2c91210853eb7b0b7010b297d9be7} 
+\mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{membrane\+\_\+t\+::pos\+\_\+type}} \& membrane\+\_\+t\+::pos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_aca6ff1cb0e7666048ff9a87034177df7}\index{membrane\_t@{membrane\_t}!pos@{pos}}
+\index{pos@{pos}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_aca6ff1cb0e7666048ff9a87034177df7} 
+const \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{membrane\+\_\+t\+::pos\+\_\+type}} \& membrane\+\_\+t\+::pos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a4fddfc18e6ba636a9b08471eab8a211a}\index{membrane\_t@{membrane\_t}!pos@{pos}}
+\index{pos@{pos}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a4fddfc18e6ba636a9b08471eab8a211a} 
+void membrane\+\_\+t\+::pos (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classmembrane__t_af63a4c12cbcc4571b7186f12758a9a33}\index{membrane\_t@{membrane\_t}!pos@{pos}}
+\index{pos@{pos}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_af63a4c12cbcc4571b7186f12758a9a33} 
+void membrane\+\_\+t\+::pos (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_ae6ad9a1a1bedbb72be7256952b2b5912}{pos\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_a92f31bf87c822de04a27eaa388557c34}\index{membrane\_t@{membrane\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a92f31bf87c822de04a27eaa388557c34} 
+\mbox{\hyperlink{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}{membrane\+\_\+t\+::ptype\+\_\+optional}} \& membrane\+\_\+t\+::ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a21303a363d75982eaf071432c5e1efbc}\index{membrane\_t@{membrane\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a21303a363d75982eaf071432c5e1efbc} 
+const \mbox{\hyperlink{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}{membrane\+\_\+t\+::ptype\+\_\+optional}} \& membrane\+\_\+t\+::ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element container. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the optional container. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_ac75ad7b65df49d81301ca8c47513f6c2}\index{membrane\_t@{membrane\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_ac75ad7b65df49d81301ca8c47513f6c2} 
+void membrane\+\_\+t\+::ptype (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_aad63ae1061c1e8babb8ddee9089ecc3b}{ptype\+\_\+optional}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An optional container with the new value to set.\\
+\hline
+\end{DoxyParams}
+If the value is present in {\itshape x} then this function makes a copy of this value and sets it as the new value of the element. Otherwise the element container is set the \textquotesingle{}not present\textquotesingle{} state. \Hypertarget{classmembrane__t_aad0e1890caa3459be2c225e7473e9232}\index{membrane\_t@{membrane\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_aad0e1890caa3459be2c225e7473e9232} 
+void membrane\+\_\+t\+::ptype (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_a547a138b1ffa8190fa135665ee717ccc}{ptype\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_a2912940de09f17234d372f9e1341f800}\index{membrane\_t@{membrane\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a2912940de09f17234d372f9e1341f800} 
+\mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{membrane\+\_\+t\+::spacing\+\_\+type}} \& membrane\+\_\+t\+::spacing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a0b6e301a5165d17a384e115b1ff784b6}\index{membrane\_t@{membrane\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a0b6e301a5165d17a384e115b1ff784b6} 
+const \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{membrane\+\_\+t\+::spacing\+\_\+type}} \& membrane\+\_\+t\+::spacing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_ab818e5be05fa265b3fa20e2e89ddf41f}\index{membrane\_t@{membrane\_t}!spacing@{spacing}}
+\index{spacing@{spacing}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{spacing()}{spacing()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_ab818e5be05fa265b3fa20e2e89ddf41f} 
+void membrane\+\_\+t\+::spacing (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_a94e774a20332fbd31d0bfcb3aa492ada}{spacing\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_afefc5471b7fd5fba36eb2c7d9754661f}\index{membrane\_t@{membrane\_t}!springConst@{springConst}}
+\index{springConst@{springConst}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{springConst()}{springConst()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_afefc5471b7fd5fba36eb2c7d9754661f} 
+\mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{membrane\+\_\+t\+::spring\+Const\+\_\+type}} \& membrane\+\_\+t\+::spring\+Const (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a534dd1037e0502b2379488448d7d11a6}\index{membrane\_t@{membrane\_t}!springConst@{springConst}}
+\index{springConst@{springConst}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{springConst()}{springConst()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a534dd1037e0502b2379488448d7d11a6} 
+const \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{membrane\+\_\+t\+::spring\+Const\+\_\+type}} \& membrane\+\_\+t\+::spring\+Const (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_aaa91f5ab71f9fa4200a2595fae926a51}\index{membrane\_t@{membrane\_t}!springConst@{springConst}}
+\index{springConst@{springConst}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{springConst()}{springConst()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classmembrane__t_aaa91f5ab71f9fa4200a2595fae926a51} 
+void membrane\+\_\+t\+::spring\+Const (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_af0fdc89009ccdd333fff53c5c98744ac}{spring\+Const\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classmembrane__t_a175a0ee73e1f3db090541c2b1fa45ec9}\index{membrane\_t@{membrane\_t}!vel@{vel}}
+\index{vel@{vel}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a175a0ee73e1f3db090541c2b1fa45ec9} 
+\mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{membrane\+\_\+t\+::vel\+\_\+type}} \& membrane\+\_\+t\+::vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_ac33e02fb9d90c859ab296a39b7e045da}\index{membrane\_t@{membrane\_t}!vel@{vel}}
+\index{vel@{vel}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_ac33e02fb9d90c859ab296a39b7e045da} 
+const \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{membrane\+\_\+t\+::vel\+\_\+type}} \& membrane\+\_\+t\+::vel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classmembrane__t_a93f4f34692f86c1c5453f03904e1ea7c}\index{membrane\_t@{membrane\_t}!vel@{vel}}
+\index{vel@{vel}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_a93f4f34692f86c1c5453f03904e1ea7c} 
+void membrane\+\_\+t\+::vel (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classmembrane__t_af7a9eea44de5f29043e46be2f50da380}\index{membrane\_t@{membrane\_t}!vel@{vel}}
+\index{vel@{vel}!membrane\_t@{membrane\_t}}
+\doxysubsubsection{\texorpdfstring{vel()}{vel()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classmembrane__t_af7a9eea44de5f29043e46be2f50da380} 
+void membrane\+\_\+t\+::vel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmembrane__t_a6764bf3c94c8dfa2de3c3bc83e92f091}{vel\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8h}{simulation.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8cpp}{simulation.\+cpp}}\end{DoxyCompactItemize}

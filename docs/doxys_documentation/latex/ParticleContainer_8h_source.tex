@@ -1,0 +1,107 @@
+\doxysection{Particle\+Container.\+h}
+\hypertarget{ParticleContainer_8h_source}{}\label{ParticleContainer_8h_source}\index{src/models/ParticleContainer.h@{src/models/ParticleContainer.h}}
+\mbox{\hyperlink{ParticleContainer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *ParticleContainer\ Class}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PARTICLECONTAINER\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PARTICLECONTAINER\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Particle_8h}{Particle.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ std::vector<Particle>\ \mbox{\hyperlink{classParticleContainer_a837d29fec29694cf90572fe943303776}{particles}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classParticleContainer_affd6551cdebeb57aac9e03f6d2299572}{activeParticleCount}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::map<size\_t,\ size\_t>\ \mbox{\hyperlink{classParticleContainer_add8152963258b1b6acc64e143d97df00}{inactiveParticleMap}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classParticleContainer_a76d21bdb5141158cf664d65e2d8b1db7}{ParticleContainer}}(\textcolor{keyword}{const}\ std::vector<Particle>\&\ \mbox{\hyperlink{classParticleContainer_a837d29fec29694cf90572fe943303776}{particles}});}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classParticleContainer_a76d21bdb5141158cf664d65e2d8b1db7}{ParticleContainer}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticleContainer_ac9316f41ac4e37e5e4ac55ae4cf176de}{addParticle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticle}{Particle}}\&\ p);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticleContainer_aa70bb015688c449289564656c6391095}{removeParticle}}(\mbox{\hyperlink{classParticle}{Particle}}\&\ p);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticleContainer_a99a1ef83a80f90181e6297d65450b1aa}{getIndex}}(\textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ std::vector<Particle>\ \mbox{\hyperlink{classParticleContainer_a33a2348e19f93850e67ce59867d1e38f}{getContainer}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_ad050ec922143d33356ea8b3d195c6423}{begin}}();}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{/*\ std::vector<Particle>::iterator\ begin();\ */}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_a7619c5b38a50eb55272d41d6255b86b6}{end}}();}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{/*\ std::vector<Particle>::iterator\ end();\ */}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticleContainer_1_1PairIterator}{PairIterator}};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{PairIterator}}\ \mbox{\hyperlink{classParticleContainer_a8ad5de2a6c97452ecf68222fa78cbbab}{beginPairs}}();}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{PairIterator}}\ \mbox{\hyperlink{classParticleContainer_a71ca5d7c3f5d054e9d5c7ed54dc83907}{endPairs}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_a941b8f31254a4f62293dabfacfbcdcc6}{beginActive}}();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_aa10204cd456da2697ef1d3f43397110d}{endActive}}();}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ std::vector<Particle>::iterator\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a2fa8b2bf6f43d2773941c7b682bae0a6}{begin}},\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a9a6d8d3de1f1f89ed0b2bac33c6a7a23}{current}},\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a7082a48f3c621be776dcc04e4c3c441e}{end}};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ std::reference\_wrapper<std::map<size\_t,\ size\_t>>\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_ab3a8456d37c8e0c369dd04761ba9dd7c}{inactiveMapRef}};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_ab2e35ad4bad564afa79ccbbcb72e731c}{advanceToNextActive}}();}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\_type}}\ =\ std::ptrdiff\_t;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_adb07e4414c76c0114a15bec01cee7e66}{ActiveIterator}}(}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Particle>::iterator\ start,}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Particle>::iterator\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a2fa8b2bf6f43d2773941c7b682bae0a6}{begin}},}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Particle>::iterator\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a7082a48f3c621be776dcc04e4c3c441e}{end}},}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ std::reference\_wrapper<std::map<size\_t,\ size\_t>>\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_ab3a8456d37c8e0c369dd04761ba9dd7c}{inactiveMapRef}});}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle}{Particle}}\&\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a71eaed4a63a3c4bb7020c5e6c68e48ba}{operator*}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\&\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a4740501d4015574c30d72f9bf5c79df0}{operator++}}();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\&\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_aaa69c56fc738c82a8980d66070ad2179}{operator-\/-\/}}();}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a20c10a2506a7603d13a6068744b57633}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a6f687cbf09bdfefd3415ac2d11e0a61a}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a096fd4b475c946b4e78b8736e4ceefcf}{operator+=}}(\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\_type}}\ n);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a9589e2042c45cb7817d1ae84bd2f263b}{operator-\/=}}(\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\_type}}\ n);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a90e93c8538950f112c5a57e7c8745dc7}{operator+}}(\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\_type}}\ n);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_aa195a35b120b7e9da0e02ff33b3a4e36}{operator-\/}}(\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\_type}}\ n);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_a1cda3575a27fe57ba4257dd7fcbfc6b0}{difference\_type}}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator_aa195a35b120b7e9da0e02ff33b3a4e36}{operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00169\ \ \ \ \ \};}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticleContainer_1_1PairIterator}{PairIterator}}\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_add64697b818f5d7031c6d42fb4b85856}{start}},\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_ab698d58f49407d8eb546978d05d53daa}{first}},\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_aea099a15f968ec808b09fb82564ddfd8}{second}},\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a6d0482898559382d258baeb07c4482c8}{last}};}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a9cc05a2aa3b95105af0d8eb3d85ffd1a}{PairIterator}}(\mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_add64697b818f5d7031c6d42fb4b85856}{start}},\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_ab698d58f49407d8eb546978d05d53daa}{first}},\ \mbox{\hyperlink{classParticleContainer_1_1ActiveIterator}{ActiveIterator}}\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a6d0482898559382d258baeb07c4482c8}{last}});}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticle}{Particle}}\&\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a9f376f9f3fa7ba307ff6195f1f4ab2c8}{getLast}}();}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ std::pair<Particle\&,\ Particle\&>\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a05841a1d70079cebd1299986d876762b}{operator*}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{PairIterator}}\&\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_ab0de54e56be180630f17d2becca556ec}{operator++}}();}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_a5523d30437364cc051fa74bd37a7acd4}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{PairIterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator_afb169479718e6d8c8deb67e5fb16b607}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classParticleContainer_1_1PairIterator}{PairIterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00219\ \ \ \ \ \};}
+\DoxyCodeLine{00220\ \};}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PARTICLECONTAINER\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,91 @@
+\doxysection{Ascii\+Reader Class Reference}
+\hypertarget{classAsciiReader}{}\label{classAsciiReader}\index{AsciiReader@{AsciiReader}}
+
+
+{\ttfamily \#include $<$ascii\+Reader.\+h$>$}
+
+Inheritance diagram for Ascii\+Reader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAsciiReader}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAsciiReader_a8fadf7de4caa12a2ab0e74ada783e62b}{read\+File}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&sim) override
+\begin{DoxyCompactList}\small\item\em Read a file and store the data in a \doxylink{classSimulation}{Simulation}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAsciiReader_a8cea28f5e94ed006ba3580b7ce1e693a}{read\+Ascii}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&sim, std\+::ifstream \&input\+\_\+file)
+\item 
+\mbox{\hyperlink{classAsciiReader_a9ce82a24500af1259a4bff8d19cb0474}{File\+Reader}} (std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classFileReader}{File\+Reader} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFileReader}{File\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileReader_a9ce82a24500af1259a4bff8d19cb0474}{File\+Reader}} (std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classFileReader}{File\+Reader} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classFileReader_a1382969e8f1468f3b04ad4b44ab39dee}{\texorpdfstring{$\sim$}{\string~}\+File\+Reader}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classFileReader}{File\+Reader} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_acebf231636d2ac6721d6d0a4195b4353}{read\+File}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particles, std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}})
+\begin{DoxyCompactList}\small\item\em Read a file and store the data in a \doxylink{classParticleContainer}{Particle\+Container}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classFileReader}{File\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classFileReader_a2447d05b699d0eff1574c5d7fe66f8df}{filename}}
+\begin{DoxyCompactList}\small\item\em The name of the file to read. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAsciiReader_a9ce82a24500af1259a4bff8d19cb0474}\index{AsciiReader@{AsciiReader}!FileReader@{FileReader}}
+\index{FileReader@{FileReader}!AsciiReader@{AsciiReader}}
+\doxysubsubsection{\texorpdfstring{FileReader()}{FileReader()}}
+{\footnotesize\ttfamily \label{classAsciiReader_a9ce82a24500af1259a4bff8d19cb0474} 
+File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Construct a new \doxylink{classFileReader}{File\+Reader} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classFileReader}{File\+Reader} 
+\end{DoxyReturn}
+\Hypertarget{classAsciiReader_a8cea28f5e94ed006ba3580b7ce1e693a}\index{AsciiReader@{AsciiReader}!readAscii@{readAscii}}
+\index{readAscii@{readAscii}!AsciiReader@{AsciiReader}}
+\doxysubsubsection{\texorpdfstring{readAscii()}{readAscii()}}
+{\footnotesize\ttfamily \label{classAsciiReader_a8cea28f5e94ed006ba3580b7ce1e693a} 
+bool Ascii\+Reader\+::read\+Ascii (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{, }\item[{std\+::ifstream \&}]{input\+\_\+file}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classAsciiReader_a8fadf7de4caa12a2ab0e74ada783e62b}\index{AsciiReader@{AsciiReader}!readFile@{readFile}}
+\index{readFile@{readFile}!AsciiReader@{AsciiReader}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily \label{classAsciiReader_a8fadf7de4caa12a2ab0e74ada783e62b} 
+void Ascii\+Reader\+::read\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Read a file and store the data in a \doxylink{classSimulation}{Simulation}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to store the data in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classFileReader_a7f33eef4ad8b47e67c2721eb9a3a8e91}{File\+Reader}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/file\+Reader/\mbox{\hyperlink{asciiReader_8h}{ascii\+Reader.\+h}}\item 
+src/io/file\+Reader/\mbox{\hyperlink{asciiReader_8cpp}{ascii\+Reader.\+cpp}}\end{DoxyCompactItemize}

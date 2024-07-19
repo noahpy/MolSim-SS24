@@ -1,0 +1,94 @@
+\doxysection{Physics\+Strategy Class Reference}
+\hypertarget{classPhysicsStrategy}{}\label{classPhysicsStrategy}\index{PhysicsStrategy@{PhysicsStrategy}}
+
+
+Strategy pattern for physics calculations.  
+
+
+
+
+{\ttfamily \#include $<$strategy.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsStrategy_aeafc383c0262036605f237a4fe7e2a2d}{Physics\+Strategy}} (std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$ \mbox{\hyperlink{classPhysicsStrategy_abb9c32c3cd1ebc67b7de6b5a254efe68}{calX}}, std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$ \mbox{\hyperlink{classPhysicsStrategy_a6c70122fdb960296c2a226ff456ff92b}{calV}}, std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$ \mbox{\hyperlink{classPhysicsStrategy_a46fbd81442c986c50c46182a017fb93f}{calF}})
+\begin{DoxyCompactList}\small\item\em Construct a new Physics Strategy object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$ \mbox{\hyperlink{classPhysicsStrategy_abb9c32c3cd1ebc67b7de6b5a254efe68}{calX}}
+\begin{DoxyCompactList}\small\item\em Function to calculate the positions within the simulation. \end{DoxyCompactList}\item 
+std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$ \mbox{\hyperlink{classPhysicsStrategy_a6c70122fdb960296c2a226ff456ff92b}{calV}}
+\begin{DoxyCompactList}\small\item\em Function to calculate the velocities within the simulation. \end{DoxyCompactList}\item 
+std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$ \mbox{\hyperlink{classPhysicsStrategy_a46fbd81442c986c50c46182a017fb93f}{calF}}
+\begin{DoxyCompactList}\small\item\em Function to calculate the forces within the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Strategy pattern for physics calculations. 
+
+This is a strategy pattern for physics calculations. This allows to specify which physics calculations to perform at runtime, by passing the function references. By passing the simulation object to the functions, the functions can use members which are only defined in subclasses of \doxylink{classSimulation}{Simulation}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPhysicsStrategy_aeafc383c0262036605f237a4fe7e2a2d}\index{PhysicsStrategy@{PhysicsStrategy}!PhysicsStrategy@{PhysicsStrategy}}
+\index{PhysicsStrategy@{PhysicsStrategy}!PhysicsStrategy@{PhysicsStrategy}}
+\doxysubsubsection{\texorpdfstring{PhysicsStrategy()}{PhysicsStrategy()}}
+{\footnotesize\ttfamily \label{classPhysicsStrategy_aeafc383c0262036605f237a4fe7e2a2d} 
+Physics\+Strategy\+::\+Physics\+Strategy (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$}]{calX}{, }\item[{std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$}]{calV}{, }\item[{std\+::function$<$ void(const \mbox{\hyperlink{classSimulation}{Simulation}} \&)$>$}]{calF}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new Physics Strategy object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calX} & The function to calculate the position from the passed simulation \\
+\hline
+{\em calV} & The function to calculate the velocity from the passed simulation \\
+\hline
+{\em calF} & The function to calculate the force from the passed simulation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classPhysicsStrategy}{Physics\+Strategy} object 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPhysicsStrategy_a46fbd81442c986c50c46182a017fb93f}\index{PhysicsStrategy@{PhysicsStrategy}!calF@{calF}}
+\index{calF@{calF}!PhysicsStrategy@{PhysicsStrategy}}
+\doxysubsubsection{\texorpdfstring{calF}{calF}}
+{\footnotesize\ttfamily \label{classPhysicsStrategy_a46fbd81442c986c50c46182a017fb93f} 
+std\+::function$<$void(const \mbox{\hyperlink{classSimulation}{Simulation}}\&)$>$ Physics\+Strategy\+::calF}
+
+
+
+Function to calculate the forces within the simulation. 
+
+\Hypertarget{classPhysicsStrategy_a6c70122fdb960296c2a226ff456ff92b}\index{PhysicsStrategy@{PhysicsStrategy}!calV@{calV}}
+\index{calV@{calV}!PhysicsStrategy@{PhysicsStrategy}}
+\doxysubsubsection{\texorpdfstring{calV}{calV}}
+{\footnotesize\ttfamily \label{classPhysicsStrategy_a6c70122fdb960296c2a226ff456ff92b} 
+std\+::function$<$void(const \mbox{\hyperlink{classSimulation}{Simulation}}\&)$>$ Physics\+Strategy\+::calV}
+
+
+
+Function to calculate the velocities within the simulation. 
+
+\Hypertarget{classPhysicsStrategy_abb9c32c3cd1ebc67b7de6b5a254efe68}\index{PhysicsStrategy@{PhysicsStrategy}!calX@{calX}}
+\index{calX@{calX}!PhysicsStrategy@{PhysicsStrategy}}
+\doxysubsubsection{\texorpdfstring{calX}{calX}}
+{\footnotesize\ttfamily \label{classPhysicsStrategy_abb9c32c3cd1ebc67b7de6b5a254efe68} 
+std\+::function$<$void(const \mbox{\hyperlink{classSimulation}{Simulation}}\&)$>$ Physics\+Strategy\+::calX}
+
+
+
+Function to calculate the positions within the simulation. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/physics/\mbox{\hyperlink{strategy_8h}{strategy.\+h}}\item 
+src/physics/\mbox{\hyperlink{strategy_8cpp}{strategy.\+cpp}}\end{DoxyCompactItemize}

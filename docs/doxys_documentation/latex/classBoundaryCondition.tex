@@ -1,0 +1,165 @@
+\doxysection{Boundary\+Condition Class Reference}
+\hypertarget{classBoundaryCondition}{}\label{classBoundaryCondition}\index{BoundaryCondition@{BoundaryCondition}}
+
+
+The \doxylink{classBoundaryCondition}{Boundary\+Condition} class is an abstract class that defines the interface for boundary conditions.  
+
+
+
+
+{\ttfamily \#include $<$Boundary\+Condition.\+h$>$}
+
+Inheritance diagram for Boundary\+Condition\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBoundaryCondition}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{Boundary\+Condition}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classBoundaryCondition_a7806aa116ba9779d164b53411dc0515b}{pre\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})=0
+\begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation before any updates are made. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBoundaryCondition_ac515c5d031e15483b6959dbef91aa898}{post\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})=0
+\begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation after all updates are made. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa}{get\+Point\+On\+Boundary\+Plane}} (const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&LJDSim)
+\begin{DoxyCompactList}\small\item\em Returns a point on the boundary-\/plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85}{get\+Relevant\+Dimension}} (const std\+::array$<$ double, 3 $>$ \&normal)
+\begin{DoxyCompactList}\small\item\em Get the dimension that is relevant to the boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classBoundaryCondition}{Boundary\+Condition} class is an abstract class that defines the interface for boundary conditions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}\index{BoundaryCondition@{BoundaryCondition}!BoundaryCondition@{BoundaryCondition}}
+\index{BoundaryCondition@{BoundaryCondition}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{BoundaryCondition()}{BoundaryCondition()}}
+{\footnotesize\ttfamily \label{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73} 
+Boundary\+Condition\+::\+Boundary\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the boundary condition \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}\index{BoundaryCondition@{BoundaryCondition}!````~BoundaryCondition@{\texorpdfstring{$\sim$}{\string~}BoundaryCondition}}
+\index{````~BoundaryCondition@{\texorpdfstring{$\sim$}{\string~}BoundaryCondition}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}BoundaryCondition()}{\string~BoundaryCondition()}}
+{\footnotesize\ttfamily \label{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c} 
+virtual Boundary\+Condition\+::\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa}\index{BoundaryCondition@{BoundaryCondition}!getPointOnBoundaryPlane@{getPointOnBoundaryPlane}}
+\index{getPointOnBoundaryPlane@{getPointOnBoundaryPlane}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{getPointOnBoundaryPlane()}{getPointOnBoundaryPlane()}}
+{\footnotesize\ttfamily \label{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa} 
+std\+::array$<$ double, 3 $>$ Boundary\+Condition\+::get\+Point\+On\+Boundary\+Plane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&}]{LJDSim}{}\end{DoxyParamCaption})}
+
+
+
+Returns a point on the boundary-\/plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em LJDSim} & The simulation for wich to get the point for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A point on the boundary-\/plane 
+\end{DoxyReturn}
+\Hypertarget{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85}\index{BoundaryCondition@{BoundaryCondition}!getRelevantDimension@{getRelevantDimension}}
+\index{getRelevantDimension@{getRelevantDimension}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{getRelevantDimension()}{getRelevantDimension()}}
+{\footnotesize\ttfamily \label{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85} 
+static size\+\_\+t Boundary\+Condition\+::get\+Relevant\+Dimension (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{normal}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the dimension that is relevant to the boundary. 
+
+E.\+g. if the point on the boundary is (1,2,3) and the normal vector to that plane is (-\/1,0,0) (LEFT-\/\+Boundary), then return 0 as that is the index of the coordinate of interest 
+\begin{DoxyParams}{Parameters}
+{\em normal} & The normal vector to the plane \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the relevant dimension 
+\end{DoxyReturn}
+\Hypertarget{classBoundaryCondition_ac515c5d031e15483b6959dbef91aa898}\index{BoundaryCondition@{BoundaryCondition}!postUpdateBoundaryHandling@{postUpdateBoundaryHandling}}
+\index{postUpdateBoundaryHandling@{postUpdateBoundaryHandling}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{postUpdateBoundaryHandling()}{postUpdateBoundaryHandling()}}
+{\footnotesize\ttfamily \label{classBoundaryCondition_ac515c5d031e15483b6959dbef91aa898} 
+virtual void Boundary\+Condition\+::post\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+The call to apply the boundary condition to the simulation after all updates are made. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation} & The simulation to apply the boundary condition to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classOverflowBoundary_ac8b37cefd3cbed1c5278ef29e02723f5}{Overflow\+Boundary}}, \mbox{\hyperlink{classPeriodicBoundary_a7115c8f3b01940ef54718f1c7c13dabb}{Periodic\+Boundary}}, and \mbox{\hyperlink{classSoftReflectiveBoundary_ae0add0182fda0ee1c9ab23161b02c47f}{Soft\+Reflective\+Boundary}}.
+
+\Hypertarget{classBoundaryCondition_a7806aa116ba9779d164b53411dc0515b}\index{BoundaryCondition@{BoundaryCondition}!preUpdateBoundaryHandling@{preUpdateBoundaryHandling}}
+\index{preUpdateBoundaryHandling@{preUpdateBoundaryHandling}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{preUpdateBoundaryHandling()}{preUpdateBoundaryHandling()}}
+{\footnotesize\ttfamily \label{classBoundaryCondition_a7806aa116ba9779d164b53411dc0515b} 
+virtual void Boundary\+Condition\+::pre\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+The call to apply the boundary condition to the simulation before any updates are made. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation} & The simulation to apply the boundary condition to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classOverflowBoundary_a17d4a582d50f5bb8d285be9de82c2c5a}{Overflow\+Boundary}}, \mbox{\hyperlink{classPeriodicBoundary_a82cafd61cbf2438a28b825a6a6133e9e}{Periodic\+Boundary}}, and \mbox{\hyperlink{classSoftReflectiveBoundary_a00be82115bb5bcce7a3efafff7475407}{Soft\+Reflective\+Boundary}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}\index{BoundaryCondition@{BoundaryCondition}!position@{position}}
+\index{position@{position}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c} 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} Boundary\+Condition\+::position\hspace{0.3cm}{\ttfamily [protected]}}
+
+The position of the boundary condition 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/physics/boundary\+Conditions/\mbox{\hyperlink{BoundaryCondition_8h}{Boundary\+Condition.\+h}}\item 
+src/physics/boundary\+Conditions/\mbox{\hyperlink{BoundaryCondition_8cpp}{Boundary\+Condition.\+cpp}}\end{DoxyCompactItemize}

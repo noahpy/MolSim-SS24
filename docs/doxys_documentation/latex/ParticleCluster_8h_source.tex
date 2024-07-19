@@ -1,0 +1,42 @@
+\doxysection{Particle\+Cluster.\+h}
+\hypertarget{ParticleCluster_8h_source}{}\label{ParticleCluster_8h_source}\index{src/models/generators/ParticleCluster.h@{src/models/generators/ParticleCluster.h}}
+\mbox{\hyperlink{ParticleCluster_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Particle_8h}{models/Particle.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ArrayUtils_8h}{utils/ArrayUtils.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{MaxwellBoltzmannDistribution_8h}{utils/MaxwellBoltzmannDistribution.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <spdlog/spdlog.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParticleCluster}{ParticleCluster}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classParticleCluster_ab2cbefcaff9fa3fd7964e51e83a5adb5}{ParticleCluster}}(}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initialVelocity}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{meanVelocity}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<unsigned,\ bool>\&\ stationaryParticleTypes,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classParticleCluster_abeb65133a030f3c6c5708163dd2090c6}{\string~ParticleCluster}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticleCluster_ac4f75cbf593129fb391ef0ca6c55dc2b}{getTotalNumberOfParticles}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classParticleCluster_a89c4a884946202191e646f44a0a345da}{generateCluster}}(}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::vector<Particle>\&\ particles,\ \textcolor{keywordtype}{size\_t}\&\ insertionIndex)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classParticleCluster_a9427aeece5cd04430ef8fc2e849010ce}{toString}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00061\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}};\ }
+\DoxyCodeLine{00063\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initialVelocity}};\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{meanVelocity}};\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}};\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}};\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParticleCluster_a7983f0ed76457e2c226cbc6f00d55be2}{isNotStationary}};\ }
+\DoxyCodeLine{00068\ \};}
+
+\end{DoxyCode}

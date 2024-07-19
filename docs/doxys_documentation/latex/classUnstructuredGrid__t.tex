@@ -1,0 +1,249 @@
+\doxysection{Unstructured\+Grid\+\_\+t Class Reference}
+\hypertarget{classUnstructuredGrid__t}{}\label{classUnstructuredGrid__t}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+
+
+Class corresponding to the Unstructured\+Grid\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$vtk-\/unstructured.\+h$>$}
+
+Inheritance diagram for Unstructured\+Grid\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUnstructuredGrid__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Piece}
+Accessor and modifier functions for the Piece required element. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classPieceUnstructuredGrid__t}{\+::\+Piece\+Unstructured\+Grid\+\_\+t}} \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}}, char $>$ \mbox{\hyperlink{classUnstructuredGrid__t_a8a9bf012c364a5fbb78aac9a319a4dad}{Piece\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} \& \mbox{\hyperlink{classUnstructuredGrid__t_a10f9fb7e89af5057ed3dd065ccc2fb51}{Piece}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} \& \mbox{\hyperlink{classUnstructuredGrid__t_a66b7c6fc204fdc78b4611fd132771573}{Piece}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUnstructuredGrid__t_a97ef3f79738631a4265c4fbeb170f04d}{Piece}} (const \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUnstructuredGrid__t_ab6746290ddee77043f5830b05d750972}{Piece}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUnstructuredGrid__t_a00bf6957ea7e3313e2890bd4c02f8981}{Unstructured\+Grid\+\_\+t}} (const \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnstructuredGrid__t_a5335359377e3026191868e93675a5436}{Unstructured\+Grid\+\_\+t}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} $>$)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnstructuredGrid__t_a502011f6da037f1558216fe00adc566a}{Unstructured\+Grid\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnstructuredGrid__t_aa6b9894e2ac81b6e735c1ce9f2de70c5}{Unstructured\+Grid\+\_\+t}} (const \mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classUnstructuredGrid__t_a1bb2d9c2493c3bc793e0f9b61a1614ea}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \& \mbox{\hyperlink{classUnstructuredGrid__t_ac33ad0177719bcab9caa4fdf0efc51ae}{operator=}} (const \mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnstructuredGrid__t_a6fb9239ab1215edd7e7822a66d3af53c}{\texorpdfstring{$\sim$}{\string~}\+Unstructured\+Grid\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the Unstructured\+Grid\+\_\+t schema type. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classUnstructuredGrid__t_a8a9bf012c364a5fbb78aac9a319a4dad}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!Piece\_traits@{Piece\_traits}}
+\index{Piece\_traits@{Piece\_traits}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Piece\_traits}{Piece\_traits}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a8a9bf012c364a5fbb78aac9a319a4dad} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}}, char $>$ \mbox{\hyperlink{classUnstructuredGrid__t_a8a9bf012c364a5fbb78aac9a319a4dad}{Unstructured\+Grid\+\_\+t\+::\+Piece\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!Piece\_type@{Piece\_type}}
+\index{Piece\_type@{Piece\_type}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Piece\_type}{Piece\_type}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc} 
+typedef \mbox{\hyperlink{classPieceUnstructuredGrid__t}{\+::\+Piece\+Unstructured\+Grid\+\_\+t}} \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Unstructured\+Grid\+\_\+t\+::\+Piece\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classUnstructuredGrid__t_a00bf6957ea7e3313e2890bd4c02f8981}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{UnstructuredGrid\_t()}{UnstructuredGrid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a00bf6957ea7e3313e2890bd4c02f8981} 
+Unstructured\+Grid\+\_\+t\+::\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} \&}]{Piece}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classUnstructuredGrid__t_a5335359377e3026191868e93675a5436}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{UnstructuredGrid\_t()}{UnstructuredGrid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a5335359377e3026191868e93675a5436} 
+Unstructured\+Grid\+\_\+t\+::\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} $>$}]{Piece}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). 
+
+This constructor will try to use the passed values directly instead of making copies. \Hypertarget{classUnstructuredGrid__t_a502011f6da037f1558216fe00adc566a}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{UnstructuredGrid\_t()}{UnstructuredGrid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a502011f6da037f1558216fe00adc566a} 
+Unstructured\+Grid\+\_\+t\+::\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classUnstructuredGrid__t_aa6b9894e2ac81b6e735c1ce9f2de70c5}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{UnstructuredGrid\_t()}{UnstructuredGrid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_aa6b9894e2ac81b6e735c1ce9f2de70c5} 
+Unstructured\+Grid\+\_\+t\+::\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classUnstructuredGrid__t_a6fb9239ab1215edd7e7822a66d3af53c}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!````~UnstructuredGrid\_t@{\texorpdfstring{$\sim$}{\string~}UnstructuredGrid\_t}}
+\index{````~UnstructuredGrid\_t@{\texorpdfstring{$\sim$}{\string~}UnstructuredGrid\_t}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}UnstructuredGrid\_t()}{\string~UnstructuredGrid\_t()}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a6fb9239ab1215edd7e7822a66d3af53c} 
+Unstructured\+Grid\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classUnstructuredGrid__t_a1bb2d9c2493c3bc793e0f9b61a1614ea}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a1bb2d9c2493c3bc793e0f9b61a1614ea} 
+\mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \texorpdfstring{$\ast$}{*} Unstructured\+Grid\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classUnstructuredGrid__t_ac33ad0177719bcab9caa4fdf0efc51ae}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_ac33ad0177719bcab9caa4fdf0efc51ae} 
+\mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \& Unstructured\+Grid\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classUnstructuredGrid__t_a66b7c6fc204fdc78b4611fd132771573}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!Piece@{Piece}}
+\index{Piece@{Piece}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Piece()}{Piece()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a66b7c6fc204fdc78b4611fd132771573} 
+\mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Unstructured\+Grid\+\_\+t\+::\+Piece\+\_\+type}} \& Unstructured\+Grid\+\_\+t\+::\+Piece (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classUnstructuredGrid__t_a10f9fb7e89af5057ed3dd065ccc2fb51}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!Piece@{Piece}}
+\index{Piece@{Piece}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Piece()}{Piece()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a10f9fb7e89af5057ed3dd065ccc2fb51} 
+const \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Unstructured\+Grid\+\_\+t\+::\+Piece\+\_\+type}} \& Unstructured\+Grid\+\_\+t\+::\+Piece (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classUnstructuredGrid__t_ab6746290ddee77043f5830b05d750972}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!Piece@{Piece}}
+\index{Piece@{Piece}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Piece()}{Piece()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_ab6746290ddee77043f5830b05d750972} 
+void Unstructured\+Grid\+\_\+t\+::\+Piece (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classUnstructuredGrid__t_a97ef3f79738631a4265c4fbeb170f04d}\index{UnstructuredGrid\_t@{UnstructuredGrid\_t}!Piece@{Piece}}
+\index{Piece@{Piece}!UnstructuredGrid\_t@{UnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Piece()}{Piece()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classUnstructuredGrid__t_a97ef3f79738631a4265c4fbeb170f04d} 
+void Unstructured\+Grid\+\_\+t\+::\+Piece (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classUnstructuredGrid__t_a559913611314b34f4868027fc91e35bc}{Piece\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8h}{vtk-\/unstructured.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8cpp}{vtk-\/unstructured.\+cpp}}\end{DoxyCompactItemize}

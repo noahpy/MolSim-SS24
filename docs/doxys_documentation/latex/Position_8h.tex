@@ -1,0 +1,153 @@
+\doxysection{src/utils/\+Position.h File Reference}
+\hypertarget{Position_8h}{}\label{Position_8h}\index{src/utils/Position.h@{src/utils/Position.h}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \{ \newline
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{LEFT}}
+, \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{RIGHT}}
+, \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{TOP}}
+, \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{BOTTOM}}
+, \newline
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{FRONT}}
+, \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{BACK}}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum to represent the position across a cube. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \mbox{\hyperlink{Position_8h_ab1d898660ab2152fe48aed22b488ed6f}{coordinate\+To\+Position}} (std\+::array$<$ size\+\_\+t, 3 $>$ coordinate, std\+::array$<$ size\+\_\+t, 3 $>$ grid\+Dimensions, bool keep3D=true, bool is\+Halo=false)
+\begin{DoxyCompactList}\small\item\em Converts a coordinate to a position. This assumes the halo cells added to the bounds i.\+e. index 1 is the first valid cell. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \mbox{\hyperlink{Position_8h_a7d4b686015ea3864bd0f2e46b8ab10f4}{rel\+Coordinate\+To\+Pos}} (std\+::array$<$ int, 3 $>$ coordinate)
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{Position_8h_a6e87ad75733947bcb25d3da2d44593ef}{get\+Normal\+Vector\+Of\+Boundary}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position)
+\item 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{Position_8h_a36e48ad99e9cae63fa8604043b932bf8}{opposite\+Position}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position)
+\item 
+std\+::string \mbox{\hyperlink{Position_8h_a705bf2598ddb67a355e90284ef979f69}{get\+Position\+String}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position)
+\begin{DoxyCompactList}\small\item\em Converts a position to a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ \mbox{\hyperlink{Position_8h_a119913fa54ebaf779539a6e9154789d6}{all\+Positions}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}\index{Position.h@{Position.h}!Position@{Position}}
+\index{Position@{Position}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{Position}{Position}}
+{\footnotesize\ttfamily \label{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83} 
+enum \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}
+
+
+
+An enum to represent the position across a cube. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!Position.h@{Position.h}}\index{Position.h@{Position.h}!LEFT@{LEFT}}}\Hypertarget{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}\label{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83} 
+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!Position.h@{Position.h}}\index{Position.h@{Position.h}!RIGHT@{RIGHT}}}\Hypertarget{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}\label{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83} 
+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOP@{TOP}!Position.h@{Position.h}}\index{Position.h@{Position.h}!TOP@{TOP}}}\Hypertarget{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}\label{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83} 
+TOP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOTTOM@{BOTTOM}!Position.h@{Position.h}}\index{Position.h@{Position.h}!BOTTOM@{BOTTOM}}}\Hypertarget{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}\label{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83} 
+BOTTOM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRONT@{FRONT}!Position.h@{Position.h}}\index{Position.h@{Position.h}!FRONT@{FRONT}}}\Hypertarget{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}\label{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83} 
+FRONT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BACK@{BACK}!Position.h@{Position.h}}\index{Position.h@{Position.h}!BACK@{BACK}}}\Hypertarget{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}\label{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83} 
+BACK&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Position_8h_ab1d898660ab2152fe48aed22b488ed6f}\index{Position.h@{Position.h}!coordinateToPosition@{coordinateToPosition}}
+\index{coordinateToPosition@{coordinateToPosition}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{coordinateToPosition()}{coordinateToPosition()}}
+{\footnotesize\ttfamily \label{Position_8h_ab1d898660ab2152fe48aed22b488ed6f} 
+std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ coordinate\+To\+Position (\begin{DoxyParamCaption}\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{coordinate}{, }\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{grid\+Dimensions}{, }\item[{bool}]{keep3D}{ = {\ttfamily true}, }\item[{bool}]{is\+Halo}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a coordinate to a position. This assumes the halo cells added to the bounds i.\+e. index 1 is the first valid cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coordinate} & The coordinate to convert \\
+\hline
+{\em grid\+Dimensions} & The size of the grid \\
+\hline
+{\em keep3D} & Whether to keep the 3rd dimension \\
+\hline
+{\em is\+Halo} & Whether to get the sides for a halo cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The boundary position of the coordinate 
+\end{DoxyReturn}
+\Hypertarget{Position_8h_a6e87ad75733947bcb25d3da2d44593ef}\index{Position.h@{Position.h}!getNormalVectorOfBoundary@{getNormalVectorOfBoundary}}
+\index{getNormalVectorOfBoundary@{getNormalVectorOfBoundary}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{getNormalVectorOfBoundary()}{getNormalVectorOfBoundary()}}
+{\footnotesize\ttfamily \label{Position_8h_a6e87ad75733947bcb25d3da2d44593ef} 
+std\+::array$<$ double, 3 $>$ get\+Normal\+Vector\+Of\+Boundary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{Position_8h_a705bf2598ddb67a355e90284ef979f69}\index{Position.h@{Position.h}!getPositionString@{getPositionString}}
+\index{getPositionString@{getPositionString}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{getPositionString()}{getPositionString()}}
+{\footnotesize\ttfamily \label{Position_8h_a705bf2598ddb67a355e90284ef979f69} 
+std\+::string get\+Position\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a position to a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string representation of the position 
+\end{DoxyReturn}
+\Hypertarget{Position_8h_a36e48ad99e9cae63fa8604043b932bf8}\index{Position.h@{Position.h}!oppositePosition@{oppositePosition}}
+\index{oppositePosition@{oppositePosition}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{oppositePosition()}{oppositePosition()}}
+{\footnotesize\ttfamily \label{Position_8h_a36e48ad99e9cae63fa8604043b932bf8} 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} opposite\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{Position_8h_a7d4b686015ea3864bd0f2e46b8ab10f4}\index{Position.h@{Position.h}!relCoordinateToPos@{relCoordinateToPos}}
+\index{relCoordinateToPos@{relCoordinateToPos}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{relCoordinateToPos()}{relCoordinateToPos()}}
+{\footnotesize\ttfamily \label{Position_8h_a7d4b686015ea3864bd0f2e46b8ab10f4} 
+std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ rel\+Coordinate\+To\+Pos (\begin{DoxyParamCaption}\item[{std\+::array$<$ int, 3 $>$}]{coordinate}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{Position_8h_a119913fa54ebaf779539a6e9154789d6}\index{Position.h@{Position.h}!allPositions@{allPositions}}
+\index{allPositions@{allPositions}!Position.h@{Position.h}}
+\doxysubsubsection{\texorpdfstring{allPositions}{allPositions}}
+{\footnotesize\ttfamily \label{Position_8h_a119913fa54ebaf779539a6e9154789d6} 
+std\+::vector$<$\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}$>$ all\+Positions\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83adb45120aafd37a973140edee24708065}{Position::LEFT}},\ \ \ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83aec8379af7490bb9eaaf579cf17876f38}{Position::RIGHT}},\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a0ad44897a70fba309c24a5b6007de3e3}{Position::TOP}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a8c371f4e766fb2c49c219bbc88989461}{Position::BOTTOM}},\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83a76bd5ec6ea9d8a1b582d8d5e43102a02}{Position::FRONT}},\ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83ac921ff2cfc571c1d19b0485d7f6926ee}{Position::BACK}}\ \}}
+
+\end{DoxyCode}

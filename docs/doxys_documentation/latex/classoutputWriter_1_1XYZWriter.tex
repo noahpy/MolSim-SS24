@@ -1,0 +1,136 @@
+\doxysection{output\+Writer\+::XYZWriter Class Reference}
+\hypertarget{classoutputWriter_1_1XYZWriter}{}\label{classoutputWriter_1_1XYZWriter}\index{outputWriter::XYZWriter@{outputWriter::XYZWriter}}
+
+
+Class \doxylink{classoutputWriter_1_1XYZWriter}{XYZWriter} to write the simulation data to a file in XYZ format.  
+
+
+
+
+{\ttfamily \#include $<$XYZWriter.\+h$>$}
+
+Inheritance diagram for output\+Writer\+::XYZWriter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoutputWriter_1_1XYZWriter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a73b1eacd622152993f2fa6c181e69c8a}{XYZWriter}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classoutputWriter_1_1XYZWriter}{XYZWriter} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a322512b62157dd7230c22d59267817d3}{XYZWriter}} (std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}})
+\item 
+virtual \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_ad3fe6dbb5e1aa5bdeffcc9986795309b}{\texorpdfstring{$\sim$}{\string~}\+XYZWriter}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{classoutputWriter_1_1XYZWriter}{XYZWriter} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a58653e0504bc44b696e1338da79bd640}{plot\+Particles}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} particles, const std\+::string \&filename, int iteration)
+\begin{DoxyCompactList}\small\item\em Write the simulation data for all particles to a file for one iteration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoutputWriter_1_1XYZWriter_a557f8a7e86bad751fda9119a2538f6ae}{plot\+Particles}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&s) override
+\begin{DoxyCompactList}\small\item\em Write the simulation data to a file using the simulation object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFileWriter}{File\+Writer}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileWriter_ae4dd90b95298451fc84d753b987ddc82}{File\+Writer}} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{classFileWriter}{File\+Writer}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFileWriter_a09798489903156b2438525fc687d3651}{File\+Writer}} (std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}})
+\begin{DoxyCompactList}\small\item\em Constructor of \doxylink{classFileWriter}{File\+Writer}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classFileWriter_a004bf2acbdc1a2f72015cd71f17aa2e2}{\texorpdfstring{$\sim$}{\string~}\+File\+Writer}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classFileWriter}{File\+Writer}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classFileWriter_aacc0155e82ea82d7c17268e8ce6b6f7e}{out\+\_\+name}} = "{}MD\+\_\+vtk"{}
+\begin{DoxyCompactList}\small\item\em The name of the output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class \doxylink{classoutputWriter_1_1XYZWriter}{XYZWriter} to write the simulation data to a file in XYZ format. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classoutputWriter_1_1XYZWriter_a73b1eacd622152993f2fa6c181e69c8a}\index{outputWriter::XYZWriter@{outputWriter::XYZWriter}!XYZWriter@{XYZWriter}}
+\index{XYZWriter@{XYZWriter}!outputWriter::XYZWriter@{outputWriter::XYZWriter}}
+\doxysubsubsection{\texorpdfstring{XYZWriter()}{XYZWriter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XYZWriter_a73b1eacd622152993f2fa6c181e69c8a} 
+output\+Writer\+::\+XYZWriter\+::\+XYZWriter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Constructor for the \doxylink{classoutputWriter_1_1XYZWriter}{XYZWriter} class. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classoutputWriter_1_1XYZWriter}{XYZWriter} object 
+\end{DoxyReturn}
+\Hypertarget{classoutputWriter_1_1XYZWriter_a322512b62157dd7230c22d59267817d3}\index{outputWriter::XYZWriter@{outputWriter::XYZWriter}!XYZWriter@{XYZWriter}}
+\index{XYZWriter@{XYZWriter}!outputWriter::XYZWriter@{outputWriter::XYZWriter}}
+\doxysubsubsection{\texorpdfstring{XYZWriter()}{XYZWriter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XYZWriter_a322512b62157dd7230c22d59267817d3} 
+output\+Writer\+::\+XYZWriter\+::\+XYZWriter (\begin{DoxyParamCaption}\item[{std\+::string}]{out\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classoutputWriter_1_1XYZWriter_ad3fe6dbb5e1aa5bdeffcc9986795309b}\index{outputWriter::XYZWriter@{outputWriter::XYZWriter}!````~XYZWriter@{\texorpdfstring{$\sim$}{\string~}XYZWriter}}
+\index{````~XYZWriter@{\texorpdfstring{$\sim$}{\string~}XYZWriter}!outputWriter::XYZWriter@{outputWriter::XYZWriter}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}XYZWriter()}{\string~XYZWriter()}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XYZWriter_ad3fe6dbb5e1aa5bdeffcc9986795309b} 
+output\+Writer\+::\+XYZWriter\+::\texorpdfstring{$\sim$}{\string~}\+XYZWriter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destructor for the \doxylink{classoutputWriter_1_1XYZWriter}{XYZWriter} class. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classoutputWriter_1_1XYZWriter_a557f8a7e86bad751fda9119a2538f6ae}\index{outputWriter::XYZWriter@{outputWriter::XYZWriter}!plotParticles@{plotParticles}}
+\index{plotParticles@{plotParticles}!outputWriter::XYZWriter@{outputWriter::XYZWriter}}
+\doxysubsubsection{\texorpdfstring{plotParticles()}{plotParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XYZWriter_a557f8a7e86bad751fda9119a2538f6ae} 
+void output\+Writer\+::\+XYZWriter\+::plot\+Particles (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Write the simulation data to a file using the simulation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \doxylink{classSimulation}{Simulation} object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classFileWriter_a30e2074c246bae28cb0af971c76609ed}{File\+Writer}}.
+
+\Hypertarget{classoutputWriter_1_1XYZWriter_a58653e0504bc44b696e1338da79bd640}\index{outputWriter::XYZWriter@{outputWriter::XYZWriter}!plotParticles@{plotParticles}}
+\index{plotParticles@{plotParticles}!outputWriter::XYZWriter@{outputWriter::XYZWriter}}
+\doxysubsubsection{\texorpdfstring{plotParticles()}{plotParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classoutputWriter_1_1XYZWriter_a58653e0504bc44b696e1338da79bd640} 
+void output\+Writer\+::\+XYZWriter\+::plot\+Particles (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}}}]{particles}{, }\item[{const std\+::string \&}]{filename}{, }\item[{int}]{iteration}{}\end{DoxyParamCaption})}
+
+
+
+Write the simulation data for all particles to a file for one iteration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & \doxylink{classParticleContainer}{Particle\+Container} object containing the particles to be written \\
+\hline
+{\em filename} & Name of the file to be written \\
+\hline
+{\em iteration} & Iteration number of the simulation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/file\+Writer/\mbox{\hyperlink{XYZWriter_8h}{XYZWriter.\+h}}\item 
+src/io/file\+Writer/\mbox{\hyperlink{XYZWriter_8cpp}{XYZWriter.\+cpp}}\end{DoxyCompactItemize}

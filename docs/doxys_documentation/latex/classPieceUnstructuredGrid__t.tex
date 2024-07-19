@@ -1,0 +1,670 @@
+\doxysection{Piece\+Unstructured\+Grid\+\_\+t Class Reference}
+\hypertarget{classPieceUnstructuredGrid__t}{}\label{classPieceUnstructuredGrid__t}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+
+
+Class corresponding to the Piece\+Unstructured\+Grid\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$vtk-\/unstructured.\+h$>$}
+
+Inheritance diagram for Piece\+Unstructured\+Grid\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPieceUnstructuredGrid__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Point\+Data}
+Accessor and modifier functions for the Point\+Data required element. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classPointData}{\+::\+Point\+Data}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aee3c7ac7c46c4ebc9f248d31c458d300}{Point\+Data\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_a88404d51746d563922d0303ad063ac75}{Point\+Data}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_af3a9955626dac2aad17bf879a77d2c0d}{Point\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_aee7745ad1ce39af5fc048e50acb76424}{Point\+Data}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_afb1080839846979d1870125471277dc2}{Point\+Data}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Cell\+Data}
+Accessor and modifier functions for the Cell\+Data required element. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classCellData}{\+::\+Cell\+Data}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a0e04d369c16993da7e5e2a7152c2e518}{Cell\+Data\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_adbad117109078678d79997325f17baea}{Cell\+Data}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_a679db045d830876cce6fe04767e7c611}{Cell\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_a6fd0984f28544ef312e860cac18e7144}{Cell\+Data}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_acd0b16101f17e41b9af39f474c2d4d84}{Cell\+Data}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Points}
+Accessor and modifier functions for the Points required element. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classPoints}{\+::\+Points}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_abdfd9c9f9eb5f43bd4cfcb2fad6d9f63}{Points\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_ab88beb4839eb8b24c61e45eaf30a68c4}{Points}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_aa8e21b391979e8e2e22361e3b29e0276}{Points}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_ab653af7be8fbe0d3458bf8cd5cdf3668}{Points}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_afec7f4ca6973137113fbc0932bee8642}{Points}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Cells}
+Accessor and modifier functions for the Cells required element. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classCells}{\+::\+Cells}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a33252b6f55b5ae830ceecdf9be42cce1}{Cells\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_ae00ada2b3ebb0e98bf56b3673d61d1a9}{Cells}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_a49e65eacff6577cd353fa15a09febf86}{Cells}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_a366f0cff854ef350eb1be9da22df6d14}{Cells}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the element value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_af45bb840ff71549e6728d774d1e36048}{Cells}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} $>$ p)
+\begin{DoxyCompactList}\small\item\em Set the element value without copying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Number\+Of\+Points}
+Accessor and modifier functions for the Number\+Of\+Points required attribute. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aaaea7c8ce4dfbe26cc52c91c29c97b7c}{\+::xml\+\_\+schema\+::integer}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Attribute type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_acdfbb1dc264a5a48bcc6d4aa815db003}{Number\+Of\+Points\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Attribute traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8edc7fad01c6ddd1aaea426425cee1d7}{Number\+Of\+Points}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the attribute. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_adadae535c3c291dc01dd0be3315d9dbc}{Number\+Of\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the attribute. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_a3e4e5defa42f9ecebb2016ca1d207700}{Number\+Of\+Points}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the attribute value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Number\+Of\+Cells}
+Accessor and modifier functions for the Number\+Of\+Cells required attribute. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{namespacexml__schema_aaaea7c8ce4dfbe26cc52c91c29c97b7c}{\+::xml\+\_\+schema\+::integer}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Attribute type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7c7607d306bde9e187b9cb3f570d6155}{Number\+Of\+Cells\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Attribute traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4418be3234b7db438a5b1044208374f8}{Number\+Of\+Cells}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the attribute. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_abe5f21a859d968d4b23a9b7ad790a7b3}{Number\+Of\+Cells}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the attribute. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPieceUnstructuredGrid__t_a25296cecd9f9c30f8c75ed8b750c1ad7}{Number\+Of\+Cells}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}} \&x)
+\begin{DoxyCompactList}\small\item\em Set the attribute value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a9d30b76eb9efa7565011da966d5c0df7}{Piece\+Unstructured\+Grid\+\_\+t}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} \&, const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} \&, const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} \&, const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} \&, const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}} \&, const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a13b36a5bc4b364a1b208e664d964ae7a}{Piece\+Unstructured\+Grid\+\_\+t}} (\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} $>$, \+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} $>$, const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}} \&, const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}} \&)
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a277ebeb36d0fcfb5822939b6624c687a}{Piece\+Unstructured\+Grid\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a9cbfdf810dd62b8aaf1567956ac5805d}{Piece\+Unstructured\+Grid\+\_\+t}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a19d3d04eff0b3008186849b6f498dbdf}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \& \mbox{\hyperlink{classPieceUnstructuredGrid__t_ac314efbccef897349a02419c720a2d63}{operator=}} (const \mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPieceUnstructuredGrid__t_a9d1eb720775ac4e3b7778f898decc264}{\texorpdfstring{$\sim$}{\string~}\+Piece\+Unstructured\+Grid\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the Piece\+Unstructured\+Grid\+\_\+t schema type. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classPieceUnstructuredGrid__t_a0e04d369c16993da7e5e2a7152c2e518}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!CellData\_traits@{CellData\_traits}}
+\index{CellData\_traits@{CellData\_traits}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{CellData\_traits}{CellData\_traits}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a0e04d369c16993da7e5e2a7152c2e518} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a0e04d369c16993da7e5e2a7152c2e518}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Cell\+Data\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!CellData\_type@{CellData\_type}}
+\index{CellData\_type@{CellData\_type}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{CellData\_type}{CellData\_type}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1} 
+typedef \mbox{\hyperlink{classCellData}{\+::\+Cell\+Data}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Cell\+Data\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_a33252b6f55b5ae830ceecdf9be42cce1}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Cells\_traits@{Cells\_traits}}
+\index{Cells\_traits@{Cells\_traits}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Cells\_traits}{Cells\_traits}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a33252b6f55b5ae830ceecdf9be42cce1} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a33252b6f55b5ae830ceecdf9be42cce1}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Cells\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Cells\_type@{Cells\_type}}
+\index{Cells\_type@{Cells\_type}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Cells\_type}{Cells\_type}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f} 
+typedef \mbox{\hyperlink{classCells}{\+::\+Cells}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Cells\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_a7c7607d306bde9e187b9cb3f570d6155}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfCells\_traits@{NumberOfCells\_traits}}
+\index{NumberOfCells\_traits@{NumberOfCells\_traits}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfCells\_traits}{NumberOfCells\_traits}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a7c7607d306bde9e187b9cb3f570d6155} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7c7607d306bde9e187b9cb3f570d6155}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Cells\+\_\+traits}}}
+
+
+
+Attribute traits type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfCells\_type@{NumberOfCells\_type}}
+\index{NumberOfCells\_type@{NumberOfCells\_type}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfCells\_type}{NumberOfCells\_type}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0} 
+typedef \mbox{\hyperlink{namespacexml__schema_aaaea7c8ce4dfbe26cc52c91c29c97b7c}{\+::xml\+\_\+schema\+::integer}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Cells\+\_\+type}}}
+
+
+
+Attribute type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_acdfbb1dc264a5a48bcc6d4aa815db003}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfPoints\_traits@{NumberOfPoints\_traits}}
+\index{NumberOfPoints\_traits@{NumberOfPoints\_traits}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfPoints\_traits}{NumberOfPoints\_traits}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_acdfbb1dc264a5a48bcc6d4aa815db003} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_acdfbb1dc264a5a48bcc6d4aa815db003}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Points\+\_\+traits}}}
+
+
+
+Attribute traits type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfPoints\_type@{NumberOfPoints\_type}}
+\index{NumberOfPoints\_type@{NumberOfPoints\_type}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfPoints\_type}{NumberOfPoints\_type}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660} 
+typedef \mbox{\hyperlink{namespacexml__schema_aaaea7c8ce4dfbe26cc52c91c29c97b7c}{\+::xml\+\_\+schema\+::integer}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Points\+\_\+type}}}
+
+
+
+Attribute type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_aee3c7ac7c46c4ebc9f248d31c458d300}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PointData\_traits@{PointData\_traits}}
+\index{PointData\_traits@{PointData\_traits}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PointData\_traits}{PointData\_traits}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_aee3c7ac7c46c4ebc9f248d31c458d300} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aee3c7ac7c46c4ebc9f248d31c458d300}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Point\+Data\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PointData\_type@{PointData\_type}}
+\index{PointData\_type@{PointData\_type}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PointData\_type}{PointData\_type}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02} 
+typedef \mbox{\hyperlink{classPointData}{\+::\+Point\+Data}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Point\+Data\+\_\+type}}}
+
+
+
+Element type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_abdfd9c9f9eb5f43bd4cfcb2fad6d9f63}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Points\_traits@{Points\_traits}}
+\index{Points\_traits@{Points\_traits}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Points\_traits}{Points\_traits}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_abdfd9c9f9eb5f43bd4cfcb2fad6d9f63} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}}, char $>$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_abdfd9c9f9eb5f43bd4cfcb2fad6d9f63}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Points\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Points\_type@{Points\_type}}
+\index{Points\_type@{Points\_type}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Points\_type}{Points\_type}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711} 
+typedef \mbox{\hyperlink{classPoints}{\+::\+Points}} \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Points\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPieceUnstructuredGrid__t_a9d30b76eb9efa7565011da966d5c0df7}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PieceUnstructuredGrid\_t()}{PieceUnstructuredGrid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a9d30b76eb9efa7565011da966d5c0df7} 
+Piece\+Unstructured\+Grid\+\_\+t\+::\+Piece\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} \&}]{Point\+Data}{, }\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} \&}]{Cell\+Data}{, }\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} \&}]{Points}{, }\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} \&}]{Cells}{, }\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}} \&}]{Number\+Of\+Points}{, }\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}} \&}]{Number\+Of\+Cells}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classPieceUnstructuredGrid__t_a13b36a5bc4b364a1b208e664d964ae7a}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PieceUnstructuredGrid\_t()}{PieceUnstructuredGrid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a13b36a5bc4b364a1b208e664d964ae7a} 
+Piece\+Unstructured\+Grid\+\_\+t\+::\+Piece\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} $>$}]{Point\+Data}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} $>$}]{Cell\+Data}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} $>$}]{Points}{, }\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} $>$}]{Cells}{, }\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}} \&}]{Number\+Of\+Points}{, }\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}} \&}]{Number\+Of\+Cells}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes (std\+::unique\+\_\+ptr version). 
+
+This constructor will try to use the passed values directly instead of making copies. \Hypertarget{classPieceUnstructuredGrid__t_a277ebeb36d0fcfb5822939b6624c687a}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PieceUnstructuredGrid\_t()}{PieceUnstructuredGrid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a277ebeb36d0fcfb5822939b6624c687a} 
+Piece\+Unstructured\+Grid\+\_\+t\+::\+Piece\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPieceUnstructuredGrid__t_a9cbfdf810dd62b8aaf1567956ac5805d}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PieceUnstructuredGrid\_t()}{PieceUnstructuredGrid\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a9cbfdf810dd62b8aaf1567956ac5805d} 
+Piece\+Unstructured\+Grid\+\_\+t\+::\+Piece\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classPieceUnstructuredGrid__t_a9d1eb720775ac4e3b7778f898decc264}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!````~PieceUnstructuredGrid\_t@{\texorpdfstring{$\sim$}{\string~}PieceUnstructuredGrid\_t}}
+\index{````~PieceUnstructuredGrid\_t@{\texorpdfstring{$\sim$}{\string~}PieceUnstructuredGrid\_t}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PieceUnstructuredGrid\_t()}{\string~PieceUnstructuredGrid\_t()}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a9d1eb720775ac4e3b7778f898decc264} 
+Piece\+Unstructured\+Grid\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}\+Piece\+Unstructured\+Grid\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPieceUnstructuredGrid__t_a19d3d04eff0b3008186849b6f498dbdf}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a19d3d04eff0b3008186849b6f498dbdf} 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \texorpdfstring{$\ast$}{*} Piece\+Unstructured\+Grid\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classPieceUnstructuredGrid__t_a679db045d830876cce6fe04767e7c611}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!CellData@{CellData}}
+\index{CellData@{CellData}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{CellData()}{CellData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a679db045d830876cce6fe04767e7c611} 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Cell\+Data\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Cell\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_adbad117109078678d79997325f17baea}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!CellData@{CellData}}
+\index{CellData@{CellData}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{CellData()}{CellData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_adbad117109078678d79997325f17baea} 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Cell\+Data\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Cell\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_acd0b16101f17e41b9af39f474c2d4d84}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!CellData@{CellData}}
+\index{CellData@{CellData}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{CellData()}{CellData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_acd0b16101f17e41b9af39f474c2d4d84} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Cell\+Data (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classPieceUnstructuredGrid__t_a6fd0984f28544ef312e860cac18e7144}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!CellData@{CellData}}
+\index{CellData@{CellData}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{CellData()}{CellData()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a6fd0984f28544ef312e860cac18e7144} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Cell\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a4232a7b88477ee6f692a4e5fab6a65d1}{Cell\+Data\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classPieceUnstructuredGrid__t_a49e65eacff6577cd353fa15a09febf86}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Cells@{Cells}}
+\index{Cells@{Cells}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Cells()}{Cells()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a49e65eacff6577cd353fa15a09febf86} 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Cells\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Cells (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_ae00ada2b3ebb0e98bf56b3673d61d1a9}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Cells@{Cells}}
+\index{Cells@{Cells}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Cells()}{Cells()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_ae00ada2b3ebb0e98bf56b3673d61d1a9} 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Cells\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Cells (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_af45bb840ff71549e6728d774d1e36048}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Cells@{Cells}}
+\index{Cells@{Cells}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Cells()}{Cells()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_af45bb840ff71549e6728d774d1e36048} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Cells (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classPieceUnstructuredGrid__t_a366f0cff854ef350eb1be9da22df6d14}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Cells@{Cells}}
+\index{Cells@{Cells}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Cells()}{Cells()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a366f0cff854ef350eb1be9da22df6d14} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Cells (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aca1ec38eff08bde0cd115c54dbb7a20f}{Cells\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classPieceUnstructuredGrid__t_abe5f21a859d968d4b23a9b7ad790a7b3}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfCells@{NumberOfCells}}
+\index{NumberOfCells@{NumberOfCells}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfCells()}{NumberOfCells()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_abe5f21a859d968d4b23a9b7ad790a7b3} 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Cells\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Cells (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the attribute. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the attribute. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_a4418be3234b7db438a5b1044208374f8}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfCells@{NumberOfCells}}
+\index{NumberOfCells@{NumberOfCells}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfCells()}{NumberOfCells()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a4418be3234b7db438a5b1044208374f8} 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Cells\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Cells (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the attribute. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the attribute. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_a25296cecd9f9c30f8c75ed8b750c1ad7}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfCells@{NumberOfCells}}
+\index{NumberOfCells@{NumberOfCells}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfCells()}{NumberOfCells()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a25296cecd9f9c30f8c75ed8b750c1ad7} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Cells (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_aeae5546900c50a4abe9b3aea485e97d0}{Number\+Of\+Cells\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the attribute value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the attribute. \Hypertarget{classPieceUnstructuredGrid__t_adadae535c3c291dc01dd0be3315d9dbc}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfPoints@{NumberOfPoints}}
+\index{NumberOfPoints@{NumberOfPoints}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfPoints()}{NumberOfPoints()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_adadae535c3c291dc01dd0be3315d9dbc} 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Points\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the attribute. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the attribute. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_a8edc7fad01c6ddd1aaea426425cee1d7}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfPoints@{NumberOfPoints}}
+\index{NumberOfPoints@{NumberOfPoints}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfPoints()}{NumberOfPoints()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a8edc7fad01c6ddd1aaea426425cee1d7} 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Points\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the attribute. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the attribute. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_a3e4e5defa42f9ecebb2016ca1d207700}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!NumberOfPoints@{NumberOfPoints}}
+\index{NumberOfPoints@{NumberOfPoints}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{NumberOfPoints()}{NumberOfPoints()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a3e4e5defa42f9ecebb2016ca1d207700} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Number\+Of\+Points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a8df1cd0d138d990e166d325ceed9a660}{Number\+Of\+Points\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the attribute value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the attribute. \Hypertarget{classPieceUnstructuredGrid__t_ac314efbccef897349a02419c720a2d63}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_ac314efbccef897349a02419c720a2d63} 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \& Piece\+Unstructured\+Grid\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classPieceUnstructuredGrid__t_af3a9955626dac2aad17bf879a77d2c0d}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PointData@{PointData}}
+\index{PointData@{PointData}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PointData()}{PointData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_af3a9955626dac2aad17bf879a77d2c0d} 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Point\+Data\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Point\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_a88404d51746d563922d0303ad063ac75}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PointData@{PointData}}
+\index{PointData@{PointData}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PointData()}{PointData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_a88404d51746d563922d0303ad063ac75} 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Point\+Data\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Point\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_afb1080839846979d1870125471277dc2}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PointData@{PointData}}
+\index{PointData@{PointData}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PointData()}{PointData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_afb1080839846979d1870125471277dc2} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Point\+Data (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classPieceUnstructuredGrid__t_aee7745ad1ce39af5fc048e50acb76424}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!PointData@{PointData}}
+\index{PointData@{PointData}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{PointData()}{PointData()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_aee7745ad1ce39af5fc048e50acb76424} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Point\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a5d79d8ea03ca53f80f24e62c2175ec02}{Point\+Data\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. \Hypertarget{classPieceUnstructuredGrid__t_aa8e21b391979e8e2e22361e3b29e0276}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Points@{Points}}
+\index{Points@{Points}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Points()}{Points()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_aa8e21b391979e8e2e22361e3b29e0276} 
+\mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Points\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_ab88beb4839eb8b24c61e45eaf30a68c4}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Points@{Points}}
+\index{Points@{Points}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Points()}{Points()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_ab88beb4839eb8b24c61e45eaf30a68c4} 
+const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Piece\+Unstructured\+Grid\+\_\+t\+::\+Points\+\_\+type}} \& Piece\+Unstructured\+Grid\+\_\+t\+::\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the element. 
+\end{DoxyReturn}
+\Hypertarget{classPieceUnstructuredGrid__t_afec7f4ca6973137113fbc0932bee8642}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Points@{Points}}
+\index{Points@{Points}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Points()}{Points()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_afec7f4ca6973137113fbc0932bee8642} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Points (\begin{DoxyParamCaption}\item[{\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} $>$}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value without copying. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & A new value to use.\\
+\hline
+\end{DoxyParams}
+This function will try to use the passed value directly instead of making a copy. \Hypertarget{classPieceUnstructuredGrid__t_ab653af7be8fbe0d3458bf8cd5cdf3668}\index{PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}!Points@{Points}}
+\index{Points@{Points}!PieceUnstructuredGrid\_t@{PieceUnstructuredGrid\_t}}
+\doxysubsubsection{\texorpdfstring{Points()}{Points()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classPieceUnstructuredGrid__t_ab653af7be8fbe0d3458bf8cd5cdf3668} 
+void Piece\+Unstructured\+Grid\+\_\+t\+::\+Points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t_a7747b159a3d1eee8d02a0eefaa235711}{Points\+\_\+type}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Set the element value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & A new value to set.\\
+\hline
+\end{DoxyParams}
+This function makes a copy of its argument and sets it as the new value of the element. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8h}{vtk-\/unstructured.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{vtk-unstructured_8cpp}{vtk-\/unstructured.\+cpp}}\end{DoxyCompactItemize}

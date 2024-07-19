@@ -1,0 +1,172 @@
+\doxysection{src/utils/\+Params.h File Reference}
+\hypertarget{Params_8h}{}\label{Params_8h}\index{src/utils/Params.h@{src/utils/Params.h}}
+{\ttfamily \#include "{}physics/boundary\+Conditions/\+Boundary\+Config.\+h"{}}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}models/molecules/\+Molecule.\+h"{}}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classParams}{Params}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{Reader\+Type}} \{ \newline
+\mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a9de934790934fe831fe946c851e8338e}{STANDARD}}
+, \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a63664f3f933667cea224b325ece7fdf9}{CLUSTER}}
+, \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a2f0d18fc0d0fa4a6cd92dc328501874d}{EMPTY}}
+, \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15af9c208c7d7a0f102f2683165540c882d}{ASCII}}
+, \newline
+\mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a60018cf01f907998778170cb8db31c99}{XML}}
+ \}
+\item 
+enum class \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} \{ \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfae65075d550f9b5bf9992fa1d71a131be}{XYZ}}
+, \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220}{VTK}}
+, \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa3501bb093d363810b671059b9cfed3f8}{XML}}
+, \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfaba2b45bdc11e2a4a6e86aab2ac693cbb}{EMPTY}}
+ \}
+\item 
+enum \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} \{ \newline
+\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}{PLANET}}
+, \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921adbc379cd18c02c6bd1da47a5fe97fa8d}{LJ}}
+, \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921ab1f50159aa4dde397044a0de1c4f9639}{LINKED\+\_\+\+LJ}}
+, \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921adeedf7e8791a00af6b7148a0f8818011}{DOMAIN\+\_\+\+LJ}}
+, \newline
+\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921abc63c281ce061d557897a9822bd61b8c}{MIXED\+\_\+\+LJ}}
+, \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a40b125d5b23804aec05e850ccae369f4}{MEMBRANE\+\_\+\+LJ}}
+ \}
+\item 
+enum \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ec}{Thermostat\+Type}} \{ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459eca648824b3676352bfab53d9bcf217389d}{CLASSICAL}}
+, \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459eca9e50a94f2fea6447771e28ee2320dec6}{INDIVIDUAL}}
+, \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ecac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}}
+ \}
+\item 
+enum \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567c}{Parallel\+Type}} \{ \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567cae55a36a850c67d46b3b3325de7fce0b8}{STATIC}}
+, \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567cadcd8fc0dfcbc905dcb6267c36b20bfd7}{TASK}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{Params_8h_a55f694af2ca20b6481914237cf7e567c}\index{Params.h@{Params.h}!ParallelType@{ParallelType}}
+\index{ParallelType@{ParallelType}!Params.h@{Params.h}}
+\doxysubsubsection{\texorpdfstring{ParallelType}{ParallelType}}
+{\footnotesize\ttfamily \label{Params_8h_a55f694af2ca20b6481914237cf7e567c} 
+enum \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567c}{Parallel\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATIC@{STATIC}!Params.h@{Params.h}}\index{Params.h@{Params.h}!STATIC@{STATIC}}}\Hypertarget{Params_8h_a55f694af2ca20b6481914237cf7e567cae55a36a850c67d46b3b3325de7fce0b8}\label{Params_8h_a55f694af2ca20b6481914237cf7e567c} 
+STATIC&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TASK@{TASK}!Params.h@{Params.h}}\index{Params.h@{Params.h}!TASK@{TASK}}}\Hypertarget{Params_8h_a55f694af2ca20b6481914237cf7e567cadcd8fc0dfcbc905dcb6267c36b20bfd7}\label{Params_8h_a55f694af2ca20b6481914237cf7e567c} 
+TASK&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{Params_8h_a678aadae72e7347a5756e370a2978a15}\index{Params.h@{Params.h}!ReaderType@{ReaderType}}
+\index{ReaderType@{ReaderType}!Params.h@{Params.h}}
+\doxysubsubsection{\texorpdfstring{ReaderType}{ReaderType}}
+{\footnotesize\ttfamily \label{Params_8h_a678aadae72e7347a5756e370a2978a15} 
+enum \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{Reader\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STANDARD@{STANDARD}!Params.h@{Params.h}}\index{Params.h@{Params.h}!STANDARD@{STANDARD}}}\Hypertarget{Params_8h_a678aadae72e7347a5756e370a2978a15a9de934790934fe831fe946c851e8338e}\label{Params_8h_a678aadae72e7347a5756e370a2978a15} 
+STANDARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLUSTER@{CLUSTER}!Params.h@{Params.h}}\index{Params.h@{Params.h}!CLUSTER@{CLUSTER}}}\Hypertarget{Params_8h_a678aadae72e7347a5756e370a2978a15a63664f3f933667cea224b325ece7fdf9}\label{Params_8h_a678aadae72e7347a5756e370a2978a15} 
+CLUSTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EMPTY@{EMPTY}!Params.h@{Params.h}}\index{Params.h@{Params.h}!EMPTY@{EMPTY}}}\Hypertarget{Params_8h_a678aadae72e7347a5756e370a2978a15a2f0d18fc0d0fa4a6cd92dc328501874d}\label{Params_8h_a678aadae72e7347a5756e370a2978a15} 
+EMPTY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ASCII@{ASCII}!Params.h@{Params.h}}\index{Params.h@{Params.h}!ASCII@{ASCII}}}\Hypertarget{Params_8h_a678aadae72e7347a5756e370a2978a15af9c208c7d7a0f102f2683165540c882d}\label{Params_8h_a678aadae72e7347a5756e370a2978a15} 
+ASCII&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{XML@{XML}!Params.h@{Params.h}}\index{Params.h@{Params.h}!XML@{XML}}}\Hypertarget{Params_8h_a678aadae72e7347a5756e370a2978a15a60018cf01f907998778170cb8db31c99}\label{Params_8h_a678aadae72e7347a5756e370a2978a15} 
+XML&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}\index{Params.h@{Params.h}!SimulationType@{SimulationType}}
+\index{SimulationType@{SimulationType}!Params.h@{Params.h}}
+\doxysubsubsection{\texorpdfstring{SimulationType}{SimulationType}}
+{\footnotesize\ttfamily \label{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921} 
+enum \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLANET@{PLANET}!Params.h@{Params.h}}\index{Params.h@{Params.h}!PLANET@{PLANET}}}\Hypertarget{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}\label{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921} 
+PLANET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LJ@{LJ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!LJ@{LJ}}}\Hypertarget{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921adbc379cd18c02c6bd1da47a5fe97fa8d}\label{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921} 
+LJ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINKED\_LJ@{LINKED\_LJ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!LINKED\_LJ@{LINKED\_LJ}}}\Hypertarget{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921ab1f50159aa4dde397044a0de1c4f9639}\label{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921} 
+LINKED\+\_\+\+LJ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOMAIN\_LJ@{DOMAIN\_LJ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!DOMAIN\_LJ@{DOMAIN\_LJ}}}\Hypertarget{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921adeedf7e8791a00af6b7148a0f8818011}\label{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921} 
+DOMAIN\+\_\+\+LJ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIXED\_LJ@{MIXED\_LJ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!MIXED\_LJ@{MIXED\_LJ}}}\Hypertarget{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921abc63c281ce061d557897a9822bd61b8c}\label{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921} 
+MIXED\+\_\+\+LJ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MEMBRANE\_LJ@{MEMBRANE\_LJ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!MEMBRANE\_LJ@{MEMBRANE\_LJ}}}\Hypertarget{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a40b125d5b23804aec05e850ccae369f4}\label{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921} 
+MEMBRANE\+\_\+\+LJ&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{Params_8h_ab63da287e2c2eab7c518954ea71459ec}\index{Params.h@{Params.h}!ThermostatType@{ThermostatType}}
+\index{ThermostatType@{ThermostatType}!Params.h@{Params.h}}
+\doxysubsubsection{\texorpdfstring{ThermostatType}{ThermostatType}}
+{\footnotesize\ttfamily \label{Params_8h_ab63da287e2c2eab7c518954ea71459ec} 
+enum \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ec}{Thermostat\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLASSICAL@{CLASSICAL}!Params.h@{Params.h}}\index{Params.h@{Params.h}!CLASSICAL@{CLASSICAL}}}\Hypertarget{Params_8h_ab63da287e2c2eab7c518954ea71459eca648824b3676352bfab53d9bcf217389d}\label{Params_8h_ab63da287e2c2eab7c518954ea71459ec} 
+CLASSICAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INDIVIDUAL@{INDIVIDUAL}!Params.h@{Params.h}}\index{Params.h@{Params.h}!INDIVIDUAL@{INDIVIDUAL}}}\Hypertarget{Params_8h_ab63da287e2c2eab7c518954ea71459eca9e50a94f2fea6447771e28ee2320dec6}\label{Params_8h_ab63da287e2c2eab7c518954ea71459ec} 
+INDIVIDUAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!Params.h@{Params.h}}\index{Params.h@{Params.h}!NONE@{NONE}}}\Hypertarget{Params_8h_ab63da287e2c2eab7c518954ea71459ecac157bdf0b85a40d2619cbc8bc1ae5fe2}\label{Params_8h_ab63da287e2c2eab7c518954ea71459ec} 
+NONE&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bf}\index{Params.h@{Params.h}!WriterType@{WriterType}}
+\index{WriterType@{WriterType}!Params.h@{Params.h}}
+\doxysubsubsection{\texorpdfstring{WriterType}{WriterType}}
+{\footnotesize\ttfamily \label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+enum class \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{XYZ@{XYZ}!Params.h@{Params.h}}\index{Params.h@{Params.h}!XYZ@{XYZ}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfae65075d550f9b5bf9992fa1d71a131be}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+XYZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VTK@{VTK}!Params.h@{Params.h}}\index{Params.h@{Params.h}!VTK@{VTK}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+VTK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{XML@{XML}!Params.h@{Params.h}}\index{Params.h@{Params.h}!XML@{XML}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfa3501bb093d363810b671059b9cfed3f8}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+XML&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EMPTY@{EMPTY}!Params.h@{Params.h}}\index{Params.h@{Params.h}!EMPTY@{EMPTY}}}\Hypertarget{Params_8h_aded523d07f405f8a622d2b4247de05bfaba2b45bdc11e2a4a6e86aab2ac693cbb}\label{Params_8h_aded523d07f405f8a622d2b4247de05bf} 
+EMPTY&\\
+\hline
+
+\end{DoxyEnumFields}

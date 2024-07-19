@@ -1,0 +1,322 @@
+\doxysection{Sphere\+Particle\+Cluster Class Reference}
+\hypertarget{classSphereParticleCluster}{}\label{classSphereParticleCluster}\index{SphereParticleCluster@{SphereParticleCluster}}
+
+
+{\ttfamily \#include $<$Sphere\+Particle\+Cluster.\+h$>$}
+
+Inheritance diagram for Sphere\+Particle\+Cluster\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSphereParticleCluster}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSphereParticleCluster_af73bdc3ada9442841b2da0bd4c0b5973}{Sphere\+Particle\+Cluster}} (std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}}, size\+\_\+t radius, size\+\_\+t \mbox{\hyperlink{classSphereParticleCluster_afc75e6bdaa57e301fa345fff9fbc5963}{sphere\+Dimensions}}, double \mbox{\hyperlink{classSphereParticleCluster_af486be347bd9ae08d71dabe0dd229f6f}{spacing}}, double \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}}, std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initial\+Velocity}}, double \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{mean\+Velocity}}, size\+\_\+t brownian\+Motion\+Dimensions, const std\+::map$<$ unsigned, bool $>$ \&stationary\+Particle\+Types, unsigned \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}}=0)
+\begin{DoxyCompactList}\small\item\em Constructor to initialize a spherical particle clusters. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classSphereParticleCluster_a4682e2d2b82314708f1afccd6e6e91eb}{get\+Total\+Number\+Of\+Particles}} () const override
+\begin{DoxyCompactList}\small\item\em Get the total number of particles in the cluster. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSphereParticleCluster_af801fcf4faf4b7b11f3d17c8cee940f0}{generate\+Cluster}} (std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&particles, size\+\_\+t \&insertion\+Index) const override
+\begin{DoxyCompactList}\small\item\em Generate the spherical cluster of particles. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classSphereParticleCluster_a90d1333f49add6a273c738a894edd0d6}{to\+String}} () const override
+\begin{DoxyCompactList}\small\item\em Get a string representation of the cluster. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classParticleCluster}{Particle\+Cluster}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleCluster_ab2cbefcaff9fa3fd7964e51e83a5adb5}{Particle\+Cluster}} (std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}}, double \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}}, std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initial\+Velocity}}, double \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{mean\+Velocity}}, size\+\_\+t \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}}, const std\+::map$<$ unsigned, bool $>$ \&stationary\+Particle\+Types, unsigned \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classParticleCluster_abeb65133a030f3c6c5708163dd2090c6}{\texorpdfstring{$\sim$}{\string~}\+Particle\+Cluster}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{classParticleCluster}{Particle\+Cluster} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classSphereParticleCluster_a433bf77806036e92355062fe00682f02}{sphere\+Radius}}
+\item 
+double \mbox{\hyperlink{classSphereParticleCluster_af486be347bd9ae08d71dabe0dd229f6f}{spacing}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classSphereParticleCluster_afc75e6bdaa57e301fa345fff9fbc5963}{sphere\+Dimensions}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classParticleCluster}{Particle\+Cluster}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}}
+\item 
+double \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initial\+Velocity}}
+\item 
+double \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{mean\+Velocity}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}}
+\item 
+unsigned \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}}
+\item 
+bool \mbox{\hyperlink{classParticleCluster_a7983f0ed76457e2c226cbc6f00d55be2}{is\+Not\+Stationary}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classSphereParticleCluster_a41c07727cb5da1919eaeda42f9e7e4b5}{get\+Real\+Radius}} (size\+\_\+t radius) const
+\begin{DoxyCompactList}\small\item\em Convert a radius in particles into a radius of distance. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classSphereParticleCluster_ab000676435cb54e03d4765ff772a1a5e}{get\+Real\+Radius}} (size\+\_\+t radius, double offset) const
+\begin{DoxyCompactList}\small\item\em Get the real radius of a ring given the radius of the sphere and the offset along the z axis. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classSphereParticleCluster_a29c296eb28b4b72d8e7e6be7f73c1eb6}{get\+Number\+Of\+Particles\+Disc}} (double real\+Radius) const
+\begin{DoxyCompactList}\small\item\em Get the number of particles in a disc of a given radius in particles. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classSphereParticleCluster_afbfb9873c98f46d2e38375c82cf66786}{get\+Number\+Of\+Particles\+Ring}} (double real\+Radius) const
+\begin{DoxyCompactList}\small\item\em Get the number of particles in a ring of a given radius in particles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSphereParticleCluster_ab2a288dee5536f5c9dbb14a0d1e1a5e2}{generate\+Disc}} (std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&particles, size\+\_\+t \&insertion\+Index, double real\+Radius, double z\+\_\+offset) const
+\begin{DoxyCompactList}\small\item\em Generate a disc into the particles vector starting at the index provided. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSphereParticleCluster_a78be91247999633a57bc28388e408623}{generate\+Ring}} (std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&particles, size\+\_\+t \&insertion\+Index, double real\+Radius, double z\+\_\+offset) const
+\begin{DoxyCompactList}\small\item\em Generate a ring of particles into the particles vector starting at the index provided. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classSphereParticleCluster_ac3c836a6f2305dd75cddfeb715040c14}{total\+Number\+Of\+Particles}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSphereParticleCluster_af73bdc3ada9442841b2da0bd4c0b5973}\index{SphereParticleCluster@{SphereParticleCluster}!SphereParticleCluster@{SphereParticleCluster}}
+\index{SphereParticleCluster@{SphereParticleCluster}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{SphereParticleCluster()}{SphereParticleCluster()}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_af73bdc3ada9442841b2da0bd4c0b5973} 
+Sphere\+Particle\+Cluster\+::\+Sphere\+Particle\+Cluster (\begin{DoxyParamCaption}\item[{std\+::array$<$ double, 3 $>$}]{origin}{, }\item[{size\+\_\+t}]{radius}{, }\item[{size\+\_\+t}]{sphere\+Dimensions}{, }\item[{double}]{spacing}{, }\item[{double}]{mass}{, }\item[{std\+::array$<$ double, 3 $>$}]{initial\+Velocity}{, }\item[{double}]{mean\+Velocity}{, }\item[{size\+\_\+t}]{brownian\+Motion\+Dimensions}{, }\item[{const std\+::map$<$ unsigned, bool $>$ \&}]{stationary\+Particle\+Types}{, }\item[{unsigned}]{ptype}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructor to initialize a spherical particle clusters. 
+
+A sphere is either a singe disc in the case of 2D spheres or a stack of discs with decreasing radii. Discs are a collection of rings. 
+\begin{DoxyParams}{Parameters}
+{\em origin} & The center of the sphere \\
+\hline
+{\em radius} & The radius of the sphere to be generated in number of particles (i.\+e. 1 -\/\texorpdfstring{$>$}{>} a single particle, 2 -\/\texorpdfstring{$>$}{>} single particle in the center surrounded by a single circle of particles, etc.) \\
+\hline
+{\em sphere\+Dimensions} & The dimensionality of the sphere (must be 2 i.\+e. disc or 3 i.\+e. sphere) \\
+\hline
+{\em spacing} & The spacing between the particles (i.\+e. separation between the discs and the distance along the circumference of a given ring) \\
+\hline
+{\em mass} & The mass of the particles within the cluster \\
+\hline
+{\em initial\+Velocity} & The initial velocity of all particles in the cluster \\
+\hline
+{\em mean\+Velocity} & The mean velocity of all particles in the cluster (passed to \doxylink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity()}) \\
+\hline
+{\em brownian\+Motion\+Dimensions} & The dimensions of the cluster (\texorpdfstring{$<$}{<}= 3) will be passed to \doxylink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity()} if set to 0 no brownian motion will be added, if set to 1 then only on the x axis, then x+y, and finally x+y+z axis \\
+\hline
+{\em stationary\+Particle\+Types} & A map of particle types that are stationary \\
+\hline
+{\em ptype} & The particle type for this cluster \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSphereParticleCluster_af801fcf4faf4b7b11f3d17c8cee940f0}\index{SphereParticleCluster@{SphereParticleCluster}!generateCluster@{generateCluster}}
+\index{generateCluster@{generateCluster}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{generateCluster()}{generateCluster()}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_af801fcf4faf4b7b11f3d17c8cee940f0} 
+void Sphere\+Particle\+Cluster\+::generate\+Cluster (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&}]{particles}{, }\item[{size\+\_\+t \&}]{insertion\+Index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Generate the spherical cluster of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & The vector to insert the particles into \\
+\hline
+{\em insertion\+Index} & The index to start inserting the particles at (will be incremented) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classParticleCluster_a89c4a884946202191e646f44a0a345da}{Particle\+Cluster}}.
+
+\Hypertarget{classSphereParticleCluster_ab2a288dee5536f5c9dbb14a0d1e1a5e2}\index{SphereParticleCluster@{SphereParticleCluster}!generateDisc@{generateDisc}}
+\index{generateDisc@{generateDisc}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{generateDisc()}{generateDisc()}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_ab2a288dee5536f5c9dbb14a0d1e1a5e2} 
+void Sphere\+Particle\+Cluster\+::generate\+Disc (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&}]{particles}{, }\item[{size\+\_\+t \&}]{insertion\+Index}{, }\item[{double}]{real\+Radius}{, }\item[{double}]{z\+\_\+offset}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generate a disc into the particles vector starting at the index provided. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & The vector reference into which to insert \\
+\hline
+{\em insertion\+Index} & The index from which to start inserting from \\
+\hline
+{\em real\+Radius} & The actual radius of the ring to generate \\
+\hline
+{\em z\+\_\+offset} & The offset along the z axis from the origin \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSphereParticleCluster_a78be91247999633a57bc28388e408623}\index{SphereParticleCluster@{SphereParticleCluster}!generateRing@{generateRing}}
+\index{generateRing@{generateRing}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{generateRing()}{generateRing()}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_a78be91247999633a57bc28388e408623} 
+void Sphere\+Particle\+Cluster\+::generate\+Ring (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ \&}]{particles}{, }\item[{size\+\_\+t \&}]{insertion\+Index}{, }\item[{double}]{real\+Radius}{, }\item[{double}]{z\+\_\+offset}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generate a ring of particles into the particles vector starting at the index provided. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & The vector reference into which to insert \\
+\hline
+{\em insertion\+Index} & The index from which to start inserting from \\
+\hline
+{\em real\+Radius} & The actual radius of the ring to generate \\
+\hline
+{\em z\+\_\+offset} & The offset along the z axis from the origin \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSphereParticleCluster_a29c296eb28b4b72d8e7e6be7f73c1eb6}\index{SphereParticleCluster@{SphereParticleCluster}!getNumberOfParticlesDisc@{getNumberOfParticlesDisc}}
+\index{getNumberOfParticlesDisc@{getNumberOfParticlesDisc}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{getNumberOfParticlesDisc()}{getNumberOfParticlesDisc()}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_a29c296eb28b4b72d8e7e6be7f73c1eb6} 
+size\+\_\+t Sphere\+Particle\+Cluster\+::get\+Number\+Of\+Particles\+Disc (\begin{DoxyParamCaption}\item[{double}]{real\+Radius}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the number of particles in a disc of a given radius in particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em real\+Radius} & The actual radius of the ring to generate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of particles in the disc 
+\end{DoxyReturn}
+\Hypertarget{classSphereParticleCluster_afbfb9873c98f46d2e38375c82cf66786}\index{SphereParticleCluster@{SphereParticleCluster}!getNumberOfParticlesRing@{getNumberOfParticlesRing}}
+\index{getNumberOfParticlesRing@{getNumberOfParticlesRing}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{getNumberOfParticlesRing()}{getNumberOfParticlesRing()}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_afbfb9873c98f46d2e38375c82cf66786} 
+size\+\_\+t Sphere\+Particle\+Cluster\+::get\+Number\+Of\+Particles\+Ring (\begin{DoxyParamCaption}\item[{double}]{real\+Radius}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Get the number of particles in a ring of a given radius in particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em real\+Radius} & The actual radius of the ring to generate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of particles in the ring 
+\end{DoxyReturn}
+\Hypertarget{classSphereParticleCluster_a41c07727cb5da1919eaeda42f9e7e4b5}\index{SphereParticleCluster@{SphereParticleCluster}!getRealRadius@{getRealRadius}}
+\index{getRealRadius@{getRealRadius}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{getRealRadius()}{getRealRadius()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_a41c07727cb5da1919eaeda42f9e7e4b5} 
+double Sphere\+Particle\+Cluster\+::get\+Real\+Radius (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{radius}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Convert a radius in particles into a radius of distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & The radius in particles \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The radius in distance ((radius\+\_\+in\+\_\+particles -\/ 1) \texorpdfstring{$\ast$}{*} spacing) 
+\end{DoxyReturn}
+\Hypertarget{classSphereParticleCluster_ab000676435cb54e03d4765ff772a1a5e}\index{SphereParticleCluster@{SphereParticleCluster}!getRealRadius@{getRealRadius}}
+\index{getRealRadius@{getRealRadius}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{getRealRadius()}{getRealRadius()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_ab000676435cb54e03d4765ff772a1a5e} 
+double Sphere\+Particle\+Cluster\+::get\+Real\+Radius (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{radius}{, }\item[{double}]{offset}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the real radius of a ring given the radius of the sphere and the offset along the z axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & The radius of the circle in number of particles \\
+\hline
+{\em offset} & The offset of the disc on the z-\/axis \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The real radius regarding the offset of the disc 
+\end{DoxyReturn}
+\Hypertarget{classSphereParticleCluster_a4682e2d2b82314708f1afccd6e6e91eb}\index{SphereParticleCluster@{SphereParticleCluster}!getTotalNumberOfParticles@{getTotalNumberOfParticles}}
+\index{getTotalNumberOfParticles@{getTotalNumberOfParticles}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{getTotalNumberOfParticles()}{getTotalNumberOfParticles()}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_a4682e2d2b82314708f1afccd6e6e91eb} 
+size\+\_\+t Sphere\+Particle\+Cluster\+::get\+Total\+Number\+Of\+Particles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the total number of particles in the cluster. 
+
+\begin{DoxyReturn}{Returns}
+The total number of particles in the spherical cluster 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classParticleCluster_ac4f75cbf593129fb391ef0ca6c55dc2b}{Particle\+Cluster}}.
+
+\Hypertarget{classSphereParticleCluster_a90d1333f49add6a273c738a894edd0d6}\index{SphereParticleCluster@{SphereParticleCluster}!toString@{toString}}
+\index{toString@{toString}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_a90d1333f49add6a273c738a894edd0d6} 
+std\+::string Sphere\+Particle\+Cluster\+::to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get a string representation of the cluster. 
+
+\begin{DoxyReturn}{Returns}
+A string representation of the cluster 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classParticleCluster_a9427aeece5cd04430ef8fc2e849010ce}{Particle\+Cluster}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSphereParticleCluster_af486be347bd9ae08d71dabe0dd229f6f}\index{SphereParticleCluster@{SphereParticleCluster}!spacing@{spacing}}
+\index{spacing@{spacing}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{spacing}{spacing}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_af486be347bd9ae08d71dabe0dd229f6f} 
+double Sphere\+Particle\+Cluster\+::spacing\hspace{0.3cm}{\ttfamily [protected]}}
+
+The spacing between the particles. This is also the spacing between the discs and the distance between particles along the circumference \Hypertarget{classSphereParticleCluster_afc75e6bdaa57e301fa345fff9fbc5963}\index{SphereParticleCluster@{SphereParticleCluster}!sphereDimensions@{sphereDimensions}}
+\index{sphereDimensions@{sphereDimensions}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{sphereDimensions}{sphereDimensions}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_afc75e6bdaa57e301fa345fff9fbc5963} 
+size\+\_\+t Sphere\+Particle\+Cluster\+::sphere\+Dimensions\hspace{0.3cm}{\ttfamily [protected]}}
+
+The dimensionality of the sphere. Can be 2 (a single disc) or 3 (a sphere) \Hypertarget{classSphereParticleCluster_a433bf77806036e92355062fe00682f02}\index{SphereParticleCluster@{SphereParticleCluster}!sphereRadius@{sphereRadius}}
+\index{sphereRadius@{sphereRadius}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{sphereRadius}{sphereRadius}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_a433bf77806036e92355062fe00682f02} 
+size\+\_\+t Sphere\+Particle\+Cluster\+::sphere\+Radius\hspace{0.3cm}{\ttfamily [protected]}}
+
+The radius of the sphere to be generated. This is a natural number indicating the number of particles along the radius \Hypertarget{classSphereParticleCluster_ac3c836a6f2305dd75cddfeb715040c14}\index{SphereParticleCluster@{SphereParticleCluster}!totalNumberOfParticles@{totalNumberOfParticles}}
+\index{totalNumberOfParticles@{totalNumberOfParticles}!SphereParticleCluster@{SphereParticleCluster}}
+\doxysubsubsection{\texorpdfstring{totalNumberOfParticles}{totalNumberOfParticles}}
+{\footnotesize\ttfamily \label{classSphereParticleCluster_ac3c836a6f2305dd75cddfeb715040c14} 
+size\+\_\+t Sphere\+Particle\+Cluster\+::total\+Number\+Of\+Particles\hspace{0.3cm}{\ttfamily [private]}}
+
+The total amount of particles that will be generated 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/generators/\mbox{\hyperlink{SphereParticleCluster_8h}{Sphere\+Particle\+Cluster.\+h}}\item 
+src/models/generators/\mbox{\hyperlink{SphereParticleCluster_8cpp}{Sphere\+Particle\+Cluster.\+cpp}}\end{DoxyCompactItemize}

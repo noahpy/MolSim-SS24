@@ -1,0 +1,20 @@
+\doxysection{Overflow\+Boundary.\+h}
+\hypertarget{OverflowBoundary_8h_source}{}\label{OverflowBoundary_8h_source}\index{src/physics/boundaryConditions/OverflowBoundary.h@{src/physics/boundaryConditions/OverflowBoundary.h}}
+\mbox{\hyperlink{OverflowBoundary_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryCondition_8h}{physics/boundaryConditions/BoundaryCondition.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classOverflowBoundary}{OverflowBoundary}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classBoundaryCondition}{BoundaryCondition}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//\ lift\ constructor}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{BoundaryCondition::BoundaryCondition}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classOverflowBoundary_a17d4a582d50f5bb8d285be9de82c2c5a}{preUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classOverflowBoundary_ac8b37cefd3cbed1c5278ef29e02723f5}{postUpdateBoundaryHandling}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ \mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}})\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Do\ nothing}}
+\DoxyCodeLine{00029\ \ \ \ \ \};}
+\DoxyCodeLine{00030\ \};}
+
+\end{DoxyCode}

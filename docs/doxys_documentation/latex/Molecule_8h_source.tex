@@ -1,0 +1,39 @@
+\doxysection{Molecule.\+h}
+\hypertarget{Molecule_8h_source}{}\label{Molecule_8h_source}\index{src/models/molecules/Molecule.h@{src/models/molecules/Molecule.h}}
+\mbox{\hyperlink{Molecule_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Particle_8h}{models/Particle.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{CellGrid_8h}{models/linked\_cell/CellGrid.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMolecule}{Molecule}}\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classMolecule_a9b3ceda2d39cd2de85c8be83eed6f2a2}{Molecule}}(\textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}})\ :\ \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}}(\mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}})\ \{\};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMolecule_a6f7a4f3a97ef2ac9fa6a7c5f85ede82a}{\string~Molecule}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMolecule_a0feb5dff63a56f33e67e9b9aedbf158f}{generateMolecule}}(\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ container,\ \textcolor{keywordtype}{size\_t}\ moleculeID)\ =\ 0;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMolecule_aa416d7a3d8129fc9c6084b414ecf3ddd}{calculateIntraMolecularForces}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\ =\ 0;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMolecule_ae25da1cb0e21495ab14abc3f76477b93}{initLJParams}}(\textcolor{keywordtype}{double}\ epsilon,\ \textcolor{keywordtype}{double}\ sigma);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMolecule_a01bc01219ab37c832f0a2c85c234c135}{getPtype}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}};\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}};\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMolecule_a4d282737de0cc8a26497a6e3f2f9a418}{alpha}};\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMolecule_abada95c2d07a35324af183ac7717e9ed}{beta}};\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMolecule_a137d8d465f120f81dfffe0f7b85d26d7}{gamma}};\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMolecule_abaa01e2651e34e071b72c8aadab98969}{cutoffRadiusSquared}};\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classMolecule_abe03f04a4cc230678bb651e45488d5b9}{ID}};\ }
+\DoxyCodeLine{00060\ \};}
+
+\end{DoxyCode}

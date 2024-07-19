@@ -1,0 +1,30 @@
+\doxysection{src/utils/\+Maxwell\+Boltzmann\+Distribution.h File Reference}
+\hypertarget{MaxwellBoltzmannDistribution_8h}{}\label{MaxwellBoltzmannDistribution_8h}\index{src/utils/MaxwellBoltzmannDistribution.h@{src/utils/MaxwellBoltzmannDistribution.h}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}{maxwell\+Boltzmann\+Distributed\+Velocity}} (double average\+Velocity, size\+\_\+t dimensions)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5}\index{MaxwellBoltzmannDistribution.h@{MaxwellBoltzmannDistribution.h}!maxwellBoltzmannDistributedVelocity@{maxwellBoltzmannDistributedVelocity}}
+\index{maxwellBoltzmannDistributedVelocity@{maxwellBoltzmannDistributedVelocity}!MaxwellBoltzmannDistribution.h@{MaxwellBoltzmannDistribution.h}}
+\doxysubsubsection{\texorpdfstring{maxwellBoltzmannDistributedVelocity()}{maxwellBoltzmannDistributedVelocity()}}
+{\footnotesize\ttfamily \label{MaxwellBoltzmannDistribution_8h_a4072527de9b13fe5fb563ef877ae78c5} 
+std\+::array$<$ double, 3 $>$ maxwell\+Boltzmann\+Distributed\+Velocity (\begin{DoxyParamCaption}\item[{double}]{average\+Velocity}{, }\item[{size\+\_\+t}]{dimensions}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Generate a random velocity vector according to the Maxwell-\/\+Boltzmann distribution, with a given average velocity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em average\+Velocity} & The average velocity of the brownian motion for the system. \\
+\hline
+{\em dimensions} & Number of dimensions for which the velocity vector shall be generated. Set this to 2 or 3. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array containing the generated velocity vector. 
+\end{DoxyReturn}

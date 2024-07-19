@@ -1,0 +1,79 @@
+\doxysection{src/models/linked\+\_\+cell/\+Cell\+Grid\+Iterators.cpp File Reference}
+\hypertarget{CellGridIterators_8cpp}{}\label{CellGridIterators_8cpp}\index{src/models/linked\_cell/CellGridIterators.cpp@{src/models/linked\_cell/CellGridIterators.cpp}}
+{\ttfamily \#include "{}Cell\+Grid.\+h"{}}\newline
+{\ttfamily \#include "{}models/linked\+\_\+cell/cell/\+Cell.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ size\+\_\+t, std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ $>$ \mbox{\hyperlink{CellGridIterators_8cpp_a1f381343a4bcc028e96a7441bb9bf6bc}{get\+Boundary\+Indices}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position)
+\begin{DoxyCompactList}\small\item\em Get the Boundary Indices object. This includes the irrelevant\+Boundary (first) and the relevant\+Boundary\+Indices (second) \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{CellGridIterators_8cpp_a4bb349fa9342e8d197fa757ecfff09ee}{get\+Coordinate\+Irrelevant\+Axis}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position, std\+::array$<$ size\+\_\+t, 3 $>$ grid\+Dimensions, size\+\_\+t irrelevant\+Boundary, \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} cell\+Type)
+\begin{DoxyCompactList}\small\item\em Get the Coordinate of the Irrelevant Axis. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{CellGridIterators_8cpp_a96f04fe6f455599156c95f4fe74b6584}{get\+Number\+Of\+Relevant\+Boundaries}} (std\+::array$<$ size\+\_\+t, 3 $>$ grid\+Dimensions, \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position, \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} cell\+Type, bool is2D)
+\begin{DoxyCompactList}\small\item\em Get the Number of Relevant Boundaries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{CellGridIterators_8cpp_a1f381343a4bcc028e96a7441bb9bf6bc}\index{CellGridIterators.cpp@{CellGridIterators.cpp}!getBoundaryIndices@{getBoundaryIndices}}
+\index{getBoundaryIndices@{getBoundaryIndices}!CellGridIterators.cpp@{CellGridIterators.cpp}}
+\doxysubsubsection{\texorpdfstring{getBoundaryIndices()}{getBoundaryIndices()}}
+{\footnotesize\ttfamily \label{CellGridIterators_8cpp_a1f381343a4bcc028e96a7441bb9bf6bc} 
+std\+::pair$<$ size\+\_\+t, std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ $>$ get\+Boundary\+Indices (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Get the Boundary Indices object. This includes the irrelevant\+Boundary (first) and the relevant\+Boundary\+Indices (second) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the boundary of the domain \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+irrelevant\+Boundary (first), relevant\+Boundary\+Indices (second) 
+\end{DoxyReturn}
+\Hypertarget{CellGridIterators_8cpp_a4bb349fa9342e8d197fa757ecfff09ee}\index{CellGridIterators.cpp@{CellGridIterators.cpp}!getCoordinateIrrelevantAxis@{getCoordinateIrrelevantAxis}}
+\index{getCoordinateIrrelevantAxis@{getCoordinateIrrelevantAxis}!CellGridIterators.cpp@{CellGridIterators.cpp}}
+\doxysubsubsection{\texorpdfstring{getCoordinateIrrelevantAxis()}{getCoordinateIrrelevantAxis()}}
+{\footnotesize\ttfamily \label{CellGridIterators_8cpp_a4bb349fa9342e8d197fa757ecfff09ee} 
+size\+\_\+t get\+Coordinate\+Irrelevant\+Axis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{, }\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{grid\+Dimensions}{, }\item[{size\+\_\+t}]{irrelevant\+Boundary}{, }\item[{\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}}}]{cell\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Get the Coordinate of the Irrelevant Axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the boundary of the domain \\
+\hline
+{\em grid\+Dimensions} & The dimensions of the grid \\
+\hline
+{\em irrelevant\+Boundary} & The irrelevant boundary \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The coordinate of the irrelevant axis 
+\end{DoxyReturn}
+\Hypertarget{CellGridIterators_8cpp_a96f04fe6f455599156c95f4fe74b6584}\index{CellGridIterators.cpp@{CellGridIterators.cpp}!getNumberOfRelevantBoundaries@{getNumberOfRelevantBoundaries}}
+\index{getNumberOfRelevantBoundaries@{getNumberOfRelevantBoundaries}!CellGridIterators.cpp@{CellGridIterators.cpp}}
+\doxysubsubsection{\texorpdfstring{getNumberOfRelevantBoundaries()}{getNumberOfRelevantBoundaries()}}
+{\footnotesize\ttfamily \label{CellGridIterators_8cpp_a96f04fe6f455599156c95f4fe74b6584} 
+size\+\_\+t get\+Number\+Of\+Relevant\+Boundaries (\begin{DoxyParamCaption}\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{grid\+Dimensions}{, }\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{, }\item[{\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}}}]{cell\+Type}{, }\item[{bool}]{is2D}{}\end{DoxyParamCaption})}
+
+
+
+Get the Number of Relevant Boundaries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dim1} & The size of the first relevant dimension \\
+\hline
+{\em dim2} & The size of the second relevant dimension \\
+\hline
+{\em dimZ} & The size of the z axis grid (number of cells along the z axis) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of relevant boundaries 
+\end{DoxyReturn}

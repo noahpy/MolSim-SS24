@@ -1,0 +1,35 @@
+\doxysection{Cuboid\+Particle\+Cluster.\+h}
+\hypertarget{CuboidParticleCluster_8h_source}{}\label{CuboidParticleCluster_8h_source}\index{src/models/generators/CuboidParticleCluster.h@{src/models/generators/CuboidParticleCluster.h}}
+\mbox{\hyperlink{CuboidParticleCluster_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleCluster_8h}{ParticleCluster.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCuboidParticleCluster}{CuboidParticleCluster}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classParticleCluster}{ParticleCluster}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classCuboidParticleCluster_a7a6527f52b095e07d9265f1aeaa01d24}{CuboidParticleCluster}}(}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCuboidParticleCluster_aeb172e19129740bda9392ec47e95cf28}{numParticlesWidth}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCuboidParticleCluster_ae1b07681bbc9410e9a2d5655f851ea06}{numParticlesHeight}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCuboidParticleCluster_ae2a36d7a4dd72261a36fda74291ec699}{numParticlesDepth}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCuboidParticleCluster_a0c84dd0f2a7bbe896ceefec9c6bd5393}{spacing}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initialVelocity}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{meanVelocity}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParticleCluster_ae0153111f3bfe2b3221153c46245d28f}{dimensions}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<unsigned,\ bool>\&\ stationaryParticleTypes,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}}\ =\ 0);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classCuboidParticleCluster_aea57abe040a9679b2cb3e0a0456dc395}{getTotalNumberOfParticles}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCuboidParticleCluster_ac8629622c8f8ebde085fb519cfe1d343}{generateCluster}}(std::vector<Particle>\&\ particles,\ \textcolor{keywordtype}{size\_t}\&\ insertionIndex)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00058\ \ \ \ \ std::string\ \mbox{\hyperlink{classCuboidParticleCluster_a3d354998e031848be5d4f14c14058dec}{toString}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCuboidParticleCluster_aeb172e19129740bda9392ec47e95cf28}{numParticlesWidth}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCuboidParticleCluster_ae1b07681bbc9410e9a2d5655f851ea06}{numParticlesHeight}};\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCuboidParticleCluster_ae2a36d7a4dd72261a36fda74291ec699}{numParticlesDepth}};\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCuboidParticleCluster_a0c84dd0f2a7bbe896ceefec9c6bd5393}{spacing}};\ }
+\DoxyCodeLine{00065\ \};}
+
+\end{DoxyCode}

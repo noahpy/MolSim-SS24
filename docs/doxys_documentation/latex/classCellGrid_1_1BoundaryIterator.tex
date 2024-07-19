@@ -1,0 +1,178 @@
+\doxysection{Cell\+Grid\+::Boundary\+Iterator Class Reference}
+\hypertarget{classCellGrid_1_1BoundaryIterator}{}\label{classCellGrid_1_1BoundaryIterator}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+
+
+Iterator for iterating over boundary cells.  
+
+
+
+
+{\ttfamily \#include $<$Cell\+Grid.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_aaf4a2d87a05dfaebf38d32dbe0931565}{Boundary\+Iterator}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position, std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a3db7112dd95b1abde37ad71cf69fb657}{grid\+Dimensions}}, bool \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a42f410388a409ba80460a11bd7e7aa6f}{is2D}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}} \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_aadb6f359ea24fde5cbbe15fbbca789e7}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Returns an iterator to the beginning of boundary cells of the given position (for range based loop) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}} \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a7717a18214668c0a68043aea65d54059}{end}} ()
+\begin{DoxyCompactList}\small\item\em Returns an iterator to the end of boundary cells of the given position (for range based loop) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a617b5d6e4c864a3e9f31053c9582e19f}{operator\texorpdfstring{$\ast$}{*}}} () const
+\begin{DoxyCompactList}\small\item\em Dereferences the iterator, returning the current Cell\+Index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}} \& \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a64b86045bbf57f7507136b8d595b46a8}{operator++}} ()
+\begin{DoxyCompactList}\small\item\em Increments the iterator to the next boundary cell. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a6839d86675690082c26d4f745a01b50c}{operator!=}} (const \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}} \&other) const
+\begin{DoxyCompactList}\small\item\em Checks if this iterator is not equal to another \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a72978c823530f5250808f5edc85c01b4}{index}}
+\begin{DoxyCompactList}\small\item\em The current index in the boundaries vector. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a9316b5de9348a1425b65c69fd2e4f928}{boundaries}}
+\begin{DoxyCompactList}\small\item\em The relevant boundaries to consider. \end{DoxyCompactList}\item 
+std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a3db7112dd95b1abde37ad71cf69fb657}{grid\+Dimensions}}
+\begin{DoxyCompactList}\small\item\em The dimensions of the grid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a42f410388a409ba80460a11bd7e7aa6f}{is2D}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Iterator for iterating over boundary cells. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCellGrid_1_1BoundaryIterator_aaf4a2d87a05dfaebf38d32dbe0931565}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!BoundaryIterator@{BoundaryIterator}}
+\index{BoundaryIterator@{BoundaryIterator}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{BoundaryIterator()}{BoundaryIterator()}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_aaf4a2d87a05dfaebf38d32dbe0931565} 
+Cell\+Grid\+::\+Boundary\+Iterator\+::\+Boundary\+Iterator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{, }\item[{std\+::array$<$ size\+\_\+t, 3 $>$}]{grid\+Dimensions}{, }\item[{bool}]{is2D}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em boundaries} & A reference to the vector of boundary cell indices. \\
+\hline
+{\em end} & Set to true to create an end iterator. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCellGrid_1_1BoundaryIterator_aadb6f359ea24fde5cbbe15fbbca789e7}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!begin@{begin}}
+\index{begin@{begin}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_aadb6f359ea24fde5cbbe15fbbca789e7} 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Cell\+Grid\+::\+Boundary\+Iterator}} Cell\+Grid\+::\+Boundary\+Iterator\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns an iterator to the beginning of boundary cells of the given position (for range based loop) 
+
+\begin{DoxyReturn}{Returns}
+The beginning \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator} 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_1_1BoundaryIterator_a7717a18214668c0a68043aea65d54059}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!end@{end}}
+\index{end@{end}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_a7717a18214668c0a68043aea65d54059} 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Cell\+Grid\+::\+Boundary\+Iterator}} Cell\+Grid\+::\+Boundary\+Iterator\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns an iterator to the end of boundary cells of the given position (for range based loop) 
+
+\begin{DoxyReturn}{Returns}
+The end \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator} 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_1_1BoundaryIterator_a6839d86675690082c26d4f745a01b50c}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_a6839d86675690082c26d4f745a01b50c} 
+bool Cell\+Grid\+::\+Boundary\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if this iterator is not equal to another \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator} to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the iterators are not equal, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_1_1BoundaryIterator_a617b5d6e4c864a3e9f31053c9582e19f}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_a617b5d6e4c864a3e9f31053c9582e19f} 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} Cell\+Grid\+::\+Boundary\+Iterator\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Dereferences the iterator, returning the current Cell\+Index. 
+
+\begin{DoxyReturn}{Returns}
+The Cell\+Index of the current boundary cell. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_1_1BoundaryIterator_a64b86045bbf57f7507136b8d595b46a8}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_a64b86045bbf57f7507136b8d595b46a8} 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Cell\+Grid\+::\+Boundary\+Iterator}} \& Cell\+Grid\+::\+Boundary\+Iterator\+::operator++ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Increments the iterator to the next boundary cell. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the incremented \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCellGrid_1_1BoundaryIterator_a9316b5de9348a1425b65c69fd2e4f928}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!boundaries@{boundaries}}
+\index{boundaries@{boundaries}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{boundaries}{boundaries}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_a9316b5de9348a1425b65c69fd2e4f928} 
+std\+::vector$<$\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}$>$ Cell\+Grid\+::\+Boundary\+Iterator\+::boundaries\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The relevant boundaries to consider. 
+
+\Hypertarget{classCellGrid_1_1BoundaryIterator_a3db7112dd95b1abde37ad71cf69fb657}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!gridDimensions@{gridDimensions}}
+\index{gridDimensions@{gridDimensions}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{gridDimensions}{gridDimensions}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_a3db7112dd95b1abde37ad71cf69fb657} 
+std\+::array$<$size\+\_\+t, 3$>$ Cell\+Grid\+::\+Boundary\+Iterator\+::grid\+Dimensions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The dimensions of the grid. 
+
+\Hypertarget{classCellGrid_1_1BoundaryIterator_a72978c823530f5250808f5edc85c01b4}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!index@{index}}
+\index{index@{index}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_a72978c823530f5250808f5edc85c01b4} 
+size\+\_\+t Cell\+Grid\+::\+Boundary\+Iterator\+::index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current index in the boundaries vector. 
+
+\Hypertarget{classCellGrid_1_1BoundaryIterator_a42f410388a409ba80460a11bd7e7aa6f}\index{CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}!is2D@{is2D}}
+\index{is2D@{is2D}!CellGrid::BoundaryIterator@{CellGrid::BoundaryIterator}}
+\doxysubsubsection{\texorpdfstring{is2D}{is2D}}
+{\footnotesize\ttfamily \label{classCellGrid_1_1BoundaryIterator_a42f410388a409ba80460a11bd7e7aa6f} 
+bool Cell\+Grid\+::\+Boundary\+Iterator\+::is2D\hspace{0.3cm}{\ttfamily [private]}}
+
+True if the grid is 2D, false if 3D. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/linked\+\_\+cell/\mbox{\hyperlink{CellGrid_8h}{Cell\+Grid.\+h}}\item 
+src/models/linked\+\_\+cell/\mbox{\hyperlink{CellGridIterators_8cpp}{Cell\+Grid\+Iterators.\+cpp}}\end{DoxyCompactItemize}

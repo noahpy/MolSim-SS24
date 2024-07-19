@@ -1,0 +1,96 @@
+\doxysection{Params.\+h}
+\hypertarget{Params_8h_source}{}\label{Params_8h_source}\index{src/utils/Params.h@{src/utils/Params.h}}
+\mbox{\hyperlink{Params_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryConfig_8h}{physics/boundaryConditions/BoundaryConfig.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Molecule_8h}{models/molecules/Molecule.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{ReaderType}}\ \{\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a9de934790934fe831fe946c851e8338e}{STANDARD}},\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a63664f3f933667cea224b325ece7fdf9}{CLUSTER}},\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a2f0d18fc0d0fa4a6cd92dc328501874d}{EMPTY}},\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15af9c208c7d7a0f102f2683165540c882d}{ASCII}},\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a60018cf01f907998778170cb8db31c99}{XML}}\ \};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{WriterType}}\ \{\ \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfae65075d550f9b5bf9992fa1d71a131be}{XYZ}},\ \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220}{VTK}},\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a60018cf01f907998778170cb8db31c99}{XML}},\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a2f0d18fc0d0fa4a6cd92dc328501874d}{EMPTY}}\ \};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{SimulationType}}\ \{\ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}{PLANET}},\ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921adbc379cd18c02c6bd1da47a5fe97fa8d}{LJ}},\ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921ab1f50159aa4dde397044a0de1c4f9639}{LINKED\_LJ}},\ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921adeedf7e8791a00af6b7148a0f8818011}{DOMAIN\_LJ}},\ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921abc63c281ce061d557897a9822bd61b8c}{MIXED\_LJ}},\ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a40b125d5b23804aec05e850ccae369f4}{MEMBRANE\_LJ}}\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ec}{ThermostatType}}\ \{\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459eca648824b3676352bfab53d9bcf217389d}{CLASSICAL}},\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459eca9e50a94f2fea6447771e28ee2320dec6}{INDIVIDUAL}},\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ecac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}}\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567c}{ParallelType}}\ \{\ \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567cae55a36a850c67d46b3b3325de7fce0b8}{STATIC}},\ \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567cadcd8fc0dfcbc905dcb6267c36b20bfd7}{TASK}}\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classParams}{Params}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ start\ time}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_a58aa8f184d4751b83e992ef610158743}{start\_time}}\ =\ 0;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ end\ time}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_a1503e9313bf34014d9f42d0fa55ae79b}{end\_time}}\ =\ 0.014\ *\ 10\ *\ 20;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ time\ increment}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_a60115bb457dc6b43c0d14014418c5883}{delta\_t}}\ =\ 0.014;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ depth\ of\ potential\ well}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_ae67589d7140634b05eedcfe5a26d72be}{epsilon}}\ =\ 5;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ zero-\/crossing\ of\ LJ\ potential}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_aae2e11191e0482bdec0fc15482b53e31}{sigma}}\ =\ 1;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ input\ filename}}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ \mbox{\hyperlink{classParams_aa90b56aa82f503da0c9bba09d8f61f48}{input\_file}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ output\ filename}}
+\DoxyCodeLine{00034\ \ \ \ \ std::string\ \mbox{\hyperlink{classParams_afa18c57156c85a592764d81b5449abd2}{output\_file}}\ =\ \textcolor{stringliteral}{"{}sim"{}};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ reader\ type}}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15}{ReaderType}}\ \mbox{\hyperlink{classParams_a7ab4f4dc5bbea9600eaa2e9eb2a24433}{reader\_type}}\ =\ \mbox{\hyperlink{Params_8h_a678aadae72e7347a5756e370a2978a15a9de934790934fe831fe946c851e8338e}{ReaderType::STANDARD}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ writer\ type}}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{WriterType}}\ \mbox{\hyperlink{classParams_ac63ad1625179ff75dfde8ce796f0d8bd}{writer\_type}}\ =\ \mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bfa4f2ceadb0279c677d6419a88c7b1d220}{WriterType::VTK}};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ simulation\ type}}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{SimulationType}}\ \mbox{\hyperlink{classParams_a1f6919d2ee4956a96a8443e31bd25a20}{simulation\_type}}\ =\ \mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921a71085833d5414e6afbae581f3b792dc8}{SimulationType::PLANET}};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ parallel\ type\ }}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567c}{ParallelType}}\ \mbox{\hyperlink{classParams_a190338a7b7cfd60ab116cb6b58493997}{parallel\_type}}\ =\ \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567cae55a36a850c67d46b3b3325de7fce0b8}{ParallelType::STATIC}};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ domain\ origin}}
+\DoxyCodeLine{00044\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParams_a704a3d6840d95b50f0620f11590a89fc}{domain\_origin}}\ =\ \{\ -\/10.0,\ -\/10.0,\ 0\ \};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ domain\ size}}
+\DoxyCodeLine{00046\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParams_a342ca27a4b747d4fa08eb07f0e9948c1}{domain\_size}}\ =\ \{\ 20.0,\ 20.0,\ 0\ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ cutoff}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_aff59d573933a5dbf3615086e5656070e}{cutoff}}\ =\ 5;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ plot\ frequency}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classParams_a7e38512ce3c13c4a586cca338d93c5bf}{plot\_frequency}}\ =\ 10;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ update\ frequency}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classParams_a1509dd331913613b268f1fa9bcb5f0bc}{update\_frequency}}\ =\ 10;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ checkpoint\ frequency}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classParams_a2f47c838a6ab85b924ac34e99e81afa7}{checkpoint\_frequency}}\ =\ 10;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ boundary\ configuration}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\ \mbox{\hyperlink{classParams_a54cd212690ea669e546586ff5a1b3e6b}{boundaryConfig}}\ \{\ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}},}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}},}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{BoundaryType::SOFT\_REFLECTIVE}}\ \};}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Thermostat\ type}}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ec}{ThermostatType}}\ \mbox{\hyperlink{classParams_a4ee35c050eab6e23313a89a5b6c68185}{thermostat\_type}}\ =\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459eca648824b3676352bfab53d9bcf217389d}{ThermostatType::CLASSICAL}};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ initial\ temperature}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_a97e80f5a5e1ae63e7b51ae58ae27029d}{init\_temp}}\ =\ 0;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ target\ temperature}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_adf65773ecaf2cb26c735bdaf58df60b4}{target\_temp}}\ =\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ frequency\ of\ thermostat\ updates}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classParams_a792bf746bbfa7d47018fedd8885285eb}{thermo\_freq}}\ =\ 20;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ maximum\ temperature\ delta}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_addac5bb18acdfbdba43525cb2076ddee}{max\_temp\_delta}}\ =\ 10;}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ gravitational\ constant}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParams_a920c09e664050dcec2a9521ccd761b9e}{gravity}}\ =\ 0.0;}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ particle\ types}}
+\DoxyCodeLine{00073\ \ \ \ \ std::vector<std::pair<double,\ double>>\ \mbox{\hyperlink{classParams_a9bdf0f0d81a7ba5d6796ccdc71cc7d9e}{particleTypes}};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ map\ to\ particle\ types}}
+\DoxyCodeLine{00075\ \ \ \ \ std::map<unsigned,\ std::pair<double,\ double>>\ \mbox{\hyperlink{classParams_a274613c8ec46ae8d09785ee45bf1642b}{typesMap}};}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Flag\ for\ measuring\ performance\ -\/>\ will\ not\ use\ any\ io\ and\ time\ the\ simulation}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classParams_ae72d78c77b2856871b83b8d4002a4a8d}{doPerformanceMeasurements}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ List\ of\ all\ types\ which\ should\ be\ immobile}}
+\DoxyCodeLine{00079\ \ \ \ \ std::map<unsigned,\ bool>\ \mbox{\hyperlink{classParams_a22c9b5c8a37d196d89a7cc07433e201d}{immobileParticleTypes}}\ \{\};}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ The\ number\ of\ bins\ to\ use\ in\ the\ analyzer\ -\/\ 1\ for\ ignoring\ a\ given\ axis}}
+\DoxyCodeLine{00081\ \ \ \ \ std::array<size\_t,\ 3>\ \mbox{\hyperlink{classParams_a3d7dcd97d3289dd65ee88dc01ea64f68}{bins}}\ =\ \{\ 50,\ 0,\ 12\ \};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ The\ file\ name\ to\ write\ the\ analyzer\ results\ to}}
+\DoxyCodeLine{00083\ \ \ \ \ std::string\ \mbox{\hyperlink{classParams_ac77da378048ef35faf227c51a5244e24}{outName}}\ =\ \textcolor{stringliteral}{"{}analysis"{}};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ The\ interval\ to\ run\ the\ analyzer}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classParams_a70a707c21a53b1820c06927237b17164}{analysisInterval}}\ =\ 100000;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ Molecules\ in\ the\ simulation}}
+\DoxyCodeLine{00087\ \ \ \ \ std::vector<std::unique\_ptr<Molecule>>\ \mbox{\hyperlink{classParams_a103a7afc6207fcb3aff1e802904d40ff}{molecules}}\ \{\};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ TODO\ read\ the\ molecules\ from\ the\ input\ file\ (set\ any\ particle\ as\ root,\ will\ be\ overwritten)}}
+\DoxyCodeLine{00090\ \};}
+
+\end{DoxyCode}

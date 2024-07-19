@@ -1,0 +1,32 @@
+\doxysection{src/physics/location\+Cal/location\+Cal.cpp File Reference}
+\hypertarget{locationCal_8cpp}{}\label{locationCal_8cpp}\index{src/physics/locationCal/locationCal.cpp@{src/physics/locationCal/locationCal.cpp}}
+{\ttfamily \#include "{}physics/location\+Cal/location\+Cal.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Array\+Utils.\+h"{}}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{locationCal_8cpp_aa283414ba5d99990479899346d00a88a}{location\+\_\+stroemer\+\_\+verlet}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)
+\begin{DoxyCompactList}\small\item\em Calculate the new positions of the particles using the Stroemer-\/\+Verlet algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{locationCal_8cpp_aa283414ba5d99990479899346d00a88a}\index{locationCal.cpp@{locationCal.cpp}!location\_stroemer\_verlet@{location\_stroemer\_verlet}}
+\index{location\_stroemer\_verlet@{location\_stroemer\_verlet}!locationCal.cpp@{locationCal.cpp}}
+\doxysubsubsection{\texorpdfstring{location\_stroemer\_verlet()}{location\_stroemer\_verlet()}}
+{\footnotesize\ttfamily \label{locationCal_8cpp_aa283414ba5d99990479899346d00a88a} 
+void location\+\_\+stroemer\+\_\+verlet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})}
+
+
+
+Calculate the new positions of the particles using the Stroemer-\/\+Verlet algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation object to calculate the new positions for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

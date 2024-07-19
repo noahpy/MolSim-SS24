@@ -1,0 +1,146 @@
+\doxysection{src/physics/boundary\+Conditions/\+Boundary\+Config.h File Reference}
+\hypertarget{BoundaryConfig_8h}{}\label{BoundaryConfig_8h}\index{src/physics/boundaryConditions/BoundaryConfig.h@{src/physics/boundaryConditions/BoundaryConfig.h}}
+{\ttfamily \#include "{}utils/\+Position.\+h"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBoundaryConfig}{Boundary\+Config}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \{ \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ab4f0c6dc947ae9ed5e9e1b1381c982a7}{OUTFLOW}}
+, \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}{SOFT\+\_\+\+REFLECTIVE}}
+, \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ad9d83fc826ae0d42075af007a477e2c9}{PERIODIC}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \mbox{\hyperlink{BoundaryConfig_8h_a5522f9bde351c1b342bc3e0173d9ccf4}{get\+Boundary\+Type}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Get the boundary type from a string. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{BoundaryConfig_8h_a260afa8eb0d7e9614d14a31cb2b6106c}{get\+Boundary\+String}} (const \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \mbox{\hyperlink{classtype}{type}})
+\begin{DoxyCompactList}\small\item\em Get the string representation of a boundary type. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{BoundaryConfig_8h_a2d26311a66e8c2e851e394ca5e916ed7}{boundary\+To\+Priority}} (const \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \&\mbox{\hyperlink{classtype}{type}})
+\begin{DoxyCompactList}\small\item\em Gets the priority of a Boundary type. Lower means higher priority. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{BoundaryConfig_8h_a96fd08624a87668ef5a504929824d042}{compare\+Boundary\+Type\+By\+Priority}} (const \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \&first, const \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \&second)
+\begin{DoxyCompactList}\small\item\em A comparison function that compares two boundaries by their priority. Returns true, if first \texorpdfstring{$<$}{<} second i.\+e. the first one is higher priority than the second. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{BoundaryConfig_8h_a1e6da5ea70f93f5a28a5764222bc29ef}{compare\+Boundary\+Config\+Map}} (const std\+::pair$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}, \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} $>$ \&a, const std\+::pair$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}, \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} $>$ \&b)
+\begin{DoxyCompactList}\small\item\em A comparison function that compares two boundary config map entries by their boundary\textquotesingle{}s priority. Returns true, if a \texorpdfstring{$<$}{<} b i.\+e. the first one is higher priority than the second. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}\index{BoundaryConfig.h@{BoundaryConfig.h}!BoundaryType@{BoundaryType}}
+\index{BoundaryType@{BoundaryType}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{BoundaryType}{BoundaryType}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8} 
+enum class \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUTFLOW@{OUTFLOW}!BoundaryConfig.h@{BoundaryConfig.h}}\index{BoundaryConfig.h@{BoundaryConfig.h}!OUTFLOW@{OUTFLOW}}}\Hypertarget{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ab4f0c6dc947ae9ed5e9e1b1381c982a7}\label{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8} 
+OUTFLOW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOFT\_REFLECTIVE@{SOFT\_REFLECTIVE}!BoundaryConfig.h@{BoundaryConfig.h}}\index{BoundaryConfig.h@{BoundaryConfig.h}!SOFT\_REFLECTIVE@{SOFT\_REFLECTIVE}}}\Hypertarget{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8a746c15185cfa8edc59e59076526c9ff7}\label{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8} 
+SOFT\+\_\+\+REFLECTIVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PERIODIC@{PERIODIC}!BoundaryConfig.h@{BoundaryConfig.h}}\index{BoundaryConfig.h@{BoundaryConfig.h}!PERIODIC@{PERIODIC}}}\Hypertarget{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8ad9d83fc826ae0d42075af007a477e2c9}\label{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8} 
+PERIODIC&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{BoundaryConfig_8h_a2d26311a66e8c2e851e394ca5e916ed7}\index{BoundaryConfig.h@{BoundaryConfig.h}!boundaryToPriority@{boundaryToPriority}}
+\index{boundaryToPriority@{boundaryToPriority}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{boundaryToPriority()}{boundaryToPriority()}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_a2d26311a66e8c2e851e394ca5e916ed7} 
+size\+\_\+t boundary\+To\+Priority (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \&}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the priority of a Boundary type. Lower means higher priority. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The boundary type to get the priority of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The priority of the boundary type (lower =\texorpdfstring{$>$}{>} higher priority) 
+\end{DoxyReturn}
+\Hypertarget{BoundaryConfig_8h_a1e6da5ea70f93f5a28a5764222bc29ef}\index{BoundaryConfig.h@{BoundaryConfig.h}!compareBoundaryConfigMap@{compareBoundaryConfigMap}}
+\index{compareBoundaryConfigMap@{compareBoundaryConfigMap}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{compareBoundaryConfigMap()}{compareBoundaryConfigMap()}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_a1e6da5ea70f93f5a28a5764222bc29ef} 
+bool compare\+Boundary\+Config\+Map (\begin{DoxyParamCaption}\item[{const std\+::pair$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}, \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} $>$ \&}]{a}{, }\item[{const std\+::pair$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}, \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} $>$ \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A comparison function that compares two boundary config map entries by their boundary\textquotesingle{}s priority. Returns true, if a \texorpdfstring{$<$}{<} b i.\+e. the first one is higher priority than the second. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The first map entry \\
+\hline
+{\em b} & The second map entry \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \texorpdfstring{$<$}{<} b w.\+r.\+t their boundary type i.\+e. if a\textquotesingle{}s boundary has higher priority than b\textquotesingle{}s boundary 
+\end{DoxyReturn}
+\Hypertarget{BoundaryConfig_8h_a96fd08624a87668ef5a504929824d042}\index{BoundaryConfig.h@{BoundaryConfig.h}!compareBoundaryTypeByPriority@{compareBoundaryTypeByPriority}}
+\index{compareBoundaryTypeByPriority@{compareBoundaryTypeByPriority}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{compareBoundaryTypeByPriority()}{compareBoundaryTypeByPriority()}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_a96fd08624a87668ef5a504929824d042} 
+bool compare\+Boundary\+Type\+By\+Priority (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \&}]{first}{, }\item[{const \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} \&}]{second}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A comparison function that compares two boundaries by their priority. Returns true, if first \texorpdfstring{$<$}{<} second i.\+e. the first one is higher priority than the second. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & The first boundary type \\
+\hline
+{\em second} & The second boundary type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If first \texorpdfstring{$<$}{<} second i.\+e. the first one is higher priority than the second 
+\end{DoxyReturn}
+\Hypertarget{BoundaryConfig_8h_a260afa8eb0d7e9614d14a31cb2b6106c}\index{BoundaryConfig.h@{BoundaryConfig.h}!getBoundaryString@{getBoundaryString}}
+\index{getBoundaryString@{getBoundaryString}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{getBoundaryString()}{getBoundaryString()}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_a260afa8eb0d7e9614d14a31cb2b6106c} 
+std\+::string get\+Boundary\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the string representation of a boundary type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{BoundaryConfig_8h_a5522f9bde351c1b342bc3e0173d9ccf4}\index{BoundaryConfig.h@{BoundaryConfig.h}!getBoundaryType@{getBoundaryType}}
+\index{getBoundaryType@{getBoundaryType}!BoundaryConfig.h@{BoundaryConfig.h}}
+\doxysubsubsection{\texorpdfstring{getBoundaryType()}{getBoundaryType()}}
+{\footnotesize\ttfamily \label{BoundaryConfig_8h_a5522f9bde351c1b342bc3e0173d9ccf4} 
+\mbox{\hyperlink{BoundaryConfig_8h_af75d5dd7322fa39ed0af4e7839e600f8}{Boundary\+Type}} get\+Boundary\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the boundary type from a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}

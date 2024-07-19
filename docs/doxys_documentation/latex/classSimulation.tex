@@ -1,0 +1,210 @@
+\doxysection{Simulation Class Reference}
+\hypertarget{classSimulation}{}\label{classSimulation}\index{Simulation@{Simulation}}
+
+
+Abstract base class for all simulations.  
+
+
+
+
+{\ttfamily \#include $<$base\+Simulation.\+h$>$}
+
+Inheritance diagram for Simulation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{classSimulation}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimulation_a1c3bad0b5e9842a84e616e2fd135f311}{Simulation}} (double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}, double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}, double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&\mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}, std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}, unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}=10)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSimulation}{Simulation} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSimulation_ada940a3e4924c796b043a062950e3c49}{run\+Sim}} ()=0
+\begin{DoxyCompactList}\small\item\em Run the simulation. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classSimulation_a85781a859dbdf089b4c807ac11646e18}{\texorpdfstring{$\sim$}{\string~}\+Simulation}} ()=default
+\item 
+void \mbox{\hyperlink{classSimulation_ace2a60993f57c241c081ffea6ea14e99}{set\+Output\+File}} (std\+::string output)
+\item 
+std\+::string \mbox{\hyperlink{classSimulation_aded0641608524c4f1fb5a85dd91d387f}{get\+Output\+File}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}}
+\item 
+double \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\+\_\+t}}
+\item 
+double \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\+\_\+time}}
+\item 
+unsigned \mbox{\hyperlink{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1}{iteration}} = 0
+\item 
+unsigned \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}} = 10
+\item 
+\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \& \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}}
+\item 
+std\+::map$<$ unsigned, bool $>$ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationary\+Particle\+Types}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \& \mbox{\hyperlink{classSimulation_abdb48771e24ba63a3db95b27d153b629}{strategy}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}}
+\item 
+\mbox{\hyperlink{classProgressLogger}{Progress\+Logger}} \mbox{\hyperlink{classSimulation_a5f898fce7219971170a580872af32224}{progress\+Logger}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for all simulations. 
+
+This class is the base class for all simulations. It contains the members need to do the calculations for the different strategies. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSimulation_a1c3bad0b5e9842a84e616e2fd135f311}\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{Simulation()}{Simulation()}}
+{\footnotesize\ttfamily \label{classSimulation_a1c3bad0b5e9842a84e616e2fd135f311} 
+Simulation\+::\+Simulation (\begin{DoxyParamCaption}\item[{double}]{time}{, }\item[{double}]{delta\+\_\+t}{, }\item[{double}]{end\+\_\+time}{, }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container}{, }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$}]{writer}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$}]{reader}{, }\item[{std\+::map$<$ unsigned, bool $>$}]{stationary\+Particle\+Types}{, }\item[{unsigned}]{frequency}{ = {\ttfamily 10}}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classSimulation}{Simulation} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The start time of the simulation \\
+\hline
+{\em delta\+\_\+t} & The time increment \\
+\hline
+{\em end\+\_\+time} & The end time of the simulation \\
+\hline
+{\em container} & The particle container which holds all particles \\
+\hline
+{\em strat} & The strategy which is used to calculate the physics \\
+\hline
+{\em writer} & The output writer \\
+\hline
+{\em reader} & The input reader \\
+\hline
+{\em stationary\+Particle\+Types} & The types of particles which are stationary \\
+\hline
+{\em frequency} & The frequency for writing outputs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classSimulation}{Simulation} object 
+\end{DoxyReturn}
+\Hypertarget{classSimulation_a85781a859dbdf089b4c807ac11646e18}\index{Simulation@{Simulation}!````~Simulation@{\texorpdfstring{$\sim$}{\string~}Simulation}}
+\index{````~Simulation@{\texorpdfstring{$\sim$}{\string~}Simulation}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Simulation()}{\string~Simulation()}}
+{\footnotesize\ttfamily \label{classSimulation_a85781a859dbdf089b4c807ac11646e18} 
+virtual Simulation\+::\texorpdfstring{$\sim$}{\string~}\+Simulation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSimulation_aded0641608524c4f1fb5a85dd91d387f}\index{Simulation@{Simulation}!getOutputFile@{getOutputFile}}
+\index{getOutputFile@{getOutputFile}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{getOutputFile()}{getOutputFile()}}
+{\footnotesize\ttfamily \label{classSimulation_aded0641608524c4f1fb5a85dd91d387f} 
+std\+::string Simulation\+::get\+Output\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classSimulation_ada940a3e4924c796b043a062950e3c49}\index{Simulation@{Simulation}!runSim@{runSim}}
+\index{runSim@{runSim}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{runSim()}{runSim()}}
+{\footnotesize\ttfamily \label{classSimulation_ada940a3e4924c796b043a062950e3c49} 
+virtual void Simulation\+::run\+Sim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Run the simulation. 
+
+
+
+Implemented in \mbox{\hyperlink{classLennardJonesDomainSimulation_a15d018ced2b94487a881b1224af7d405}{Lennard\+Jones\+Domain\+Simulation}}, \mbox{\hyperlink{classLennardJonesSimulation_aa7b28b4c292473bc44481a5a988e4735}{Lennard\+Jones\+Simulation}}, \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac6a4414b99279f5653eae86f9c513114}{Linked\+Lennard\+Jones\+Simulation}}, \mbox{\hyperlink{classMembraneSimulation_a3f952f814e3c35ec4bbdc296c6f3fc61}{Membrane\+Simulation}}, \mbox{\hyperlink{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5}{Mixed\+LJSimulation}}, and \mbox{\hyperlink{classPlanetSimulation_a9e9abcf4d8960f3bc22644e29411f928}{Planet\+Simulation}}.
+
+\Hypertarget{classSimulation_ace2a60993f57c241c081ffea6ea14e99}\index{Simulation@{Simulation}!setOutputFile@{setOutputFile}}
+\index{setOutputFile@{setOutputFile}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{setOutputFile()}{setOutputFile()}}
+{\footnotesize\ttfamily \label{classSimulation_ace2a60993f57c241c081ffea6ea14e99} 
+void Simulation\+::set\+Output\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{output}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSimulation_a40d5374878745375d1112892ca47290c}\index{Simulation@{Simulation}!container@{container}}
+\index{container@{container}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{container}{container}}
+{\footnotesize\ttfamily \label{classSimulation_a40d5374878745375d1112892ca47290c} 
+\mbox{\hyperlink{classParticleContainer}{Particle\+Container}}\& Simulation\+::container}
+
+The particle container which holds all particles \Hypertarget{classSimulation_a3b20666c1d68ccda6afcdece22787224}\index{Simulation@{Simulation}!delta\_t@{delta\_t}}
+\index{delta\_t@{delta\_t}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{delta\_t}{delta\_t}}
+{\footnotesize\ttfamily \label{classSimulation_a3b20666c1d68ccda6afcdece22787224} 
+double Simulation\+::delta\+\_\+t}
+
+The time increment \Hypertarget{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}\index{Simulation@{Simulation}!end\_time@{end\_time}}
+\index{end\_time@{end\_time}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{end\_time}{end\_time}}
+{\footnotesize\ttfamily \label{classSimulation_a197fe4555b78abaae9c4c111c2f05f27} 
+double Simulation\+::end\+\_\+time}
+
+The end time of the simulation \Hypertarget{classSimulation_af359b0a19b55ad991ed8d70a707f3592}\index{Simulation@{Simulation}!frequency@{frequency}}
+\index{frequency@{frequency}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{frequency}{frequency}}
+{\footnotesize\ttfamily \label{classSimulation_af359b0a19b55ad991ed8d70a707f3592} 
+unsigned Simulation\+::frequency = 10}
+
+The frequency for writing outputs \Hypertarget{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1}\index{Simulation@{Simulation}!iteration@{iteration}}
+\index{iteration@{iteration}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{iteration}{iteration}}
+{\footnotesize\ttfamily \label{classSimulation_a11ba749e855a9f9f3b07416ba6f15bb1} 
+unsigned Simulation\+::iteration = 0}
+
+The current iteration of the simulation \Hypertarget{classSimulation_a5f898fce7219971170a580872af32224}\index{Simulation@{Simulation}!progressLogger@{progressLogger}}
+\index{progressLogger@{progressLogger}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{progressLogger}{progressLogger}}
+{\footnotesize\ttfamily \label{classSimulation_a5f898fce7219971170a580872af32224} 
+\mbox{\hyperlink{classProgressLogger}{Progress\+Logger}} Simulation\+::progress\+Logger\hspace{0.3cm}{\ttfamily [protected]}}
+
+The progress logger \Hypertarget{classSimulation_a490b1c45277ba9305d71c9db52eae51a}\index{Simulation@{Simulation}!reader@{reader}}
+\index{reader@{reader}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{reader}{reader}}
+{\footnotesize\ttfamily \label{classSimulation_a490b1c45277ba9305d71c9db52eae51a} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classFileReader}{File\+Reader}}$>$ Simulation\+::reader\hspace{0.3cm}{\ttfamily [protected]}}
+
+The input reader \Hypertarget{classSimulation_a86664aa4e0bac0131fd428592d18079e}\index{Simulation@{Simulation}!stationaryParticleTypes@{stationaryParticleTypes}}
+\index{stationaryParticleTypes@{stationaryParticleTypes}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{stationaryParticleTypes}{stationaryParticleTypes}}
+{\footnotesize\ttfamily \label{classSimulation_a86664aa4e0bac0131fd428592d18079e} 
+std\+::map$<$unsigned, bool$>$ Simulation\+::stationary\+Particle\+Types}
+
+The types of particles which are stationary \Hypertarget{classSimulation_abdb48771e24ba63a3db95b27d153b629}\index{Simulation@{Simulation}!strategy@{strategy}}
+\index{strategy@{strategy}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{strategy}{strategy}}
+{\footnotesize\ttfamily \label{classSimulation_abdb48771e24ba63a3db95b27d153b629} 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}}\& Simulation\+::strategy\hspace{0.3cm}{\ttfamily [protected]}}
+
+The strategy which is used to calculate the physics \Hypertarget{classSimulation_a838684076d88a5e923c35c513a1d676c}\index{Simulation@{Simulation}!time@{time}}
+\index{time@{time}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily \label{classSimulation_a838684076d88a5e923c35c513a1d676c} 
+double Simulation\+::time}
+
+The current time of the simulation \Hypertarget{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}\index{Simulation@{Simulation}!writer@{writer}}
+\index{writer@{writer}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{writer}{writer}}
+{\footnotesize\ttfamily \label{classSimulation_a9c3c9fd1d02a83eea80af98eca001975} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classFileWriter}{File\+Writer}}$>$ Simulation\+::writer\hspace{0.3cm}{\ttfamily [protected]}}
+
+The output writer 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/simulation/\mbox{\hyperlink{baseSimulation_8h}{base\+Simulation.\+h}}\item 
+src/simulation/\mbox{\hyperlink{baseSimulation_8cpp}{base\+Simulation.\+cpp}}\end{DoxyCompactItemize}

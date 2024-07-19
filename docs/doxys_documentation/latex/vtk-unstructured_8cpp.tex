@@ -1,0 +1,704 @@
+\doxysection{src/io/xsd/vtk-\/unstructured.cpp File Reference}
+\hypertarget{vtk-unstructured_8cpp}{}\label{vtk-unstructured_8cpp}\index{src/io/xsd/vtk-\/unstructured.cpp@{src/io/xsd/vtk-\/unstructured.cpp}}
+{\ttfamily \#include $<$xsd/cxx/pre.\+hxx$>$}\newline
+{\ttfamily \#include "{}vtk-\/unstructured.\+h"{}}\newline
+{\ttfamily \#include $<$xsd/cxx/xml/dom/parsing-\/source.\+hxx$>$}\newline
+{\ttfamily \#include $<$istream$>$}\newline
+{\ttfamily \#include $<$xsd/cxx/xml/sax/std-\/input-\/source.\+hxx$>$}\newline
+{\ttfamily \#include $<$xsd/cxx/tree/error-\/handler.\+hxx$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include $<$xsd/cxx/xml/dom/serialization-\/source.\+hxx$>$}\newline
+{\ttfamily \#include $<$xsd/cxx/post.\+hxx$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_aa0284960311f10a27a9336af19366479}{VTKFile}} (const \+::std\+::string \&u, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a URI or a local file. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a3ecfbb5f016353b8537e0e09620fb0e1}{VTKFile}} (const \+::std\+::string \&u, \mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&h, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a URI or a local file with an error handler. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a4b68c060c0f0d3f88593575280a1cbd5}{VTKFile}} (const \+::std\+::string \&u, \+::xercesc\+::\+DOMError\+Handler \&h, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a URI or a local file with a Xerces-\/\+C++ DOM error handler. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a60d013f464a9124c254b8032518a27cc}{VTKFile}} (\+::std\+::istream \&is, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a standard input stream. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a793aaa67960350b1d4242f67f03660ac}{VTKFile}} (\+::std\+::istream \&is, \mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&h, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a standard input stream with an error handler. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a813507ef229a344e525eed4c5759e33a}{VTKFile}} (\+::std\+::istream \&is, \+::xercesc\+::\+DOMError\+Handler \&h, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a standard input stream with a Xerces-\/\+C++ DOM error handler. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_ae12c97f0203e0079b0ad4bca01397996}{VTKFile}} (\+::std\+::istream \&is, const \+::std\+::string \&sid, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a standard input stream with a resource id. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a848a0158f90e38fe1c61ce559f20261d}{VTKFile}} (\+::std\+::istream \&is, const \+::std\+::string \&sid, \mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&h, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a standard input stream with a resource id and an error handler. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a24bf0355d6b66a9b7d3063cb92d11f70}{VTKFile}} (\+::std\+::istream \&is, const \+::std\+::string \&sid, \+::xercesc\+::\+DOMError\+Handler \&h, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a standard input stream with a resource id and a Xerces-\/\+C++ DOM error handler. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a968cfe17860d4c2d57bea74f9e34a4df}{VTKFile}} (\+::xercesc\+::\+Input\+Source \&i, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a Xerces-\/\+C++ input source. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_aad8d78d8d083d09c45cc70753633a099}{VTKFile}} (\+::xercesc\+::\+Input\+Source \&i, \mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&h, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a Xerces-\/\+C++ input source with an error handler. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a9cc874c707d4651b6325e59266390e79}{VTKFile}} (\+::xercesc\+::\+Input\+Source \&i, \+::xercesc\+::\+DOMError\+Handler \&h, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a Xerces-\/\+C++ input source with a Xerces-\/\+C++ DOM error handler. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a51e769278edd685a08e85383e5d45f5a}{VTKFile}} (const \+::xercesc\+::\+DOMDocument \&doc, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&p)
+\begin{DoxyCompactList}\small\item\em Parse a Xerces-\/\+C++ DOM document. \end{DoxyCompactList}\item 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a4c56caf95178c69a1b05f41d1ddd2b20}{VTKFile}} (\+::xml\+\_\+schema\+::dom\+::unique\+\_\+ptr$<$ \+::xercesc\+::\+DOMDocument $>$ d, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f, const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&)
+\begin{DoxyCompactList}\small\item\em Parse a Xerces-\/\+C++ DOM document. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a61ab4b44692dc25fbed88bd01294b3a6}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a7630c2ebfb09fec59ec9744ab4de05a1}{operator$<$$<$}} (\+::xercesc\+::\+DOMAttr \&a, const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a15e37609fa21b26bacce23662c522124}{operator$<$$<$}} (\mbox{\hyperlink{namespacexml__schema_a840728106ddd08800e62729d4eddbbc8}{\+::xml\+\_\+schema\+::list\+\_\+stream}} \&l, const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a90ac4d883593f3e71cc24b0c8a53f745}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classDataArray__t}{Data\+Array\+\_\+t}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a145ab456a0b4837b55ff6755514fd7d4}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a53b72fe6aa7e7f479b37e10e807fe4f4}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_abece001f0a506ac3847ede9a0a72d81d}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classPolyData__t}{Poly\+Data\+\_\+t}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_ac655f285f1cdc6fc044b7d58a7596a6a}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classVTKFile__t}{VTKFile\+\_\+t}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_aa134e54b6f4b88b40bab9b765f4b474d}{VTKFile}} (\+::std\+::ostream \&o, const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&s, const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&m, const \+::std\+::string \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f)
+\begin{DoxyCompactList}\small\item\em Serialize to a standard output stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_ac473b4bb1e8139a2818cc9422ecd8074}{VTKFile}} (\+::std\+::ostream \&o, const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&s, \mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&h, const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&m, const \+::std\+::string \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f)
+\begin{DoxyCompactList}\small\item\em Serialize to a standard output stream with an error handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a0cc53a876b8874263c6cd859ce8180c5}{VTKFile}} (\+::std\+::ostream \&o, const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&s, \+::xercesc\+::\+DOMError\+Handler \&h, const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&m, const \+::std\+::string \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f)
+\begin{DoxyCompactList}\small\item\em Serialize to a standard output stream with a Xerces-\/\+C++ DOM error handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a8ce3dd8745d0cf6e84c57111774b90dd}{VTKFile}} (\+::xercesc\+::\+XMLFormat\+Target \&t, const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&s, const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&m, const \+::std\+::string \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f)
+\begin{DoxyCompactList}\small\item\em Serialize to a Xerces-\/\+C++ XML format target. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_ae56b1862c2e2e2799294c95c0540f4fd}{VTKFile}} (\+::xercesc\+::\+XMLFormat\+Target \&t, const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&s, \mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&h, const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&m, const \+::std\+::string \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f)
+\begin{DoxyCompactList}\small\item\em Serialize to a Xerces-\/\+C++ XML format target with an error handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_ab2edb445af88702b397952339844aec1}{VTKFile}} (\+::xercesc\+::\+XMLFormat\+Target \&t, const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&s, \+::xercesc\+::\+DOMError\+Handler \&h, const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&m, const \+::std\+::string \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f)
+\begin{DoxyCompactList}\small\item\em Serialize to a Xerces-\/\+C++ XML format target with a Xerces-\/\+C++ DOM error handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a62e08536631ebd461aa8d51059adb67c}{VTKFile}} (\+::xercesc\+::\+DOMDocument \&d, const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&s, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}})
+\begin{DoxyCompactList}\small\item\em Serialize to an existing Xerces-\/\+C++ DOM document. \end{DoxyCompactList}\item 
+\+::xml\+\_\+schema\+::dom\+::unique\+\_\+ptr$<$ \+::xercesc\+::\+DOMDocument $>$ \mbox{\hyperlink{vtk-unstructured_8cpp_a78311ea10573548ffa4d806987124122}{VTKFile}} (const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&s, const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&m, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f)
+\begin{DoxyCompactList}\small\item\em Serialize to a new Xerces-\/\+C++ DOM document. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a39982a892c5c712b9ceaf5451fc6f4ad}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classtype}{type}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a4fb8d54838ba8178be88528f342c8b27}{operator$<$$<$}} (\+::xercesc\+::\+DOMAttr \&a, const \mbox{\hyperlink{classtype}{type}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_abc84c964f7011b68cb249e0dd527a052}{operator$<$$<$}} (\mbox{\hyperlink{namespacexml__schema_a840728106ddd08800e62729d4eddbbc8}{\+::xml\+\_\+schema\+::list\+\_\+stream}} \&l, const \mbox{\hyperlink{classtype}{type}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a03c700ca3f77780311236cfbb43b28a6}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classPointData}{Point\+Data}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a9000f9f93a0e3f8c8a2d0de1ddae77c8}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classCellData}{Cell\+Data}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a155fa88f0f3a3fb5f55f06539205ef01}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classPoints}{Points}} \&i)
+\item 
+void \mbox{\hyperlink{vtk-unstructured_8cpp_a043b0bbda942e0878ce7a8f63ddefe79}{operator$<$$<$}} (\+::xercesc\+::\+DOMElement \&e, const \mbox{\hyperlink{classCells}{Cells}} \&i)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{vtk-unstructured_8cpp_a7630c2ebfb09fec59ec9744ab4de05a1}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a7630c2ebfb09fec59ec9744ab4de05a1} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMAttr \&}]{a}{, }\item[{const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a4fb8d54838ba8178be88528f342c8b27}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a4fb8d54838ba8178be88528f342c8b27} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMAttr \&}]{a}{, }\item[{const \mbox{\hyperlink{classtype}{type}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a9000f9f93a0e3f8c8a2d0de1ddae77c8}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a9000f9f93a0e3f8c8a2d0de1ddae77c8} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classCellData}{Cell\+Data}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a043b0bbda942e0878ce7a8f63ddefe79}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [4/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a043b0bbda942e0878ce7a8f63ddefe79} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classCells}{Cells}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a90ac4d883593f3e71cc24b0c8a53f745}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [5/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a90ac4d883593f3e71cc24b0c8a53f745} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classDataArray__t}{Data\+Array\+\_\+t}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a61ab4b44692dc25fbed88bd01294b3a6}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [6/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a61ab4b44692dc25fbed88bd01294b3a6} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a145ab456a0b4837b55ff6755514fd7d4}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [7/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a145ab456a0b4837b55ff6755514fd7d4} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classPieceUnstructuredGrid__t}{Piece\+Unstructured\+Grid\+\_\+t}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a03c700ca3f77780311236cfbb43b28a6}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [8/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a03c700ca3f77780311236cfbb43b28a6} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classPointData}{Point\+Data}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a155fa88f0f3a3fb5f55f06539205ef01}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [9/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a155fa88f0f3a3fb5f55f06539205ef01} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classPoints}{Points}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_abece001f0a506ac3847ede9a0a72d81d}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [10/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_abece001f0a506ac3847ede9a0a72d81d} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classPolyData__t}{Poly\+Data\+\_\+t}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a39982a892c5c712b9ceaf5451fc6f4ad}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [11/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a39982a892c5c712b9ceaf5451fc6f4ad} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classtype}{type}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a53b72fe6aa7e7f479b37e10e807fe4f4}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [12/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a53b72fe6aa7e7f479b37e10e807fe4f4} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classUnstructuredGrid__t}{Unstructured\+Grid\+\_\+t}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_ac655f285f1cdc6fc044b7d58a7596a6a}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [13/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_ac655f285f1cdc6fc044b7d58a7596a6a} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{const \mbox{\hyperlink{classVTKFile__t}{VTKFile\+\_\+t}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a15e37609fa21b26bacce23662c522124}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [14/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a15e37609fa21b26bacce23662c522124} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a840728106ddd08800e62729d4eddbbc8}{\+::xml\+\_\+schema\+::list\+\_\+stream}} \&}]{l}{, }\item[{const \mbox{\hyperlink{classDataArrayList__t}{Data\+Array\+List\+\_\+t}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_abc84c964f7011b68cb249e0dd527a052}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [15/15]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_abc84c964f7011b68cb249e0dd527a052} 
+void operator$<$$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a840728106ddd08800e62729d4eddbbc8}{\+::xml\+\_\+schema\+::list\+\_\+stream}} \&}]{l}{, }\item[{const \mbox{\hyperlink{classtype}{type}} \&}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{vtk-unstructured_8cpp_a813507ef229a344e525eed4c5759e33a}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a813507ef229a344e525eed4c5759e33a} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::istream \&}]{is}{, }\item[{\+::xercesc\+::\+DOMError\+Handler \&}]{eh}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a standard input stream with a Xerces-\/\+C++ DOM error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A standrad input stream. \\
+\hline
+{\em eh} & A Xerces-\/\+C++ DOM error handler. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function reports parsing errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_a793aaa67960350b1d4242f67f03660ac}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a793aaa67960350b1d4242f67f03660ac} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::istream \&}]{is}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&}]{eh}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a standard input stream with an error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A standrad input stream. \\
+\hline
+{\em eh} & An error handler. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function reports parsing errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_a60d013f464a9124c254b8032518a27cc}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [3/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a60d013f464a9124c254b8032518a27cc} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::istream \&}]{is}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a standard input stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A standrad input stream. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function uses exceptions to report parsing errors. \Hypertarget{vtk-unstructured_8cpp_a24bf0355d6b66a9b7d3063cb92d11f70}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [4/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a24bf0355d6b66a9b7d3063cb92d11f70} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::istream \&}]{is}{, }\item[{const \+::std\+::string \&}]{id}{, }\item[{\+::xercesc\+::\+DOMError\+Handler \&}]{eh}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a standard input stream with a resource id and a Xerces-\/\+C++ DOM error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A standrad input stream. \\
+\hline
+{\em id} & A resource id. \\
+\hline
+{\em eh} & A Xerces-\/\+C++ DOM error handler. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+The resource id is used to identify the document being parsed in diagnostics as well as to resolve relative paths.
+
+This function reports parsing errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_a848a0158f90e38fe1c61ce559f20261d}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [5/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a848a0158f90e38fe1c61ce559f20261d} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::istream \&}]{is}{, }\item[{const \+::std\+::string \&}]{id}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&}]{eh}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a standard input stream with a resource id and an error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A standrad input stream. \\
+\hline
+{\em id} & A resource id. \\
+\hline
+{\em eh} & An error handler. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+The resource id is used to identify the document being parsed in diagnostics as well as to resolve relative paths.
+
+This function reports parsing errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_ae12c97f0203e0079b0ad4bca01397996}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [6/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_ae12c97f0203e0079b0ad4bca01397996} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::istream \&}]{is}{, }\item[{const \+::std\+::string \&}]{id}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a standard input stream with a resource id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A standrad input stream. \\
+\hline
+{\em id} & A resource id. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+The resource id is used to identify the document being parsed in diagnostics as well as to resolve relative paths.
+
+This function uses exceptions to report parsing errors. \Hypertarget{vtk-unstructured_8cpp_a0cc53a876b8874263c6cd859ce8180c5}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [7/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a0cc53a876b8874263c6cd859ce8180c5} 
+void VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&}]{x}{, }\item[{\+::xercesc\+::\+DOMError\+Handler \&}]{eh}{, }\item[{const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&}]{m}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}}()}, }\item[{const \+::std\+::string \&}]{e}{ = {\ttfamily "{}UTF-\/8"{}}, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Serialize to a standard output stream with a Xerces-\/\+C++ DOM error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & A standrad output stream. \\
+\hline
+{\em x} & An object model to serialize. \\
+\hline
+{\em eh} & A Xerces-\/\+C++ DOM error handler. \\
+\hline
+{\em m} & A namespace information map. \\
+\hline
+{\em e} & A character encoding to produce XML in. \\
+\hline
+{\em f} & Serialization flags.\\
+\hline
+\end{DoxyParams}
+This function reports serialization errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_ac473b4bb1e8139a2818cc9422ecd8074}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [8/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_ac473b4bb1e8139a2818cc9422ecd8074} 
+void VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&}]{eh}{, }\item[{const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&}]{m}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}}()}, }\item[{const \+::std\+::string \&}]{e}{ = {\ttfamily "{}UTF-\/8"{}}, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Serialize to a standard output stream with an error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & A standrad output stream. \\
+\hline
+{\em x} & An object model to serialize. \\
+\hline
+{\em eh} & An error handler. \\
+\hline
+{\em m} & A namespace information map. \\
+\hline
+{\em e} & A character encoding to produce XML in. \\
+\hline
+{\em f} & Serialization flags.\\
+\hline
+\end{DoxyParams}
+This function reports serialization errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_aa134e54b6f4b88b40bab9b765f4b474d}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [9/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_aa134e54b6f4b88b40bab9b765f4b474d} 
+void VTKFile (\begin{DoxyParamCaption}\item[{\+::std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&}]{x}{, }\item[{const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&}]{m}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}}()}, }\item[{const \+::std\+::string \&}]{e}{ = {\ttfamily "{}UTF-\/8"{}}, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Serialize to a standard output stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & A standrad output stream. \\
+\hline
+{\em x} & An object model to serialize. \\
+\hline
+{\em m} & A namespace information map. \\
+\hline
+{\em e} & A character encoding to produce XML in. \\
+\hline
+{\em f} & Serialization flags.\\
+\hline
+\end{DoxyParams}
+This function uses exceptions to report serialization errors. \Hypertarget{vtk-unstructured_8cpp_a62e08536631ebd461aa8d51059adb67c}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [10/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a62e08536631ebd461aa8d51059adb67c} 
+void VTKFile (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+DOMDocument \&}]{d}{, }\item[{const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Serialize to an existing Xerces-\/\+C++ DOM document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & A Xerces-\/\+C++ DOM document. \\
+\hline
+{\em x} & An object model to serialize. \\
+\hline
+{\em f} & Serialization flags.\\
+\hline
+\end{DoxyParams}
+Note that it is your responsibility to create the DOM document with the correct root element as well as set the necessary namespace mapping attributes. \Hypertarget{vtk-unstructured_8cpp_a9cc874c707d4651b6325e59266390e79}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [11/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a9cc874c707d4651b6325e59266390e79} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+Input\+Source \&}]{is}{, }\item[{\+::xercesc\+::\+DOMError\+Handler \&}]{eh}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a Xerces-\/\+C++ input source with a Xerces-\/\+C++ DOM error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A Xerces-\/\+C++ input source. \\
+\hline
+{\em eh} & A Xerces-\/\+C++ DOM error handler. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function reports parsing errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_aad8d78d8d083d09c45cc70753633a099}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [12/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_aad8d78d8d083d09c45cc70753633a099} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+Input\+Source \&}]{is}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&}]{eh}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a Xerces-\/\+C++ input source with an error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A Xerces-\/\+C++ input source. \\
+\hline
+{\em eh} & An error handler. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function reports parsing errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_a968cfe17860d4c2d57bea74f9e34a4df}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [13/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a968cfe17860d4c2d57bea74f9e34a4df} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+Input\+Source \&}]{is}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a Xerces-\/\+C++ input source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & A Xerces-\/\+C++ input source. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function uses exceptions to report parsing errors. \Hypertarget{vtk-unstructured_8cpp_ab2edb445af88702b397952339844aec1}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [14/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_ab2edb445af88702b397952339844aec1} 
+void VTKFile (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+XMLFormat\+Target \&}]{ft}{, }\item[{const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&}]{x}{, }\item[{\+::xercesc\+::\+DOMError\+Handler \&}]{eh}{, }\item[{const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&}]{m}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}}()}, }\item[{const \+::std\+::string \&}]{e}{ = {\ttfamily "{}UTF-\/8"{}}, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Serialize to a Xerces-\/\+C++ XML format target with a Xerces-\/\+C++ DOM error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ft} & A Xerces-\/\+C++ XML format target. \\
+\hline
+{\em x} & An object model to serialize. \\
+\hline
+{\em eh} & A Xerces-\/\+C++ DOM error handler. \\
+\hline
+{\em m} & A namespace information map. \\
+\hline
+{\em e} & A character encoding to produce XML in. \\
+\hline
+{\em f} & Serialization flags.\\
+\hline
+\end{DoxyParams}
+This function reports serialization errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_ae56b1862c2e2e2799294c95c0540f4fd}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [15/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_ae56b1862c2e2e2799294c95c0540f4fd} 
+void VTKFile (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+XMLFormat\+Target \&}]{ft}{, }\item[{const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&}]{eh}{, }\item[{const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&}]{m}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}}()}, }\item[{const \+::std\+::string \&}]{e}{ = {\ttfamily "{}UTF-\/8"{}}, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Serialize to a Xerces-\/\+C++ XML format target with an error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ft} & A Xerces-\/\+C++ XML format target. \\
+\hline
+{\em x} & An object model to serialize. \\
+\hline
+{\em eh} & An error handler. \\
+\hline
+{\em m} & A namespace information map. \\
+\hline
+{\em e} & A character encoding to produce XML in. \\
+\hline
+{\em f} & Serialization flags.\\
+\hline
+\end{DoxyParams}
+This function reports serialization errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_a8ce3dd8745d0cf6e84c57111774b90dd}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [16/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a8ce3dd8745d0cf6e84c57111774b90dd} 
+void VTKFile (\begin{DoxyParamCaption}\item[{\+::xercesc\+::\+XMLFormat\+Target \&}]{ft}{, }\item[{const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&}]{x}{, }\item[{const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&}]{m}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}}()}, }\item[{const \+::std\+::string \&}]{e}{ = {\ttfamily "{}UTF-\/8"{}}, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Serialize to a Xerces-\/\+C++ XML format target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ft} & A Xerces-\/\+C++ XML format target. \\
+\hline
+{\em x} & An object model to serialize. \\
+\hline
+{\em m} & A namespace information map. \\
+\hline
+{\em e} & A character encoding to produce XML in. \\
+\hline
+{\em f} & Serialization flags.\\
+\hline
+\end{DoxyParams}
+This function uses exceptions to report serialization errors. \Hypertarget{vtk-unstructured_8cpp_a4c56caf95178c69a1b05f41d1ddd2b20}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [17/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a4c56caf95178c69a1b05f41d1ddd2b20} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{\+::xml\+\_\+schema\+::dom\+::unique\+\_\+ptr$<$ \+::xercesc\+::\+DOMDocument $>$}]{d}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a Xerces-\/\+C++ DOM document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & A pointer to the Xerces-\/\+C++ DOM document. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function is normally used together with the keep\+\_\+dom and own\+\_\+dom parsing flags to assign ownership of the DOM document to the object model. \Hypertarget{vtk-unstructured_8cpp_a4b68c060c0f0d3f88593575280a1cbd5}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [18/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a4b68c060c0f0d3f88593575280a1cbd5} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{const \+::std\+::string \&}]{uri}{, }\item[{\+::xercesc\+::\+DOMError\+Handler \&}]{eh}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a URI or a local file with a Xerces-\/\+C++ DOM error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uri} & A URI or a local file name. \\
+\hline
+{\em eh} & A Xerces-\/\+C++ DOM error handler. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function reports parsing errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_a3ecfbb5f016353b8537e0e09620fb0e1}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [19/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a3ecfbb5f016353b8537e0e09620fb0e1} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{const \+::std\+::string \&}]{uri}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0a5d9528e9175cedf199984a8bb64d62}{\+::xml\+\_\+schema\+::error\+\_\+handler}} \&}]{eh}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a URI or a local file with an error handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uri} & A URI or a local file name. \\
+\hline
+{\em eh} & An error handler. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function reports parsing errors by calling the error handler. \Hypertarget{vtk-unstructured_8cpp_aa0284960311f10a27a9336af19366479}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [20/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_aa0284960311f10a27a9336af19366479} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{const \+::std\+::string \&}]{uri}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a URI or a local file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uri} & A URI or a local file name. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model.
+\end{DoxyReturn}
+This function uses exceptions to report parsing errors. \Hypertarget{vtk-unstructured_8cpp_a78311ea10573548ffa4d806987124122}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [21/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a78311ea10573548ffa4d806987124122} 
+\+::xml\+\_\+schema\+::dom\+::unique\+\_\+ptr$<$ \+::xercesc\+::\+DOMDocument $>$ VTKFile (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} \&}]{x}{, }\item[{const \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}} \&}]{m}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a17712c8260e03226f0a9e4d21ab78f42}{\+::xml\+\_\+schema\+::namespace\+\_\+infomap}}()}, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Serialize to a new Xerces-\/\+C++ DOM document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An object model to serialize. \\
+\hline
+{\em m} & A namespace information map. \\
+\hline
+{\em f} & Serialization flags. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new Xerces-\/\+C++ DOM document. 
+\end{DoxyReturn}
+\Hypertarget{vtk-unstructured_8cpp_a51e769278edd685a08e85383e5d45f5a}\index{vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}!VTKFile@{VTKFile}}
+\index{VTKFile@{VTKFile}!vtk-\/unstructured.cpp@{vtk-\/unstructured.cpp}}
+\doxysubsubsection{\texorpdfstring{VTKFile()}{VTKFile()}\hspace{0.1cm}{\footnotesize\ttfamily [22/22]}}
+{\footnotesize\ttfamily \label{vtk-unstructured_8cpp_a51e769278edd685a08e85383e5d45f5a} 
+\+::std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVTKFile__t}{\+::\+VTKFile\+\_\+t}} $>$ VTKFile (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMDocument \&}]{d}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{const \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}} \&}]{p}{ = {\ttfamily \mbox{\hyperlink{namespacexml__schema_a1a8ebac679580b41baebd62c7d641c1d}{\+::xml\+\_\+schema\+::properties}}()}}\end{DoxyParamCaption})}
+
+
+
+Parse a Xerces-\/\+C++ DOM document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & A Xerces-\/\+C++ DOM document. \\
+\hline
+{\em f} & Parsing flags. \\
+\hline
+{\em p} & Parsing properties. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root of the object model. 
+\end{DoxyReturn}

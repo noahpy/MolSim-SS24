@@ -1,0 +1,47 @@
+\doxysection{src/simulation/sim\+Factory.cpp File Reference}
+\hypertarget{simFactory_8cpp}{}\label{simFactory_8cpp}\index{src/simulation/simFactory.cpp@{src/simulation/simFactory.cpp}}
+{\ttfamily \#include "{}sim\+Factory.\+h"{}}\newline
+{\ttfamily \#include "{}analytics/\+Analyzer.\+h"{}}\newline
+{\ttfamily \#include "{}io/file\+Reader/\+File\+Reader.\+h"{}}\newline
+{\ttfamily \#include "{}io/file\+Writer/\+File\+Writer.\+h"{}}\newline
+{\ttfamily \#include "{}physics/boundary\+Conditions/\+Boundary\+Config.\+h"{}}\newline
+{\ttfamily \#include "{}simulation/\+Membrane\+Simulation.\+h"{}}\newline
+{\ttfamily \#include "{}simulation/\+Mixed\+LJSimulation.\+h"{}}\newline
+{\ttfamily \#include "{}simulation/planet\+Sim.\+h"{}}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulation}{Simulation}} $>$ \mbox{\hyperlink{simFactory_8cpp_a70a6ead8a7cdaebc990a254c43c06af8}{sim\+Factory}} (\mbox{\hyperlink{classParams}{Params}} \&params, \mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particles, \mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&strat, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$ write\+Pointer, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$ read\+Pointer, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$ thermostat)
+\begin{DoxyCompactList}\small\item\em A factory function for creating \doxylink{classSimulation}{Simulation} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{simFactory_8cpp_a70a6ead8a7cdaebc990a254c43c06af8}\index{simFactory.cpp@{simFactory.cpp}!simFactory@{simFactory}}
+\index{simFactory@{simFactory}!simFactory.cpp@{simFactory.cpp}}
+\doxysubsubsection{\texorpdfstring{simFactory()}{simFactory()}}
+{\footnotesize\ttfamily \label{simFactory_8cpp_a70a6ead8a7cdaebc990a254c43c06af8} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSimulation}{Simulation}} $>$ sim\+Factory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParams}{Params}} \&}]{params}{, }\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{particles}{, }\item[{\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \&}]{strat}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileWriter}{File\+Writer}} $>$}]{write\+Pointer}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classFileReader}{File\+Reader}} $>$}]{read\+Pointer}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$}]{thermostat}{}\end{DoxyParamCaption})}
+
+
+
+A factory function for creating \doxylink{classSimulation}{Simulation} objects. 
+
+This function creates and returns a \doxylink{classSimulation}{Simulation} object based on the simulation type provided, along with other parameters required for simulation initialization.
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & A reference to the \doxylink{classParams}{Params} object containing simulation parameters. \\
+\hline
+{\em particles} & A reference to the \doxylink{classParticleContainer}{Particle\+Container} containing particles for the simulation. \\
+\hline
+{\em strat} & A reference to the \doxylink{classPhysicsStrategy}{Physics\+Strategy} object defining the simulation strategy. \\
+\hline
+{\em write\+Pointer} & A unique pointer to a \doxylink{classFileWriter}{File\+Writer} object for writing simulation data. \\
+\hline
+{\em read\+Pointer} & A unique pointer to a \doxylink{classFileReader}{File\+Reader} object for reading simulation data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique pointer to a \doxylink{classSimulation}{Simulation} object representing the initialized simulation. 
+\end{DoxyReturn}

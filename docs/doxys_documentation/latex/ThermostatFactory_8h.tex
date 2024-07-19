@@ -1,0 +1,38 @@
+\doxysection{src/physics/thermostat/\+Thermostat\+Factory.h File Reference}
+\hypertarget{ThermostatFactory_8h}{}\label{ThermostatFactory_8h}\index{src/physics/thermostat/ThermostatFactory.h@{src/physics/thermostat/ThermostatFactory.h}}
+{\ttfamily \#include "{}physics/thermostat/\+Thermostat.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Params.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$ \mbox{\hyperlink{ThermostatFactory_8h_a1a0db44174e91e406938d3d787fee0fc}{thermostat\+Factory}} (\mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ec}{Thermostat\+Type}} \mbox{\hyperlink{classtype}{type}}, double init, double target, double delta, size\+\_\+t dim)
+\begin{DoxyCompactList}\small\item\em A factory function for creating \doxylink{classThermostat}{Thermostat} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ThermostatFactory_8h_a1a0db44174e91e406938d3d787fee0fc}\index{ThermostatFactory.h@{ThermostatFactory.h}!thermostatFactory@{thermostatFactory}}
+\index{thermostatFactory@{thermostatFactory}!ThermostatFactory.h@{ThermostatFactory.h}}
+\doxysubsubsection{\texorpdfstring{thermostatFactory()}{thermostatFactory()}}
+{\footnotesize\ttfamily \label{ThermostatFactory_8h_a1a0db44174e91e406938d3d787fee0fc} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThermostat}{Thermostat}} $>$ thermostat\+Factory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ec}{Thermostat\+Type}}}]{type}{, }\item[{double}]{init}{, }\item[{double}]{target}{, }\item[{double}]{delta}{, }\item[{size\+\_\+t}]{dim}{}\end{DoxyParamCaption})}
+
+
+
+A factory function for creating \doxylink{classThermostat}{Thermostat} objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of thermostat to create. \\
+\hline
+{\em init} & The initial temperature. \\
+\hline
+{\em target} & The target temperature. \\
+\hline
+{\em delta} & The maximum temperature change. \\
+\hline
+{\em dim} & The dimension used. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created thermostat object. 
+\end{DoxyReturn}

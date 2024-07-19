@@ -1,0 +1,38 @@
+\doxysection{src/physics/strat\+Factory.cpp File Reference}
+\hypertarget{stratFactory_8cpp}{}\label{stratFactory_8cpp}\index{src/physics/stratFactory.cpp@{src/physics/stratFactory.cpp}}
+{\ttfamily \#include "{}physics/strat\+Factory.\+h"{}}\newline
+{\ttfamily \#include "{}physics/force\+Cal/force\+Cal.\+h"{}}\newline
+{\ttfamily \#include "{}physics/location\+Cal/location\+Cal.\+h"{}}\newline
+{\ttfamily \#include "{}physics/strategy.\+h"{}}\newline
+{\ttfamily \#include "{}physics/velocity\+Cal/velocity\+Cal.\+h"{}}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} \mbox{\hyperlink{stratFactory_8cpp_a465bc7174dc16f5ce2928538d061d9da}{strat\+Factory}} (\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} simulation\+\_\+type, \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567c}{Parallel\+Type}} parallel\+\_\+type)
+\begin{DoxyCompactList}\small\item\em A factory function for creating \doxylink{classPhysicsStrategy}{Physics\+Strategy} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{stratFactory_8cpp_a465bc7174dc16f5ce2928538d061d9da}\index{stratFactory.cpp@{stratFactory.cpp}!stratFactory@{stratFactory}}
+\index{stratFactory@{stratFactory}!stratFactory.cpp@{stratFactory.cpp}}
+\doxysubsubsection{\texorpdfstring{stratFactory()}{stratFactory()}}
+{\footnotesize\ttfamily \label{stratFactory_8cpp_a465bc7174dc16f5ce2928538d061d9da} 
+\mbox{\hyperlink{classPhysicsStrategy}{Physics\+Strategy}} strat\+Factory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}}}]{simulation\+\_\+type}{, }\item[{\mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567c}{Parallel\+Type}}}]{parallel\+\_\+type}{ = {\ttfamily \mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567cae55a36a850c67d46b3b3325de7fce0b8}{Parallel\+Type\+::\+STATIC}}}}\end{DoxyParamCaption})}
+
+
+
+A factory function for creating \doxylink{classPhysicsStrategy}{Physics\+Strategy} objects. 
+
+This function creates and returns a \doxylink{classPhysicsStrategy}{Physics\+Strategy} object based on the simulation type provided.
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation\+\_\+type} & An enum representing the type of simulation strategy to create. \\
+\hline
+{\em parallel\+\_\+type} & An enum representing the type of parallelization to use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classPhysicsStrategy}{Physics\+Strategy} object representing the appropriate simulation strategy. 
+\end{DoxyReturn}

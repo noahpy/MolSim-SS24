@@ -1,0 +1,117 @@
+\doxysection{Overflow\+Boundary Class Reference}
+\hypertarget{classOverflowBoundary}{}\label{classOverflowBoundary}\index{OverflowBoundary@{OverflowBoundary}}
+
+
+The \doxylink{classOverflowBoundary}{Overflow\+Boundary} class is a class that represents a boundary condition where particles that leave the domain are removed.  
+
+
+
+
+{\ttfamily \#include $<$Overflow\+Boundary.\+h$>$}
+
+Inheritance diagram for Overflow\+Boundary\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOverflowBoundary}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classOverflowBoundary_a17d4a582d50f5bb8d285be9de82c2c5a}{pre\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}}) override
+\begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation before all updates are made. This does nothing, as all changes are performed after the updates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOverflowBoundary_ac8b37cefd3cbed1c5278ef29e02723f5}{post\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}}) override
+\begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation after all updates are made. This will remove the particles that left the domain. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classOverflowBoundary_aa717bcf307c8c073dca67ca1073d3f73}{Boundary\+Condition}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{Boundary\+Condition}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa}{get\+Point\+On\+Boundary\+Plane}} (const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&LJDSim)
+\begin{DoxyCompactList}\small\item\em Returns a point on the boundary-\/plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85}{get\+Relevant\+Dimension}} (const std\+::array$<$ double, 3 $>$ \&normal)
+\begin{DoxyCompactList}\small\item\em Get the dimension that is relevant to the boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classOverflowBoundary}{Overflow\+Boundary} class is a class that represents a boundary condition where particles that leave the domain are removed. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classOverflowBoundary_aa717bcf307c8c073dca67ca1073d3f73}\index{OverflowBoundary@{OverflowBoundary}!BoundaryCondition@{BoundaryCondition}}
+\index{BoundaryCondition@{BoundaryCondition}!OverflowBoundary@{OverflowBoundary}}
+\doxysubsubsection{\texorpdfstring{BoundaryCondition()}{BoundaryCondition()}}
+{\footnotesize\ttfamily \label{classOverflowBoundary_aa717bcf307c8c073dca67ca1073d3f73} 
+Boundary\+Condition\+::\+Boundary\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the boundary condition \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classOverflowBoundary_ac8b37cefd3cbed1c5278ef29e02723f5}\index{OverflowBoundary@{OverflowBoundary}!postUpdateBoundaryHandling@{postUpdateBoundaryHandling}}
+\index{postUpdateBoundaryHandling@{postUpdateBoundaryHandling}!OverflowBoundary@{OverflowBoundary}}
+\doxysubsubsection{\texorpdfstring{postUpdateBoundaryHandling()}{postUpdateBoundaryHandling()}}
+{\footnotesize\ttfamily \label{classOverflowBoundary_ac8b37cefd3cbed1c5278ef29e02723f5} 
+void Overflow\+Boundary\+::post\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The call to apply the boundary condition to the simulation after all updates are made. This will remove the particles that left the domain. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation} & The simulation to apply the boundary to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBoundaryCondition_ac515c5d031e15483b6959dbef91aa898}{Boundary\+Condition}}.
+
+\Hypertarget{classOverflowBoundary_a17d4a582d50f5bb8d285be9de82c2c5a}\index{OverflowBoundary@{OverflowBoundary}!preUpdateBoundaryHandling@{preUpdateBoundaryHandling}}
+\index{preUpdateBoundaryHandling@{preUpdateBoundaryHandling}!OverflowBoundary@{OverflowBoundary}}
+\doxysubsubsection{\texorpdfstring{preUpdateBoundaryHandling()}{preUpdateBoundaryHandling()}}
+{\footnotesize\ttfamily \label{classOverflowBoundary_a17d4a582d50f5bb8d285be9de82c2c5a} 
+void Overflow\+Boundary\+::pre\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The call to apply the boundary condition to the simulation before all updates are made. This does nothing, as all changes are performed after the updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation} & The simulation to apply the boundary to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBoundaryCondition_a7806aa116ba9779d164b53411dc0515b}{Boundary\+Condition}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/physics/boundary\+Conditions/\mbox{\hyperlink{OverflowBoundary_8h}{Overflow\+Boundary.\+h}}\item 
+src/physics/boundary\+Conditions/\mbox{\hyperlink{OverflowBoundary_8cpp}{Overflow\+Boundary.\+cpp}}\end{DoxyCompactItemize}

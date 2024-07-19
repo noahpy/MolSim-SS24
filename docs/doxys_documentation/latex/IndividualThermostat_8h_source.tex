@@ -1,0 +1,27 @@
+\doxysection{Individual\+Thermostat.\+h}
+\hypertarget{IndividualThermostat_8h_source}{}\label{IndividualThermostat_8h_source}\index{src/physics/thermostat/IndividualThermostat.h@{src/physics/thermostat/IndividualThermostat.h}}
+\mbox{\hyperlink{IndividualThermostat_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Thermostat_8h}{Thermostat.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIndividualThermostat}{IndividualThermostat}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classThermostat}{Thermostat}}\ \{}
+\DoxyCodeLine{00005\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classIndividualThermostat_a9d0e64b62f4ad17269e8c82d54078d52}{IndividualThermostat}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a17c39daa8962c39be528ec92901c69ac}{init}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}{target}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}{delta}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}{dim}});}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIndividualThermostat_a018b97f7bd29c16a2506e33fe5804427}{updateT}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classIndividualThermostat_af17c984d30c1dbbda381db3b0b486652}{getTotalKineticEnergy}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{classIndividualThermostat_a70565aaa85f18b0ec3172fa9a4bb479f}{getName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIndividualThermostat_a654a6b10b692fafe7a63c497cc6fac11}{initialize}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classIndividualThermostat_aade000951756fcbe3d4b797bb3952ced}{getMeanVelocity}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classIndividualThermostat_a6e74e43e9b7e55f83aff45f2b3f07d1c}{numFixParticles}};\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIndividualThermostat_abe7ed476a1ddd3013c5139feeedfd334}{isInitialized}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00054\ \};}
+
+\end{DoxyCode}

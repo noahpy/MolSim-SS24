@@ -1,0 +1,101 @@
+\doxysection{Mixed\+LJSimulation.\+h}
+\hypertarget{MixedLJSimulation_8h_source}{}\label{MixedLJSimulation_8h_source}\index{src/simulation/MixedLJSimulation.h@{src/simulation/MixedLJSimulation.h}}
+\mbox{\hyperlink{MixedLJSimulation_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{LennardJonesDomainSimulation_8h}{LennardJonesDomainSimulation.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Thermostat_8h}{physics/thermostat/Thermostat.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ std::map<std::pair<int,\ int>,\ \textcolor{keywordtype}{double}>\ \mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{MixLJParamMap}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMixedLJSimulation}{MixedLJSimulation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classLennardJonesDomainSimulation}{LennardJonesDomainSimulation}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classMixedLJSimulation_a3744ca22864f02372df106840d3b6962}{MixedLJSimulation}}(}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\_t}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\_time}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::map<unsigned,\ bool>\ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationaryParticleTypes}},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<\textcolor{keywordtype}{unsigned},\ std::pair<double,\ double>>\&\ LJParams,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ domainOrigin,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ domainSize,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cutoff,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\&\ boundaryConfig,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::unique\_ptr<Analyzer>\ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}},}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ gravity\_constant,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ std::unique\_ptr<Thermostat>\ \mbox{\hyperlink{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}{thermostat}},}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}\ =\ 10,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}}\ =\ 10,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysisFrequency}}\ =\ 10000,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ read\_file\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\_thermostat}}\ =\ 1000,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8}{doProfile}}\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMixedLJSimulation_aa7375f55511373e065bac8b309a93bc5}{runSim}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ std::pair<int,\ int>\ \mbox{\hyperlink{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}{getMixKey}}(\textcolor{keywordtype}{unsigned}\ type1,\ \textcolor{keywordtype}{unsigned}\ type2)}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type1\ >\ type2)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ std::swap(type1,\ type2);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Always\ return\ the\ pair\ with\ the\ smaller\ type\ first}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_pair(type1,\ type2);}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a5ae150d4e7cc6a76902145a5194eb01c}{getEpsilon}}(\textcolor{keywordtype}{int}\ type1,\ \textcolor{keywordtype}{int}\ type2)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_a7576f75eee44a3f7082d3d7e22a3954a}{epsilons}}.at(\mbox{\hyperlink{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}{getMixKey}}(type1,\ type2));\ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a9d7ccddaa7c40cdc8f4bc0bdf4ecaec6}{getSigma}}(\textcolor{keywordtype}{int}\ type1,\ \textcolor{keywordtype}{int}\ type2)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_ace21f3725169264364e1a4d5590f51b2}{sigmas}}.at(\mbox{\hyperlink{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}{getMixKey}}(type1,\ type2));\ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_affdfb3616d49044590eb8c4503f64566}{getAlpha}}(\textcolor{keywordtype}{int}\ type1,\ \textcolor{keywordtype}{int}\ type2)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_afe081eebe176f5349c4dd5a32a34eb20}{alphas}}.at(\mbox{\hyperlink{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}{getMixKey}}(type1,\ type2));\ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a770dbd7af68281175c29f23bdd482850}{getBeta}}(\textcolor{keywordtype}{int}\ type1,\ \textcolor{keywordtype}{int}\ type2)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_ad0329bb270a24c0373da54ae6f8ed2a9}{betas}}.at(\mbox{\hyperlink{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}{getMixKey}}(type1,\ type2));\ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_ab795f98301fddce0a2afa1a786e8e86f}{getGamma}}(\textcolor{keywordtype}{int}\ type1,\ \textcolor{keywordtype}{int}\ type2)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_ad49bb3f14691b38427287c21fed64b66}{gammas}}.at(\mbox{\hyperlink{classMixedLJSimulation_af06913d3df6c1a64726647d4761f810a}{getMixKey}}(type1,\ type2));\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a2c2f1e6d7c1549d5c4763dad80bc768e}{getGravityConstant}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_a68dc278e818d8914713b758b9b91c02b}{gravityConstant}};\ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_aa6519b46f5ff67a4e0564d05d3bd9060}{getRepulsiveDistance}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtype}{type}})\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a25a521fd8f5b7746f32139e08cddbd78}{getT\_init}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_a5ced68a26e022d598162967aa846de52}{T\_init}};\ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a70b450960c2af7048a414a65d511d19c}{getT\_target}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_a57d6c21075835a40950d93f75a2bc0ae}{T\_target}};\ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a618a70f8c367d02f3669835003a5e163}{getDelta\_T}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_a5893624d38e3d7fb8fdaf4c3ee38ff7e}{delta\_T}};\ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMixedLJSimulation_a2c0357b482147dd43dce300974ebe88d}{getN\_thermostat}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\_thermostat}};\ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keyword}{const}\ std::map<unsigned,\ std::pair<double,\ double>>\ \mbox{\hyperlink{classMixedLJSimulation_aa7bb1f7d12080f0139aa4dc35d8030d3}{ljparams}};}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{MixLJParamMap}}\ \mbox{\hyperlink{classMixedLJSimulation_a7576f75eee44a3f7082d3d7e22a3954a}{epsilons}};\ }
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{MixLJParamMap}}\ \mbox{\hyperlink{classMixedLJSimulation_ace21f3725169264364e1a4d5590f51b2}{sigmas}};\ }
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{MixLJParamMap}}\ \mbox{\hyperlink{classMixedLJSimulation_afe081eebe176f5349c4dd5a32a34eb20}{alphas}};\ }
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{MixLJParamMap}}\ \mbox{\hyperlink{classMixedLJSimulation_ad0329bb270a24c0373da54ae6f8ed2a9}{betas}};\ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{MixedLJSimulation_8h_ab06a1930a44b1b6f5915369311ab38a5}{MixLJParamMap}}\ \mbox{\hyperlink{classMixedLJSimulation_ad49bb3f14691b38427287c21fed64b66}{gammas}};\ }
+\DoxyCodeLine{00178\ \ \ \ \ std::map<unsigned,\ double>}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMixedLJSimulation_aca34d7e6b4bc61c6ee41d464ebae3e98}{repulsiveDistances}};\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a68dc278e818d8914713b758b9b91c02b}{gravityConstant}};\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a5ced68a26e022d598162967aa846de52}{T\_init}};\ }
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a57d6c21075835a40950d93f75a2bc0ae}{T\_target}};\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMixedLJSimulation_a5893624d38e3d7fb8fdaf4c3ee38ff7e}{delta\_T}};\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMixedLJSimulation_afb62d24a06df0250496ab4c6f48d98f6}{n\_thermostat}};\ }
+\DoxyCodeLine{00186\ \ \ \ \ std::unique\_ptr<Thermostat>\ \mbox{\hyperlink{classMixedLJSimulation_aafd1b5c91a77e3ae01bfbc3fb23ad8ae}{thermostat}};\ }
+\DoxyCodeLine{00188\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/\ Hide\ singe\ epsilon\ and\ sigma\ -\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classLennardJonesSimulation_a41a1c4c60c6a2760aa11af66f656e1a4}{LennardJonesSimulation::getAlpha}};\ \textcolor{comment}{//}}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classLennardJonesSimulation_ab177ce539ce797212d9b24303ae65f2f}{LennardJonesSimulation::getBeta}};\ \textcolor{comment}{//}}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classLennardJonesSimulation_a42422dd40e29be6f43c1911934b6c4fb}{LennardJonesSimulation::getEpsilon}};\ \textcolor{comment}{//}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classLennardJonesSimulation_a0d7cf6c105468d3677d1c9538752a85b}{LennardJonesSimulation::getGamma}};\ \textcolor{comment}{//}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classLennardJonesSimulation_a456b96b4514880185a9aea867a855af3}{LennardJonesSimulation::getSigma}};\ \textcolor{comment}{//}}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classLennardJonesSimulation_a03b2d037dda00ab1b39cab5808f8abae}{LennardJonesSimulation::setEpsilon}};\ \textcolor{comment}{//}}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classLennardJonesSimulation_a71edfeb82be06f000833da94472ea51f}{LennardJonesSimulation::setSigma}};\ \textcolor{comment}{//}}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMixedLJSimulation_a63647bbf44915bcd41735ad8b3fed1d8}{doProfile}};}
+\DoxyCodeLine{00200\ \};}
+
+\end{DoxyCode}

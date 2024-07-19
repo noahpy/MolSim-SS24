@@ -1,0 +1,162 @@
+\doxysection{Cell\+Grid.\+h}
+\hypertarget{CellGrid_8h_source}{}\label{CellGrid_8h_source}\index{src/models/linked\_cell/CellGrid.h@{src/models/linked\_cell/CellGrid.h}}
+\mbox{\hyperlink{CellGrid_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Cell_8h}{models/linked\_cell/cell/Cell.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{CellType_8h}{models/linked\_cell/cell/CellType.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{typedef}\ std::vector<std::vector<std::vector<std::unique\_ptr<Cell>>>>\ \mbox{\hyperlink{CellGrid_8h_a8b6c9bba89b2c2ddd3a290ae0b2a11b7}{CellVec}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellGrid}{CellGrid}}\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{classCellGrid_a0b693d3fa5e74a2cf9dde46731fb9bda}{CellGrid}}(}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classCellGrid_ac673b141d52addf9b89214c75541c1c5}{domainOrigin}},\ std::array<double,\ 3>\ \mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}{domainSize}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoffRadius}});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classCellGrid_a072d3af5ec6b9de44b6dc1996a0526bd}{\string~CellGrid}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{CellGrid_8h_a8b6c9bba89b2c2ddd3a290ae0b2a11b7}{CellVec}}\ \mbox{\hyperlink{classCellGrid_a0ad7fb41c6024d53b908410baaaa8f3c}{cells}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ The\ bottom-\/left-\/back\ point\ of\ the\ domain}}
+\DoxyCodeLine{00039\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classCellGrid_ac673b141d52addf9b89214c75541c1c5}{domainOrigin}};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ The\ bottom-\/right-\/back\ point\ of\ the\ domain}}
+\DoxyCodeLine{00041\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classCellGrid_a16a519b0a9aa4be26dcd545e1a0d2592}{domainEnd}};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classCellGrid_afee2831c8dff53421e2d3f95f3a9aac9}{gridDimensionality}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoffRadius}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCellGrid_a4d3ccac54a64195ca1b7f8a90fea302f}{cutoffRadiusSquared}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_aa0a2273428325f3b2a271cc0cb7e03e6}{addParticle}}(\mbox{\hyperlink{classParticle}{Particle}}\&\ particle);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_a16075f060d16b2f3978c21bd6c239f5c}{addParticlesFromContainer}}(\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ particleContainer);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00071\ \ \ \ \ [[nodiscard]]\ std::list<CellIndex>\ \mbox{\hyperlink{classCellGrid_acb9532f155e993df36ce924dff6ccaec}{getNeighbourCells}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\&\ cellIndex)\ \textcolor{keyword}{const}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ [[nodiscard]]\ std::list<CellIndex>\ \mbox{\hyperlink{classCellGrid_a79310b24101b418fd7e4f57883d82e92}{getNeighbourCellsStencile2D}}(}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\&\ cellIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ [[nodiscard]]\ std::list<CellIndex>\ \mbox{\hyperlink{classCellGrid_a64140c36de3c51d9c755a8d75de12d2b}{getNeighbourCellsStencile3D}}(}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\&\ cellIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_a6a65b36d6315cd2d3b473eb7b9bf5e8d}{preCalcSetup}}(\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ particleContainer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_a0cc08427712b31b0aa76f1111d6ae9ad}{preCalcSetupGravity}}(}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ particleContainer,\ \textcolor{keywordtype}{double}\ gravitationalConstant)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_ada1b565f4e853cdda5084329a1394d54}{postCalcSetup}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_a493abd15668cae2b5c9d18faec96e166}{updateCells}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{//\ Forward\ declaration\ (see\ bottom)}}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{BoundaryIterator}};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Forward\ declaration\ (see\ bottom)}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellGrid_1_1HaloIterator}{HaloIterator}};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{BoundaryIterator}}\ \mbox{\hyperlink{classCellGrid_a14162e294692a3d60c1d895d7a46a9ad}{boundaryCellIterator}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1HaloIterator}{HaloIterator}}\ \mbox{\hyperlink{classCellGrid_ad9833dc34f083e88602ec54a6e4cfa57}{haloCellIterator}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{/*\ @brief\ Sets\ the\ domain\ origin.}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ \ \ *\ @param\ domainOrigin\ 3D\ array\ representing\ the\ "{}origin"{}\ of\ the\ simulation\ domain.}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_a3ce09af42fabee9c2eb0a22f995babd9}{setDomainOrigin}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classCellGrid_ac673b141d52addf9b89214c75541c1c5}{domainOrigin}});}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{/*\ @brief\ Sets\ the\ domain\ size.}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ \ \ \ \ *\ @param\ domainSize\ A\ 3D\ array\ representing\ the\ size\ of\ the\ simulation\ domain.}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_acb35ad05a6888da0d7e5a7a5b5dca94f}{setDomainSize}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ \mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}{domainSize}});}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{/*\ @brief\ Sets\ the\ cutoff\ radius.}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ \ \ *\ @param\ cutoffRadius\ The\ cutoff\ radius\ for\ particle\ interactions.}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_a129d490f24645a97b87976df2c517c65}{setCutoffRadius}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoffRadius}});}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{classCellGrid_a6dbd50183f898783686e0ee9405e3384}{getDomainOrigin}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCellGrid_ac673b141d52addf9b89214c75541c1c5}{domainOrigin}};\ \}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c}{getDomainSize}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}{domainSize}};\ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{inline}\ std::array<size\_t,\ 3>\ \mbox{\hyperlink{classCellGrid_a0f078998bfca495dcbd72f5df7da29d6}{getGridDimensions}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCellGrid_ae97c8fcf7cf23b2194ea6c7f0446e37e}{gridDimensions}};\ \}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd}{getCutoffRadius}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoffRadius}};\ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ \mbox{\hyperlink{classCellGrid_a9fb16506dd14691dcfdd433baf63592c}{getIndexFromPos}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ pos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00179\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{CellType}}\ \mbox{\hyperlink{classCellGrid_a449b70606acd2967e7bf6ab51b04e5f7}{determineCellType}}(\textcolor{keyword}{const}\ std::array<size\_t,\ 3>\&\ indices)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_ab23ab61399f7b451f77f5e89b8085677}{initializeGrid}}();}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_a779ac84cd99605c955ae53ab298d80d6}{determineNeighbours}}(\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ cell);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellGrid_aed4d1c8deaa5f4fe26a09ee3bb5f55af}{determineNeighboursStencile}}(\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ cell,\ \textcolor{keywordtype}{bool}\ is2D);}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00202\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}{domainSize}};}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00205\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classCellGrid_ab017516be508e9e366dcf2cc09244404}{cellSize}};}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00208\ \ \ \ \ std::array<size\_t,\ 3>\ \mbox{\hyperlink{classCellGrid_ae97c8fcf7cf23b2194ea6c7f0446e37e}{gridDimensions}};}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00211\ \ \ \ \ std::vector<CellIndex>\ \mbox{\hyperlink{classCellGrid_a69266ad6ff3f1aa79a8552bede00d5e9}{boundaryCells}};}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00214\ \ \ \ \ std::vector<CellIndex>\ \mbox{\hyperlink{classCellGrid_a0d0da1143a110cc59a1fa05a828c3f7c}{haloCells}};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{/*\ \#\#\#\#\#\ Detailed\ Iterator\ Definitions\ \#\#\#\#\#\ */}}
+\DoxyCodeLine{00217\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{BoundaryIterator}}\ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_aaf4a2d87a05dfaebf38d32dbe0931565}{BoundaryIterator}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ position,\ std::array<size\_t,\ 3>\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a3db7112dd95b1abde37ad71cf69fb657}{gridDimensions}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a42f410388a409ba80460a11bd7e7aa6f}{is2D}});}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{BoundaryIterator}}\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_aadb6f359ea24fde5cbbe15fbbca789e7}{begin}}();}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{BoundaryIterator}}\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a7717a18214668c0a68043aea65d54059}{end}}();}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a617b5d6e4c864a3e9f31053c9582e19f}{operator*}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{BoundaryIterator}}\&\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a64b86045bbf57f7507136b8d595b46a8}{operator++}}();}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a6839d86675690082c26d4f745a01b50c}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{BoundaryIterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a72978c823530f5250808f5edc85c01b4}{index}};}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ std::vector<CellIndex>\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a9316b5de9348a1425b65c69fd2e4f928}{boundaries}};}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ std::array<size\_t,\ 3>\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a3db7112dd95b1abde37ad71cf69fb657}{gridDimensions}};}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator_a42f410388a409ba80460a11bd7e7aa6f}{is2D}};\ }
+\DoxyCodeLine{00273\ \ \ \ \ \};}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCellGrid_1_1HaloIterator}{HaloIterator}}\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_ae2d82065ceebf1124e1da0bc8892896f}{HaloIterator}}(\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}\ position,\ std::array<size\_t,\ 3>\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_a67072011d240d66f451772526f0c7044}{gridDimensions}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_a72fa1e5b385b2b6afc97100f3dfb21d2}{is2D}});}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1HaloIterator}{HaloIterator}}\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_a7e0dcd8c97059af3d0e726faa95da5cb}{begin}}();}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1HaloIterator}{HaloIterator}}\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_a2425d0bdbc5d18e4c2d0934a87d05d73}{end}}();}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_aef23c5a80dd3e2161598ad508e6f5d75}{operator*}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellGrid_1_1HaloIterator}{HaloIterator}}\&\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_abf64eaefdb648fc6edc77e349d7d2df6}{operator++}}();}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_a38a2f6ae02ddd88449f06dd97d1a7b6e}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator}{HaloIterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ std::vector<CellIndex>\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_ade852f104090f44002b3b87acce63fa9}{boundaries}};}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ std::array<size\_t,\ 3>\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_a67072011d240d66f451772526f0c7044}{gridDimensions}};}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_ae3e6998bfbe2460df0ba5443c2cf4ba8}{index}};}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCellGrid_1_1HaloIterator_a72fa1e5b385b2b6afc97100f3dfb21d2}{is2D}};\ }
+\DoxyCodeLine{00329\ \ \ \ \ \};}
+\DoxyCodeLine{00330\ \};}
+
+\end{DoxyCode}

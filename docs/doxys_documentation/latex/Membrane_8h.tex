@@ -1,0 +1,51 @@
+\doxysection{src/models/molecules/\+Membrane.h File Reference}
+\hypertarget{Membrane_8h}{}\label{Membrane_8h}\index{src/models/molecules/Membrane.h@{src/models/molecules/Membrane.h}}
+{\ttfamily \#include "{}Molecule.\+h"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMembrane}{Membrane}}
+\begin{DoxyCompactList}\small\item\em A class to model a molecules of particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \mbox{\hyperlink{Membrane_8h_a58e20956838df653bcc06ac13d30bf0f}{Particle\+Grid}}
+\begin{DoxyCompactList}\small\item\em A 2D grid of particles (Membranes will be represented as 2D grids of particle ids) \end{DoxyCompactList}\item 
+typedef std\+::map$<$ size\+\_\+t, std\+::vector$<$ size\+\_\+t $>$ $>$ \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}}
+\begin{DoxyCompactList}\small\item\em A map from particles to their neighbors. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$, bool $>$ \mbox{\hyperlink{Membrane_8h_a623b831fd404538400a013d5e66eade4}{Neighboring\+Relation\+Map}}
+\begin{DoxyCompactList}\small\item\em A map that stores if two particles are neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{Membrane_8h_a623b831fd404538400a013d5e66eade4}\index{Membrane.h@{Membrane.h}!NeighboringRelationMap@{NeighboringRelationMap}}
+\index{NeighboringRelationMap@{NeighboringRelationMap}!Membrane.h@{Membrane.h}}
+\doxysubsubsection{\texorpdfstring{NeighboringRelationMap}{NeighboringRelationMap}}
+{\footnotesize\ttfamily \label{Membrane_8h_a623b831fd404538400a013d5e66eade4} 
+typedef std\+::map$<$std\+::pair$<$size\+\_\+t, size\+\_\+t$>$, bool$>$ \mbox{\hyperlink{Membrane_8h_a623b831fd404538400a013d5e66eade4}{Neighboring\+Relation\+Map}}}
+
+
+
+A map that stores if two particles are neighbors. 
+
+\Hypertarget{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}\index{Membrane.h@{Membrane.h}!NeighborParticleMap@{NeighborParticleMap}}
+\index{NeighborParticleMap@{NeighborParticleMap}!Membrane.h@{Membrane.h}}
+\doxysubsubsection{\texorpdfstring{NeighborParticleMap}{NeighborParticleMap}}
+{\footnotesize\ttfamily \label{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f} 
+typedef std\+::map$<$size\+\_\+t , std\+::vector$<$size\+\_\+t$>$ $>$ \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{Neighbor\+Particle\+Map}}}
+
+
+
+A map from particles to their neighbors. 
+
+\Hypertarget{Membrane_8h_a58e20956838df653bcc06ac13d30bf0f}\index{Membrane.h@{Membrane.h}!ParticleGrid@{ParticleGrid}}
+\index{ParticleGrid@{ParticleGrid}!Membrane.h@{Membrane.h}}
+\doxysubsubsection{\texorpdfstring{ParticleGrid}{ParticleGrid}}
+{\footnotesize\ttfamily \label{Membrane_8h_a58e20956838df653bcc06ac13d30bf0f} 
+typedef std\+::vector$<$std\+::vector$<$size\+\_\+t$>$ $>$ \mbox{\hyperlink{Membrane_8h_a58e20956838df653bcc06ac13d30bf0f}{Particle\+Grid}}}
+
+
+
+A 2D grid of particles (Membranes will be represented as 2D grids of particle ids) 
+

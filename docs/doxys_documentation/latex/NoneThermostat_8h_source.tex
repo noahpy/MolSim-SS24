@@ -1,0 +1,31 @@
+\doxysection{None\+Thermostat.\+h}
+\hypertarget{NoneThermostat_8h_source}{}\label{NoneThermostat_8h_source}\index{src/physics/thermostat/NoneThermostat.h@{src/physics/thermostat/NoneThermostat.h}}
+\mbox{\hyperlink{NoneThermostat_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Thermostat_8h}{Thermostat.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classNoneThermostat}{NoneThermostat}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classThermostat}{Thermostat}}\ \{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classNoneThermostat_ae2a3f05a97ee99fc10f4876abff9667c}{NoneThermostat}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classNoneThermostat_acebeead349ebed847e6d379991ff20bc}{updateT}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Do\ nothing}}
+\DoxyCodeLine{00018\ \ \ \ \ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classNoneThermostat_a83e880630d9b7a152ee16ae33cde2884}{initializeBrownianMotion}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Do\ nothing}}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classNoneThermostat_a7ff0f79fa0b074361bad60df7d1a1c5c}{getTotalKineticEnergy}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Do\ nothing}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{classNoneThermostat_a55b6c2d46a4a4ba63fee683db96c7740}{getName}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}No\ Thermostat\ active"{}};\ \};}
+\DoxyCodeLine{00045\ \};}
+
+\end{DoxyCode}

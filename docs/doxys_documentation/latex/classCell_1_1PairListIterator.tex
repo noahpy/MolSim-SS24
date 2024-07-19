@@ -1,0 +1,132 @@
+\doxysection{Cell\+::Pair\+List\+Iterator Class Reference}
+\hypertarget{classCell_1_1PairListIterator}{}\label{classCell_1_1PairListIterator}\index{Cell::PairListIterator@{Cell::PairListIterator}}
+
+
+{\ttfamily \#include $<$Cell.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCell_1_1PairListIterator_a4025c7073b998289834ead9df8c08883}{Pair\+List\+Iterator}} (\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}} \&\mbox{\hyperlink{classCell_1_1PairListIterator_af54000cae3400f8c5aadba86ac6e25cb}{particles}}, bool \mbox{\hyperlink{classCell_a41b565f5a1b4e89e2728fa2140d8b7d9}{end}}=false)
+\begin{DoxyCompactList}\small\item\em Constructor for Pair\+Iterator. \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::reference\+\_\+wrapper$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$, std\+::reference\+\_\+wrapper$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ $>$ \mbox{\hyperlink{classCell_1_1PairListIterator_a6ad963d62b7c5dfe2b7c825d8366294a}{operator\texorpdfstring{$\ast$}{*}}} () const
+\begin{DoxyCompactList}\small\item\em Dereferences the iterator, returning a pair of particle pointers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCell_1_1PairListIterator}{Pair\+List\+Iterator}} \& \mbox{\hyperlink{classCell_1_1PairListIterator_ad29760df16da52a18139372985f81beb}{operator++}} ()
+\begin{DoxyCompactList}\small\item\em Increments the iterator to the next particle pair. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCell_1_1PairListIterator_a85669271048d7048a71d8b35ff4cea8c}{operator!=}} (const \mbox{\hyperlink{classCell_1_1PairListIterator}{Pair\+List\+Iterator}} \&other) const
+\begin{DoxyCompactList}\small\item\em Checks if this iterator is not equal to another Pair\+Iterator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}} \& \mbox{\hyperlink{classCell_1_1PairListIterator_af54000cae3400f8c5aadba86ac6e25cb}{particles}}
+\begin{DoxyCompactList}\small\item\em A reference to the list of particles to iterate over. \end{DoxyCompactList}\item 
+Particle\+Ref\+List\+::iterator \mbox{\hyperlink{classCell_1_1PairListIterator_a058bc675a930c7c72eaf2d52577ddea0}{first\+It}}
+\begin{DoxyCompactList}\small\item\em An iterator to the first particle in the current pair. \end{DoxyCompactList}\item 
+Particle\+Ref\+List\+::iterator \mbox{\hyperlink{classCell_1_1PairListIterator_ac5394fd25fe2b59e2487f23b6be56e37}{second\+It}}
+\begin{DoxyCompactList}\small\item\em An iterator to the second particle in the current pair. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCell_1_1PairListIterator_a4025c7073b998289834ead9df8c08883}\index{Cell::PairListIterator@{Cell::PairListIterator}!PairListIterator@{PairListIterator}}
+\index{PairListIterator@{PairListIterator}!Cell::PairListIterator@{Cell::PairListIterator}}
+\doxysubsubsection{\texorpdfstring{PairListIterator()}{PairListIterator()}}
+{\footnotesize\ttfamily \label{classCell_1_1PairListIterator_a4025c7073b998289834ead9df8c08883} 
+Cell\+::\+Pair\+List\+Iterator\+::\+Pair\+List\+Iterator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}} \&}]{particles}{, }\item[{bool}]{end}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for Pair\+Iterator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & A reference to the list of particles. \\
+\hline
+{\em end} & Set to true to create an end iterator. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCell_1_1PairListIterator_a85669271048d7048a71d8b35ff4cea8c}\index{Cell::PairListIterator@{Cell::PairListIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Cell::PairListIterator@{Cell::PairListIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{classCell_1_1PairListIterator_a85669271048d7048a71d8b35ff4cea8c} 
+bool Cell\+::\+Pair\+List\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCell_1_1PairListIterator}{Pair\+List\+Iterator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if this iterator is not equal to another Pair\+Iterator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other Pair\+Iterator to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the iterators are not equal, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classCell_1_1PairListIterator_a6ad963d62b7c5dfe2b7c825d8366294a}\index{Cell::PairListIterator@{Cell::PairListIterator}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Cell::PairListIterator@{Cell::PairListIterator}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{classCell_1_1PairListIterator_a6ad963d62b7c5dfe2b7c825d8366294a} 
+std\+::pair$<$ std\+::reference\+\_\+wrapper$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$, std\+::reference\+\_\+wrapper$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ $>$ Cell\+::\+Pair\+List\+Iterator\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Dereferences the iterator, returning a pair of particle pointers. 
+
+\begin{DoxyReturn}{Returns}
+A pair of pointers to the current particle pair. 
+\end{DoxyReturn}
+\Hypertarget{classCell_1_1PairListIterator_ad29760df16da52a18139372985f81beb}\index{Cell::PairListIterator@{Cell::PairListIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!Cell::PairListIterator@{Cell::PairListIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \label{classCell_1_1PairListIterator_ad29760df16da52a18139372985f81beb} 
+\mbox{\hyperlink{classCell_1_1PairListIterator}{Cell\+::\+Pair\+List\+Iterator}} \& Cell\+::\+Pair\+List\+Iterator\+::operator++ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Increments the iterator to the next particle pair. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the incremented Pair\+Iterator. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCell_1_1PairListIterator_a058bc675a930c7c72eaf2d52577ddea0}\index{Cell::PairListIterator@{Cell::PairListIterator}!firstIt@{firstIt}}
+\index{firstIt@{firstIt}!Cell::PairListIterator@{Cell::PairListIterator}}
+\doxysubsubsection{\texorpdfstring{firstIt}{firstIt}}
+{\footnotesize\ttfamily \label{classCell_1_1PairListIterator_a058bc675a930c7c72eaf2d52577ddea0} 
+Particle\+Ref\+List\+::iterator Cell\+::\+Pair\+List\+Iterator\+::first\+It\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+An iterator to the first particle in the current pair. 
+
+\Hypertarget{classCell_1_1PairListIterator_af54000cae3400f8c5aadba86ac6e25cb}\index{Cell::PairListIterator@{Cell::PairListIterator}!particles@{particles}}
+\index{particles@{particles}!Cell::PairListIterator@{Cell::PairListIterator}}
+\doxysubsubsection{\texorpdfstring{particles}{particles}}
+{\footnotesize\ttfamily \label{classCell_1_1PairListIterator_af54000cae3400f8c5aadba86ac6e25cb} 
+\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{Particle\+Ref\+List}}\& Cell\+::\+Pair\+List\+Iterator\+::particles\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A reference to the list of particles to iterate over. 
+
+\Hypertarget{classCell_1_1PairListIterator_ac5394fd25fe2b59e2487f23b6be56e37}\index{Cell::PairListIterator@{Cell::PairListIterator}!secondIt@{secondIt}}
+\index{secondIt@{secondIt}!Cell::PairListIterator@{Cell::PairListIterator}}
+\doxysubsubsection{\texorpdfstring{secondIt}{secondIt}}
+{\footnotesize\ttfamily \label{classCell_1_1PairListIterator_ac5394fd25fe2b59e2487f23b6be56e37} 
+Particle\+Ref\+List\+::iterator Cell\+::\+Pair\+List\+Iterator\+::second\+It\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+An iterator to the second particle in the current pair. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/linked\+\_\+cell/cell/\mbox{\hyperlink{Cell_8h}{Cell.\+h}}\item 
+src/models/linked\+\_\+cell/cell/\mbox{\hyperlink{Cell_8cpp}{Cell.\+cpp}}\end{DoxyCompactItemize}

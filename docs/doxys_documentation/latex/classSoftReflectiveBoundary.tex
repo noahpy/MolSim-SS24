@@ -1,0 +1,162 @@
+\doxysection{Soft\+Reflective\+Boundary Class Reference}
+\hypertarget{classSoftReflectiveBoundary}{}\label{classSoftReflectiveBoundary}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}}
+
+
+The \doxylink{classSoftReflectiveBoundary}{Soft\+Reflective\+Boundary} class is a class that represents a boundary condition where particles that leave the domain are reflected back into the domain about the boundary by intorducing a mirror halo particle that forces the particle back.  
+
+
+
+
+{\ttfamily \#include $<$Soft\+Reflective\+Boundary.\+h$>$}
+
+Inheritance diagram for Soft\+Reflective\+Boundary\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSoftReflectiveBoundary}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSoftReflectiveBoundary_a00be82115bb5bcce7a3efafff7475407}{pre\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}}) override
+\begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation before all updates are made. This will introduce the halo particles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSoftReflectiveBoundary_ae0add0182fda0ee1c9ab23161b02c47f}{post\+Update\+Boundary\+Handling}} (\mbox{\hyperlink{classSimulation}{Simulation}} \&\mbox{\hyperlink{simulation_8cpp_a86509cc339f194b4fce8baf3af848430}{simulation}}) override
+\begin{DoxyCompactList}\small\item\em The call to apply the boundary condition to the simulation after all updates are made. Checks if the particles have left the boundary cells and prevents them from beeing assigned to the halo cells. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSoftReflectiveBoundary_aa717bcf307c8c073dca67ca1073d3f73}{Boundary\+Condition}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBoundaryCondition_aa717bcf307c8c073dca67ca1073d3f73}{Boundary\+Condition}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classBoundaryCondition_ae33169b3da03ac79e65b56f6570dc8aa}{get\+Point\+On\+Boundary\+Plane}} (const \mbox{\hyperlink{classLennardJonesDomainSimulation}{Lennard\+Jones\+Domain\+Simulation}} \&LJDSim)
+\begin{DoxyCompactList}\small\item\em Returns a point on the boundary-\/plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \mbox{\hyperlink{classSoftReflectiveBoundary_a158bba0562942c9d4a969ab3c4530ca7}{filter\+Halo\+Neighbors}} (const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ $>$ $>$ \&halo\+Neighbors)
+\begin{DoxyCompactList}\small\item\em Filter the halo neighbors to find the one that is at the side we want. This should ignore diagonals. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classParticle}{Particle}} $>$ $>$ \mbox{\hyperlink{classSoftReflectiveBoundary_a5ce1b37f83ab23d0d39dee42e0863380}{inserted\+Particles}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classSoftReflectiveBoundary_ab00f3005456f8839ac58dd79cdac2e9d}{insertion\+Index}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classBoundaryCondition_ab13a8f0ebb3d53eba2a540925702ec85}{get\+Relevant\+Dimension}} (const std\+::array$<$ double, 3 $>$ \&normal)
+\begin{DoxyCompactList}\small\item\em Get the dimension that is relevant to the boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} \mbox{\hyperlink{classBoundaryCondition_a743273faa224f7d073e05b7611deab6c}{position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classSoftReflectiveBoundary}{Soft\+Reflective\+Boundary} class is a class that represents a boundary condition where particles that leave the domain are reflected back into the domain about the boundary by intorducing a mirror halo particle that forces the particle back. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSoftReflectiveBoundary_aa717bcf307c8c073dca67ca1073d3f73}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!BoundaryCondition@{BoundaryCondition}}
+\index{BoundaryCondition@{BoundaryCondition}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
+\doxysubsubsection{\texorpdfstring{BoundaryCondition()}{BoundaryCondition()}}
+{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_aa717bcf307c8c073dca67ca1073d3f73} 
+Boundary\+Condition\+::\+Boundary\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{classBoundaryCondition}{Boundary\+Condition} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the boundary condition \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSoftReflectiveBoundary_a158bba0562942c9d4a969ab3c4530ca7}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!filterHaloNeighbors@{filterHaloNeighbors}}
+\index{filterHaloNeighbors@{filterHaloNeighbors}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
+\doxysubsubsection{\texorpdfstring{filterHaloNeighbors()}{filterHaloNeighbors()}}
+{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_a158bba0562942c9d4a969ab3c4530ca7} 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} Soft\+Reflective\+Boundary\+::filter\+Halo\+Neighbors (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}, std\+::vector$<$ \mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} $>$ $>$ $>$ \&}]{halo\+Neighbors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Filter the halo neighbors to find the one that is at the side we want. This should ignore diagonals. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em halo\+Neighbors} & The halo neighbors to filter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The relevant halo neighbor 
+\end{DoxyReturn}
+\Hypertarget{classSoftReflectiveBoundary_ae0add0182fda0ee1c9ab23161b02c47f}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!postUpdateBoundaryHandling@{postUpdateBoundaryHandling}}
+\index{postUpdateBoundaryHandling@{postUpdateBoundaryHandling}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
+\doxysubsubsection{\texorpdfstring{postUpdateBoundaryHandling()}{postUpdateBoundaryHandling()}}
+{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_ae0add0182fda0ee1c9ab23161b02c47f} 
+void Soft\+Reflective\+Boundary\+::post\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The call to apply the boundary condition to the simulation after all updates are made. Checks if the particles have left the boundary cells and prevents them from beeing assigned to the halo cells. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation} & The simulation to apply the boundary to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBoundaryCondition_ac515c5d031e15483b6959dbef91aa898}{Boundary\+Condition}}.
+
+\Hypertarget{classSoftReflectiveBoundary_a00be82115bb5bcce7a3efafff7475407}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!preUpdateBoundaryHandling@{preUpdateBoundaryHandling}}
+\index{preUpdateBoundaryHandling@{preUpdateBoundaryHandling}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
+\doxysubsubsection{\texorpdfstring{preUpdateBoundaryHandling()}{preUpdateBoundaryHandling()}}
+{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_a00be82115bb5bcce7a3efafff7475407} 
+void Soft\+Reflective\+Boundary\+::pre\+Update\+Boundary\+Handling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimulation}{Simulation}} \&}]{simulation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The call to apply the boundary condition to the simulation before all updates are made. This will introduce the halo particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation} & The simulation to apply the boundary to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBoundaryCondition_a7806aa116ba9779d164b53411dc0515b}{Boundary\+Condition}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSoftReflectiveBoundary_a5ce1b37f83ab23d0d39dee42e0863380}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!insertedParticles@{insertedParticles}}
+\index{insertedParticles@{insertedParticles}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
+\doxysubsubsection{\texorpdfstring{insertedParticles}{insertedParticles}}
+{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_a5ce1b37f83ab23d0d39dee42e0863380} 
+std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classParticle}{Particle}}$>$ $>$ Soft\+Reflective\+Boundary\+::inserted\+Particles\hspace{0.3cm}{\ttfamily [private]}}
+
+The particles that were inserted. These will be recycled \Hypertarget{classSoftReflectiveBoundary_ab00f3005456f8839ac58dd79cdac2e9d}\index{SoftReflectiveBoundary@{SoftReflectiveBoundary}!insertionIndex@{insertionIndex}}
+\index{insertionIndex@{insertionIndex}!SoftReflectiveBoundary@{SoftReflectiveBoundary}}
+\doxysubsubsection{\texorpdfstring{insertionIndex}{insertionIndex}}
+{\footnotesize\ttfamily \label{classSoftReflectiveBoundary_ab00f3005456f8839ac58dd79cdac2e9d} 
+size\+\_\+t Soft\+Reflective\+Boundary\+::insertion\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+The index of the next particle to recycle 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/physics/boundary\+Conditions/\mbox{\hyperlink{SoftReflectiveBoundary_8h}{Soft\+Reflective\+Boundary.\+h}}\item 
+src/physics/boundary\+Conditions/\mbox{\hyperlink{SoftReflectiveBoundary_8cpp}{Soft\+Reflective\+Boundary.\+cpp}}\end{DoxyCompactItemize}

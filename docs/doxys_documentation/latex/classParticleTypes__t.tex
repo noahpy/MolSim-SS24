@@ -1,0 +1,256 @@
+\doxysection{Particle\+Types\+\_\+t Class Reference}
+\hypertarget{classParticleTypes__t}{}\label{classParticleTypes__t}\index{ParticleTypes\_t@{ParticleTypes\_t}}
+
+
+Class corresponding to the Particle\+Types\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$simulation.\+h$>$}
+
+Inheritance diagram for Particle\+Types\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classParticleTypes__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{ptype}
+Accessor and modifier functions for the ptype sequence element. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classParticleTypeAttr__t}{\+::\+Particle\+Type\+Attr\+\_\+t}} \mbox{\hyperlink{classParticleTypes__t_a1d81251cb8ee7ff51393bfd0ace343ec}{ptype\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classParticleTypes__t_a1d81251cb8ee7ff51393bfd0ace343ec}{ptype\+\_\+type}} $>$ \mbox{\hyperlink{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}{ptype\+\_\+sequence}}
+\begin{DoxyCompactList}\small\item\em Element sequence container type. \end{DoxyCompactList}\item 
+typedef ptype\+\_\+sequence\+::iterator \mbox{\hyperlink{classParticleTypes__t_a04b5bb8b62b2e3dced5be7d60ea7f35c}{ptype\+\_\+iterator}}
+\begin{DoxyCompactList}\small\item\em Element iterator type. \end{DoxyCompactList}\item 
+typedef ptype\+\_\+sequence\+::const\+\_\+iterator \mbox{\hyperlink{classParticleTypes__t_a50b3965b8741cd8904be8c50cad7714a}{ptype\+\_\+const\+\_\+iterator}}
+\begin{DoxyCompactList}\small\item\em Element constant iterator type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classParticleTypes__t_a1d81251cb8ee7ff51393bfd0ace343ec}{ptype\+\_\+type}}, char $>$ \mbox{\hyperlink{classParticleTypes__t_ae0dcbfa4a63c967812d5f649f5dfbe2b}{ptype\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}{ptype\+\_\+sequence}} \& \mbox{\hyperlink{classParticleTypes__t_a30bde7b517fc63c12a43b0c58fd918dd}{ptype}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element sequence. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}{ptype\+\_\+sequence}} \& \mbox{\hyperlink{classParticleTypes__t_a79c40ce57d84540d16ddd18d86676c23}{ptype}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element sequence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParticleTypes__t_a3c36cd4166209117051293dae04a151c}{ptype}} (const \mbox{\hyperlink{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}{ptype\+\_\+sequence}} \&s)
+\begin{DoxyCompactList}\small\item\em Copy elements from a given sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticleTypes__t_ad83bcb277fc0ba50c9ea8f071b49908d}{Particle\+Types\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleTypes__t_a2500a5ef40dc800d0e56c04876a51151}{Particle\+Types\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleTypes__t_a61f8d1707c5a3926cd236e4284a30574}{Particle\+Types\+\_\+t}} (const \mbox{\hyperlink{classParticleTypes__t}{Particle\+Types\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classParticleTypes__t}{Particle\+Types\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classParticleTypes__t_a635c8e5193822528fd2e72d8252b5346}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classParticleTypes__t}{Particle\+Types\+\_\+t}} \& \mbox{\hyperlink{classParticleTypes__t_aee97f30c06521439f6a55624d6d7e74f}{operator=}} (const \mbox{\hyperlink{classParticleTypes__t}{Particle\+Types\+\_\+t}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classParticleTypes__t_a8d5ce87a99d8db4c7f8a7343813eb291}{\texorpdfstring{$\sim$}{\string~}\+Particle\+Types\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the Particle\+Types\+\_\+t schema type. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classParticleTypes__t_a50b3965b8741cd8904be8c50cad7714a}\index{ParticleTypes\_t@{ParticleTypes\_t}!ptype\_const\_iterator@{ptype\_const\_iterator}}
+\index{ptype\_const\_iterator@{ptype\_const\_iterator}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_const\_iterator}{ptype\_const\_iterator}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a50b3965b8741cd8904be8c50cad7714a} 
+typedef ptype\+\_\+sequence\+::const\+\_\+iterator \mbox{\hyperlink{classParticleTypes__t_a50b3965b8741cd8904be8c50cad7714a}{Particle\+Types\+\_\+t\+::ptype\+\_\+const\+\_\+iterator}}}
+
+
+
+Element constant iterator type. 
+
+\Hypertarget{classParticleTypes__t_a04b5bb8b62b2e3dced5be7d60ea7f35c}\index{ParticleTypes\_t@{ParticleTypes\_t}!ptype\_iterator@{ptype\_iterator}}
+\index{ptype\_iterator@{ptype\_iterator}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_iterator}{ptype\_iterator}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a04b5bb8b62b2e3dced5be7d60ea7f35c} 
+typedef ptype\+\_\+sequence\+::iterator \mbox{\hyperlink{classParticleTypes__t_a04b5bb8b62b2e3dced5be7d60ea7f35c}{Particle\+Types\+\_\+t\+::ptype\+\_\+iterator}}}
+
+
+
+Element iterator type. 
+
+\Hypertarget{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}\index{ParticleTypes\_t@{ParticleTypes\_t}!ptype\_sequence@{ptype\_sequence}}
+\index{ptype\_sequence@{ptype\_sequence}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_sequence}{ptype\_sequence}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f} 
+typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classParticleTypes__t_a1d81251cb8ee7ff51393bfd0ace343ec}{ptype\+\_\+type}} $>$ \mbox{\hyperlink{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}{Particle\+Types\+\_\+t\+::ptype\+\_\+sequence}}}
+
+
+
+Element sequence container type. 
+
+\Hypertarget{classParticleTypes__t_ae0dcbfa4a63c967812d5f649f5dfbe2b}\index{ParticleTypes\_t@{ParticleTypes\_t}!ptype\_traits@{ptype\_traits}}
+\index{ptype\_traits@{ptype\_traits}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_traits}{ptype\_traits}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_ae0dcbfa4a63c967812d5f649f5dfbe2b} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classParticleTypes__t_a1d81251cb8ee7ff51393bfd0ace343ec}{ptype\+\_\+type}}, char $>$ \mbox{\hyperlink{classParticleTypes__t_ae0dcbfa4a63c967812d5f649f5dfbe2b}{Particle\+Types\+\_\+t\+::ptype\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classParticleTypes__t_a1d81251cb8ee7ff51393bfd0ace343ec}\index{ParticleTypes\_t@{ParticleTypes\_t}!ptype\_type@{ptype\_type}}
+\index{ptype\_type@{ptype\_type}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ptype\_type}{ptype\_type}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a1d81251cb8ee7ff51393bfd0ace343ec} 
+typedef \mbox{\hyperlink{classParticleTypeAttr__t}{\+::\+Particle\+Type\+Attr\+\_\+t}} \mbox{\hyperlink{classParticleTypes__t_a1d81251cb8ee7ff51393bfd0ace343ec}{Particle\+Types\+\_\+t\+::ptype\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classParticleTypes__t_ad83bcb277fc0ba50c9ea8f071b49908d}\index{ParticleTypes\_t@{ParticleTypes\_t}!ParticleTypes\_t@{ParticleTypes\_t}}
+\index{ParticleTypes\_t@{ParticleTypes\_t}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ParticleTypes\_t()}{ParticleTypes\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_ad83bcb277fc0ba50c9ea8f071b49908d} 
+Particle\+Types\+\_\+t\+::\+Particle\+Types\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classParticleTypes__t_a2500a5ef40dc800d0e56c04876a51151}\index{ParticleTypes\_t@{ParticleTypes\_t}!ParticleTypes\_t@{ParticleTypes\_t}}
+\index{ParticleTypes\_t@{ParticleTypes\_t}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ParticleTypes\_t()}{ParticleTypes\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a2500a5ef40dc800d0e56c04876a51151} 
+Particle\+Types\+\_\+t\+::\+Particle\+Types\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classParticleTypes__t_a61f8d1707c5a3926cd236e4284a30574}\index{ParticleTypes\_t@{ParticleTypes\_t}!ParticleTypes\_t@{ParticleTypes\_t}}
+\index{ParticleTypes\_t@{ParticleTypes\_t}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ParticleTypes\_t()}{ParticleTypes\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a61f8d1707c5a3926cd236e4284a30574} 
+Particle\+Types\+\_\+t\+::\+Particle\+Types\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticleTypes__t}{Particle\+Types\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classParticleTypes__t_a8d5ce87a99d8db4c7f8a7343813eb291}\index{ParticleTypes\_t@{ParticleTypes\_t}!````~ParticleTypes\_t@{\texorpdfstring{$\sim$}{\string~}ParticleTypes\_t}}
+\index{````~ParticleTypes\_t@{\texorpdfstring{$\sim$}{\string~}ParticleTypes\_t}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ParticleTypes\_t()}{\string~ParticleTypes\_t()}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a8d5ce87a99d8db4c7f8a7343813eb291} 
+Particle\+Types\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}\+Particle\+Types\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classParticleTypes__t_a635c8e5193822528fd2e72d8252b5346}\index{ParticleTypes\_t@{ParticleTypes\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a635c8e5193822528fd2e72d8252b5346} 
+\mbox{\hyperlink{classParticleTypes__t}{Particle\+Types\+\_\+t}} \texorpdfstring{$\ast$}{*} Particle\+Types\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classParticleTypes__t_aee97f30c06521439f6a55624d6d7e74f}\index{ParticleTypes\_t@{ParticleTypes\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_aee97f30c06521439f6a55624d6d7e74f} 
+\mbox{\hyperlink{classParticleTypes__t}{Particle\+Types\+\_\+t}} \& Particle\+Types\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticleTypes__t}{Particle\+Types\+\_\+t}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classParticleTypes__t_a79c40ce57d84540d16ddd18d86676c23}\index{ParticleTypes\_t@{ParticleTypes\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a79c40ce57d84540d16ddd18d86676c23} 
+\mbox{\hyperlink{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}{Particle\+Types\+\_\+t\+::ptype\+\_\+sequence}} \& Particle\+Types\+\_\+t\+::ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element sequence. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the sequence container. 
+\end{DoxyReturn}
+\Hypertarget{classParticleTypes__t_a30bde7b517fc63c12a43b0c58fd918dd}\index{ParticleTypes\_t@{ParticleTypes\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a30bde7b517fc63c12a43b0c58fd918dd} 
+const \mbox{\hyperlink{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}{Particle\+Types\+\_\+t\+::ptype\+\_\+sequence}} \& Particle\+Types\+\_\+t\+::ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element sequence. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the sequence container. 
+\end{DoxyReturn}
+\Hypertarget{classParticleTypes__t_a3c36cd4166209117051293dae04a151c}\index{ParticleTypes\_t@{ParticleTypes\_t}!ptype@{ptype}}
+\index{ptype@{ptype}!ParticleTypes\_t@{ParticleTypes\_t}}
+\doxysubsubsection{\texorpdfstring{ptype()}{ptype()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classParticleTypes__t_a3c36cd4166209117051293dae04a151c} 
+void Particle\+Types\+\_\+t\+::ptype (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classParticleTypes__t_a13593a42593ac0501846206c0bd3767f}{ptype\+\_\+sequence}} \&}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Copy elements from a given sequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & A sequence to copy elements from.\\
+\hline
+\end{DoxyParams}
+For each element in {\itshape s} this function makes a copy and adds it to the sequence. Note that this operation completely changes the sequence and all old elements will be lost. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8h}{simulation.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8cpp}{simulation.\+cpp}}\end{DoxyCompactItemize}

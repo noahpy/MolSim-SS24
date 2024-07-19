@@ -1,0 +1,51 @@
+\doxysection{Lennard\+Jones\+Domain\+Simulation.\+h}
+\hypertarget{LennardJonesDomainSimulation_8h_source}{}\label{LennardJonesDomainSimulation_8h_source}\index{src/simulation/LennardJonesDomainSimulation.h@{src/simulation/LennardJonesDomainSimulation.h}}
+\mbox{\hyperlink{LennardJonesDomainSimulation_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryConditionHandler_8h}{physics/boundaryConditions/BoundaryConditionHandler.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{linkedLennardJonesSim_8h}{simulation/linkedLennardJonesSim.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAnalyzer}{Analyzer}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLennardJonesDomainSimulation}{LennardJonesDomainSimulation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation}{LinkedLennardJonesSimulation}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ lift\ simulation\ constructor}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classLinkedLennardJonesSimulation_a4915e32c862e4cd19c5403f7a603db12}{LinkedLennardJonesSimulation::LinkedLennardJonesSimulation}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classLennardJonesDomainSimulation_af2d21f61f9b1d12749b952b5cf5f7c03}{LennardJonesDomainSimulation}}(}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\_t}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\_time}},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ std::map<unsigned,\ bool>\ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationaryParticleTypes}},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ domainOrigin,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ domainSize,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cutoff,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBoundaryConfig}{BoundaryConfig}}\&\ boundaryConfig,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::unique\_ptr<Analyzer>\ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}},}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}\ =\ 10,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}}\ =\ 10,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysisFrequency}}\ =\ 10000,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ read\_file\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLennardJonesDomainSimulation_a15d018ced2b94487a881b1224af7d405}{runSim}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classBoundaryConditionHandler}{BoundaryConditionHandler}}\ \mbox{\hyperlink{classLennardJonesDomainSimulation_a3af863607123c29438029baea218198b}{bcHandler}};\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLennardJonesDomainSimulation_aaf0118c1352dcce015a1a08a29be4f69}{getRepulsiveDistance}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtype}{type}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classLennardJonesDomainSimulation_ad79429347e432ed78b8d52ff293b7e45}{analysisFrequency}};\ }
+\DoxyCodeLine{00084\ \ \ \ \ std::unique\_ptr<Analyzer>\ \mbox{\hyperlink{classLennardJonesDomainSimulation_a38d93b7a3c6871e6624ccfd5ca3e89c8}{analyzer}};\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLennardJonesDomainSimulation_ad668bb463b4ae5b5a719bf833b5fa53c}{repulsiveDistance}};}
+\DoxyCodeLine{00088\ \};}
+
+\end{DoxyCode}

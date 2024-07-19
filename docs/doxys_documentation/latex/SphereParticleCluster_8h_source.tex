@@ -1,0 +1,63 @@
+\doxysection{Sphere\+Particle\+Cluster.\+h}
+\hypertarget{SphereParticleCluster_8h_source}{}\label{SphereParticleCluster_8h_source}\index{src/models/generators/SphereParticleCluster.h@{src/models/generators/SphereParticleCluster.h}}
+\mbox{\hyperlink{SphereParticleCluster_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleCluster_8h}{ParticleCluster.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSphereParticleCluster}{SphereParticleCluster}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classParticleCluster}{ParticleCluster}}\ \{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{classSphereParticleCluster_af73bdc3ada9442841b2da0bd4c0b5973}{SphereParticleCluster}}(}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticleCluster_aaa6f6aeac42f01c21dcb6aa836cb853b}{origin}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ radius,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSphereParticleCluster_afc75e6bdaa57e301fa345fff9fbc5963}{sphereDimensions}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSphereParticleCluster_af486be347bd9ae08d71dabe0dd229f6f}{spacing}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticleCluster_a4704ae027d065f8a1911bd1976cad6c6}{mass}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classParticleCluster_a02bda91a0d17077ece50fb50c4965311}{initialVelocity}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classParticleCluster_ad9bf632dd7f50c81d075346bc13c8cc8}{meanVelocity}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ brownianMotionDimensions,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<unsigned,\ bool>\&\ stationaryParticleTypes,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classParticleCluster_ac27c8ee7fc615dd9dec0bc267e7042a8}{ptype}}\ =\ 0);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSphereParticleCluster_a4682e2d2b82314708f1afccd6e6e91eb}{getTotalNumberOfParticles}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSphereParticleCluster_af801fcf4faf4b7b11f3d17c8cee940f0}{generateCluster}}(std::vector<Particle>\&\ particles,\ \textcolor{keywordtype}{size\_t}\&\ insertionIndex)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00057\ \ \ \ \ std::string\ \mbox{\hyperlink{classSphereParticleCluster_a90d1333f49add6a273c738a894edd0d6}{toString}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSphereParticleCluster_a433bf77806036e92355062fe00682f02}{sphereRadius}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSphereParticleCluster_af486be347bd9ae08d71dabe0dd229f6f}{spacing}};\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSphereParticleCluster_afc75e6bdaa57e301fa345fff9fbc5963}{sphereDimensions}};\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSphereParticleCluster_ac3c836a6f2305dd75cddfeb715040c14}{totalNumberOfParticles}};\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSphereParticleCluster_a41c07727cb5da1919eaeda42f9e7e4b5}{getRealRadius}}(\textcolor{keywordtype}{size\_t}\ radius)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00075\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (radius\ ==\ 0)}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((\textcolor{keywordtype}{double})radius\ -\/\ 1)\ *\ \mbox{\hyperlink{classSphereParticleCluster_af486be347bd9ae08d71dabe0dd229f6f}{spacing}};}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSphereParticleCluster_ab000676435cb54e03d4765ff772a1a5e}{getRealRadius}}(\textcolor{keywordtype}{size\_t}\ radius,\ \textcolor{keywordtype}{double}\ offset)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00089\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(\mbox{\hyperlink{classSphereParticleCluster_a41c07727cb5da1919eaeda42f9e7e4b5}{getRealRadius}}(radius)\ -\/\ offset)\ <\ 1e-\/6)\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ if\ they\ are\ the\ same,\ then\ the\ radius\ must\ be\ 0}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(std::pow(\mbox{\hyperlink{classSphereParticleCluster_a41c07727cb5da1919eaeda42f9e7e4b5}{getRealRadius}}(radius),\ 2)\ -\/\ std::pow(offset,\ 2));}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSphereParticleCluster_a29c296eb28b4b72d8e7e6be7f73c1eb6}{getNumberOfParticlesDisc}}(\textcolor{keywordtype}{double}\ realRadius)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classSphereParticleCluster_afbfb9873c98f46d2e38375c82cf66786}{getNumberOfParticlesRing}}(\textcolor{keywordtype}{double}\ realRadius)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSphereParticleCluster_ab2a288dee5536f5c9dbb14a0d1e1a5e2}{generateDisc}}(}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ std::vector<Particle>\&\ particles,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\&\ insertionIndex,}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ realRadius,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ z\_offset)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSphereParticleCluster_a78be91247999633a57bc28388e408623}{generateRing}}(}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ std::vector<Particle>\&\ particles,}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\&\ insertionIndex,}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ realRadius,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ z\_offset)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00133\ \};}
+
+\end{DoxyCode}

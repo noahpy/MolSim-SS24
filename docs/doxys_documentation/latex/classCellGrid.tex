@@ -1,0 +1,558 @@
+\doxysection{Cell\+Grid Class Reference}
+\hypertarget{classCellGrid}{}\label{classCellGrid}\index{CellGrid@{CellGrid}}
+
+
+Represents a 3D grid of cells to organize particles in a simulation.  
+
+
+
+
+{\ttfamily \#include $<$Cell\+Grid.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Iterator for iterating over boundary cells. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCellGrid_1_1HaloIterator}{Halo\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Iterator for iterating over halo cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCellGrid_a0b693d3fa5e74a2cf9dde46731fb9bda}{Cell\+Grid}} (std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_ac673b141d52addf9b89214c75541c1c5}{domain\+Origin}}, std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}{domain\+Size}}, double \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoff\+Radius}})
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classCellGrid}{Cell\+Grid}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellGrid_a072d3af5ec6b9de44b6dc1996a0526bd}{\texorpdfstring{$\sim$}{\string~}\+Cell\+Grid}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{classCellGrid}{Cell\+Grid}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellGrid_aa0a2273428325f3b2a271cc0cb7e03e6}{add\+Particle}} (\mbox{\hyperlink{classParticle}{Particle}} \&particle)
+\begin{DoxyCompactList}\small\item\em Adds a particle to the appropriate cell in the grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellGrid_a16075f060d16b2f3978c21bd6c239f5c}{add\+Particles\+From\+Container}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particle\+Container)
+\begin{DoxyCompactList}\small\item\em Adds all particles from a \doxylink{classParticleContainer}{Particle\+Container} to the grid. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ \mbox{\hyperlink{classCellGrid_acb9532f155e993df36ce924dff6ccaec}{get\+Neighbour\+Cells}} (const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \&cell\+Index) const \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\+\_\+\+SAFE}}
+\begin{DoxyCompactList}\small\item\em Returns the index to all neighbours, which have not been paired up to the specified cell. It also saves and resets the forces of the specified cell and its neighbout cells, so that one can simply add the new forces to the particles. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ \mbox{\hyperlink{classCellGrid_a79310b24101b418fd7e4f57883d82e92}{get\+Neighbour\+Cells\+Stencile2D}} (const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \&cell\+Index) const
+\item 
+std\+::list$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ \mbox{\hyperlink{classCellGrid_a64140c36de3c51d9c755a8d75de12d2b}{get\+Neighbour\+Cells\+Stencile3D}} (const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \&cell\+Index) const
+\item 
+void \mbox{\hyperlink{classCellGrid_a6a65b36d6315cd2d3b473eb7b9bf5e8d}{pre\+Calc\+Setup}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particle\+Container) const
+\begin{DoxyCompactList}\small\item\em Resets the forces for all particles for the next force calculation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellGrid_a0cc08427712b31b0aa76f1111d6ae9ad}{pre\+Calc\+Setup\+Gravity}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&particle\+Container, double gravitational\+Constant) const
+\begin{DoxyCompactList}\small\item\em Resets the forces for all particles for the next force calculation, whilst already setting the new gravitational force, given the gravitational constant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellGrid_ada1b565f4e853cdda5084329a1394d54}{post\+Calc\+Setup}} () const
+\begin{DoxyCompactList}\small\item\em Resets the visited flag of all cells to false. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellGrid_a493abd15668cae2b5c9d18faec96e166}{update\+Cells}} ()
+\begin{DoxyCompactList}\small\item\em Updates the cell lists by the position of all particles. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator}} \mbox{\hyperlink{classCellGrid_a14162e294692a3d60c1d895d7a46a9ad}{boundary\+Cell\+Iterator}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position) const
+\begin{DoxyCompactList}\small\item\em Returns an iterator to the beginning of boundary particles. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCellGrid_1_1HaloIterator}{Halo\+Iterator}} \mbox{\hyperlink{classCellGrid_ad9833dc34f083e88602ec54a6e4cfa57}{halo\+Cell\+Iterator}} (\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}} position) const
+\begin{DoxyCompactList}\small\item\em Returns an iterator to the beginning of halo particles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellGrid_a3ce09af42fabee9c2eb0a22f995babd9}{set\+Domain\+Origin}} (const std\+::array$<$ double, 3 $>$ \&\mbox{\hyperlink{classCellGrid_ac673b141d52addf9b89214c75541c1c5}{domain\+Origin}})
+\item 
+void \mbox{\hyperlink{classCellGrid_acb35ad05a6888da0d7e5a7a5b5dca94f}{set\+Domain\+Size}} (const std\+::array$<$ double, 3 $>$ \&\mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}{domain\+Size}})
+\item 
+void \mbox{\hyperlink{classCellGrid_a129d490f24645a97b87976df2c517c65}{set\+Cutoff\+Radius}} (double \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoff\+Radius}})
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a6dbd50183f898783686e0ee9405e3384}{get\+Domain\+Origin}} () const
+\begin{DoxyCompactList}\small\item\em Returns the domain origin. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c}{get\+Domain\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Returns the domain size. \end{DoxyCompactList}\item 
+std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{classCellGrid_a0f078998bfca495dcbd72f5df7da29d6}{get\+Grid\+Dimensions}} () const
+\begin{DoxyCompactList}\small\item\em Get the grids dimensions. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd}{get\+Cutoff\+Radius}} () const
+\begin{DoxyCompactList}\small\item\em Returns the cutoff radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \mbox{\hyperlink{classCellGrid_a9fb16506dd14691dcfdd433baf63592c}{get\+Index\+From\+Pos}} (const std\+::array$<$ double, 3 $>$ \&pos) const
+\begin{DoxyCompactList}\small\item\em Returns the index of the cell containing the specified position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} \mbox{\hyperlink{classCellGrid_a449b70606acd2967e7bf6ab51b04e5f7}{determine\+Cell\+Type}} (const std\+::array$<$ size\+\_\+t, 3 $>$ \&indices) const
+\begin{DoxyCompactList}\small\item\em Determines the cell type (boundary, halo, or bulk) based on its indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{CellGrid_8h_a8b6c9bba89b2c2ddd3a290ae0b2a11b7}{Cell\+Vec}} \mbox{\hyperlink{classCellGrid_a0ad7fb41c6024d53b908410baaaa8f3c}{cells}}
+\begin{DoxyCompactList}\small\item\em The 3D vector storing the cells in the grid. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_ac673b141d52addf9b89214c75541c1c5}{domain\+Origin}}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a16a519b0a9aa4be26dcd545e1a0d2592}{domain\+End}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classCellGrid_afee2831c8dff53421e2d3f95f3a9aac9}{grid\+Dimensionality}}
+\begin{DoxyCompactList}\small\item\em The dimensionality of the gird (either 2 or 3) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}{cutoff\+Radius}}
+\begin{DoxyCompactList}\small\item\em The cutoff radius for particle interactions. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCellGrid_a4d3ccac54a64195ca1b7f8a90fea302f}{cutoff\+Radius\+Squared}}
+\begin{DoxyCompactList}\small\item\em The square of the cutoff radius. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCellGrid_ab23ab61399f7b451f77f5e89b8085677}{initialize\+Grid}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the grid structure based on the domain size and cutoff radius. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellGrid_a779ac84cd99605c955ae53ab298d80d6}{determine\+Neighbours}} (\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} cell)
+\begin{DoxyCompactList}\small\item\em Determines the neighbours of the specified cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCellGrid_aed4d1c8deaa5f4fe26a09ee3bb5f55af}{determine\+Neighbours\+Stencile}} (\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} cell, bool is2D)
+\begin{DoxyCompactList}\small\item\em Determines the stencil neighbours of the specified cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}{domain\+Size}}
+\begin{DoxyCompactList}\small\item\em The size of the simulation domain in each dimension. \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{classCellGrid_ab017516be508e9e366dcf2cc09244404}{cell\+Size}}
+\begin{DoxyCompactList}\small\item\em The size of a cell according to the domain size. \end{DoxyCompactList}\item 
+std\+::array$<$ size\+\_\+t, 3 $>$ \mbox{\hyperlink{classCellGrid_ae97c8fcf7cf23b2194ea6c7f0446e37e}{grid\+Dimensions}}
+\begin{DoxyCompactList}\small\item\em The dimensions of the cell grid in each dimension. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ \mbox{\hyperlink{classCellGrid_a69266ad6ff3f1aa79a8552bede00d5e9}{boundary\+Cells}}
+\begin{DoxyCompactList}\small\item\em A vector storing the indices of boundary cells. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ \mbox{\hyperlink{classCellGrid_a0d0da1143a110cc59a1fa05a828c3f7c}{halo\+Cells}}
+\begin{DoxyCompactList}\small\item\em A vector storing the indices of halo cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a 3D grid of cells to organize particles in a simulation. 
+
+This class provides methods for adding particles, identifying neighboring particles, and iterating over boundary and halo cells. It also internally manages the domain size, cutoff radius, and grid dimensions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCellGrid_a0b693d3fa5e74a2cf9dde46731fb9bda}\index{CellGrid@{CellGrid}!CellGrid@{CellGrid}}
+\index{CellGrid@{CellGrid}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{CellGrid()}{CellGrid()}}
+{\footnotesize\ttfamily \label{classCellGrid_a0b693d3fa5e74a2cf9dde46731fb9bda} 
+Cell\+Grid\+::\+Cell\+Grid (\begin{DoxyParamCaption}\item[{std\+::array$<$ double, 3 $>$}]{domain\+Origin}{, }\item[{std\+::array$<$ double, 3 $>$}]{domain\+Size}{, }\item[{double}]{cutoff\+Radius}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{classCellGrid}{Cell\+Grid}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em domain\+Origin} & 3D array representing the "{}origin"{} of the simulation domain. \\
+\hline
+{\em domain\+Size} & A 3D array representing the size of the simulation domain. \\
+\hline
+{\em cutoff\+Radius} & The cutoff radius for particle interactions. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellGrid_a072d3af5ec6b9de44b6dc1996a0526bd}\index{CellGrid@{CellGrid}!````~CellGrid@{\texorpdfstring{$\sim$}{\string~}CellGrid}}
+\index{````~CellGrid@{\texorpdfstring{$\sim$}{\string~}CellGrid}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CellGrid()}{\string~CellGrid()}}
+{\footnotesize\ttfamily \label{classCellGrid_a072d3af5ec6b9de44b6dc1996a0526bd} 
+Cell\+Grid\+::\texorpdfstring{$\sim$}{\string~}\+Cell\+Grid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Destructor for \doxylink{classCellGrid}{Cell\+Grid}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCellGrid_aa0a2273428325f3b2a271cc0cb7e03e6}\index{CellGrid@{CellGrid}!addParticle@{addParticle}}
+\index{addParticle@{addParticle}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{addParticle()}{addParticle()}}
+{\footnotesize\ttfamily \label{classCellGrid_aa0a2273428325f3b2a271cc0cb7e03e6} 
+void Cell\+Grid\+::add\+Particle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticle}{Particle}} \&}]{particle}{}\end{DoxyParamCaption})}
+
+
+
+Adds a particle to the appropriate cell in the grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle} & The particle to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellGrid_a16075f060d16b2f3978c21bd6c239f5c}\index{CellGrid@{CellGrid}!addParticlesFromContainer@{addParticlesFromContainer}}
+\index{addParticlesFromContainer@{addParticlesFromContainer}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{addParticlesFromContainer()}{addParticlesFromContainer()}}
+{\footnotesize\ttfamily \label{classCellGrid_a16075f060d16b2f3978c21bd6c239f5c} 
+void Cell\+Grid\+::add\+Particles\+From\+Container (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{particle\+Container}{}\end{DoxyParamCaption})}
+
+
+
+Adds all particles from a \doxylink{classParticleContainer}{Particle\+Container} to the grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle\+Container} & The container holding the particles to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellGrid_a14162e294692a3d60c1d895d7a46a9ad}\index{CellGrid@{CellGrid}!boundaryCellIterator@{boundaryCellIterator}}
+\index{boundaryCellIterator@{boundaryCellIterator}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{boundaryCellIterator()}{boundaryCellIterator()}}
+{\footnotesize\ttfamily \label{classCellGrid_a14162e294692a3d60c1d895d7a46a9ad} 
+\mbox{\hyperlink{classCellGrid_1_1BoundaryIterator}{Cell\+Grid\+::\+Boundary\+Iterator}} Cell\+Grid\+::boundary\+Cell\+Iterator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns an iterator to the beginning of boundary particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the boundary. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classCellGrid_1_1BoundaryIterator}{Boundary\+Iterator} for the given position 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a449b70606acd2967e7bf6ab51b04e5f7}\index{CellGrid@{CellGrid}!determineCellType@{determineCellType}}
+\index{determineCellType@{determineCellType}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{determineCellType()}{determineCellType()}}
+{\footnotesize\ttfamily \label{classCellGrid_a449b70606acd2967e7bf6ab51b04e5f7} 
+\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{Cell\+Type}} Cell\+Grid\+::determine\+Cell\+Type (\begin{DoxyParamCaption}\item[{const std\+::array$<$ size\+\_\+t, 3 $>$ \&}]{indices}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Determines the cell type (boundary, halo, or bulk) based on its indices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em indices} & The 3D index of the cell. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Cell\+Type of the specified cell. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a779ac84cd99605c955ae53ab298d80d6}\index{CellGrid@{CellGrid}!determineNeighbours@{determineNeighbours}}
+\index{determineNeighbours@{determineNeighbours}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{determineNeighbours()}{determineNeighbours()}}
+{\footnotesize\ttfamily \label{classCellGrid_a779ac84cd99605c955ae53ab298d80d6} 
+void Cell\+Grid\+::determine\+Neighbours (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}}]{cell}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Determines the neighbours of the specified cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cell} & The index of the cell to determine the neighbours of. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellGrid_aed4d1c8deaa5f4fe26a09ee3bb5f55af}\index{CellGrid@{CellGrid}!determineNeighboursStencile@{determineNeighboursStencile}}
+\index{determineNeighboursStencile@{determineNeighboursStencile}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{determineNeighboursStencile()}{determineNeighboursStencile()}}
+{\footnotesize\ttfamily \label{classCellGrid_aed4d1c8deaa5f4fe26a09ee3bb5f55af} 
+void Cell\+Grid\+::determine\+Neighbours\+Stencile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}}]{cell}{, }\item[{bool}]{is2D}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Determines the stencil neighbours of the specified cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cell} & The index of the cell to determine the neighbours of. \\
+\hline
+{\em is2D} & Set to true if the domain is 2D \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd}\index{CellGrid@{CellGrid}!getCutoffRadius@{getCutoffRadius}}
+\index{getCutoffRadius@{getCutoffRadius}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getCutoffRadius()}{getCutoffRadius()}}
+{\footnotesize\ttfamily \label{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd} 
+double Cell\+Grid\+::get\+Cutoff\+Radius (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the cutoff radius. 
+
+\begin{DoxyReturn}{Returns}
+The cutoff radius. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a6dbd50183f898783686e0ee9405e3384}\index{CellGrid@{CellGrid}!getDomainOrigin@{getDomainOrigin}}
+\index{getDomainOrigin@{getDomainOrigin}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getDomainOrigin()}{getDomainOrigin()}}
+{\footnotesize\ttfamily \label{classCellGrid_a6dbd50183f898783686e0ee9405e3384} 
+std\+::array$<$ double, 3 $>$ Cell\+Grid\+::get\+Domain\+Origin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the domain origin. 
+
+\begin{DoxyReturn}{Returns}
+The domain origin. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c}\index{CellGrid@{CellGrid}!getDomainSize@{getDomainSize}}
+\index{getDomainSize@{getDomainSize}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getDomainSize()}{getDomainSize()}}
+{\footnotesize\ttfamily \label{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c} 
+std\+::array$<$ double, 3 $>$ Cell\+Grid\+::get\+Domain\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the domain size. 
+
+\begin{DoxyReturn}{Returns}
+The domain size. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a0f078998bfca495dcbd72f5df7da29d6}\index{CellGrid@{CellGrid}!getGridDimensions@{getGridDimensions}}
+\index{getGridDimensions@{getGridDimensions}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getGridDimensions()}{getGridDimensions()}}
+{\footnotesize\ttfamily \label{classCellGrid_a0f078998bfca495dcbd72f5df7da29d6} 
+std\+::array$<$ size\+\_\+t, 3 $>$ Cell\+Grid\+::get\+Grid\+Dimensions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the grids dimensions. 
+
+\begin{DoxyReturn}{Returns}
+The grids dimensions 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a9fb16506dd14691dcfdd433baf63592c}\index{CellGrid@{CellGrid}!getIndexFromPos@{getIndexFromPos}}
+\index{getIndexFromPos@{getIndexFromPos}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getIndexFromPos()}{getIndexFromPos()}}
+{\footnotesize\ttfamily \label{classCellGrid_a9fb16506dd14691dcfdd433baf63592c} 
+\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} Cell\+Grid\+::get\+Index\+From\+Pos (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{pos}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns the index of the cell containing the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The 3D position of the cell. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The 3D index of the cell containing the specified position. 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_acb9532f155e993df36ce924dff6ccaec}\index{CellGrid@{CellGrid}!getNeighbourCells@{getNeighbourCells}}
+\index{getNeighbourCells@{getNeighbourCells}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getNeighbourCells()}{getNeighbourCells()}}
+{\footnotesize\ttfamily \label{classCellGrid_acb9532f155e993df36ce924dff6ccaec} 
+std\+::list$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ Cell\+Grid\+::get\+Neighbour\+Cells (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \&}]{cell\+Index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Returns the index to all neighbours, which have not been paired up to the specified cell. It also saves and resets the forces of the specified cell and its neighbout cells, so that one can simply add the new forces to the particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cell\+Index} & The index of the target cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of references to all particles in the target cell and its neighbors 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a79310b24101b418fd7e4f57883d82e92}\index{CellGrid@{CellGrid}!getNeighbourCellsStencile2D@{getNeighbourCellsStencile2D}}
+\index{getNeighbourCellsStencile2D@{getNeighbourCellsStencile2D}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getNeighbourCellsStencile2D()}{getNeighbourCellsStencile2D()}}
+{\footnotesize\ttfamily \label{classCellGrid_a79310b24101b418fd7e4f57883d82e92} 
+std\+::list$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ Cell\+Grid\+::get\+Neighbour\+Cells\+Stencile2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \&}]{cell\+Index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+\Hypertarget{classCellGrid_a64140c36de3c51d9c755a8d75de12d2b}\index{CellGrid@{CellGrid}!getNeighbourCellsStencile3D@{getNeighbourCellsStencile3D}}
+\index{getNeighbourCellsStencile3D@{getNeighbourCellsStencile3D}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{getNeighbourCellsStencile3D()}{getNeighbourCellsStencile3D()}}
+{\footnotesize\ttfamily \label{classCellGrid_a64140c36de3c51d9c755a8d75de12d2b} 
+std\+::list$<$ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} $>$ Cell\+Grid\+::get\+Neighbour\+Cells\+Stencile3D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}} \&}]{cell\+Index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+\Hypertarget{classCellGrid_ad9833dc34f083e88602ec54a6e4cfa57}\index{CellGrid@{CellGrid}!haloCellIterator@{haloCellIterator}}
+\index{haloCellIterator@{haloCellIterator}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{haloCellIterator()}{haloCellIterator()}}
+{\footnotesize\ttfamily \label{classCellGrid_ad9833dc34f083e88602ec54a6e4cfa57} 
+\mbox{\hyperlink{classCellGrid_1_1HaloIterator}{Cell\+Grid\+::\+Halo\+Iterator}} Cell\+Grid\+::halo\+Cell\+Iterator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Position_8h_ab91b34ae619fcdfcba4522b4f335bf83}{Position}}}]{position}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns an iterator to the beginning of halo particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the boundary. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classCellGrid_1_1HaloIterator}{Halo\+Iterator} for the given position 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_ab23ab61399f7b451f77f5e89b8085677}\index{CellGrid@{CellGrid}!initializeGrid@{initializeGrid}}
+\index{initializeGrid@{initializeGrid}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{initializeGrid()}{initializeGrid()}}
+{\footnotesize\ttfamily \label{classCellGrid_ab23ab61399f7b451f77f5e89b8085677} 
+void Cell\+Grid\+::initialize\+Grid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Initializes the grid structure based on the domain size and cutoff radius. 
+
+\Hypertarget{classCellGrid_ada1b565f4e853cdda5084329a1394d54}\index{CellGrid@{CellGrid}!postCalcSetup@{postCalcSetup}}
+\index{postCalcSetup@{postCalcSetup}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{postCalcSetup()}{postCalcSetup()}}
+{\footnotesize\ttfamily \label{classCellGrid_ada1b565f4e853cdda5084329a1394d54} 
+void Cell\+Grid\+::post\+Calc\+Setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Resets the visited flag of all cells to false. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a6a65b36d6315cd2d3b473eb7b9bf5e8d}\index{CellGrid@{CellGrid}!preCalcSetup@{preCalcSetup}}
+\index{preCalcSetup@{preCalcSetup}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{preCalcSetup()}{preCalcSetup()}}
+{\footnotesize\ttfamily \label{classCellGrid_a6a65b36d6315cd2d3b473eb7b9bf5e8d} 
+void Cell\+Grid\+::pre\+Calc\+Setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{particle\+Container}{}\end{DoxyParamCaption}) const}
+
+
+
+Resets the forces for all particles for the next force calculation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle\+Container} & The container holding the particles \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a0cc08427712b31b0aa76f1111d6ae9ad}\index{CellGrid@{CellGrid}!preCalcSetupGravity@{preCalcSetupGravity}}
+\index{preCalcSetupGravity@{preCalcSetupGravity}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{preCalcSetupGravity()}{preCalcSetupGravity()}}
+{\footnotesize\ttfamily \label{classCellGrid_a0cc08427712b31b0aa76f1111d6ae9ad} 
+void Cell\+Grid\+::pre\+Calc\+Setup\+Gravity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{particle\+Container}{, }\item[{double}]{gravitational\+Constant}{}\end{DoxyParamCaption}) const}
+
+
+
+Resets the forces for all particles for the next force calculation, whilst already setting the new gravitational force, given the gravitational constant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle\+Container} & The container holding the particles \\
+\hline
+{\em gravitational\+Constant} & The gravitational constant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{classCellGrid_a129d490f24645a97b87976df2c517c65}\index{CellGrid@{CellGrid}!setCutoffRadius@{setCutoffRadius}}
+\index{setCutoffRadius@{setCutoffRadius}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{setCutoffRadius()}{setCutoffRadius()}}
+{\footnotesize\ttfamily \label{classCellGrid_a129d490f24645a97b87976df2c517c65} 
+void Cell\+Grid\+::set\+Cutoff\+Radius (\begin{DoxyParamCaption}\item[{double}]{cutoff\+Radius}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCellGrid_a3ce09af42fabee9c2eb0a22f995babd9}\index{CellGrid@{CellGrid}!setDomainOrigin@{setDomainOrigin}}
+\index{setDomainOrigin@{setDomainOrigin}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{setDomainOrigin()}{setDomainOrigin()}}
+{\footnotesize\ttfamily \label{classCellGrid_a3ce09af42fabee9c2eb0a22f995babd9} 
+void Cell\+Grid\+::set\+Domain\+Origin (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{domain\+Origin}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCellGrid_acb35ad05a6888da0d7e5a7a5b5dca94f}\index{CellGrid@{CellGrid}!setDomainSize@{setDomainSize}}
+\index{setDomainSize@{setDomainSize}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{setDomainSize()}{setDomainSize()}}
+{\footnotesize\ttfamily \label{classCellGrid_acb35ad05a6888da0d7e5a7a5b5dca94f} 
+void Cell\+Grid\+::set\+Domain\+Size (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 3 $>$ \&}]{domain\+Size}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classCellGrid_a493abd15668cae2b5c9d18faec96e166}\index{CellGrid@{CellGrid}!updateCells@{updateCells}}
+\index{updateCells@{updateCells}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{updateCells()}{updateCells()}}
+{\footnotesize\ttfamily \label{classCellGrid_a493abd15668cae2b5c9d18faec96e166} 
+void Cell\+Grid\+::update\+Cells (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Updates the cell lists by the position of all particles. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCellGrid_a69266ad6ff3f1aa79a8552bede00d5e9}\index{CellGrid@{CellGrid}!boundaryCells@{boundaryCells}}
+\index{boundaryCells@{boundaryCells}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{boundaryCells}{boundaryCells}}
+{\footnotesize\ttfamily \label{classCellGrid_a69266ad6ff3f1aa79a8552bede00d5e9} 
+std\+::vector$<$\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}$>$ Cell\+Grid\+::boundary\+Cells\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A vector storing the indices of boundary cells. 
+
+\Hypertarget{classCellGrid_a0ad7fb41c6024d53b908410baaaa8f3c}\index{CellGrid@{CellGrid}!cells@{cells}}
+\index{cells@{cells}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{cells}{cells}}
+{\footnotesize\ttfamily \label{classCellGrid_a0ad7fb41c6024d53b908410baaaa8f3c} 
+\mbox{\hyperlink{CellGrid_8h_a8b6c9bba89b2c2ddd3a290ae0b2a11b7}{Cell\+Vec}} Cell\+Grid\+::cells}
+
+
+
+The 3D vector storing the cells in the grid. 
+
+\Hypertarget{classCellGrid_ab017516be508e9e366dcf2cc09244404}\index{CellGrid@{CellGrid}!cellSize@{cellSize}}
+\index{cellSize@{cellSize}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{cellSize}{cellSize}}
+{\footnotesize\ttfamily \label{classCellGrid_ab017516be508e9e366dcf2cc09244404} 
+std\+::array$<$double, 3$>$ Cell\+Grid\+::cell\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The size of a cell according to the domain size. 
+
+\Hypertarget{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae}\index{CellGrid@{CellGrid}!cutoffRadius@{cutoffRadius}}
+\index{cutoffRadius@{cutoffRadius}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{cutoffRadius}{cutoffRadius}}
+{\footnotesize\ttfamily \label{classCellGrid_a63c291bdf88eb00ac679d5bf4a31edae} 
+double Cell\+Grid\+::cutoff\+Radius}
+
+
+
+The cutoff radius for particle interactions. 
+
+\Hypertarget{classCellGrid_a4d3ccac54a64195ca1b7f8a90fea302f}\index{CellGrid@{CellGrid}!cutoffRadiusSquared@{cutoffRadiusSquared}}
+\index{cutoffRadiusSquared@{cutoffRadiusSquared}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{cutoffRadiusSquared}{cutoffRadiusSquared}}
+{\footnotesize\ttfamily \label{classCellGrid_a4d3ccac54a64195ca1b7f8a90fea302f} 
+double Cell\+Grid\+::cutoff\+Radius\+Squared}
+
+
+
+The square of the cutoff radius. 
+
+\Hypertarget{classCellGrid_a16a519b0a9aa4be26dcd545e1a0d2592}\index{CellGrid@{CellGrid}!domainEnd@{domainEnd}}
+\index{domainEnd@{domainEnd}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{domainEnd}{domainEnd}}
+{\footnotesize\ttfamily \label{classCellGrid_a16a519b0a9aa4be26dcd545e1a0d2592} 
+std\+::array$<$double, 3$>$ Cell\+Grid\+::domain\+End}
+
+\Hypertarget{classCellGrid_ac673b141d52addf9b89214c75541c1c5}\index{CellGrid@{CellGrid}!domainOrigin@{domainOrigin}}
+\index{domainOrigin@{domainOrigin}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{domainOrigin}{domainOrigin}}
+{\footnotesize\ttfamily \label{classCellGrid_ac673b141d52addf9b89214c75541c1c5} 
+std\+::array$<$double, 3$>$ Cell\+Grid\+::domain\+Origin}
+
+\Hypertarget{classCellGrid_a35c1788ce20596a8dd5785d7d5689075}\index{CellGrid@{CellGrid}!domainSize@{domainSize}}
+\index{domainSize@{domainSize}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{domainSize}{domainSize}}
+{\footnotesize\ttfamily \label{classCellGrid_a35c1788ce20596a8dd5785d7d5689075} 
+std\+::array$<$double, 3$>$ Cell\+Grid\+::domain\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The size of the simulation domain in each dimension. 
+
+\Hypertarget{classCellGrid_afee2831c8dff53421e2d3f95f3a9aac9}\index{CellGrid@{CellGrid}!gridDimensionality@{gridDimensionality}}
+\index{gridDimensionality@{gridDimensionality}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{gridDimensionality}{gridDimensionality}}
+{\footnotesize\ttfamily \label{classCellGrid_afee2831c8dff53421e2d3f95f3a9aac9} 
+size\+\_\+t Cell\+Grid\+::grid\+Dimensionality}
+
+
+
+The dimensionality of the gird (either 2 or 3) 
+
+\Hypertarget{classCellGrid_ae97c8fcf7cf23b2194ea6c7f0446e37e}\index{CellGrid@{CellGrid}!gridDimensions@{gridDimensions}}
+\index{gridDimensions@{gridDimensions}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{gridDimensions}{gridDimensions}}
+{\footnotesize\ttfamily \label{classCellGrid_ae97c8fcf7cf23b2194ea6c7f0446e37e} 
+std\+::array$<$size\+\_\+t, 3$>$ Cell\+Grid\+::grid\+Dimensions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The dimensions of the cell grid in each dimension. 
+
+\Hypertarget{classCellGrid_a0d0da1143a110cc59a1fa05a828c3f7c}\index{CellGrid@{CellGrid}!haloCells@{haloCells}}
+\index{haloCells@{haloCells}!CellGrid@{CellGrid}}
+\doxysubsubsection{\texorpdfstring{haloCells}{haloCells}}
+{\footnotesize\ttfamily \label{classCellGrid_a0d0da1143a110cc59a1fa05a828c3f7c} 
+std\+::vector$<$\mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{Cell\+Index}}$>$ Cell\+Grid\+::halo\+Cells\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A vector storing the indices of halo cells. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/linked\+\_\+cell/\mbox{\hyperlink{CellGrid_8h}{Cell\+Grid.\+h}}\item 
+src/models/linked\+\_\+cell/\mbox{\hyperlink{CellGrid_8cpp}{Cell\+Grid.\+cpp}}\end{DoxyCompactItemize}

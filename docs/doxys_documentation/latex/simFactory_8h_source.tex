@@ -1,0 +1,21 @@
+\doxysection{sim\+Factory.\+h}
+\hypertarget{simFactory_8h_source}{}\label{simFactory_8h_source}\index{src/simulation/simFactory.h@{src/simulation/simFactory.h}}
+\mbox{\hyperlink{simFactory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ParticleContainer_8h}{models/ParticleContainer.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{strategy_8h}{physics/strategy.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Thermostat_8h}{physics/thermostat/Thermostat.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Params_8h}{utils/Params.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00022\ std::unique\_ptr<Simulation>\ \mbox{\hyperlink{simFactory_8h_a70a6ead8a7cdaebc990a254c43c06af8}{simFactory}}(}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classParams}{Params}}\&\ params,}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ particles,}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00026\ \ \ \ \ std::unique\_ptr<FileWriter>\ writePointer,}
+\DoxyCodeLine{00027\ \ \ \ \ std::unique\_ptr<FileReader>\ readPointer,}
+\DoxyCodeLine{00028\ \ \ \ \ std::unique\_ptr<Thermostat>\ thermostat);}
+
+\end{DoxyCode}

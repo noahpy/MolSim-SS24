@@ -1,0 +1,107 @@
+\doxysection{Cell.\+h}
+\hypertarget{Cell_8h_source}{}\label{Cell_8h_source}\index{src/models/linked\_cell/cell/Cell.h@{src/models/linked\_cell/cell/Cell.h}}
+\mbox{\hyperlink{Cell_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Particle_8h}{models/Particle.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{CellType_8h}{models/linked\_cell/cell/CellType.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Position_8h}{utils/Position.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ std::array<size\_t,\ 3>\ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ std::list<std::reference\_wrapper<Particle>>\ \mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{ParticleRefList}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCell}{Cell}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classCell_a0cacb11a350dae2d87a5b020f28407ff}{Cell}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ index);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classCell_a0cacb11a350dae2d87a5b020f28407ff}{Cell}}(\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{CellType}}\ \mbox{\hyperlink{classtype}{type}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ index);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classCell_a0cacb11a350dae2d87a5b020f28407ff}{Cell}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCell}{Cell}}\&\ other);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{\string~Cell}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCell_abc74ba060723b8d7f0448f8d76afa64f}{addParticle}}(\mbox{\hyperlink{classParticle}{Particle}}\&\ particle);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCell_aa8c6b8004ef50303d7cf685f6fb85171}{removeParticle}}(\mbox{\hyperlink{classParticle}{Particle}}\&\ particle);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCell_adb2e6aea3cd6e53d7727e57331ef05cc}{clearParticles}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{ParticleRefList}}\&\ \mbox{\hyperlink{classCell_a6f3c4b2700b54ba5d30ecca03d44429b}{getParticles}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCell_abb8862246fc92b8331d09c1bf18e7aeb}{particles}};\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{CellType}}\ \mbox{\hyperlink{classCell_a53cdbd744bf60c95f304aa1cbe7ed49a}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ ParticleRefList::iterator\ \mbox{\hyperlink{classCell_ad2bc2fb45166acc0f6f72dde2c54757b}{begin}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ ParticleRefList::iterator\ \mbox{\hyperlink{classCell_a41b565f5a1b4e89e2728fa2140d8b7d9}{end}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCell_a3cad0d1502ad33b992abebca0ad79e76}{getVisited}}()\ const\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00082\ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classCell_a6190dad59a79f0b9299b4e0c70e44b6b}{mutex}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCell_ac0fdf52adc7d9dd8c5de95635ff04de3}{visited}};}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCell_a03f91585603d1b572bc0ec25796da549}{visit}}()\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00092\ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classCell_a6190dad59a79f0b9299b4e0c70e44b6b}{mutex}});}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ tmp\ =\ \mbox{\hyperlink{classCell_ac0fdf52adc7d9dd8c5de95635ff04de3}{visited}};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCell_ac0fdf52adc7d9dd8c5de95635ff04de3}{visited}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCell_aa1eae8d19642243c811aba941781ebd8}{unvisit}}()\ \mbox{\hyperlink{Particle_8h_acb0b22a01885ebdb9ac572343bbc4dab}{THREAD\_SAFE}}}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lock(\mbox{\hyperlink{classCell_a6190dad59a79f0b9299b4e0c70e44b6b}{mutex}});}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCell_ac0fdf52adc7d9dd8c5de95635ff04de3}{visited}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{Cell_8h_a91ad28c9020cc0a834fd764e67105995}{CellIndex}}\ \mbox{\hyperlink{classCell_a247717ae4a44d2637ae56929700b7119}{myIndex}};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00109\ \ \ \ \ std::vector<std::pair<CellIndex,\ std::vector<Position>>>\ \mbox{\hyperlink{classCell_ae0ad055cdb99e440a443d65097ba20ed}{boundaryNeighbours}};}
+\DoxyCodeLine{00110\ \ \ \ \ std::vector<std::pair<CellIndex,\ std::vector<Position>>>\ \mbox{\hyperlink{classCell_a4a2cfd9fbc8d813187edba3772ab4374}{haloNeighbours}};}
+\DoxyCodeLine{00111\ \ \ \ \ std::vector<std::pair<CellIndex,\ std::vector<Position>>>\ \mbox{\hyperlink{classCell_ae0c70baca2f0459d2058e2476d5eedc2}{innerNeighbours}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ Stencil\ neighbours}}
+\DoxyCodeLine{00114\ \ \ \ \ std::vector<CellIndex>\ \mbox{\hyperlink{classCell_a57dbfacfd05d32bc5c0787a180892aac}{stencilNeighbours}};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ Forward\ declaration.}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCell_1_1PairListIterator}{PairListIterator}};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{classCell_1_1PairListIterator}{PairListIterator}}\ \mbox{\hyperlink{classCell_a98af32db9cee96056b7d4fb0960bd5f1}{beginPairs}}();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{classCell_1_1PairListIterator}{PairListIterator}}\ \mbox{\hyperlink{classCell_a1ece72ee388de6eebce79727b83501bb}{endPairs}}();}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{CellType}}\ \mbox{\hyperlink{classCell_a8992d21b67e0ad78251dbd1de4c0b4f3}{type}};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCell_ac0fdf52adc7d9dd8c5de95635ff04de3}{visited}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{ParticleRefList}}\ \mbox{\hyperlink{classCell_abb8862246fc92b8331d09c1bf18e7aeb}{particles}};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ \mbox{\hyperlink{classCell_a6190dad59a79f0b9299b4e0c70e44b6b}{mutex}};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCell_1_1PairListIterator}{PairListIterator}}\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classCell_1_1PairListIterator_a4025c7073b998289834ead9df8c08883}{PairListIterator}}(\mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{ParticleRefList}}\&\ \mbox{\hyperlink{classCell_1_1PairListIterator_af54000cae3400f8c5aadba86ac6e25cb}{particles}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCell_a41b565f5a1b4e89e2728fa2140d8b7d9}{end}}\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ std::pair<std::reference\_wrapper<Particle>,\ std::reference\_wrapper<Particle>>\ \mbox{\hyperlink{classCell_1_1PairListIterator_a6ad963d62b7c5dfe2b7c825d8366294a}{operator*}}()}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const};}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCell_1_1PairListIterator}{PairListIterator}}\&\ \mbox{\hyperlink{classCell_1_1PairListIterator_ad29760df16da52a18139372985f81beb}{operator++}}();}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCell_1_1PairListIterator_a85669271048d7048a71d8b35ff4cea8c}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCell_1_1PairListIterator}{PairListIterator}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Cell_8h_a98cbcaa7a6c2f71f54bdda02d4b86d5f}{ParticleRefList}}\&\ \mbox{\hyperlink{classCell_1_1PairListIterator_af54000cae3400f8c5aadba86ac6e25cb}{particles}};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ ParticleRefList::iterator\ \mbox{\hyperlink{classCell_1_1PairListIterator_a058bc675a930c7c72eaf2d52577ddea0}{firstIt}};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ ParticleRefList::iterator\ \mbox{\hyperlink{classCell_1_1PairListIterator_ac5394fd25fe2b59e2487f23b6be56e37}{secondIt}};}
+\DoxyCodeLine{00183\ \ \ \ \ \};}
+\DoxyCodeLine{00184\ \};}
+
+\end{DoxyCode}

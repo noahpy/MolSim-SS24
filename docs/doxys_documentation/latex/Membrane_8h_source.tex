@@ -1,0 +1,69 @@
+\doxysection{Membrane.\+h}
+\hypertarget{Membrane_8h_source}{}\label{Membrane_8h_source}\index{src/models/molecules/Membrane.h@{src/models/molecules/Membrane.h}}
+\mbox{\hyperlink{Membrane_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Molecule_8h}{Molecule.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ std::vector<std::vector<size\_t>>\ \mbox{\hyperlink{Membrane_8h_a58e20956838df653bcc06ac13d30bf0f}{ParticleGrid}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ std::map<size\_t\ ,\ std::vector<size\_t>>\ \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{NeighborParticleMap}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ std::map<std::pair<size\_t,\ size\_t>,\ \textcolor{keywordtype}{bool}>\ \mbox{\hyperlink{Membrane_8h_a623b831fd404538400a013d5e66eade4}{NeighboringRelationMap}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMembrane}{Membrane}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMolecule}{Molecule}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classMembrane_a9f94d004fb57e1f5cd480e69efc0bfb1}{Membrane}}(}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classMembrane_a1c735b0943361f6830cdac5784621094}{origin}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMembrane_a276ac400ca73cc083d3aa1a6cd26a650}{numParticlesWidth}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMembrane_a05d9321388a8f34ab14195158dcb979f}{numParticlesHeight}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMembrane_a9b172e276d3a677358286d196a4c798a}{numParticlesDepth}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a77a318836ae31d2c870aa97ffde9a7b2}{spacing}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a5a800eb731a5bd1cc042ea2ca4de3aee}{mass}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classMembrane_ab022cfd84abcf5c528d868e595adacc1}{initialVelocity}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a30f186220be86949c4b604bff88413b2}{meanVelocity}},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classMembrane_a0acf2ceaa76982dd476c63da8a749159}{dimensions}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a3a3977d0c9528c0059a25aa229583bcf}{r0}},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_ab8a13948a7af1ed0612746ab4c815270}{k}});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMembrane_a45be848ecc1c9f2c5ac99007134d8aab}{generateMolecule}}(\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ container,\ \textcolor{keywordtype}{size\_t}\ moleculeID)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMembrane_a62992da8114e3332f9f7889a22c7d3a9}{calculateIntraMolecularForces}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ std::string\ \mbox{\hyperlink{classMembrane_a6f16e24011272dd641987181a271e6ff}{toString}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{NeighborParticleMap}}\&\ \mbox{\hyperlink{classMembrane_a8272dc81894837d92029628e7b13c175}{getDirectNeighbors}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMembrane_ac37cbbf6a740ee25652ca82976132b8f}{directNeighbors}};\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{NeighborParticleMap}}\&\ \mbox{\hyperlink{classMembrane_ad3424390ee16f9760a472914894b97f1}{getDiagNeighbors}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMembrane_a7b83d1ab91279451e0b58e1164160975}{diagNeighbors}};\ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{NeighborParticleMap}}\ \mbox{\hyperlink{classMembrane_ac37cbbf6a740ee25652ca82976132b8f}{directNeighbors}};\ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{Membrane_8h_a7f8da6bde502f6a42f70da9778f3748f}{NeighborParticleMap}}\ \mbox{\hyperlink{classMembrane_a7b83d1ab91279451e0b58e1164160975}{diagNeighbors}};\ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{Membrane_8h_a623b831fd404538400a013d5e66eade4}{NeighboringRelationMap}}\ \mbox{\hyperlink{classMembrane_a4f24def97457a3567c3e9dbca9fea6e1}{neighboringRelations}};\ }
+\DoxyCodeLine{00097\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classMembrane_a1c735b0943361f6830cdac5784621094}{origin}};\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMembrane_a276ac400ca73cc083d3aa1a6cd26a650}{numParticlesWidth}};\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMembrane_a05d9321388a8f34ab14195158dcb979f}{numParticlesHeight}};\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMembrane_a9b172e276d3a677358286d196a4c798a}{numParticlesDepth}};\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a77a318836ae31d2c870aa97ffde9a7b2}{spacing}};\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a5a800eb731a5bd1cc042ea2ca4de3aee}{mass}};\ }
+\DoxyCodeLine{00103\ \ \ \ \ std::array<double,\ 3>\ \mbox{\hyperlink{classMembrane_ab022cfd84abcf5c528d868e595adacc1}{initialVelocity}};\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a30f186220be86949c4b604bff88413b2}{meanVelocity}};\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classMembrane_a0acf2ceaa76982dd476c63da8a749159}{dimensions}};\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a3a3977d0c9528c0059a25aa229583bcf}{r0}};\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_a1ea2ba297079a328e5fdad9bfd458e21}{diagR0}};\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMembrane_ab8a13948a7af1ed0612746ab4c815270}{k}};\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMembrane_a7e0501d72157485035d2525b76adba1f}{initNeighbors}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{Membrane_8h_a58e20956838df653bcc06ac13d30bf0f}{ParticleGrid}}\&\ particleGrid);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMembrane_aecf3c385f6b73501bd716fae6430ccfa}{calculateHarmonicForces}}(\mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ container);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMembrane_afeaef0f209e8809e69b739c8edb3fd0d}{isNeighbor}}(\textcolor{keywordtype}{size\_t}\ particleID1,\ \textcolor{keywordtype}{size\_t}\ particleID2);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{inline}\ std::pair<size\_t,\ size\_t>\ \mbox{\hyperlink{classMembrane_a2b8df46e9c17d44139b7d06e4015b562}{getKey}}(\textcolor{keywordtype}{size\_t}\ particleID1,\ \textcolor{keywordtype}{size\_t}\ particleID2)\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ particleID1\ <\ particleID2\ ?\ std::make\_pair(particleID1,\ particleID2)\ :\ std::make\_pair(particleID2,\ particleID1);}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \};}
+
+\end{DoxyCode}

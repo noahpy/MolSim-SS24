@@ -1,0 +1,260 @@
+\doxysection{molecules\+\_\+t Class Reference}
+\hypertarget{classmolecules__t}{}\label{classmolecules__t}\index{molecules\_t@{molecules\_t}}
+
+
+Class corresponding to the molecules\+\_\+t schema type.  
+
+
+
+
+{\ttfamily \#include $<$simulation.\+h$>$}
+
+Inheritance diagram for molecules\+\_\+t\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmolecules__t}
+\end{center}
+\end{figure}
+\doxysubsubsection*{membrane}
+Accessor and modifier functions for the membrane sequence element.
+
+A membrane cluster within the collection. \begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classmembrane__t}{\+::membrane\+\_\+t}} \mbox{\hyperlink{classmolecules__t_a8976c5dc925826035818070b94916e82}{membrane\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Element type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classmolecules__t_a8976c5dc925826035818070b94916e82}{membrane\+\_\+type}} $>$ \mbox{\hyperlink{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}{membrane\+\_\+sequence}}
+\begin{DoxyCompactList}\small\item\em Element sequence container type. \end{DoxyCompactList}\item 
+typedef membrane\+\_\+sequence\+::iterator \mbox{\hyperlink{classmolecules__t_a93b4664f2150f4a035e5d6e4e1670f06}{membrane\+\_\+iterator}}
+\begin{DoxyCompactList}\small\item\em Element iterator type. \end{DoxyCompactList}\item 
+typedef membrane\+\_\+sequence\+::const\+\_\+iterator \mbox{\hyperlink{classmolecules__t_a6d259927fed96d149d26fab4ee85cae4}{membrane\+\_\+const\+\_\+iterator}}
+\begin{DoxyCompactList}\small\item\em Element constant iterator type. \end{DoxyCompactList}\item 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmolecules__t_a8976c5dc925826035818070b94916e82}{membrane\+\_\+type}}, char $>$ \mbox{\hyperlink{classmolecules__t_a7e18cb700944a0d030acf89fbab1924d}{membrane\+\_\+traits}}
+\begin{DoxyCompactList}\small\item\em Element traits type. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}{membrane\+\_\+sequence}} \& \mbox{\hyperlink{classmolecules__t_a7c862fb81211353caa349f0aa8ec6c3c}{membrane}} () const
+\begin{DoxyCompactList}\small\item\em Return a read-\/only (constant) reference to the element sequence. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}{membrane\+\_\+sequence}} \& \mbox{\hyperlink{classmolecules__t_a6d13a663250d3e2512791fe75bfef7b3}{membrane}} ()
+\begin{DoxyCompactList}\small\item\em Return a read-\/write reference to the element sequence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmolecules__t_a30aa446f4df99187a892ae05bf0dc995}{membrane}} (const \mbox{\hyperlink{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}{membrane\+\_\+sequence}} \&s)
+\begin{DoxyCompactList}\small\item\em Copy elements from a given sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Constructors}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmolecules__t_a614f319219ab34d891920adf7c4ef579}{molecules\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Create an instance from the ultimate base and initializers for required elements and attributes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmolecules__t_aa2161b585a1716d156aea11053d12b9f}{molecules\+\_\+t}} (const \+::xercesc\+::\+DOMElement \&e, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Create an instance from a DOM element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmolecules__t_a52a04cb5a664028a545e1844e4ef5a33}{molecules\+\_\+t}} (const \mbox{\hyperlink{classmolecules__t}{molecules\+\_\+t}} \&x, \mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classmolecules__t}{molecules\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classmolecules__t_a90e62346af78c74c181c3af27fb6a4bd}{\+\_\+clone}} (\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}} f=0, \mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}c=0) const
+\begin{DoxyCompactList}\small\item\em Copy the instance polymorphically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmolecules__t}{molecules\+\_\+t}} \& \mbox{\hyperlink{classmolecules__t_a2c90656876605eaa2b7012b2d9cdfcee}{operator=}} (const \mbox{\hyperlink{classmolecules__t}{molecules\+\_\+t}} \&x)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classmolecules__t_a0ed834913c61bcf5fbefcfed2949c1d6}{\texorpdfstring{$\sim$}{\string~}molecules\+\_\+t}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class corresponding to the molecules\+\_\+t schema type. 
+
+Represents a collection of molecules. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classmolecules__t_a6d259927fed96d149d26fab4ee85cae4}\index{molecules\_t@{molecules\_t}!membrane\_const\_iterator@{membrane\_const\_iterator}}
+\index{membrane\_const\_iterator@{membrane\_const\_iterator}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_const\_iterator}{membrane\_const\_iterator}}
+{\footnotesize\ttfamily \label{classmolecules__t_a6d259927fed96d149d26fab4ee85cae4} 
+typedef membrane\+\_\+sequence\+::const\+\_\+iterator \mbox{\hyperlink{classmolecules__t_a6d259927fed96d149d26fab4ee85cae4}{molecules\+\_\+t\+::membrane\+\_\+const\+\_\+iterator}}}
+
+
+
+Element constant iterator type. 
+
+\Hypertarget{classmolecules__t_a93b4664f2150f4a035e5d6e4e1670f06}\index{molecules\_t@{molecules\_t}!membrane\_iterator@{membrane\_iterator}}
+\index{membrane\_iterator@{membrane\_iterator}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_iterator}{membrane\_iterator}}
+{\footnotesize\ttfamily \label{classmolecules__t_a93b4664f2150f4a035e5d6e4e1670f06} 
+typedef membrane\+\_\+sequence\+::iterator \mbox{\hyperlink{classmolecules__t_a93b4664f2150f4a035e5d6e4e1670f06}{molecules\+\_\+t\+::membrane\+\_\+iterator}}}
+
+
+
+Element iterator type. 
+
+\Hypertarget{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}\index{molecules\_t@{molecules\_t}!membrane\_sequence@{membrane\_sequence}}
+\index{membrane\_sequence@{membrane\_sequence}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_sequence}{membrane\_sequence}}
+{\footnotesize\ttfamily \label{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f} 
+typedef \+::xsd\+::cxx\+::tree\+::sequence$<$ \mbox{\hyperlink{classmolecules__t_a8976c5dc925826035818070b94916e82}{membrane\+\_\+type}} $>$ \mbox{\hyperlink{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}{molecules\+\_\+t\+::membrane\+\_\+sequence}}}
+
+
+
+Element sequence container type. 
+
+\Hypertarget{classmolecules__t_a7e18cb700944a0d030acf89fbab1924d}\index{molecules\_t@{molecules\_t}!membrane\_traits@{membrane\_traits}}
+\index{membrane\_traits@{membrane\_traits}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_traits}{membrane\_traits}}
+{\footnotesize\ttfamily \label{classmolecules__t_a7e18cb700944a0d030acf89fbab1924d} 
+typedef \+::xsd\+::cxx\+::tree\+::traits$<$ \mbox{\hyperlink{classmolecules__t_a8976c5dc925826035818070b94916e82}{membrane\+\_\+type}}, char $>$ \mbox{\hyperlink{classmolecules__t_a7e18cb700944a0d030acf89fbab1924d}{molecules\+\_\+t\+::membrane\+\_\+traits}}}
+
+
+
+Element traits type. 
+
+\Hypertarget{classmolecules__t_a8976c5dc925826035818070b94916e82}\index{molecules\_t@{molecules\_t}!membrane\_type@{membrane\_type}}
+\index{membrane\_type@{membrane\_type}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{membrane\_type}{membrane\_type}}
+{\footnotesize\ttfamily \label{classmolecules__t_a8976c5dc925826035818070b94916e82} 
+typedef \mbox{\hyperlink{classmembrane__t}{\+::membrane\+\_\+t}} \mbox{\hyperlink{classmolecules__t_a8976c5dc925826035818070b94916e82}{molecules\+\_\+t\+::membrane\+\_\+type}}}
+
+
+
+Element type. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmolecules__t_a614f319219ab34d891920adf7c4ef579}\index{molecules\_t@{molecules\_t}!molecules\_t@{molecules\_t}}
+\index{molecules\_t@{molecules\_t}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{molecules\_t()}{molecules\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classmolecules__t_a614f319219ab34d891920adf7c4ef579} 
+molecules\+\_\+t\+::molecules\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Create an instance from the ultimate base and initializers for required elements and attributes. 
+
+\Hypertarget{classmolecules__t_aa2161b585a1716d156aea11053d12b9f}\index{molecules\_t@{molecules\_t}!molecules\_t@{molecules\_t}}
+\index{molecules\_t@{molecules\_t}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{molecules\_t()}{molecules\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classmolecules__t_aa2161b585a1716d156aea11053d12b9f} 
+molecules\+\_\+t\+::molecules\+\_\+t (\begin{DoxyParamCaption}\item[{const \+::xercesc\+::\+DOMElement \&}]{e}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Create an instance from a DOM element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & A DOM element to extract the data from. \\
+\hline
+{\em f} & Flags to create the new instance with. \\
+\hline
+{\em c} & A pointer to the object that will contain the new instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmolecules__t_a52a04cb5a664028a545e1844e4ef5a33}\index{molecules\_t@{molecules\_t}!molecules\_t@{molecules\_t}}
+\index{molecules\_t@{molecules\_t}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{molecules\_t()}{molecules\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classmolecules__t_a52a04cb5a664028a545e1844e4ef5a33} 
+molecules\+\_\+t\+::molecules\+\_\+t (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmolecules__t}{molecules\+\_\+t}} \&}]{x}{, }\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy.\\
+\hline
+\end{DoxyParams}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. \Hypertarget{classmolecules__t_a0ed834913c61bcf5fbefcfed2949c1d6}\index{molecules\_t@{molecules\_t}!````~molecules\_t@{\texorpdfstring{$\sim$}{\string~}molecules\_t}}
+\index{````~molecules\_t@{\texorpdfstring{$\sim$}{\string~}molecules\_t}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}molecules\_t()}{\string~molecules\_t()}}
+{\footnotesize\ttfamily \label{classmolecules__t_a0ed834913c61bcf5fbefcfed2949c1d6} 
+molecules\+\_\+t\+::\texorpdfstring{$\sim$}{\string~}molecules\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmolecules__t_a90e62346af78c74c181c3af27fb6a4bd}\index{molecules\_t@{molecules\_t}!\_clone@{\_clone}}
+\index{\_clone@{\_clone}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{\_clone()}{\_clone()}}
+{\footnotesize\ttfamily \label{classmolecules__t_a90e62346af78c74c181c3af27fb6a4bd} 
+\mbox{\hyperlink{classmolecules__t}{molecules\+\_\+t}} \texorpdfstring{$\ast$}{*} molecules\+\_\+t\+::\+\_\+clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacexml__schema_a0612287d030cb2732d31a45b258fdc87}{\+::xml\+\_\+schema\+::flags}}}]{f}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{namespacexml__schema_ada9aa30dc722e93ee2ed7243085402a5}{\+::xml\+\_\+schema\+::container}} \texorpdfstring{$\ast$}{*}}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy the instance polymorphically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flags to create the copy with. \\
+\hline
+{\em c} & A pointer to the object that will contain the copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated copy.
+\end{DoxyReturn}
+This function ensures that the dynamic type of the instance is used for copying and should be used for polymorphic object models instead of the copy constructor. \Hypertarget{classmolecules__t_a6d13a663250d3e2512791fe75bfef7b3}\index{molecules\_t@{molecules\_t}!membrane@{membrane}}
+\index{membrane@{membrane}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{membrane()}{membrane()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classmolecules__t_a6d13a663250d3e2512791fe75bfef7b3} 
+\mbox{\hyperlink{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}{molecules\+\_\+t\+::membrane\+\_\+sequence}} \& molecules\+\_\+t\+::membrane (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a read-\/write reference to the element sequence. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the sequence container. 
+\end{DoxyReturn}
+\Hypertarget{classmolecules__t_a7c862fb81211353caa349f0aa8ec6c3c}\index{molecules\_t@{molecules\_t}!membrane@{membrane}}
+\index{membrane@{membrane}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{membrane()}{membrane()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classmolecules__t_a7c862fb81211353caa349f0aa8ec6c3c} 
+const \mbox{\hyperlink{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}{molecules\+\_\+t\+::membrane\+\_\+sequence}} \& molecules\+\_\+t\+::membrane (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return a read-\/only (constant) reference to the element sequence. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the sequence container. 
+\end{DoxyReturn}
+\Hypertarget{classmolecules__t_a30aa446f4df99187a892ae05bf0dc995}\index{molecules\_t@{molecules\_t}!membrane@{membrane}}
+\index{membrane@{membrane}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{membrane()}{membrane()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classmolecules__t_a30aa446f4df99187a892ae05bf0dc995} 
+void molecules\+\_\+t\+::membrane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmolecules__t_ae1a8aa3f40538727f79afab3d517232f}{membrane\+\_\+sequence}} \&}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Copy elements from a given sequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & A sequence to copy elements from.\\
+\hline
+\end{DoxyParams}
+For each element in {\itshape s} this function makes a copy and adds it to the sequence. Note that this operation completely changes the sequence and all old elements will be lost. \Hypertarget{classmolecules__t_a2c90656876605eaa2b7012b2d9cdfcee}\index{molecules\_t@{molecules\_t}!operator=@{operator=}}
+\index{operator=@{operator=}!molecules\_t@{molecules\_t}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{classmolecules__t_a2c90656876605eaa2b7012b2d9cdfcee} 
+\mbox{\hyperlink{classmolecules__t}{molecules\+\_\+t}} \& molecules\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmolecules__t}{molecules\+\_\+t}} \&}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & An instance to make a copy of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself.
+\end{DoxyReturn}
+For polymorphic object models use the {\ttfamily \+\_\+clone} function instead. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8h}{simulation.\+h}}\item 
+src/io/xsd/\mbox{\hyperlink{simulation_8cpp}{simulation.\+cpp}}\end{DoxyCompactItemize}

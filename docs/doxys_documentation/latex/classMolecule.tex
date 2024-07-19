@@ -1,0 +1,191 @@
+\doxysection{Molecule Class Reference}
+\hypertarget{classMolecule}{}\label{classMolecule}\index{Molecule@{Molecule}}
+
+
+A class to model a molecule. It has a root particle and all particles of the molecules.  
+
+
+
+
+{\ttfamily \#include $<$Molecule.\+h$>$}
+
+Inheritance diagram for Molecule\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMolecule}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMolecule_a9b3ceda2d39cd2de85c8be83eed6f2a2}{Molecule}} (unsigned \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classMolecule}{Molecule} class. Will initialize root and particles empty. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classMolecule_a6f7a4f3a97ef2ac9fa6a7c5f85ede82a}{\texorpdfstring{$\sim$}{\string~}\+Molecule}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for the \doxylink{classMolecule}{Molecule} class. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classMolecule_a0feb5dff63a56f33e67e9b9aedbf158f}{generate\+Molecule}} (\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&container, size\+\_\+t molecule\+ID)=0
+\begin{DoxyCompactList}\small\item\em Create the necessary particles in the molecule. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classMolecule_aa416d7a3d8129fc9c6084b414ecf3ddd}{calculate\+Intra\+Molecular\+Forces}} (const \mbox{\hyperlink{classSimulation}{Simulation}} \&sim)=0
+\begin{DoxyCompactList}\small\item\em Calculate the molecular specific intra-\/molecular forces. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMolecule_ae25da1cb0e21495ab14abc3f76477b93}{init\+LJParams}} (double epsilon, double sigma)
+\begin{DoxyCompactList}\small\item\em Initialize the Lennard-\/\+Jones parameters for the membrane. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classMolecule_a01bc01219ab37c832f0a2c85c234c135}{get\+Ptype}} () const
+\begin{DoxyCompactList}\small\item\em Get the particle type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}{ptype}}
+\item 
+double \mbox{\hyperlink{classMolecule_a4d282737de0cc8a26497a6e3f2f9a418}{alpha}}
+\item 
+double \mbox{\hyperlink{classMolecule_abada95c2d07a35324af183ac7717e9ed}{beta}}
+\item 
+double \mbox{\hyperlink{classMolecule_a137d8d465f120f81dfffe0f7b85d26d7}{gamma}}
+\item 
+double \mbox{\hyperlink{classMolecule_abaa01e2651e34e071b72c8aadab98969}{cutoff\+Radius\+Squared}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classMolecule_abe03f04a4cc230678bb651e45488d5b9}{ID}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to model a molecule. It has a root particle and all particles of the molecules. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMolecule_a9b3ceda2d39cd2de85c8be83eed6f2a2}\index{Molecule@{Molecule}!Molecule@{Molecule}}
+\index{Molecule@{Molecule}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{Molecule()}{Molecule()}}
+{\footnotesize\ttfamily \label{classMolecule_a9b3ceda2d39cd2de85c8be83eed6f2a2} 
+Molecule\+::\+Molecule (\begin{DoxyParamCaption}\item[{unsigned}]{ptype}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{classMolecule}{Molecule} class. Will initialize root and particles empty. 
+
+\Hypertarget{classMolecule_a6f7a4f3a97ef2ac9fa6a7c5f85ede82a}\index{Molecule@{Molecule}!````~Molecule@{\texorpdfstring{$\sim$}{\string~}Molecule}}
+\index{````~Molecule@{\texorpdfstring{$\sim$}{\string~}Molecule}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Molecule()}{\string~Molecule()}}
+{\footnotesize\ttfamily \label{classMolecule_a6f7a4f3a97ef2ac9fa6a7c5f85ede82a} 
+virtual Molecule\+::\texorpdfstring{$\sim$}{\string~}\+Molecule (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Default destructor for the \doxylink{classMolecule}{Molecule} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMolecule_aa416d7a3d8129fc9c6084b414ecf3ddd}\index{Molecule@{Molecule}!calculateIntraMolecularForces@{calculateIntraMolecularForces}}
+\index{calculateIntraMolecularForces@{calculateIntraMolecularForces}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{calculateIntraMolecularForces()}{calculateIntraMolecularForces()}}
+{\footnotesize\ttfamily \label{classMolecule_aa416d7a3d8129fc9c6084b414ecf3ddd} 
+virtual void Molecule\+::calculate\+Intra\+Molecular\+Forces (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSimulation}{Simulation}} \&}]{sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculate the molecular specific intra-\/molecular forces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sim} & The simulation to calculate the forces for \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classMembrane_a62992da8114e3332f9f7889a22c7d3a9}{Membrane}}.
+
+\Hypertarget{classMolecule_a0feb5dff63a56f33e67e9b9aedbf158f}\index{Molecule@{Molecule}!generateMolecule@{generateMolecule}}
+\index{generateMolecule@{generateMolecule}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{generateMolecule()}{generateMolecule()}}
+{\footnotesize\ttfamily \label{classMolecule_a0feb5dff63a56f33e67e9b9aedbf158f} 
+virtual void Molecule\+::generate\+Molecule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParticleContainer}{Particle\+Container}} \&}]{container}{, }\item[{size\+\_\+t}]{molecule\+ID}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create the necessary particles in the molecule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em container} & The particle container to insert into \\
+\hline
+{\em molecule\+ID} & The molecule ID (unique identifier for the molecule) \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classMembrane_a45be848ecc1c9f2c5ac99007134d8aab}{Membrane}}.
+
+\Hypertarget{classMolecule_a01bc01219ab37c832f0a2c85c234c135}\index{Molecule@{Molecule}!getPtype@{getPtype}}
+\index{getPtype@{getPtype}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{getPtype()}{getPtype()}}
+{\footnotesize\ttfamily \label{classMolecule_a01bc01219ab37c832f0a2c85c234c135} 
+unsigned Molecule\+::get\+Ptype (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Get the particle type. 
+
+\begin{DoxyReturn}{Returns}
+The particle type 
+\end{DoxyReturn}
+\Hypertarget{classMolecule_ae25da1cb0e21495ab14abc3f76477b93}\index{Molecule@{Molecule}!initLJParams@{initLJParams}}
+\index{initLJParams@{initLJParams}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{initLJParams()}{initLJParams()}}
+{\footnotesize\ttfamily \label{classMolecule_ae25da1cb0e21495ab14abc3f76477b93} 
+void Molecule\+::init\+LJParams (\begin{DoxyParamCaption}\item[{double}]{epsilon}{, }\item[{double}]{sigma}{}\end{DoxyParamCaption})}
+
+
+
+Initialize the Lennard-\/\+Jones parameters for the membrane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em epsilon} & The epsilon value \\
+\hline
+{\em sigma} & The sigma value \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMolecule_a4d282737de0cc8a26497a6e3f2f9a418}\index{Molecule@{Molecule}!alpha@{alpha}}
+\index{alpha@{alpha}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{alpha}{alpha}}
+{\footnotesize\ttfamily \label{classMolecule_a4d282737de0cc8a26497a6e3f2f9a418} 
+double Molecule\+::alpha\hspace{0.3cm}{\ttfamily [protected]}}
+
+The alpha value for the LJ potential \Hypertarget{classMolecule_abada95c2d07a35324af183ac7717e9ed}\index{Molecule@{Molecule}!beta@{beta}}
+\index{beta@{beta}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{beta}{beta}}
+{\footnotesize\ttfamily \label{classMolecule_abada95c2d07a35324af183ac7717e9ed} 
+double Molecule\+::beta\hspace{0.3cm}{\ttfamily [protected]}}
+
+The beta value for the LJ potential \Hypertarget{classMolecule_abaa01e2651e34e071b72c8aadab98969}\index{Molecule@{Molecule}!cutoffRadiusSquared@{cutoffRadiusSquared}}
+\index{cutoffRadiusSquared@{cutoffRadiusSquared}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{cutoffRadiusSquared}{cutoffRadiusSquared}}
+{\footnotesize\ttfamily \label{classMolecule_abaa01e2651e34e071b72c8aadab98969} 
+double Molecule\+::cutoff\+Radius\+Squared\hspace{0.3cm}{\ttfamily [protected]}}
+
+The cutoff radius squared for the LJ potential \Hypertarget{classMolecule_a137d8d465f120f81dfffe0f7b85d26d7}\index{Molecule@{Molecule}!gamma@{gamma}}
+\index{gamma@{gamma}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{gamma}{gamma}}
+{\footnotesize\ttfamily \label{classMolecule_a137d8d465f120f81dfffe0f7b85d26d7} 
+double Molecule\+::gamma\hspace{0.3cm}{\ttfamily [protected]}}
+
+The gamma value for the LJ potential \Hypertarget{classMolecule_abe03f04a4cc230678bb651e45488d5b9}\index{Molecule@{Molecule}!ID@{ID}}
+\index{ID@{ID}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{ID}{ID}}
+{\footnotesize\ttfamily \label{classMolecule_abe03f04a4cc230678bb651e45488d5b9} 
+size\+\_\+t Molecule\+::\+ID\hspace{0.3cm}{\ttfamily [protected]}}
+
+The molecule ID \Hypertarget{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689}\index{Molecule@{Molecule}!ptype@{ptype}}
+\index{ptype@{ptype}!Molecule@{Molecule}}
+\doxysubsubsection{\texorpdfstring{ptype}{ptype}}
+{\footnotesize\ttfamily \label{classMolecule_a6e67ba2e80f4aa405eaaf5f06747f689} 
+unsigned Molecule\+::ptype\hspace{0.3cm}{\ttfamily [protected]}}
+
+The particle type 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/models/molecules/\mbox{\hyperlink{Molecule_8h}{Molecule.\+h}}\item 
+src/models/molecules/\mbox{\hyperlink{Molecule_8cpp}{Molecule.\+cpp}}\end{DoxyCompactItemize}

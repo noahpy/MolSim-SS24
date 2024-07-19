@@ -1,0 +1,57 @@
+\doxysection{linked\+Lennard\+Jones\+Sim.\+h}
+\hypertarget{linkedLennardJonesSim_8h_source}{}\label{linkedLennardJonesSim_8h_source}\index{src/simulation/linkedLennardJonesSim.h@{src/simulation/linkedLennardJonesSim.h}}
+\mbox{\hyperlink{linkedLennardJonesSim_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{CellGrid_8h}{models/linked\_cell/CellGrid.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{lennardJonesSim_8h}{simulation/lennardJonesSim.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLinkedLennardJonesSimulation}{LinkedLennardJonesSimulation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classLennardJonesSimulation}{LennardJonesSimulation}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a4915e32c862e4cd19c5403f7a603db12}{LinkedLennardJonesSimulation}}(}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a838684076d88a5e923c35c513a1d676c}{time}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a3b20666c1d68ccda6afcdece22787224}{delta\_t}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSimulation_a197fe4555b78abaae9c4c111c2f05f27}{end\_time}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classParticleContainer}{ParticleContainer}}\&\ \mbox{\hyperlink{classSimulation_a40d5374878745375d1112892ca47290c}{container}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPhysicsStrategy}{PhysicsStrategy}}\&\ strat,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileWriter>\ \mbox{\hyperlink{classSimulation_a9c3c9fd1d02a83eea80af98eca001975}{writer}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::unique\_ptr<FileReader>\ \mbox{\hyperlink{classSimulation_a490b1c45277ba9305d71c9db52eae51a}{reader}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ std::map<unsigned,\ bool>\ \mbox{\hyperlink{classSimulation_a86664aa4e0bac0131fd428592d18079e}{stationaryParticleTypes}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLennardJonesSimulation_aecd5a7e8e606e83f64c4c232034af8bb}{epsilon}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLennardJonesSimulation_afefdd4b7b8084169ea224a7099e6c3e0}{sigma}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ domainOrigin,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::array<double,\ 3>\ domainSize,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cutoff,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classSimulation_af359b0a19b55ad991ed8d70a707f3592}{frequency}}\ =\ 10,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}}\ =\ 10,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ read\_file\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac6a4414b99279f5653eae86f9c513114}{runSim}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCellGrid}{CellGrid}}\&\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad022bd88e8f58fda708eb34c30353617}{getGrid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}};\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a9682407f0e0ebb304761847b0ede05cd}{setDomainOrigin}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ domainOrigin);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ac02835357b8355afe540b3788c4f5579}{setDomainSize}}(\textcolor{keyword}{const}\ std::array<double,\ 3>\&\ domainSize);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad91c1524037aecc193a2fb43fe5786f6}{setCutoff}}(\textcolor{keywordtype}{double}\ cutoff);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a5ae6ddb827ae3f33910048338a197646}{getDomainOrigin}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}}.\mbox{\hyperlink{classCellGrid_a6dbd50183f898783686e0ee9405e3384}{getDomainOrigin}}();\ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{inline}\ std::array<double,\ 3>\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_aceebb5a0bce20b3cd52f5eb4e92015c3}{getDomainSize}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}}.\mbox{\hyperlink{classCellGrid_a719e2d28c55961d355d8fbe2b8b0386c}{getDomainSize}}();\ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_aec5131d8e80d154378041fb0bc802544}{getCutoff}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}}.\mbox{\hyperlink{classCellGrid_a162dc50ff5d9984f804e8931846a8ffd}{getCutoffRadius}}();\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Get\ the\ update\ frequency\ of\ the\ simulation}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ \ *\ @return\ The\ update\ frequency\ of\ the\ simulation}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a16772a2392ac33187a25a7f0008e54aa}{getUpdateFrequency}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}};\ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{classCellGrid}{CellGrid}}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_ad1c84e1fdb643ac11fa605f193b1846b}{cellGrid}};}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classLinkedLennardJonesSimulation_a0b05456b1c499cd2debad7b64527bb56}{updateFrequency}};}
+\DoxyCodeLine{00102\ \};}
+
+\end{DoxyCode}

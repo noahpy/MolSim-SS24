@@ -1,0 +1,57 @@
+\doxysection{Thermostat.\+h}
+\hypertarget{Thermostat_8h_source}{}\label{Thermostat_8h_source}\index{src/physics/thermostat/Thermostat.h@{src/physics/thermostat/Thermostat.h}}
+\mbox{\hyperlink{Thermostat_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{baseSimulation_8h}{simulation/baseSimulation.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Params_8h}{utils/Params.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classThermostat}{Thermostat}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classThermostat_a277a57c01ed56b68ff32c2d00e3bb164}{Thermostat}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classThermostat_a50aa875ffa8d5556111b0dd777b117b2}{\string~Thermostat}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classThermostat_a277a57c01ed56b68ff32c2d00e3bb164}{Thermostat}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a17c39daa8962c39be528ec92901c69ac}{init}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}{target}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}{delta}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}{dim}});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classThermostat_acf8842c0f4035bc78f1db61f096acd50}{initializeBrownianMotion}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classThermostat_a0b24a04cfccc062c2fdd9b31ce09abfb}{updateT}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_af7a3e1c6fd39b713b52f1ad881cd1e00}{getTotalKineticEnergy}}(\mbox{\hyperlink{classSimulation}{Simulation}}\&\ sim);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classThermostat_a5c55b7235cd165a46961a232988b5a2e}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_ac85c736f5c595192a771fd55a50cdbca}{getBeta}}(\textcolor{keywordtype}{double}\ T\_current)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a4268df5b95f01014ed3beea284572cb6}{getInit}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classThermostat_a17c39daa8962c39be528ec92901c69ac}{init}};\ \}}
+\DoxyCodeLine{00081\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a9c26f4dec5c3312d8eb55222c703c370}{getTarget}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}{target}};\ \}}
+\DoxyCodeLine{00086\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_aa51f06c0d045422895f984696351a930}{getDelta}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}{delta}};\ \}}
+\DoxyCodeLine{00091\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classThermostat_a298fa6e18709d533ed428b715d2b2e66}{getDim}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}{dim}};\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ Initial\ temperature}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a17c39daa8962c39be528ec92901c69ac}{init}};}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ Target\ temperature}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a07bd3ec64de8a5dbd9a73e10fb4c25e3}{target}};}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ Maximum\ temperature\ change}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classThermostat_a309f33f9bf5e807fba8c189bc7a948b9}{delta}};}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ dimension\ of\ simulation}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classThermostat_ab62bef4123b1f497e25debb3cbe319e7}{dim}};}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459ec}{ThermostatType}}\ \mbox{\hyperlink{Thermostat_8h_a9fa95b2cc12c0d49a5623a88b93be25e}{getThermostatType}}(std::string\ s)}
+\DoxyCodeLine{00105\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{if}\ (s\ ==\ \textcolor{stringliteral}{"{}classic"{}})\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459eca648824b3676352bfab53d9bcf217389d}{ThermostatType::CLASSICAL}};}
+\DoxyCodeLine{00108\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (s\ ==\ \textcolor{stringliteral}{"{}individual"{}})\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459eca9e50a94f2fea6447771e28ee2320dec6}{ThermostatType::INDIVIDUAL}};}
+\DoxyCodeLine{00110\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}Unknown\ thermostat\ type:\ \{\},\ choosing\ CLASSIC"{}},\ s);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{Params_8h_ab63da287e2c2eab7c518954ea71459eca648824b3676352bfab53d9bcf217389d}{ThermostatType::CLASSICAL}};}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \}}
+
+\end{DoxyCode}

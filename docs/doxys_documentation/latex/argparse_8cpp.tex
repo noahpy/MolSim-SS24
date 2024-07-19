@@ -1,0 +1,126 @@
+\doxysection{src/io/argparse/argparse.cpp File Reference}
+\hypertarget{argparse_8cpp}{}\label{argparse_8cpp}\index{src/io/argparse/argparse.cpp@{src/io/argparse/argparse.cpp}}
+{\ttfamily \#include "{}utils/\+Params.\+h"{}}\newline
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$spdlog/spdlog.\+h$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{argparse_8cpp_af0a2e48d9a9a00010182ab9a820e1e6b}{print\+Help}} (std\+::string prog\+Name)
+\begin{DoxyCompactList}\small\item\em Print the help message. \end{DoxyCompactList}\item 
+spdlog\+::level\+::level\+\_\+enum \mbox{\hyperlink{argparse_8cpp_a7be5749a22cf499287d18226ffc61bf3}{get\+Log\+Level}} (int level)
+\begin{DoxyCompactList}\small\item\em For setting spdlog level with default level info. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{argparse_8cpp_a0eb70a19ee7229823d645991a9124e87}{convert\+To\+Int}} (char \texorpdfstring{$\ast$}{*}optarg, int \&value)
+\item 
+void \mbox{\hyperlink{argparse_8cpp_a3e97f84a295d12024e87f0657cbd1f1c}{convert\+To\+Unsigned}} (char \texorpdfstring{$\ast$}{*}optarg, unsigned \&value)
+\item 
+void \mbox{\hyperlink{argparse_8cpp_a69eec8d6f073aeb302f5035b3c8bfeb6}{convert\+To\+Double}} (char \texorpdfstring{$\ast$}{*}optarg, double \&value)
+\item 
+\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} \mbox{\hyperlink{argparse_8cpp_a71e3609d0f69d8a5db06276bed619ebf}{unsigned\+To\+Simulation\+Type}} (unsigned value)
+\item 
+\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} \mbox{\hyperlink{argparse_8cpp_acd3f25d1f14f438bc6a5b6aa63959886}{unsigned\+To\+Writer\+Type}} (unsigned value)
+\item 
+\mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567c}{Parallel\+Type}} \mbox{\hyperlink{argparse_8cpp_a72409085fae2a5bed0dd8e9f47670e92}{string\+To\+Parallel\+Type}} (std\+::string value)
+\item 
+void \mbox{\hyperlink{argparse_8cpp_ae47bef499cb7b82023764c269b2594a2}{argparse}} (int argc, char \texorpdfstring{$\ast$}{*}argsv\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{classParams}{Params}} \&params)
+\begin{DoxyCompactList}\small\item\em Parse the command line arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{argparse_8cpp_ae47bef499cb7b82023764c269b2594a2}\index{argparse.cpp@{argparse.cpp}!argparse@{argparse}}
+\index{argparse@{argparse}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{argparse()}{argparse()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_ae47bef499cb7b82023764c269b2594a2} 
+void argparse (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argsv}{\mbox{[}$\,$\mbox{]}, }\item[{\mbox{\hyperlink{classParams}{Params}} \&}]{params}{}\end{DoxyParamCaption})}
+
+
+
+Parse the command line arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of arguments \\
+\hline
+{\em argsv} & Command line arguments \\
+\hline
+{\em params} & Model parameters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void, will set the values of end\+\_\+time, delta\+\_\+t, and input 
+\end{DoxyReturn}
+\Hypertarget{argparse_8cpp_a69eec8d6f073aeb302f5035b3c8bfeb6}\index{argparse.cpp@{argparse.cpp}!convertToDouble@{convertToDouble}}
+\index{convertToDouble@{convertToDouble}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{convertToDouble()}{convertToDouble()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_a69eec8d6f073aeb302f5035b3c8bfeb6} 
+void convert\+To\+Double (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{optarg}{, }\item[{double \&}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{argparse_8cpp_a0eb70a19ee7229823d645991a9124e87}\index{argparse.cpp@{argparse.cpp}!convertToInt@{convertToInt}}
+\index{convertToInt@{convertToInt}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{convertToInt()}{convertToInt()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_a0eb70a19ee7229823d645991a9124e87} 
+void convert\+To\+Int (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{optarg}{, }\item[{int \&}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{argparse_8cpp_a3e97f84a295d12024e87f0657cbd1f1c}\index{argparse.cpp@{argparse.cpp}!convertToUnsigned@{convertToUnsigned}}
+\index{convertToUnsigned@{convertToUnsigned}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{convertToUnsigned()}{convertToUnsigned()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_a3e97f84a295d12024e87f0657cbd1f1c} 
+void convert\+To\+Unsigned (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{optarg}{, }\item[{unsigned \&}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{argparse_8cpp_a7be5749a22cf499287d18226ffc61bf3}\index{argparse.cpp@{argparse.cpp}!getLogLevel@{getLogLevel}}
+\index{getLogLevel@{getLogLevel}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{getLogLevel()}{getLogLevel()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_a7be5749a22cf499287d18226ffc61bf3} 
+spdlog\+::level\+::level\+\_\+enum get\+Log\+Level (\begin{DoxyParamCaption}\item[{int}]{level}{}\end{DoxyParamCaption})}
+
+
+
+For setting spdlog level with default level info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & Integers 1 to 7 from parameter argument corresponds to level trace to off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{argparse_8cpp_af0a2e48d9a9a00010182ab9a820e1e6b}\index{argparse.cpp@{argparse.cpp}!printHelp@{printHelp}}
+\index{printHelp@{printHelp}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{printHelp()}{printHelp()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_af0a2e48d9a9a00010182ab9a820e1e6b} 
+void print\+Help (\begin{DoxyParamCaption}\item[{std\+::string}]{prog\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Print the help message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+Name} & The name of the program \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{argparse_8cpp_a72409085fae2a5bed0dd8e9f47670e92}\index{argparse.cpp@{argparse.cpp}!stringToParallelType@{stringToParallelType}}
+\index{stringToParallelType@{stringToParallelType}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{stringToParallelType()}{stringToParallelType()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_a72409085fae2a5bed0dd8e9f47670e92} 
+\mbox{\hyperlink{Params_8h_a55f694af2ca20b6481914237cf7e567c}{Parallel\+Type}} string\+To\+Parallel\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{argparse_8cpp_a71e3609d0f69d8a5db06276bed619ebf}\index{argparse.cpp@{argparse.cpp}!unsignedToSimulationType@{unsignedToSimulationType}}
+\index{unsignedToSimulationType@{unsignedToSimulationType}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{unsignedToSimulationType()}{unsignedToSimulationType()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_a71e3609d0f69d8a5db06276bed619ebf} 
+\mbox{\hyperlink{Params_8h_ad69f3cf5fdb6ef307d85180c346e7921}{Simulation\+Type}} unsigned\+To\+Simulation\+Type (\begin{DoxyParamCaption}\item[{unsigned}]{value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{argparse_8cpp_acd3f25d1f14f438bc6a5b6aa63959886}\index{argparse.cpp@{argparse.cpp}!unsignedToWriterType@{unsignedToWriterType}}
+\index{unsignedToWriterType@{unsignedToWriterType}!argparse.cpp@{argparse.cpp}}
+\doxysubsubsection{\texorpdfstring{unsignedToWriterType()}{unsignedToWriterType()}}
+{\footnotesize\ttfamily \label{argparse_8cpp_acd3f25d1f14f438bc6a5b6aa63959886} 
+\mbox{\hyperlink{Params_8h_aded523d07f405f8a622d2b4247de05bf}{Writer\+Type}} unsigned\+To\+Writer\+Type (\begin{DoxyParamCaption}\item[{unsigned}]{value}{}\end{DoxyParamCaption})}
+

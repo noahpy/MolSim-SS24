@@ -1,0 +1,22 @@
+\doxysection{Cell\+Type.\+h}
+\hypertarget{CellType_8h_source}{}\label{CellType_8h_source}\index{src/models/linked\_cell/cell/CellType.h@{src/models/linked\_cell/cell/CellType.h}}
+\mbox{\hyperlink{CellType_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{CellType}}\ \{\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4aa1684698ac3d8ffda353d0458c30b1e7}{Inner}},\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4ae234de581c9c5ef91322f1469a585f9e}{Boundary}},\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4aaa6df57fb6fe377d80b4a257b4a92cba}{Halo}}\ \};}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{CellType_8h_a768778c5ca77db522d187f1eb5d46e6e}{getCellTypeString}}(\mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4}{CellType}}\ cellType)}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordflow}{switch}\ (cellType)\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4aa1684698ac3d8ffda353d0458c30b1e7}{CellType::Inner}}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Inner"{}};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4ae234de581c9c5ef91322f1469a585f9e}{CellType::Boundary}}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Boundary"{}};}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{CellType_8h_a268ae74e98bc01a0e35f5e215580bcb4aaa6df57fb6fe377d80b4a257b4a92cba}{CellType::Halo}}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Halo"{}};}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
