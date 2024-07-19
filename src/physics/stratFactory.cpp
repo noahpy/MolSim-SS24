@@ -35,8 +35,11 @@ PhysicsStrategy stratFactory(SimulationType simulation_type, ParallelType parall
                      velocity_stroemer_verlet,
                      force_mixed_LJ_gravity_lc_task };
         }
+    case SimulationType::MEMBRANE_LJ:
+        spdlog::info("Initializing Force Membrane Strat...");
+        return { location_stroemer_verlet, velocity_stroemer_verlet, force_membrane };
     default:
-        spdlog::info("Unknown simulation type, proceeding with default physics strategy.");
+        spdlog::warn("Unknown simulation type, proceeding with default physics strategy.");
         return { location_stroemer_verlet, velocity_stroemer_verlet, force_gravity_V2 };
     }
 }
