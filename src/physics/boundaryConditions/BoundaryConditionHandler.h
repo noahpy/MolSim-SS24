@@ -17,7 +17,8 @@ public:
      * @brief Constructor for the BoundaryConditionHandler class
      * @param boundaryConfig The boundary conditions to apply described in the object
      */
-    explicit BoundaryConditionHandler(const BoundaryConfig& boundaryConfig, const CellGrid& cellGrid);
+    explicit BoundaryConditionHandler(
+        const BoundaryConfig& boundaryConfig, const CellGrid& cellGrid);
 
     /**
      * @brief The call to apply the boundary condition to the simulation before any updates are made

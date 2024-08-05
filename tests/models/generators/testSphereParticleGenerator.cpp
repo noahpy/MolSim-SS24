@@ -54,7 +54,8 @@ TEST_F(SphereParticleGeneratorTest, CorrectNumberOfParticles)
             mass,
             initialVelocity,
             meanVelocity,
-            3);
+            3,
+            {});
         generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
         generator.generateClusters();
 
@@ -77,7 +78,8 @@ TEST_F(SphereParticleGeneratorTest, EdgeCases)
             mass,
             initialVelocity,
             meanVelocity,
-            3);
+            3,
+            {});
         generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
         generator.generateClusters();
 
@@ -100,7 +102,8 @@ TEST_F(SphereParticleGeneratorTest, UniquePositionsInSphere)
         mass,
         initialVelocity,
         meanVelocity,
-        dimensions);
+        dimensions,
+        {});
     generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
     generator.generateClusters();
 
@@ -126,7 +129,8 @@ TEST_F(SphereParticleGeneratorTest, MinimumSpacing)
         mass,
         initialVelocity,
         meanVelocity,
-        dimensions);
+        dimensions,
+        {});
     generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
     generator.generateClusters();
 
@@ -154,7 +158,8 @@ TEST_F(SphereParticleGeneratorTest, ClusterSpansSphere)
         mass,
         initialVelocity,
         meanVelocity,
-        dimensions);
+        dimensions,
+        {});
     generator.registerCluster(std::make_unique<SphereParticleCluster>(cluster));
     generator.generateClusters();
 

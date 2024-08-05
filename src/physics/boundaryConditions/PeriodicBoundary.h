@@ -94,4 +94,15 @@ private:
         const std::vector<Position>& key,
         const std::vector<Position>& boundarySides,
         const CellGrid& cellGrid);
+
+    /**
+     * @brief This method checks, if the side is responsible for the shifts. We need this, as we
+     * only want to shift particles once. E.g. if a cell belongs to two boundaries, we only want to
+     * shift it once. For that we check, if the side is the highest priority periodic side
+     * @param boundaryConfig The boundary configuration
+     * @param boundarySides The sides a cell belongs to
+     * @return Whether this side is supposed to shift. True iff it is supposed
+     */
+    bool isThisSideResponsibleForShifts(
+        const BoundaryConfig& boundaryConfig, const std::vector<Position>& boundarySides) const;
 };

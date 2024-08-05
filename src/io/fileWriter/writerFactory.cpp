@@ -1,8 +1,8 @@
 
 #include "io/fileWriter/writerFactory.h"
 #include "io/fileWriter/VTKWriter.h"
-#include "io/fileWriter/XYZWriter.h"
 #include "io/fileWriter/XMLWriter.h"
+#include "io/fileWriter/XYZWriter.h"
 #include "io/fileWriter/emptyWriter.h"
 #include <spdlog/spdlog.h>
 

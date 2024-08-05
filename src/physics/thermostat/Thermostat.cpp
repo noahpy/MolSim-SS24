@@ -13,23 +13,43 @@ Thermostat::Thermostat(double init, double target, double delta, size_t dim)
 {
 }
 
-void Thermostat::initializeBrownianMotion(ParticleContainer& container) const
+void Thermostat::initializeBrownianMotion(Simulation& sim) const
 {
-    for (auto& p : container) {
-        p.setV(maxwellBoltzmannDistributedVelocity(std::sqrt(init / p.getM()), dim));
+    for (auto& p : sim.container)
+        if (p.getIsNotStationary())
+            p.setV(maxwellBoltzmannDistributedVelocity(std::sqrt(init / p.getM()), dim));
+}
+
+void Thermostat::updateT(Simulation& sim)
+{
+    // Calculate current Temperature
+    double T_current =
+        getTotalKineticEnergy(sim) / (double)(sim.container.activeParticleCount * dim);
+
+    double beta = getBeta(T_current);
+
+    spdlog::debug("Current Temperature: {}, Target: {}, beta: {}", T_current, target, beta);
+
+    for (auto& p : sim.container) {
+        p.setV(beta * p.getV());
     }
 }
 
-void Thermostat::updateT(ParticleContainer& container) const
+double Thermostat::getTotalKineticEnergy(Simulation& sim)
 {
     // Calculate kinetic energy
     double E = 0;
-    for (auto& p : container) {
+    for (auto& p : sim.container)
         E += p.getM() * (ArrayUtils::DotProduct(p.getV()));
-    }
 
-    // Calculate current Temperature
-    double T_current = E / (container.activeParticleCount * dim);
+    return E;
+}
+
+double Thermostat::getBeta(double T_current) const
+{
+    // if T_current is 0, then beta would become nan -> to continue simulation, return 1
+    if (T_current == 0)
+        return 1;
 
     // Calculate new Temperature
     double diff = target - T_current;
@@ -37,17 +57,11 @@ void Thermostat::updateT(ParticleContainer& container) const
         diff = (diff > 0) ? delta : -delta;
     double T_new = diff + T_current;
 
-    // Update velocities with scaling factor beta
-    double beta = std::sqrt(T_new / T_current);
+    // calculate scaling factor beta
+    return std::sqrt(T_new / T_current);
+}
 
-    spdlog::debug(
-        "Current Temperature: {}, Target: {}, Step target: {}, beta: {}",
-        T_current,
-        target,
-        T_new,
-        beta);
-
-    for (auto& p : container) {
-        p.setV(beta * p.getV());
-    }
+std::string Thermostat::getName() const
+{
+    return "Thermostat";
 }

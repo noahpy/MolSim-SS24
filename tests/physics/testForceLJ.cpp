@@ -7,6 +7,7 @@
 #include "physics/strategy.h"
 #include "physics/velocityCal/velocityCal.h"
 #include "simulation/baseSimulation.h"
+#include "simulation/linkedLennardJonesSim.h"
 #include <cmath>
 #include <gtest/gtest.h>
 
@@ -58,6 +59,7 @@ TEST_F(calcForceLJTest, calcForceLJNormed)
         strat,
         std::move(writer),
         std::move(fileReader),
+        {},
         epsilon,
         sigma);
 
@@ -101,6 +103,7 @@ TEST_F(calcForceLJTest, calcForceLJEquilibrium)
         strat,
         std::move(writer),
         std::move(fileReader),
+        {},
         epsilon,
         sigma);
 
@@ -144,6 +147,7 @@ TEST_F(calcForceLJTest, calcForceLJUnNormed)
         strat,
         std::move(writer),
         std::move(fileReader),
+        {},
         epsilon,
         sigma);
 

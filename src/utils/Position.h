@@ -21,7 +21,10 @@ static std::vector<Position> allPositions = { Position::LEFT,   Position::RIGHT,
  * @return The boundary position of the coordinate
  */
 inline std::vector<Position> coordinateToPosition(
-    std::array<size_t, 3> coordinate, std::array<size_t, 3> gridDimensions, bool keep3D = true, bool isHalo = false)
+    std::array<size_t, 3> coordinate,
+    std::array<size_t, 3> gridDimensions,
+    bool keep3D = true,
+    bool isHalo = false)
 {
     size_t offset = isHalo ? 0 : 1;
     std::vector<Position> positions;
@@ -94,7 +97,8 @@ inline std::array<double, 3> getNormalVectorOfBoundary(Position position)
     }
 }
 
-inline Position oppositePosition(Position position) {
+inline Position oppositePosition(Position position)
+{
     switch (position) {
     case Position::LEFT:
         return Position::RIGHT;

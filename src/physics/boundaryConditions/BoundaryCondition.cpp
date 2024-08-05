@@ -3,7 +3,8 @@
 #include "simulation/LennardJonesDomainSimulation.h"
 
 std::array<double, 3> BoundaryCondition::getPointOnBoundaryPlane(
-    const LennardJonesDomainSimulation& LJDSim) {
+    const LennardJonesDomainSimulation& LJDSim)
+{
     std::array<double, 3> pointOnBoundaryPlane {};
     switch (position) {
     // To mirror point, we need a point on the plane to mirror it about

@@ -2,6 +2,8 @@
 #include "io/fileReader/xmlReader.h"
 #include "io/xsd/simulation.h"
 #include "models/generators/ParticleGenerator.h"
+#include "models/molecules/Membrane.h"
+#include "simulation/MembraneSimulation.h"
 #include <fstream>
 #include <spdlog/spdlog.h>
 #include <sstream>
@@ -39,6 +41,7 @@ void XmlReader::readFile(Simulation& sim)
                 { cuboid.vel().x(), cuboid.vel().y(), cuboid.vel().z() },
                 cuboid.brownVel(),
                 cuboid.brownDim(),
+                sim.stationaryParticleTypes,
                 ptype)));
         }
 
@@ -58,6 +61,7 @@ void XmlReader::readFile(Simulation& sim)
                 { sphere.vel().x(), sphere.vel().y(), sphere.vel().z() },
                 sphere.brownVel(),
                 sphere.brownDim(),
+                sim.stationaryParticleTypes,
                 ptype)));
         }
 
@@ -85,7 +89,10 @@ void XmlReader::readFile(Simulation& sim)
                                particles.VelData()[i * 3 + 1],
                                particles.VelData()[i * 3 + 2] },
                              particles.MassData()[i],
-                             (int)particles.TypeData()[i] };
+                             (int)particles.TypeData()[i],
+                             i,
+                             sim.stationaryParticleTypes.find((int)particles.TypeData()[i]) !=
+                                 sim.stationaryParticleTypes.end() };
                 p.setF({ particles.ForceData()[i * 3],
                          particles.ForceData()[i * 3 + 1],
                          particles.ForceData()[i * 3 + 2] });
@@ -95,6 +102,62 @@ void XmlReader::readFile(Simulation& sim)
                 sim.container.addParticle(p);
             }
             spdlog::info("Read {} particles indiviually from particle data.", particle_count);
+        }
+
+        if (sim_input->molecules().present()) {
+            size_t moleculesId = 1;
+            if (sim_input->molecules().get().membrane().size()) {
+                try {
+                    // downcast to membraneSim
+                    MembraneSimulation& membraneSim = dynamic_cast<MembraneSimulation&>(sim);
+                    for (auto membrane : sim_input->molecules().get().membrane()) {
+                        std::array<double, 3> pos = { membrane.pos().x(),
+                                                      membrane.pos().y(),
+                                                      membrane.pos().z() };
+                        std::array<double, 3> vel = { membrane.vel().x(),
+                                                      membrane.vel().y(),
+                                                      membrane.vel().z() };
+                        unsigned ptype = 0;
+                        if (membrane.ptype().present())
+                            ptype = membrane.ptype().get();
+                        membraneSim.molecules.push_back(std::make_unique<Membrane>(
+                            Membrane { pos,
+                                       membrane.dim().x(),
+                                       membrane.dim().y(),
+                                       membrane.dim().z(),
+                                       membrane.spacing(),
+                                       membrane.mass(),
+                                       vel,
+                                       membrane.brownVel(),
+                                       static_cast<size_t>(membrane.brownDim()),
+                                       ptype,
+                                       membrane.equiDist(),
+                                       membrane.springConst() }));
+                        spdlog::info(
+                            "Registered membrane with id {}: pos = ({}, {}, {}), vel = ({}, {}, "
+                            "{}), mass = {}, spacing = {}, brownVel = {}, brownDim = {}, ptype = "
+                            "{}, springConst = {}, equiDist = {}",
+                            moleculesId,
+                            pos[0],
+                            pos[1],
+                            pos[2],
+                            vel[0],
+                            vel[1],
+                            vel[2],
+                            membrane.mass(),
+                            membrane.spacing(),
+                            membrane.brownVel(),
+                            static_cast<size_t>(membrane.brownDim()),
+                            ptype,
+                            membrane.equiDist(),
+                            membrane.springConst());
+                    }
+                } catch (const std::bad_cast& e) {
+                    spdlog::warn(
+                        "Membrane was specified in xml, but can not generate with this simulation "
+                        "type. Membrane will be ignored.");
+                }
+            }
         }
 
     } catch (const xml_schema::exception& e) {

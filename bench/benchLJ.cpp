@@ -7,6 +7,7 @@
 #include "physics/locationCal/locationCal.h"
 #include "physics/strategy.h"
 #include "physics/velocityCal/velocityCal.h"
+#include "simulation/lennardJonesSim.h"
 #include <benchmark/benchmark.h>
 #include <spdlog/common.h>
 #include <spdlog/spdlog.h>
@@ -33,7 +34,16 @@ static void BM_LJSimulation(benchmark::State& state)
 
     // Setup simulation
     LennardJonesSimulation sim(
-        0, 0.002, 1, particles, strat, std::move(writerPointer), std::move(readerPointer), 5, 1);
+        0,
+        0.002,
+        1,
+        particles,
+        strat,
+        std::move(writerPointer),
+        std::move(readerPointer),
+        {},
+        5,
+        1);
 
     // get particle number
     auto n = state.range(0);
@@ -49,7 +59,8 @@ static void BM_LJSimulation(benchmark::State& state)
         1,
         std::array<double, 3> { 0, 0, 0 },
         0.1,
-        2);
+        2,
+        {});
 
     ParticleGenerator p = ParticleGenerator(sim.container);
     p.registerCluster(std::make_unique<CuboidParticleCluster>(cluster));

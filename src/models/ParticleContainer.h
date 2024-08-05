@@ -6,7 +6,8 @@
 #define PARTICLECONTAINER_H
 
 #include "Particle.h"
-#include <unordered_map>
+#include <functional>
+#include <map>
 #include <vector>
 
 /**
@@ -23,6 +24,11 @@ public:
      * @brief Counter for active particles
      */
     int activeParticleCount;
+
+    /**
+     * @brief Map that contains all the inactive particles
+     */
+    std::map<size_t, size_t> inactiveParticleMap;
 
     /**
      * @brief Construct a new Particle Container object
@@ -52,6 +58,13 @@ public:
     void removeParticle(Particle& p);
 
     /**
+     * @brief Get the true index of the particle, ignoring the inactive particles
+     * @param id The id of the particle
+     * @return The index of the particle
+     */
+    size_t getIndex(size_t id);
+
+    /**
      * @brief Get the particles within the container
      * @return The vector of particles
      */
@@ -67,12 +80,14 @@ public:
      * @return The iterator to the first active particle
      */
     ActiveIterator begin();
+    /* std::vector<Particle>::iterator begin(); */
 
     /**
      * @brief Get the iterator to the last active particle
      * @return The iterator to the last active particle
      */
     ActiveIterator end();
+    /* std::vector<Particle>::iterator end(); */
 
     /**
      * @brief Forward declaration for pair iteration
@@ -90,29 +105,43 @@ public:
      */
     PairIterator endPairs();
 
+    ActiveIterator beginActive();
+
+    ActiveIterator endActive();
+
     /**
      * @brief Iterator class for active particles
      */
     class ActiveIterator {
     private:
-       /**
-        * @brief Iterator for the ActiveIterator
-        */
+        /**
+         * @brief Iterator for the ActiveIterator
+         */
         std::vector<Particle>::iterator begin, current, end;
 
-       /**
-        * @brief Advance to the next active particle
-        */
-       void advanceToNextActive();
+        /**
+         * @brief Map for the inactive particles
+         */
+        std::reference_wrapper<std::map<size_t, size_t>> inactiveMapRef;
+
+        /**
+         * @brief Advance to the next active particle
+         */
+        void advanceToNextActive();
 
     public:
+        using difference_type = std::ptrdiff_t;
         /**
          * @brief Construct a new Iterator over active particles
          * @param start The iterator to the first active particle
          * @param end The iterator to the last active particle
          * @return ActiveIterator object
          */
-        ActiveIterator(std::vector<Particle>::iterator start, std::vector<Particle>::iterator end);
+        ActiveIterator(
+            std::vector<Particle>::iterator start,
+            std::vector<Particle>::iterator begin,
+            std::vector<Particle>::iterator end,
+            std::reference_wrapper<std::map<size_t, size_t>> inactiveMapRef);
 
         /**
          * @brief Override the * operator for range-based for loop
@@ -127,6 +156,16 @@ public:
         bool operator!=(const ActiveIterator& other) const;
 
         bool operator==(const ActiveIterator& other) const;
+
+        ActiveIterator operator+=(difference_type n);
+
+        ActiveIterator operator-=(difference_type n);
+
+        ActiveIterator operator+(difference_type n);
+
+        ActiveIterator operator-(difference_type n);
+
+        difference_type operator-(const ActiveIterator& other) const;
     };
 
     /**
@@ -135,13 +174,12 @@ public:
      * fixed particle.
      */
     class PairIterator {
-    private:
+    public:
         /**
          * @brief The iterators need to iterate over the particle pairs
          */
         ActiveIterator start, first, second, last;
 
-    public:
         /**
          * @brief Construct a new Pair Iterator object
          * @param start The iterator to the first particle
@@ -149,10 +187,7 @@ public:
          * @param last The iterator to the last particle
          * @return PairIterator object
          */
-        PairIterator(
-            ActiveIterator start,
-            ActiveIterator first,
-            ActiveIterator last);
+        PairIterator(ActiveIterator start, ActiveIterator first, ActiveIterator last);
 
         /**
          * @brief Get the last particle

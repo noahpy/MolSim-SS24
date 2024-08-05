@@ -4,7 +4,6 @@
 
 Cell::Cell(const CellIndex index)
     : type(CellType::Inner)
-    , neighborCounter(0)
     , myIndex(index)
     , boundaryNeighbours()
     , haloNeighbours()
@@ -14,12 +13,21 @@ Cell::Cell(const CellIndex index)
 
 Cell::Cell(const CellType type, const CellIndex index)
     : type(type)
-    , neighborCounter(0)
     , myIndex(index)
     , boundaryNeighbours()
     , haloNeighbours()
     , innerNeighbours()
 
+{
+}
+
+Cell::Cell(const Cell& other)
+    : type(other.type)
+    , myIndex(other.myIndex)
+    , boundaryNeighbours(other.boundaryNeighbours)
+    , haloNeighbours(other.haloNeighbours)
+    , innerNeighbours(other.innerNeighbours)
+    , mutex()
 {
 }
 
@@ -67,11 +75,6 @@ ParticleRefList::iterator Cell::end()
     return particles.end();
 }
 
-void Cell::setCounter(int count)
-{
-    neighborCounter = count;
-}
-
 Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
     : particles(particles)
     , firstIt(particles.begin())
@@ -87,7 +90,8 @@ Cell::PairListIterator::PairListIterator(ParticleRefList& particles, bool end)
     }
 }
 
-std::pair<Particle&, Particle&> Cell::PairListIterator::operator*() const
+std::pair<std::reference_wrapper<Particle>, std::reference_wrapper<Particle>> Cell::
+    PairListIterator::operator*() const
 {
     return { (*firstIt).get(), (*secondIt).get() };
 }

@@ -11,8 +11,10 @@ CuboidParticleCluster::CuboidParticleCluster(
     std::array<double, 3> initialVelocity,
     double meanVelocity,
     size_t dimensions,
+    const std::map<unsigned, bool>& stationaryParticleTypes,
     unsigned ptype)
-    : ParticleCluster(origin, mass, initialVelocity, meanVelocity, dimensions, ptype)
+    : ParticleCluster(
+          origin, mass, initialVelocity, meanVelocity, dimensions, stationaryParticleTypes, ptype)
     , numParticlesWidth(numParticlesWidth)
     , numParticlesHeight(numParticlesHeight)
     , numParticlesDepth(numParticlesDepth)
@@ -42,7 +44,7 @@ void CuboidParticleCluster::generateCluster(
                     initialVelocity + maxwellBoltzmannDistributedVelocity(meanVelocity, dimensions);
 
                 // Create particle
-                Particle particle (position, velocity, mass, ptype);
+                Particle particle(position, velocity, mass, ptype, insertionIndex, isNotStationary);
 
                 // Add particle to container
                 particles[insertionIndex++] = particle;

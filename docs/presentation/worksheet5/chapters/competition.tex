@@ -1,0 +1,40 @@
+
+\section{Competition}
+\label{sec:competition}
+
+\begin{frame}
+    \frametitle{Competition Results}
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \textbf{Our best runtime for the 3D experiment:}
+
+            \begin{itemize}
+                \item 56 threads 
+                \item cluster: cm2
+                \item partition: cm2\_std
+                \item time: 198s = 3,3 minutes (999 iterations)
+                \item compiler: icpc
+                \item xml: \texttt{reyleigh\_3D\_short.xml} 
+                \item Average time per iteration: 198 ms
+                \item MUP/S = 505050 (MUP = force+vel+pos calc i.e. one update per particle per iteration)
+            \end{itemize}
+        \end{column}
+        \vrule
+        \hspace{10pt}
+        \begin{column}{0.5\textwidth}
+            \textbf{Our best runtime for the 2D experiment:}
+
+            \begin{itemize}
+                \item 16 threads 
+                \item cluster: cm2
+                \item partition: cm2\_std
+                \item time: 2s (999 iterations)
+                \item compiler: icpc
+                \item xml: \texttt{big\_rayleigh\_taylor\_short.xml}
+                \item Average time per iteration: 2 ms
+                \item MUP/S = 5000000 (MUP = force+vel+pos calc i.e. one update per particle per iteration)
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}

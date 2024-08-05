@@ -26,17 +26,18 @@ public:
      * @param strat The strategy to be used for the physics calculations
      * @param writer The writer object to write the output to file
      * @param reader The reader object to read the input from file
+     * @param stationaryParticleTypes The types of particles which are stationary
      * @param LJParams A map that resolves particle type to their epsilon and sigma values
      * @param domainOrigin The origin of the simulation domain
      * @param domainSize The size of the simulation domain
      * @param cutoff The cutoff radius of the simulation
      * @param boundaryConfig The boundary condition configuration specification
+     * @param analyzer The analyzer object to analyze the simulation
      * @param gravity_constant The gravity constant to be used
-     * @param T_init The initial temperature
-     * @param T_target The target temperature
-     * @param delta_T The maximal temperature change in one step
+     * @param thermostat The thermostat to be used
      * @param frequency The frequency for writing outputs (default = 10)
      * @param updateFrequency The frequency for updating the grid (default = 10)
+     * @param analysisFrequency The frequency for analyzing the simulation (default = 10000)
      * @param read_file Whether to read the input file (default = true)
      * @param n_thermostat The number of steps between thermostat updates (default = 1000
      */
@@ -48,17 +49,18 @@ public:
         PhysicsStrategy& strat,
         std::unique_ptr<FileWriter> writer,
         std::unique_ptr<FileReader> reader,
+        std::map<unsigned, bool> stationaryParticleTypes,
         const std::map<unsigned, std::pair<double, double>>& LJParams,
         std::array<double, 3> domainOrigin,
         std::array<double, 3> domainSize,
         double cutoff,
         const BoundaryConfig& boundaryConfig,
+        std::unique_ptr<Analyzer> analyzer,
         double gravity_constant,
-        double T_init,
-        double T_target,
-        double delta_T,
+        std::unique_ptr<Thermostat> thermostat,
         unsigned frequency = 10,
         unsigned updateFrequency = 10,
+        size_t analysisFrequency = 10000,
         bool read_file = true,
         unsigned n_thermostat = 1000,
         bool doProfile = false);
@@ -181,7 +183,7 @@ protected:
     double T_target; /**< The target temperature */
     double delta_T; /**< The maximal temperature change in one step */
     unsigned n_thermostat; /**< The number of steps between thermostat updates */
-    Thermostat thermostat; /**< The thermostat */
+    std::unique_ptr<Thermostat> thermostat; /**< The thermostat */
 
 private:
     // ---- Hide singe epsilon and sigma -------//

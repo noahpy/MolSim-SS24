@@ -27,30 +27,6 @@ TEST(CellTests, CellSubclassInstantiation)
     EXPECT_EQ(haloCell.getType(), CellType::Halo);
 }
 
-// Check if get and set counter works for all classes
-TEST(CellTests, CellCounter)
-{
-    Cell innerCell { CellType::Inner, { 0, 0, 0 } };
-    Cell boundaryCell { CellType::Boundary, std::array<size_t, 3> { 0, 0, 0 } };
-    Cell haloCell { CellType::Halo, std::array<size_t, 3> { 0, 0, 0 } };
-
-    innerCell.setCounter(1);
-    boundaryCell.setCounter(2);
-    haloCell.setCounter(3);
-
-    EXPECT_EQ(innerCell.getCounter(), 1);
-    EXPECT_EQ(boundaryCell.getCounter(), 2);
-    EXPECT_EQ(haloCell.getCounter(), 3);
-
-    innerCell.setCounter(5);
-    boundaryCell.setCounter(6);
-    haloCell.setCounter(7);
-
-    EXPECT_EQ(innerCell.getCounter(), 5);
-    EXPECT_EQ(boundaryCell.getCounter(), 6);
-    EXPECT_EQ(haloCell.getCounter(), 7);
-}
-
 // Check if particles can be added and removed
 TEST(SimpleCellParticleTest, AddRemoveParticles)
 {
@@ -127,16 +103,12 @@ std::array<double, 3> zero { 0, 0, 0 };
 // Check if unique pair iteration works on the particle reference list in cell
 TEST(PairListItTests, pairListIterator)
 {
-
     std::vector<Particle> particles {
-        Particle(zero, zero, 5, 0),
-        Particle(zero, zero, 3, 0),
-        Particle(zero, zero, 1, 0),
-        Particle(zero, zero, 9, 0),
-        Particle(zero, zero, 8, 0),
+        Particle(zero, zero, 5, 0), Particle(zero, zero, 3, 0), Particle(zero, zero, 1, 0),
+        Particle(zero, zero, 9, 0), Particle(zero, zero, 8, 0),
     };
 
-    Cell cell(CellType::Inner, {0, 0, 0});
+    Cell cell(CellType::Inner, { 0, 0, 0 });
 
     for (int i = 0; i < 5; ++i) {
         cell.addParticle(particles[i]);
@@ -149,8 +121,10 @@ TEST(PairListItTests, pairListIterator)
         std::pair<Particle&, Particle&> pt_pair = *it;
         for (std::pair<Particle&, Particle&> particle_pair : pairs) {
             EXPECT_FALSE(
-                pt_pair.first.getM() == particle_pair.first.getM() && pt_pair.second.getM() == particle_pair.second.getM() ||
-                pt_pair.first.getM() == particle_pair.second.getM() && pt_pair.second.getM() == particle_pair.first.getM())
+                pt_pair.first.getM() == particle_pair.first.getM() &&
+                    pt_pair.second.getM() == particle_pair.second.getM() ||
+                pt_pair.first.getM() == particle_pair.second.getM() &&
+                    pt_pair.second.getM() == particle_pair.first.getM())
                 << "Found duplicate pair!";
         }
         pairs.emplace_back(pt_pair);
@@ -163,8 +137,8 @@ TEST(PairListItTests, pairListIterator)
 // Check if the pair iteration works on empty list and list with one element
 TEST(PairListItTests, pairListItZero)
 {
-    Particle p1 (zero, zero, 5, 0);
-    Cell cell(CellType::Inner, {0, 0, 0});
+    Particle p1(zero, zero, 5, 0);
+    Cell cell(CellType::Inner, { 0, 0, 0 });
     cell.addParticle(p1);
 
     unsigned count = 0;

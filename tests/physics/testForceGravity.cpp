@@ -45,7 +45,8 @@ protected:
               particlesA,
               stratA,
               std::make_unique<outputWriter::VTKWriter>(writer),
-              std::make_unique<FileReader>(fileReader))
+              std::make_unique<FileReader>(fileReader),
+              {})
         , simB(
               start_time,
               delta_t,
@@ -53,7 +54,8 @@ protected:
               particlesB,
               stratB,
               std::make_unique<outputWriter::VTKWriter>(writer),
-              std::make_unique<FileReader>(fileReader))
+              std::make_unique<FileReader>(fileReader),
+              {})
 
     {
     }

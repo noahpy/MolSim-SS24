@@ -1,8 +1,10 @@
 
 #include "io/xmlparse/xmlparse.h"
 #include "io/xsd/simulation.h"
+#include "physics/thermostat/Thermostat.h"
 #include <fstream>
 #include <spdlog/spdlog.h>
+#include "models/molecules/Membrane.h"
 
 void xmlparse(Params& sim_params, std::string& filename)
 {
@@ -47,6 +49,8 @@ void xmlparse(Params& sim_params, std::string& filename)
             sim_params.update_frequency = params.updateFreq().get();
         if (params.gravity().present())
             sim_params.gravity = params.gravity().get();
+        if (params.analysisFreq().present())
+            sim_params.analysisInterval = params.analysisFreq().get();
         if (params.boundaries().present()) {
             if (params.boundaries().get().bound_four().size()) {
                 sim_params.boundaryConfig = BoundaryConfig(
@@ -79,6 +83,10 @@ void xmlparse(Params& sim_params, std::string& filename)
                 sim_params.thermo_freq = thermo_config.thermoFreq().get();
             if (thermo_config.maxTempDelta().present())
                 sim_params.max_temp_delta = thermo_config.maxTempDelta().get();
+            if (thermo_config.type().present())
+                sim_params.thermostat_type = getThermostatType(thermo_config.type().get());
+        } else {
+            sim_params.thermo_freq = 0;
         }
 
         // read particle types
@@ -99,6 +107,13 @@ void xmlparse(Params& sim_params, std::string& filename)
                     typeID,
                     sigma,
                     epsilon);
+                // Add immobile particle types
+                if (type.immobile().present()) {
+                    if (type.immobile().get()) {
+                        sim_params.immobileParticleTypes[typeID] = true;
+                        spdlog::info("Particle type {} is immobile", typeID);
+                    }
+                }
             }
         }
 
